@@ -1,0 +1,4148 @@
+import { useState } from "react";
+import { Layout } from "@/components/Layout";
+import { 
+  AlertTriangle, Shield, Phone, DollarSign, Scale, Sun, 
+  ChevronDown, ChevronUp, Heart, Gavel, Coffee, Plane, 
+  ShieldCheck, Ban, Tv, Car, ExternalLink, Stamp, Anchor, Ship,
+  MapPin, Thermometer, TicketX, AlertCircle, CheckCircle, XCircle, Lightbulb, ArrowLeft, Building2
+} from "lucide-react";
+
+type InfoCategory = "safety" | "emergency" | "financial" | "legal" | "daily";
+type TravelCategory = "customs" | "travel-safety" | "prohibited" | "tvguide" | "transport" | "consulates";
+
+interface SafetyCard {
+  id: string;
+  title: string;
+  description: string;
+  preventionTips: string;
+}
+
+interface InfoCard {
+  id: string;
+  title: string;
+  description: string;
+}
+
+interface InfoSection {
+  id: string;
+  title: string;
+  icon: any;
+  iconColor: string;
+  items: InfoCard[];
+}
+
+const safetyData: SafetyCard[] = [
+  {
+    id: "unsafe-neighborhoods",
+    title: "Unsafe Neighborhoods Near Stadium",
+    description: "Stadium flanked by areas that vary in safety block-by-block.",
+    preventionTips: "Stick to pedestrian crowds. Use designated ride-share lots. If crowd thins out, turn back."
+  },
+  {
+    id: "follow-home-robberies",
+    title: "Follow-Home Robberies (Luxury Items)",
+    description: "Thieves target people wearing expensive jewelry/watches leaving venues.",
+    preventionTips: "Dress down when leaving stadium. Tuck chains inside shirt, avoid flashing luxury watches."
+  },
+  {
+    id: "pickpocketing",
+    title: "Pickpocketing at Transit Hubs",
+    description: "High-density choke points like entry gates, escalators, and crowded transit platforms.",
+    preventionTips: "Keep valuables in front pockets or bags worn across body. Stay alert in crowded spaces."
+  },
+  {
+    id: "ticket-scams",
+    title: "Ticket and Merchandise Scams",
+    description: "Fake tickets and counterfeit jerseys sold outside stadiums.",
+    preventionTips: "Only buy from official apps (Ticketmaster, FIFA). Never buy from individuals on the street."
+  },
+  {
+    id: "car-break-ins",
+    title: "Car Break-Ins & Parking Lot Safety",
+    description: "Thieves smash car windows to grab bags in seconds, often in broad daylight.",
+    preventionTips: "Never leave anything visible in rental cars. Leave back seats folded down so thieves can see trunk is empty."
+  },
+  {
+    id: "heat-warning",
+    title: "Heat Warning",
+    description: "Extreme heat and humidity in June/July. Heat exhaustion is a real risk.",
+    preventionTips: "Drink water constantly, wear sunscreen, take breaks in shade, know heat stroke signs."
+  }
+];
+
+interface MedicalFacility {
+  id: string;
+  name: string;
+  type: "er" | "urgent";
+  address: string;
+  phone: string;
+  distance: string;
+  drivingTime: string;
+  lat: number;
+  lng: number;
+  hours: string;
+}
+
+interface CityMedicalData {
+  id: string;
+  city: string;
+  country: string;
+  flag: string;
+  stadium: string;
+  stadiumLat: number;
+  stadiumLng: number;
+  facilities: MedicalFacility[];
+}
+
+const medicalFacilitiesData: CityMedicalData[] = [
+  {
+    id: "new-york",
+    city: "New York/New Jersey",
+    country: "USA",
+    flag: "🇺🇸",
+    stadium: "MetLife Stadium",
+    stadiumLat: 40.8135,
+    stadiumLng: -74.0745,
+    facilities: [
+      { id: "ny-er-1", name: "Hackensack University Medical Center", type: "er", address: "30 Prospect Ave, Hackensack, NJ", phone: "+1 551-996-2000", distance: "5.2 mi", drivingTime: "12 min", lat: 40.8859, lng: -74.0435, hours: "24/7" },
+      { id: "ny-er-2", name: "Holy Name Medical Center", type: "er", address: "718 Teaneck Rd, Teaneck, NJ", phone: "+1 201-833-3000", distance: "4.8 mi", drivingTime: "10 min", lat: 40.8885, lng: -74.0159, hours: "24/7" },
+      { id: "ny-uc-1", name: "CityMD Secaucus", type: "urgent", address: "700 Plaza Dr, Secaucus, NJ", phone: "+1 201-210-8700", distance: "2.1 mi", drivingTime: "5 min", lat: 40.7891, lng: -74.0567, hours: "8am-10pm" },
+      { id: "ny-uc-2", name: "AFC Urgent Care Lyndhurst", type: "urgent", address: "453 Valley Brook Ave, Lyndhurst, NJ", phone: "+1 201-345-3839", distance: "3.5 mi", drivingTime: "8 min", lat: 40.8120, lng: -74.1236, hours: "8am-8pm" }
+    ]
+  },
+  {
+    id: "los-angeles",
+    city: "Los Angeles",
+    country: "USA",
+    flag: "🇺🇸",
+    stadium: "SoFi Stadium",
+    stadiumLat: 33.9535,
+    stadiumLng: -118.3392,
+    facilities: [
+      { id: "la-er-1", name: "Centinela Hospital Medical Center", type: "er", address: "555 E Hardy St, Inglewood, CA", phone: "+1 310-673-4660", distance: "1.8 mi", drivingTime: "5 min", lat: 33.9617, lng: -118.3530, hours: "24/7" },
+      { id: "la-er-2", name: "UCLA Medical Center", type: "er", address: "757 Westwood Plaza, Los Angeles, CA", phone: "+1 310-825-9111", distance: "8.5 mi", drivingTime: "20 min", lat: 34.0663, lng: -118.4469, hours: "24/7" },
+      { id: "la-uc-1", name: "CityMD Inglewood", type: "urgent", address: "3330 W Manchester Blvd, Inglewood, CA", phone: "+1 424-261-9191", distance: "1.2 mi", drivingTime: "4 min", lat: 33.9598, lng: -118.3480, hours: "8am-10pm" },
+      { id: "la-uc-2", name: "ExperCARE Urgent Care", type: "urgent", address: "5100 W Goldleaf Cir, Los Angeles, CA", phone: "+1 323-292-4545", distance: "3.2 mi", drivingTime: "8 min", lat: 33.9847, lng: -118.3712, hours: "9am-9pm" }
+    ]
+  },
+  {
+    id: "miami",
+    city: "Miami",
+    country: "USA",
+    flag: "🇺🇸",
+    stadium: "Hard Rock Stadium",
+    stadiumLat: 25.9580,
+    stadiumLng: -80.2389,
+    facilities: [
+      { id: "mia-er-1", name: "Memorial Regional Hospital", type: "er", address: "3501 Johnson St, Hollywood, FL", phone: "+1 954-987-2000", distance: "8.5 mi", drivingTime: "15 min", lat: 26.0226, lng: -80.1766, hours: "24/7" },
+      { id: "mia-er-2", name: "Aventura Hospital", type: "er", address: "20900 Biscayne Blvd, Aventura, FL", phone: "+1 305-682-7000", distance: "5.2 mi", drivingTime: "10 min", lat: 25.9586, lng: -80.1411, hours: "24/7" },
+      { id: "mia-uc-1", name: "Baptist Health Urgent Care", type: "urgent", address: "17801 NW 5th Ave, Miami Gardens, FL", phone: "+1 786-596-2299", distance: "2.8 mi", drivingTime: "6 min", lat: 25.9435, lng: -80.2073, hours: "8am-8pm" },
+      { id: "mia-uc-2", name: "FastMed Urgent Care", type: "urgent", address: "3185 NE 163rd St, North Miami Beach, FL", phone: "+1 305-947-3335", distance: "4.1 mi", drivingTime: "9 min", lat: 25.9309, lng: -80.1622, hours: "8am-10pm" }
+    ]
+  },
+  {
+    id: "houston",
+    city: "Houston",
+    country: "USA",
+    flag: "🇺🇸",
+    stadium: "NRG Stadium",
+    stadiumLat: 29.6847,
+    stadiumLng: -95.4107,
+    facilities: [
+      { id: "hou-er-1", name: "Houston Methodist Hospital", type: "er", address: "6565 Fannin St, Houston, TX", phone: "+1 713-790-3311", distance: "4.8 mi", drivingTime: "12 min", lat: 29.7108, lng: -95.3980, hours: "24/7" },
+      { id: "hou-er-2", name: "Memorial Hermann Southwest", type: "er", address: "7600 Beechnut St, Houston, TX", phone: "+1 713-456-5000", distance: "3.2 mi", drivingTime: "8 min", lat: 29.6872, lng: -95.5016, hours: "24/7" },
+      { id: "hou-uc-1", name: "NextLevel Urgent Care", type: "urgent", address: "9001 S Main St, Houston, TX", phone: "+1 832-429-1050", distance: "2.1 mi", drivingTime: "5 min", lat: 29.6721, lng: -95.3873, hours: "8am-9pm" },
+      { id: "hou-uc-2", name: "CareNow Urgent Care", type: "urgent", address: "3100 Weslayan St, Houston, TX", phone: "+1 713-850-7500", distance: "4.5 mi", drivingTime: "10 min", lat: 29.7289, lng: -95.4378, hours: "8am-8pm" }
+    ]
+  },
+  {
+    id: "dallas",
+    city: "Dallas",
+    country: "USA",
+    flag: "🇺🇸",
+    stadium: "AT&T Stadium",
+    stadiumLat: 32.7473,
+    stadiumLng: -97.0945,
+    facilities: [
+      { id: "dal-er-1", name: "Texas Health Arlington Memorial", type: "er", address: "800 W Randol Mill Rd, Arlington, TX", phone: "+1 817-548-6100", distance: "2.5 mi", drivingTime: "6 min", lat: 32.7572, lng: -97.1108, hours: "24/7" },
+      { id: "dal-er-2", name: "Medical City Arlington", type: "er", address: "3301 Matlock Rd, Arlington, TX", phone: "+1 817-465-3241", distance: "4.8 mi", drivingTime: "12 min", lat: 32.6988, lng: -97.0933, hours: "24/7" },
+      { id: "dal-uc-1", name: "CareNow Urgent Care Arlington", type: "urgent", address: "4001 S Cooper St, Arlington, TX", phone: "+1 817-468-7000", distance: "3.1 mi", drivingTime: "7 min", lat: 32.7002, lng: -97.1015, hours: "8am-9pm" },
+      { id: "dal-uc-2", name: "MedStar Urgent Care", type: "urgent", address: "2141 N Collins St, Arlington, TX", phone: "+1 817-460-4055", distance: "2.8 mi", drivingTime: "6 min", lat: 32.7691, lng: -97.0933, hours: "8am-8pm" }
+    ]
+  },
+  {
+    id: "atlanta",
+    city: "Atlanta",
+    country: "USA",
+    flag: "🇺🇸",
+    stadium: "Mercedes-Benz Stadium",
+    stadiumLat: 33.7553,
+    stadiumLng: -84.4006,
+    facilities: [
+      { id: "atl-er-1", name: "Grady Memorial Hospital", type: "er", address: "80 Jesse Hill Jr Dr SE, Atlanta, GA", phone: "+1 404-616-1000", distance: "1.2 mi", drivingTime: "4 min", lat: 33.7544, lng: -84.3804, hours: "24/7" },
+      { id: "atl-er-2", name: "Emory University Hospital", type: "er", address: "1364 Clifton Rd NE, Atlanta, GA", phone: "+1 404-712-7021", distance: "5.5 mi", drivingTime: "15 min", lat: 33.7948, lng: -84.3234, hours: "24/7" },
+      { id: "atl-uc-1", name: "WellStar Urgent Care", type: "urgent", address: "201 17th St NW, Atlanta, GA", phone: "+1 470-956-6500", distance: "0.8 mi", drivingTime: "3 min", lat: 33.7895, lng: -84.3893, hours: "8am-8pm" },
+      { id: "atl-uc-2", name: "Piedmont Urgent Care", type: "urgent", address: "550 Peachtree St NE, Atlanta, GA", phone: "+1 404-605-2888", distance: "1.5 mi", drivingTime: "5 min", lat: 33.7701, lng: -84.3849, hours: "8am-8pm" }
+    ]
+  },
+  {
+    id: "seattle",
+    city: "Seattle",
+    country: "USA",
+    flag: "🇺🇸",
+    stadium: "Lumen Field",
+    stadiumLat: 47.5952,
+    stadiumLng: -122.3316,
+    facilities: [
+      { id: "sea-er-1", name: "Harborview Medical Center", type: "er", address: "325 9th Ave, Seattle, WA", phone: "+1 206-744-3000", distance: "0.9 mi", drivingTime: "4 min", lat: 47.6043, lng: -122.3243, hours: "24/7" },
+      { id: "sea-er-2", name: "Virginia Mason Medical Center", type: "er", address: "1100 9th Ave, Seattle, WA", phone: "+1 206-223-6600", distance: "1.2 mi", drivingTime: "5 min", lat: 47.6096, lng: -122.3310, hours: "24/7" },
+      { id: "sea-uc-1", name: "ZoomCare Pioneer Square", type: "urgent", address: "315 1st Ave S, Seattle, WA", phone: "+1 503-684-8252", distance: "0.5 mi", drivingTime: "2 min", lat: 47.5997, lng: -122.3340, hours: "8am-10pm" },
+      { id: "sea-uc-2", name: "UW Medicine Urgent Care", type: "urgent", address: "4245 Roosevelt Way NE, Seattle, WA", phone: "+1 206-520-5000", distance: "4.2 mi", drivingTime: "12 min", lat: 47.6593, lng: -122.3176, hours: "8am-8pm" }
+    ]
+  },
+  {
+    id: "san-francisco",
+    city: "San Francisco Bay Area",
+    country: "USA",
+    flag: "🇺🇸",
+    stadium: "Levi's Stadium",
+    stadiumLat: 37.4033,
+    stadiumLng: -121.9695,
+    facilities: [
+      { id: "sf-er-1", name: "Stanford Health Care", type: "er", address: "300 Pasteur Dr, Palo Alto, CA", phone: "+1 650-723-4000", distance: "8.5 mi", drivingTime: "15 min", lat: 37.4346, lng: -122.1756, hours: "24/7" },
+      { id: "sf-er-2", name: "El Camino Hospital", type: "er", address: "2500 Grant Rd, Mountain View, CA", phone: "+1 650-940-7000", distance: "5.2 mi", drivingTime: "12 min", lat: 37.3673, lng: -122.0797, hours: "24/7" },
+      { id: "sf-uc-1", name: "GoHealth Urgent Care", type: "urgent", address: "4701 Great America Pkwy, Santa Clara, CA", phone: "+1 669-231-1755", distance: "0.8 mi", drivingTime: "3 min", lat: 37.4039, lng: -121.9774, hours: "8am-8pm" },
+      { id: "sf-uc-2", name: "Sutter Express Care", type: "urgent", address: "2400 Samaritan Dr, San Jose, CA", phone: "+1 408-871-3900", distance: "4.5 mi", drivingTime: "10 min", lat: 37.3490, lng: -121.9478, hours: "9am-9pm" }
+    ]
+  },
+  {
+    id: "philadelphia",
+    city: "Philadelphia",
+    country: "USA",
+    flag: "🇺🇸",
+    stadium: "Lincoln Financial Field",
+    stadiumLat: 39.9008,
+    stadiumLng: -75.1675,
+    facilities: [
+      { id: "phi-er-1", name: "Penn Medicine Hospital", type: "er", address: "3400 Spruce St, Philadelphia, PA", phone: "+1 215-662-4000", distance: "4.5 mi", drivingTime: "12 min", lat: 39.9497, lng: -75.1919, hours: "24/7" },
+      { id: "phi-er-2", name: "Thomas Jefferson University Hospital", type: "er", address: "111 S 11th St, Philadelphia, PA", phone: "+1 215-955-6000", distance: "5.2 mi", drivingTime: "14 min", lat: 39.9493, lng: -75.1585, hours: "24/7" },
+      { id: "phi-uc-1", name: "Vybe Urgent Care", type: "urgent", address: "2100 S Broad St, Philadelphia, PA", phone: "+1 215-376-8900", distance: "1.8 mi", drivingTime: "5 min", lat: 39.9248, lng: -75.1717, hours: "8am-8pm" },
+      { id: "phi-uc-2", name: "AFC Urgent Care", type: "urgent", address: "319 S 10th St, Philadelphia, PA", phone: "+1 267-388-5720", distance: "4.8 mi", drivingTime: "12 min", lat: 39.9422, lng: -75.1570, hours: "8am-8pm" }
+    ]
+  },
+  {
+    id: "boston",
+    city: "Boston",
+    country: "USA",
+    flag: "🇺🇸",
+    stadium: "Gillette Stadium",
+    stadiumLat: 42.0909,
+    stadiumLng: -71.2643,
+    facilities: [
+      { id: "bos-er-1", name: "Sturdy Memorial Hospital", type: "er", address: "211 Park St, Attleboro, MA", phone: "+1 508-222-5200", distance: "8.2 mi", drivingTime: "15 min", lat: 41.9427, lng: -71.2867, hours: "24/7" },
+      { id: "bos-er-2", name: "Norwood Hospital", type: "er", address: "800 Washington St, Norwood, MA", phone: "+1 781-769-4000", distance: "10.5 mi", drivingTime: "18 min", lat: 42.1845, lng: -71.1958, hours: "24/7" },
+      { id: "bos-uc-1", name: "CareWell Urgent Care", type: "urgent", address: "124 S Main St, Attleboro, MA", phone: "+1 508-761-5430", distance: "7.8 mi", drivingTime: "14 min", lat: 41.9420, lng: -71.2852, hours: "8am-8pm" },
+      { id: "bos-uc-2", name: "AFC Urgent Care Wrentham", type: "urgent", address: "320 Franklin St, Wrentham, MA", phone: "+1 508-384-2279", distance: "5.2 mi", drivingTime: "10 min", lat: 42.0470, lng: -71.3389, hours: "8am-8pm" }
+    ]
+  },
+  {
+    id: "kansas-city",
+    city: "Kansas City",
+    country: "USA",
+    flag: "🇺🇸",
+    stadium: "GEHA Field at Arrowhead Stadium",
+    stadiumLat: 39.0489,
+    stadiumLng: -94.4839,
+    facilities: [
+      { id: "kc-er-1", name: "Centerpoint Medical Center", type: "er", address: "19600 E 39th St S, Independence, MO", phone: "+1 816-698-7000", distance: "3.5 mi", drivingTime: "8 min", lat: 39.0192, lng: -94.4055, hours: "24/7" },
+      { id: "kc-er-2", name: "Saint Luke's East Hospital", type: "er", address: "100 NE St Lukes Blvd, Lee's Summit, MO", phone: "+1 816-347-5000", distance: "8.2 mi", drivingTime: "15 min", lat: 38.9262, lng: -94.3825, hours: "24/7" },
+      { id: "kc-uc-1", name: "Advent Health Urgent Care", type: "urgent", address: "4931 Bannister Rd, Kansas City, MO", phone: "+1 816-761-2622", distance: "5.8 mi", drivingTime: "12 min", lat: 38.9759, lng: -94.5540, hours: "8am-8pm" },
+      { id: "kc-uc-2", name: "HCA Midwest Urgent Care", type: "urgent", address: "1200 NW Chipman Rd, Lee's Summit, MO", phone: "+1 816-347-3300", distance: "7.5 mi", drivingTime: "14 min", lat: 38.9462, lng: -94.3975, hours: "8am-8pm" }
+    ]
+  },
+  {
+    id: "mexico-city",
+    city: "Mexico City",
+    country: "Mexico",
+    flag: "🇲🇽",
+    stadium: "Estadio Azteca",
+    stadiumLat: 19.3029,
+    stadiumLng: -99.1505,
+    facilities: [
+      { id: "mex-er-1", name: "Hospital Angeles Pedregal", type: "er", address: "Camino a Sta Teresa 1055, CDMX", phone: "+52 55 5449 5500", distance: "4.2 mi", drivingTime: "15 min", lat: 19.2999, lng: -99.2058, hours: "24/7" },
+      { id: "mex-er-2", name: "Hospital Medica Sur", type: "er", address: "Puente de Piedra 150, CDMX", phone: "+52 55 5424 7200", distance: "2.8 mi", drivingTime: "10 min", lat: 19.2867, lng: -99.1632, hours: "24/7" },
+      { id: "mex-uc-1", name: "Doctoralia Clinic Coyoacan", type: "urgent", address: "Av Universidad 1810, CDMX", phone: "+52 55 4170 8000", distance: "3.5 mi", drivingTime: "12 min", lat: 19.3394, lng: -99.1775, hours: "8am-10pm" },
+      { id: "mex-uc-2", name: "Salud Digna Tlalpan", type: "urgent", address: "Calz de Tlalpan 4585, CDMX", phone: "+52 55 4738 5100", distance: "2.1 mi", drivingTime: "8 min", lat: 19.2954, lng: -99.1418, hours: "7am-8pm" }
+    ]
+  },
+  {
+    id: "guadalajara",
+    city: "Guadalajara",
+    country: "Mexico",
+    flag: "🇲🇽",
+    stadium: "Estadio Akron",
+    stadiumLat: 20.6802,
+    stadiumLng: -103.4626,
+    facilities: [
+      { id: "gdl-er-1", name: "Hospital San Javier", type: "er", address: "Av Pablo Casals 640, Guadalajara", phone: "+52 33 3669 0222", distance: "5.8 mi", drivingTime: "18 min", lat: 20.6943, lng: -103.3846, hours: "24/7" },
+      { id: "gdl-er-2", name: "Hospital Country 2000", type: "er", address: "Av Adolfo Lopez Mateos Sur 1401", phone: "+52 33 3854 2000", distance: "4.2 mi", drivingTime: "12 min", lat: 20.6511, lng: -103.4102, hours: "24/7" },
+      { id: "gdl-uc-1", name: "Clinica Santa Maria", type: "urgent", address: "Av Vallarta 3233, Guadalajara", phone: "+52 33 3616 2424", distance: "6.5 mi", drivingTime: "20 min", lat: 20.6762, lng: -103.3927, hours: "8am-10pm" },
+      { id: "gdl-uc-2", name: "Salud Digna Zapopan", type: "urgent", address: "Av Patria 2085, Zapopan", phone: "+52 33 4738 5100", distance: "3.8 mi", drivingTime: "10 min", lat: 20.7043, lng: -103.4285, hours: "7am-8pm" }
+    ]
+  },
+  {
+    id: "monterrey",
+    city: "Monterrey",
+    country: "Mexico",
+    flag: "🇲🇽",
+    stadium: "Estadio BBVA",
+    stadiumLat: 25.6699,
+    stadiumLng: -100.2438,
+    facilities: [
+      { id: "mty-er-1", name: "Hospital San Jose Tec de Monterrey", type: "er", address: "Av Ignacio Morones Prieto 3000", phone: "+52 81 8389 8888", distance: "4.5 mi", drivingTime: "12 min", lat: 25.6538, lng: -100.2890, hours: "24/7" },
+      { id: "mty-er-2", name: "Christus Muguerza Hospital", type: "er", address: "Av Hidalgo 2525, Monterrey", phone: "+52 81 8399 3400", distance: "5.8 mi", drivingTime: "15 min", lat: 25.6704, lng: -100.3165, hours: "24/7" },
+      { id: "mty-uc-1", name: "Doctoralia Clinic Monterrey", type: "urgent", address: "Av Constitucion 1500, Monterrey", phone: "+52 81 4170 8000", distance: "4.2 mi", drivingTime: "10 min", lat: 25.6732, lng: -100.3089, hours: "8am-10pm" },
+      { id: "mty-uc-2", name: "Salud Digna Guadalupe", type: "urgent", address: "Av Pablo Livas 2560, Guadalupe", phone: "+52 81 4738 5100", distance: "2.5 mi", drivingTime: "6 min", lat: 25.6687, lng: -100.2156, hours: "7am-8pm" }
+    ]
+  },
+  {
+    id: "toronto",
+    city: "Toronto",
+    country: "Canada",
+    flag: "🇨🇦",
+    stadium: "BMO Field",
+    stadiumLat: 43.6332,
+    stadiumLng: -79.4185,
+    facilities: [
+      { id: "tor-er-1", name: "St. Michael's Hospital", type: "er", address: "36 Queen St E, Toronto, ON", phone: "+1 416-360-4000", distance: "3.2 mi", drivingTime: "10 min", lat: 43.6534, lng: -79.3773, hours: "24/7" },
+      { id: "tor-er-2", name: "Toronto Western Hospital", type: "er", address: "399 Bathurst St, Toronto, ON", phone: "+1 416-603-5800", distance: "2.8 mi", drivingTime: "8 min", lat: 43.6535, lng: -79.4057, hours: "24/7" },
+      { id: "tor-uc-1", name: "Appletree Medical Centre", type: "urgent", address: "790 Bay St, Toronto, ON", phone: "+1 416-955-0888", distance: "3.5 mi", drivingTime: "12 min", lat: 43.6618, lng: -79.3858, hours: "8am-8pm" },
+      { id: "tor-uc-2", name: "Cleveland Clinic Walk-In", type: "urgent", address: "65 Queen St W, Toronto, ON", phone: "+1 416-521-6601", distance: "3.1 mi", drivingTime: "10 min", lat: 43.6517, lng: -79.3829, hours: "9am-9pm" }
+    ]
+  },
+  {
+    id: "vancouver",
+    city: "Vancouver",
+    country: "Canada",
+    flag: "🇨🇦",
+    stadium: "BC Place",
+    stadiumLat: 49.2768,
+    stadiumLng: -123.1120,
+    facilities: [
+      { id: "van-er-1", name: "St. Paul's Hospital", type: "er", address: "1081 Burrard St, Vancouver, BC", phone: "+1 604-682-2344", distance: "0.8 mi", drivingTime: "4 min", lat: 49.2808, lng: -123.1277, hours: "24/7" },
+      { id: "van-er-2", name: "Vancouver General Hospital", type: "er", address: "899 W 12th Ave, Vancouver, BC", phone: "+1 604-875-4111", distance: "2.5 mi", drivingTime: "8 min", lat: 49.2609, lng: -123.1236, hours: "24/7" },
+      { id: "van-uc-1", name: "Stein Medical Clinic", type: "urgent", address: "1055 W Georgia St, Vancouver, BC", phone: "+1 604-732-5233", distance: "0.5 mi", drivingTime: "3 min", lat: 49.2847, lng: -123.1203, hours: "8am-6pm" },
+      { id: "van-uc-2", name: "Care Point Medical Centre", type: "urgent", address: "1175 Denman St, Vancouver, BC", phone: "+1 604-681-5338", distance: "1.8 mi", drivingTime: "6 min", lat: 49.2876, lng: -123.1396, hours: "9am-9pm" }
+    ]
+  }
+];
+
+const emergencyData: InfoSection[] = [
+  {
+    id: "health-emergency",
+    title: "HEALTH & EMERGENCY",
+    icon: Heart,
+    iconColor: "text-red-400",
+    items: [
+      {
+        id: "911",
+        title: "911 Emergency Number",
+        description: "Call 911 for Police/Fire/Ambulance (Life threatening emergencies only). Available 24/7."
+      },
+      {
+        id: "988",
+        title: "988 Crisis Hotline",
+        description: "Call 988 for Suicide & Crisis Lifeline (Mental Health emergencies). Free and available to tourists 24/7."
+      },
+      {
+        id: "311",
+        title: "311 Non-Emergency",
+        description: "Call 311 for non-emergency city services (noise complaints, lost property). Available in most host cities."
+      },
+      {
+        id: "medical-locator",
+        title: "Medical Facility Locator",
+        description: "Find the nearest Emergency Rooms and Urgent Care centers near each stadium. Tap to open the Medical Locator with maps and directions."
+      }
+    ]
+  }
+];
+
+const financialData: InfoSection[] = [
+  {
+    id: "financial-tips",
+    title: "FINANCIAL",
+    icon: DollarSign,
+    iconColor: "text-green-400",
+    items: [
+      {
+        id: "tipping",
+        title: "Tipping is Mandatory",
+        description: "18-22% for dining, $1-2 per drink at bars, $2-5 for hotel housekeeping per night. Use the app's tipping calculator."
+      },
+      {
+        id: "sales-tax",
+        title: "Sales Tax Not Included",
+        description: "Prices on shelves are PRE-TAX. At the register, expect 6-10% higher. Unlike Europe/Asia, tourists CANNOT get a VAT/Sales Tax refund at the airport."
+      },
+      {
+        id: "credit-holds",
+        title: "Credit Card Holds",
+        description: "Hotels and rental cars place $200-$500 \"holds\" on cards. This reduces your spending limit immediately. Avoid using debit cards as money actually leaves your account."
+      }
+    ]
+  }
+];
+
+const legalData: InfoSection[] = [
+  {
+    id: "legal-info",
+    title: "LEGAL",
+    icon: Gavel,
+    iconColor: "text-blue-400",
+    items: [
+      {
+        id: "alcohol-age",
+        title: "Alcohol Age 21 Strictly Enforced",
+        description: "Drinking age is strictly 21. Passport is the only guaranteed accepted ID. Walking with open containers (beer) is illegal in almost all cities."
+      },
+      {
+        id: "cannabis",
+        title: "Cannabis Federal Crime Warning",
+        description: "Marijuana is legal in many states (CA, NY, MA) but ILLEGAL FEDERALLY. Bringing it across state lines or into airports is a federal crime. Never have it on federal land."
+      },
+      {
+        id: "right-turn",
+        title: "Right Turn on Red",
+        description: "Legal everywhere UNLESS sign says \"No Turn on Red\". Exception: Illegal in New York City. 4-way stops: First to arrive goes first."
+      }
+    ]
+  }
+];
+
+const dailyLifeData: InfoSection[] = [
+  {
+    id: "daily-life-info",
+    title: "DAILY LIFE",
+    icon: Coffee,
+    iconColor: "text-orange-400",
+    items: [
+      {
+        id: "esim",
+        title: "eSIM for Mobile Data",
+        description: "US carriers shut down 3G. Phone must support VoLTE. Use Airalo or GigSky eSIM apps for data instead of expensive physical SIM cards."
+      },
+      {
+        id: "metric",
+        title: "Metric to Imperial Guide",
+        description: "100°F = 38°C (Very Hot), 32°F = 0°C (Freezing). 1 Mile = 1.6 KM. Date format: MM/DD/YYYY (12/10/26 = December 10th)."
+      },
+      {
+        id: "restrooms",
+        title: "Public Restrooms Rare",
+        description: "US cities have very few public toilets. Use hotel lobbies or large department stores. Check the app's restroom locator."
+      }
+    ]
+  }
+];
+
+interface SafeArea {
+  name: string;
+  description: string;
+}
+
+interface CitySafety {
+  id: string;
+  city: string;
+  country: string;
+  heatWarning: string | null;
+  ticketScams: string;
+  localConcerns: string[];
+  safeAreas: SafeArea[];
+  avoidAreas: string[];
+  tips: string[];
+}
+
+const citySafetyData: CitySafety[] = [
+  {
+    id: "miami",
+    city: "Miami",
+    country: "USA",
+    heatWarning: "EXTREME: Heat index can reach 120°F (49°C) in June/July. High humidity makes cooling difficult. Heat exhaustion is a serious risk.",
+    ticketScams: "Beware of fake tickets sold near Hard Rock Stadium. Only buy from FIFA.com or Ticketmaster. Counterfeit jerseys common on streets.",
+    localConcerns: [
+      "Hurricane season runs June-November - monitor weather alerts",
+      "Strong sun exposure - wear SPF 50+ and reapply frequently",
+      "Mosquitoes carry diseases - use repellent especially at dawn/dusk",
+      "Rip currents at beaches - swim only at lifeguarded areas"
+    ],
+    safeAreas: [
+      { name: "Miami Beach", description: "Tourist-friendly beachfront with heavy police presence, well-lit Art Deco district, and 24/7 activity on Ocean Drive." },
+      { name: "Brickell", description: "Miami's financial district with upscale high-rises, modern restaurants, and excellent walkability. Very safe day and night." },
+      { name: "Coral Gables", description: "Affluent residential area known for Mediterranean architecture, tree-lined streets, and the beautiful Miracle Mile shopping district." },
+      { name: "Coconut Grove", description: "Bohemian waterfront neighborhood with outdoor cafes, boutique shops, and safe walking paths along the bay." },
+      { name: "Wynwood", description: "Famous arts district with colorful murals and galleries. Very safe during daytime; exercise caution after midnight." }
+    ],
+    avoidAreas: ["Overtown", "Liberty City", "Little Haiti (after dark)", "Opa-locka"],
+    tips: ["Stay hydrated - drink water constantly", "Seek air conditioning during 11am-4pm", "Use Uber/Lyft instead of walking long distances in heat"]
+  },
+  {
+    id: "houston",
+    city: "Houston",
+    country: "USA",
+    heatWarning: "SEVERE: Temperatures regularly exceed 105°F (40°C). Subtropical humidity makes it feel even hotter. All 21 risky heat days in 2025 summer were climate-change-induced.",
+    ticketScams: "NRG Stadium area sees scalpers with fake tickets. Parking lot scams common - only use official lots.",
+    localConcerns: [
+      "Flash flooding during summer storms - avoid underpasses",
+      "Power grid can strain during heat waves",
+      "Wide spread city - public transit limited, plan transportation",
+      "Traffic congestion severe - allow extra time"
+    ],
+    safeAreas: [
+      { name: "The Heights", description: "Historic neighborhood with Victorian homes, trendy restaurants, and walkable 19th Street shopping district. Family-friendly atmosphere." },
+      { name: "Montrose", description: "Eclectic, LGBTQ-friendly neighborhood with diverse dining, vintage shops, and vibrant nightlife. Safe and welcoming." },
+      { name: "River Oaks", description: "Houston's wealthiest neighborhood with luxury estates, upscale shopping, and excellent security. Home to many consulates." },
+      { name: "Galleria area", description: "Major shopping and business district centered around the famous Galleria mall. Well-patrolled with many hotels nearby." },
+      { name: "Downtown", description: "Business district safe during daytime with museums, theaters, and sports venues. Use rideshare for evening returns." }
+    ],
+    avoidAreas: ["Third Ward (parts)", "Sunnyside", "Acres Homes", "South Park"],
+    tips: ["Carry water bottle everywhere", "Know location of cooling centers", "Check flash flood warnings during storms"]
+  },
+  {
+    id: "dallas",
+    city: "Dallas",
+    country: "USA",
+    heatWarning: "EXTREME: Consecutive days above 105°F (40°C) throughout June. Can break 110°F. Dallas ranks 4th most uncomfortable U.S. city in summer.",
+    ticketScams: "AT&T Stadium (Arlington) is massive - scammers operate in parking areas. Fake parking passes sold online.",
+    localConcerns: [
+      "Severe thunderstorms and tornadoes possible in June",
+      "Stadium is in Arlington - 20 miles from Dallas, plan transport",
+      "Very car-dependent - limited public transit to stadium",
+      "Toll roads everywhere - have cash or TollTag"
+    ],
+    safeAreas: [
+      { name: "Uptown", description: "Trendy urban neighborhood with walkable streets, rooftop bars, and excellent restaurants. Popular with young professionals, very safe." },
+      { name: "Highland Park", description: "One of America's wealthiest enclaves with beautiful mansions, manicured lawns, and its own police force. Extremely safe." },
+      { name: "Bishop Arts District", description: "Charming arts and entertainment district in Oak Cliff with local boutiques, galleries, and diverse dining options." },
+      { name: "Deep Ellum", description: "Historic entertainment district with live music venues and street art. Safe during daytime; use rideshare at night." },
+      { name: "Victory Park", description: "Modern mixed-use development near American Airlines Center with upscale dining and entertainment. Well-secured area." }
+    ],
+    avoidAreas: ["South Dallas", "Pleasant Grove", "Fair Park (after dark)", "parts of Oak Cliff"],
+    tips: ["Pre-book stadium parking", "Use DART light rail where available", "Carry portable fan and cooling towel"]
+  },
+  {
+    id: "atlanta",
+    city: "Atlanta",
+    country: "USA",
+    heatWarning: "HIGH: 45-50 days forecast to reach 90°F+ in summer. Urban heat island effect makes downtown several degrees hotter than suburbs.",
+    ticketScams: "Mercedes-Benz Stadium is downtown - street vendors sell fake tickets and merchandise. Only use official channels.",
+    localConcerns: [
+      "Traffic among worst in USA - MARTA train recommended",
+      "Neighborhoods change quickly block-by-block",
+      "Humidity makes heat feel more oppressive",
+      "Summer afternoon thunderstorms daily"
+    ],
+    safeAreas: [
+      { name: "Midtown", description: "Cultural heart of Atlanta with Piedmont Park, High Museum, and excellent dining. MARTA accessible and walkable." },
+      { name: "Buckhead", description: "Upscale shopping and dining district known for Lenox Square mall and luxury hotels. Heavy police presence." },
+      { name: "Virginia-Highland", description: "Charming residential neighborhood with local boutiques, coffee shops, and tree-lined streets. Very walkable." },
+      { name: "Inman Park", description: "Atlanta's first planned suburb with Victorian homes, the BeltLine trail access, and eclectic restaurants." },
+      { name: "Decatur", description: "Independent city within metro Atlanta known for its downtown square, excellent schools, and family-friendly vibe." }
+    ],
+    avoidAreas: ["Bankhead", "Vine City (parts)", "English Avenue", "Pittsburgh (after dark)"],
+    tips: ["Use MARTA for stadium access", "Stay in designated fan zones", "Seek shelter during afternoon storms"]
+  },
+  {
+    id: "new-york",
+    city: "New York / New Jersey",
+    country: "USA",
+    heatWarning: "MODERATE: Heat waves possible but less severe than southern cities. Humidity can be uncomfortable. Subway platforms extremely hot.",
+    ticketScams: "MetLife Stadium scammers operate at transit hubs (Penn Station, Port Authority). Never buy from street vendors.",
+    localConcerns: [
+      "Stadium in New Jersey - 10 miles from Manhattan",
+      "NJ Transit trains to stadium can be overcrowded",
+      "Pickpocketing on crowded subways",
+      "Aggressive street vendors in tourist areas"
+    ],
+    safeAreas: [
+      { name: "Midtown Manhattan", description: "Heart of NYC with Times Square, Broadway theaters, and major hotels. Extremely busy but well-policed 24/7." },
+      { name: "Upper East/West Side", description: "Affluent residential neighborhoods with world-class museums, Central Park access, and excellent restaurants." },
+      { name: "SoHo", description: "Trendy shopping district with cobblestone streets, designer boutiques, and cast-iron architecture. Safe and fashionable." },
+      { name: "Brooklyn Heights", description: "Historic neighborhood with stunning Manhattan views, brownstone-lined streets, and the famous Promenade." },
+      { name: "Hoboken", description: "Waterfront NJ city with Manhattan skyline views, excellent restaurants, and direct PATH train to NYC. Very safe." }
+    ],
+    avoidAreas: ["Parts of the Bronx", "East New York", "Brownsville", "some areas of Newark"],
+    tips: ["Pre-purchase NJ Transit tickets", "Keep belongings secure on subway", "Allow 2+ hours to reach stadium from Manhattan"]
+  },
+  {
+    id: "los-angeles",
+    city: "Los Angeles",
+    country: "USA",
+    heatWarning: "MODERATE to HIGH: Inland areas can reach 100°F+. Coastal areas cooler. SoFi Stadium in Inglewood can be very hot.",
+    ticketScams: "SoFi Stadium area has organized scalping operations. Fake VIP experiences sold online. Verify all tickets on official apps.",
+    localConcerns: [
+      "Car essential - worst traffic in USA",
+      "Extreme smog during heat waves",
+      "Homeless encampments in some areas",
+      "Earthquakes possible (know safety procedures)"
+    ],
+    safeAreas: [
+      { name: "Santa Monica", description: "Iconic beach city with the famous pier, Third Street Promenade shopping, and ocean breezes. Tourist-friendly and safe." },
+      { name: "Beverly Hills", description: "World-famous luxury destination with Rodeo Drive shopping, celebrity homes, and excellent security. Very upscale." },
+      { name: "West Hollywood", description: "Vibrant LGBTQ-friendly neighborhood with Sunset Strip nightlife, trendy restaurants, and walkable streets." },
+      { name: "Pasadena", description: "Charming city with Old Town dining, the Rose Bowl, and Caltech. Feels like a small town within LA." },
+      { name: "Manhattan Beach", description: "Upscale coastal community with beautiful beaches, bike paths, and family-friendly atmosphere. Very safe." }
+    ],
+    avoidAreas: ["Skid Row", "parts of South LA", "Compton", "some areas of Inglewood"],
+    tips: ["Leave 2+ hours for any drive", "Stay hydrated - dry heat is deceptive", "Download earthquake alert app"]
+  },
+  {
+    id: "seattle",
+    city: "Seattle",
+    country: "USA",
+    heatWarning: "LOW: Typically mild summer weather (70-80°F). Occasional heat waves but rare. Air conditioning not common - hotels may not have it.",
+    ticketScams: "Lumen Field has less scam activity than other cities, but still buy only from official sources.",
+    localConcerns: [
+      "Rain possible even in summer - bring layers",
+      "Homeless population visible downtown",
+      "Hills make walking tiring",
+      "Wildfire smoke from Eastern WA possible in summer"
+    ],
+    safeAreas: [
+      { name: "Capitol Hill", description: "Seattle's most vibrant neighborhood with LGBTQ culture, excellent nightlife, coffee shops, and walkable streets." },
+      { name: "Queen Anne", description: "Hilly residential area with stunning city views from Kerry Park, boutique shops, and quiet tree-lined streets." },
+      { name: "Ballard", description: "Former Scandinavian fishing village now hip neighborhood with craft breweries, restaurants, and Sunday farmers market." },
+      { name: "Fremont", description: "Quirky artistic neighborhood self-declared 'Center of the Universe' with the famous Fremont Troll and eclectic shops." },
+      { name: "Bellevue", description: "Upscale eastside city with luxury shopping at Bellevue Square, excellent Asian cuisine, and very low crime rates." }
+    ],
+    avoidAreas: ["Pioneer Square (after dark)", "parts of SODO", "certain areas of Aurora Ave"],
+    tips: ["Light rail connects airport to downtown and stadium", "Bring rain jacket even in summer", "Check air quality if wildfires active"]
+  },
+  {
+    id: "san-francisco",
+    city: "San Francisco Bay Area",
+    country: "USA",
+    heatWarning: "LOW at coast, HIGH inland: SF itself is cool (60-70°F) but Levi's Stadium in Santa Clara can reach 95°F+. Dress in layers.",
+    ticketScams: "Tech-savvy scammers create sophisticated fake ticket sites. Only use FIFA.com or Ticketmaster.",
+    localConcerns: [
+      "Stadium 45 miles from SF - plan transportation",
+      "Smash-and-grab car break-ins epidemic - never leave anything in cars",
+      "Homeless population in SF city center",
+      "BART trains can be unsafe late night"
+    ],
+    safeAreas: [
+      { name: "Marina District", description: "Affluent waterfront neighborhood with Crissy Field, boutique shopping on Chestnut Street, and Golden Gate views." },
+      { name: "Pacific Heights", description: "San Francisco's most prestigious neighborhood with Victorian mansions, upscale dining, and Fillmore Street shopping." },
+      { name: "Noe Valley", description: "Family-friendly neighborhood known as 'Stroller Valley' with 24th Street shops, sunny weather, and quiet streets." },
+      { name: "Palo Alto", description: "Home to Stanford University, charming downtown, excellent restaurants, and very safe suburban feel near stadium." },
+      { name: "Saratoga", description: "Upscale Silicon Valley town with wineries, hiking trails, and peaceful atmosphere. Very close to Levi's Stadium." }
+    ],
+    avoidAreas: ["Tenderloin", "parts of SOMA", "some areas of Oakland"],
+    tips: ["Use Caltrain to stadium", "Never leave anything visible in parked car", "Bring layers - temperature varies dramatically"]
+  },
+  {
+    id: "boston",
+    city: "Boston",
+    country: "USA",
+    heatWarning: "MODERATE: Summer humidity can make 85°F feel like 95°F. Gillette Stadium in Foxborough has no shade - be prepared.",
+    ticketScams: "Patriots fans control Gillette Stadium area - outsiders selling tickets are likely scammers.",
+    localConcerns: [
+      "Stadium 30 miles south of Boston in Foxborough",
+      "Limited public transit to stadium (commuter rail on game days only)",
+      "Aggressive Boston sports fan culture",
+      "Construction everywhere downtown"
+    ],
+    safeAreas: [
+      { name: "Back Bay", description: "Elegant Victorian neighborhood with Newbury Street shopping, brownstone-lined Commonwealth Ave, and upscale dining." },
+      { name: "Beacon Hill", description: "Historic cobblestone streets, gas lamps, and Federal-style row houses. One of America's most picturesque neighborhoods." },
+      { name: "Cambridge", description: "Home to Harvard and MIT with intellectual atmosphere, bookstores, diverse dining, and vibrant Harvard Square." },
+      { name: "Brookline", description: "Affluent suburban feel within city limits, excellent public transit (Green Line), and Coolidge Corner shops." },
+      { name: "North End", description: "Boston's Little Italy with authentic Italian restaurants, pastry shops, and narrow European-style streets. Very walkable." }
+    ],
+    avoidAreas: ["Parts of Roxbury", "Dorchester (some areas)", "Mattapan"],
+    tips: ["Book stadium parking in advance", "Commuter rail fills up fast - arrive early", "Respect local fan culture"]
+  },
+  {
+    id: "philadelphia",
+    city: "Philadelphia",
+    country: "USA",
+    heatWarning: "MODERATE to HIGH: Summer heat waves with high humidity. Urban heat island effect downtown.",
+    ticketScams: "Lincoln Financial Field area has organized scalping. Fake Eagles/Phillies merchandise sold near stadiums.",
+    localConcerns: [
+      "Gun violence in some neighborhoods",
+      "SEPTA public transit reliable but crowded",
+      "Philly fans have reputation for being rowdy",
+      "Streets can be confusing to navigate"
+    ],
+    safeAreas: [
+      { name: "Center City", description: "Downtown Philadelphia with historic sites, Reading Terminal Market, and major hotels. Well-patrolled and busy." },
+      { name: "Rittenhouse Square", description: "Philadelphia's most prestigious park surrounded by upscale dining, boutiques, and beautiful brownstones." },
+      { name: "Old City", description: "Historic district with Independence Hall, Liberty Bell, cobblestone streets, and excellent restaurants." },
+      { name: "University City", description: "Home to UPenn and Drexel with student energy, diverse dining, and good transit connections." },
+      { name: "Chestnut Hill", description: "Charming suburban village feel with boutique shopping, Wissahickon trails, and tree-lined streets." }
+    ],
+    avoidAreas: ["North Philadelphia", "Kensington", "parts of West Philadelphia"],
+    tips: ["Use SEPTA Broad Street Line to stadium", "Stay in well-lit areas after dark", "Be aware of surroundings"]
+  },
+  {
+    id: "kansas-city",
+    city: "Kansas City",
+    country: "USA",
+    heatWarning: "HIGH: Hot and humid summers, regularly 95°F+ with high humidity. Arrowhead Stadium offers little shade.",
+    ticketScams: "Chiefs fans are devoted - be wary of anyone not obviously a local selling tickets.",
+    localConcerns: [
+      "Severe thunderstorms and tornadoes possible",
+      "Very car-dependent city",
+      "Stadium in Missouri side (KC spans two states)",
+      "Limited international food options"
+    ],
+    safeAreas: [
+      { name: "Country Club Plaza", description: "Spanish-inspired outdoor shopping district with fountains, upscale stores, and excellent restaurants. KC's premier destination." },
+      { name: "Westport", description: "Entertainment district with live music, diverse bars, and restaurants. Popular nightlife area, generally safe." },
+      { name: "Brookside", description: "Charming neighborhood with local shops, tree-lined streets, and strong community feel. Family-friendly atmosphere." },
+      { name: "Overland Park", description: "Affluent Kansas suburb with excellent shopping, dining, and very low crime rates. Corporate headquarters hub." },
+      { name: "Crown Center", description: "Mixed-use development with hotels, shops, and attractions including Legoland. Well-secured and family-friendly." }
+    ],
+    avoidAreas: ["East Side neighborhoods", "parts of Northeast KC", "Ivanhoe"],
+    tips: ["Tailgating culture is huge - join in respectfully", "Monitor tornado warnings", "Bring sun protection for stadium"]
+  },
+  {
+    id: "mexico-city",
+    city: "Mexico City",
+    country: "Mexico",
+    heatWarning: "MODERATE: High altitude (7,350 ft) means cooler temps than expected (70-80°F). But altitude sickness is a concern - acclimatize before exertion.",
+    ticketScams: "Azteca Stadium area has sophisticated scam operations. Counterfeit tickets look very real. Only buy from FIFA.com.",
+    localConcerns: [
+      "Altitude sickness - take it easy first 2 days",
+      "Pickpocketing on Metro (especially Line B)",
+      "Police extortion possible",
+      "Tap water unsafe - drink only bottled",
+      "Air pollution can be severe"
+    ],
+    safeAreas: [
+      { name: "Polanco", description: "Mexico City's most upscale neighborhood with designer boutiques, world-class restaurants, and excellent museums. Very safe." },
+      { name: "Roma Norte", description: "Trendy bohemian neighborhood with Art Deco architecture, hip cafes, and vibrant food scene. Popular with expats." },
+      { name: "Condesa", description: "Leafy, walkable neighborhood with Art Nouveau buildings, outdoor cafes in Parque México, and excellent nightlife." },
+      { name: "Coyoacán", description: "Historic colonial neighborhood with Frida Kahlo Museum, cobblestone streets, and charming central plaza. Family-friendly." },
+      { name: "Santa Fe", description: "Modern business district with gleaming towers, upscale malls, and international hotels. Corporate and very secure." }
+    ],
+    avoidAreas: ["Tepito", "Doctores", "Iztapalapa", "empty streets anywhere after dark"],
+    tips: ["Use Uber/DiDi exclusively - never street taxis", "Keep phone in pocket (motorcycle snatchers)", "Drink lots of water for altitude"]
+  },
+  {
+    id: "guadalajara",
+    city: "Guadalajara",
+    country: "Mexico",
+    heatWarning: "MODERATE: Warm but not extreme (80-90°F). Rainy season June-October means afternoon thunderstorms daily.",
+    ticketScams: "Estadio Akron area sees fake ticket sales. Only use official FIFA channels.",
+    localConcerns: [
+      "Jalisco state has cartel presence - stick to tourist areas",
+      "Motorcycle phone-snatchers in Colonia Americana & Centro",
+      "Very different safety day vs night",
+      "Limited English spoken outside tourist areas"
+    ],
+    safeAreas: [
+      { name: "Colonia Americana", description: "Expat-friendly neighborhood with Art Deco mansions, trendy cafes, and Chapultepec Avenue nightlife. Hip and walkable." },
+      { name: "Providencia", description: "Upscale residential area with excellent restaurants, shopping centers, and tree-lined streets. Very safe neighborhood." },
+      { name: "Zapopan", description: "Home to the famous Basílica with added security, modern shopping malls, and growing restaurant scene." },
+      { name: "Chapalita", description: "Family-oriented residential area with parks, local shops, and quiet streets. Excellent for families with children." },
+      { name: "Historic Center", description: "Beautiful colonial architecture with the Cathedral and Teatro Degollado. Safe during daytime with police presence." }
+    ],
+    avoidAreas: ["Analco", "Las Juntas", "Lomas del Paraíso", "Cerro del Cuatro"],
+    tips: ["Use Uber for any night travel", "Don't walk alone after dark", "Keep valuables hidden always"]
+  },
+  {
+    id: "monterrey",
+    city: "Monterrey",
+    country: "Mexico",
+    heatWarning: "EXTREME: Desert climate with temps regularly exceeding 100°F (38°C) in June/July. Very dry heat.",
+    ticketScams: "Estadio BBVA area - same caution as other Mexican cities. Use only official ticket sources.",
+    localConcerns: [
+      "Nuevo León state has cartel activity history",
+      "Very hot and dry - stay hydrated",
+      "Business city - less tourist infrastructure",
+      "Some areas near US border are high-risk"
+    ],
+    safeAreas: [
+      { name: "San Pedro Garza García", description: "Mexico's wealthiest municipality with luxury malls, fine dining, and private security. Essentially a gated community feel." },
+      { name: "Valle Oriente", description: "Modern business district with corporate towers, upscale hotels, and excellent restaurants. Very well-patrolled." },
+      { name: "Cumbres", description: "Upscale residential area popular with families, featuring shopping plazas and a suburban atmosphere." },
+      { name: "Centro", description: "Historic downtown with the famous Macroplaza and Barrio Antiguo. Safe during daytime with tourist police presence." },
+      { name: "Barrio Antiguo", description: "Trendy nightlife district with bars, restaurants, and art galleries. Popular and well-lit in evenings." }
+    ],
+    avoidAreas: ["Areas near state borders", "Industrial zones", "Outskirts after dark"],
+    tips: ["Stay in business districts", "Use hotel-arranged transportation", "Carry water everywhere"]
+  },
+  {
+    id: "toronto",
+    city: "Toronto",
+    country: "Canada",
+    heatWarning: "LOW to MODERATE: Generally comfortable (75-85°F) but humidity can spike. More temperate than US southern cities.",
+    ticketScams: "BMO Field is smaller venue - less scam activity but still use only official ticket sources.",
+    localConcerns: [
+      "High cost of living - everything expensive",
+      "TTC public transit reliable but crowded",
+      "Gun violence has increased in some areas",
+      "Very multicultural - respect diversity"
+    ],
+    safeAreas: [
+      { name: "Downtown Core", description: "Financial district with CN Tower, PATH underground shopping, and major attractions. Busy and well-policed." },
+      { name: "Yorkville", description: "Toronto's most upscale neighborhood with designer boutiques, celebrity sightings, and fine dining. Very safe." },
+      { name: "The Annex", description: "Vibrant neighborhood near University of Toronto with Victorian homes, bookstores, and diverse restaurants." },
+      { name: "Leslieville", description: "Trendy east-end neighborhood with indie shops, brunch spots, and a strong community feel. Family-friendly." },
+      { name: "Distillery District", description: "Beautifully restored Victorian industrial area with galleries, restaurants, and cobblestone streets. Car-free zone." }
+    ],
+    avoidAreas: ["Jane and Finch", "parts of Scarborough", "Regent Park (improving but caution)"],
+    tips: ["Get PRESTO card for transit", "Tipping expected (15-20%)", "Download TTC app for real-time transit"]
+  },
+  {
+    id: "vancouver",
+    city: "Vancouver",
+    country: "Canada",
+    heatWarning: "LOW: Mild summer weather (70-75°F). BC Place is covered stadium. Rain possible even in summer.",
+    ticketScams: "Less scam activity than US cities but exercise normal caution with unofficial sellers.",
+    localConcerns: [
+      "Downtown Eastside has visible drug crisis - avoid Hastings Street",
+      "Very expensive city - budget accordingly",
+      "Wildfire smoke possible from BC interior",
+      "Rental housing crisis - book accommodation early"
+    ],
+    safeAreas: [
+      { name: "Yaletown", description: "Converted warehouse district with trendy restaurants, boutiques, and waterfront seawall access. Very walkable and safe." },
+      { name: "Gastown", description: "Historic neighborhood with the famous steam clock, cobblestone streets, and upscale dining. Tourist-friendly (avoid east end)." },
+      { name: "Kitsilano", description: "Beach neighborhood with organic cafes, yoga studios, and stunning mountain views. Popular with young professionals." },
+      { name: "West End", description: "Densely populated residential area near Stanley Park and English Bay Beach. LGBTQ-friendly and very safe." },
+      { name: "North Vancouver", description: "Across the harbor with mountain trails, Capilano Suspension Bridge, and suburban safety. Beautiful natural setting." }
+    ],
+    avoidAreas: ["Downtown Eastside", "parts of East Hastings", "Surrey Central (after dark)"],
+    tips: ["SkyTrain connects airport to downtown and stadium", "Bring layers - weather changes quickly", "Cannabis legal but follow rules"]
+  }
+];
+
+interface ProhibitedItem {
+  id: string;
+  name: string;
+  description: string;
+  penalty: string;
+  severity: "critical" | "high" | "medium";
+}
+
+interface ProhibitedCategory {
+  id: string;
+  title: string;
+  icon: string;
+  items: ProhibitedItem[];
+}
+
+const prohibitedData: {
+  customs: ProhibitedCategory[];
+  stadium: ProhibitedCategory[];
+} = {
+  customs: [
+    {
+      id: "food",
+      title: "FOOD",
+      icon: "🍎",
+      items: [
+        {
+          id: "kinder-eggs",
+          name: "Kinder Surprise Eggs",
+          description: "Banned as choking hazard (toy inside chocolate shell). Regular Kinder products without embedded toys are allowed.",
+          penalty: "Confiscation",
+          severity: "medium"
+        },
+        {
+          id: "meats",
+          name: "Meats (Fresh, Dried, Canned)",
+          description: "Cannot bring fresh, dried, or canned meats including bouillon with meat products. This includes beef jerky, ham, salami, and meat-based instant noodle seasonings.",
+          penalty: "Confiscation, possible fine",
+          severity: "high"
+        },
+        {
+          id: "fruits-vegetables",
+          name: "Fresh Fruits & Vegetables",
+          description: "Almost all fresh produce prohibited to prevent invasive pests. This includes fruits, vegetables, seeds, and plants. Some items may be allowed from Canada/Mexico.",
+          penalty: "$300-$1,000 fine",
+          severity: "critical"
+        },
+        {
+          id: "dairy",
+          name: "Dairy Products",
+          description: "Most dairy products prohibited except hard cheeses. No milk, cream, butter, or soft cheeses from most countries.",
+          penalty: "Confiscation, possible fine",
+          severity: "high"
+        }
+      ]
+    },
+    {
+      id: "drugs",
+      title: "DRUGS",
+      icon: "💊",
+      items: [
+        {
+          id: "cannabis",
+          name: "Marijuana/Cannabis/CBD",
+          description: "Strictly prohibited at airports and borders despite state legality. Federal jurisdiction applies at all ports of entry. CBD products also prohibited if they contain any THC.",
+          penalty: "Arrest, fine, deportation",
+          severity: "critical"
+        },
+        {
+          id: "prescription",
+          name: "Prescription Medications (Undeclared)",
+          description: "Must be in original labeled containers with prescription. Some medications legal in your country may be controlled substances in the US (e.g., codeine, some sleep aids).",
+          penalty: "Confiscation, possible arrest",
+          severity: "high"
+        }
+      ]
+    },
+    {
+      id: "currency",
+      title: "CURRENCY",
+      icon: "💵",
+      items: [
+        {
+          id: "cash-over-10k",
+          name: "Cash Over $10,000 (Undeclared)",
+          description: "No limit on cash, but MUST declare on FinCEN Form 105 if carrying over $10,000 USD. Includes cash equivalents like traveler's checks and money orders.",
+          penalty: "Seizure of ALL cash if not declared",
+          severity: "critical"
+        }
+      ]
+    },
+    {
+      id: "items",
+      title: "ITEMS",
+      icon: "📦",
+      items: [
+        {
+          id: "drones",
+          name: "Drones",
+          description: "Can bring through customs but must register with FAA if over 250g. Strict No Drone Zones around all stadiums during matches. Flying near stadium is federal crime.",
+          penalty: "Federal crime if flown near stadium",
+          severity: "high"
+        },
+        {
+          id: "counterfeit",
+          name: "Counterfeit Goods",
+          description: "Fake designer items, knockoff jerseys, and pirated media are seized at customs. Genuine items for personal use are fine.",
+          penalty: "Confiscation, possible fine",
+          severity: "medium"
+        },
+        {
+          id: "cuban-products",
+          name: "Cuban Cigars & Products",
+          description: "Cuban cigars and rum are prohibited from entering the United States regardless of where purchased.",
+          penalty: "Confiscation, possible fine",
+          severity: "medium"
+        }
+      ]
+    },
+    {
+      id: "weapons",
+      title: "WEAPONS",
+      icon: "🔫",
+      items: [
+        {
+          id: "firearms",
+          name: "Undeclared Firearms",
+          description: "All firearms must be declared and transported in checked luggage only, unloaded and in locked hard-sided container. Never in carry-on.",
+          penalty: "Arrest, federal charges",
+          severity: "critical"
+        },
+        {
+          id: "knives",
+          name: "Knives & Sharp Objects",
+          description: "No knives, box cutters, or sharp objects in carry-on luggage. Must be in checked bags.",
+          penalty: "Confiscation, possible fine",
+          severity: "high"
+        }
+      ]
+    }
+  ],
+  stadium: [
+    {
+      id: "bags",
+      title: "BAGS & CONTAINERS",
+      icon: "🎒",
+      items: [
+        {
+          id: "backpacks",
+          name: "Backpacks & Large Bags",
+          description: "No backpacks, sports bags, or bags larger than 12\" x 6\" x 12\". Most stadiums enforce CLEAR BAG POLICY - only transparent bags allowed.",
+          penalty: "Denied entry",
+          severity: "critical"
+        },
+        {
+          id: "coolers",
+          name: "Coolers & Hard-Sided Containers",
+          description: "No coolers, hard-sided bags, or luggage allowed inside stadium.",
+          penalty: "Denied entry",
+          severity: "high"
+        }
+      ]
+    },
+    {
+      id: "electronics",
+      title: "ELECTRONICS",
+      icon: "📷",
+      items: [
+        {
+          id: "pro-cameras",
+          name: "Professional Cameras",
+          description: "No cameras with lenses over 200mm. No detachable lens cameras without media credentials. Phone cameras and small point-and-shoots allowed.",
+          penalty: "Denied entry or confiscation",
+          severity: "high"
+        },
+        {
+          id: "tripods",
+          name: "Tripods & Selfie Sticks",
+          description: "No tripods, monopods, or selfie sticks allowed in stadium.",
+          penalty: "Denied entry",
+          severity: "medium"
+        },
+        {
+          id: "drones-stadium",
+          name: "Drones",
+          description: "Absolute ban on drones near stadiums. No Drone Zone extends several miles around each venue during matches.",
+          penalty: "Federal crime, arrest",
+          severity: "critical"
+        },
+        {
+          id: "laptops",
+          name: "Laptops",
+          description: "Laptops generally not allowed. Tablets without keyboard cases usually permitted.",
+          penalty: "Denied entry",
+          severity: "medium"
+        }
+      ]
+    },
+    {
+      id: "noisemakers",
+      title: "NOISEMAKERS",
+      icon: "📢",
+      items: [
+        {
+          id: "airhorns",
+          name: "Air Horns & Vuvuzelas",
+          description: "No air horns, vuvuzelas, or compressed air noisemakers. These are strictly banned at all FIFA events.",
+          penalty: "Confiscation",
+          severity: "high"
+        },
+        {
+          id: "drums",
+          name: "Drums & Musical Instruments",
+          description: "No drums, megaphones, or large musical instruments unless part of official supporter group with permission.",
+          penalty: "Denied entry",
+          severity: "medium"
+        }
+      ]
+    },
+    {
+      id: "food-drink",
+      title: "FOOD & DRINKS",
+      icon: "🥤",
+      items: [
+        {
+          id: "outside-food",
+          name: "Outside Food & Beverages",
+          description: "No outside food or drinks allowed. Exception for medical needs, baby food, and sealed water bottles (some venues).",
+          penalty: "Confiscation",
+          severity: "medium"
+        },
+        {
+          id: "alcohol",
+          name: "Alcohol",
+          description: "No outside alcohol. Alcohol sold inside stadium but consumption regulated. Visibly intoxicated fans may be denied entry.",
+          penalty: "Denied entry or ejection",
+          severity: "high"
+        }
+      ]
+    },
+    {
+      id: "other",
+      title: "OTHER PROHIBITED",
+      icon: "⛔",
+      items: [
+        {
+          id: "umbrellas",
+          name: "Large Umbrellas",
+          description: "No large or rigid umbrellas. Small collapsible umbrellas may be allowed at some venues.",
+          penalty: "Denied entry",
+          severity: "medium"
+        },
+        {
+          id: "flags-poles",
+          name: "Flags with Poles",
+          description: "No flag poles, sticks, or rigid supports. Flags larger than 2m x 1.5m prohibited. Hand-held flags without poles allowed.",
+          penalty: "Denied entry or confiscation",
+          severity: "medium"
+        },
+        {
+          id: "laser-pointers",
+          name: "Laser Pointers",
+          description: "Absolutely banned. Using laser pointer at players or officials is criminal offense.",
+          penalty: "Arrest, lifetime ban",
+          severity: "critical"
+        },
+        {
+          id: "fireworks",
+          name: "Fireworks & Flares",
+          description: "No fireworks, flares, smoke bombs, or pyrotechnics of any kind.",
+          penalty: "Arrest, criminal charges",
+          severity: "critical"
+        },
+        {
+          id: "political",
+          name: "Political/Offensive Material",
+          description: "No political banners, discriminatory symbols, or offensive materials. FIFA has strict anti-discrimination policies.",
+          penalty: "Denied entry, possible ban",
+          severity: "high"
+        }
+      ]
+    }
+  ]
+};
+
+interface Broadcaster {
+  id: string;
+  name: string;
+  type: "tv" | "streaming" | "radio";
+  channels: string[];
+  cost: string;
+  notes: string;
+}
+
+interface BroadcasterRegion {
+  id: string;
+  region: string;
+  flag: string;
+  broadcasters: Broadcaster[];
+}
+
+const tvGuideData = {
+  english: [
+    {
+      id: "usa-english",
+      region: "United States",
+      flag: "🇺🇸",
+      broadcasters: [
+        {
+          id: "fox",
+          name: "FOX Sports",
+          type: "tv" as const,
+          channels: ["FOX (69 matches)", "FS1 (35 matches)"],
+          cost: "Free (FOX with antenna) / Cable subscription (FS1)",
+          notes: "All 104 matches. FOX network includes all USMNT games and Final. 340+ hours of coverage."
+        },
+        {
+          id: "fubo",
+          name: "FuboTV",
+          type: "streaming" as const,
+          channels: ["FOX", "FS1", "Telemundo", "Universo"],
+          cost: "$75/month",
+          notes: "Soccer-focused streaming with 4K options. Complete English and Spanish coverage."
+        },
+        {
+          id: "youtube-tv",
+          name: "YouTube TV",
+          type: "streaming" as const,
+          channels: ["FOX", "FS1", "Telemundo"],
+          cost: "$73/month",
+          notes: "Comprehensive package with unlimited DVR. Both English and Spanish."
+        },
+        {
+          id: "sling-blue",
+          name: "Sling TV Blue",
+          type: "streaming" as const,
+          channels: ["FOX", "FS1"],
+          cost: "$35-51/month",
+          notes: "Budget English option. No Spanish coverage included."
+        },
+        {
+          id: "siriusxm",
+          name: "SiriusXM",
+          type: "radio" as const,
+          channels: ["FC channel"],
+          cost: "Subscription required",
+          notes: "Live audio coverage expected. Check closer to tournament."
+        }
+      ]
+    },
+    {
+      id: "canada-english",
+      region: "Canada",
+      flag: "🇨🇦",
+      broadcasters: [
+        {
+          id: "tsn",
+          name: "TSN (The Sports Network)",
+          type: "tv" as const,
+          channels: ["TSN1", "TSN2", "TSN3", "TSN4", "TSN5"],
+          cost: "Cable subscription",
+          notes: "Exclusive English-language rights. All 104 matches. Co-host nation special coverage."
+        },
+        {
+          id: "tsn-direct",
+          name: "TSN Direct",
+          type: "streaming" as const,
+          channels: ["TSN streaming app"],
+          cost: "$19.99/month",
+          notes: "Stream all matches without cable. On-demand replays available."
+        },
+        {
+          id: "ctv",
+          name: "CTV",
+          type: "tv" as const,
+          channels: ["CTV", "CTV2"],
+          cost: "Free over-the-air",
+          notes: "Supplementary coverage with co-host nation features and highlights."
+        }
+      ]
+    },
+    {
+      id: "uk",
+      region: "United Kingdom",
+      flag: "🇬🇧",
+      broadcasters: [
+        {
+          id: "bbc",
+          name: "BBC",
+          type: "tv" as const,
+          channels: ["BBC One", "BBC Two", "BBC iPlayer"],
+          cost: "Free (with TV license)",
+          notes: "52 matches including shared Final. Free streaming on BBC iPlayer."
+        },
+        {
+          id: "itv",
+          name: "ITV",
+          type: "tv" as const,
+          channels: ["ITV1", "ITV4", "ITVX"],
+          cost: "Free over-the-air",
+          notes: "52 matches including shared Final. Free streaming on ITVX."
+        },
+        {
+          id: "bbc-radio",
+          name: "BBC Radio 5 Live",
+          type: "radio" as const,
+          channels: ["5 Live", "5 Sports Extra"],
+          cost: "Free",
+          notes: "Full audio commentary. Available on BBC Sounds app worldwide."
+        },
+        {
+          id: "talksport",
+          name: "TalkSPORT",
+          type: "radio" as const,
+          channels: ["TalkSPORT", "TalkSPORT 2"],
+          cost: "Free",
+          notes: "Alternative commentary. Available via app and online."
+        }
+      ]
+    },
+    {
+      id: "australia",
+      region: "Australia",
+      flag: "🇦🇺",
+      broadcasters: [
+        {
+          id: "sbs",
+          name: "SBS",
+          type: "tv" as const,
+          channels: ["SBS", "SBS VICELAND"],
+          cost: "Free over-the-air",
+          notes: "All 104 matches free-to-air. Australia's World Cup home since 1986."
+        },
+        {
+          id: "sbs-ondemand",
+          name: "SBS On Demand",
+          type: "streaming" as const,
+          channels: ["SBS On Demand app"],
+          cost: "Free",
+          notes: "Live streaming and replays. Available on all devices."
+        }
+      ]
+    }
+  ],
+  spanish: [
+    {
+      id: "usa-spanish",
+      region: "United States",
+      flag: "🇺🇸",
+      broadcasters: [
+        {
+          id: "telemundo",
+          name: "Telemundo",
+          type: "tv" as const,
+          channels: ["Telemundo (92 matches)", "Universo (12 matches)"],
+          cost: "Free over-the-air / Cable",
+          notes: "All 104 matches in Spanish. Primary Spanish-language broadcaster."
+        },
+        {
+          id: "peacock",
+          name: "Peacock",
+          type: "streaming" as const,
+          channels: ["Peacock Premium"],
+          cost: "$7.99/month",
+          notes: "Best budget option for Spanish. All matches streaming."
+        }
+      ]
+    },
+    {
+      id: "mexico",
+      region: "Mexico",
+      flag: "🇲🇽",
+      broadcasters: [
+        {
+          id: "televisa",
+          name: "TelevisaUnivision",
+          type: "tv" as const,
+          channels: ["Las Estrellas", "Canal 5", "TUDN"],
+          cost: "Free over-the-air",
+          notes: "Co-host nation coverage. All matches free. Extensive pre/post analysis."
+        },
+        {
+          id: "azteca",
+          name: "TV Azteca",
+          type: "tv" as const,
+          channels: ["Azteca 7", "Azteca Deportes"],
+          cost: "Free over-the-air",
+          notes: "Alternative free coverage. Special Mexico national team programming."
+        }
+      ]
+    },
+    {
+      id: "spain",
+      region: "Spain",
+      flag: "🇪🇸",
+      broadcasters: [
+        {
+          id: "rtve",
+          name: "RTVE",
+          type: "tv" as const,
+          channels: ["La 1", "Teledeporte"],
+          cost: "Free over-the-air",
+          notes: "Spanish public broadcaster. Free coverage of key matches."
+        },
+        {
+          id: "movistar",
+          name: "Movistar+",
+          type: "streaming" as const,
+          channels: ["Movistar Liga de Campeones"],
+          cost: "Subscription required",
+          notes: "Complete tournament coverage with premium features."
+        }
+      ]
+    },
+    {
+      id: "argentina",
+      region: "Argentina",
+      flag: "🇦🇷",
+      broadcasters: [
+        {
+          id: "tyc",
+          name: "TyC Sports",
+          type: "tv" as const,
+          channels: ["TyC Sports", "TyC Sports 2"],
+          cost: "Cable subscription",
+          notes: "Primary Argentine coverage. Passionate local commentary."
+        },
+        {
+          id: "tvp",
+          name: "TV Pública",
+          type: "tv" as const,
+          channels: ["TV Pública Argentina"],
+          cost: "Free over-the-air",
+          notes: "National broadcaster with free coverage."
+        }
+      ]
+    },
+    {
+      id: "brazil",
+      region: "Brazil",
+      flag: "🇧🇷",
+      broadcasters: [
+        {
+          id: "globo",
+          name: "TV Globo",
+          type: "tv" as const,
+          channels: ["Globo", "SporTV"],
+          cost: "Free (Globo) / Cable (SporTV)",
+          notes: "Broadcasting World Cups since 1970. Most watched in Brazil."
+        },
+        {
+          id: "cazetv",
+          name: "CazéTV",
+          type: "streaming" as const,
+          channels: ["YouTube"],
+          cost: "Free",
+          notes: "All 104 matches on YouTube. Popular streamer Casimiro. Young audience favorite."
+        }
+      ]
+    }
+  ],
+  international: [
+    {
+      id: "canada-french",
+      region: "Canada (French)",
+      flag: "🇨🇦",
+      broadcasters: [
+        {
+          id: "rds",
+          name: "RDS",
+          type: "tv" as const,
+          channels: ["RDS", "RDS2", "RDS Info"],
+          cost: "Cable subscription",
+          notes: "Exclusive French-language rights in Canada. All 104 matches."
+        },
+        {
+          id: "rds-direct",
+          name: "RDS Direct",
+          type: "streaming" as const,
+          channels: ["RDS Direct app"],
+          cost: "$19.99/month",
+          notes: "French streaming without cable subscription."
+        }
+      ]
+    },
+    {
+      id: "germany",
+      region: "Germany",
+      flag: "🇩🇪",
+      broadcasters: [
+        {
+          id: "magenta",
+          name: "MagentaTV",
+          type: "streaming" as const,
+          channels: ["MagentaTV app"],
+          cost: "Subscription required",
+          notes: "All 104 matches. Deutsche Telekom platform."
+        },
+        {
+          id: "ard",
+          name: "ARD",
+          type: "tv" as const,
+          channels: ["Das Erste", "ARD Mediathek"],
+          cost: "Free",
+          notes: "30 matches including German team games. Free streaming."
+        },
+        {
+          id: "zdf",
+          name: "ZDF",
+          type: "tv" as const,
+          channels: ["ZDF", "ZDF Mediathek"],
+          cost: "Free",
+          notes: "30 matches. Public broadcaster coverage."
+        }
+      ]
+    },
+    {
+      id: "france",
+      region: "France",
+      flag: "🇫🇷",
+      broadcasters: [
+        {
+          id: "tf1",
+          name: "TF1",
+          type: "tv" as const,
+          channels: ["TF1", "TF1+"],
+          cost: "Free over-the-air",
+          notes: "Major free-to-air coverage. Streaming via TF1+."
+        },
+        {
+          id: "m6",
+          name: "M6",
+          type: "tv" as const,
+          channels: ["M6", "6play"],
+          cost: "Free over-the-air",
+          notes: "Additional free coverage. Stream on 6play platform."
+        }
+      ]
+    },
+    {
+      id: "italy",
+      region: "Italy",
+      flag: "🇮🇹",
+      broadcasters: [
+        {
+          id: "rai",
+          name: "RAI",
+          type: "tv" as const,
+          channels: ["Rai 1", "Rai Sport"],
+          cost: "Free",
+          notes: "Italian public broadcaster. Free streaming on RaiPlay."
+        }
+      ]
+    },
+    {
+      id: "netherlands",
+      region: "Netherlands",
+      flag: "🇳🇱",
+      broadcasters: [
+        {
+          id: "nos",
+          name: "NOS",
+          type: "tv" as const,
+          channels: ["NPO 1", "NPO 3"],
+          cost: "Free",
+          notes: "Dutch public broadcaster. Free coverage for all matches."
+        }
+      ]
+    },
+    {
+      id: "india",
+      region: "India",
+      flag: "🇮🇳",
+      broadcasters: [
+        {
+          id: "star",
+          name: "Star Sports",
+          type: "tv" as const,
+          channels: ["Star Sports 1", "Star Sports Select"],
+          cost: "Cable subscription",
+          notes: "Confirmed broadcaster for India and subcontinent."
+        },
+        {
+          id: "jiocinema",
+          name: "JioCinema",
+          type: "streaming" as const,
+          channels: ["JioCinema app"],
+          cost: "Free/Premium",
+          notes: "Potential streaming partner. Check closer to tournament."
+        }
+      ]
+    },
+    {
+      id: "japan",
+      region: "Japan",
+      flag: "🇯🇵",
+      broadcasters: [
+        {
+          id: "nhk",
+          name: "NHK",
+          type: "tv" as const,
+          channels: ["NHK General", "NHK BS"],
+          cost: "Free",
+          notes: "Japan's public broadcaster. All Japan matches on free TV."
+        },
+        {
+          id: "abema",
+          name: "ABEMA",
+          type: "streaming" as const,
+          channels: ["ABEMA app"],
+          cost: "Free/Premium",
+          notes: "Popular streaming platform. All matches expected."
+        }
+      ]
+    },
+    {
+      id: "south-korea",
+      region: "South Korea",
+      flag: "🇰🇷",
+      broadcasters: [
+        {
+          id: "tvj",
+          name: "tvJ",
+          type: "tv" as const,
+          channels: ["SBS", "KBS", "MBC"],
+          cost: "Free",
+          notes: "Broadcast rights secured for 2026 and 2030."
+        }
+      ]
+    },
+    {
+      id: "mena",
+      region: "Middle East & North Africa",
+      flag: "🌍",
+      broadcasters: [
+        {
+          id: "bein",
+          name: "beIN Sports",
+          type: "tv" as const,
+          channels: ["beIN Sports 1-3", "beIN Sports HD"],
+          cost: "Subscription required",
+          notes: "Primary broadcaster for MENA region. Arabic commentary."
+        }
+      ]
+    },
+    {
+      id: "africa",
+      region: "Sub-Saharan Africa",
+      flag: "🌍",
+      broadcasters: [
+        {
+          id: "supersport",
+          name: "SuperSport",
+          type: "tv" as const,
+          channels: ["SuperSport Football", "SuperSport Blitz"],
+          cost: "Subscription (DStv)",
+          notes: "Primary broadcaster for Sub-Saharan Africa."
+        },
+        {
+          id: "newworld",
+          name: "New World TV",
+          type: "streaming" as const,
+          channels: ["New World TV app"],
+          cost: "Varies by country",
+          notes: "Alternative African coverage. Mobile-friendly."
+        }
+      ]
+    }
+  ],
+  streamingTips: [
+    "VPN may be needed to access home country coverage while traveling",
+    "Download apps before arriving - some require verification",
+    "Stadium WiFi will be limited - download content for offline viewing",
+    "Most streaming services work on mobile, tablet, and smart TV",
+    "Check time zones - matches will air at different times by city"
+  ]
+};
+
+interface PrivateAirport {
+  id: string;
+  code: string;
+  name: string;
+  distance: string;
+  fbos: string[];
+  customs: boolean;
+  notes: string;
+}
+
+interface PrivateCityData {
+  id: string;
+  city: string;
+  country: string;
+  flag: string;
+  airports: PrivateAirport[];
+  marinas?: {
+    name: string;
+    maxLength: string;
+    features: string;
+  }[];
+}
+
+const privateTransportData = {
+  usaCities: [
+    {
+      id: "miami",
+      city: "Miami",
+      country: "USA",
+      flag: "🇺🇸",
+      airports: [
+        {
+          id: "opf",
+          code: "OPF",
+          name: "Opa-Locka Executive Airport",
+          distance: "15 mi from downtown",
+          fbos: ["Signature Flight Support", "Atlantic Aviation"],
+          customs: true,
+          notes: "Preferred for private jets. Less congested than MIA. 24/7 CBP available."
+        },
+        {
+          id: "mia-pvt",
+          code: "MIA",
+          name: "Miami International (Private Terminal)",
+          distance: "In Miami proper",
+          fbos: ["Signature Flight Support", "Tursair"],
+          customs: true,
+          notes: "Full CBP on-site. Higher traffic but convenient location."
+        }
+      ],
+      marinas: [
+        { name: "Yacht Haven Grande (Island Gardens)", maxLength: "550ft (167m)", features: "Deep water, 50 superyacht berths, 24hr immigration, IGY managed" },
+        { name: "One Island Park", maxLength: "800ft (244m)", features: "100m+ yachts only, VIP concierge, fastest ocean access" },
+        { name: "Miami Beach Marina", maxLength: "250ft (76m)", features: "400 slips, near South Beach, no fixed bridges" }
+      ]
+    },
+    {
+      id: "new-york",
+      city: "New York/New Jersey",
+      country: "USA",
+      flag: "🇺🇸",
+      airports: [
+        {
+          id: "teb",
+          code: "TEB",
+          name: "Teterboro Airport",
+          distance: "12 mi from Manhattan",
+          fbos: ["Signature", "Atlantic", "Meridian", "Jet Aviation"],
+          customs: true,
+          notes: "Premier NYC private jet airport. Nation's busiest GA field. Full CBP."
+        },
+        {
+          id: "hpn",
+          code: "HPN",
+          name: "Westchester County Airport",
+          distance: "35 mi north of Manhattan",
+          fbos: ["Signature", "Million Air", "Ross Aviation"],
+          customs: true,
+          notes: "Second choice for Manhattan. Less traffic than Teterboro."
+        }
+      ],
+      marinas: [
+        { name: "Liberty Landing Marina", maxLength: "200ft", features: "Direct NYC skyline views, near MetLife Stadium" },
+        { name: "North Cove Marina", maxLength: "150ft", features: "Manhattan location, Financial District" }
+      ]
+    },
+    {
+      id: "los-angeles",
+      city: "Los Angeles",
+      country: "USA",
+      flag: "🇺🇸",
+      airports: [
+        {
+          id: "vny",
+          code: "VNY",
+          name: "Van Nuys Airport",
+          distance: "20 mi from downtown",
+          fbos: ["Signature", "Atlantic", "Jet Aviation", "Castle & Cooke"],
+          customs: true,
+          notes: "World's busiest private jet airport. No commercial traffic. Full CBP."
+        },
+        {
+          id: "lgb",
+          code: "LGB",
+          name: "Long Beach Airport",
+          distance: "South of downtown LA",
+          fbos: ["Signature", "Ross Aviation"],
+          customs: true,
+          notes: "Avoids LAX traffic. Popular alternative with full services."
+        },
+        {
+          id: "smo",
+          code: "SMO",
+          name: "Santa Monica Airport",
+          distance: "3 mi from Beverly Hills",
+          fbos: ["Atlantic Aviation"],
+          customs: false,
+          notes: "Intimate, discreet. Limited to smaller jets. No on-site CBP."
+        }
+      ],
+      marinas: [
+        { name: "Marina del Rey", maxLength: "Variable", features: "Large recreational marina, some superyacht capacity" },
+        { name: "Long Beach Marina", maxLength: "100ft+", features: "Near convention center, protected harbor" }
+      ]
+    },
+    {
+      id: "dallas",
+      city: "Dallas",
+      country: "USA",
+      flag: "🇺🇸",
+      airports: [
+        {
+          id: "dal",
+          code: "DAL",
+          name: "Dallas Love Field",
+          distance: "8 mi from downtown",
+          fbos: ["Signature", "Atlantic", "Business Jet Center"],
+          customs: true,
+          notes: "One of busiest private jet airports in US. Full CBP services."
+        },
+        {
+          id: "ads",
+          code: "ADS",
+          name: "Addison Airport",
+          distance: "North of downtown",
+          fbos: ["Million Air", "Atlantic"],
+          customs: false,
+          notes: "Ideal for North Dallas. High-end FBOs. No on-site CBP."
+        },
+        {
+          id: "dfw-pvt",
+          code: "DFW",
+          name: "DFW International (Private Terminal)",
+          distance: "Between Dallas/Fort Worth",
+          fbos: ["Signature", "Business Jet Center"],
+          customs: true,
+          notes: "Major hub with private terminals. Full international clearance."
+        }
+      ]
+    },
+    {
+      id: "houston",
+      city: "Houston",
+      country: "USA",
+      flag: "🇺🇸",
+      airports: [
+        {
+          id: "hou",
+          code: "HOU",
+          name: "William P. Hobby Airport",
+          distance: "7 mi from downtown",
+          fbos: ["Signature", "Jet Aviation", "Wilson Air", "Atlantic", "Million Air"],
+          customs: true,
+          notes: "Top-ranked private jet airport. Closest to NRG Stadium. Full CBP."
+        },
+        {
+          id: "iah-pvt",
+          code: "IAH",
+          name: "George Bush Intercontinental (Private)",
+          distance: "North of Houston",
+          fbos: ["Signature", "Atlantic"],
+          customs: true,
+          notes: "Major international hub. Full-service private terminals."
+        }
+      ]
+    },
+    {
+      id: "atlanta",
+      city: "Atlanta",
+      country: "USA",
+      flag: "🇺🇸",
+      airports: [
+        {
+          id: "pdk",
+          code: "PDK",
+          name: "DeKalb-Peachtree Airport",
+          distance: "12 mi NE of downtown",
+          fbos: ["Signature", "Atlantic", "Epps Aviation"],
+          customs: false,
+          notes: "Preferred for private jets. 600+ daily operations. No CBP - clear at ATL first."
+        },
+        {
+          id: "atl-pvt",
+          code: "ATL",
+          name: "Hartsfield-Jackson (Private Terminal)",
+          distance: "7 mi south of downtown",
+          fbos: ["Signature Flight Support"],
+          customs: true,
+          notes: "World's busiest airport. Full CBP. Longer taxi times."
+        }
+      ]
+    },
+    {
+      id: "boston",
+      city: "Boston",
+      country: "USA",
+      flag: "🇺🇸",
+      airports: [
+        {
+          id: "bed",
+          code: "BED",
+          name: "Hanscom Field",
+          distance: "15 mi NW of downtown",
+          fbos: ["Signature", "Jet Aviation", "Rectrix Aviation"],
+          customs: false,
+          notes: "Premier private jet airport. Less congestion than Logan."
+        },
+        {
+          id: "bos-pvt",
+          code: "BOS",
+          name: "Boston Logan (Private Terminal)",
+          distance: "3 mi from downtown",
+          fbos: ["Signature Flight Support"],
+          customs: true,
+          notes: "Full CBP on-site. Only FBO at Logan. Convenient city access."
+        }
+      ]
+    },
+    {
+      id: "seattle",
+      city: "Seattle",
+      country: "USA",
+      flag: "🇺🇸",
+      airports: [
+        {
+          id: "bfi",
+          code: "BFI",
+          name: "Boeing Field / King County",
+          distance: "5 mi from downtown",
+          fbos: ["Signature", "Clay Lacy", "Galvin Flying"],
+          customs: true,
+          notes: "Primary private aviation airport. Full CBP. Close to downtown."
+        },
+        {
+          id: "sea-pvt",
+          code: "SEA",
+          name: "Seattle-Tacoma (Private Terminal)",
+          distance: "14 mi south of downtown",
+          fbos: ["Signature Flight Support"],
+          customs: true,
+          notes: "Major international hub. Full services but busy commercial traffic."
+        }
+      ],
+      marinas: [
+        { name: "Emerald Landing", maxLength: "360ft (109m)", features: "Lake Union, freshwater, downtown access" },
+        { name: "Elliott Bay Marina", maxLength: "300ft", features: "Gated, secure, minutes from downtown" },
+        { name: "Bell Harbor Marina", maxLength: "100ft+", features: "Only downtown Seattle marina, 24hr security" }
+      ]
+    },
+    {
+      id: "philadelphia",
+      city: "Philadelphia",
+      country: "USA",
+      flag: "🇺🇸",
+      airports: [
+        {
+          id: "pne",
+          code: "PNE",
+          name: "Northeast Philadelphia Airport",
+          distance: "10 mi NE of downtown",
+          fbos: ["Atlantic Aviation"],
+          customs: false,
+          notes: "Primary private jet airport for Philly. No CBP on-site."
+        },
+        {
+          id: "phl-pvt",
+          code: "PHL",
+          name: "Philadelphia International (Private)",
+          distance: "7 mi SW of downtown",
+          fbos: ["Atlantic Aviation"],
+          customs: true,
+          notes: "Full CBP services. Commercial traffic can cause delays."
+        }
+      ]
+    },
+    {
+      id: "san-francisco",
+      city: "San Francisco Bay Area",
+      country: "USA",
+      flag: "🇺🇸",
+      airports: [
+        {
+          id: "sql",
+          code: "SQL",
+          name: "San Carlos Airport",
+          distance: "25 mi south of SF",
+          fbos: ["Signature Flight Support"],
+          customs: false,
+          notes: "Popular Silicon Valley airport. No on-site CBP."
+        },
+        {
+          id: "sjc-pvt",
+          code: "SJC",
+          name: "San Jose International (Private)",
+          distance: "Near Levi's Stadium",
+          fbos: ["Signature", "Atlantic"],
+          customs: true,
+          notes: "Closest major airport to stadium. Full CBP on-site."
+        },
+        {
+          id: "oak-pvt",
+          code: "OAK",
+          name: "Oakland International (Private)",
+          distance: "Across bay from SF",
+          fbos: ["Signature Flight Support"],
+          customs: true,
+          notes: "Full international clearance. Less traffic than SFO."
+        }
+      ]
+    },
+    {
+      id: "kansas-city",
+      city: "Kansas City",
+      country: "USA",
+      flag: "🇺🇸",
+      airports: [
+        {
+          id: "mkc",
+          code: "MKC",
+          name: "Charles B. Wheeler Downtown Airport",
+          distance: "Downtown KC",
+          fbos: ["Signature Flight Support"],
+          customs: false,
+          notes: "Closest to Arrowhead Stadium. General aviation focused."
+        },
+        {
+          id: "mci-pvt",
+          code: "MCI",
+          name: "Kansas City International (Private)",
+          distance: "15 mi NW of downtown",
+          fbos: ["Signature Flight Support"],
+          customs: true,
+          notes: "Full CBP services. Primary international entry point."
+        }
+      ]
+    }
+  ],
+  mexicoCities: [
+    {
+      id: "mexico-city",
+      city: "Mexico City",
+      country: "Mexico",
+      flag: "🇲🇽",
+      airports: [
+        {
+          id: "tlc",
+          code: "TLC/MMTO",
+          name: "Toluca International Airport",
+          distance: "40-60 km from city center",
+          fbos: ["Jetex", "18+ FBO providers"],
+          customs: true,
+          notes: "REQUIRED for private jets (MEX doesn't accept private). 70%+ of Mexico's private jets use this. On-site CIQ."
+        }
+      ]
+    },
+    {
+      id: "guadalajara",
+      city: "Guadalajara",
+      country: "Mexico",
+      flag: "🇲🇽",
+      airports: [
+        {
+          id: "gdl",
+          code: "GDL/MMGL",
+          name: "Guadalajara International Airport",
+          distance: "Central location",
+          fbos: ["Aerotron", "Multiple FBOs"],
+          customs: true,
+          notes: "Large FBO facilities. On-site customs. 24/7 private aviation support."
+        }
+      ]
+    },
+    {
+      id: "monterrey",
+      city: "Monterrey",
+      country: "Mexico",
+      flag: "🇲🇽",
+      airports: [
+        {
+          id: "ntr",
+          code: "NTR/MMAN",
+          name: "Del Norte International Airport",
+          distance: "23 km north of city",
+          fbos: ["ExecuJet", "10+ FBO providers"],
+          customs: true,
+          notes: "Preferred for private aviation. VIP terminals. 24/7 service."
+        },
+        {
+          id: "mty",
+          code: "MTY/MMMY",
+          name: "Monterrey International Airport",
+          distance: "30 km east of city",
+          fbos: ["Multiple FBOs"],
+          customs: true,
+          notes: "International connections. Separate private aviation terminals."
+        }
+      ]
+    }
+  ],
+  canadaCities: [
+    {
+      id: "toronto",
+      city: "Toronto",
+      country: "Canada",
+      flag: "🇨🇦",
+      airports: [
+        {
+          id: "yyz-pvt",
+          code: "YYZ",
+          name: "Toronto Pearson (Private Terminal)",
+          distance: "27 km from downtown",
+          fbos: ["Skyservice", "Avitat"],
+          customs: true,
+          notes: "Full CBSA services. Canada's busiest airport. Private terminals available."
+        },
+        {
+          id: "ykz",
+          code: "YKZ",
+          name: "Buttonville Municipal Airport",
+          distance: "North of Toronto",
+          fbos: ["Multiple GA FBOs"],
+          customs: false,
+          notes: "General aviation. Clear customs at Pearson first."
+        }
+      ]
+    },
+    {
+      id: "vancouver",
+      city: "Vancouver",
+      country: "Canada",
+      flag: "🇨🇦",
+      airports: [
+        {
+          id: "yvr-pvt",
+          code: "YVR",
+          name: "Vancouver International (Private)",
+          distance: "12 km from downtown",
+          fbos: ["Landmark Aviation", "Avitat"],
+          customs: true,
+          notes: "Full CBSA services. South Terminal for GA. Beautiful approach."
+        }
+      ]
+    }
+  ],
+  customsRequirements: {
+    usa: {
+      title: "US Private Aircraft Customs",
+      requirements: [
+        { item: "eAPIS Manifest", desc: "Submit via CBP eAPIS system before departure. Include all passenger/crew info." },
+        { item: "User Fee Decal", desc: "Annual CBP Private Aircraft Decal required. Purchase via DTOPS ($29.96/year)." },
+        { item: "Permission to Land", desc: "Contact destination CBP port before departure from foreign area." },
+        { item: "Designated Airports", desc: "381 airports accept private international arrivals. Verify your destination." },
+        { item: "Preclearance Option", desc: "Available in Shannon (Ireland) and Aruba for faster US entry." }
+      ]
+    },
+    yacht: {
+      title: "US Yacht Customs",
+      requirements: [
+        { item: "Report Within 24 Hours", desc: "All yachts arriving from foreign ports must report via CBP ROAM app or phone." },
+        { item: "Q Flag Required", desc: "Fly yellow quarantine flag when entering 12-mile territorial waters until cleared." },
+        { item: "Stay Onboard", desc: "No one may leave or board until customs processing is complete." },
+        { item: "USCG Notification", desc: "Foreign yachts over 300 gross tons must notify USCG 96 hours before arrival." },
+        { item: "Cruising License", desc: "Foreign-flagged yachts from certain countries can get 1-year cruising license." },
+        { item: "DTOPS Decal", desc: "Required for boats 30+ feet. Purchase annually ($29.96)." }
+      ]
+    },
+    mexico: {
+      title: "Mexico Private Aircraft",
+      requirements: [
+        { item: "Mexican APIS", desc: "Advance Passenger Information required for all private flights." },
+        { item: "Single-Entry Permits", desc: "Now required (no more annual authorization). Plan 10+ business days lead time." },
+        { item: "Insurance Match", desc: "Aircraft make/model/serial/tail must exactly match registration." },
+        { item: "Airport Restrictions", desc: "Private jets restricted to designated airports (MEX closed to private)." }
+      ]
+    },
+    canada: {
+      title: "Canada Private Aircraft",
+      requirements: [
+        { item: "Canadian APIS", desc: "Required for international arrivals to Canada." },
+        { item: "CANPASS", desc: "CANPASS Private Aircraft program available for expedited clearance." },
+        { item: "CBSA Notification", desc: "Advance customs arrangements required through FBO/handler." }
+      ]
+    }
+  },
+  tips: [
+    "Book FBO slots early during World Cup - demand will be extremely high",
+    "Helicopter transfers available from most major airports to stadiums",
+    "Mexico City private jets MUST use Toluca (TLC), not MEX airport",
+    "Yacht berths in Miami will be premium - book 6+ months ahead",
+    "Consider fractional jet programs if you don't own - NetJets, Flexjet, VistaJet",
+    "All 3 host countries require advance passenger manifests (APIS/eAPIS)"
+  ]
+};
+
+interface Consulate {
+  country: string;
+  flag: string;
+  phone: string;
+  address: string;
+  emergency?: string;
+}
+
+interface CityConsulates {
+  id: string;
+  city: string;
+  country: string;
+  consulates: Consulate[];
+}
+
+const consulatesData: CityConsulates[] = [
+  {
+    id: "new-york",
+    city: "New York / New Jersey",
+    country: "USA",
+    consulates: [
+      { country: "Argentina", flag: "🇦🇷", phone: "+1 212-603-0400", address: "12 W 56th St, New York, NY" },
+      { country: "Brazil", flag: "🇧🇷", phone: "+1 917-777-7777", address: "225 E 41st St, New York, NY" },
+      { country: "Canada", flag: "🇨🇦", phone: "+1 212-596-1628", address: "466 Lexington Ave, New York, NY" },
+      { country: "France", flag: "🇫🇷", phone: "+1 212-606-3600", address: "934 Fifth Ave, New York, NY" },
+      { country: "Germany", flag: "🇩🇪", phone: "+1 212-610-9700", address: "871 United Nations Plaza, New York, NY" },
+      { country: "India", flag: "🇮🇳", phone: "+1 212-774-0600", address: "3 E 64th St, New York, NY" },
+      { country: "Japan", flag: "🇯🇵", phone: "+1 212-371-8222", address: "299 Park Ave, New York, NY" },
+      { country: "Mexico", flag: "🇲🇽", phone: "+1 212-217-6400", address: "27 E 39th St, New York, NY" },
+      { country: "South Korea", flag: "🇰🇷", phone: "+1 646-674-6000", address: "460 Park Ave, New York, NY" },
+      { country: "Spain", flag: "🇪🇸", phone: "+1 212-355-4080", address: "150 E 58th St, New York, NY" },
+      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 212-745-0200", address: "885 Second Ave, New York, NY" }
+    ]
+  },
+  {
+    id: "los-angeles",
+    city: "Los Angeles",
+    country: "USA",
+    consulates: [
+      { country: "Argentina", flag: "🇦🇷", phone: "+1 323-954-9155", address: "5055 Wilshire Blvd, Los Angeles, CA" },
+      { country: "Brazil", flag: "🇧🇷", phone: "+1 323-651-2664", address: "8484 Wilshire Blvd, Beverly Hills, CA" },
+      { country: "Canada", flag: "🇨🇦", phone: "+1 213-346-2700", address: "550 S Hope St, Los Angeles, CA" },
+      { country: "China", flag: "🇨🇳", phone: "+1 213-807-8088", address: "443 Shatto Place, Los Angeles, CA" },
+      { country: "France", flag: "🇫🇷", phone: "+1 310-235-3200", address: "10390 Santa Monica Blvd, Los Angeles, CA" },
+      { country: "Germany", flag: "🇩🇪", phone: "+1 323-930-2703", address: "6222 Wilshire Blvd, Los Angeles, CA" },
+      { country: "Japan", flag: "🇯🇵", phone: "+1 213-617-6700", address: "350 S Grand Ave, Los Angeles, CA" },
+      { country: "Mexico", flag: "🇲🇽", phone: "+1 213-351-6800", address: "2401 W 6th St, Los Angeles, CA" },
+      { country: "South Korea", flag: "🇰🇷", phone: "+1 213-385-9300", address: "3243 Wilshire Blvd, Los Angeles, CA" },
+      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 310-789-0031", address: "2029 Century Park East, Los Angeles, CA" }
+    ]
+  },
+  {
+    id: "miami",
+    city: "Miami",
+    country: "USA",
+    consulates: [
+      { country: "Argentina", flag: "🇦🇷", phone: "+1 305-373-1889", address: "1101 Brickell Ave, Miami, FL" },
+      { country: "Brazil", flag: "🇧🇷", phone: "+1 305-285-6200", address: "80 SW 8th St, Miami, FL" },
+      { country: "Canada", flag: "🇨🇦", phone: "+1 305-579-1600", address: "200 S Biscayne Blvd, Miami, FL" },
+      { country: "Colombia", flag: "🇨🇴", phone: "+1 305-441-1235", address: "280 Aragon Ave, Coral Gables, FL" },
+      { country: "France", flag: "🇫🇷", phone: "+1 305-403-4150", address: "1395 Brickell Ave, Miami, FL" },
+      { country: "Germany", flag: "🇩🇪", phone: "+1 305-358-0290", address: "100 N Biscayne Blvd, Miami, FL" },
+      { country: "Mexico", flag: "🇲🇽", phone: "+1 786-268-4900", address: "1399 SW 1st Ave, Miami, FL" },
+      { country: "Spain", flag: "🇪🇸", phone: "+1 305-446-5511", address: "2655 Le Jeune Rd, Coral Gables, FL" },
+      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 305-400-6400", address: "1001 Brickell Bay Dr, Miami, FL" }
+    ]
+  },
+  {
+    id: "houston",
+    city: "Houston",
+    country: "USA",
+    consulates: [
+      { country: "Argentina", flag: "🇦🇷", phone: "+1 713-871-8935", address: "3050 Post Oak Blvd, Houston, TX" },
+      { country: "Brazil", flag: "🇧🇷", phone: "+1 713-961-3063", address: "1233 West Loop South, Houston, TX" },
+      { country: "Canada", flag: "🇨🇦", phone: "+1 832-327-0854", address: "5847 San Felipe St, Houston, TX" },
+      { country: "China", flag: "🇨🇳", phone: "+1 713-520-1462", address: "3417 Montrose Blvd, Houston, TX" },
+      { country: "France", flag: "🇫🇷", phone: "+1 713-572-2799", address: "777 Post Oak Blvd, Houston, TX" },
+      { country: "Germany", flag: "🇩🇪", phone: "+1 713-627-7770", address: "1330 Post Oak Blvd, Houston, TX" },
+      { country: "India", flag: "🇮🇳", phone: "+1 713-626-2148", address: "4300 Scotland St, Houston, TX" },
+      { country: "Japan", flag: "🇯🇵", phone: "+1 713-652-2977", address: "909 Fannin St, Houston, TX" },
+      { country: "Mexico", flag: "🇲🇽", phone: "+1 713-271-6800", address: "4507 San Jacinto St, Houston, TX" },
+      { country: "Nigeria", flag: "🇳🇬", phone: "+1 713-839-1300", address: "8060 Park Place Blvd, Houston, TX" },
+      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 713-659-6270", address: "1000 Louisiana St, Houston, TX" }
+    ]
+  },
+  {
+    id: "dallas",
+    city: "Dallas",
+    country: "USA",
+    consulates: [
+      { country: "Canada", flag: "🇨🇦", phone: "+1 214-922-9806", address: "500 N Akard St, Dallas, TX" },
+      { country: "France", flag: "🇫🇷", phone: "+1 214-978-3260", address: "5060 Tennyson Pkwy, Plano, TX" },
+      { country: "Germany", flag: "🇩🇪", phone: "+1 469-257-8456", address: "1600 Pacific Ave, Dallas, TX" },
+      { country: "Japan", flag: "🇯🇵", phone: "+1 214-780-1400", address: "2717 Harwood St, Dallas, TX" },
+      { country: "Mexico", flag: "🇲🇽", phone: "+1 214-932-8670", address: "1210 River Bend Dr, Dallas, TX" },
+      { country: "South Korea", flag: "🇰🇷", phone: "+1 972-960-7511", address: "2801 Spring Valley Rd, Dallas, TX" }
+    ]
+  },
+  {
+    id: "atlanta",
+    city: "Atlanta",
+    country: "USA",
+    consulates: [
+      { country: "Brazil", flag: "🇧🇷", phone: "+1 404-949-2400", address: "3500 Lenox Rd NE, Atlanta, GA" },
+      { country: "Canada", flag: "🇨🇦", phone: "+1 404-532-2000", address: "1175 Peachtree St NE, Atlanta, GA" },
+      { country: "France", flag: "🇫🇷", phone: "+1 404-495-1600", address: "3399 Peachtree Rd NE, Atlanta, GA" },
+      { country: "Germany", flag: "🇩🇪", phone: "+1 404-905-0000", address: "285 Peachtree Center Ave NE, Atlanta, GA" },
+      { country: "Greece", flag: "🇬🇷", phone: "+1 404-261-3313", address: "3340 Peachtree Rd NE, Atlanta, GA" },
+      { country: "India", flag: "🇮🇳", phone: "+1 404-963-5902", address: "5549 Glenridge Dr, Atlanta, GA" },
+      { country: "Japan", flag: "🇯🇵", phone: "+1 404-240-4300", address: "3438 Peachtree Rd NE, Atlanta, GA" },
+      { country: "Mexico", flag: "🇲🇽", phone: "+1 404-266-1913", address: "1700 Chantilly Dr NE, Atlanta, GA" },
+      { country: "South Korea", flag: "🇰🇷", phone: "+1 404-522-1611", address: "229 Peachtree St NE, Atlanta, GA" },
+      { country: "Switzerland", flag: "🇨🇭", phone: "+1 404-870-2000", address: "1349 W Peachtree St NW, Atlanta, GA" }
+    ]
+  },
+  {
+    id: "seattle",
+    city: "Seattle",
+    country: "USA",
+    consulates: [
+      { country: "Canada", flag: "🇨🇦", phone: "+1 206-443-1777", address: "1501 4th Ave, Seattle, WA" },
+      { country: "India", flag: "🇮🇳", phone: "+1 206-803-0400", address: "1015 2nd Ave, Seattle, WA" },
+      { country: "Japan", flag: "🇯🇵", phone: "+1 206-682-9107", address: "701 Pike St, Seattle, WA" },
+      { country: "Mexico", flag: "🇲🇽", phone: "+1 206-448-3526", address: "807 E Roy St, Seattle, WA" },
+      { country: "South Korea", flag: "🇰🇷", phone: "+1 206-441-1011", address: "115 W Mercer St, Seattle, WA" }
+    ]
+  },
+  {
+    id: "san-francisco",
+    city: "San Francisco Bay Area",
+    country: "USA",
+    consulates: [
+      { country: "Argentina", flag: "🇦🇷", phone: "+1 415-982-3050", address: "580 California St, San Francisco, CA" },
+      { country: "Brazil", flag: "🇧🇷", phone: "+1 415-981-8170", address: "300 Montgomery St, San Francisco, CA" },
+      { country: "Canada", flag: "🇨🇦", phone: "+1 415-834-3180", address: "580 California St, San Francisco, CA" },
+      { country: "China", flag: "🇨🇳", phone: "+1 415-852-5900", address: "1450 Laguna St, San Francisco, CA" },
+      { country: "France", flag: "🇫🇷", phone: "+1 415-397-4330", address: "88 Kearny St, San Francisco, CA" },
+      { country: "Germany", flag: "🇩🇪", phone: "+1 415-775-1061", address: "1960 Jackson St, San Francisco, CA" },
+      { country: "Japan", flag: "🇯🇵", phone: "+1 415-780-6000", address: "275 Battery St, San Francisco, CA" },
+      { country: "Mexico", flag: "🇲🇽", phone: "+1 415-354-1700", address: "532 Folsom St, San Francisco, CA" },
+      { country: "South Korea", flag: "🇰🇷", phone: "+1 415-921-2251", address: "3500 Clay St, San Francisco, CA" }
+    ]
+  },
+  {
+    id: "philadelphia",
+    city: "Philadelphia",
+    country: "USA",
+    consulates: [
+      { country: "France", flag: "🇫🇷", phone: "+1 267-404-3050", address: "205 N 4th St, Philadelphia, PA" },
+      { country: "Germany", flag: "🇩🇪", phone: "+1 215-931-8200", address: "1500 Market St, Philadelphia, PA" },
+      { country: "Italy", flag: "🇮🇹", phone: "+1 215-592-7329", address: "100 S Broad St, Philadelphia, PA" },
+      { country: "Mexico", flag: "🇲🇽", phone: "+1 215-922-4262", address: "111 S Independence Mall E, Philadelphia, PA" }
+    ]
+  },
+  {
+    id: "boston",
+    city: "Boston",
+    country: "USA",
+    consulates: [
+      { country: "Brazil", flag: "🇧🇷", phone: "+1 617-542-4000", address: "175 Purchase St, Boston, MA" },
+      { country: "Canada", flag: "🇨🇦", phone: "+1 617-247-5100", address: "3 Copley Place, Boston, MA" },
+      { country: "France", flag: "🇫🇷", phone: "+1 617-832-4400", address: "31 St James Ave, Boston, MA" },
+      { country: "Germany", flag: "🇩🇪", phone: "+1 617-369-4900", address: "3 Copley Place, Boston, MA" },
+      { country: "Ireland", flag: "🇮🇪", phone: "+1 617-267-9330", address: "535 Boylston St, Boston, MA" },
+      { country: "Japan", flag: "🇯🇵", phone: "+1 617-973-9772", address: "600 Atlantic Ave, Boston, MA" },
+      { country: "Mexico", flag: "🇲🇽", phone: "+1 617-426-4181", address: "20 Park Plaza, Boston, MA" },
+      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 617-245-4500", address: "1 Broadway, Cambridge, MA" }
+    ]
+  },
+  {
+    id: "kansas-city",
+    city: "Kansas City",
+    country: "USA",
+    consulates: [
+      { country: "Canada", flag: "🇨🇦", phone: "+1 913-905-1585", address: "10555 Marty St, Overland Park, KS" },
+      { country: "Mexico", flag: "🇲🇽", phone: "+1 816-556-0800", address: "1617 Baltimore Ave, Kansas City, MO" }
+    ]
+  },
+  {
+    id: "mexico-city",
+    city: "Mexico City",
+    country: "Mexico",
+    consulates: [
+      { country: "United States", flag: "🇺🇸", phone: "+52 55 5080 2000", address: "Paseo de la Reforma 305, Col. Cuauhtémoc", emergency: "+52 55 5080 2000" },
+      { country: "Canada", flag: "🇨🇦", phone: "+52 55 5724 7900", address: "Calle Schiller 529, Col. Polanco" },
+      { country: "United Kingdom", flag: "🇬🇧", phone: "+52 55 1670 3200", address: "Rio Lerma 71, Col. Cuauhtémoc" },
+      { country: "Germany", flag: "🇩🇪", phone: "+52 55 5283 2200", address: "Horacio 1506, Col. Los Morales" },
+      { country: "France", flag: "🇫🇷", phone: "+52 55 9171 9700", address: "Campos Elíseos 339, Col. Polanco" },
+      { country: "Spain", flag: "🇪🇸", phone: "+52 55 5242 0031", address: "Galileo 114, Col. Polanco" },
+      { country: "Argentina", flag: "🇦🇷", phone: "+52 55 5520 9430", address: "Av. Pres. Masaryk 29, Col. Polanco" },
+      { country: "Brazil", flag: "🇧🇷", phone: "+52 55 5201 4553", address: "Lope de Armendáriz 130, Col. Lomas Virreyes" },
+      { country: "Japan", flag: "🇯🇵", phone: "+52 55 5211 0028", address: "Paseo de la Reforma 243, Col. Cuauhtémoc" }
+    ]
+  },
+  {
+    id: "guadalajara",
+    city: "Guadalajara",
+    country: "Mexico",
+    consulates: [
+      { country: "United States", flag: "🇺🇸", phone: "+52 33 3111 7800", address: "Manuel Acuña 3410, Col. Monraz", emergency: "+1 844-528-6611" },
+      { country: "Canada", flag: "🇨🇦", phone: "+52 33 1818 2090", address: "World Trade Center, Av. Mariano Otero 1249" },
+      { country: "Germany", flag: "🇩🇪", phone: "+52 33 3616 6218", address: "Av. Américas 999, Col. Providencia" },
+      { country: "Spain", flag: "🇪🇸", phone: "+52 33 3630 0450", address: "Paseo Royal Country 4596, Col. Royal Country" }
+    ]
+  },
+  {
+    id: "monterrey",
+    city: "Monterrey",
+    country: "Mexico",
+    consulates: [
+      { country: "United States", flag: "🇺🇸", phone: "+52 81 8047 3100", address: "Av. Alfonso Reyes 150, Col. Valle Poniente, Santa Catarina", emergency: "+52 55 5080 2000" },
+      { country: "Canada", flag: "🇨🇦", phone: "+52 81 8344 3200", address: "Torre Comercial América, Av. Vasconcelos 335" },
+      { country: "Germany", flag: "🇩🇪", phone: "+52 81 8335 6098", address: "Calzada del Valle 255, Col. Del Valle" },
+      { country: "Japan", flag: "🇯🇵", phone: "+52 81 8478 4700", address: "Av. Lázaro Cárdenas 2400, Col. Residencial San Agustín" }
+    ]
+  },
+  {
+    id: "toronto",
+    city: "Toronto",
+    country: "Canada",
+    consulates: [
+      { country: "United States", flag: "🇺🇸", phone: "+1 416-595-1700", address: "360 University Ave, Toronto, ON" },
+      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 416-593-1290", address: "777 Bay St, Toronto, ON" },
+      { country: "France", flag: "🇫🇷", phone: "+1 416-847-1900", address: "2 Bloor St E, Toronto, ON" },
+      { country: "Germany", flag: "🇩🇪", phone: "+1 416-925-2813", address: "2 Bloor St E, Toronto, ON" },
+      { country: "India", flag: "🇮🇳", phone: "+1 416-960-0751", address: "365 Bloor St E, Toronto, ON" },
+      { country: "Japan", flag: "🇯🇵", phone: "+1 416-363-7038", address: "77 King St W, Toronto, ON" },
+      { country: "Mexico", flag: "🇲🇽", phone: "+1 416-368-2875", address: "11 King St W, Toronto, ON" },
+      { country: "Brazil", flag: "🇧🇷", phone: "+1 416-922-2503", address: "77 Bloor St W, Toronto, ON" },
+      { country: "South Korea", flag: "🇰🇷", phone: "+1 416-920-3809", address: "555 Avenue Rd, Toronto, ON" }
+    ]
+  },
+  {
+    id: "vancouver",
+    city: "Vancouver",
+    country: "Canada",
+    consulates: [
+      { country: "United States", flag: "🇺🇸", phone: "+1 604-685-4311", address: "1075 W Pender St, Vancouver, BC" },
+      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 604-683-4421", address: "1111 Melville St, Vancouver, BC" },
+      { country: "France", flag: "🇫🇷", phone: "+1 604-681-4345", address: "1130 W Pender St, Vancouver, BC" },
+      { country: "Germany", flag: "🇩🇪", phone: "+1 604-684-8377", address: "999 Canada Pl, Vancouver, BC" },
+      { country: "India", flag: "🇮🇳", phone: "+1 604-662-8811", address: "325 Howe St, Vancouver, BC" },
+      { country: "Japan", flag: "🇯🇵", phone: "+1 604-684-5868", address: "900-1177 W Hastings St, Vancouver, BC" },
+      { country: "Mexico", flag: "🇲🇽", phone: "+1 604-684-3547", address: "1177 W Hastings St, Vancouver, BC" },
+      { country: "South Korea", flag: "🇰🇷", phone: "+1 604-681-9581", address: "1090 W Georgia St, Vancouver, BC" },
+      { country: "Philippines", flag: "🇵🇭", phone: "+1 604-685-1619", address: "999 Canada Pl, Vancouver, BC" },
+      { country: "Australia", flag: "🇦🇺", phone: "+1 604-694-6160", address: "1075 W Georgia St, Vancouver, BC" }
+    ]
+  }
+];
+
+const customsData = {
+  visaRequirements: [
+    {
+      id: "esta",
+      title: "ESTA",
+      description: "ESTA: $21, apply 72 hours before (UK, EU, Australia, Japan, 41 countries)"
+    },
+    {
+      id: "b1b2",
+      title: "B-1/B-2 Visa",
+      description: "B-1/B-2 Visa: Required for Brazil, Argentina, Mexico, Colombia, etc."
+    },
+    {
+      id: "fifa-pass",
+      title: "FIFA Pass",
+      description: "FIFA Pass: Expedited visa interviews for official ticket holders"
+    }
+  ],
+  firstPointOfEntry: [
+    "Immigration (Passport Control)",
+    "Collect checked bags",
+    "Walk through Customs",
+    "Re-check bags for connecting flight",
+    "Go through TSA security again"
+  ],
+  additionalInfo: [
+    {
+      id: "customs-declaration",
+      title: "Customs Declaration Form",
+      description: "Complete CBP Declaration Form 6059B on the plane or use the CBP One app. Declare all food, plants, and items over $800 value."
+    },
+    {
+      id: "duty-free",
+      title: "Duty-Free Allowances",
+      description: "Adults can bring: 1L alcohol, 200 cigarettes or 100 cigars (non-Cuban), gifts up to $100. Over limits = pay duty tax."
+    },
+    {
+      id: "cash-declaration",
+      title: "Cash Declaration Required",
+      description: "MUST declare if carrying $10,000+ in cash/monetary instruments. Failure to declare = seizure and potential criminal charges."
+    },
+    {
+      id: "food-restrictions",
+      title: "Food & Agriculture Restrictions",
+      description: "Many foods PROHIBITED: fresh fruits, vegetables, meats, dairy from most countries. Fines up to $10,000. Declare everything or dispose before customs."
+    },
+    {
+      id: "global-entry",
+      title: "Global Entry / TSA PreCheck",
+      description: "If you have Global Entry, use automated kiosks for faster processing. TSA PreCheck speeds up domestic security lines."
+    }
+  ]
+};
+
+export default function CriticalInfo() {
+  const [activeCategory, setActiveCategory] = useState<InfoCategory>("safety");
+  const [activeTravelCategory, setActiveTravelCategory] = useState<TravelCategory>("customs");
+  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
+  const [viewMode, setViewMode] = useState<"info" | "travel" | "medical">("info");
+  const [selectedCity, setSelectedCity] = useState<string | null>(null);
+  const [expandedSafeArea, setExpandedSafeArea] = useState<string | null>(null);
+  const [selectedMedicalCity, setSelectedMedicalCity] = useState<CityMedicalData | null>(null);
+  const [facilityFilter, setFacilityFilter] = useState<"all" | "er" | "urgent">("all");
+
+  const categories: { id: InfoCategory; label: string; icon: any; available: boolean }[] = [
+    { id: "safety", label: "Safety", icon: Shield, available: true },
+    { id: "emergency", label: "Emergency", icon: Phone, available: true },
+    { id: "financial", label: "Financial", icon: DollarSign, available: true },
+    { id: "legal", label: "Legal", icon: Scale, available: true },
+    { id: "daily", label: "Daily Life", icon: Sun, available: true },
+  ];
+
+  const travelCategories: { id: TravelCategory; label: string; icon: any; available: boolean }[] = [
+    { id: "customs", label: "Customs", icon: Stamp, available: true },
+    { id: "travel-safety", label: "Safety", icon: ShieldCheck, available: true },
+    { id: "prohibited", label: "Prohibited", icon: Ban, available: true },
+    { id: "tvguide", label: "TV Guide", icon: Tv, available: true },
+    { id: "transport", label: "Transport", icon: Plane, available: true },
+    { id: "consulates", label: "Consulates", icon: Building2, available: true },
+  ];
+
+  const toggleCard = (id: string) => {
+    const newExpanded = new Set(expandedCards);
+    if (newExpanded.has(id)) {
+      newExpanded.delete(id);
+    } else {
+      newExpanded.add(id);
+    }
+    setExpandedCards(newExpanded);
+  };
+
+  return (
+    <Layout>
+      <div className="pt-12 px-6 pb-8">
+        <div className="flex items-center gap-3 mb-6">
+          <AlertTriangle className="w-8 h-8 text-red-400" />
+          <h1 className="text-3xl font-display font-bold text-white">Critical Info</h1>
+        </div>
+
+        <p className="text-muted-foreground mb-4">
+          Essential safety and travel information for FIFA 2026 World Cup visitors.
+        </p>
+
+        <div className="flex gap-2 mb-4">
+          <button
+            onClick={() => setViewMode("info")}
+            className={`flex-1 py-2 rounded-lg font-medium text-sm transition-colors ${
+              viewMode === "info" 
+                ? "bg-primary text-primary-foreground" 
+                : "bg-card text-muted-foreground hover:text-white"
+            }`}
+            data-testid="tab-info"
+          >
+            General Info
+          </button>
+          <button
+            onClick={() => setViewMode("travel")}
+            className={`flex-1 py-2 rounded-lg font-medium text-sm transition-colors ${
+              viewMode === "travel" 
+                ? "bg-primary text-primary-foreground" 
+                : "bg-card text-muted-foreground hover:text-white"
+            }`}
+            data-testid="tab-travel"
+          >
+            Travel & Entry
+          </button>
+          <button
+            onClick={() => setViewMode("medical")}
+            className={`flex-1 py-2 rounded-lg font-medium text-sm transition-colors ${
+              viewMode === "medical" 
+                ? "bg-red-500 text-white" 
+                : "bg-card text-muted-foreground hover:text-white"
+            }`}
+            data-testid="tab-medical"
+          >
+            Medical
+          </button>
+        </div>
+
+        {viewMode === "info" && (
+          <>
+            <div className="flex overflow-x-auto gap-2 mb-6 pb-2 -mx-6 px-6 scrollbar-hide">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => cat.available && setActiveCategory(cat.id)}
+                  disabled={!cat.available}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-colors ${
+                    activeCategory === cat.id
+                      ? "bg-red-500 text-white"
+                      : cat.available 
+                        ? "bg-card text-muted-foreground hover:text-white"
+                        : "bg-card/50 text-muted-foreground/50 cursor-not-allowed"
+                  }`}
+                  data-testid={`category-${cat.id}`}
+                >
+                  <cat.icon className="w-4 h-4" />
+                  {cat.label}
+                  {!cat.available && <span className="text-[10px] ml-1">(Soon)</span>}
+                </button>
+              ))}
+            </div>
+
+            {activeCategory === "safety" && (
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 mb-4">
+                  <AlertTriangle className="w-5 h-5 text-amber-400" />
+                  <h2 className="text-xl font-display font-bold text-white">Critical Safety Information</h2>
+                </div>
+
+                {safetyData.map((card) => (
+                  <div 
+                    key={card.id}
+                    className="bg-gradient-to-br from-amber-900/20 to-amber-950/30 border border-amber-500/20 rounded-2xl overflow-hidden"
+                    data-testid={`safety-card-${card.id}`}
+                  >
+                    <button
+                      onClick={() => toggleCard(card.id)}
+                      className="w-full p-4 text-left flex items-start justify-between"
+                      data-testid={`toggle-${card.id}`}
+                    >
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <div className="w-5 h-5 rounded-full border-2 border-amber-400/50 flex items-center justify-center">
+                            <div className="w-2 h-2 rounded-full bg-amber-400" />
+                          </div>
+                          <h3 className="font-bold text-white">{card.title}</h3>
+                        </div>
+                        <p className="text-sm text-muted-foreground ml-7">{card.description}</p>
+                      </div>
+                      {expandedCards.has(card.id) ? (
+                        <ChevronUp className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-1" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-1" />
+                      )}
+                    </button>
+
+                    {expandedCards.has(card.id) && (
+                      <div className="px-4 pb-4">
+                        <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 ml-7">
+                          <div className="text-xs font-bold text-amber-400 uppercase tracking-wide mb-2">
+                            Prevention Tips
+                          </div>
+                          <p className="text-sm text-amber-100/80">{card.preventionTips}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {activeCategory === "emergency" && (
+              <div className="space-y-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <Phone className="w-5 h-5 text-blue-400" />
+                  <h2 className="text-xl font-display font-bold text-white">Emergency Information</h2>
+                </div>
+                <p className="text-muted-foreground text-sm mb-4">Important information for your safety and convenience</p>
+                
+                {emergencyData.map((section) => (
+                  <div key={section.id} className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <section.icon className={`w-4 h-4 ${section.iconColor}`} />
+                      <h3 className="text-sm font-bold text-white uppercase tracking-wide">{section.title}</h3>
+                    </div>
+                    <div className="space-y-3">
+                      {section.items.map((item) => (
+                        <div 
+                          key={item.id}
+                          className="bg-card border border-white/5 rounded-xl p-4"
+                          data-testid={`emergency-card-${item.id}`}
+                        >
+                          <h4 className="font-bold text-white mb-1">{item.title}</h4>
+                          <p className="text-sm text-muted-foreground">{item.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {activeCategory === "financial" && (
+              <div className="space-y-6">
+                {financialData.map((section) => (
+                  <div key={section.id} className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <section.icon className={`w-4 h-4 ${section.iconColor}`} />
+                      <h3 className="text-sm font-bold text-white uppercase tracking-wide">{section.title}</h3>
+                    </div>
+                    <div className="space-y-3">
+                      {section.items.map((item) => (
+                        <div 
+                          key={item.id}
+                          className="bg-card border border-white/5 rounded-xl p-4"
+                          data-testid={`financial-card-${item.id}`}
+                        >
+                          <h4 className="font-bold text-white mb-1">{item.title}</h4>
+                          <p className="text-sm text-muted-foreground">{item.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {activeCategory === "legal" && (
+              <div className="space-y-6">
+                {legalData.map((section) => (
+                  <div key={section.id} className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <section.icon className={`w-4 h-4 ${section.iconColor}`} />
+                      <h3 className="text-sm font-bold text-white uppercase tracking-wide">{section.title}</h3>
+                    </div>
+                    <div className="space-y-3">
+                      {section.items.map((item) => (
+                        <div 
+                          key={item.id}
+                          className="bg-card border border-white/5 rounded-xl p-4"
+                          data-testid={`legal-card-${item.id}`}
+                        >
+                          <h4 className="font-bold text-white mb-1">{item.title}</h4>
+                          <p className="text-sm text-muted-foreground">{item.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {activeCategory === "daily" && (
+              <div className="space-y-6">
+                {dailyLifeData.map((section) => (
+                  <div key={section.id} className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <section.icon className={`w-4 h-4 ${section.iconColor}`} />
+                      <h3 className="text-sm font-bold text-white uppercase tracking-wide">{section.title}</h3>
+                    </div>
+                    <div className="space-y-3">
+                      {section.items.map((item) => (
+                        <div 
+                          key={item.id}
+                          className="bg-card border border-white/5 rounded-xl p-4"
+                          data-testid={`daily-card-${item.id}`}
+                        >
+                          <h4 className="font-bold text-white mb-1">{item.title}</h4>
+                          <p className="text-sm text-muted-foreground">{item.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+
+        {viewMode === "travel" && (
+          <>
+            <div className="flex overflow-x-auto gap-2 mb-6 pb-2 -mx-6 px-6 scrollbar-hide">
+              {travelCategories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => cat.available && setActiveTravelCategory(cat.id)}
+                  disabled={!cat.available}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-colors border ${
+                    activeTravelCategory === cat.id
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : cat.available 
+                        ? "bg-card text-muted-foreground hover:text-white border-white/10"
+                        : "bg-card/50 text-muted-foreground/50 cursor-not-allowed border-white/5"
+                  }`}
+                  data-testid={`travel-category-${cat.id}`}
+                >
+                  <cat.icon className="w-4 h-4" />
+                  {cat.label}
+                  {!cat.available && <span className="text-[10px] ml-1">(Soon)</span>}
+                </button>
+              ))}
+            </div>
+
+            {activeTravelCategory === "customs" && (
+              <div className="space-y-6">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Stamp className="w-5 h-5 text-primary" />
+                    <h2 className="text-xl font-display font-bold text-white">Customs & Immigration</h2>
+                  </div>
+                  <p className="text-muted-foreground text-sm">Entry requirements and procedures</p>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="font-bold text-white">Visa Requirements</h3>
+                  {customsData.visaRequirements.map((item) => (
+                    <div key={item.id} className="bg-card border border-white/5 rounded-xl p-4" data-testid={`customs-${item.id}`}>
+                      <p className="text-sm text-muted-foreground">
+                        <span className="text-white font-medium">{item.title}</span>: {item.description.split(': ')[1]}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="font-bold text-red-400">First Point of Entry Rule (Critical)</h3>
+                  <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+                    <p className="text-white font-medium mb-3">
+                      You MUST clear Immigration and Customs at your FIRST US airport, even if connecting to another city.
+                    </p>
+                    <ol className="space-y-2 text-sm text-muted-foreground">
+                      {customsData.firstPointOfEntry.map((step, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <span className="text-primary font-medium">{i + 1}.</span>
+                          {step}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-yellow-500/10 to-yellow-600/5 border border-yellow-500/20 rounded-xl p-4">
+                  <div className="flex items-start gap-2">
+                    <span className="text-yellow-400 text-lg">💡</span>
+                    <div>
+                      <p className="text-white font-medium text-sm">Tip: Download Mobile Passport Control (MPC) app for express lanes</p>
+                      <a 
+                        href="https://www.cbp.gov/travel/us-citizens/mobile-passport-control" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-3 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
+                        data-testid="link-mpc-app"
+                      >
+                        <Plane className="w-4 h-4" />
+                        Download Mobile Passport Control App
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="font-bold text-white">Additional Customs Information</h3>
+                  {customsData.additionalInfo.map((item) => (
+                    <div key={item.id} className="bg-card border border-white/5 rounded-xl p-4" data-testid={`customs-${item.id}`}>
+                      <h4 className="font-bold text-white mb-1">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {activeTravelCategory === "travel-safety" && (
+              <div className="space-y-6">
+                {!selectedCity ? (
+                  <>
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <ShieldCheck className="w-5 h-5 text-primary" />
+                        <h2 className="text-xl font-display font-bold text-white">City Safety Guide</h2>
+                      </div>
+                      <p className="text-muted-foreground text-sm">Select a host city to view safety information</p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h3 className="font-bold text-white flex items-center gap-2">
+                        <span className="text-lg">🇺🇸</span> United States
+                      </h3>
+                      <div className="grid grid-cols-2 gap-3">
+                        {citySafetyData.filter(c => c.country === "USA").map((city) => (
+                          <button
+                            key={city.id}
+                            onClick={() => setSelectedCity(city.id)}
+                            className="bg-card border border-white/10 rounded-xl p-4 text-left hover:border-primary/50 transition-colors"
+                            data-testid={`city-safety-${city.id}`}
+                          >
+                            <div className="flex items-center gap-2 mb-1">
+                              <MapPin className="w-4 h-4 text-primary" />
+                              <span className="font-medium text-white text-sm">{city.city}</span>
+                            </div>
+                            {city.heatWarning && (
+                              <div className={`text-[10px] mt-1 px-2 py-0.5 rounded-full inline-block ${
+                                city.heatWarning.startsWith("EXTREME") ? "bg-red-500/20 text-red-400" :
+                                city.heatWarning.startsWith("SEVERE") ? "bg-orange-500/20 text-orange-400" :
+                                city.heatWarning.startsWith("HIGH") ? "bg-yellow-500/20 text-yellow-400" :
+                                city.heatWarning.startsWith("MODERATE") ? "bg-blue-500/20 text-blue-400" :
+                                "bg-green-500/20 text-green-400"
+                              }`}>
+                                {city.heatWarning.split(":")[0]}
+                              </div>
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h3 className="font-bold text-white flex items-center gap-2">
+                        <span className="text-lg">🇲🇽</span> Mexico
+                      </h3>
+                      <div className="grid grid-cols-2 gap-3">
+                        {citySafetyData.filter(c => c.country === "Mexico").map((city) => (
+                          <button
+                            key={city.id}
+                            onClick={() => setSelectedCity(city.id)}
+                            className="bg-card border border-white/10 rounded-xl p-4 text-left hover:border-primary/50 transition-colors"
+                            data-testid={`city-safety-${city.id}`}
+                          >
+                            <div className="flex items-center gap-2 mb-1">
+                              <MapPin className="w-4 h-4 text-primary" />
+                              <span className="font-medium text-white text-sm">{city.city}</span>
+                            </div>
+                            {city.heatWarning && (
+                              <div className={`text-[10px] mt-1 px-2 py-0.5 rounded-full inline-block ${
+                                city.heatWarning.startsWith("EXTREME") ? "bg-red-500/20 text-red-400" :
+                                city.heatWarning.startsWith("MODERATE") ? "bg-blue-500/20 text-blue-400" :
+                                "bg-yellow-500/20 text-yellow-400"
+                              }`}>
+                                {city.heatWarning.split(":")[0]}
+                              </div>
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h3 className="font-bold text-white flex items-center gap-2">
+                        <span className="text-lg">🇨🇦</span> Canada
+                      </h3>
+                      <div className="grid grid-cols-2 gap-3">
+                        {citySafetyData.filter(c => c.country === "Canada").map((city) => (
+                          <button
+                            key={city.id}
+                            onClick={() => setSelectedCity(city.id)}
+                            className="bg-card border border-white/10 rounded-xl p-4 text-left hover:border-primary/50 transition-colors"
+                            data-testid={`city-safety-${city.id}`}
+                          >
+                            <div className="flex items-center gap-2 mb-1">
+                              <MapPin className="w-4 h-4 text-primary" />
+                              <span className="font-medium text-white text-sm">{city.city}</span>
+                            </div>
+                            {city.heatWarning && (
+                              <div className={`text-[10px] mt-1 px-2 py-0.5 rounded-full inline-block ${
+                                city.heatWarning.startsWith("LOW") ? "bg-green-500/20 text-green-400" :
+                                "bg-blue-500/20 text-blue-400"
+                              }`}>
+                                {city.heatWarning.split(":")[0]}
+                              </div>
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {(() => {
+                      const city = citySafetyData.find(c => c.id === selectedCity);
+                      if (!city) return null;
+                      return (
+                        <div className="space-y-5">
+                          <button
+                            onClick={() => setSelectedCity(null)}
+                            className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
+                            data-testid="button-back-cities"
+                          >
+                            <ArrowLeft className="w-4 h-4" />
+                            <span className="text-sm font-medium">Back to Cities</span>
+                          </button>
+
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                              <MapPin className="w-5 h-5 text-primary" />
+                            </div>
+                            <div>
+                              <h2 className="text-xl font-display font-bold text-white">{city.city}</h2>
+                              <p className="text-sm text-muted-foreground">{city.country}</p>
+                            </div>
+                          </div>
+
+                          {city.heatWarning && (
+                            <div className={`rounded-xl p-4 border ${
+                              city.heatWarning.startsWith("EXTREME") ? "bg-red-500/10 border-red-500/30" :
+                              city.heatWarning.startsWith("SEVERE") ? "bg-orange-500/10 border-orange-500/30" :
+                              city.heatWarning.startsWith("HIGH") ? "bg-yellow-500/10 border-yellow-500/30" :
+                              city.heatWarning.startsWith("MODERATE") ? "bg-blue-500/10 border-blue-500/30" :
+                              "bg-green-500/10 border-green-500/30"
+                            }`}>
+                              <div className="flex items-start gap-3">
+                                <Thermometer className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
+                                  city.heatWarning.startsWith("EXTREME") ? "text-red-400" :
+                                  city.heatWarning.startsWith("SEVERE") ? "text-orange-400" :
+                                  city.heatWarning.startsWith("HIGH") ? "text-yellow-400" :
+                                  city.heatWarning.startsWith("MODERATE") ? "text-blue-400" :
+                                  "text-green-400"
+                                }`} />
+                                <div>
+                                  <div className={`text-sm font-bold mb-1 ${
+                                    city.heatWarning.startsWith("EXTREME") ? "text-red-400" :
+                                    city.heatWarning.startsWith("SEVERE") ? "text-orange-400" :
+                                    city.heatWarning.startsWith("HIGH") ? "text-yellow-400" :
+                                    city.heatWarning.startsWith("MODERATE") ? "text-blue-400" :
+                                    "text-green-400"
+                                  }`}>
+                                    Heat Warning: {city.heatWarning.split(":")[0]}
+                                  </div>
+                                  <p className="text-sm text-muted-foreground">{city.heatWarning.split(": ").slice(1).join(": ")}</p>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
+                            <div className="flex items-start gap-3">
+                              <TicketX className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                              <div>
+                                <div className="text-sm font-bold text-amber-400 mb-1">Ticket Scams</div>
+                                <p className="text-sm text-muted-foreground">{city.ticketScams}</p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-2">
+                              <AlertCircle className="w-4 h-4 text-red-400" />
+                              <h3 className="font-bold text-white text-sm">Local Concerns</h3>
+                            </div>
+                            <div className="bg-card border border-white/5 rounded-xl p-4">
+                              <ul className="space-y-2">
+                                {city.localConcerns.map((concern, i) => (
+                                  <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                    <span className="text-red-400 mt-0.5">•</span>
+                                    {concern}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-2">
+                              <CheckCircle className="w-4 h-4 text-green-400" />
+                              <h3 className="font-bold text-white text-sm">Safe Areas</h3>
+                              <span className="text-[10px] text-muted-foreground">(tap for details)</span>
+                            </div>
+                            <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4">
+                              <div className="space-y-2">
+                                {city.safeAreas.map((area, i) => {
+                                  const areaKey = `${city.id}-${area.name}`;
+                                  const isExpanded = expandedSafeArea === areaKey;
+                                  return (
+                                    <div key={i}>
+                                      <button
+                                        onClick={() => setExpandedSafeArea(isExpanded ? null : areaKey)}
+                                        className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
+                                          isExpanded 
+                                            ? "bg-green-500/30 text-green-300" 
+                                            : "bg-green-500/20 text-green-400 hover:bg-green-500/25"
+                                        }`}
+                                        data-testid={`safe-area-${city.id}-${i}`}
+                                      >
+                                        <div className="flex items-center justify-between">
+                                          <span className="font-medium">{area.name}</span>
+                                          {isExpanded ? (
+                                            <ChevronUp className="w-4 h-4 flex-shrink-0" />
+                                          ) : (
+                                            <ChevronDown className="w-4 h-4 flex-shrink-0" />
+                                          )}
+                                        </div>
+                                      </button>
+                                      {isExpanded && (
+                                        <div className="mt-2 px-3 py-2 bg-green-500/10 rounded-lg border border-green-500/20">
+                                          <p className="text-sm text-green-100/80">{area.description}</p>
+                                        </div>
+                                      )}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-2">
+                              <XCircle className="w-4 h-4 text-red-400" />
+                              <h3 className="font-bold text-white text-sm">Areas to Avoid</h3>
+                            </div>
+                            <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+                              <div className="flex flex-wrap gap-2">
+                                {city.avoidAreas.map((area, i) => (
+                                  <span key={i} className="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs">
+                                    {area}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-2">
+                              <Lightbulb className="w-4 h-4 text-yellow-400" />
+                              <h3 className="font-bold text-white text-sm">Tips</h3>
+                            </div>
+                            <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4">
+                              <ul className="space-y-2">
+                                {city.tips.map((tip, i) => (
+                                  <li key={i} className="flex items-start gap-2 text-sm text-yellow-100/80">
+                                    <span className="text-yellow-400 mt-0.5">💡</span>
+                                    {tip}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })()}
+                  </>
+                )}
+              </div>
+            )}
+
+            {activeTravelCategory === "prohibited" && (
+              <div className="space-y-6">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Ban className="w-5 h-5 text-red-400" />
+                    <h2 className="text-xl font-display font-bold text-white">Prohibited Items</h2>
+                  </div>
+                  <p className="text-muted-foreground text-sm">Do not bring these items when entering the United States or stadiums</p>
+                </div>
+
+                <div className="flex gap-2 mb-4">
+                  <button
+                    onClick={() => setExpandedCards(new Set(["customs"]))}
+                    className={`flex-1 py-2 px-3 rounded-lg font-medium text-sm transition-colors ${
+                      expandedCards.has("customs") || (!expandedCards.has("stadium") && !expandedCards.has("customs"))
+                        ? "bg-red-500 text-white" 
+                        : "bg-card text-muted-foreground hover:text-white border border-white/10"
+                    }`}
+                    data-testid="tab-prohibited-customs"
+                  >
+                    Entry to USA
+                  </button>
+                  <button
+                    onClick={() => setExpandedCards(new Set(["stadium"]))}
+                    className={`flex-1 py-2 px-3 rounded-lg font-medium text-sm transition-colors ${
+                      expandedCards.has("stadium")
+                        ? "bg-red-500 text-white" 
+                        : "bg-card text-muted-foreground hover:text-white border border-white/10"
+                    }`}
+                    data-testid="tab-prohibited-stadium"
+                  >
+                    Stadium Entry
+                  </button>
+                </div>
+
+                {(expandedCards.has("customs") || (!expandedCards.has("stadium") && !expandedCards.has("customs"))) && (
+                  <div className="space-y-6">
+                    {prohibitedData.customs.map((category) => (
+                      <div key={category.id} className="space-y-3">
+                        <div className="flex items-center gap-2">
+                          <span className="text-lg">{category.icon}</span>
+                          <h3 className="text-sm font-bold text-white uppercase tracking-wide">{category.title}</h3>
+                        </div>
+                        <div className="space-y-3">
+                          {category.items.map((item) => (
+                            <div 
+                              key={item.id}
+                              className="bg-card border border-white/5 rounded-xl overflow-hidden"
+                              data-testid={`prohibited-customs-${item.id}`}
+                            >
+                              <div className="p-4">
+                                <div className="flex items-start justify-between gap-3 mb-2">
+                                  <h4 className="font-bold text-white">{item.name}</h4>
+                                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${
+                                    item.severity === "critical" ? "bg-red-500 text-white" :
+                                    item.severity === "high" ? "bg-orange-500 text-white" :
+                                    "bg-yellow-500 text-black"
+                                  }`}>
+                                    {item.severity}
+                                  </span>
+                                </div>
+                                <p className="text-sm text-muted-foreground mb-3">{item.description}</p>
+                                <div className="bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">
+                                  <div className="flex items-center gap-2">
+                                    <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
+                                    <span className="text-sm text-red-400">Penalty: {item.penalty}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {expandedCards.has("stadium") && (
+                  <div className="space-y-6">
+                    <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 mb-4">
+                      <div className="flex items-start gap-2">
+                        <span className="text-lg">🎒</span>
+                        <div>
+                          <p className="text-white font-medium text-sm">CLEAR BAG POLICY</p>
+                          <p className="text-sm text-amber-100/80 mt-1">Most stadiums only allow clear plastic bags (max 12" x 6" x 12") or small clutches. Arrive early and check venue-specific rules.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {prohibitedData.stadium.map((category) => (
+                      <div key={category.id} className="space-y-3">
+                        <div className="flex items-center gap-2">
+                          <span className="text-lg">{category.icon}</span>
+                          <h3 className="text-sm font-bold text-white uppercase tracking-wide">{category.title}</h3>
+                        </div>
+                        <div className="space-y-3">
+                          {category.items.map((item) => (
+                            <div 
+                              key={item.id}
+                              className="bg-card border border-white/5 rounded-xl overflow-hidden"
+                              data-testid={`prohibited-stadium-${item.id}`}
+                            >
+                              <div className="p-4">
+                                <div className="flex items-start justify-between gap-3 mb-2">
+                                  <h4 className="font-bold text-white">{item.name}</h4>
+                                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${
+                                    item.severity === "critical" ? "bg-red-500 text-white" :
+                                    item.severity === "high" ? "bg-orange-500 text-white" :
+                                    "bg-yellow-500 text-black"
+                                  }`}>
+                                    {item.severity}
+                                  </span>
+                                </div>
+                                <p className="text-sm text-muted-foreground mb-3">{item.description}</p>
+                                <div className="bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">
+                                  <div className="flex items-center gap-2">
+                                    <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
+                                    <span className="text-sm text-red-400">Penalty: {item.penalty}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+
+                    <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4">
+                      <div className="flex items-start gap-2">
+                        <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-green-400 font-medium text-sm mb-2">WHAT YOU CAN BRING</p>
+                          <ul className="text-sm text-green-100/80 space-y-1">
+                            <li>• Clear bag meeting size requirements</li>
+                            <li>• Tickets (physical/digital) + valid ID/passport</li>
+                            <li>• Mobile phone and small charger</li>
+                            <li>• Small flags without poles</li>
+                            <li>• Sunscreen and hats</li>
+                            <li>• Empty reusable water bottle (some venues)</li>
+                            <li>• Factory-sealed medications</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {activeTravelCategory === "tvguide" && (
+              <div className="space-y-6">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Tv className="w-5 h-5 text-primary" />
+                    <h2 className="text-xl font-display font-bold text-white">TV Guide</h2>
+                  </div>
+                  <p className="text-muted-foreground text-sm">How to watch FIFA World Cup 2026 - All 104 matches, June 11 - July 19</p>
+                </div>
+
+                <div className="flex gap-2 mb-4">
+                  <button
+                    onClick={() => setExpandedCards(new Set(["tv-english"]))}
+                    className={`flex-1 py-2 px-3 rounded-lg font-medium text-sm transition-colors ${
+                      expandedCards.has("tv-english") || (!expandedCards.has("tv-spanish") && !expandedCards.has("tv-international") && !expandedCards.has("tv-english"))
+                        ? "bg-primary text-black" 
+                        : "bg-card text-muted-foreground hover:text-white border border-white/10"
+                    }`}
+                    data-testid="tab-tv-english"
+                  >
+                    English
+                  </button>
+                  <button
+                    onClick={() => setExpandedCards(new Set(["tv-spanish"]))}
+                    className={`flex-1 py-2 px-3 rounded-lg font-medium text-sm transition-colors ${
+                      expandedCards.has("tv-spanish")
+                        ? "bg-primary text-black" 
+                        : "bg-card text-muted-foreground hover:text-white border border-white/10"
+                    }`}
+                    data-testid="tab-tv-spanish"
+                  >
+                    Spanish
+                  </button>
+                  <button
+                    onClick={() => setExpandedCards(new Set(["tv-international"]))}
+                    className={`flex-1 py-2 px-3 rounded-lg font-medium text-sm transition-colors ${
+                      expandedCards.has("tv-international")
+                        ? "bg-primary text-black" 
+                        : "bg-card text-muted-foreground hover:text-white border border-white/10"
+                    }`}
+                    data-testid="tab-tv-international"
+                  >
+                    International
+                  </button>
+                </div>
+
+                {(expandedCards.has("tv-english") || (!expandedCards.has("tv-spanish") && !expandedCards.has("tv-international") && !expandedCards.has("tv-english"))) && (
+                  <div className="space-y-6">
+                    {tvGuideData.english.map((region) => (
+                      <div key={region.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`tv-region-${region.id}`}>
+                        <div className="bg-gradient-to-r from-primary/20 to-transparent p-4 border-b border-white/5">
+                          <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                            <span className="text-2xl">{region.flag}</span>
+                            {region.region}
+                          </h3>
+                        </div>
+                        <div className="p-4 space-y-4">
+                          {region.broadcasters.map((broadcaster) => (
+                            <div key={broadcaster.id} className="border border-white/10 rounded-lg p-4" data-testid={`broadcaster-${broadcaster.id}`}>
+                              <div className="flex items-start justify-between mb-2">
+                                <h4 className="font-bold text-white">{broadcaster.name}</h4>
+                                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                                  broadcaster.type === "tv" ? "bg-blue-500/20 text-blue-400" :
+                                  broadcaster.type === "streaming" ? "bg-purple-500/20 text-purple-400" :
+                                  "bg-orange-500/20 text-orange-400"
+                                }`}>
+                                  {broadcaster.type === "tv" ? "📺 TV" : broadcaster.type === "streaming" ? "📱 Stream" : "📻 Radio"}
+                                </span>
+                              </div>
+                              <div className="flex flex-wrap gap-1 mb-2">
+                                {broadcaster.channels.map((channel, i) => (
+                                  <span key={i} className="bg-white/5 text-white/80 px-2 py-0.5 rounded text-xs">{channel}</span>
+                                ))}
+                              </div>
+                              <p className="text-sm text-muted-foreground mb-2">{broadcaster.notes}</p>
+                              <div className="flex items-center gap-2">
+                                <DollarSign className="w-3 h-3 text-primary" />
+                                <span className="text-xs text-primary">{broadcaster.cost}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {expandedCards.has("tv-spanish") && (
+                  <div className="space-y-6">
+                    {tvGuideData.spanish.map((region) => (
+                      <div key={region.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`tv-region-${region.id}`}>
+                        <div className="bg-gradient-to-r from-orange-500/20 to-transparent p-4 border-b border-white/5">
+                          <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                            <span className="text-2xl">{region.flag}</span>
+                            {region.region}
+                          </h3>
+                        </div>
+                        <div className="p-4 space-y-4">
+                          {region.broadcasters.map((broadcaster) => (
+                            <div key={broadcaster.id} className="border border-white/10 rounded-lg p-4" data-testid={`broadcaster-${broadcaster.id}`}>
+                              <div className="flex items-start justify-between mb-2">
+                                <h4 className="font-bold text-white">{broadcaster.name}</h4>
+                                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                                  broadcaster.type === "tv" ? "bg-blue-500/20 text-blue-400" :
+                                  broadcaster.type === "streaming" ? "bg-purple-500/20 text-purple-400" :
+                                  "bg-orange-500/20 text-orange-400"
+                                }`}>
+                                  {broadcaster.type === "tv" ? "📺 TV" : broadcaster.type === "streaming" ? "📱 Stream" : "📻 Radio"}
+                                </span>
+                              </div>
+                              <div className="flex flex-wrap gap-1 mb-2">
+                                {broadcaster.channels.map((channel, i) => (
+                                  <span key={i} className="bg-white/5 text-white/80 px-2 py-0.5 rounded text-xs">{channel}</span>
+                                ))}
+                              </div>
+                              <p className="text-sm text-muted-foreground mb-2">{broadcaster.notes}</p>
+                              <div className="flex items-center gap-2">
+                                <DollarSign className="w-3 h-3 text-orange-400" />
+                                <span className="text-xs text-orange-400">{broadcaster.cost}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {expandedCards.has("tv-international") && (
+                  <div className="space-y-6">
+                    {tvGuideData.international.map((region) => (
+                      <div key={region.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`tv-region-${region.id}`}>
+                        <div className="bg-gradient-to-r from-purple-500/20 to-transparent p-4 border-b border-white/5">
+                          <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                            <span className="text-2xl">{region.flag}</span>
+                            {region.region}
+                          </h3>
+                        </div>
+                        <div className="p-4 space-y-4">
+                          {region.broadcasters.map((broadcaster) => (
+                            <div key={broadcaster.id} className="border border-white/10 rounded-lg p-4" data-testid={`broadcaster-${broadcaster.id}`}>
+                              <div className="flex items-start justify-between mb-2">
+                                <h4 className="font-bold text-white">{broadcaster.name}</h4>
+                                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                                  broadcaster.type === "tv" ? "bg-blue-500/20 text-blue-400" :
+                                  broadcaster.type === "streaming" ? "bg-purple-500/20 text-purple-400" :
+                                  "bg-orange-500/20 text-orange-400"
+                                }`}>
+                                  {broadcaster.type === "tv" ? "📺 TV" : broadcaster.type === "streaming" ? "📱 Stream" : "📻 Radio"}
+                                </span>
+                              </div>
+                              <div className="flex flex-wrap gap-1 mb-2">
+                                {broadcaster.channels.map((channel, i) => (
+                                  <span key={i} className="bg-white/5 text-white/80 px-2 py-0.5 rounded text-xs">{channel}</span>
+                                ))}
+                              </div>
+                              <p className="text-sm text-muted-foreground mb-2">{broadcaster.notes}</p>
+                              <div className="flex items-center gap-2">
+                                <DollarSign className="w-3 h-3 text-purple-400" />
+                                <span className="text-xs text-purple-400">{broadcaster.cost}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
+                  <div className="flex items-start gap-2">
+                    <Lightbulb className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-amber-400 font-medium text-sm mb-2">STREAMING TIPS</p>
+                      <ul className="text-sm text-amber-100/80 space-y-1">
+                        {tvGuideData.streamingTips.map((tip, i) => (
+                          <li key={i}>• {tip}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTravelCategory === "transport" && (
+              <div className="space-y-6">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Plane className="w-5 h-5 text-primary" />
+                    <h2 className="text-xl font-display font-bold text-white">Private Transport</h2>
+                  </div>
+                  <p className="text-muted-foreground text-sm">Private jets, aircraft, and yacht information for World Cup host cities</p>
+                </div>
+
+                <div className="flex gap-2 mb-4">
+                  <button
+                    onClick={() => setExpandedCards(new Set(["transport-jets"]))}
+                    className={`flex-1 py-2 px-3 rounded-lg font-medium text-sm transition-colors ${
+                      expandedCards.has("transport-jets") || (!expandedCards.has("transport-yachts") && !expandedCards.has("transport-customs") && !expandedCards.has("transport-jets"))
+                        ? "bg-primary text-black" 
+                        : "bg-card text-muted-foreground hover:text-white border border-white/10"
+                    }`}
+                    data-testid="tab-transport-jets"
+                  >
+                    Private Jets
+                  </button>
+                  <button
+                    onClick={() => setExpandedCards(new Set(["transport-yachts"]))}
+                    className={`flex-1 py-2 px-3 rounded-lg font-medium text-sm transition-colors ${
+                      expandedCards.has("transport-yachts")
+                        ? "bg-primary text-black" 
+                        : "bg-card text-muted-foreground hover:text-white border border-white/10"
+                    }`}
+                    data-testid="tab-transport-yachts"
+                  >
+                    Yachts
+                  </button>
+                  <button
+                    onClick={() => setExpandedCards(new Set(["transport-customs"]))}
+                    className={`flex-1 py-2 px-3 rounded-lg font-medium text-sm transition-colors ${
+                      expandedCards.has("transport-customs")
+                        ? "bg-primary text-black" 
+                        : "bg-card text-muted-foreground hover:text-white border border-white/10"
+                    }`}
+                    data-testid="tab-transport-customs"
+                  >
+                    Clearance
+                  </button>
+                </div>
+
+                {(expandedCards.has("transport-jets") || (!expandedCards.has("transport-yachts") && !expandedCards.has("transport-customs") && !expandedCards.has("transport-jets"))) && (
+                  <div className="space-y-6">
+                    <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 mb-4">
+                      <div className="flex items-start gap-2">
+                        <Plane className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-blue-400 font-medium text-sm mb-1">FBO = Fixed Base Operator</p>
+                          <p className="text-xs text-blue-100/80">Private terminals providing fuel, hangars, lounges, customs, and concierge services for private aircraft.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h3 className="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2">
+                        <span>🇺🇸</span> USA Host Cities
+                      </h3>
+                      {privateTransportData.usaCities.map((city) => (
+                        <div key={city.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`airport-city-${city.id}`}>
+                          <button
+                            onClick={() => {
+                              const key = `airport-${city.id}`;
+                              const newExpanded = new Set(expandedCards);
+                              newExpanded.add("transport-jets");
+                              if (newExpanded.has(key)) {
+                                newExpanded.delete(key);
+                              } else {
+                                newExpanded.add(key);
+                              }
+                              setExpandedCards(newExpanded);
+                            }}
+                            className="w-full p-4 flex items-center justify-between"
+                          >
+                            <div className="flex items-center gap-2">
+                              <span className="text-lg">{city.flag}</span>
+                              <span className="font-bold text-white">{city.city}</span>
+                              <span className="text-xs text-muted-foreground">({city.airports.length} airports)</span>
+                            </div>
+                            {expandedCards.has(`airport-${city.id}`) ? (
+                              <ChevronUp className="w-4 h-4 text-muted-foreground" />
+                            ) : (
+                              <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                            )}
+                          </button>
+                          {expandedCards.has(`airport-${city.id}`) && (
+                            <div className="p-4 pt-0 space-y-3">
+                              {city.airports.map((airport) => (
+                                <div key={airport.id} className="border border-white/10 rounded-lg p-3">
+                                  <div className="flex items-start justify-between mb-2">
+                                    <div>
+                                      <h4 className="font-bold text-white text-sm">{airport.name}</h4>
+                                      <p className="text-xs text-muted-foreground">{airport.code} • {airport.distance}</p>
+                                    </div>
+                                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                                      airport.customs ? "bg-green-500/20 text-green-400" : "bg-orange-500/20 text-orange-400"
+                                    }`}>
+                                      {airport.customs ? "CBP On-Site" : "No CBP"}
+                                    </span>
+                                  </div>
+                                  <div className="flex flex-wrap gap-1 mb-2">
+                                    {airport.fbos.map((fbo, i) => (
+                                      <span key={i} className="bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded text-xs">{fbo}</span>
+                                    ))}
+                                  </div>
+                                  <p className="text-xs text-muted-foreground">{airport.notes}</p>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="space-y-4">
+                      <h3 className="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2">
+                        <span>🇲🇽</span> Mexico Host Cities
+                      </h3>
+                      {privateTransportData.mexicoCities.map((city) => (
+                        <div key={city.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`airport-city-${city.id}`}>
+                          <button
+                            onClick={() => {
+                              const key = `airport-${city.id}`;
+                              const newExpanded = new Set(expandedCards);
+                              newExpanded.add("transport-jets");
+                              if (newExpanded.has(key)) {
+                                newExpanded.delete(key);
+                              } else {
+                                newExpanded.add(key);
+                              }
+                              setExpandedCards(newExpanded);
+                            }}
+                            className="w-full p-4 flex items-center justify-between"
+                          >
+                            <div className="flex items-center gap-2">
+                              <span className="text-lg">{city.flag}</span>
+                              <span className="font-bold text-white">{city.city}</span>
+                            </div>
+                            {expandedCards.has(`airport-${city.id}`) ? (
+                              <ChevronUp className="w-4 h-4 text-muted-foreground" />
+                            ) : (
+                              <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                            )}
+                          </button>
+                          {expandedCards.has(`airport-${city.id}`) && (
+                            <div className="p-4 pt-0 space-y-3">
+                              {city.airports.map((airport) => (
+                                <div key={airport.id} className="border border-white/10 rounded-lg p-3">
+                                  <div className="flex items-start justify-between mb-2">
+                                    <div>
+                                      <h4 className="font-bold text-white text-sm">{airport.name}</h4>
+                                      <p className="text-xs text-muted-foreground">{airport.code} • {airport.distance}</p>
+                                    </div>
+                                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-green-500/20 text-green-400">
+                                      CIQ On-Site
+                                    </span>
+                                  </div>
+                                  <div className="flex flex-wrap gap-1 mb-2">
+                                    {airport.fbos.map((fbo, i) => (
+                                      <span key={i} className="bg-orange-500/10 text-orange-400 px-2 py-0.5 rounded text-xs">{fbo}</span>
+                                    ))}
+                                  </div>
+                                  <p className="text-xs text-muted-foreground">{airport.notes}</p>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="space-y-4">
+                      <h3 className="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2">
+                        <span>🇨🇦</span> Canada Host Cities
+                      </h3>
+                      {privateTransportData.canadaCities.map((city) => (
+                        <div key={city.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`airport-city-${city.id}`}>
+                          <button
+                            onClick={() => {
+                              const key = `airport-${city.id}`;
+                              const newExpanded = new Set(expandedCards);
+                              newExpanded.add("transport-jets");
+                              if (newExpanded.has(key)) {
+                                newExpanded.delete(key);
+                              } else {
+                                newExpanded.add(key);
+                              }
+                              setExpandedCards(newExpanded);
+                            }}
+                            className="w-full p-4 flex items-center justify-between"
+                          >
+                            <div className="flex items-center gap-2">
+                              <span className="text-lg">{city.flag}</span>
+                              <span className="font-bold text-white">{city.city}</span>
+                            </div>
+                            {expandedCards.has(`airport-${city.id}`) ? (
+                              <ChevronUp className="w-4 h-4 text-muted-foreground" />
+                            ) : (
+                              <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                            )}
+                          </button>
+                          {expandedCards.has(`airport-${city.id}`) && (
+                            <div className="p-4 pt-0 space-y-3">
+                              {city.airports.map((airport) => (
+                                <div key={airport.id} className="border border-white/10 rounded-lg p-3">
+                                  <div className="flex items-start justify-between mb-2">
+                                    <div>
+                                      <h4 className="font-bold text-white text-sm">{airport.name}</h4>
+                                      <p className="text-xs text-muted-foreground">{airport.code} • {airport.distance}</p>
+                                    </div>
+                                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-green-500/20 text-green-400">
+                                      CBSA On-Site
+                                    </span>
+                                  </div>
+                                  <div className="flex flex-wrap gap-1 mb-2">
+                                    {airport.fbos.map((fbo, i) => (
+                                      <span key={i} className="bg-red-500/10 text-red-400 px-2 py-0.5 rounded text-xs">{fbo}</span>
+                                    ))}
+                                  </div>
+                                  <p className="text-xs text-muted-foreground">{airport.notes}</p>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {expandedCards.has("transport-yachts") && (
+                  <div className="space-y-6">
+                    <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 mb-4">
+                      <div className="flex items-start gap-2">
+                        <Anchor className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-cyan-400 font-medium text-sm mb-1">Superyacht Berths</p>
+                          <p className="text-xs text-cyan-100/80">Book marina berths 6+ months ahead during World Cup. Miami has the best superyacht infrastructure in the US.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {privateTransportData.usaCities.filter(city => city.marinas && city.marinas.length > 0).map((city) => (
+                      <div key={city.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`marina-city-${city.id}`}>
+                        <div className="bg-gradient-to-r from-cyan-500/20 to-transparent p-4 border-b border-white/5">
+                          <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                            <span className="text-2xl">{city.flag}</span>
+                            {city.city}
+                          </h3>
+                        </div>
+                        <div className="p-4 space-y-3">
+                          {city.marinas?.map((marina, i) => (
+                            <div key={i} className="border border-white/10 rounded-lg p-3">
+                              <div className="flex items-start justify-between mb-2">
+                                <h4 className="font-bold text-white text-sm">{marina.name}</h4>
+                                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400">
+                                  Max: {marina.maxLength}
+                                </span>
+                              </div>
+                              <p className="text-xs text-muted-foreground">{marina.features}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+
+                    <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
+                      <div className="flex items-start gap-2">
+                        <Ship className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-amber-400 font-medium text-sm mb-2">YACHT ENTRY CHECKLIST</p>
+                          <ul className="text-sm text-amber-100/80 space-y-1">
+                            <li>• Report arrival via CBP ROAM app within 24 hours</li>
+                            <li>• Fly Q flag when entering territorial waters</li>
+                            <li>• Stay onboard until customs clearance complete</li>
+                            <li>• All passengers report to nearest CBP office</li>
+                            <li>• Foreign yachts 300+ tons: notify USCG 96 hrs ahead</li>
+                            <li>• Apply for cruising license at first port of entry</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {expandedCards.has("transport-customs") && (
+                  <div className="space-y-6">
+                    <div className="bg-card border border-white/5 rounded-xl overflow-hidden">
+                      <div className="bg-gradient-to-r from-blue-500/20 to-transparent p-4 border-b border-white/5">
+                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                          <Plane className="w-5 h-5" />
+                          {privateTransportData.customsRequirements.usa.title}
+                        </h3>
+                      </div>
+                      <div className="p-4 space-y-3">
+                        {privateTransportData.customsRequirements.usa.requirements.map((req, i) => (
+                          <div key={i} className="border border-white/10 rounded-lg p-3">
+                            <h4 className="font-bold text-white text-sm mb-1">{req.item}</h4>
+                            <p className="text-xs text-muted-foreground">{req.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="bg-card border border-white/5 rounded-xl overflow-hidden">
+                      <div className="bg-gradient-to-r from-cyan-500/20 to-transparent p-4 border-b border-white/5">
+                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                          <Anchor className="w-5 h-5" />
+                          {privateTransportData.customsRequirements.yacht.title}
+                        </h3>
+                      </div>
+                      <div className="p-4 space-y-3">
+                        {privateTransportData.customsRequirements.yacht.requirements.map((req, i) => (
+                          <div key={i} className="border border-white/10 rounded-lg p-3">
+                            <h4 className="font-bold text-white text-sm mb-1">{req.item}</h4>
+                            <p className="text-xs text-muted-foreground">{req.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="bg-card border border-white/5 rounded-xl overflow-hidden">
+                      <div className="bg-gradient-to-r from-orange-500/20 to-transparent p-4 border-b border-white/5">
+                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                          <span className="text-lg">🇲🇽</span>
+                          {privateTransportData.customsRequirements.mexico.title}
+                        </h3>
+                      </div>
+                      <div className="p-4 space-y-3">
+                        {privateTransportData.customsRequirements.mexico.requirements.map((req, i) => (
+                          <div key={i} className="border border-white/10 rounded-lg p-3">
+                            <h4 className="font-bold text-white text-sm mb-1">{req.item}</h4>
+                            <p className="text-xs text-muted-foreground">{req.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="bg-card border border-white/5 rounded-xl overflow-hidden">
+                      <div className="bg-gradient-to-r from-red-500/20 to-transparent p-4 border-b border-white/5">
+                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                          <span className="text-lg">🇨🇦</span>
+                          {privateTransportData.customsRequirements.canada.title}
+                        </h3>
+                      </div>
+                      <div className="p-4 space-y-3">
+                        {privateTransportData.customsRequirements.canada.requirements.map((req, i) => (
+                          <div key={i} className="border border-white/10 rounded-lg p-3">
+                            <h4 className="font-bold text-white text-sm mb-1">{req.item}</h4>
+                            <p className="text-xs text-muted-foreground">{req.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className="bg-primary/10 border border-primary/20 rounded-xl p-4">
+                  <div className="flex items-start gap-2">
+                    <Lightbulb className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-primary font-medium text-sm mb-2">PRIVATE TRANSPORT TIPS</p>
+                      <ul className="text-sm text-primary/80 space-y-1">
+                        {privateTransportData.tips.map((tip, i) => (
+                          <li key={i}>• {tip}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTravelCategory === "consulates" && (
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <Building2 className="w-6 h-6 text-blue-400" />
+                  <div>
+                    <h2 className="text-xl font-display font-bold text-white">Consulates by City</h2>
+                    <p className="text-sm text-muted-foreground">Find your country's consulate in each host city</p>
+                  </div>
+                </div>
+
+                <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 mb-4">
+                  <div className="flex items-start gap-2">
+                    <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-amber-200 font-medium text-sm mb-1">When to Contact Your Consulate</p>
+                      <ul className="text-xs text-amber-200/80 space-y-1">
+                        <li>• Lost or stolen passport</li>
+                        <li>• Emergency evacuation assistance</li>
+                        <li>• Arrest or detention by local authorities</li>
+                        <li>• Death of a citizen abroad</li>
+                        <li>• Voting abroad during elections</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  {consulatesData.map((cityData) => (
+                    <div key={cityData.id} className="bg-card border border-white/5 rounded-xl overflow-hidden">
+                      <button
+                        onClick={() => toggleCard(`consulate-${cityData.id}`)}
+                        className="w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors"
+                        data-testid={`consulate-city-${cityData.id}`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">
+                            {cityData.country === "USA" ? "🇺🇸" : cityData.country === "Mexico" ? "🇲🇽" : "🇨🇦"}
+                          </span>
+                          <div className="text-left">
+                            <h3 className="font-bold text-white">{cityData.city}</h3>
+                            <p className="text-xs text-muted-foreground">{cityData.consulates.length} consulates</p>
+                          </div>
+                        </div>
+                        {expandedCards.has(`consulate-${cityData.id}`) ? (
+                          <ChevronUp className="w-5 h-5 text-muted-foreground" />
+                        ) : (
+                          <ChevronDown className="w-5 h-5 text-muted-foreground" />
+                        )}
+                      </button>
+
+                      {expandedCards.has(`consulate-${cityData.id}`) && (
+                        <div className="border-t border-white/5 p-4 space-y-3">
+                          {cityData.consulates.map((consulate, idx) => (
+                            <div 
+                              key={idx}
+                              className="bg-background/50 border border-white/10 rounded-xl p-4"
+                              data-testid={`consulate-${cityData.id}-${consulate.country.toLowerCase().replace(/\s+/g, '-')}`}
+                            >
+                              <div className="flex items-start justify-between mb-2">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-xl">{consulate.flag}</span>
+                                  <h4 className="font-bold text-white">{consulate.country}</h4>
+                                </div>
+                              </div>
+                              <p className="text-xs text-muted-foreground mb-3">{consulate.address}</p>
+                              <div className="flex gap-2">
+                                <a
+                                  href={`tel:${consulate.phone.replace(/\s+/g, '')}`}
+                                  className="flex-1 bg-primary text-primary-foreground py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1"
+                                  data-testid={`call-consulate-${cityData.id}-${idx}`}
+                                >
+                                  <Phone className="w-3 h-3" />
+                                  {consulate.phone}
+                                </a>
+                              </div>
+                              {consulate.emergency && (
+                                <div className="mt-2 bg-red-500/10 border border-red-500/20 rounded-lg p-2">
+                                  <p className="text-xs text-red-300">
+                                    <strong>24/7 Emergency:</strong> {consulate.emergency}
+                                  </p>
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
+                  <div className="flex items-start gap-2">
+                    <Lightbulb className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-blue-200 font-medium text-sm mb-2">CONSULATE TIPS</p>
+                      <ul className="text-xs text-blue-200/80 space-y-1">
+                        <li>• Save your consulate's number before traveling</li>
+                        <li>• Register with your embassy for travel alerts</li>
+                        <li>• Consulates can NOT post bail or provide legal representation</li>
+                        <li>• Emergency passports take 1-2 business days</li>
+                        <li>• Most consulates close on local AND home country holidays</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
+        )}
+
+        {viewMode === "medical" && (
+          <>
+            {selectedMedicalCity ? (
+              <div className="space-y-4">
+                <button 
+                  onClick={() => setSelectedMedicalCity(null)}
+                  className="flex items-center gap-2 text-muted-foreground hover:text-white transition-colors"
+                  data-testid="back-from-city"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  Back to all cities
+                </button>
+
+                <div className="bg-gradient-to-br from-red-900/30 to-red-950/20 border border-red-500/20 rounded-2xl p-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-2xl">{selectedMedicalCity.flag}</span>
+                    <div>
+                      <h2 className="text-xl font-display font-bold text-white">{selectedMedicalCity.city}</h2>
+                      <p className="text-sm text-muted-foreground">{selectedMedicalCity.stadium}</p>
+                    </div>
+                  </div>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${selectedMedicalCity.stadiumLat},${selectedMedicalCity.stadiumLng}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+                    data-testid="stadium-map-link"
+                  >
+                    <MapPin className="w-3 h-3" />
+                    View stadium on map
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setFacilityFilter("all")}
+                    className={`flex-1 py-2 rounded-lg text-sm font-medium ${facilityFilter === "all" ? "bg-white text-black" : "bg-card text-muted-foreground"}`}
+                    data-testid="filter-all"
+                  >
+                    All
+                  </button>
+                  <button
+                    onClick={() => setFacilityFilter("er")}
+                    className={`flex-1 py-2 rounded-lg text-sm font-medium ${facilityFilter === "er" ? "bg-red-500 text-white" : "bg-card text-muted-foreground"}`}
+                    data-testid="filter-er"
+                  >
+                    ER Only
+                  </button>
+                  <button
+                    onClick={() => setFacilityFilter("urgent")}
+                    className={`flex-1 py-2 rounded-lg text-sm font-medium ${facilityFilter === "urgent" ? "bg-blue-500 text-white" : "bg-card text-muted-foreground"}`}
+                    data-testid="filter-urgent"
+                  >
+                    Urgent Care
+                  </button>
+                </div>
+
+                <div className="space-y-3">
+                  {selectedMedicalCity.facilities
+                    .filter(f => facilityFilter === "all" || f.type === facilityFilter)
+                    .map((facility) => (
+                      <div 
+                        key={facility.id}
+                        className={`rounded-xl border p-4 ${
+                          facility.type === "er" 
+                            ? "bg-red-500/10 border-red-500/30" 
+                            : "bg-blue-500/10 border-blue-500/30"
+                        }`}
+                        data-testid={`facility-${facility.id}`}
+                      >
+                        <div className="flex items-start justify-between mb-2">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                                facility.type === "er" 
+                                  ? "bg-red-500 text-white" 
+                                  : "bg-blue-500 text-white"
+                              }`}>
+                                {facility.type === "er" ? "EMERGENCY ROOM" : "URGENT CARE"}
+                              </span>
+                            </div>
+                            <h3 className="font-bold text-white">{facility.name}</h3>
+                            <p className="text-xs text-muted-foreground">{facility.address}</p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center gap-4 mb-3">
+                          <div className="flex items-center gap-1">
+                            <MapPin className="w-3 h-3 text-primary" />
+                            <span className="text-sm text-primary font-medium">{facility.distance}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Car className="w-3 h-3 text-muted-foreground" />
+                            <span className="text-sm text-muted-foreground">{facility.drivingTime}</span>
+                          </div>
+                          <div className="text-xs text-muted-foreground">{facility.hours}</div>
+                        </div>
+
+                        <div className="flex gap-2">
+                          <a
+                            href={`tel:${facility.phone}`}
+                            className="flex-1 bg-primary text-primary-foreground py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1"
+                            data-testid={`call-${facility.id}`}
+                          >
+                            <Phone className="w-3 h-3" />
+                            Call
+                          </a>
+                          <a
+                            href={`https://www.google.com/maps/dir/?api=1&origin=${selectedMedicalCity.stadiumLat},${selectedMedicalCity.stadiumLng}&destination=${facility.lat},${facility.lng}&travelmode=driving`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1 bg-card border border-white/10 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1"
+                            data-testid={`directions-${facility.id}`}
+                          >
+                            <MapPin className="w-3 h-3" />
+                            Directions
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-6">
+                <div className="bg-gradient-to-br from-red-900/30 to-red-950/20 border border-red-500/20 rounded-2xl p-4">
+                  <h2 className="text-lg font-display font-bold text-white mb-3 flex items-center gap-2">
+                    <Heart className="w-5 h-5 text-red-400" />
+                    ER vs Urgent Care: Know the Difference
+                  </h2>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-3">
+                      <div className="text-xs font-bold text-red-400 uppercase mb-2">Emergency Room</div>
+                      <ul className="text-xs text-white/80 space-y-1">
+                        <li>• Life-threatening emergencies</li>
+                        <li>• Chest pain, stroke symptoms</li>
+                        <li>• Severe bleeding or trauma</li>
+                        <li>• Difficulty breathing</li>
+                        <li>• Cost: $1,000 - $5,000+</li>
+                        <li>• Wait: 2-8 hours typical</li>
+                      </ul>
+                    </div>
+                    <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-3">
+                      <div className="text-xs font-bold text-blue-400 uppercase mb-2">Urgent Care</div>
+                      <ul className="text-xs text-white/80 space-y-1">
+                        <li>• Non-life-threatening issues</li>
+                        <li>• Sprains, minor cuts</li>
+                        <li>• Flu, fever, infections</li>
+                        <li>• X-rays, stitches, tests</li>
+                        <li>• Cost: $100 - $200</li>
+                        <li>• Wait: 15-45 minutes</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="mt-3 bg-amber-500/10 border border-amber-500/20 rounded-lg p-3">
+                    <p className="text-xs text-amber-200">
+                      <strong>Tip:</strong> For non-emergency issues like sports injuries, dehydration, or minor illness, visit Urgent Care first. You'll save thousands of dollars and hours of waiting time.
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-3">Select Host City</h3>
+                  <p className="text-sm text-muted-foreground mb-4">Find Emergency Rooms and Urgent Care facilities near each stadium</p>
+                </div>
+
+                <div className="space-y-2">
+                  <h4 className="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2">
+                    <span>🇺🇸</span> USA Host Cities
+                  </h4>
+                  {medicalFacilitiesData.filter(c => c.country === "USA").map((city) => (
+                    <button
+                      key={city.id}
+                      onClick={() => setSelectedMedicalCity(city)}
+                      className="w-full bg-card border border-white/5 rounded-xl p-4 flex items-center justify-between hover:border-primary/30 transition-colors"
+                      data-testid={`city-${city.id}`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-xl">{city.flag}</span>
+                        <div className="text-left">
+                          <div className="font-bold text-white">{city.city}</div>
+                          <div className="text-xs text-muted-foreground">{city.stadium}</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs bg-red-500/20 text-red-400 px-2 py-0.5 rounded-full">
+                          {city.facilities.filter(f => f.type === "er").length} ER
+                        </span>
+                        <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full">
+                          {city.facilities.filter(f => f.type === "urgent").length} UC
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                <div className="space-y-2">
+                  <h4 className="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2">
+                    <span>🇲🇽</span> Mexico Host Cities
+                  </h4>
+                  {medicalFacilitiesData.filter(c => c.country === "Mexico").map((city) => (
+                    <button
+                      key={city.id}
+                      onClick={() => setSelectedMedicalCity(city)}
+                      className="w-full bg-card border border-white/5 rounded-xl p-4 flex items-center justify-between hover:border-primary/30 transition-colors"
+                      data-testid={`city-${city.id}`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-xl">{city.flag}</span>
+                        <div className="text-left">
+                          <div className="font-bold text-white">{city.city}</div>
+                          <div className="text-xs text-muted-foreground">{city.stadium}</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs bg-red-500/20 text-red-400 px-2 py-0.5 rounded-full">
+                          {city.facilities.filter(f => f.type === "er").length} ER
+                        </span>
+                        <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full">
+                          {city.facilities.filter(f => f.type === "urgent").length} UC
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                <div className="space-y-2">
+                  <h4 className="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2">
+                    <span>🇨🇦</span> Canada Host Cities
+                  </h4>
+                  {medicalFacilitiesData.filter(c => c.country === "Canada").map((city) => (
+                    <button
+                      key={city.id}
+                      onClick={() => setSelectedMedicalCity(city)}
+                      className="w-full bg-card border border-white/5 rounded-xl p-4 flex items-center justify-between hover:border-primary/30 transition-colors"
+                      data-testid={`city-${city.id}`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-xl">{city.flag}</span>
+                        <div className="text-left">
+                          <div className="font-bold text-white">{city.city}</div>
+                          <div className="text-xs text-muted-foreground">{city.stadium}</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs bg-red-500/20 text-red-400 px-2 py-0.5 rounded-full">
+                          {city.facilities.filter(f => f.type === "er").length} ER
+                        </span>
+                        <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full">
+                          {city.facilities.filter(f => f.type === "urgent").length} UC
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                <div className="bg-primary/10 border border-primary/20 rounded-xl p-4">
+                  <div className="flex items-start gap-2">
+                    <Lightbulb className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-primary font-medium text-sm mb-2">MEDICAL TIPS FOR TOURISTS</p>
+                      <ul className="text-sm text-primary/80 space-y-1">
+                        <li>• Keep travel insurance documents accessible</li>
+                        <li>• Save emergency numbers in your phone</li>
+                        <li>• Pharmacies (CVS, Walgreens) offer basic care</li>
+                        <li>• Telemedicine apps work for minor issues</li>
+                        <li>• Hospital bills can be negotiated down later</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </Layout>
+  );
+}
