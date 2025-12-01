@@ -1,0 +1,381 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    color: #764ba2;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background: #667eea;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: #764ba2;
+    transform: translateY(-2px);
+}
+
+.nav-btn.active {
+    background: #764ba2;
+    box-shadow: 0 4px 10px rgba(118, 75, 162, 0.3);
+}
+
+main {
+    padding: 2rem 0;
+    min-height: calc(100vh - 200px);
+}
+
+.section {
+    display: none;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero {
+    text-align: center;
+}
+
+.hero h2 {
+    color: #764ba2;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2rem;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.stadium-controls {
+    margin-bottom: 2rem;
+}
+
+.stadium-controls label {
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.stadium-controls select,
+.filter-controls select {
+    padding: 0.5rem 1rem;
+    border: 2px solid #667eea;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.stadium-container {
+    position: relative;
+    background: #2d3748;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 2rem 0;
+    min-height: 500px;
+}
+
+.stadium-field {
+    position: relative;
+    background: #48bb78;
+    border: 3px solid white;
+    border-radius: 5px;
+    margin: 2rem auto;
+    width: 80%;
+    height: 300px;
+}
+
+.field-lines {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.penalty-area {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15%;
+    height: 60%;
+    border: 2px solid white;
+}
+
+.penalty-area.left {
+    left: 0;
+    border-right: none;
+}
+
+.penalty-area.right {
+    right: 0;
+    border-left: none;
+}
+
+.seating-sections {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    gap: 1rem;
+    height: 400px;
+}
+
+.section-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-group.north {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.section-group.south {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.section-group.west {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.section-group.east {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.seat-section {
+    padding: 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    width: 100%;
+}
+
+.seat-section:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.seat-section.vip {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.seat-section.premium {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.seat-section.general {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.seating-info {
+    background: #f7fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.seating-info h3 {
+    color: #764ba2;
+    margin-bottom: 1rem;
+}
+
+.filter-controls {
+    margin-bottom: 2rem;
+}
+
+.filter-controls label {
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.athletes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.athlete-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    color: white;
+}
+
+.athlete-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.athlete-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+.athlete-info {
+    padding: 1.5rem;
+}
+
+.athlete-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.athlete-info .country {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+.athlete-info .position {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.athlete-info .stats {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+footer {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stadium-container {
+        padding: 1rem;
+    }
+    
+    .seating-sections {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+    }
+    
+    .section-group {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+    }
+    
+    .athletes-grid {
+        grid-template-columns: 1fr;
+    }
+}
