@@ -3,6 +3,7 @@ import { Hotel, ArrowLeft, MapPin, DollarSign, ChevronRight, ExternalLink, Star,
 import { Link } from "wouter";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import hotelHeroImage from "@assets/generated_images/drone_view_luxury_hotel_pool.png";
 
 interface Accommodation {
   name: string;
@@ -1181,21 +1182,30 @@ export default function Lodging() {
 
   return (
     <Layout pageTitle="nav.lodging">
-      <div className="pt-8 px-6 pb-6">
-        <Link href="/menu" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
-          <ArrowLeft className="w-4 h-4 rtl-flip" />
-          <span className="text-sm font-medium">{t("lodging.backToMenu")}</span>
-        </Link>
+      {/* Hero Section with Background Image */}
+      <div className="relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${hotelHeroImage})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-background" />
+        
+        <div className="relative pt-8 px-6 pb-8">
+          <Link href="/menu" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
+            <ArrowLeft className="w-4 h-4 rtl-flip" />
+            <span className="text-sm font-medium">{t("lodging.backToMenu")}</span>
+          </Link>
 
-        <div className="flex items-center space-x-3 mb-2">
-          <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
-            <Hotel className="w-6 h-6 text-purple-400" />
-          </div>
-          <div>
-            <h1 className="text-3xl font-display font-bold text-white" data-testid="text-page-title">
-              {t("lodging.title")}
-            </h1>
-            <p className="text-sm text-muted-foreground">{t("lodging.subtitle")}</p>
+          <div className="flex items-center space-x-3 mb-2">
+            <div className="w-12 h-12 rounded-xl bg-purple-500/20 backdrop-blur-sm flex items-center justify-center border border-purple-400/30">
+              <Hotel className="w-6 h-6 text-purple-300" />
+            </div>
+            <div>
+              <h1 className="text-3xl font-display font-bold text-white drop-shadow-lg" data-testid="text-page-title">
+                {t("lodging.title")}
+              </h1>
+              <p className="text-sm text-gray-300">{t("lodging.subtitle")}</p>
+            </div>
           </div>
         </div>
       </div>
