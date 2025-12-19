@@ -1,4 +1,9 @@
 {
+  "header": {
+    "worldCup": "Wereldkampioenschap",
+    "companion": "Gids",
+    "year": "2026"
+  },
   "common": {
     "back": "Terug",
     "cancel": "Annuleren",
@@ -63,13 +68,18 @@
     "copyright": "© 2026 World Cup Companion. Alle rechten voorbehouden. Dit is een onofficiële fan-applicatie."
   },
   "teams": {
-    "title": "Gekwalificeerde teams",
-    "searchPlaceholder": "Zoekteams...",
+    "title": "Gekwalificeerde Teams",
+    "searchPlaceholder": "Zoek teams...",
     "loading": "Teams laden...",
-    "headCoach": "Hoofd Coach",
-    "record2025": "2025 Verslag",
-    "recordFormat": "(W-T-L)",
-    "rank": "Rang #{rank}}"
+    "headCoach": "Hoofdcoach",
+    "squad": "Selectie",
+    "record2025": "Record 2025",
+    "recordFormat": "(W-G-V)",
+    "rank": "Ranking #{{rank}}",
+    "description": "Volledige selectie-informatie, huidige seizoensrecords en wedstrijdhoogtepunten voor alle deelnemende landen. Regelmatig bijgewerkt in december 2025, maart 2026 en mei 2026.",
+    "qualifiedCount": "42 van 48 teams gekwalificeerd",
+    "playoffInfo": "De laatste 6 teams worden bepaald via het FIFA Play-Off Toernooi in maart 2026 met: Bolivia, Congo DR, Irak, Jamaica, Nieuw-Caledonië en Suriname strijdend om de resterende plaatsen.",
+    "viewKnockoutBrackets": "Bekijk Knock-out Schema"
   },
   "matches": {
     "title": "Wedstrijdschema",

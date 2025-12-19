@@ -1,4 +1,9 @@
 {
+  "header": {
+    "worldCup": "Weltmeisterschaft",
+    "companion": "Begleiter",
+    "year": "2026"
+  },
   "common": {
     "back": "Zurück",
     "cancel": "Abbrechen",
@@ -67,9 +72,14 @@
     "searchPlaceholder": "Teams suchen...",
     "loading": "Teams laden...",
     "headCoach": "Cheftrainer",
-    "record2025": "2025 Rekord",
-    "recordFormat": "(W-T-L)",
-    "rank": "Rang #{{rank}}"
+    "squad": "Kader",
+    "record2025": "Bilanz 2025",
+    "recordFormat": "(S-U-N)",
+    "rank": "Rang #{{rank}}",
+    "description": "Vollständige Kaderinformationen, aktuelle Saisonbilanzen und Spielhöhepunkte für alle teilnehmenden Nationen. Regelmäßig aktualisiert im Dezember 2025, März 2026 und Mai 2026.",
+    "qualifiedCount": "42 von 48 Teams qualifiziert",
+    "playoffInfo": "Die letzten 6 Teams werden durch das FIFA-Playoff-Turnier im März 2026 ermittelt mit: Bolivien, DR Kongo, Irak, Jamaika, Neukaledonien und Suriname im Wettbewerb um die verbleibenden Plätze.",
+    "viewKnockoutBrackets": "K.O.-Tableau ansehen"
   },
   "matches": {
     "title": "Spielplan",

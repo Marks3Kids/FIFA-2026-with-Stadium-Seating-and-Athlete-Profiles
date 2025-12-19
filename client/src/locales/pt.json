@@ -1,4 +1,9 @@
 {
+  "header": {
+    "worldCup": "Copa do Mundo",
+    "companion": "Companheiro",
+    "year": "2026"
+  },
   "common": {
     "back": "Back",
     "cancel": "Cancel",
@@ -63,13 +68,18 @@
     "copyright": "© 2026 World Cup Companion. Todos os direitos reservados. Este é um aplicativo não oficial de fãs."
   },
   "teams": {
-    "title": "Qualified Teams",
-    "searchPlaceholder": "Search teams...",
-    "loading": "Loading teams...",
-    "headCoach": "Head Coach",
-    "record2025": "2025 Record",
-    "recordFormat": "(W-T-L)",
-    "rank": "Rank #{{rank}}"
+    "title": "Equipas Qualificadas",
+    "searchPlaceholder": "Pesquisar equipas...",
+    "loading": "Carregando equipas...",
+    "headCoach": "Treinador Principal",
+    "squad": "Plantel",
+    "record2025": "Registo 2025",
+    "recordFormat": "(V-E-D)",
+    "rank": "Ranking #{{rank}}",
+    "description": "Informação completa do plantel, registos da temporada atual e destaques dos jogos para todas as nações competidoras. Atualizado regularmente em dezembro 2025, março 2026 e maio 2026.",
+    "qualifiedCount": "42 de 48 equipas qualificadas",
+    "playoffInfo": "As 6 equipas finais serão determinadas através do Torneio de Play-Off da FIFA em março 2026 com: Bolívia, Congo DR, Iraque, Jamaica, Nova Caledónia e Suriname a competir pelos lugares restantes.",
+    "viewKnockoutBrackets": "Ver Quadro Eliminatório"
   },
   "matches": {
     "title": "Match Schedule",

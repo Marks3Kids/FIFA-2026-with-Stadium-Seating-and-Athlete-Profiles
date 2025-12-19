@@ -1,4 +1,9 @@
 {
+  "header": {
+    "worldCup": "Copa del Mundo",
+    "companion": "Compañero",
+    "year": "2026"
+  },
   "common": {
     "back": "Volver",
     "cancel": "Cancelar",
@@ -63,13 +68,18 @@
     "copyright": "© 2026 World Cup Companion. Todos los derechos reservados. Esta es una aplicación no oficial de fans."
   },
   "teams": {
-    "title": "Equipos clasificados",
-    "searchPlaceholder": "Equipos de búsqueda...",
+    "title": "Equipos Clasificados",
+    "searchPlaceholder": "Buscar equipos...",
     "loading": "Cargando equipos...",
-    "headCoach": "Entrenador jefe",
+    "headCoach": "Entrenador Principal",
+    "squad": "Plantilla",
     "record2025": "Récord 2025",
-    "recordFormat": "(W-T-L)",
-    "rank": "Rango #{{rank}}"
+    "recordFormat": "(V-E-D)",
+    "rank": "Ranking #{{rank}}",
+    "description": "Información completa del plantel, récords de la temporada actual y momentos destacados de los partidos para todas las naciones competidoras. Actualizado regularmente en diciembre 2025, marzo 2026 y mayo 2026.",
+    "qualifiedCount": "42 de 48 equipos clasificados",
+    "playoffInfo": "Los 6 equipos finales se determinarán a través del Torneo de Repesca de la FIFA en marzo 2026 con: Bolivia, Congo DR, Irak, Jamaica, Nueva Caledonia y Surinam compitiendo por los lugares restantes.",
+    "viewKnockoutBrackets": "Ver Cuadro de Eliminatorias"
   },
   "matches": {
     "title": "Calendario de partidos",

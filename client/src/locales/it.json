@@ -1,4 +1,9 @@
 {
+  "header": {
+    "worldCup": "Coppa del Mondo",
+    "companion": "Compagno",
+    "year": "2026"
+  },
   "common": {
     "back": "Indietro",
     "cancel": "Annullamento",
@@ -63,13 +68,18 @@
     "copyright": "© 2026 World Cup Companion. Tutti i diritti riservati. Questa è un'applicazione non ufficiale dei fan."
   },
   "teams": {
-    "title": "Squadre qualificate",
-    "searchPlaceholder": "Gruppi di ricerca...",
-    "loading": "Caricamento delle squadre...",
-    "headCoach": "Capo allenatore",
-    "record2025": "2025 Record",
-    "recordFormat": "(W-T-L)",
-    "rank": "Classifica #{{rank}}"
+    "title": "Squadre Qualificate",
+    "searchPlaceholder": "Cerca squadre...",
+    "loading": "Caricamento squadre...",
+    "headCoach": "Allenatore",
+    "squad": "Rosa",
+    "record2025": "Bilancio 2025",
+    "recordFormat": "(V-P-S)",
+    "rank": "Classifica #{{rank}}",
+    "description": "Informazioni complete sulla rosa, bilanci della stagione corrente e momenti salienti delle partite per tutte le nazioni in competizione. Aggiornato regolarmente a dicembre 2025, marzo 2026 e maggio 2026.",
+    "qualifiedCount": "42 squadre su 48 qualificate",
+    "playoffInfo": "Le ultime 6 squadre saranno determinate attraverso il Torneo di Spareggi FIFA a marzo 2026 con: Bolivia, Congo DR, Iraq, Giamaica, Nuova Caledonia e Suriname in competizione per i posti rimanenti.",
+    "viewKnockoutBrackets": "Visualizza Tabellone Eliminatorio"
   },
   "matches": {
     "title": "Programma delle partite",

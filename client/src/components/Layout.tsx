@@ -27,10 +27,10 @@ export function Layout({ children, hideNav = false, hideTitle = false, pageTitle
             </div>
             <div>
               <h1 className="text-lg font-display font-bold leading-tight">
-                <span className="text-emerald-400">World Cup</span>{" "}
-                <span className="text-white">Companion</span>
+                <span className="text-emerald-400">{t("header.worldCup")}</span>{" "}
+                <span className="text-white">{t("header.companion")}</span>
               </h1>
-              <p className="text-[10px] text-muted-foreground uppercase tracking-widest">2026</p>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-widest">{t("header.year")}</p>
             </div>
             {pageTitle && (
               <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 pointer-events-none">

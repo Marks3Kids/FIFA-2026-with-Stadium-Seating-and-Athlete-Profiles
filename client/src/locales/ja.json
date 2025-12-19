@@ -1,4 +1,9 @@
 {
+  "header": {
+    "worldCup": "ワールドカップ",
+    "companion": "コンパニオン",
+    "year": "2026"
+  },
   "common": {
     "back": "Back",
     "cancel": "Cancel",
@@ -63,13 +68,18 @@
     "copyright": "© 2026 World Cup Companion. 全著作権所有。これは非公式のファンアプリケーションです。"
   },
   "teams": {
-    "title": "Qualified Teams",
-    "searchPlaceholder": "Search teams...",
-    "loading": "Loading teams...",
-    "headCoach": "Head Coach",
-    "record2025": "2025 Record",
-    "recordFormat": "(W-T-L)",
-    "rank": "Rank #{{rank}}"
+    "title": "出場国一覧",
+    "searchPlaceholder": "チームを検索...",
+    "loading": "チーム読み込み中...",
+    "headCoach": "監督",
+    "squad": "スカッド",
+    "record2025": "2025年成績",
+    "recordFormat": "(勝-分-敗)",
+    "rank": "ランキング #{{rank}}",
+    "description": "全出場国の完全な選手リスト、今シーズンの成績、試合ハイライト。2025年12月、2026年3月、2026年5月に定期更新。",
+    "qualifiedCount": "48チーム中42チームが出場決定",
+    "playoffInfo": "残り6チームは2026年3月のFIFAプレーオフトーナメントで決定：ボリビア、コンゴ民主共和国、イラク、ジャマイカ、ニューカレドニア、スリナムが残りの枠を争います。",
+    "viewKnockoutBrackets": "ノックアウトトーナメント表を見る"
   },
   "matches": {
     "title": "Match Schedule",

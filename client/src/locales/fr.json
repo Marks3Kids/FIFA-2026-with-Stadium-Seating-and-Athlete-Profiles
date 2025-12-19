@@ -1,4 +1,9 @@
 {
+  "header": {
+    "worldCup": "Coupe du Monde",
+    "companion": "Compagnon",
+    "year": "2026"
+  },
   "common": {
     "back": "Retour",
     "cancel": "Annuler",
@@ -63,13 +68,18 @@
     "copyright": "© 2026 World Cup Companion. Tous droits réservés. Ceci est une application non officielle de fans."
   },
   "teams": {
-    "title": "Équipes qualifiées",
-    "searchPlaceholder": "Les équipes de recherche...",
+    "title": "Équipes Qualifiées",
+    "searchPlaceholder": "Rechercher des équipes...",
     "loading": "Chargement des équipes...",
-    "headCoach": "Entraîneur principal",
-    "record2025": "2025 Record",
-    "recordFormat": "(W-T-L)",
-    "rank": "Rang #{{rank}}"
+    "headCoach": "Entraîneur Principal",
+    "squad": "Effectif",
+    "record2025": "Bilan 2025",
+    "recordFormat": "(V-N-D)",
+    "rank": "Classement #{{rank}}",
+    "description": "Informations complètes sur l'effectif, bilans de la saison en cours et moments forts des matchs pour toutes les nations en compétition. Mis à jour régulièrement en décembre 2025, mars 2026 et mai 2026.",
+    "qualifiedCount": "42 équipes sur 48 qualifiées",
+    "playoffInfo": "Les 6 dernières équipes seront déterminées lors du Tournoi de Barrages de la FIFA en mars 2026 avec: Bolivie, Congo RD, Irak, Jamaïque, Nouvelle-Calédonie et Suriname en lice pour les places restantes.",
+    "viewKnockoutBrackets": "Voir le Tableau Éliminatoire"
   },
   "matches": {
     "title": "Calendrier des matches",

@@ -1,4 +1,9 @@
 {
+  "header": {
+    "worldCup": "World Cup",
+    "companion": "Companion",
+    "year": "2026"
+  },
   "common": {
     "back": "Back",
     "cancel": "Cancel",
@@ -70,7 +75,11 @@
     "squad": "Squad",
     "record2025": "2025 Record",
     "recordFormat": "(W-T-L)",
-    "rank": "Rank #{{rank}}"
+    "rank": "Rank #{{rank}}",
+    "description": "Complete roster information, current season records, and match highlights for all competing nations. Updated regularly in December 2025, March 2026, and May 2026.",
+    "qualifiedCount": "42 of 48 teams qualified",
+    "playoffInfo": "The final 6 teams will be determined through the FIFA Play-Off Tournament in March 2026 featuring: Bolivia, Congo DR, Iraq, Jamaica, New Caledonia, and Suriname competing for the remaining spots.",
+    "viewKnockoutBrackets": "View Knockout Brackets"
   },
   "matches": {
     "title": "Match Schedule",

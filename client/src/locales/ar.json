@@ -1,4 +1,9 @@
 {
+  "header": {
+    "worldCup": "كأس العالم",
+    "companion": "الرفيق",
+    "year": "2026"
+  },
   "common": {
     "back": "Back",
     "cancel": "Cancel",
@@ -63,13 +68,18 @@
     "copyright": "© 2026 World Cup Companion. جميع الحقوق محفوظة. هذا تطبيق غير رسمي من المعجبين."
   },
   "teams": {
-    "title": "Qualified Teams",
-    "searchPlaceholder": "Search teams...",
-    "loading": "Loading teams...",
-    "headCoach": "Head Coach",
-    "record2025": "2025 Record",
-    "recordFormat": "(W-T-L)",
-    "rank": "Rank #{{rank}}"
+    "title": "المنتخبات المتأهلة",
+    "searchPlaceholder": "البحث عن منتخبات...",
+    "loading": "جارٍ تحميل المنتخبات...",
+    "headCoach": "المدرب الرئيسي",
+    "squad": "التشكيلة",
+    "record2025": "سجل 2025",
+    "recordFormat": "(ف-ت-خ)",
+    "rank": "الترتيب #{{rank}}",
+    "description": "معلومات كاملة عن التشكيلة، سجلات الموسم الحالي، وأبرز لحظات المباريات لجميع المنتخبات المشاركة. يتم التحديث بانتظام في ديسمبر 2025، مارس 2026، ومايو 2026.",
+    "qualifiedCount": "42 من 48 منتخباً تأهلوا",
+    "playoffInfo": "سيتم تحديد المنتخبات الستة الأخيرة من خلال بطولة الملحق في مارس 2026 بمشاركة: بوليفيا، الكونغو الديمقراطية، العراق، جامايكا، كاليدونيا الجديدة، وسورينام للتنافس على المقاعد المتبقية.",
+    "viewKnockoutBrackets": "عرض جدول خروج المغلوب"
   },
   "matches": {
     "title": "Match Schedule",
