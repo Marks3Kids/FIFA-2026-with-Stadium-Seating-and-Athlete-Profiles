@@ -3,7 +3,7 @@ import { Utensils, ArrowLeft, MapPin, DollarSign, ChevronRight, ExternalLink, St
 import { Link } from "wouter";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import diningHeroImage from "@assets/generated_images/diverse_diners_in_upscale_restaurant.png";
+import diningHeroImage from "@assets/generated_images/panoramic_diverse_restaurant_diners.png";
 
 interface Restaurant {
   name: string;
@@ -1168,14 +1168,14 @@ export default function Dining() {
   return (
     <Layout pageTitle="nav.dining">
       {/* Hero Section with Background Image */}
-      <div className="relative overflow-hidden min-h-[200px]">
+      <div className="relative overflow-hidden min-h-[280px]">
         <div 
-          className="absolute inset-0 bg-cover bg-center scale-105"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${diningHeroImage})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-background" />
         
-        <div className="relative pt-8 px-6 pb-12">
+        <div className="relative pt-8 px-6 pb-16">
           <Link href="/menu" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
             <ArrowLeft className="w-4 h-4 rtl-flip" />
             <span className="text-sm font-medium">{t("dining.backToMenu")}</span>
