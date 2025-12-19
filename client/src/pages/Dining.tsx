@@ -3,7 +3,7 @@ import { Utensils, ArrowLeft, MapPin, DollarSign, ChevronRight, ExternalLink, St
 import { Link } from "wouter";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import diningHeroImage from "@assets/generated_images/drone_view_elegant_restaurant_terrace.png";
+import diningHeroImage from "@assets/generated_images/diverse_diners_in_upscale_restaurant.png";
 
 interface Restaurant {
   name: string;
