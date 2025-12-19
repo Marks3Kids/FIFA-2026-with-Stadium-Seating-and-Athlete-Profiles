@@ -88,3 +88,22 @@ Preferred communication style: Simple, everyday language.
 **Font Loading:** Google Fonts CDN provides Inter and Chakra Petch font families
 
 **Session Management:** The application includes infrastructure for sessions via connect-pg-simple (PostgreSQL session store) though implementation is not fully visible in the provided code.
+
+### Cross-Device Consistency
+
+**Flag Images:** All country/region flags throughout the app use image URLs from flagcdn.com instead of emoji flags. This ensures consistent visual display across all devices and browsers, as emoji flags can render inconsistently or as text codes on some platforms.
+
+**Flag Utility (`client/src/lib/flags.ts`):** A centralized utility provides:
+- `countryCodeMap`: Maps country names to ISO country codes
+- `languageCodeMap`: Maps language codes to flag country codes
+- `currencyCodeMap`: Maps currency codes to flag country codes
+- Helper functions: `getFlagUrl()`, `getLanguageFlagUrl()`, `getCurrencyFlagUrl()`, `getFlagUrlByCode()`
+
+Components using flag images:
+- Teams.tsx - Team cards with country flags
+- TeamDetailModal.tsx - Team detail headers
+- HeaderNav.tsx - Language selector
+- Planner.tsx - Currency converter
+- CriticalInfo.tsx - Host cities, broadcast regions, consulates
+- History.tsx - Historical tournament data
+- Players.tsx - Player nationality flags

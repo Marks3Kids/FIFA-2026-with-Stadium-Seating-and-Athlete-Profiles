@@ -6,6 +6,7 @@ import {
   ShieldCheck, Ban, Tv, Car, ExternalLink, Stamp, Anchor, Ship,
   MapPin, Thermometer, TicketX, AlertCircle, CheckCircle, XCircle, Lightbulb, ArrowLeft, Building2
 } from "lucide-react";
+import { getFlagUrlByCode } from "@/lib/flags";
 
 type InfoCategory = "safety" | "emergency" | "financial" | "legal" | "daily";
 type TravelCategory = "customs" | "travel-safety" | "prohibited" | "tvguide" | "transport" | "consulates";
@@ -99,7 +100,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "new-york",
     city: "New York/New Jersey",
     country: "USA",
-    flag: "🇺🇸",
+    flag: "us",
     stadium: "MetLife Stadium",
     stadiumLat: 40.8135,
     stadiumLng: -74.0745,
@@ -114,7 +115,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "los-angeles",
     city: "Los Angeles",
     country: "USA",
-    flag: "🇺🇸",
+    flag: "us",
     stadium: "SoFi Stadium",
     stadiumLat: 33.9535,
     stadiumLng: -118.3392,
@@ -129,7 +130,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "miami",
     city: "Miami",
     country: "USA",
-    flag: "🇺🇸",
+    flag: "us",
     stadium: "Hard Rock Stadium",
     stadiumLat: 25.9580,
     stadiumLng: -80.2389,
@@ -144,7 +145,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "houston",
     city: "Houston",
     country: "USA",
-    flag: "🇺🇸",
+    flag: "us",
     stadium: "NRG Stadium",
     stadiumLat: 29.6847,
     stadiumLng: -95.4107,
@@ -159,7 +160,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "dallas",
     city: "Dallas",
     country: "USA",
-    flag: "🇺🇸",
+    flag: "us",
     stadium: "AT&T Stadium",
     stadiumLat: 32.7473,
     stadiumLng: -97.0945,
@@ -174,7 +175,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "atlanta",
     city: "Atlanta",
     country: "USA",
-    flag: "🇺🇸",
+    flag: "us",
     stadium: "Mercedes-Benz Stadium",
     stadiumLat: 33.7553,
     stadiumLng: -84.4006,
@@ -189,7 +190,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "seattle",
     city: "Seattle",
     country: "USA",
-    flag: "🇺🇸",
+    flag: "us",
     stadium: "Lumen Field",
     stadiumLat: 47.5952,
     stadiumLng: -122.3316,
@@ -204,7 +205,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "san-francisco",
     city: "San Francisco Bay Area",
     country: "USA",
-    flag: "🇺🇸",
+    flag: "us",
     stadium: "Levi's Stadium",
     stadiumLat: 37.4033,
     stadiumLng: -121.9695,
@@ -219,7 +220,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "philadelphia",
     city: "Philadelphia",
     country: "USA",
-    flag: "🇺🇸",
+    flag: "us",
     stadium: "Lincoln Financial Field",
     stadiumLat: 39.9008,
     stadiumLng: -75.1675,
@@ -234,7 +235,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "boston",
     city: "Boston",
     country: "USA",
-    flag: "🇺🇸",
+    flag: "us",
     stadium: "Gillette Stadium",
     stadiumLat: 42.0909,
     stadiumLng: -71.2643,
@@ -249,7 +250,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "kansas-city",
     city: "Kansas City",
     country: "USA",
-    flag: "🇺🇸",
+    flag: "us",
     stadium: "GEHA Field at Arrowhead Stadium",
     stadiumLat: 39.0489,
     stadiumLng: -94.4839,
@@ -264,7 +265,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "mexico-city",
     city: "Mexico City",
     country: "Mexico",
-    flag: "🇲🇽",
+    flag: "mx",
     stadium: "Estadio Azteca",
     stadiumLat: 19.3029,
     stadiumLng: -99.1505,
@@ -279,7 +280,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "guadalajara",
     city: "Guadalajara",
     country: "Mexico",
-    flag: "🇲🇽",
+    flag: "mx",
     stadium: "Estadio Akron",
     stadiumLat: 20.6802,
     stadiumLng: -103.4626,
@@ -294,7 +295,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "monterrey",
     city: "Monterrey",
     country: "Mexico",
-    flag: "🇲🇽",
+    flag: "mx",
     stadium: "Estadio BBVA",
     stadiumLat: 25.6699,
     stadiumLng: -100.2438,
@@ -309,7 +310,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "toronto",
     city: "Toronto",
     country: "Canada",
-    flag: "🇨🇦",
+    flag: "ca",
     stadium: "BMO Field",
     stadiumLat: 43.6332,
     stadiumLng: -79.4185,
@@ -324,7 +325,7 @@ const medicalFacilitiesData: CityMedicalData[] = [
     id: "vancouver",
     city: "Vancouver",
     country: "Canada",
-    flag: "🇨🇦",
+    flag: "ca",
     stadium: "BC Place",
     stadiumLat: 49.2768,
     stadiumLng: -123.1120,
@@ -1124,7 +1125,7 @@ const tvGuideData = {
     {
       id: "usa-english",
       region: "United States",
-      flag: "🇺🇸",
+      flag: "us",
       broadcasters: [
         {
           id: "fox",
@@ -1171,7 +1172,7 @@ const tvGuideData = {
     {
       id: "canada-english",
       region: "Canada",
-      flag: "🇨🇦",
+      flag: "ca",
       broadcasters: [
         {
           id: "tsn",
@@ -1202,7 +1203,7 @@ const tvGuideData = {
     {
       id: "uk",
       region: "United Kingdom",
-      flag: "🇬🇧",
+      flag: "gb",
       broadcasters: [
         {
           id: "bbc",
@@ -1241,7 +1242,7 @@ const tvGuideData = {
     {
       id: "australia",
       region: "Australia",
-      flag: "🇦🇺",
+      flag: "au",
       broadcasters: [
         {
           id: "sbs",
@@ -1266,7 +1267,7 @@ const tvGuideData = {
     {
       id: "usa-spanish",
       region: "United States",
-      flag: "🇺🇸",
+      flag: "us",
       broadcasters: [
         {
           id: "telemundo",
@@ -1289,7 +1290,7 @@ const tvGuideData = {
     {
       id: "mexico",
       region: "Mexico",
-      flag: "🇲🇽",
+      flag: "mx",
       broadcasters: [
         {
           id: "televisa",
@@ -1312,7 +1313,7 @@ const tvGuideData = {
     {
       id: "spain",
       region: "Spain",
-      flag: "🇪🇸",
+      flag: "es",
       broadcasters: [
         {
           id: "rtve",
@@ -1335,7 +1336,7 @@ const tvGuideData = {
     {
       id: "argentina",
       region: "Argentina",
-      flag: "🇦🇷",
+      flag: "ar",
       broadcasters: [
         {
           id: "tyc",
@@ -1358,7 +1359,7 @@ const tvGuideData = {
     {
       id: "brazil",
       region: "Brazil",
-      flag: "🇧🇷",
+      flag: "br",
       broadcasters: [
         {
           id: "globo",
@@ -1383,7 +1384,7 @@ const tvGuideData = {
     {
       id: "canada-french",
       region: "Canada (French)",
-      flag: "🇨🇦",
+      flag: "ca",
       broadcasters: [
         {
           id: "rds",
@@ -1406,7 +1407,7 @@ const tvGuideData = {
     {
       id: "germany",
       region: "Germany",
-      flag: "🇩🇪",
+      flag: "de",
       broadcasters: [
         {
           id: "magenta",
@@ -1437,7 +1438,7 @@ const tvGuideData = {
     {
       id: "france",
       region: "France",
-      flag: "🇫🇷",
+      flag: "fr",
       broadcasters: [
         {
           id: "tf1",
@@ -1460,7 +1461,7 @@ const tvGuideData = {
     {
       id: "italy",
       region: "Italy",
-      flag: "🇮🇹",
+      flag: "it",
       broadcasters: [
         {
           id: "rai",
@@ -1475,7 +1476,7 @@ const tvGuideData = {
     {
       id: "netherlands",
       region: "Netherlands",
-      flag: "🇳🇱",
+      flag: "nl",
       broadcasters: [
         {
           id: "nos",
@@ -1490,7 +1491,7 @@ const tvGuideData = {
     {
       id: "india",
       region: "India",
-      flag: "🇮🇳",
+      flag: "in",
       broadcasters: [
         {
           id: "star",
@@ -1513,7 +1514,7 @@ const tvGuideData = {
     {
       id: "japan",
       region: "Japan",
-      flag: "🇯🇵",
+      flag: "jp",
       broadcasters: [
         {
           id: "nhk",
@@ -1625,7 +1626,7 @@ const privateTransportData = {
       id: "miami",
       city: "Miami",
       country: "USA",
-      flag: "🇺🇸",
+      flag: "us",
       airports: [
         {
           id: "opf",
@@ -1656,7 +1657,7 @@ const privateTransportData = {
       id: "new-york",
       city: "New York/New Jersey",
       country: "USA",
-      flag: "🇺🇸",
+      flag: "us",
       airports: [
         {
           id: "teb",
@@ -1686,7 +1687,7 @@ const privateTransportData = {
       id: "los-angeles",
       city: "Los Angeles",
       country: "USA",
-      flag: "🇺🇸",
+      flag: "us",
       airports: [
         {
           id: "vny",
@@ -1725,7 +1726,7 @@ const privateTransportData = {
       id: "dallas",
       city: "Dallas",
       country: "USA",
-      flag: "🇺🇸",
+      flag: "us",
       airports: [
         {
           id: "dal",
@@ -1760,7 +1761,7 @@ const privateTransportData = {
       id: "houston",
       city: "Houston",
       country: "USA",
-      flag: "🇺🇸",
+      flag: "us",
       airports: [
         {
           id: "hou",
@@ -1786,7 +1787,7 @@ const privateTransportData = {
       id: "atlanta",
       city: "Atlanta",
       country: "USA",
-      flag: "🇺🇸",
+      flag: "us",
       airports: [
         {
           id: "pdk",
@@ -1812,7 +1813,7 @@ const privateTransportData = {
       id: "boston",
       city: "Boston",
       country: "USA",
-      flag: "🇺🇸",
+      flag: "us",
       airports: [
         {
           id: "bed",
@@ -1838,7 +1839,7 @@ const privateTransportData = {
       id: "seattle",
       city: "Seattle",
       country: "USA",
-      flag: "🇺🇸",
+      flag: "us",
       airports: [
         {
           id: "bfi",
@@ -1869,7 +1870,7 @@ const privateTransportData = {
       id: "philadelphia",
       city: "Philadelphia",
       country: "USA",
-      flag: "🇺🇸",
+      flag: "us",
       airports: [
         {
           id: "pne",
@@ -1895,7 +1896,7 @@ const privateTransportData = {
       id: "san-francisco",
       city: "San Francisco Bay Area",
       country: "USA",
-      flag: "🇺🇸",
+      flag: "us",
       airports: [
         {
           id: "sql",
@@ -1930,7 +1931,7 @@ const privateTransportData = {
       id: "kansas-city",
       city: "Kansas City",
       country: "USA",
-      flag: "🇺🇸",
+      flag: "us",
       airports: [
         {
           id: "mkc",
@@ -1958,7 +1959,7 @@ const privateTransportData = {
       id: "mexico-city",
       city: "Mexico City",
       country: "Mexico",
-      flag: "🇲🇽",
+      flag: "mx",
       airports: [
         {
           id: "tlc",
@@ -1975,7 +1976,7 @@ const privateTransportData = {
       id: "guadalajara",
       city: "Guadalajara",
       country: "Mexico",
-      flag: "🇲🇽",
+      flag: "mx",
       airports: [
         {
           id: "gdl",
@@ -1992,7 +1993,7 @@ const privateTransportData = {
       id: "monterrey",
       city: "Monterrey",
       country: "Mexico",
-      flag: "🇲🇽",
+      flag: "mx",
       airports: [
         {
           id: "ntr",
@@ -2020,7 +2021,7 @@ const privateTransportData = {
       id: "toronto",
       city: "Toronto",
       country: "Canada",
-      flag: "🇨🇦",
+      flag: "ca",
       airports: [
         {
           id: "yyz-pvt",
@@ -2046,7 +2047,7 @@ const privateTransportData = {
       id: "vancouver",
       city: "Vancouver",
       country: "Canada",
-      flag: "🇨🇦",
+      flag: "ca",
       airports: [
         {
           id: "yvr-pvt",
@@ -2131,17 +2132,17 @@ const consulatesData: CityConsulates[] = [
     city: "New York / New Jersey",
     country: "USA",
     consulates: [
-      { country: "Argentina", flag: "🇦🇷", phone: "+1 212-603-0400", address: "12 W 56th St, New York, NY" },
-      { country: "Brazil", flag: "🇧🇷", phone: "+1 917-777-7777", address: "225 E 41st St, New York, NY" },
-      { country: "Canada", flag: "🇨🇦", phone: "+1 212-596-1628", address: "466 Lexington Ave, New York, NY" },
-      { country: "France", flag: "🇫🇷", phone: "+1 212-606-3600", address: "934 Fifth Ave, New York, NY" },
-      { country: "Germany", flag: "🇩🇪", phone: "+1 212-610-9700", address: "871 United Nations Plaza, New York, NY" },
-      { country: "India", flag: "🇮🇳", phone: "+1 212-774-0600", address: "3 E 64th St, New York, NY" },
-      { country: "Japan", flag: "🇯🇵", phone: "+1 212-371-8222", address: "299 Park Ave, New York, NY" },
-      { country: "Mexico", flag: "🇲🇽", phone: "+1 212-217-6400", address: "27 E 39th St, New York, NY" },
+      { country: "Argentina", flag: "ar", phone: "+1 212-603-0400", address: "12 W 56th St, New York, NY" },
+      { country: "Brazil", flag: "br", phone: "+1 917-777-7777", address: "225 E 41st St, New York, NY" },
+      { country: "Canada", flag: "ca", phone: "+1 212-596-1628", address: "466 Lexington Ave, New York, NY" },
+      { country: "France", flag: "fr", phone: "+1 212-606-3600", address: "934 Fifth Ave, New York, NY" },
+      { country: "Germany", flag: "de", phone: "+1 212-610-9700", address: "871 United Nations Plaza, New York, NY" },
+      { country: "India", flag: "in", phone: "+1 212-774-0600", address: "3 E 64th St, New York, NY" },
+      { country: "Japan", flag: "jp", phone: "+1 212-371-8222", address: "299 Park Ave, New York, NY" },
+      { country: "Mexico", flag: "mx", phone: "+1 212-217-6400", address: "27 E 39th St, New York, NY" },
       { country: "South Korea", flag: "🇰🇷", phone: "+1 646-674-6000", address: "460 Park Ave, New York, NY" },
-      { country: "Spain", flag: "🇪🇸", phone: "+1 212-355-4080", address: "150 E 58th St, New York, NY" },
-      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 212-745-0200", address: "885 Second Ave, New York, NY" }
+      { country: "Spain", flag: "es", phone: "+1 212-355-4080", address: "150 E 58th St, New York, NY" },
+      { country: "United Kingdom", flag: "gb", phone: "+1 212-745-0200", address: "885 Second Ave, New York, NY" }
     ]
   },
   {
@@ -2149,16 +2150,16 @@ const consulatesData: CityConsulates[] = [
     city: "Los Angeles",
     country: "USA",
     consulates: [
-      { country: "Argentina", flag: "🇦🇷", phone: "+1 323-954-9155", address: "5055 Wilshire Blvd, Los Angeles, CA" },
-      { country: "Brazil", flag: "🇧🇷", phone: "+1 323-651-2664", address: "8484 Wilshire Blvd, Beverly Hills, CA" },
-      { country: "Canada", flag: "🇨🇦", phone: "+1 213-346-2700", address: "550 S Hope St, Los Angeles, CA" },
-      { country: "China", flag: "🇨🇳", phone: "+1 213-807-8088", address: "443 Shatto Place, Los Angeles, CA" },
-      { country: "France", flag: "🇫🇷", phone: "+1 310-235-3200", address: "10390 Santa Monica Blvd, Los Angeles, CA" },
-      { country: "Germany", flag: "🇩🇪", phone: "+1 323-930-2703", address: "6222 Wilshire Blvd, Los Angeles, CA" },
-      { country: "Japan", flag: "🇯🇵", phone: "+1 213-617-6700", address: "350 S Grand Ave, Los Angeles, CA" },
-      { country: "Mexico", flag: "🇲🇽", phone: "+1 213-351-6800", address: "2401 W 6th St, Los Angeles, CA" },
+      { country: "Argentina", flag: "ar", phone: "+1 323-954-9155", address: "5055 Wilshire Blvd, Los Angeles, CA" },
+      { country: "Brazil", flag: "br", phone: "+1 323-651-2664", address: "8484 Wilshire Blvd, Beverly Hills, CA" },
+      { country: "Canada", flag: "ca", phone: "+1 213-346-2700", address: "550 S Hope St, Los Angeles, CA" },
+      { country: "China", flag: "cn", phone: "+1 213-807-8088", address: "443 Shatto Place, Los Angeles, CA" },
+      { country: "France", flag: "fr", phone: "+1 310-235-3200", address: "10390 Santa Monica Blvd, Los Angeles, CA" },
+      { country: "Germany", flag: "de", phone: "+1 323-930-2703", address: "6222 Wilshire Blvd, Los Angeles, CA" },
+      { country: "Japan", flag: "jp", phone: "+1 213-617-6700", address: "350 S Grand Ave, Los Angeles, CA" },
+      { country: "Mexico", flag: "mx", phone: "+1 213-351-6800", address: "2401 W 6th St, Los Angeles, CA" },
       { country: "South Korea", flag: "🇰🇷", phone: "+1 213-385-9300", address: "3243 Wilshire Blvd, Los Angeles, CA" },
-      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 310-789-0031", address: "2029 Century Park East, Los Angeles, CA" }
+      { country: "United Kingdom", flag: "gb", phone: "+1 310-789-0031", address: "2029 Century Park East, Los Angeles, CA" }
     ]
   },
   {
@@ -2166,15 +2167,15 @@ const consulatesData: CityConsulates[] = [
     city: "Miami",
     country: "USA",
     consulates: [
-      { country: "Argentina", flag: "🇦🇷", phone: "+1 305-373-1889", address: "1101 Brickell Ave, Miami, FL" },
-      { country: "Brazil", flag: "🇧🇷", phone: "+1 305-285-6200", address: "80 SW 8th St, Miami, FL" },
-      { country: "Canada", flag: "🇨🇦", phone: "+1 305-579-1600", address: "200 S Biscayne Blvd, Miami, FL" },
+      { country: "Argentina", flag: "ar", phone: "+1 305-373-1889", address: "1101 Brickell Ave, Miami, FL" },
+      { country: "Brazil", flag: "br", phone: "+1 305-285-6200", address: "80 SW 8th St, Miami, FL" },
+      { country: "Canada", flag: "ca", phone: "+1 305-579-1600", address: "200 S Biscayne Blvd, Miami, FL" },
       { country: "Colombia", flag: "🇨🇴", phone: "+1 305-441-1235", address: "280 Aragon Ave, Coral Gables, FL" },
-      { country: "France", flag: "🇫🇷", phone: "+1 305-403-4150", address: "1395 Brickell Ave, Miami, FL" },
-      { country: "Germany", flag: "🇩🇪", phone: "+1 305-358-0290", address: "100 N Biscayne Blvd, Miami, FL" },
-      { country: "Mexico", flag: "🇲🇽", phone: "+1 786-268-4900", address: "1399 SW 1st Ave, Miami, FL" },
-      { country: "Spain", flag: "🇪🇸", phone: "+1 305-446-5511", address: "2655 Le Jeune Rd, Coral Gables, FL" },
-      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 305-400-6400", address: "1001 Brickell Bay Dr, Miami, FL" }
+      { country: "France", flag: "fr", phone: "+1 305-403-4150", address: "1395 Brickell Ave, Miami, FL" },
+      { country: "Germany", flag: "de", phone: "+1 305-358-0290", address: "100 N Biscayne Blvd, Miami, FL" },
+      { country: "Mexico", flag: "mx", phone: "+1 786-268-4900", address: "1399 SW 1st Ave, Miami, FL" },
+      { country: "Spain", flag: "es", phone: "+1 305-446-5511", address: "2655 Le Jeune Rd, Coral Gables, FL" },
+      { country: "United Kingdom", flag: "gb", phone: "+1 305-400-6400", address: "1001 Brickell Bay Dr, Miami, FL" }
     ]
   },
   {
@@ -2182,17 +2183,17 @@ const consulatesData: CityConsulates[] = [
     city: "Houston",
     country: "USA",
     consulates: [
-      { country: "Argentina", flag: "🇦🇷", phone: "+1 713-871-8935", address: "3050 Post Oak Blvd, Houston, TX" },
-      { country: "Brazil", flag: "🇧🇷", phone: "+1 713-961-3063", address: "1233 West Loop South, Houston, TX" },
-      { country: "Canada", flag: "🇨🇦", phone: "+1 832-327-0854", address: "5847 San Felipe St, Houston, TX" },
-      { country: "China", flag: "🇨🇳", phone: "+1 713-520-1462", address: "3417 Montrose Blvd, Houston, TX" },
-      { country: "France", flag: "🇫🇷", phone: "+1 713-572-2799", address: "777 Post Oak Blvd, Houston, TX" },
-      { country: "Germany", flag: "🇩🇪", phone: "+1 713-627-7770", address: "1330 Post Oak Blvd, Houston, TX" },
-      { country: "India", flag: "🇮🇳", phone: "+1 713-626-2148", address: "4300 Scotland St, Houston, TX" },
-      { country: "Japan", flag: "🇯🇵", phone: "+1 713-652-2977", address: "909 Fannin St, Houston, TX" },
-      { country: "Mexico", flag: "🇲🇽", phone: "+1 713-271-6800", address: "4507 San Jacinto St, Houston, TX" },
+      { country: "Argentina", flag: "ar", phone: "+1 713-871-8935", address: "3050 Post Oak Blvd, Houston, TX" },
+      { country: "Brazil", flag: "br", phone: "+1 713-961-3063", address: "1233 West Loop South, Houston, TX" },
+      { country: "Canada", flag: "ca", phone: "+1 832-327-0854", address: "5847 San Felipe St, Houston, TX" },
+      { country: "China", flag: "cn", phone: "+1 713-520-1462", address: "3417 Montrose Blvd, Houston, TX" },
+      { country: "France", flag: "fr", phone: "+1 713-572-2799", address: "777 Post Oak Blvd, Houston, TX" },
+      { country: "Germany", flag: "de", phone: "+1 713-627-7770", address: "1330 Post Oak Blvd, Houston, TX" },
+      { country: "India", flag: "in", phone: "+1 713-626-2148", address: "4300 Scotland St, Houston, TX" },
+      { country: "Japan", flag: "jp", phone: "+1 713-652-2977", address: "909 Fannin St, Houston, TX" },
+      { country: "Mexico", flag: "mx", phone: "+1 713-271-6800", address: "4507 San Jacinto St, Houston, TX" },
       { country: "Nigeria", flag: "🇳🇬", phone: "+1 713-839-1300", address: "8060 Park Place Blvd, Houston, TX" },
-      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 713-659-6270", address: "1000 Louisiana St, Houston, TX" }
+      { country: "United Kingdom", flag: "gb", phone: "+1 713-659-6270", address: "1000 Louisiana St, Houston, TX" }
     ]
   },
   {
@@ -2200,11 +2201,11 @@ const consulatesData: CityConsulates[] = [
     city: "Dallas",
     country: "USA",
     consulates: [
-      { country: "Canada", flag: "🇨🇦", phone: "+1 214-922-9806", address: "500 N Akard St, Dallas, TX" },
-      { country: "France", flag: "🇫🇷", phone: "+1 214-978-3260", address: "5060 Tennyson Pkwy, Plano, TX" },
-      { country: "Germany", flag: "🇩🇪", phone: "+1 469-257-8456", address: "1600 Pacific Ave, Dallas, TX" },
-      { country: "Japan", flag: "🇯🇵", phone: "+1 214-780-1400", address: "2717 Harwood St, Dallas, TX" },
-      { country: "Mexico", flag: "🇲🇽", phone: "+1 214-932-8670", address: "1210 River Bend Dr, Dallas, TX" },
+      { country: "Canada", flag: "ca", phone: "+1 214-922-9806", address: "500 N Akard St, Dallas, TX" },
+      { country: "France", flag: "fr", phone: "+1 214-978-3260", address: "5060 Tennyson Pkwy, Plano, TX" },
+      { country: "Germany", flag: "de", phone: "+1 469-257-8456", address: "1600 Pacific Ave, Dallas, TX" },
+      { country: "Japan", flag: "jp", phone: "+1 214-780-1400", address: "2717 Harwood St, Dallas, TX" },
+      { country: "Mexico", flag: "mx", phone: "+1 214-932-8670", address: "1210 River Bend Dr, Dallas, TX" },
       { country: "South Korea", flag: "🇰🇷", phone: "+1 972-960-7511", address: "2801 Spring Valley Rd, Dallas, TX" }
     ]
   },
@@ -2213,14 +2214,14 @@ const consulatesData: CityConsulates[] = [
     city: "Atlanta",
     country: "USA",
     consulates: [
-      { country: "Brazil", flag: "🇧🇷", phone: "+1 404-949-2400", address: "3500 Lenox Rd NE, Atlanta, GA" },
-      { country: "Canada", flag: "🇨🇦", phone: "+1 404-532-2000", address: "1175 Peachtree St NE, Atlanta, GA" },
-      { country: "France", flag: "🇫🇷", phone: "+1 404-495-1600", address: "3399 Peachtree Rd NE, Atlanta, GA" },
-      { country: "Germany", flag: "🇩🇪", phone: "+1 404-905-0000", address: "285 Peachtree Center Ave NE, Atlanta, GA" },
+      { country: "Brazil", flag: "br", phone: "+1 404-949-2400", address: "3500 Lenox Rd NE, Atlanta, GA" },
+      { country: "Canada", flag: "ca", phone: "+1 404-532-2000", address: "1175 Peachtree St NE, Atlanta, GA" },
+      { country: "France", flag: "fr", phone: "+1 404-495-1600", address: "3399 Peachtree Rd NE, Atlanta, GA" },
+      { country: "Germany", flag: "de", phone: "+1 404-905-0000", address: "285 Peachtree Center Ave NE, Atlanta, GA" },
       { country: "Greece", flag: "🇬🇷", phone: "+1 404-261-3313", address: "3340 Peachtree Rd NE, Atlanta, GA" },
-      { country: "India", flag: "🇮🇳", phone: "+1 404-963-5902", address: "5549 Glenridge Dr, Atlanta, GA" },
-      { country: "Japan", flag: "🇯🇵", phone: "+1 404-240-4300", address: "3438 Peachtree Rd NE, Atlanta, GA" },
-      { country: "Mexico", flag: "🇲🇽", phone: "+1 404-266-1913", address: "1700 Chantilly Dr NE, Atlanta, GA" },
+      { country: "India", flag: "in", phone: "+1 404-963-5902", address: "5549 Glenridge Dr, Atlanta, GA" },
+      { country: "Japan", flag: "jp", phone: "+1 404-240-4300", address: "3438 Peachtree Rd NE, Atlanta, GA" },
+      { country: "Mexico", flag: "mx", phone: "+1 404-266-1913", address: "1700 Chantilly Dr NE, Atlanta, GA" },
       { country: "South Korea", flag: "🇰🇷", phone: "+1 404-522-1611", address: "229 Peachtree St NE, Atlanta, GA" },
       { country: "Switzerland", flag: "🇨🇭", phone: "+1 404-870-2000", address: "1349 W Peachtree St NW, Atlanta, GA" }
     ]
@@ -2230,10 +2231,10 @@ const consulatesData: CityConsulates[] = [
     city: "Seattle",
     country: "USA",
     consulates: [
-      { country: "Canada", flag: "🇨🇦", phone: "+1 206-443-1777", address: "1501 4th Ave, Seattle, WA" },
-      { country: "India", flag: "🇮🇳", phone: "+1 206-803-0400", address: "1015 2nd Ave, Seattle, WA" },
-      { country: "Japan", flag: "🇯🇵", phone: "+1 206-682-9107", address: "701 Pike St, Seattle, WA" },
-      { country: "Mexico", flag: "🇲🇽", phone: "+1 206-448-3526", address: "807 E Roy St, Seattle, WA" },
+      { country: "Canada", flag: "ca", phone: "+1 206-443-1777", address: "1501 4th Ave, Seattle, WA" },
+      { country: "India", flag: "in", phone: "+1 206-803-0400", address: "1015 2nd Ave, Seattle, WA" },
+      { country: "Japan", flag: "jp", phone: "+1 206-682-9107", address: "701 Pike St, Seattle, WA" },
+      { country: "Mexico", flag: "mx", phone: "+1 206-448-3526", address: "807 E Roy St, Seattle, WA" },
       { country: "South Korea", flag: "🇰🇷", phone: "+1 206-441-1011", address: "115 W Mercer St, Seattle, WA" }
     ]
   },
@@ -2242,14 +2243,14 @@ const consulatesData: CityConsulates[] = [
     city: "San Francisco Bay Area",
     country: "USA",
     consulates: [
-      { country: "Argentina", flag: "🇦🇷", phone: "+1 415-982-3050", address: "580 California St, San Francisco, CA" },
-      { country: "Brazil", flag: "🇧🇷", phone: "+1 415-981-8170", address: "300 Montgomery St, San Francisco, CA" },
-      { country: "Canada", flag: "🇨🇦", phone: "+1 415-834-3180", address: "580 California St, San Francisco, CA" },
-      { country: "China", flag: "🇨🇳", phone: "+1 415-852-5900", address: "1450 Laguna St, San Francisco, CA" },
-      { country: "France", flag: "🇫🇷", phone: "+1 415-397-4330", address: "88 Kearny St, San Francisco, CA" },
-      { country: "Germany", flag: "🇩🇪", phone: "+1 415-775-1061", address: "1960 Jackson St, San Francisco, CA" },
-      { country: "Japan", flag: "🇯🇵", phone: "+1 415-780-6000", address: "275 Battery St, San Francisco, CA" },
-      { country: "Mexico", flag: "🇲🇽", phone: "+1 415-354-1700", address: "532 Folsom St, San Francisco, CA" },
+      { country: "Argentina", flag: "ar", phone: "+1 415-982-3050", address: "580 California St, San Francisco, CA" },
+      { country: "Brazil", flag: "br", phone: "+1 415-981-8170", address: "300 Montgomery St, San Francisco, CA" },
+      { country: "Canada", flag: "ca", phone: "+1 415-834-3180", address: "580 California St, San Francisco, CA" },
+      { country: "China", flag: "cn", phone: "+1 415-852-5900", address: "1450 Laguna St, San Francisco, CA" },
+      { country: "France", flag: "fr", phone: "+1 415-397-4330", address: "88 Kearny St, San Francisco, CA" },
+      { country: "Germany", flag: "de", phone: "+1 415-775-1061", address: "1960 Jackson St, San Francisco, CA" },
+      { country: "Japan", flag: "jp", phone: "+1 415-780-6000", address: "275 Battery St, San Francisco, CA" },
+      { country: "Mexico", flag: "mx", phone: "+1 415-354-1700", address: "532 Folsom St, San Francisco, CA" },
       { country: "South Korea", flag: "🇰🇷", phone: "+1 415-921-2251", address: "3500 Clay St, San Francisco, CA" }
     ]
   },
@@ -2258,10 +2259,10 @@ const consulatesData: CityConsulates[] = [
     city: "Philadelphia",
     country: "USA",
     consulates: [
-      { country: "France", flag: "🇫🇷", phone: "+1 267-404-3050", address: "205 N 4th St, Philadelphia, PA" },
-      { country: "Germany", flag: "🇩🇪", phone: "+1 215-931-8200", address: "1500 Market St, Philadelphia, PA" },
-      { country: "Italy", flag: "🇮🇹", phone: "+1 215-592-7329", address: "100 S Broad St, Philadelphia, PA" },
-      { country: "Mexico", flag: "🇲🇽", phone: "+1 215-922-4262", address: "111 S Independence Mall E, Philadelphia, PA" }
+      { country: "France", flag: "fr", phone: "+1 267-404-3050", address: "205 N 4th St, Philadelphia, PA" },
+      { country: "Germany", flag: "de", phone: "+1 215-931-8200", address: "1500 Market St, Philadelphia, PA" },
+      { country: "Italy", flag: "it", phone: "+1 215-592-7329", address: "100 S Broad St, Philadelphia, PA" },
+      { country: "Mexico", flag: "mx", phone: "+1 215-922-4262", address: "111 S Independence Mall E, Philadelphia, PA" }
     ]
   },
   {
@@ -2269,14 +2270,14 @@ const consulatesData: CityConsulates[] = [
     city: "Boston",
     country: "USA",
     consulates: [
-      { country: "Brazil", flag: "🇧🇷", phone: "+1 617-542-4000", address: "175 Purchase St, Boston, MA" },
-      { country: "Canada", flag: "🇨🇦", phone: "+1 617-247-5100", address: "3 Copley Place, Boston, MA" },
-      { country: "France", flag: "🇫🇷", phone: "+1 617-832-4400", address: "31 St James Ave, Boston, MA" },
-      { country: "Germany", flag: "🇩🇪", phone: "+1 617-369-4900", address: "3 Copley Place, Boston, MA" },
+      { country: "Brazil", flag: "br", phone: "+1 617-542-4000", address: "175 Purchase St, Boston, MA" },
+      { country: "Canada", flag: "ca", phone: "+1 617-247-5100", address: "3 Copley Place, Boston, MA" },
+      { country: "France", flag: "fr", phone: "+1 617-832-4400", address: "31 St James Ave, Boston, MA" },
+      { country: "Germany", flag: "de", phone: "+1 617-369-4900", address: "3 Copley Place, Boston, MA" },
       { country: "Ireland", flag: "🇮🇪", phone: "+1 617-267-9330", address: "535 Boylston St, Boston, MA" },
-      { country: "Japan", flag: "🇯🇵", phone: "+1 617-973-9772", address: "600 Atlantic Ave, Boston, MA" },
-      { country: "Mexico", flag: "🇲🇽", phone: "+1 617-426-4181", address: "20 Park Plaza, Boston, MA" },
-      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 617-245-4500", address: "1 Broadway, Cambridge, MA" }
+      { country: "Japan", flag: "jp", phone: "+1 617-973-9772", address: "600 Atlantic Ave, Boston, MA" },
+      { country: "Mexico", flag: "mx", phone: "+1 617-426-4181", address: "20 Park Plaza, Boston, MA" },
+      { country: "United Kingdom", flag: "gb", phone: "+1 617-245-4500", address: "1 Broadway, Cambridge, MA" }
     ]
   },
   {
@@ -2284,8 +2285,8 @@ const consulatesData: CityConsulates[] = [
     city: "Kansas City",
     country: "USA",
     consulates: [
-      { country: "Canada", flag: "🇨🇦", phone: "+1 913-905-1585", address: "10555 Marty St, Overland Park, KS" },
-      { country: "Mexico", flag: "🇲🇽", phone: "+1 816-556-0800", address: "1617 Baltimore Ave, Kansas City, MO" }
+      { country: "Canada", flag: "ca", phone: "+1 913-905-1585", address: "10555 Marty St, Overland Park, KS" },
+      { country: "Mexico", flag: "mx", phone: "+1 816-556-0800", address: "1617 Baltimore Ave, Kansas City, MO" }
     ]
   },
   {
@@ -2293,15 +2294,15 @@ const consulatesData: CityConsulates[] = [
     city: "Mexico City",
     country: "Mexico",
     consulates: [
-      { country: "United States", flag: "🇺🇸", phone: "+52 55 5080 2000", address: "Paseo de la Reforma 305, Col. Cuauhtémoc", emergency: "+52 55 5080 2000" },
-      { country: "Canada", flag: "🇨🇦", phone: "+52 55 5724 7900", address: "Calle Schiller 529, Col. Polanco" },
-      { country: "United Kingdom", flag: "🇬🇧", phone: "+52 55 1670 3200", address: "Rio Lerma 71, Col. Cuauhtémoc" },
-      { country: "Germany", flag: "🇩🇪", phone: "+52 55 5283 2200", address: "Horacio 1506, Col. Los Morales" },
-      { country: "France", flag: "🇫🇷", phone: "+52 55 9171 9700", address: "Campos Elíseos 339, Col. Polanco" },
-      { country: "Spain", flag: "🇪🇸", phone: "+52 55 5242 0031", address: "Galileo 114, Col. Polanco" },
-      { country: "Argentina", flag: "🇦🇷", phone: "+52 55 5520 9430", address: "Av. Pres. Masaryk 29, Col. Polanco" },
-      { country: "Brazil", flag: "🇧🇷", phone: "+52 55 5201 4553", address: "Lope de Armendáriz 130, Col. Lomas Virreyes" },
-      { country: "Japan", flag: "🇯🇵", phone: "+52 55 5211 0028", address: "Paseo de la Reforma 243, Col. Cuauhtémoc" }
+      { country: "United States", flag: "us", phone: "+52 55 5080 2000", address: "Paseo de la Reforma 305, Col. Cuauhtémoc", emergency: "+52 55 5080 2000" },
+      { country: "Canada", flag: "ca", phone: "+52 55 5724 7900", address: "Calle Schiller 529, Col. Polanco" },
+      { country: "United Kingdom", flag: "gb", phone: "+52 55 1670 3200", address: "Rio Lerma 71, Col. Cuauhtémoc" },
+      { country: "Germany", flag: "de", phone: "+52 55 5283 2200", address: "Horacio 1506, Col. Los Morales" },
+      { country: "France", flag: "fr", phone: "+52 55 9171 9700", address: "Campos Elíseos 339, Col. Polanco" },
+      { country: "Spain", flag: "es", phone: "+52 55 5242 0031", address: "Galileo 114, Col. Polanco" },
+      { country: "Argentina", flag: "ar", phone: "+52 55 5520 9430", address: "Av. Pres. Masaryk 29, Col. Polanco" },
+      { country: "Brazil", flag: "br", phone: "+52 55 5201 4553", address: "Lope de Armendáriz 130, Col. Lomas Virreyes" },
+      { country: "Japan", flag: "jp", phone: "+52 55 5211 0028", address: "Paseo de la Reforma 243, Col. Cuauhtémoc" }
     ]
   },
   {
@@ -2309,10 +2310,10 @@ const consulatesData: CityConsulates[] = [
     city: "Guadalajara",
     country: "Mexico",
     consulates: [
-      { country: "United States", flag: "🇺🇸", phone: "+52 33 3111 7800", address: "Manuel Acuña 3410, Col. Monraz", emergency: "+1 844-528-6611" },
-      { country: "Canada", flag: "🇨🇦", phone: "+52 33 1818 2090", address: "World Trade Center, Av. Mariano Otero 1249" },
-      { country: "Germany", flag: "🇩🇪", phone: "+52 33 3616 6218", address: "Av. Américas 999, Col. Providencia" },
-      { country: "Spain", flag: "🇪🇸", phone: "+52 33 3630 0450", address: "Paseo Royal Country 4596, Col. Royal Country" }
+      { country: "United States", flag: "us", phone: "+52 33 3111 7800", address: "Manuel Acuña 3410, Col. Monraz", emergency: "+1 844-528-6611" },
+      { country: "Canada", flag: "ca", phone: "+52 33 1818 2090", address: "World Trade Center, Av. Mariano Otero 1249" },
+      { country: "Germany", flag: "de", phone: "+52 33 3616 6218", address: "Av. Américas 999, Col. Providencia" },
+      { country: "Spain", flag: "es", phone: "+52 33 3630 0450", address: "Paseo Royal Country 4596, Col. Royal Country" }
     ]
   },
   {
@@ -2320,10 +2321,10 @@ const consulatesData: CityConsulates[] = [
     city: "Monterrey",
     country: "Mexico",
     consulates: [
-      { country: "United States", flag: "🇺🇸", phone: "+52 81 8047 3100", address: "Av. Alfonso Reyes 150, Col. Valle Poniente, Santa Catarina", emergency: "+52 55 5080 2000" },
-      { country: "Canada", flag: "🇨🇦", phone: "+52 81 8344 3200", address: "Torre Comercial América, Av. Vasconcelos 335" },
-      { country: "Germany", flag: "🇩🇪", phone: "+52 81 8335 6098", address: "Calzada del Valle 255, Col. Del Valle" },
-      { country: "Japan", flag: "🇯🇵", phone: "+52 81 8478 4700", address: "Av. Lázaro Cárdenas 2400, Col. Residencial San Agustín" }
+      { country: "United States", flag: "us", phone: "+52 81 8047 3100", address: "Av. Alfonso Reyes 150, Col. Valle Poniente, Santa Catarina", emergency: "+52 55 5080 2000" },
+      { country: "Canada", flag: "ca", phone: "+52 81 8344 3200", address: "Torre Comercial América, Av. Vasconcelos 335" },
+      { country: "Germany", flag: "de", phone: "+52 81 8335 6098", address: "Calzada del Valle 255, Col. Del Valle" },
+      { country: "Japan", flag: "jp", phone: "+52 81 8478 4700", address: "Av. Lázaro Cárdenas 2400, Col. Residencial San Agustín" }
     ]
   },
   {
@@ -2331,14 +2332,14 @@ const consulatesData: CityConsulates[] = [
     city: "Toronto",
     country: "Canada",
     consulates: [
-      { country: "United States", flag: "🇺🇸", phone: "+1 416-595-1700", address: "360 University Ave, Toronto, ON" },
-      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 416-593-1290", address: "777 Bay St, Toronto, ON" },
-      { country: "France", flag: "🇫🇷", phone: "+1 416-847-1900", address: "2 Bloor St E, Toronto, ON" },
-      { country: "Germany", flag: "🇩🇪", phone: "+1 416-925-2813", address: "2 Bloor St E, Toronto, ON" },
-      { country: "India", flag: "🇮🇳", phone: "+1 416-960-0751", address: "365 Bloor St E, Toronto, ON" },
-      { country: "Japan", flag: "🇯🇵", phone: "+1 416-363-7038", address: "77 King St W, Toronto, ON" },
-      { country: "Mexico", flag: "🇲🇽", phone: "+1 416-368-2875", address: "11 King St W, Toronto, ON" },
-      { country: "Brazil", flag: "🇧🇷", phone: "+1 416-922-2503", address: "77 Bloor St W, Toronto, ON" },
+      { country: "United States", flag: "us", phone: "+1 416-595-1700", address: "360 University Ave, Toronto, ON" },
+      { country: "United Kingdom", flag: "gb", phone: "+1 416-593-1290", address: "777 Bay St, Toronto, ON" },
+      { country: "France", flag: "fr", phone: "+1 416-847-1900", address: "2 Bloor St E, Toronto, ON" },
+      { country: "Germany", flag: "de", phone: "+1 416-925-2813", address: "2 Bloor St E, Toronto, ON" },
+      { country: "India", flag: "in", phone: "+1 416-960-0751", address: "365 Bloor St E, Toronto, ON" },
+      { country: "Japan", flag: "jp", phone: "+1 416-363-7038", address: "77 King St W, Toronto, ON" },
+      { country: "Mexico", flag: "mx", phone: "+1 416-368-2875", address: "11 King St W, Toronto, ON" },
+      { country: "Brazil", flag: "br", phone: "+1 416-922-2503", address: "77 Bloor St W, Toronto, ON" },
       { country: "South Korea", flag: "🇰🇷", phone: "+1 416-920-3809", address: "555 Avenue Rd, Toronto, ON" }
     ]
   },
@@ -2347,16 +2348,16 @@ const consulatesData: CityConsulates[] = [
     city: "Vancouver",
     country: "Canada",
     consulates: [
-      { country: "United States", flag: "🇺🇸", phone: "+1 604-685-4311", address: "1075 W Pender St, Vancouver, BC" },
-      { country: "United Kingdom", flag: "🇬🇧", phone: "+1 604-683-4421", address: "1111 Melville St, Vancouver, BC" },
-      { country: "France", flag: "🇫🇷", phone: "+1 604-681-4345", address: "1130 W Pender St, Vancouver, BC" },
-      { country: "Germany", flag: "🇩🇪", phone: "+1 604-684-8377", address: "999 Canada Pl, Vancouver, BC" },
-      { country: "India", flag: "🇮🇳", phone: "+1 604-662-8811", address: "325 Howe St, Vancouver, BC" },
-      { country: "Japan", flag: "🇯🇵", phone: "+1 604-684-5868", address: "900-1177 W Hastings St, Vancouver, BC" },
-      { country: "Mexico", flag: "🇲🇽", phone: "+1 604-684-3547", address: "1177 W Hastings St, Vancouver, BC" },
+      { country: "United States", flag: "us", phone: "+1 604-685-4311", address: "1075 W Pender St, Vancouver, BC" },
+      { country: "United Kingdom", flag: "gb", phone: "+1 604-683-4421", address: "1111 Melville St, Vancouver, BC" },
+      { country: "France", flag: "fr", phone: "+1 604-681-4345", address: "1130 W Pender St, Vancouver, BC" },
+      { country: "Germany", flag: "de", phone: "+1 604-684-8377", address: "999 Canada Pl, Vancouver, BC" },
+      { country: "India", flag: "in", phone: "+1 604-662-8811", address: "325 Howe St, Vancouver, BC" },
+      { country: "Japan", flag: "jp", phone: "+1 604-684-5868", address: "900-1177 W Hastings St, Vancouver, BC" },
+      { country: "Mexico", flag: "mx", phone: "+1 604-684-3547", address: "1177 W Hastings St, Vancouver, BC" },
       { country: "South Korea", flag: "🇰🇷", phone: "+1 604-681-9581", address: "1090 W Georgia St, Vancouver, BC" },
       { country: "Philippines", flag: "🇵🇭", phone: "+1 604-685-1619", address: "999 Canada Pl, Vancouver, BC" },
-      { country: "Australia", flag: "🇦🇺", phone: "+1 604-694-6160", address: "1075 W Georgia St, Vancouver, BC" }
+      { country: "Australia", flag: "au", phone: "+1 604-694-6160", address: "1075 W Georgia St, Vancouver, BC" }
     ]
   }
 ];
@@ -3247,7 +3248,7 @@ export default function CriticalInfo() {
                       <div key={region.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`tv-region-${region.id}`}>
                         <div className="bg-gradient-to-r from-primary/20 to-transparent p-4 border-b border-white/5">
                           <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                            <span className="text-2xl">{region.flag}</span>
+                            <img src={getFlagUrlByCode(region.flag, 40)} alt={region.region} className="w-8 h-6 object-cover rounded" />
                             {region.region}
                           </h3>
                         </div>
@@ -3288,7 +3289,7 @@ export default function CriticalInfo() {
                       <div key={region.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`tv-region-${region.id}`}>
                         <div className="bg-gradient-to-r from-orange-500/20 to-transparent p-4 border-b border-white/5">
                           <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                            <span className="text-2xl">{region.flag}</span>
+                            <img src={getFlagUrlByCode(region.flag, 40)} alt={region.region} className="w-8 h-6 object-cover rounded" />
                             {region.region}
                           </h3>
                         </div>
@@ -3329,7 +3330,7 @@ export default function CriticalInfo() {
                       <div key={region.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`tv-region-${region.id}`}>
                         <div className="bg-gradient-to-r from-purple-500/20 to-transparent p-4 border-b border-white/5">
                           <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                            <span className="text-2xl">{region.flag}</span>
+                            <img src={getFlagUrlByCode(region.flag, 40)} alt={region.region} className="w-8 h-6 object-cover rounded" />
                             {region.region}
                           </h3>
                         </div>
@@ -3459,7 +3460,7 @@ export default function CriticalInfo() {
                             className="w-full p-4 flex items-center justify-between"
                           >
                             <div className="flex items-center gap-2">
-                              <span className="text-lg">{city.flag}</span>
+                              <img src={getFlagUrlByCode(city.flag, 40)} alt={city.city} className="w-6 h-4 object-cover rounded" />
                               <span className="font-bold text-white">{city.city}</span>
                               <span className="text-xs text-muted-foreground">({city.airports.length} airports)</span>
                             </div>
@@ -3519,7 +3520,7 @@ export default function CriticalInfo() {
                             className="w-full p-4 flex items-center justify-between"
                           >
                             <div className="flex items-center gap-2">
-                              <span className="text-lg">{city.flag}</span>
+                              <img src={getFlagUrlByCode(city.flag, 40)} alt={city.city} className="w-6 h-4 object-cover rounded" />
                               <span className="font-bold text-white">{city.city}</span>
                             </div>
                             {expandedCards.has(`airport-${city.id}`) ? (
@@ -3576,7 +3577,7 @@ export default function CriticalInfo() {
                             className="w-full p-4 flex items-center justify-between"
                           >
                             <div className="flex items-center gap-2">
-                              <span className="text-lg">{city.flag}</span>
+                              <img src={getFlagUrlByCode(city.flag, 40)} alt={city.city} className="w-6 h-4 object-cover rounded" />
                               <span className="font-bold text-white">{city.city}</span>
                             </div>
                             {expandedCards.has(`airport-${city.id}`) ? (
@@ -3630,7 +3631,7 @@ export default function CriticalInfo() {
                       <div key={city.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`marina-city-${city.id}`}>
                         <div className="bg-gradient-to-r from-cyan-500/20 to-transparent p-4 border-b border-white/5">
                           <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                            <span className="text-2xl">{city.flag}</span>
+                            <img src={getFlagUrlByCode(city.flag, 40)} alt={city.city} className="w-8 h-6 object-cover rounded" />
                             {city.city}
                           </h3>
                         </div>
@@ -3817,7 +3818,7 @@ export default function CriticalInfo() {
                             >
                               <div className="flex items-start justify-between mb-2">
                                 <div className="flex items-center gap-2">
-                                  <span className="text-xl">{consulate.flag}</span>
+                                  <img src={getFlagUrlByCode(consulate.flag, 40)} alt={consulate.country} className="w-7 h-5 object-cover rounded" />
                                   <h4 className="font-bold text-white">{consulate.country}</h4>
                                 </div>
                               </div>
@@ -3882,7 +3883,7 @@ export default function CriticalInfo() {
 
                 <div className="bg-gradient-to-br from-red-900/30 to-red-950/20 border border-red-500/20 rounded-2xl p-4">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">{selectedMedicalCity.flag}</span>
+                    <img src={getFlagUrlByCode(selectedMedicalCity.flag, 40)} alt={selectedMedicalCity.city} className="w-8 h-6 object-cover rounded" />
                     <div>
                       <h2 className="text-xl font-display font-bold text-white">{selectedMedicalCity.city}</h2>
                       <p className="text-sm text-muted-foreground">{selectedMedicalCity.stadium}</p>
@@ -4045,7 +4046,7 @@ export default function CriticalInfo() {
                       data-testid={`city-${city.id}`}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-xl">{city.flag}</span>
+                        <img src={getFlagUrlByCode(city.flag, 40)} alt={city.city} className="w-7 h-5 object-cover rounded" />
                         <div className="text-left">
                           <div className="font-bold text-white">{city.city}</div>
                           <div className="text-xs text-muted-foreground">{city.stadium}</div>
@@ -4075,7 +4076,7 @@ export default function CriticalInfo() {
                       data-testid={`city-${city.id}`}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-xl">{city.flag}</span>
+                        <img src={getFlagUrlByCode(city.flag, 40)} alt={city.city} className="w-7 h-5 object-cover rounded" />
                         <div className="text-left">
                           <div className="font-bold text-white">{city.city}</div>
                           <div className="text-xs text-muted-foreground">{city.stadium}</div>
@@ -4105,7 +4106,7 @@ export default function CriticalInfo() {
                       data-testid={`city-${city.id}`}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-xl">{city.flag}</span>
+                        <img src={getFlagUrlByCode(city.flag, 40)} alt={city.city} className="w-7 h-5 object-cover rounded" />
                         <div className="text-left">
                           <div className="font-bold text-white">{city.city}</div>
                           <div className="text-xs text-muted-foreground">{city.stadium}</div>

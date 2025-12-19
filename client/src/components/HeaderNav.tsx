@@ -3,17 +3,18 @@ import { Link, useLocation } from "wouter";
 import { Home, Calendar, Flag, MapPin, Menu, Globe, ChevronDown, Train, Hotel, Utensils, Info, Sparkles, Settings, LogIn } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
+import { getLanguageFlagUrl } from "@/lib/flags";
 
 const LANGUAGES = [
-  { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "es", name: "Español", flag: "🇪🇸" },
-  { code: "fr", name: "Français", flag: "🇫🇷" },
-  { code: "nl", name: "Nederlands", flag: "🇳🇱" },
-  { code: "de", name: "Deutsch", flag: "🇩🇪" },
-  { code: "it", name: "Italiano", flag: "🇮🇹" },
-  { code: "ar", name: "العربية", flag: "🇸🇦" },
-  { code: "pt", name: "Português", flag: "🇧🇷" },
-  { code: "ja", name: "日本語", flag: "🇯🇵" },
+  { code: "en", name: "English" },
+  { code: "es", name: "Español" },
+  { code: "fr", name: "Français" },
+  { code: "nl", name: "Nederlands" },
+  { code: "de", name: "Deutsch" },
+  { code: "it", name: "Italiano" },
+  { code: "ar", name: "العربية" },
+  { code: "pt", name: "Português" },
+  { code: "ja", name: "日本語" },
 ];
 
 const NAV_ITEMS = [
@@ -90,7 +91,11 @@ export function HeaderNav() {
           aria-haspopup="listbox"
         >
           <Globe className="w-4 h-4 text-primary" />
-          <span className="text-xs font-medium">{currentLanguage.flag}</span>
+          <img 
+            src={getLanguageFlagUrl(currentLanguage.code, 40)} 
+            alt={currentLanguage.name}
+            className="w-5 h-4 object-cover rounded"
+          />
         </button>
 
         {isLangOpen && (
@@ -104,7 +109,11 @@ export function HeaderNav() {
                     selectedLanguage === lang.code ? "bg-primary/10 text-primary" : "text-white"
                   }`}
                 >
-                  <span className="text-lg">{lang.flag}</span>
+                  <img 
+                    src={getLanguageFlagUrl(lang.code, 40)} 
+                    alt={lang.name}
+                    className="w-6 h-4 object-cover rounded"
+                  />
                   <span className="text-sm font-medium">{lang.name}</span>
                   {selectedLanguage === lang.code && (
                     <span className="ml-auto text-primary text-xs">✓</span>

@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import type { Trip, TripTransportation, TripStay, TripDining, TripMatch, TripAgenda, TripDocument, TripContact } from "@shared/schema";
+import { getCurrencyFlagUrl } from "@/lib/flags";
 
 type ViewMode = "list" | "create" | "detail" | "currency";
 type DetailTab = "overview" | "transport" | "stays" | "dining" | "matches" | "agenda" | "docs" | "contacts";
@@ -23,22 +24,22 @@ interface ExchangeRates {
 }
 
 const CURRENCIES = [
-  { code: "USD", name: "US Dollar", symbol: "$", flag: "🇺🇸" },
-  { code: "EUR", name: "Euro", symbol: "€", flag: "🇪🇺" },
-  { code: "GBP", name: "British Pound", symbol: "£", flag: "🇬🇧" },
-  { code: "CAD", name: "Canadian Dollar", symbol: "C$", flag: "🇨🇦" },
-  { code: "MXN", name: "Mexican Peso", symbol: "$", flag: "🇲🇽" },
-  { code: "JPY", name: "Japanese Yen", symbol: "¥", flag: "🇯🇵" },
-  { code: "CNY", name: "Chinese Yuan", symbol: "¥", flag: "🇨🇳" },
-  { code: "AUD", name: "Australian Dollar", symbol: "A$", flag: "🇦🇺" },
-  { code: "BRL", name: "Brazilian Real", symbol: "R$", flag: "🇧🇷" },
-  { code: "ARS", name: "Argentine Peso", symbol: "$", flag: "🇦🇷" },
-  { code: "KRW", name: "South Korean Won", symbol: "₩", flag: "🇰🇷" },
-  { code: "CHF", name: "Swiss Franc", symbol: "Fr", flag: "🇨🇭" },
-  { code: "INR", name: "Indian Rupee", symbol: "₹", flag: "🇮🇳" },
-  { code: "SAR", name: "Saudi Riyal", symbol: "﷼", flag: "🇸🇦" },
-  { code: "AED", name: "UAE Dirham", symbol: "د.إ", flag: "🇦🇪" },
-  { code: "QAR", name: "Qatari Riyal", symbol: "﷼", flag: "🇶🇦" },
+  { code: "USD", name: "US Dollar", symbol: "$" },
+  { code: "EUR", name: "Euro", symbol: "€" },
+  { code: "GBP", name: "British Pound", symbol: "£" },
+  { code: "CAD", name: "Canadian Dollar", symbol: "C$" },
+  { code: "MXN", name: "Mexican Peso", symbol: "$" },
+  { code: "JPY", name: "Japanese Yen", symbol: "¥" },
+  { code: "CNY", name: "Chinese Yuan", symbol: "¥" },
+  { code: "AUD", name: "Australian Dollar", symbol: "A$" },
+  { code: "BRL", name: "Brazilian Real", symbol: "R$" },
+  { code: "ARS", name: "Argentine Peso", symbol: "$" },
+  { code: "KRW", name: "South Korean Won", symbol: "₩" },
+  { code: "CHF", name: "Swiss Franc", symbol: "Fr" },
+  { code: "INR", name: "Indian Rupee", symbol: "₹" },
+  { code: "SAR", name: "Saudi Riyal", symbol: "﷼" },
+  { code: "AED", name: "UAE Dirham", symbol: "د.إ" },
+  { code: "QAR", name: "Qatari Riyal", symbol: "﷼" },
 ];
 
 export default function Planner() {
@@ -979,7 +980,7 @@ function CurrencyConverter({ onBack }: { onBack: () => void }) {
               >
                 {CURRENCIES.map((currency) => (
                   <option key={currency.code} value={currency.code} className="bg-card">
-                    {currency.flag} {currency.code} - {currency.name}
+                    {currency.code} - {currency.name}
                   </option>
                 ))}
               </select>
@@ -1006,7 +1007,7 @@ function CurrencyConverter({ onBack }: { onBack: () => void }) {
               >
                 {CURRENCIES.map((currency) => (
                   <option key={currency.code} value={currency.code} className="bg-card">
-                    {currency.flag} {currency.code} - {currency.name}
+                    {currency.code} - {currency.name}
                   </option>
                 ))}
               </select>
@@ -1014,11 +1015,13 @@ function CurrencyConverter({ onBack }: { onBack: () => void }) {
 
             {convertedAmount !== null && (
               <div className="bg-gradient-to-r from-primary/20 to-emerald-600/20 border border-primary/30 rounded-2xl p-6 text-center">
-                <div className="text-sm text-muted-foreground mb-2">
-                  {getCurrency(fromCurrency)?.flag} {amount} {fromCurrency} =
+                <div className="text-sm text-muted-foreground mb-2 flex items-center justify-center gap-2">
+                  <img src={getCurrencyFlagUrl(fromCurrency)} alt={fromCurrency} className="w-5 h-4 object-cover rounded" />
+                  {amount} {fromCurrency} =
                 </div>
-                <div className="text-3xl font-display font-bold text-white mb-1">
-                  {getCurrency(toCurrency)?.flag} {formatNumber(convertedAmount)} {toCurrency}
+                <div className="text-3xl font-display font-bold text-white mb-1 flex items-center justify-center gap-2">
+                  <img src={getCurrencyFlagUrl(toCurrency)} alt={toCurrency} className="w-6 h-5 object-cover rounded" />
+                  {formatNumber(convertedAmount)} {toCurrency}
                 </div>
                 <div className="text-xs text-muted-foreground">
                   1 {fromCurrency} = {formatNumber((rates?.rates[toCurrency] || 1) / (rates?.rates[fromCurrency] || 1))} {toCurrency}
@@ -1049,24 +1052,21 @@ function CurrencyConverter({ onBack }: { onBack: () => void }) {
             <div>
               <p className="text-sm text-muted-foreground mb-3">Host Country Currencies</p>
               <div className="grid grid-cols-3 gap-2">
-                {["USD", "CAD", "MXN"].map((code) => {
-                  const curr = getCurrency(code);
-                  return (
+                {["USD", "CAD", "MXN"].map((code) => (
                     <button
                       key={code}
                       onClick={() => setToCurrency(code)}
-                      className={`py-3 rounded-xl text-center transition-colors ${
+                      className={`py-3 rounded-xl text-center transition-colors flex flex-col items-center ${
                         toCurrency === code
                           ? "bg-primary text-primary-foreground"
                           : "bg-card border border-white/10 text-white hover:bg-white/5"
                       }`}
                       data-testid={`host-currency-${code}`}
                     >
-                      <div className="text-lg">{curr?.flag}</div>
+                      <img src={getCurrencyFlagUrl(code)} alt={code} className="w-8 h-6 object-cover rounded mb-1" />
                       <div className="text-xs font-medium">{code}</div>
                     </button>
-                  );
-                })}
+                  ))}
               </div>
             </div>
 

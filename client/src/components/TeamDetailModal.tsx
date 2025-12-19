@@ -1,6 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { X, Trophy, Target, Calendar, TrendingUp } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { getFlagUrl } from "@/lib/flags";
 
 interface Team {
   id: number;
@@ -905,7 +906,11 @@ export function TeamDetailModal({ team, isOpen, onClose }: TeamDetailModalProps)
         
         <DialogHeader className="pb-4 border-b border-gray-700 pr-8">
           <div className="flex items-center gap-3">
-            <div className="text-4xl">{team.flag}</div>
+            <img 
+              src={getFlagUrl(team.name)} 
+              alt={`${team.name} flag`}
+              className="w-14 h-10 object-cover rounded shadow-sm border border-gray-600"
+            />
             <div className="flex-1">
               <DialogTitle className="text-2xl font-bold text-white">
                 {team.teamName}
