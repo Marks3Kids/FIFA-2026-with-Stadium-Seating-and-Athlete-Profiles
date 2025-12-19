@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { stripeService } from "./stripeService";
+import { getNewsWithAutoRefresh, refreshNewsNow } from "./newsService";
 import { 
   insertTeamSchema, 
   insertCitySchema, 
@@ -115,13 +116,31 @@ export async function registerRoutes(
     }
   });
 
-  // News API
+  // News API - Auto-refreshing from RSS feeds
   app.get("/api/news", async (req, res) => {
     try {
-      const news = await storage.getAllNews();
+      let limit = 3;
+      if (req.query.limit) {
+        const parsed = parseInt(req.query.limit as string, 10);
+        if (!isNaN(parsed) && parsed > 0 && parsed <= 10) {
+          limit = parsed;
+        }
+      }
+      const news = await getNewsWithAutoRefresh(limit);
       res.json(news);
     } catch (error) {
+      console.error("Error fetching news:", error);
       res.status(500).json({ error: "Failed to fetch news" });
+    }
+  });
+
+  app.post("/api/news/refresh", async (req, res) => {
+    try {
+      await refreshNewsNow();
+      res.json({ success: true, message: "News refreshed successfully" });
+    } catch (error) {
+      console.error("Error refreshing news:", error);
+      res.status(500).json({ error: "Failed to refresh news" });
     }
   });
 

@@ -1,7 +1,8 @@
 import { Layout } from "@/components/Layout";
-import { FileText, Scale } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
+import { FileText, Scale, RefreshCw, ExternalLink, Clock, Newspaper, ChevronRight } from "lucide-react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 import potsBg from "@assets/image_1764366081093.png";
 
 interface NewsItem {
@@ -9,18 +10,54 @@ interface NewsItem {
   title: string;
   category: string;
   time: string;
+  link: string | null;
+  description: string | null;
+  source: string | null;
+  publishedAt: string | null;
 }
 
 export default function Home() {
   const { t } = useTranslation();
-  const { data: news = [] } = useQuery<NewsItem[]>({
+  const queryClient = useQueryClient();
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [expandedNews, setExpandedNews] = useState<number | null>(null);
+
+  const { data: news = [], isLoading, dataUpdatedAt } = useQuery<NewsItem[]>({
     queryKey: ["/api/news"],
     queryFn: async () => {
-      const response = await fetch("/api/news");
+      const response = await fetch("/api/news?limit=3");
       if (!response.ok) throw new Error("Failed to fetch news");
       return response.json();
     },
+    refetchInterval: 5 * 60 * 1000,
+    staleTime: 2 * 60 * 1000,
   });
+
+  const handleRefreshNews = async () => {
+    setIsRefreshing(true);
+    try {
+      await fetch("/api/news/refresh", { method: "POST" });
+      await queryClient.invalidateQueries({ queryKey: ["/api/news"] });
+    } catch (error) {
+      console.error("Failed to refresh news:", error);
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
+
+  const formatLastUpdated = () => {
+    if (!dataUpdatedAt) return "";
+    const date = new Date(dataUpdatedAt);
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+
+  const handleNewsClick = (item: NewsItem) => {
+    if (item.link) {
+      window.open(item.link, "_blank", "noopener,noreferrer");
+    } else {
+      setExpandedNews(expandedNews === item.id ? null : item.id);
+    }
+  };
 
   return (
     <Layout pageTitle="nav.home">
@@ -71,30 +108,107 @@ export default function Home() {
             <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{t("common.matches")}</span>
           </div>
         </div>
+      </div>
 
-        </div>
-
-      {/* Latest Updates */}
+      {/* Latest News - Interactive Section */}
       <div className="px-6 py-6">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-display font-bold text-white">{t("home.latestNews")}</h2>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <Newspaper className="w-5 h-5 text-primary" />
+            <h2 className="text-2xl font-display font-bold text-white">{t("home.latestNews")}</h2>
+          </div>
+          <button
+            onClick={handleRefreshNews}
+            disabled={isRefreshing}
+            className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors disabled:opacity-50"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
+            {isRefreshing ? "Updating..." : "Refresh"}
+          </button>
         </div>
+
+        {dataUpdatedAt && (
+          <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground mb-4">
+            <Clock className="w-3 h-3" />
+            <span>Last updated: {formatLastUpdated()}</span>
+          </div>
+        )}
         
-        <div className="space-y-4">
-          {news.map((item) => (
-            <div key={item.id} className="group bg-card border border-white/5 p-4 rounded-xl active:scale-[0.99] transition-transform">
-              <div className="flex justify-between items-start mb-2">
-                <span className="text-[10px] font-bold text-accent uppercase tracking-wider border border-accent/20 px-2 py-0.5 rounded-full bg-accent/10">
-                  {item.category}
-                </span>
-                <span className="text-[10px] text-muted-foreground">{item.time}</span>
+        {isLoading ? (
+          <div className="space-y-4">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-card border border-white/5 p-4 rounded-xl animate-pulse">
+                <div className="h-4 bg-white/10 rounded w-20 mb-3" />
+                <div className="h-5 bg-white/10 rounded w-full mb-2" />
+                <div className="h-5 bg-white/10 rounded w-3/4" />
               </div>
-              <h3 className="text-lg font-bold text-white leading-tight group-hover:text-primary transition-colors">
-                {item.title}
-              </h3>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : news.length === 0 ? (
+          <div className="bg-card border border-white/5 p-6 rounded-xl text-center">
+            <Newspaper className="w-10 h-10 text-muted-foreground mx-auto mb-3" />
+            <p className="text-muted-foreground text-sm">No news available</p>
+            <button
+              onClick={handleRefreshNews}
+              className="mt-3 text-primary text-sm hover:underline"
+            >
+              Tap to load news
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {news.map((item) => (
+              <div 
+                key={item.id} 
+                className="group bg-card border border-white/5 rounded-xl overflow-hidden cursor-pointer active:scale-[0.99] transition-all hover:border-primary/30"
+                onClick={() => handleNewsClick(item)}
+              >
+                <div className="p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-bold text-accent uppercase tracking-wider border border-accent/20 px-2 py-0.5 rounded-full bg-accent/10">
+                        {item.category}
+                      </span>
+                      {item.source && (
+                        <span className="text-[10px] text-muted-foreground">
+                          {item.source}
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-[10px] text-muted-foreground">{item.time}</span>
+                  </div>
+                  <h3 className="text-base font-bold text-white leading-tight group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  
+                  {expandedNews === item.id && item.description && (
+                    <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
+                      {item.description}
+                    </p>
+                  )}
+                </div>
+                
+                <div className="flex items-center justify-between px-4 py-2.5 bg-white/5 border-t border-white/5">
+                  {item.link ? (
+                    <span className="text-[10px] text-primary flex items-center gap-1">
+                      <ExternalLink className="w-3 h-3" />
+                      Read full article
+                    </span>
+                  ) : (
+                    <span className="text-[10px] text-muted-foreground flex items-center gap-1">
+                      Tap for details
+                    </span>
+                  )}
+                  <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <p className="text-[10px] text-muted-foreground text-center mt-4">
+          News updates automatically every 4 hours from ESPN & Goal.com
+        </p>
       </div>
 
       {/* Legal & Terms Section */}

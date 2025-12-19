@@ -87,6 +87,10 @@ export const newsItems = pgTable("news_items", {
   title: text("title").notNull(),
   category: text("category").notNull(),
   time: text("time").notNull(),
+  link: text("link"),
+  description: text("description"),
+  source: text("source"),
+  publishedAt: timestamp("published_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
