@@ -14,18 +14,21 @@ interface NewsItem {
   description: string | null;
   source: string | null;
   publishedAt: string | null;
+  originalTitle?: string;
+  isTranslated?: boolean;
 }
 
 export default function Home() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const queryClient = useQueryClient();
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [expandedNews, setExpandedNews] = useState<number | null>(null);
+  const currentLocale = i18n.language || "en";
 
   const { data: news = [], isLoading, dataUpdatedAt } = useQuery<NewsItem[]>({
-    queryKey: ["/api/news"],
+    queryKey: ["/api/news", currentLocale],
     queryFn: async () => {
-      const response = await fetch("/api/news?limit=3");
+      const response = await fetch(`/api/news?limit=3&locale=${currentLocale}`);
       if (!response.ok) throw new Error("Failed to fetch news");
       return response.json();
     },
@@ -37,7 +40,7 @@ export default function Home() {
     setIsRefreshing(true);
     try {
       await fetch("/api/news/refresh", { method: "POST" });
-      await queryClient.invalidateQueries({ queryKey: ["/api/news"] });
+      await queryClient.invalidateQueries({ queryKey: ["/api/news", currentLocale] });
     } catch (error) {
       console.error("Failed to refresh news:", error);
     } finally {

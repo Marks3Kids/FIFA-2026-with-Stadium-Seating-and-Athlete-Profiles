@@ -104,8 +104,15 @@ Preferred communication style: Simple, everyday language.
 - Provides manual refresh endpoint at `/api/news/refresh`
 
 **API Endpoints:**
-- `GET /api/news?limit=3` - Returns latest news items (limit validated 1-10)
+- `GET /api/news?limit=3&locale=es` - Returns latest news items with optional translation (limit validated 1-10, locale supports es/fr/de/pt/ar/ja/it/nl)
 - `POST /api/news/refresh` - Forces immediate RSS feed refresh
+
+**News Translation (`server/translationService.ts`):**
+- Uses OpenAI GPT-4o-mini via Replit AI Integrations for on-demand translation
+- Translates headlines and descriptions to 8 languages (Spanish, French, German, Portuguese, Arabic, Japanese, Italian, Dutch)
+- Caches translations in database JSONB column to avoid repeat API calls
+- Falls back to English if translation fails
+- Cost-effective: Only translates when a locale is first requested, then serves from cache
 
 **Home Page Display:** Interactive news carousel showing top 3 items with:
 - Category badges and timestamps ("39m ago" format)
@@ -113,6 +120,7 @@ Preferred communication style: Simple, everyday language.
 - Article descriptions and external links
 - Manual refresh button with loading states
 - Empty state handling when no news available
+- Headlines automatically translated based on user's selected language
 
 ### Cross-Device Consistency
 

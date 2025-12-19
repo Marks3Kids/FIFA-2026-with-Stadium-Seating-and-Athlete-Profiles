@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { stripeService } from "./stripeService";
 import { getNewsWithAutoRefresh, refreshNewsNow } from "./newsService";
+import { getTranslatedNews } from "./translationService";
 import { 
   insertTeamSchema, 
   insertCitySchema, 
@@ -116,7 +117,7 @@ export async function registerRoutes(
     }
   });
 
-  // News API - Auto-refreshing from RSS feeds
+  // News API - Auto-refreshing from RSS feeds with translation support
   app.get("/api/news", async (req, res) => {
     try {
       let limit = 3;
@@ -126,7 +127,15 @@ export async function registerRoutes(
           limit = parsed;
         }
       }
+      
+      const locale = (req.query.locale as string) || "en";
       const news = await getNewsWithAutoRefresh(limit);
+      
+      if (locale !== "en") {
+        const translatedNews = await getTranslatedNews(news, locale);
+        return res.json(translatedNews);
+      }
+      
       res.json(news);
     } catch (error) {
       console.error("Error fetching news:", error);

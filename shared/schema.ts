@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, integer, serial, timestamp, date } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, integer, serial, timestamp, date, jsonb } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -91,6 +91,7 @@ export const newsItems = pgTable("news_items", {
   description: text("description"),
   source: text("source"),
   publishedAt: timestamp("published_at"),
+  translations: jsonb("translations").$type<Record<string, { title: string; description?: string }>>(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
