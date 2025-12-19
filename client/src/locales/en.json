@@ -2091,8 +2091,121 @@
     "disclaimer": "Prices shown are estimated nightly rates and may vary based on dates and availability. Book well in advance for World Cup dates as demand will be extremely high."
   },
   "criticalInfo": {
-    "title": "Critical Information",
+    "title": "Critical Info",
+    "subtitle": "Essential safety and travel information for FIFA 2026 World Cup visitors.",
     "solution": "Solution",
+    "preventionTips": "Prevention Tips",
+    "viewModes": {
+      "generalInfo": "General Info",
+      "travelEntry": "Travel & Entry",
+      "medical": "Medical"
+    },
+    "categories": {
+      "safety": "Safety",
+      "emergency": "Emergency",
+      "financial": "Financial",
+      "legal": "Legal",
+      "dailyLife": "Daily Life"
+    },
+    "safetySection": {
+      "title": "Critical Safety Information",
+      "unsafeNeighborhoods": {
+        "title": "Unsafe Neighborhoods Near Stadium",
+        "description": "Stadium flanked by areas that vary in safety block-by-block.",
+        "tips": "Stick to pedestrian crowds. Use designated ride-share lots. If crowd thins out, turn back."
+      },
+      "followHomeRobberies": {
+        "title": "Follow-Home Robberies (Luxury Items)",
+        "description": "Thieves target people wearing expensive jewelry/watches leaving venues.",
+        "tips": "Dress down when leaving stadium. Tuck chains inside shirt, avoid flashing luxury watches."
+      },
+      "pickpocketing": {
+        "title": "Pickpocketing at Transit Hubs",
+        "description": "High-density choke points like entry gates, escalators, and crowded transit platforms.",
+        "tips": "Keep valuables in front pockets or bags worn across body. Stay alert in crowded spaces."
+      },
+      "ticketScams": {
+        "title": "Ticket and Merchandise Scams",
+        "description": "Fake tickets and counterfeit jerseys sold outside stadiums.",
+        "tips": "Only buy from official apps (Ticketmaster, FIFA). Never buy from individuals on the street."
+      },
+      "carBreakIns": {
+        "title": "Car Break-Ins & Parking Lot Safety",
+        "description": "Thieves smash car windows to grab bags in seconds, often in broad daylight.",
+        "tips": "Never leave anything visible in rental cars. Leave back seats folded down so thieves can see trunk is empty."
+      },
+      "heatWarning": {
+        "title": "Heat Warning",
+        "description": "Extreme heat and humidity in June/July. Heat exhaustion is a real risk.",
+        "tips": "Drink water constantly, wear sunscreen, take breaks in shade, know heat stroke signs."
+      }
+    },
+    "emergencySection": {
+      "title": "Emergency Information",
+      "subtitle": "Important information for your safety and convenience",
+      "healthEmergency": "HEALTH & EMERGENCY",
+      "911": {
+        "title": "911 Emergency Number",
+        "description": "Call 911 for Police/Fire/Ambulance (Life threatening emergencies only). Available 24/7."
+      },
+      "988": {
+        "title": "988 Crisis Hotline",
+        "description": "Call 988 for Suicide & Crisis Lifeline (Mental Health emergencies). Free and available to tourists 24/7."
+      },
+      "311": {
+        "title": "311 Non-Emergency",
+        "description": "Call 311 for non-emergency city services (noise complaints, lost property). Available in most host cities."
+      },
+      "medicalLocator": {
+        "title": "Medical Facility Locator",
+        "description": "Find the nearest Emergency Rooms and Urgent Care centers near each stadium. Tap to open the Medical Locator with maps and directions."
+      }
+    },
+    "financialSection": {
+      "title": "FINANCIAL",
+      "tipping": {
+        "title": "Tipping is Mandatory",
+        "description": "18-22% for dining, $1-2 per drink at bars, $2-5 for hotel housekeeping per night. Use the app's tipping calculator."
+      },
+      "salesTax": {
+        "title": "Sales Tax Not Included",
+        "description": "Prices on shelves are PRE-TAX. At the register, expect 6-10% higher. Unlike Europe/Asia, tourists CANNOT get a VAT/Sales Tax refund at the airport."
+      },
+      "creditHolds": {
+        "title": "Credit Card Holds",
+        "description": "Hotels and rental cars place $200-$500 \"holds\" on cards. This reduces your spending limit immediately. Avoid using debit cards as money actually leaves your account."
+      }
+    },
+    "legalSection": {
+      "title": "LEGAL",
+      "alcoholAge": {
+        "title": "Alcohol Age 21 Strictly Enforced",
+        "description": "Drinking age is strictly 21. Passport is the only guaranteed accepted ID. Walking with open containers (beer) is illegal in almost all cities."
+      },
+      "cannabis": {
+        "title": "Cannabis Federal Crime Warning",
+        "description": "Marijuana is legal in many states (CA, NY, MA) but ILLEGAL FEDERALLY. Bringing it across state lines or into airports is a federal crime. Never have it on federal land."
+      },
+      "rightTurn": {
+        "title": "Right Turn on Red",
+        "description": "Legal everywhere UNLESS sign says \"No Turn on Red\". Exception: Illegal in New York City. 4-way stops: First to arrive goes first."
+      }
+    },
+    "dailyLifeSection": {
+      "title": "DAILY LIFE",
+      "esim": {
+        "title": "eSIM for Mobile Data",
+        "description": "US carriers shut down 3G. Phone must support VoLTE. Use Airalo or GigSky eSIM apps for data instead of expensive physical SIM cards."
+      },
+      "metric": {
+        "title": "Metric to Imperial Guide",
+        "description": "100°F = 38°C (Very Hot), 32°F = 0°C (Freezing). 1 Mile = 1.6 KM. Date format: MM/DD/YYYY (12/10/26 = December 10th)."
+      },
+      "restrooms": {
+        "title": "Public Restrooms Rare",
+        "description": "US cities have very few public toilets. Use hotel lobbies or large department stores. Check the app's restroom locator."
+      }
+    },
     "tabs": {
       "safety": "Safety",
       "emergency": "Emergency",

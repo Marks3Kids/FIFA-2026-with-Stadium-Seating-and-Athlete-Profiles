@@ -2428,12 +2428,12 @@ export default function CriticalInfo() {
   const [selectedMedicalCity, setSelectedMedicalCity] = useState<CityMedicalData | null>(null);
   const [facilityFilter, setFacilityFilter] = useState<"all" | "er" | "urgent">("all");
 
-  const categories: { id: InfoCategory; label: string; icon: any; available: boolean }[] = [
-    { id: "safety", label: "Safety", icon: Shield, available: true },
-    { id: "emergency", label: "Emergency", icon: Phone, available: true },
-    { id: "financial", label: "Financial", icon: DollarSign, available: true },
-    { id: "legal", label: "Legal", icon: Scale, available: true },
-    { id: "daily", label: "Daily Life", icon: Sun, available: true },
+  const categories: { id: InfoCategory; labelKey: string; icon: any; available: boolean }[] = [
+    { id: "safety", labelKey: "criticalInfo.categories.safety", icon: Shield, available: true },
+    { id: "emergency", labelKey: "criticalInfo.categories.emergency", icon: Phone, available: true },
+    { id: "financial", labelKey: "criticalInfo.categories.financial", icon: DollarSign, available: true },
+    { id: "legal", labelKey: "criticalInfo.categories.legal", icon: Scale, available: true },
+    { id: "daily", labelKey: "criticalInfo.categories.dailyLife", icon: Sun, available: true },
   ];
 
   const travelCategories: { id: TravelCategory; label: string; icon: any; available: boolean }[] = [
@@ -2460,11 +2460,11 @@ export default function CriticalInfo() {
       <div className="pt-12 px-6 pb-8">
         <div className="flex items-center gap-3 mb-6">
           <AlertTriangle className="w-8 h-8 text-red-400" />
-          <h1 className="text-3xl font-display font-bold text-white">Critical Info</h1>
+          <h1 className="text-3xl font-display font-bold text-white">{t("criticalInfo.title")}</h1>
         </div>
 
         <p className="text-muted-foreground mb-4">
-          Essential safety and travel information for FIFA 2026 World Cup visitors.
+          {t("criticalInfo.subtitle")}
         </p>
 
         <div className="flex gap-2 mb-4">
@@ -2477,7 +2477,7 @@ export default function CriticalInfo() {
             }`}
             data-testid="tab-info"
           >
-            General Info
+            {t("criticalInfo.viewModes.generalInfo")}
           </button>
           <button
             onClick={() => setViewMode("travel")}
@@ -2488,7 +2488,7 @@ export default function CriticalInfo() {
             }`}
             data-testid="tab-travel"
           >
-            Travel & Entry
+            {t("criticalInfo.viewModes.travelEntry")}
           </button>
           <button
             onClick={() => setViewMode("medical")}
@@ -2499,7 +2499,7 @@ export default function CriticalInfo() {
             }`}
             data-testid="tab-medical"
           >
-            Medical
+            {t("criticalInfo.viewModes.medical")}
           </button>
         </div>
 
@@ -2521,7 +2521,7 @@ export default function CriticalInfo() {
                   data-testid={`category-${cat.id}`}
                 >
                   <cat.icon className="w-4 h-4" />
-                  {cat.label}
+                  {t(cat.labelKey)}
                   {!cat.available && <span className="text-[10px] ml-1">(Soon)</span>}
                 </button>
               ))}
@@ -2531,32 +2531,32 @@ export default function CriticalInfo() {
               <div className="space-y-4">
                 <div className="flex items-center gap-2 mb-4">
                   <AlertTriangle className="w-5 h-5 text-amber-400" />
-                  <h2 className="text-xl font-display font-bold text-white">Critical Safety Information</h2>
+                  <h2 className="text-xl font-display font-bold text-white">{t("criticalInfo.safetySection.title")}</h2>
                 </div>
 
-                {safetyData.map((card) => (
+                {["unsafeNeighborhoods", "followHomeRobberies", "pickpocketing", "ticketScams", "carBreakIns", "heatWarning"].map((cardId) => (
                   <div 
-                    key={card.id}
+                    key={cardId}
                     className="bg-gradient-to-br from-amber-900/20 to-amber-950/30 border border-amber-500/20 rounded-2xl overflow-hidden"
-                    data-testid={`safety-card-${card.id}`}
+                    data-testid={`safety-card-${cardId}`}
                   >
                     <button
-                      onClick={() => toggleCard(card.id)}
+                      onClick={() => toggleCard(cardId)}
                       className="w-full p-4 text-left flex items-start justify-between"
-                      data-testid={`toggle-${card.id}`}
+                      data-testid={`toggle-${cardId}`}
                     >
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                           <div className="w-5 h-5 rounded-full border-2 border-amber-400/50 flex items-center justify-center">
                             <div className="w-2 h-2 rounded-full bg-amber-400" />
                           </div>
-                          <h3 className="font-bold text-white">{card.title}</h3>
+                          <h3 className="font-bold text-white">{t(`criticalInfo.safetySection.${cardId}.title`)}</h3>
                         </div>
-                        <p className="text-sm text-muted-foreground ml-7">{card.description}</p>
+                        <p className="text-sm text-muted-foreground ml-7">{t(`criticalInfo.safetySection.${cardId}.description`)}</p>
                       </div>
                       <div className="flex items-center gap-1 flex-shrink-0 mt-1">
                         <span className="text-xs text-amber-400 font-medium">{t("criticalInfo.solution")}</span>
-                        {expandedCards.has(card.id) ? (
+                        {expandedCards.has(cardId) ? (
                           <ChevronUp className="w-5 h-5 text-amber-400" />
                         ) : (
                           <ChevronDown className="w-5 h-5 text-amber-400" />
@@ -2564,13 +2564,13 @@ export default function CriticalInfo() {
                       </div>
                     </button>
 
-                    {expandedCards.has(card.id) && (
+                    {expandedCards.has(cardId) && (
                       <div className="px-4 pb-4">
                         <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 ml-7">
                           <div className="text-xs font-bold text-amber-400 uppercase tracking-wide mb-2">
-                            Prevention Tips
+                            {t("criticalInfo.preventionTips")}
                           </div>
-                          <p className="text-sm text-amber-100/80">{card.preventionTips}</p>
+                          <p className="text-sm text-amber-100/80">{t(`criticalInfo.safetySection.${cardId}.tips`)}</p>
                         </div>
                       </div>
                     )}
@@ -2583,105 +2583,97 @@ export default function CriticalInfo() {
               <div className="space-y-6">
                 <div className="flex items-center gap-2 mb-2">
                   <Phone className="w-5 h-5 text-blue-400" />
-                  <h2 className="text-xl font-display font-bold text-white">Emergency Information</h2>
+                  <h2 className="text-xl font-display font-bold text-white">{t("criticalInfo.emergencySection.title")}</h2>
                 </div>
-                <p className="text-muted-foreground text-sm mb-4">Important information for your safety and convenience</p>
+                <p className="text-muted-foreground text-sm mb-4">{t("criticalInfo.emergencySection.subtitle")}</p>
                 
-                {emergencyData.map((section) => (
-                  <div key={section.id} className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <section.icon className={`w-4 h-4 ${section.iconColor}`} />
-                      <h3 className="text-sm font-bold text-white uppercase tracking-wide">{section.title}</h3>
-                    </div>
-                    <div className="space-y-3">
-                      {section.items.map((item) => (
-                        <div 
-                          key={item.id}
-                          className="bg-card border border-white/5 rounded-xl p-4"
-                          data-testid={`emergency-card-${item.id}`}
-                        >
-                          <h4 className="font-bold text-white mb-1">{item.title}</h4>
-                          <p className="text-sm text-muted-foreground">{item.description}</p>
-                        </div>
-                      ))}
-                    </div>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Heart className="w-4 h-4 text-red-400" />
+                    <h3 className="text-sm font-bold text-white uppercase tracking-wide">{t("criticalInfo.emergencySection.healthEmergency")}</h3>
                   </div>
-                ))}
+                  <div className="space-y-3">
+                    {["911", "988", "311", "medicalLocator"].map((itemId) => (
+                      <div 
+                        key={itemId}
+                        className="bg-card border border-white/5 rounded-xl p-4"
+                        data-testid={`emergency-card-${itemId}`}
+                      >
+                        <h4 className="font-bold text-white mb-1">{t(`criticalInfo.emergencySection.${itemId}.title`)}</h4>
+                        <p className="text-sm text-muted-foreground">{t(`criticalInfo.emergencySection.${itemId}.description`)}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
 
             {activeCategory === "financial" && (
               <div className="space-y-6">
-                {financialData.map((section) => (
-                  <div key={section.id} className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <section.icon className={`w-4 h-4 ${section.iconColor}`} />
-                      <h3 className="text-sm font-bold text-white uppercase tracking-wide">{section.title}</h3>
-                    </div>
-                    <div className="space-y-3">
-                      {section.items.map((item) => (
-                        <div 
-                          key={item.id}
-                          className="bg-card border border-white/5 rounded-xl p-4"
-                          data-testid={`financial-card-${item.id}`}
-                        >
-                          <h4 className="font-bold text-white mb-1">{item.title}</h4>
-                          <p className="text-sm text-muted-foreground">{item.description}</p>
-                        </div>
-                      ))}
-                    </div>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <DollarSign className="w-4 h-4 text-green-400" />
+                    <h3 className="text-sm font-bold text-white uppercase tracking-wide">{t("criticalInfo.financialSection.title")}</h3>
                   </div>
-                ))}
+                  <div className="space-y-3">
+                    {["tipping", "salesTax", "creditHolds"].map((itemId) => (
+                      <div 
+                        key={itemId}
+                        className="bg-card border border-white/5 rounded-xl p-4"
+                        data-testid={`financial-card-${itemId}`}
+                      >
+                        <h4 className="font-bold text-white mb-1">{t(`criticalInfo.financialSection.${itemId}.title`)}</h4>
+                        <p className="text-sm text-muted-foreground">{t(`criticalInfo.financialSection.${itemId}.description`)}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
 
             {activeCategory === "legal" && (
               <div className="space-y-6">
-                {legalData.map((section) => (
-                  <div key={section.id} className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <section.icon className={`w-4 h-4 ${section.iconColor}`} />
-                      <h3 className="text-sm font-bold text-white uppercase tracking-wide">{section.title}</h3>
-                    </div>
-                    <div className="space-y-3">
-                      {section.items.map((item) => (
-                        <div 
-                          key={item.id}
-                          className="bg-card border border-white/5 rounded-xl p-4"
-                          data-testid={`legal-card-${item.id}`}
-                        >
-                          <h4 className="font-bold text-white mb-1">{item.title}</h4>
-                          <p className="text-sm text-muted-foreground">{item.description}</p>
-                        </div>
-                      ))}
-                    </div>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Gavel className="w-4 h-4 text-blue-400" />
+                    <h3 className="text-sm font-bold text-white uppercase tracking-wide">{t("criticalInfo.legalSection.title")}</h3>
                   </div>
-                ))}
+                  <div className="space-y-3">
+                    {["alcoholAge", "cannabis", "rightTurn"].map((itemId) => (
+                      <div 
+                        key={itemId}
+                        className="bg-card border border-white/5 rounded-xl p-4"
+                        data-testid={`legal-card-${itemId}`}
+                      >
+                        <h4 className="font-bold text-white mb-1">{t(`criticalInfo.legalSection.${itemId}.title`)}</h4>
+                        <p className="text-sm text-muted-foreground">{t(`criticalInfo.legalSection.${itemId}.description`)}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
 
             {activeCategory === "daily" && (
               <div className="space-y-6">
-                {dailyLifeData.map((section) => (
-                  <div key={section.id} className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <section.icon className={`w-4 h-4 ${section.iconColor}`} />
-                      <h3 className="text-sm font-bold text-white uppercase tracking-wide">{section.title}</h3>
-                    </div>
-                    <div className="space-y-3">
-                      {section.items.map((item) => (
-                        <div 
-                          key={item.id}
-                          className="bg-card border border-white/5 rounded-xl p-4"
-                          data-testid={`daily-card-${item.id}`}
-                        >
-                          <h4 className="font-bold text-white mb-1">{item.title}</h4>
-                          <p className="text-sm text-muted-foreground">{item.description}</p>
-                        </div>
-                      ))}
-                    </div>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Coffee className="w-4 h-4 text-orange-400" />
+                    <h3 className="text-sm font-bold text-white uppercase tracking-wide">{t("criticalInfo.dailyLifeSection.title")}</h3>
                   </div>
-                ))}
+                  <div className="space-y-3">
+                    {["esim", "metric", "restrooms"].map((itemId) => (
+                      <div 
+                        key={itemId}
+                        className="bg-card border border-white/5 rounded-xl p-4"
+                        data-testid={`daily-card-${itemId}`}
+                      >
+                        <h4 className="font-bold text-white mb-1">{t(`criticalInfo.dailyLifeSection.${itemId}.title`)}</h4>
+                        <p className="text-sm text-muted-foreground">{t(`criticalInfo.dailyLifeSection.${itemId}.description`)}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
           </>
