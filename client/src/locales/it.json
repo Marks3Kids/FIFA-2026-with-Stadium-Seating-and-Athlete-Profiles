@@ -29,7 +29,10 @@
     "aiConcierge": "Concierge IA",
     "settings": "Impostazioni",
     "signIn": "Accedi",
-    "menu": "Menu"
+    "menu": "Menu",
+    "history": "Storia",
+    "players": "Giocatori",
+    "stadiumSeating": "Posti allo Stadio"
   },
   "home": {
     "title": "FIFA",

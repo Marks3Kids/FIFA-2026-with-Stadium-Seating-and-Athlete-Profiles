@@ -178,7 +178,7 @@ export default function Cities() {
   ];
 
   return (
-    <Layout>
+    <Layout pageTitle="nav.hostCities">
       <div className="pt-12 px-6 pb-24">
         <h1 className="text-4xl font-display font-bold text-white mb-2">{t("cities.title")}</h1>
         <p className="text-muted-foreground mb-8">{t("cities.subtitle")}</p>

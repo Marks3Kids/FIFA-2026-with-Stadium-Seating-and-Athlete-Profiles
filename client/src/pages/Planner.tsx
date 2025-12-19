@@ -83,7 +83,7 @@ export default function Planner() {
 
   if (view === "create") {
     return (
-      <Layout>
+      <Layout pageTitle="nav.planner">
         <div className="pt-12 px-6 pb-8">
           <button 
             onClick={() => setView("list")} 
@@ -167,7 +167,7 @@ export default function Planner() {
   }
 
   return (
-    <Layout>
+    <Layout pageTitle="nav.planner">
       <div className="pt-12 px-6 pb-8">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-4xl font-display font-bold text-white">{t("planner.title")}</h1>

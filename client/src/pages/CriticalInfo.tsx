@@ -2453,7 +2453,7 @@ export default function CriticalInfo() {
   };
 
   return (
-    <Layout>
+    <Layout pageTitle="nav.essentialGuide">
       <div className="pt-12 px-6 pb-8">
         <div className="flex items-center gap-3 mb-6">
           <AlertTriangle className="w-8 h-8 text-red-400" />

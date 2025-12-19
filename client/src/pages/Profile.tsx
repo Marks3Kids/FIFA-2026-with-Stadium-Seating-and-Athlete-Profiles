@@ -63,7 +63,7 @@ export default function Profile() {
   };
 
   return (
-    <Layout>
+    <Layout pageTitle="nav.signIn">
       <div className="pt-12 px-6 pb-8">
         <Link href="/menu" className="flex items-center text-muted-foreground mb-6" data-testid="back-to-menu">
           <ArrowLeft className="w-5 h-5 mr-2" />

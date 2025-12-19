@@ -129,7 +129,7 @@ export default function Transportation() {
   };
 
   return (
-    <Layout>
+    <Layout pageTitle="nav.transportation">
       {/* Hero Section */}
       <div className="relative w-full">
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background z-10" />

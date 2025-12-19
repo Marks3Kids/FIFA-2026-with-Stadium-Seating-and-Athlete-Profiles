@@ -29,7 +29,10 @@
     "aiConcierge": "مساعد الذكاء الاصطناعي",
     "settings": "الإعدادات",
     "signIn": "تسجيل الدخول",
-    "menu": "القائمة"
+    "menu": "القائمة",
+    "history": "التاريخ",
+    "players": "اللاعبون",
+    "stadiumSeating": "مقاعد الملعب"
   },
   "home": {
     "title": "FIFA",

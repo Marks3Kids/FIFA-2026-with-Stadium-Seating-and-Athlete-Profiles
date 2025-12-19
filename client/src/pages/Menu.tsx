@@ -45,7 +45,7 @@ export default function Menu() {
   };
 
   return (
-    <Layout>
+    <Layout pageTitle="nav.menu">
       <div className="pt-12 px-6 pb-8">
         <h1 className="text-4xl font-display font-bold text-white mb-8">{t("menu.title")}</h1>
         

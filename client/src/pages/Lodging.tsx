@@ -1049,7 +1049,7 @@ export default function Lodging() {
 
   if (selectedCity) {
     return (
-      <Layout>
+      <Layout pageTitle="nav.lodging">
         <div className="pt-6 px-6 pb-24">
           <button 
             onClick={() => {
@@ -1180,7 +1180,7 @@ export default function Lodging() {
   }
 
   return (
-    <Layout>
+    <Layout pageTitle="nav.lodging">
       <div className="pt-8 px-6 pb-6">
         <Link href="/menu" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
           <ArrowLeft className="w-4 h-4 rtl-flip" />

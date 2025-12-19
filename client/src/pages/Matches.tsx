@@ -35,7 +35,7 @@ export default function Matches() {
 
   if (isLoading) {
     return (
-      <Layout>
+      <Layout pageTitle="nav.matches">
         <div className="pt-12 px-6 flex items-center justify-center min-h-screen">
           <div className="text-muted-foreground">{t("matches.loading")}</div>
         </div>
@@ -44,7 +44,7 @@ export default function Matches() {
   }
 
   return (
-    <Layout>
+    <Layout pageTitle="nav.matches">
       <div className="pt-12 px-6 pb-6">
         <h1 className="text-4xl font-display font-bold text-white mb-6">{t("matches.title")}</h1>
         

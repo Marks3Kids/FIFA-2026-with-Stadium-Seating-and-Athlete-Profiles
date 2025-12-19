@@ -29,7 +29,10 @@
     "aiConcierge": "AIコンシェルジュ",
     "settings": "設定",
     "signIn": "サインイン",
-    "menu": "メニュー"
+    "menu": "メニュー",
+    "history": "歴史",
+    "players": "選手",
+    "stadiumSeating": "スタジアム座席"
   },
   "home": {
     "title": "FIFA",

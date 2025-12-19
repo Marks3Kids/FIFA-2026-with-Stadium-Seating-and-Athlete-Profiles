@@ -27,7 +27,7 @@ export default function Teams() {
 
   if (isLoading) {
     return (
-      <Layout>
+      <Layout pageTitle="nav.teams">
         <div className="pt-12 px-6 pb-20 flex items-center justify-center min-h-screen">
           <div className="text-muted-foreground">{t("teams.loading")}</div>
         </div>
@@ -36,7 +36,7 @@ export default function Teams() {
   }
 
   return (
-    <Layout>
+    <Layout pageTitle="nav.teams">
       <div className="pt-12 px-6 pb-20">
         <h1 className="text-4xl font-display font-bold text-white mb-6">{t("teams.title")}</h1>
         

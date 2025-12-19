@@ -992,7 +992,7 @@ export default function History() {
   ];
 
   return (
-    <Layout>
+    <Layout pageTitle="nav.history">
       <div className="pt-6 px-6 pb-24">
         <div className="bg-gradient-to-br from-yellow-500/20 to-primary/10 border border-yellow-500/20 rounded-2xl p-6 mb-6">
           <div className="flex items-start gap-4">

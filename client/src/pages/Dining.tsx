@@ -1047,7 +1047,7 @@ export default function Dining() {
 
   if (selectedCity) {
     return (
-      <Layout>
+      <Layout pageTitle="nav.dining">
         <div className="pt-6 px-6 pb-24">
           <button 
             onClick={() => setSelectedCity(null)}
@@ -1165,7 +1165,7 @@ export default function Dining() {
   }
 
   return (
-    <Layout>
+    <Layout pageTitle="nav.dining">
       <div className="pt-8 px-6 pb-6">
         <Link href="/menu" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
           <ArrowLeft className="w-4 h-4 rtl-flip" />

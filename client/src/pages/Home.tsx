@@ -24,7 +24,7 @@ export default function Home() {
   });
 
   return (
-    <Layout>
+    <Layout pageTitle="nav.home">
       {/* Hero Header */}
       <div className="pt-8 px-6 pb-4">
         <div className="flex items-center justify-between mb-4">

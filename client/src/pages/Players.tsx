@@ -90,7 +90,7 @@ export default function Players() {
 
   if (teamsLoading || playersLoading) {
     return (
-      <Layout>
+      <Layout pageTitle="nav.players">
         <div className="pt-12 px-6 pb-20 flex items-center justify-center min-h-screen">
           <div className="text-muted-foreground">{t("players.loading")}</div>
         </div>
@@ -99,7 +99,7 @@ export default function Players() {
   }
 
   return (
-    <Layout>
+    <Layout pageTitle="nav.players">
       <div className="pt-12 px-6 pb-20">
         <h1 className="text-4xl font-display font-bold text-white mb-2">{t("players.title")}</h1>
         <p className="text-muted-foreground mb-6">{t("players.subtitle")}</p>
