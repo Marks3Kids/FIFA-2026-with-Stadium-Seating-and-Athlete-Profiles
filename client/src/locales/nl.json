@@ -8,6 +8,22 @@
     "tbd": "Nog te bepalen",
     "rank": "Rang"
   },
+  "teamDetail": {
+    "seasonHighlights": "Hoogtepunten seizoen 2025",
+    "record": "Resultaten 2025",
+    "wins": "Overwinningen",
+    "ties": "Gelijkspelen",
+    "losses": "Nederlagen",
+    "recentMatches": "Recente wedstrijden",
+    "topScorers": "Topscorers",
+    "goals": "doelpunten",
+    "vs": "vs",
+    "win": "W",
+    "tie": "G",
+    "loss": "V",
+    "noData": "Seizoensgegevens binnenkort beschikbaar",
+    "close": "Sluiten"
+  },
   "common": {
     "back": "Terug",
     "cancel": "Annuleren",

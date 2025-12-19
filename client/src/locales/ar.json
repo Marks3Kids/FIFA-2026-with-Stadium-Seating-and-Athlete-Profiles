@@ -8,6 +8,22 @@
     "tbd": "لم يحدد بعد",
     "rank": "الترتيب"
   },
+  "teamDetail": {
+    "seasonHighlights": "أبرز أحداث موسم 2025",
+    "record": "سجل 2025",
+    "wins": "انتصارات",
+    "ties": "تعادلات",
+    "losses": "خسائر",
+    "recentMatches": "المباريات الأخيرة",
+    "topScorers": "الهدافون",
+    "goals": "أهداف",
+    "vs": "ضد",
+    "win": "ف",
+    "tie": "ت",
+    "loss": "خ",
+    "noData": "بيانات الموسم قريباً",
+    "close": "إغلاق"
+  },
   "common": {
     "back": "Back",
     "cancel": "Cancel",

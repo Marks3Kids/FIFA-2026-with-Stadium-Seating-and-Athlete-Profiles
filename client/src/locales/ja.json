@@ -8,6 +8,22 @@
     "tbd": "未定",
     "rank": "順位"
   },
+  "teamDetail": {
+    "seasonHighlights": "2025シーズンハイライト",
+    "record": "2025年成績",
+    "wins": "勝利",
+    "ties": "引き分け",
+    "losses": "敗北",
+    "recentMatches": "最近の試合",
+    "topScorers": "得点ランキング",
+    "goals": "ゴール",
+    "vs": "対",
+    "win": "勝",
+    "tie": "分",
+    "loss": "敗",
+    "noData": "シーズンデータは近日公開",
+    "close": "閉じる"
+  },
   "common": {
     "back": "Back",
     "cancel": "Cancel",

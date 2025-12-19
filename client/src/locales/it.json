@@ -8,6 +8,22 @@
     "tbd": "Da definire",
     "rank": "Posizione"
   },
+  "teamDetail": {
+    "seasonHighlights": "Momenti salienti stagione 2025",
+    "record": "Record 2025",
+    "wins": "Vittorie",
+    "ties": "Pareggi",
+    "losses": "Sconfitte",
+    "recentMatches": "Partite recenti",
+    "topScorers": "Capocannonieri",
+    "goals": "gol",
+    "vs": "vs",
+    "win": "V",
+    "tie": "P",
+    "loss": "S",
+    "noData": "Dati stagione in arrivo",
+    "close": "Chiudi"
+  },
   "common": {
     "back": "Indietro",
     "cancel": "Annullamento",

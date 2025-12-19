@@ -8,6 +8,22 @@
     "tbd": "Noch offen",
     "rank": "Rang"
   },
+  "teamDetail": {
+    "seasonHighlights": "Saison-Highlights 2025",
+    "record": "Bilanz 2025",
+    "wins": "Siege",
+    "ties": "Unentschieden",
+    "losses": "Niederlagen",
+    "recentMatches": "Letzte Spiele",
+    "topScorers": "Torschützen",
+    "goals": "Tore",
+    "vs": "vs",
+    "win": "S",
+    "tie": "U",
+    "loss": "N",
+    "noData": "Saisondaten folgen in Kürze",
+    "close": "Schließen"
+  },
   "common": {
     "back": "Zurück",
     "cancel": "Abbrechen",

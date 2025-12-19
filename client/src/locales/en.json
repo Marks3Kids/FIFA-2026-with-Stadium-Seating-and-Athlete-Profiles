@@ -8,6 +8,22 @@
     "tbd": "TBD",
     "rank": "Rank"
   },
+  "teamDetail": {
+    "seasonHighlights": "2025 Season Highlights",
+    "record": "2025 Record",
+    "wins": "Wins",
+    "ties": "Ties",
+    "losses": "Losses",
+    "recentMatches": "Recent Matches",
+    "topScorers": "Top Scorers",
+    "goals": "goals",
+    "vs": "vs",
+    "win": "W",
+    "tie": "D",
+    "loss": "L",
+    "noData": "Season data coming soon",
+    "close": "Close"
+  },
   "common": {
     "back": "Back",
     "cancel": "Cancel",

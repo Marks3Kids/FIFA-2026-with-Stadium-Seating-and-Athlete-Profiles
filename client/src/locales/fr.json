@@ -8,6 +8,22 @@
     "tbd": "À déterminer",
     "rank": "Classement"
   },
+  "teamDetail": {
+    "seasonHighlights": "Temps forts de la saison 2025",
+    "record": "Bilan 2025",
+    "wins": "Victoires",
+    "ties": "Nuls",
+    "losses": "Défaites",
+    "recentMatches": "Matchs récents",
+    "topScorers": "Meilleurs buteurs",
+    "goals": "buts",
+    "vs": "vs",
+    "win": "V",
+    "tie": "N",
+    "loss": "D",
+    "noData": "Données de saison à venir",
+    "close": "Fermer"
+  },
   "common": {
     "back": "Retour",
     "cancel": "Annuler",
