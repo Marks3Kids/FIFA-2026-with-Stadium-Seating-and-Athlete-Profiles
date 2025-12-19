@@ -67,6 +67,7 @@
     "searchPlaceholder": "Search teams...",
     "loading": "Loading teams...",
     "headCoach": "Head Coach",
+    "squad": "Squad",
     "record2025": "2025 Record",
     "recordFormat": "(W-T-L)",
     "rank": "Rank #{{rank}}"
