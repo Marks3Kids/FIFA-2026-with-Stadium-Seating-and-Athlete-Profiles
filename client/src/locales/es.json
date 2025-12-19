@@ -20,6 +20,15 @@
     "matches": "Partidos",
     "teams": "Equipos",
     "cities": "Ciudades",
+    "hostCities": "Ciudades Anfitrionas",
+    "transportation": "Transporte",
+    "lodging": "Alojamiento",
+    "dining": "Restaurantes",
+    "essentialGuide": "Guía de Viaje Esencial",
+    "planner": "Planificador",
+    "aiConcierge": "Conserjería IA",
+    "settings": "Ajustes",
+    "signIn": "Iniciar Sesión",
     "menu": "Menú"
   },
   "home": {

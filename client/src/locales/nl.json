@@ -17,9 +17,18 @@
   },
   "nav": {
     "home": "Home",
-    "matches": "Lucifers",
+    "matches": "Wedstrijden",
     "teams": "Teams",
     "cities": "Steden",
+    "hostCities": "Gaststeden",
+    "transportation": "Vervoer",
+    "lodging": "Accommodatie",
+    "dining": "Restaurants",
+    "essentialGuide": "Essentiële Reisgids",
+    "planner": "Planner",
+    "aiConcierge": "AI Conciërge",
+    "settings": "Instellingen",
+    "signIn": "Inloggen",
     "menu": "Menu"
   },
   "home": {

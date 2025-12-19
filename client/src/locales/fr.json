@@ -17,9 +17,18 @@
   },
   "nav": {
     "home": "Accueil",
-    "matches": "Correspondances",
-    "teams": "Les équipes",
+    "matches": "Matchs",
+    "teams": "Équipes",
     "cities": "Villes",
+    "hostCities": "Villes Hôtes",
+    "transportation": "Transport",
+    "lodging": "Hébergement",
+    "dining": "Restauration",
+    "essentialGuide": "Guide de Voyage Essentiel",
+    "planner": "Planificateur",
+    "aiConcierge": "Concierge IA",
+    "settings": "Paramètres",
+    "signIn": "Connexion",
     "menu": "Menu"
   },
   "home": {

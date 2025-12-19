@@ -16,10 +16,19 @@
     "liveUpdates": "Aggiornamenti in tempo reale"
   },
   "nav": {
-    "home": "Casa",
-    "matches": "Abbinamenti",
+    "home": "Home",
+    "matches": "Partite",
     "teams": "Squadre",
     "cities": "Città",
+    "hostCities": "Città Ospitanti",
+    "transportation": "Trasporti",
+    "lodging": "Alloggio",
+    "dining": "Ristoranti",
+    "essentialGuide": "Guida di Viaggio Essenziale",
+    "planner": "Pianificatore",
+    "aiConcierge": "Concierge IA",
+    "settings": "Impostazioni",
+    "signIn": "Accedi",
     "menu": "Menu"
   },
   "home": {

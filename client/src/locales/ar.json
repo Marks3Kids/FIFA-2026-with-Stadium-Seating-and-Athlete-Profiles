@@ -16,11 +16,20 @@
     "liveUpdates": "Live Updates"
   },
   "nav": {
-    "home": "Home",
-    "matches": "Matches",
-    "teams": "Teams",
-    "cities": "Cities",
-    "menu": "Menu"
+    "home": "الرئيسية",
+    "matches": "المباريات",
+    "teams": "الفرق",
+    "cities": "المدن",
+    "hostCities": "المدن المستضيفة",
+    "transportation": "النقل",
+    "lodging": "الإقامة",
+    "dining": "المطاعم",
+    "essentialGuide": "دليل السفر الأساسي",
+    "planner": "المخطط",
+    "aiConcierge": "مساعد الذكاء الاصطناعي",
+    "settings": "الإعدادات",
+    "signIn": "تسجيل الدخول",
+    "menu": "القائمة"
   },
   "home": {
     "title": "FIFA",

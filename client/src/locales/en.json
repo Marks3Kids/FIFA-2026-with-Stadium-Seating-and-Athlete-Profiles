@@ -20,6 +20,15 @@
     "matches": "Matches",
     "teams": "Teams",
     "cities": "Cities",
+    "hostCities": "Host Cities",
+    "transportation": "Transportation",
+    "lodging": "Lodging",
+    "dining": "Dining",
+    "essentialGuide": "Essential Travel Guide",
+    "planner": "Planner",
+    "aiConcierge": "AI Concierge",
+    "settings": "Settings",
+    "signIn": "Sign In",
     "menu": "Menu"
   },
   "home": {

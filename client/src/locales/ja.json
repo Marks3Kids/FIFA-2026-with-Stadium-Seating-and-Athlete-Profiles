@@ -16,11 +16,20 @@
     "liveUpdates": "Live Updates"
   },
   "nav": {
-    "home": "Home",
-    "matches": "Matches",
-    "teams": "Teams",
-    "cities": "Cities",
-    "menu": "Menu"
+    "home": "ホーム",
+    "matches": "試合",
+    "teams": "チーム",
+    "cities": "都市",
+    "hostCities": "開催都市",
+    "transportation": "交通",
+    "lodging": "宿泊",
+    "dining": "レストラン",
+    "essentialGuide": "旅行ガイド",
+    "planner": "プランナー",
+    "aiConcierge": "AIコンシェルジュ",
+    "settings": "設定",
+    "signIn": "サインイン",
+    "menu": "メニュー"
   },
   "home": {
     "title": "FIFA",

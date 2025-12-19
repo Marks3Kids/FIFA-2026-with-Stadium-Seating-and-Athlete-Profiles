@@ -16,10 +16,19 @@
     "liveUpdates": "Live Updates"
   },
   "nav": {
-    "home": "Home",
-    "matches": "Matches",
-    "teams": "Teams",
-    "cities": "Cities",
+    "home": "Início",
+    "matches": "Jogos",
+    "teams": "Equipes",
+    "cities": "Cidades",
+    "hostCities": "Cidades-Sede",
+    "transportation": "Transporte",
+    "lodging": "Hospedagem",
+    "dining": "Restaurantes",
+    "essentialGuide": "Guia de Viagem Essencial",
+    "planner": "Planejador",
+    "aiConcierge": "Concierge IA",
+    "settings": "Configurações",
+    "signIn": "Entrar",
     "menu": "Menu"
   },
   "home": {

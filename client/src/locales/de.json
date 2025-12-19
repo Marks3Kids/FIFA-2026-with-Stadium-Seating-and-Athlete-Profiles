@@ -17,9 +17,18 @@
   },
   "nav": {
     "home": "Startseite",
-    "matches": "Streichhölzer",
+    "matches": "Spiele",
     "teams": "Mannschaften",
     "cities": "Städte",
+    "hostCities": "Gastgeberstädte",
+    "transportation": "Transport",
+    "lodging": "Unterkunft",
+    "dining": "Gastronomie",
+    "essentialGuide": "Wichtiger Reiseführer",
+    "planner": "Planer",
+    "aiConcierge": "KI-Concierge",
+    "settings": "Einstellungen",
+    "signIn": "Anmelden",
     "menu": "Menü"
   },
   "home": {

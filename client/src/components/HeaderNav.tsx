@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Home, Calendar, Flag, MapPin, Menu, Globe, ChevronDown } from "lucide-react";
+import { Home, Calendar, Flag, MapPin, Menu, Globe, ChevronDown, Train, Hotel, Utensils, Info, Sparkles, Settings, LogIn } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
 
@@ -18,10 +18,17 @@ const LANGUAGES = [
 
 const NAV_ITEMS = [
   { icon: Home, labelKey: "nav.home", path: "/" },
-  { icon: Calendar, labelKey: "nav.matches", path: "/matches" },
   { icon: Flag, labelKey: "nav.teams", path: "/teams" },
-  { icon: MapPin, labelKey: "nav.cities", path: "/cities" },
-  { icon: Menu, labelKey: "nav.menu", path: "/menu" },
+  { icon: Calendar, labelKey: "nav.matches", path: "/matches" },
+  { icon: MapPin, labelKey: "nav.hostCities", path: "/cities" },
+  { icon: Train, labelKey: "nav.transportation", path: "/transportation" },
+  { icon: Hotel, labelKey: "nav.lodging", path: "/lodging" },
+  { icon: Utensils, labelKey: "nav.dining", path: "/dining" },
+  { icon: Info, labelKey: "nav.essentialGuide", path: "/critical-info" },
+  { icon: Calendar, labelKey: "nav.planner", path: "/planner" },
+  { icon: Sparkles, labelKey: "nav.aiConcierge", path: "/concierge" },
+  { icon: Settings, labelKey: "nav.settings", path: "/settings" },
+  { icon: LogIn, labelKey: "nav.signIn", path: "/profile" },
 ];
 
 export function HeaderNav() {
