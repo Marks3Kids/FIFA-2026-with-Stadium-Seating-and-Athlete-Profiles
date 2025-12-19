@@ -4,7 +4,7 @@
 
 **Website:** WorldCupCompanion2026.com
 
-This is a mobile-first web application serving as the official companion for the FIFA 2026 World Cup. The app is branded as "World Cup Companion" with FIFA-style colors (blue #003087, maroon #8B0A50, gold #D4AF37) displayed prominently in the header on every page. The application provides comprehensive information about teams, matches, host cities, and transportation options across the United States, Canada, and Mexico. Built as a full-stack TypeScript application, it features a React frontend with a modern UI using shadcn/ui components and an Express backend with PostgreSQL database storage.
+This is a mobile-first web application serving as a companion for the 2026 World Cup. The app is branded as "World Cup Companion" with modern football-inspired emerald green colors displayed prominently in the header on every page. The application provides comprehensive information about teams, matches, host cities, and transportation options across the United States, Canada, and Mexico. Built as a full-stack TypeScript application, it features a React frontend with a modern UI using shadcn/ui components and an Express backend with PostgreSQL database storage.
 
 ## User Preferences
 

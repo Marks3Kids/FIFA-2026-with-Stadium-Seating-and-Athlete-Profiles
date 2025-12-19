@@ -15,17 +15,18 @@ export function Layout({ children, hideNav = false, hideTitle = false }: LayoutP
       {!hideNav && <HeaderNav />}
       {!hideTitle && (
         <div className="pt-4 px-4">
-          <div className="flex items-center gap-3 bg-gradient-to-r from-[#003087]/20 via-[#8B0A50]/10 to-[#003087]/20 border border-white/10 rounded-xl px-4 py-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#003087] via-[#8B0A50] to-[#D4AF37] flex items-center justify-center shadow-lg">
+          <div className="flex items-center gap-3 bg-gradient-to-r from-emerald-900/30 via-emerald-800/20 to-emerald-900/30 border border-emerald-500/20 rounded-xl px-4 py-3">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg">
               <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="currentColor">
                 <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" opacity="0.3"/>
-                <path d="M12 6l1.5 3 3.5.5-2.5 2.5.5 3.5-3-1.5-3 1.5.5-3.5L7 9.5l3.5-.5z"/>
+                <polygon points="12,2 14.5,8 21,8.5 16,13 17.5,20 12,16.5 6.5,20 8,13 3,8.5 9.5,8" fill="currentColor" opacity="0.3"/>
+                <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1"/>
+                <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="0.75" opacity="0.5"/>
               </svg>
             </div>
             <div>
               <h1 className="text-lg font-display font-bold leading-tight">
-                <span className="text-[#D4AF37]">World Cup</span>{" "}
+                <span className="text-emerald-400">World Cup</span>{" "}
                 <span className="text-white">Companion</span>
               </h1>
               <p className="text-[10px] text-muted-foreground uppercase tracking-widest">2026</p>
