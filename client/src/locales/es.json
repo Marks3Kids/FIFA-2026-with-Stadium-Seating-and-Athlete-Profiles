@@ -2241,6 +2241,141 @@
         "Proporcionar asesoramiento jurídico",
         "Investigar delitos"
       ]
+    },
+    "travelCategories": {
+      "customs": "Aduanas",
+      "safety": "Seguridad",
+      "prohibited": "Prohibido",
+      "tvguide": "Guía de TV",
+      "transport": "Transporte",
+      "consulates": "Consulados"
+    },
+    "customsSection": {
+      "title": "Aduanas e Inmigración",
+      "subtitle": "Requisitos y procedimientos de entrada",
+      "visaRequirements": "Requisitos de Visa",
+      "firstPointOfEntry": {
+        "title": "Regla del Primer Punto de Entrada (Crítico)",
+        "description": "DEBE pasar por Inmigración y Aduanas en su PRIMER aeropuerto de EE.UU., incluso si tiene conexión a otra ciudad."
+      },
+      "mpcTip": {
+        "title": "Consejo: Descargue la app Mobile Passport Control (MPC) para carriles exprés",
+        "button": "Descargar App Mobile Passport Control"
+      },
+      "additionalInfo": "Información Adicional de Aduanas"
+    },
+    "citySafetySection": {
+      "title": "Guía de Seguridad por Ciudad",
+      "subtitle": "Seleccione una ciudad sede para ver información de seguridad",
+      "backToCities": "Volver a Ciudades",
+      "countries": {
+        "usa": "Estados Unidos",
+        "mexico": "México",
+        "canada": "Canadá"
+      },
+      "heatWarning": "Advertencia de Calor",
+      "ticketScams": "Estafas de Boletos",
+      "localConcerns": "Preocupaciones Locales",
+      "safeAreas": "Áreas Seguras",
+      "tapForDetails": "(toque para detalles)",
+      "areasToAvoid": "Áreas a Evitar",
+      "tips": "Consejos",
+      "heatLevels": {
+        "extreme": "EXTREMO",
+        "severe": "SEVERO",
+        "high": "ALTO",
+        "moderate": "MODERADO",
+        "low": "BAJO"
+      }
+    },
+    "prohibitedSection": {
+      "title": "Artículos Prohibidos",
+      "subtitle": "No traiga estos artículos al entrar a Estados Unidos o a los estadios",
+      "entryToUSA": "Entrada a EE.UU.",
+      "stadiumEntry": "Entrada al Estadio",
+      "penalty": "Penalidad",
+      "severity": {
+        "critical": "crítico",
+        "high": "alto",
+        "medium": "medio"
+      },
+      "clearBagPolicy": {
+        "title": "POLÍTICA DE BOLSA TRANSPARENTE",
+        "description": "La mayoría de los estadios solo permiten bolsas de plástico transparente (máx 12\" x 6\" x 12\") o carteras pequeñas. Llegue temprano y revise las reglas específicas del lugar."
+      },
+      "whatYouCanBring": {
+        "title": "LO QUE PUEDE TRAER",
+        "items": [
+          "Bolsa transparente que cumpla requisitos de tamaño",
+          "Boletos (físicos/digitales) + ID/pasaporte válido",
+          "Teléfono móvil y cargador pequeño",
+          "Banderas pequeñas sin astas",
+          "Protector solar y sombreros",
+          "Botella de agua reutilizable vacía (algunos lugares)",
+          "Medicamentos con sello de fábrica"
+        ]
+      }
+    },
+    "tvGuideSection": {
+      "title": "Guía de TV",
+      "subtitle": "Cómo ver la Copa del Mundo FIFA 2026 - Los 104 partidos, 11 de junio - 19 de julio",
+      "tabs": {
+        "english": "Inglés",
+        "spanish": "Español",
+        "international": "Internacional"
+      },
+      "types": {
+        "tv": "TV",
+        "streaming": "Stream",
+        "radio": "Radio"
+      },
+      "streamingTips": "CONSEJOS DE STREAMING"
+    },
+    "transportSection": {
+      "title": "Transporte Privado",
+      "subtitle": "Información de jets privados, aviones y yates para ciudades sede del Mundial",
+      "tabs": {
+        "jets": "Jets Privados",
+        "yachts": "Yates",
+        "clearance": "Despacho"
+      },
+      "fboInfo": {
+        "title": "FBO = Operador de Base Fija",
+        "description": "Terminales privadas que proveen combustible, hangares, salas VIP, aduanas y servicios de conserjería para aeronaves privadas."
+      },
+      "usaHostCities": "Ciudades Sede de EE.UU.",
+      "mexicoHostCities": "Ciudades Sede de México",
+      "canadaHostCities": "Ciudades Sede de Canadá",
+      "airports": "aeropuertos",
+      "cbpOnSite": "CBP en Sitio",
+      "noCBP": "Sin CBP",
+      "ciqOnSite": "CIQ en Sitio",
+      "cbsaOnSite": "CBSA en Sitio",
+      "yachtInfo": {
+        "title": "Atracaderos para Superyates",
+        "description": "Reserve amarres de marina con 6+ meses de anticipación durante el Mundial. Miami tiene la mejor infraestructura para superyates en EE.UU."
+      },
+      "maxLength": "Máx",
+      "yachtChecklist": {
+        "title": "LISTA DE VERIFICACIÓN PARA YATES",
+        "items": [
+          "Reportar llegada vía app CBP ROAM dentro de 24 horas",
+          "Izar bandera Q al entrar a aguas territoriales",
+          "Permanecer a bordo hasta completar despacho aduanero",
+          "Todos los pasajeros reportarse a oficina CBP más cercana",
+          "Yates extranjeros 300+ toneladas: notificar a USCG 96 hrs antes",
+          "Solicitar licencia de crucero en primer puerto de entrada"
+        ]
+      },
+      "transportTips": "CONSEJOS DE TRANSPORTE PRIVADO"
+    },
+    "consulatesSection": {
+      "title": "Consulados por Ciudad",
+      "subtitle": "Encuentre el consulado de su país en cada ciudad sede",
+      "emergencyNote": {
+        "title": "Antes de viajar",
+        "description": "Regístrese con la embajada de su país y guarde el número de emergencia de su consulado."
+      }
     }
   },
   "concierge": {

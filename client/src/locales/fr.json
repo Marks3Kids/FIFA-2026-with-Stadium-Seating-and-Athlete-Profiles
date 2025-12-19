@@ -2241,6 +2241,141 @@
         "Fournir des conseils juridiques",
         "Enquêter sur les crimes"
       ]
+    },
+    "travelCategories": {
+      "customs": "Douanes",
+      "safety": "Sécurité",
+      "prohibited": "Interdit",
+      "tvguide": "Guide TV",
+      "transport": "Transport",
+      "consulates": "Consulats"
+    },
+    "customsSection": {
+      "title": "Douanes et Immigration",
+      "subtitle": "Exigences et procédures d'entrée",
+      "visaRequirements": "Exigences de Visa",
+      "firstPointOfEntry": {
+        "title": "Règle du Premier Point d'Entrée (Critique)",
+        "description": "Vous DEVEZ passer l'Immigration et les Douanes à votre PREMIER aéroport américain, même si vous avez une correspondance vers une autre ville."
+      },
+      "mpcTip": {
+        "title": "Conseil: Téléchargez l'app Mobile Passport Control (MPC) pour les files express",
+        "button": "Télécharger l'App Mobile Passport Control"
+      },
+      "additionalInfo": "Informations Douanières Supplémentaires"
+    },
+    "citySafetySection": {
+      "title": "Guide de Sécurité par Ville",
+      "subtitle": "Sélectionnez une ville hôte pour voir les informations de sécurité",
+      "backToCities": "Retour aux Villes",
+      "countries": {
+        "usa": "États-Unis",
+        "mexico": "Mexique",
+        "canada": "Canada"
+      },
+      "heatWarning": "Avertissement Chaleur",
+      "ticketScams": "Arnaques aux Billets",
+      "localConcerns": "Préoccupations Locales",
+      "safeAreas": "Zones Sûres",
+      "tapForDetails": "(appuyez pour détails)",
+      "areasToAvoid": "Zones à Éviter",
+      "tips": "Conseils",
+      "heatLevels": {
+        "extreme": "EXTRÊME",
+        "severe": "SÉVÈRE",
+        "high": "ÉLEVÉ",
+        "moderate": "MODÉRÉ",
+        "low": "FAIBLE"
+      }
+    },
+    "prohibitedSection": {
+      "title": "Articles Interdits",
+      "subtitle": "N'apportez pas ces articles lors de l'entrée aux États-Unis ou dans les stades",
+      "entryToUSA": "Entrée aux USA",
+      "stadiumEntry": "Entrée au Stade",
+      "penalty": "Pénalité",
+      "severity": {
+        "critical": "critique",
+        "high": "élevé",
+        "medium": "moyen"
+      },
+      "clearBagPolicy": {
+        "title": "POLITIQUE SAC TRANSPARENT",
+        "description": "La plupart des stades n'autorisent que les sacs en plastique transparent (max 12\" x 6\" x 12\") ou petites pochettes. Arrivez tôt et vérifiez les règles spécifiques du lieu."
+      },
+      "whatYouCanBring": {
+        "title": "CE QUE VOUS POUVEZ APPORTER",
+        "items": [
+          "Sac transparent conforme aux exigences de taille",
+          "Billets (physiques/numériques) + ID/passeport valide",
+          "Téléphone portable et petit chargeur",
+          "Petits drapeaux sans hampe",
+          "Crème solaire et chapeaux",
+          "Bouteille d'eau réutilisable vide (certains sites)",
+          "Médicaments sous scellé d'usine"
+        ]
+      }
+    },
+    "tvGuideSection": {
+      "title": "Guide TV",
+      "subtitle": "Comment regarder la Coupe du Monde FIFA 2026 - Les 104 matchs, 11 juin - 19 juillet",
+      "tabs": {
+        "english": "Anglais",
+        "spanish": "Espagnol",
+        "international": "International"
+      },
+      "types": {
+        "tv": "TV",
+        "streaming": "Stream",
+        "radio": "Radio"
+      },
+      "streamingTips": "CONSEILS STREAMING"
+    },
+    "transportSection": {
+      "title": "Transport Privé",
+      "subtitle": "Informations sur jets privés, avions et yachts pour les villes hôtes de la Coupe du Monde",
+      "tabs": {
+        "jets": "Jets Privés",
+        "yachts": "Yachts",
+        "clearance": "Dédouanement"
+      },
+      "fboInfo": {
+        "title": "FBO = Opérateur de Base Fixe",
+        "description": "Terminaux privés fournissant carburant, hangars, salons, douanes et services de conciergerie pour les aéronefs privés."
+      },
+      "usaHostCities": "Villes Hôtes USA",
+      "mexicoHostCities": "Villes Hôtes Mexique",
+      "canadaHostCities": "Villes Hôtes Canada",
+      "airports": "aéroports",
+      "cbpOnSite": "CBP Sur Place",
+      "noCBP": "Sans CBP",
+      "ciqOnSite": "CIQ Sur Place",
+      "cbsaOnSite": "ASFC Sur Place",
+      "yachtInfo": {
+        "title": "Postes d'Amarrage Superyachts",
+        "description": "Réservez les postes de marina 6+ mois à l'avance pendant la Coupe du Monde. Miami possède la meilleure infrastructure pour superyachts aux USA."
+      },
+      "maxLength": "Max",
+      "yachtChecklist": {
+        "title": "CHECKLIST ENTRÉE YACHT",
+        "items": [
+          "Signaler l'arrivée via l'app CBP ROAM dans les 24 heures",
+          "Hisser le pavillon Q en entrant dans les eaux territoriales",
+          "Rester à bord jusqu'à la fin du dédouanement",
+          "Tous les passagers doivent se présenter au bureau CBP le plus proche",
+          "Yachts étrangers 300+ tonnes: notifier l'USCG 96 h à l'avance",
+          "Demander une licence de croisière au premier port d'entrée"
+        ]
+      },
+      "transportTips": "CONSEILS TRANSPORT PRIVÉ"
+    },
+    "consulatesSection": {
+      "title": "Consulats par Ville",
+      "subtitle": "Trouvez le consulat de votre pays dans chaque ville hôte",
+      "emergencyNote": {
+        "title": "Avant de voyager",
+        "description": "Inscrivez-vous auprès de l'ambassade de votre pays et enregistrez le numéro d'urgence de votre consulat."
+      }
     }
   },
   "concierge": {

@@ -2241,6 +2241,141 @@
         "法的アドバイスの提供",
         "犯罪の捜査"
       ]
+    },
+    "travelCategories": {
+      "customs": "税関",
+      "safety": "安全",
+      "prohibited": "禁止",
+      "tvguide": "TV ガイド",
+      "transport": "交通",
+      "consulates": "領事館"
+    },
+    "customsSection": {
+      "title": "税関と入国管理",
+      "subtitle": "入国要件と手続き",
+      "visaRequirements": "ビザ要件",
+      "firstPointOfEntry": {
+        "title": "最初の入国地点ルール（重要）",
+        "description": "別の都市への乗り継ぎがあっても、最初に到着した米国の空港で入国審査と税関手続きを行う必要があります。"
+      },
+      "mpcTip": {
+        "title": "ヒント：エクスプレスレーン用にMobile Passport Control (MPC)アプリをダウンロード",
+        "button": "Mobile Passport Controlアプリをダウンロード"
+      },
+      "additionalInfo": "追加の税関情報"
+    },
+    "citySafetySection": {
+      "title": "都市安全ガイド",
+      "subtitle": "開催都市を選択して安全情報を表示",
+      "backToCities": "都市一覧に戻る",
+      "countries": {
+        "usa": "アメリカ",
+        "mexico": "メキシコ",
+        "canada": "カナダ"
+      },
+      "heatWarning": "暑さ警告",
+      "ticketScams": "チケット詐欺",
+      "localConcerns": "地域の注意点",
+      "safeAreas": "安全なエリア",
+      "tapForDetails": "（詳細はタップ）",
+      "areasToAvoid": "避けるべきエリア",
+      "tips": "ヒント",
+      "heatLevels": {
+        "extreme": "極度",
+        "severe": "厳重",
+        "high": "高い",
+        "moderate": "中程度",
+        "low": "低い"
+      }
+    },
+    "prohibitedSection": {
+      "title": "禁止物品",
+      "subtitle": "アメリカ入国時またはスタジアムにこれらの物品を持ち込まないでください",
+      "entryToUSA": "米国入国",
+      "stadiumEntry": "スタジアム入場",
+      "penalty": "罰則",
+      "severity": {
+        "critical": "重大",
+        "high": "高い",
+        "medium": "中程度"
+      },
+      "clearBagPolicy": {
+        "title": "クリアバッグポリシー",
+        "description": "ほとんどのスタジアムでは透明なプラスチックバッグ（最大12\" x 6\" x 12\"）または小さなクラッチのみ許可されています。早めに到着し、会場固有のルールを確認してください。"
+      },
+      "whatYouCanBring": {
+        "title": "持ち込み可能なもの",
+        "items": [
+          "サイズ要件を満たす透明バッグ",
+          "チケット（紙/デジタル）+ 有効なID/パスポート",
+          "携帯電話と小型充電器",
+          "ポールなしの小さな旗",
+          "日焼け止めと帽子",
+          "空の再利用可能なウォーターボトル（一部の会場）",
+          "未開封の薬"
+        ]
+      }
+    },
+    "tvGuideSection": {
+      "title": "TVガイド",
+      "subtitle": "FIFA ワールドカップ2026の視聴方法 - 全104試合、6月11日〜7月19日",
+      "tabs": {
+        "english": "英語",
+        "spanish": "スペイン語",
+        "international": "国際"
+      },
+      "types": {
+        "tv": "TV",
+        "streaming": "ストリーミング",
+        "radio": "ラジオ"
+      },
+      "streamingTips": "ストリーミングのヒント"
+    },
+    "transportSection": {
+      "title": "プライベート交通",
+      "subtitle": "ワールドカップ開催都市のプライベートジェット、航空機、ヨット情報",
+      "tabs": {
+        "jets": "プライベートジェット",
+        "yachts": "ヨット",
+        "clearance": "通関"
+      },
+      "fboInfo": {
+        "title": "FBO = 固定基地運営者",
+        "description": "プライベート航空機向けに燃料、格納庫、ラウンジ、税関、コンシェルジュサービスを提供する専用ターミナル。"
+      },
+      "usaHostCities": "米国開催都市",
+      "mexicoHostCities": "メキシコ開催都市",
+      "canadaHostCities": "カナダ開催都市",
+      "airports": "空港",
+      "cbpOnSite": "CBP常駐",
+      "noCBP": "CBPなし",
+      "ciqOnSite": "CIQ常駐",
+      "cbsaOnSite": "CBSA常駐",
+      "yachtInfo": {
+        "title": "スーパーヨット係留所",
+        "description": "ワールドカップ期間中はマリーナの係留所を6ヶ月以上前に予約してください。マイアミはアメリカで最高のスーパーヨットインフラを持っています。"
+      },
+      "maxLength": "最大",
+      "yachtChecklist": {
+        "title": "ヨット入国チェックリスト",
+        "items": [
+          "CBP ROAMアプリで24時間以内に到着を報告",
+          "領海に入る際にQ旗を掲揚",
+          "税関手続き完了まで船内待機",
+          "全乗客は最寄りのCBPオフィスに出頭",
+          "外国籍ヨット300トン以上：USCG に96時間前に通知",
+          "最初の入港地で航行許可証を申請"
+        ]
+      },
+      "transportTips": "プライベート交通のヒント"
+    },
+    "consulatesSection": {
+      "title": "都市別領事館",
+      "subtitle": "各開催都市であなたの国の領事館を見つける",
+      "emergencyNote": {
+        "title": "渡航前に",
+        "description": "自国の大使館に登録し、領事館の緊急連絡先を保存してください。"
+      }
     }
   },
   "concierge": {

@@ -2241,6 +2241,141 @@
         "Juridisch advies geven",
         "Misdaden onderzoeken"
       ]
+    },
+    "travelCategories": {
+      "customs": "Douane",
+      "safety": "Veiligheid",
+      "prohibited": "Verboden",
+      "tvguide": "TV Gids",
+      "transport": "Vervoer",
+      "consulates": "Consulaten"
+    },
+    "customsSection": {
+      "title": "Douane & Immigratie",
+      "subtitle": "Inreisvereisten en procedures",
+      "visaRequirements": "Visumvereisten",
+      "firstPointOfEntry": {
+        "title": "Eerste Punt van Binnenkomst Regel (Kritiek)",
+        "description": "U MOET de immigratie- en douanecontrole doorlopen op uw EERSTE Amerikaanse luchthaven, zelfs als u een aansluiting heeft naar een andere stad."
+      },
+      "mpcTip": {
+        "title": "Tip: Download de Mobile Passport Control (MPC) app voor expresrijen",
+        "button": "Download Mobile Passport Control App"
+      },
+      "additionalInfo": "Aanvullende Douane-informatie"
+    },
+    "citySafetySection": {
+      "title": "Stadsveiligheidsgids",
+      "subtitle": "Selecteer een gaststad om veiligheidsinformatie te bekijken",
+      "backToCities": "Terug naar Steden",
+      "countries": {
+        "usa": "Verenigde Staten",
+        "mexico": "Mexico",
+        "canada": "Canada"
+      },
+      "heatWarning": "Hittewaarschuwing",
+      "ticketScams": "Ticketfraude",
+      "localConcerns": "Lokale Zorgen",
+      "safeAreas": "Veilige Gebieden",
+      "tapForDetails": "(tik voor details)",
+      "areasToAvoid": "Te Vermijden Gebieden",
+      "tips": "Tips",
+      "heatLevels": {
+        "extreme": "EXTREEM",
+        "severe": "ERNSTIG",
+        "high": "HOOG",
+        "moderate": "MATIG",
+        "low": "LAAG"
+      }
+    },
+    "prohibitedSection": {
+      "title": "Verboden Artikelen",
+      "subtitle": "Breng deze artikelen niet mee bij binnenkomst in de Verenigde Staten of stadions",
+      "entryToUSA": "Inreis VS",
+      "stadiumEntry": "Stadion Toegang",
+      "penalty": "Straf",
+      "severity": {
+        "critical": "kritiek",
+        "high": "hoog",
+        "medium": "gemiddeld"
+      },
+      "clearBagPolicy": {
+        "title": "DOORZICHTIGE TAS BELEID",
+        "description": "De meeste stadions staan alleen doorzichtige plastic tassen toe (max 12\" x 6\" x 12\") of kleine clutches. Kom vroeg en controleer de specifieke regels van de locatie."
+      },
+      "whatYouCanBring": {
+        "title": "WAT U KAN MEENEMEN",
+        "items": [
+          "Doorzichtige tas die voldoet aan maatvereisten",
+          "Tickets (fysiek/digitaal) + geldig ID/paspoort",
+          "Mobiele telefoon en kleine oplader",
+          "Kleine vlaggen zonder stokken",
+          "Zonnebrandcrème en hoeden",
+          "Lege herbruikbare waterfles (sommige locaties)",
+          "Medicijnen in fabrieksverzegeling"
+        ]
+      }
+    },
+    "tvGuideSection": {
+      "title": "TV Gids",
+      "subtitle": "Hoe de FIFA WK 2026 te bekijken - Alle 104 wedstrijden, 11 juni - 19 juli",
+      "tabs": {
+        "english": "Engels",
+        "spanish": "Spaans",
+        "international": "Internationaal"
+      },
+      "types": {
+        "tv": "TV",
+        "streaming": "Stream",
+        "radio": "Radio"
+      },
+      "streamingTips": "STREAMING TIPS"
+    },
+    "transportSection": {
+      "title": "Privévervoer",
+      "subtitle": "Privéjets, vliegtuigen en jachtinformatie voor WK-gaststeden",
+      "tabs": {
+        "jets": "Privéjets",
+        "yachts": "Jachten",
+        "clearance": "Klaring"
+      },
+      "fboInfo": {
+        "title": "FBO = Fixed Base Operator",
+        "description": "Privéterminals die brandstof, hangars, lounges, douane en conciërgediensten bieden voor privévliegtuigen."
+      },
+      "usaHostCities": "VS Gaststeden",
+      "mexicoHostCities": "Mexico Gaststeden",
+      "canadaHostCities": "Canada Gaststeden",
+      "airports": "luchthavens",
+      "cbpOnSite": "CBP Aanwezig",
+      "noCBP": "Geen CBP",
+      "ciqOnSite": "CIQ Aanwezig",
+      "cbsaOnSite": "CBSA Aanwezig",
+      "yachtInfo": {
+        "title": "Superjacht Ligplaatsen",
+        "description": "Boek marinaplaatsen 6+ maanden van tevoren tijdens het WK. Miami heeft de beste superjachtinfrastructuur in de VS."
+      },
+      "maxLength": "Max",
+      "yachtChecklist": {
+        "title": "JACHT BINNENKOMST CHECKLIST",
+        "items": [
+          "Aankomst melden via CBP ROAM app binnen 24 uur",
+          "Q-vlag hijsen bij het betreden van territoriale wateren",
+          "Aan boord blijven tot douaneklaring voltooid",
+          "Alle passagiers melden zich bij dichtstbijzijnde CBP kantoor",
+          "Buitenlandse jachten 300+ ton: USCG 96 uur van tevoren informeren",
+          "Aanvragen kruislicentie bij eerste haven van binnenkomst"
+        ]
+      },
+      "transportTips": "TIPS PRIVÉVERVOER"
+    },
+    "consulatesSection": {
+      "title": "Consulaten per Stad",
+      "subtitle": "Vind het consulaat van uw land in elke gaststad",
+      "emergencyNote": {
+        "title": "Voor uw reis",
+        "description": "Registreer u bij de ambassade van uw land en bewaar het noodnummer van uw consulaat."
+      }
     }
   },
   "concierge": {

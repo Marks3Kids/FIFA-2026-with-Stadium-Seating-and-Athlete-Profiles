@@ -2242,6 +2242,141 @@
         "Provide legal advice",
         "Investigate crimes"
       ]
+    },
+    "travelCategories": {
+      "customs": "Customs",
+      "safety": "Safety",
+      "prohibited": "Prohibited",
+      "tvguide": "TV Guide",
+      "transport": "Transport",
+      "consulates": "Consulates"
+    },
+    "customsSection": {
+      "title": "Customs & Immigration",
+      "subtitle": "Entry requirements and procedures",
+      "visaRequirements": "Visa Requirements",
+      "firstPointOfEntry": {
+        "title": "First Point of Entry Rule (Critical)",
+        "description": "You MUST clear Immigration and Customs at your FIRST US airport, even if connecting to another city."
+      },
+      "mpcTip": {
+        "title": "Tip: Download Mobile Passport Control (MPC) app for express lanes",
+        "button": "Download Mobile Passport Control App"
+      },
+      "additionalInfo": "Additional Customs Information"
+    },
+    "citySafetySection": {
+      "title": "City Safety Guide",
+      "subtitle": "Select a host city to view safety information",
+      "backToCities": "Back to Cities",
+      "countries": {
+        "usa": "United States",
+        "mexico": "Mexico",
+        "canada": "Canada"
+      },
+      "heatWarning": "Heat Warning",
+      "ticketScams": "Ticket Scams",
+      "localConcerns": "Local Concerns",
+      "safeAreas": "Safe Areas",
+      "tapForDetails": "(tap for details)",
+      "areasToAvoid": "Areas to Avoid",
+      "tips": "Tips",
+      "heatLevels": {
+        "extreme": "EXTREME",
+        "severe": "SEVERE",
+        "high": "HIGH",
+        "moderate": "MODERATE",
+        "low": "LOW"
+      }
+    },
+    "prohibitedSection": {
+      "title": "Prohibited Items",
+      "subtitle": "Do not bring these items when entering the United States or stadiums",
+      "entryToUSA": "Entry to USA",
+      "stadiumEntry": "Stadium Entry",
+      "penalty": "Penalty",
+      "severity": {
+        "critical": "critical",
+        "high": "high",
+        "medium": "medium"
+      },
+      "clearBagPolicy": {
+        "title": "CLEAR BAG POLICY",
+        "description": "Most stadiums only allow clear plastic bags (max 12\" x 6\" x 12\") or small clutches. Arrive early and check venue-specific rules."
+      },
+      "whatYouCanBring": {
+        "title": "WHAT YOU CAN BRING",
+        "items": [
+          "Clear bag meeting size requirements",
+          "Tickets (physical/digital) + valid ID/passport",
+          "Mobile phone and small charger",
+          "Small flags without poles",
+          "Sunscreen and hats",
+          "Empty reusable water bottle (some venues)",
+          "Factory-sealed medications"
+        ]
+      }
+    },
+    "tvGuideSection": {
+      "title": "TV Guide",
+      "subtitle": "How to watch FIFA World Cup 2026 - All 104 matches, June 11 - July 19",
+      "tabs": {
+        "english": "English",
+        "spanish": "Spanish",
+        "international": "International"
+      },
+      "types": {
+        "tv": "TV",
+        "streaming": "Stream",
+        "radio": "Radio"
+      },
+      "streamingTips": "STREAMING TIPS"
+    },
+    "transportSection": {
+      "title": "Private Transport",
+      "subtitle": "Private jets, aircraft, and yacht information for World Cup host cities",
+      "tabs": {
+        "jets": "Private Jets",
+        "yachts": "Yachts",
+        "clearance": "Clearance"
+      },
+      "fboInfo": {
+        "title": "FBO = Fixed Base Operator",
+        "description": "Private terminals providing fuel, hangars, lounges, customs, and concierge services for private aircraft."
+      },
+      "usaHostCities": "USA Host Cities",
+      "mexicoHostCities": "Mexico Host Cities",
+      "canadaHostCities": "Canada Host Cities",
+      "airports": "airports",
+      "cbpOnSite": "CBP On-Site",
+      "noCBP": "No CBP",
+      "ciqOnSite": "CIQ On-Site",
+      "cbsaOnSite": "CBSA On-Site",
+      "yachtInfo": {
+        "title": "Superyacht Berths",
+        "description": "Book marina berths 6+ months ahead during World Cup. Miami has the best superyacht infrastructure in the US."
+      },
+      "maxLength": "Max",
+      "yachtChecklist": {
+        "title": "YACHT ENTRY CHECKLIST",
+        "items": [
+          "Report arrival via CBP ROAM app within 24 hours",
+          "Fly Q flag when entering territorial waters",
+          "Stay onboard until customs clearance complete",
+          "All passengers report to nearest CBP office",
+          "Foreign yachts 300+ tons: notify USCG 96 hrs ahead",
+          "Apply for cruising license at first port of entry"
+        ]
+      },
+      "transportTips": "PRIVATE TRANSPORT TIPS"
+    },
+    "consulatesSection": {
+      "title": "Consulates by City",
+      "subtitle": "Find your country's consulate in each host city",
+      "emergencyNote": {
+        "title": "Before you travel",
+        "description": "Register with your country's embassy and save your consulate's emergency contact number."
+      }
     }
   },
   "concierge": {

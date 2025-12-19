@@ -2241,6 +2241,141 @@
         "Rechtsberatung anbieten",
         "Untersuchung von Straftaten"
       ]
+    },
+    "travelCategories": {
+      "customs": "Zoll",
+      "safety": "Sicherheit",
+      "prohibited": "Verboten",
+      "tvguide": "TV-Guide",
+      "transport": "Transport",
+      "consulates": "Konsulate"
+    },
+    "customsSection": {
+      "title": "Zoll & Einwanderung",
+      "subtitle": "Einreisebestimmungen und Verfahren",
+      "visaRequirements": "Visumanforderungen",
+      "firstPointOfEntry": {
+        "title": "Regel des Ersten Einreisepunkts (Kritisch)",
+        "description": "Sie MÜSSEN die Einwanderungs- und Zollkontrolle an Ihrem ERSTEN US-Flughafen passieren, auch wenn Sie zu einer anderen Stadt weiterreisen."
+      },
+      "mpcTip": {
+        "title": "Tipp: Laden Sie die Mobile Passport Control (MPC) App für Express-Schlangen herunter",
+        "button": "Mobile Passport Control App Herunterladen"
+      },
+      "additionalInfo": "Zusätzliche Zollinformationen"
+    },
+    "citySafetySection": {
+      "title": "Stadtsicherheitsführer",
+      "subtitle": "Wählen Sie eine Gastgeberstadt für Sicherheitsinformationen",
+      "backToCities": "Zurück zu Städten",
+      "countries": {
+        "usa": "Vereinigte Staaten",
+        "mexico": "Mexiko",
+        "canada": "Kanada"
+      },
+      "heatWarning": "Hitzewarnung",
+      "ticketScams": "Ticket-Betrug",
+      "localConcerns": "Lokale Bedenken",
+      "safeAreas": "Sichere Gebiete",
+      "tapForDetails": "(tippen für Details)",
+      "areasToAvoid": "Zu Meidende Gebiete",
+      "tips": "Tipps",
+      "heatLevels": {
+        "extreme": "EXTREM",
+        "severe": "SCHWER",
+        "high": "HOCH",
+        "moderate": "MODERAT",
+        "low": "NIEDRIG"
+      }
+    },
+    "prohibitedSection": {
+      "title": "Verbotene Gegenstände",
+      "subtitle": "Bringen Sie diese Gegenstände nicht bei der Einreise in die USA oder in Stadien mit",
+      "entryToUSA": "Einreise USA",
+      "stadiumEntry": "Stadioneingang",
+      "penalty": "Strafe",
+      "severity": {
+        "critical": "kritisch",
+        "high": "hoch",
+        "medium": "mittel"
+      },
+      "clearBagPolicy": {
+        "title": "TRANSPARENTE TASCHEN-RICHTLINIE",
+        "description": "Die meisten Stadien erlauben nur durchsichtige Plastiktaschen (max 12\" x 6\" x 12\") oder kleine Clutches. Kommen Sie früh und prüfen Sie die spezifischen Regeln des Veranstaltungsortes."
+      },
+      "whatYouCanBring": {
+        "title": "WAS SIE MITBRINGEN KÖNNEN",
+        "items": [
+          "Transparente Tasche gemäß Größenanforderungen",
+          "Tickets (physisch/digital) + gültiger Ausweis/Reisepass",
+          "Handy und kleines Ladegerät",
+          "Kleine Flaggen ohne Stangen",
+          "Sonnenschutz und Hüte",
+          "Leere wiederverwendbare Wasserflasche (einige Orte)",
+          "Originalverpackte Medikamente"
+        ]
+      }
+    },
+    "tvGuideSection": {
+      "title": "TV-Guide",
+      "subtitle": "So sehen Sie die FIFA WM 2026 - Alle 104 Spiele, 11. Juni - 19. Juli",
+      "tabs": {
+        "english": "Englisch",
+        "spanish": "Spanisch",
+        "international": "International"
+      },
+      "types": {
+        "tv": "TV",
+        "streaming": "Stream",
+        "radio": "Radio"
+      },
+      "streamingTips": "STREAMING-TIPPS"
+    },
+    "transportSection": {
+      "title": "Privater Transport",
+      "subtitle": "Privatjet-, Flugzeug- und Yacht-Informationen für WM-Gastgeberstädte",
+      "tabs": {
+        "jets": "Privatjets",
+        "yachts": "Yachten",
+        "clearance": "Abfertigung"
+      },
+      "fboInfo": {
+        "title": "FBO = Fixed Base Operator",
+        "description": "Private Terminals mit Kraftstoff, Hangars, Lounges, Zoll und Concierge-Services für Privatflugzeuge."
+      },
+      "usaHostCities": "USA Gastgeberstädte",
+      "mexicoHostCities": "Mexiko Gastgeberstädte",
+      "canadaHostCities": "Kanada Gastgeberstädte",
+      "airports": "Flughäfen",
+      "cbpOnSite": "CBP vor Ort",
+      "noCBP": "Kein CBP",
+      "ciqOnSite": "CIQ vor Ort",
+      "cbsaOnSite": "CBSA vor Ort",
+      "yachtInfo": {
+        "title": "Superyacht-Liegeplätze",
+        "description": "Buchen Sie Marina-Liegeplätze 6+ Monate im Voraus während der WM. Miami hat die beste Superyacht-Infrastruktur in den USA."
+      },
+      "maxLength": "Max",
+      "yachtChecklist": {
+        "title": "YACHT-EINREISE-CHECKLISTE",
+        "items": [
+          "Ankunft über CBP ROAM App innerhalb von 24 Stunden melden",
+          "Q-Flagge beim Einfahren in Hoheitsgewässer hissen",
+          "An Bord bleiben bis Zollabfertigung abgeschlossen",
+          "Alle Passagiere beim nächsten CBP-Büro melden",
+          "Ausländische Yachten 300+ Tonnen: USCG 96 Std. vorher benachrichtigen",
+          "Kreuzfahrtlizenz am ersten Einreisehafen beantragen"
+        ]
+      },
+      "transportTips": "TIPPS FÜR PRIVATEN TRANSPORT"
+    },
+    "consulatesSection": {
+      "title": "Konsulate nach Stadt",
+      "subtitle": "Finden Sie das Konsulat Ihres Landes in jeder Gastgeberstadt",
+      "emergencyNote": {
+        "title": "Vor der Reise",
+        "description": "Registrieren Sie sich bei der Botschaft Ihres Landes und speichern Sie die Notrufnummer Ihres Konsulats."
+      }
     }
   },
   "concierge": {
