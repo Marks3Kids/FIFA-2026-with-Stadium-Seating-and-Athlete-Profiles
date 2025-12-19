@@ -121,7 +121,7 @@ export default function Teams() {
               </div>
 
               <div className="border-t border-gray-100 pt-3 mt-3">
-                <p className="text-sm font-bold text-gray-800">{t("qualifiedTeams.squad", "Squad")}</p>
+                <p className="text-sm font-bold text-gray-800">{t("teams.squad")}</p>
               </div>
             </div>
           ))}
