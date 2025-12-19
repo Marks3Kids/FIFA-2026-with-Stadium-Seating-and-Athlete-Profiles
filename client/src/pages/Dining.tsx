@@ -3,6 +3,7 @@ import { Utensils, ArrowLeft, MapPin, DollarSign, ChevronRight, ExternalLink, St
 import { Link } from "wouter";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import diningHeroImage from "@assets/generated_images/drone_view_elegant_restaurant_terrace.png";
 
 interface Restaurant {
   name: string;
@@ -1166,21 +1167,30 @@ export default function Dining() {
 
   return (
     <Layout pageTitle="nav.dining">
-      <div className="pt-8 px-6 pb-6">
-        <Link href="/menu" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
-          <ArrowLeft className="w-4 h-4 rtl-flip" />
-          <span className="text-sm font-medium">{t("dining.backToMenu")}</span>
-        </Link>
+      {/* Hero Section with Background Image */}
+      <div className="relative overflow-hidden min-h-[200px]">
+        <div 
+          className="absolute inset-0 bg-cover bg-center scale-105"
+          style={{ backgroundImage: `url(${diningHeroImage})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-background" />
+        
+        <div className="relative pt-8 px-6 pb-12">
+          <Link href="/menu" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
+            <ArrowLeft className="w-4 h-4 rtl-flip" />
+            <span className="text-sm font-medium">{t("dining.backToMenu")}</span>
+          </Link>
 
-        <div className="flex items-center space-x-3 mb-2">
-          <div className="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center">
-            <Utensils className="w-6 h-6 text-orange-400" />
-          </div>
-          <div>
-            <h1 className="text-3xl font-display font-bold text-white" data-testid="text-page-title">
-              {t("dining.title")}
-            </h1>
-            <p className="text-sm text-muted-foreground">{t("dining.subtitle")}</p>
+          <div className="flex items-center space-x-3 mb-2">
+            <div className="w-12 h-12 rounded-xl bg-orange-500/20 backdrop-blur-sm flex items-center justify-center border border-orange-400/30">
+              <Utensils className="w-6 h-6 text-orange-300" />
+            </div>
+            <div>
+              <h1 className="text-3xl font-display font-bold text-white drop-shadow-lg" data-testid="text-page-title">
+                {t("dining.title")}
+              </h1>
+              <p className="text-sm text-gray-300">{t("dining.subtitle")}</p>
+            </div>
           </div>
         </div>
       </div>

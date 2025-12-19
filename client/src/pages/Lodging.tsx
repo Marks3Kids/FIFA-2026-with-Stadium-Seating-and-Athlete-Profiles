@@ -1183,14 +1183,14 @@ export default function Lodging() {
   return (
     <Layout pageTitle="nav.lodging">
       {/* Hero Section with Background Image */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden min-h-[200px]">
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center scale-105"
           style={{ backgroundImage: `url(${hotelHeroImage})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-background" />
         
-        <div className="relative pt-8 px-6 pb-8">
+        <div className="relative pt-8 px-6 pb-12">
           <Link href="/menu" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
             <ArrowLeft className="w-4 h-4 rtl-flip" />
             <span className="text-sm font-medium">{t("lodging.backToMenu")}</span>
