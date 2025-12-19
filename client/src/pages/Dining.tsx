@@ -1168,14 +1168,14 @@ export default function Dining() {
   return (
     <Layout pageTitle="nav.dining">
       {/* Hero Section with Background Image */}
-      <div className="relative overflow-hidden min-h-[280px]">
+      <div className="relative overflow-hidden min-h-[380px]">
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-top"
           style={{ backgroundImage: `url(${diningHeroImage})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-background" />
         
-        <div className="relative pt-8 px-6 pb-16">
+        <div className="relative pt-8 px-6 pb-24">
           <Link href="/menu" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
             <ArrowLeft className="w-4 h-4 rtl-flip" />
             <span className="text-sm font-medium">{t("dining.backToMenu")}</span>
