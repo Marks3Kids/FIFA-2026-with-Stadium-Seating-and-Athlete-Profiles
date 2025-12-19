@@ -2091,7 +2091,120 @@
   },
   "criticalInfo": {
     "title": "Kritische Informationen",
+    "subtitle": "Wichtige Sicherheits- und Reiseinformationen für Besucher der FIFA Weltmeisterschaft 2026.",
     "solution": "Lösung",
+    "preventionTips": "Präventionstipps",
+    "viewModes": {
+      "generalInfo": "Allgemeine Info",
+      "travelEntry": "Reise & Einreise",
+      "medical": "Medizinisch"
+    },
+    "categories": {
+      "safety": "Sicherheit",
+      "emergency": "Notfall",
+      "financial": "Finanziell",
+      "legal": "Rechtlich",
+      "dailyLife": "Alltag"
+    },
+    "safetySection": {
+      "title": "Kritische Sicherheitsinformationen",
+      "unsafeNeighborhoods": {
+        "title": "Unsichere Viertel in Stadionnähe",
+        "description": "Stadion umgeben von Gebieten mit unterschiedlicher Sicherheit von Block zu Block.",
+        "tips": "Bleiben Sie bei Fußgängermengen. Nutzen Sie ausgewiesene Rideshare-Parkplätze. Wenn die Menge abnimmt, kehren Sie um."
+      },
+      "followHomeRobberies": {
+        "title": "Verfolgungsüberfälle nach Hause (Luxusartikel)",
+        "description": "Diebe zielen auf Personen mit teurem Schmuck/Uhren, die Veranstaltungsorte verlassen.",
+        "tips": "Kleiden Sie sich beim Verlassen des Stadions unauffällig. Verbergen Sie Ketten unter dem Hemd, zeigen Sie keine Luxusuhren."
+      },
+      "pickpocketing": {
+        "title": "Taschendiebstahl an Verkehrsknotenpunkten",
+        "description": "Hochfrequentierte Engstellen wie Eingangstore, Rolltreppen und überfüllte Bahnsteige.",
+        "tips": "Bewahren Sie Wertsachen in vorderen Taschen oder Umhängetaschen auf. Bleiben Sie in überfüllten Räumen wachsam."
+      },
+      "ticketScams": {
+        "title": "Ticket- und Merchandising-Betrug",
+        "description": "Gefälschte Tickets und gefälschte Trikots werden außerhalb der Stadien verkauft.",
+        "tips": "Kaufen Sie nur über offizielle Apps (Ticketmaster, FIFA). Kaufen Sie niemals von Einzelpersonen auf der Straße."
+      },
+      "carBreakIns": {
+        "title": "Autoeinbrüche & Parkplatzsicherheit",
+        "description": "Diebe schlagen Autofenster ein, um Taschen in Sekunden zu greifen, oft bei hellem Tageslicht.",
+        "tips": "Lassen Sie nie etwas Sichtbares in Mietwagen. Klappen Sie die Rücksitze um, damit Diebe sehen, dass der Kofferraum leer ist."
+      },
+      "heatWarning": {
+        "title": "Hitzewarnung",
+        "description": "Extreme Hitze und Feuchtigkeit im Juni/Juli. Hitzerschöpfung ist ein echtes Risiko.",
+        "tips": "Trinken Sie ständig Wasser, tragen Sie Sonnenschutz, machen Sie Pausen im Schatten, kennen Sie die Anzeichen eines Hitzschlags."
+      }
+    },
+    "emergencySection": {
+      "title": "Notfallinformationen",
+      "subtitle": "Wichtige Informationen für Ihre Sicherheit und Bequemlichkeit",
+      "healthEmergency": "GESUNDHEIT & NOTFALL",
+      "911": {
+        "title": "Notrufnummer 911",
+        "description": "Rufen Sie 911 für Polizei/Feuerwehr/Rettungsdienst (nur lebensbedrohliche Notfälle). Rund um die Uhr verfügbar."
+      },
+      "988": {
+        "title": "Krisenhotline 988",
+        "description": "Rufen Sie 988 für die Suizid- & Krisenhotline (psychische Notfälle). Kostenlos und für Touristen rund um die Uhr verfügbar."
+      },
+      "311": {
+        "title": "311 Nicht-Notfall",
+        "description": "Rufen Sie 311 für nicht dringende städtische Dienste (Lärmbeschwerde, verlorene Gegenstände). In den meisten Gastgeberstädten verfügbar."
+      },
+      "medicalLocator": {
+        "title": "Medizinische Einrichtungen Finder",
+        "description": "Finden Sie die nächsten Notaufnahmen und Notfallpraxen in der Nähe jedes Stadions. Tippen Sie, um den Medizin-Finder mit Karten und Wegbeschreibungen zu öffnen."
+      }
+    },
+    "financialSection": {
+      "title": "FINANZIELL",
+      "tipping": {
+        "title": "Trinkgeld ist Pflicht",
+        "description": "18-22% beim Essen, 1-2$ pro Getränk in Bars, 2-5$ für Zimmerservice pro Nacht. Nutzen Sie den Trinkgeld-Rechner der App."
+      },
+      "salesTax": {
+        "title": "Mehrwertsteuer nicht enthalten",
+        "description": "Preise im Regal sind OHNE STEUER. An der Kasse 6-10% mehr erwarten. Anders als in Europa/Asien können Touristen KEINE Mehrwertsteuererstattung am Flughafen erhalten."
+      },
+      "creditHolds": {
+        "title": "Kreditkarten-Reservierungen",
+        "description": "Hotels und Mietwagen blockieren 200-500$ auf Karten. Dies reduziert sofort Ihr Ausgabelimit. Vermeiden Sie Debitkarten, da das Geld tatsächlich von Ihrem Konto abgebucht wird."
+      }
+    },
+    "legalSection": {
+      "title": "RECHTLICH",
+      "alcoholAge": {
+        "title": "Alkoholalter 21 Streng Durchgesetzt",
+        "description": "Das Mindestalter für Alkohol ist strikt 21. Der Reisepass ist der einzige garantiert akzeptierte Ausweis. Offene Behälter (Bier) beim Gehen sind in fast allen Städten illegal."
+      },
+      "cannabis": {
+        "title": "Warnung: Cannabis ist Bundesverbrechen",
+        "description": "Marihuana ist in vielen Staaten legal (CA, NY, MA) aber BUNDESWEIT ILLEGAL. Transport über Staatsgrenzen oder in Flughäfen ist ein Bundesverbrechen. Niemals auf Bundesland besitzen."
+      },
+      "rightTurn": {
+        "title": "Rechtsabbiegen bei Rot",
+        "description": "Überall legal, AUSSER wenn ein Schild \"No Turn on Red\" sagt. Ausnahme: Illegal in New York City. 4-Wege-Stopps: Wer zuerst ankommt, fährt zuerst."
+      }
+    },
+    "dailyLifeSection": {
+      "title": "ALLTAG",
+      "esim": {
+        "title": "eSIM für Mobile Daten",
+        "description": "US-Anbieter haben 3G abgeschaltet. Das Telefon muss VoLTE unterstützen. Nutzen Sie eSIM-Apps wie Airalo oder GigSky für Daten statt teurer physischer SIM-Karten."
+      },
+      "metric": {
+        "title": "Umrechnungsanleitung Metrisch zu Imperial",
+        "description": "100°F = 38°C (Sehr Heiß), 32°F = 0°C (Gefrierpunkt). 1 Meile = 1.6 KM. Datumsformat: MM/TT/JJJJ (12/10/26 = 10. Dezember)."
+      },
+      "restrooms": {
+        "title": "Öffentliche Toiletten Selten",
+        "description": "US-Städte haben sehr wenige öffentliche Toiletten. Nutzen Sie Hotelfoyers oder große Kaufhäuser. Prüfen Sie den Toiletten-Finder der App."
+      }
+    },
     "tabs": {
       "safety": "Sicherheit",
       "emergency": "Notfall",

@@ -2090,8 +2090,121 @@
     "disclaimer": "Les prix indiqués sont des prix estimés pour une nuit et peuvent varier en fonction des dates et des disponibilités. Réservez bien à l'avance pour les dates de la Coupe du monde, car la demande sera extrêmement élevée."
   },
   "criticalInfo": {
-    "title": "Informations essentielles",
+    "title": "Informations Critiques",
+    "subtitle": "Informations essentielles de sécurité et de voyage pour les visiteurs de la Coupe du Monde FIFA 2026.",
     "solution": "Solution",
+    "preventionTips": "Conseils de Prévention",
+    "viewModes": {
+      "generalInfo": "Informations Générales",
+      "travelEntry": "Voyage et Entrée",
+      "medical": "Médical"
+    },
+    "categories": {
+      "safety": "Sécurité",
+      "emergency": "Urgence",
+      "financial": "Financier",
+      "legal": "Juridique",
+      "dailyLife": "Vie Quotidienne"
+    },
+    "safetySection": {
+      "title": "Informations Critiques de Sécurité",
+      "unsafeNeighborhoods": {
+        "title": "Quartiers Dangereux Près du Stade",
+        "description": "Stade entouré de zones dont la sécurité varie d'un bloc à l'autre.",
+        "tips": "Restez avec les foules de piétons. Utilisez les parkings désignés pour le covoiturage. Si la foule diminue, faites demi-tour."
+      },
+      "followHomeRobberies": {
+        "title": "Vols avec Filature à Domicile (Articles de Luxe)",
+        "description": "Les voleurs ciblent les personnes portant des bijoux/montres coûteux quittant les lieux.",
+        "tips": "Habillez-vous sobrement en quittant le stade. Cachez les chaînes sous la chemise, évitez d'exhiber les montres de luxe."
+      },
+      "pickpocketing": {
+        "title": "Pickpockets aux Stations de Transit",
+        "description": "Points de haute densité comme les portiques d'entrée, les escalators et les quais de transport bondés.",
+        "tips": "Gardez les objets de valeur dans les poches avant ou les sacs en bandoulière. Restez vigilant dans les espaces bondés."
+      },
+      "ticketScams": {
+        "title": "Arnaques aux Billets et Marchandises",
+        "description": "Faux billets et maillots contrefaits vendus à l'extérieur des stades.",
+        "tips": "N'achetez que sur les applications officielles (Ticketmaster, FIFA). N'achetez jamais à des particuliers dans la rue."
+      },
+      "carBreakIns": {
+        "title": "Effractions de Voitures et Sécurité des Parkings",
+        "description": "Les voleurs brisent les vitres de voiture pour attraper les sacs en quelques secondes, souvent en plein jour.",
+        "tips": "Ne laissez jamais rien de visible dans les voitures de location. Laissez les sièges arrière rabattus pour que les voleurs voient que le coffre est vide."
+      },
+      "heatWarning": {
+        "title": "Avertissement Chaleur",
+        "description": "Chaleur extrême et humidité en juin/juillet. L'épuisement par la chaleur est un risque réel.",
+        "tips": "Buvez de l'eau constamment, mettez de la crème solaire, faites des pauses à l'ombre, connaissez les signes du coup de chaleur."
+      }
+    },
+    "emergencySection": {
+      "title": "Informations d'Urgence",
+      "subtitle": "Informations importantes pour votre sécurité et commodité",
+      "healthEmergency": "SANTÉ ET URGENCE",
+      "911": {
+        "title": "Numéro d'Urgence 911",
+        "description": "Appelez le 911 pour Police/Pompiers/Ambulance (urgences vitales uniquement). Disponible 24h/24."
+      },
+      "988": {
+        "title": "Ligne de Crise 988",
+        "description": "Appelez le 988 pour la Ligne de Prévention du Suicide et des Crises (urgences de santé mentale). Gratuit et disponible pour les touristes 24h/24."
+      },
+      "311": {
+        "title": "311 Non-Urgence",
+        "description": "Appelez le 311 pour les services municipaux non urgents (plaintes pour bruit, objets perdus). Disponible dans la plupart des villes hôtes."
+      },
+      "medicalLocator": {
+        "title": "Localisateur d'Établissements Médicaux",
+        "description": "Trouvez les urgences et centres de soins urgents les plus proches de chaque stade. Appuyez pour ouvrir le Localisateur Médical avec cartes et itinéraires."
+      }
+    },
+    "financialSection": {
+      "title": "FINANCIER",
+      "tipping": {
+        "title": "Le Pourboire est Obligatoire",
+        "description": "18-22% pour les repas, 1-2$ par verre au bar, 2-5$ pour le service d'étage par nuit. Utilisez le calculateur de pourboire de l'app."
+      },
+      "salesTax": {
+        "title": "Taxe de Vente Non Incluse",
+        "description": "Les prix affichés sont HORS TAXES. À la caisse, comptez 6-10% de plus. Contrairement à l'Europe/Asie, les touristes NE PEUVENT PAS obtenir de remboursement de TVA à l'aéroport."
+      },
+      "creditHolds": {
+        "title": "Blocages de Carte de Crédit",
+        "description": "Les hôtels et locations de voitures bloquent 200-500$ sur les cartes. Cela réduit immédiatement votre limite de dépenses. Évitez les cartes de débit car l'argent quitte réellement votre compte."
+      }
+    },
+    "legalSection": {
+      "title": "JURIDIQUE",
+      "alcoholAge": {
+        "title": "Âge Légal de 21 Ans Strictement Appliqué",
+        "description": "L'âge légal pour boire est strictement 21 ans. Le passeport est la seule pièce d'identité garantie acceptée. Marcher avec des contenants ouverts (bière) est illégal dans presque toutes les villes."
+      },
+      "cannabis": {
+        "title": "Avertissement: Cannabis Crime Fédéral",
+        "description": "La marijuana est légale dans de nombreux États (CA, NY, MA) mais ILLÉGALE AU NIVEAU FÉDÉRAL. La transporter entre États ou dans les aéroports est un crime fédéral. Ne l'ayez jamais sur un terrain fédéral."
+      },
+      "rightTurn": {
+        "title": "Tourner à Droite au Feu Rouge",
+        "description": "Légal partout SAUF si le panneau dit \"No Turn on Red\". Exception: Illégal à New York City. Stops à 4 voies: Le premier arrivé passe en premier."
+      }
+    },
+    "dailyLifeSection": {
+      "title": "VIE QUOTIDIENNE",
+      "esim": {
+        "title": "eSIM pour Données Mobiles",
+        "description": "Les opérateurs américains ont fermé la 3G. Le téléphone doit supporter VoLTE. Utilisez des apps eSIM comme Airalo ou GigSky pour les données au lieu de cartes SIM physiques coûteuses."
+      },
+      "metric": {
+        "title": "Guide de Conversion Métrique vers Impérial",
+        "description": "100°F = 38°C (Très Chaud), 32°F = 0°C (Gel). 1 Mile = 1.6 KM. Format de date: MM/JJ/AAAA (12/10/26 = 10 décembre)."
+      },
+      "restrooms": {
+        "title": "Toilettes Publiques Rares",
+        "description": "Les villes américaines ont très peu de toilettes publiques. Utilisez les halls d'hôtels ou les grands magasins. Consultez le localisateur de toilettes de l'app."
+      }
+    },
     "tabs": {
       "safety": "Sécurité",
       "emergency": "Urgence",

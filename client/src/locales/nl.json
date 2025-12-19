@@ -2090,8 +2090,121 @@
     "disclaimer": "De getoonde prijzen zijn geschatte prijzen per nacht en kunnen variëren op basis van data en beschikbaarheid. Boek ruim van tevoren voor de WK-data, want de vraag zal extreem hoog zijn."
   },
   "criticalInfo": {
-    "title": "Kritieke informatie",
+    "title": "Kritieke Informatie",
+    "subtitle": "Essentiële veiligheids- en reisinformatie voor bezoekers van de FIFA World Cup 2026.",
     "solution": "Oplossing",
+    "preventionTips": "Preventietips",
+    "viewModes": {
+      "generalInfo": "Algemene Info",
+      "travelEntry": "Reis & Toegang",
+      "medical": "Medisch"
+    },
+    "categories": {
+      "safety": "Veiligheid",
+      "emergency": "Noodgeval",
+      "financial": "Financieel",
+      "legal": "Juridisch",
+      "dailyLife": "Dagelijks Leven"
+    },
+    "safetySection": {
+      "title": "Kritieke Veiligheidsinformatie",
+      "unsafeNeighborhoods": {
+        "title": "Onveilige Buurten Nabij Stadion",
+        "description": "Stadion omgeven door gebieden die per blok verschillen in veiligheid.",
+        "tips": "Blijf bij voetgangersgroepen. Gebruik aangewezen rideshare-parkeerplaatsen. Als de menigte afneemt, keer terug."
+      },
+      "followHomeRobberies": {
+        "title": "Thuisvolg-overvallen (Luxe Artikelen)",
+        "description": "Dieven richten zich op mensen met dure sieraden/horloges die locaties verlaten.",
+        "tips": "Kleed je bescheiden bij het verlaten van het stadion. Verberg kettingen onder je shirt, vermijd het tonen van luxe horloges."
+      },
+      "pickpocketing": {
+        "title": "Zakkenrollerij bij Transitstations",
+        "description": "Hoge-dichtheidspunten zoals ingangspoorten, roltrappen en drukke transitperrons.",
+        "tips": "Houd waardevolle spullen in voorste zakken of tassen die je kruislings draagt. Blijf alert in drukke ruimtes."
+      },
+      "ticketScams": {
+        "title": "Ticket- en Merchandise Oplichting",
+        "description": "Valse tickets en nagemaakte shirts verkocht buiten stadions.",
+        "tips": "Koop alleen via officiële apps (Ticketmaster, FIFA). Koop nooit van individuen op straat."
+      },
+      "carBreakIns": {
+        "title": "Auto-inbraken & Parkeerplaats Veiligheid",
+        "description": "Dieven slaan autoruiten in om tassen te pakken in seconden, vaak op klaarlichte dag.",
+        "tips": "Laat nooit iets zichtbaar in huurauto's. Laat de achterbank neergeklapt zodat dieven zien dat de kofferbak leeg is."
+      },
+      "heatWarning": {
+        "title": "Hitte Waarschuwing",
+        "description": "Extreme hitte en vochtigheid in juni/juli. Hitte-uitputting is een reëel risico.",
+        "tips": "Drink constant water, draag zonnebrand, neem pauzes in de schaduw, ken de tekenen van hitteberoerte."
+      }
+    },
+    "emergencySection": {
+      "title": "Noodgevallen Informatie",
+      "subtitle": "Belangrijke informatie voor uw veiligheid en gemak",
+      "healthEmergency": "GEZONDHEID & NOODGEVAL",
+      "911": {
+        "title": "Noodnummer 911",
+        "description": "Bel 911 voor Politie/Brandweer/Ambulance (alleen levensbedreigende noodgevallen). 24/7 beschikbaar."
+      },
+      "988": {
+        "title": "Crisislijn 988",
+        "description": "Bel 988 voor de Zelfmoordpreventie & Crisislijn (geestelijke gezondheidsnoodgevallen). Gratis en beschikbaar voor toeristen 24/7."
+      },
+      "311": {
+        "title": "311 Niet-Noodgeval",
+        "description": "Bel 311 voor niet-urgente stadsdiensten (geluidsklachten, verloren voorwerpen). Beschikbaar in de meeste gaststeden."
+      },
+      "medicalLocator": {
+        "title": "Medische Faciliteiten Zoeker",
+        "description": "Vind de dichtstbijzijnde spoedeisende hulp en urgente zorgcentra bij elk stadion. Tik om de Medische Zoeker te openen met kaarten en routebeschrijvingen."
+      }
+    },
+    "financialSection": {
+      "title": "FINANCIEEL",
+      "tipping": {
+        "title": "Fooi Geven is Verplicht",
+        "description": "18-22% voor maaltijden, $1-2 per drankje in bars, $2-5 voor kamerservice per nacht. Gebruik de fooicalculator van de app."
+      },
+      "salesTax": {
+        "title": "Verkoopbelasting Niet Inbegrepen",
+        "description": "Prijzen op schappen zijn EXCLUSIEF BELASTING. Verwacht 6-10% meer bij de kassa. Anders dan in Europa/Azië kunnen toeristen GEEN BTW-teruggave krijgen op de luchthaven."
+      },
+      "creditHolds": {
+        "title": "Creditcard Reserveringen",
+        "description": "Hotels en autoverhuur plaatsen $200-$500 \"reserveringen\" op kaarten. Dit vermindert direct je bestedingslimiet. Vermijd betaalkaarten omdat het geld daadwerkelijk van je rekening gaat."
+      }
+    },
+    "legalSection": {
+      "title": "JURIDISCH",
+      "alcoholAge": {
+        "title": "Alcoholleeftijd 21 Strikt Gehandhaafd",
+        "description": "De drinkleeftijd is strikt 21. Het paspoort is het enige gegarandeerd geaccepteerde identiteitsbewijs. Lopen met open containers (bier) is illegaal in bijna alle steden."
+      },
+      "cannabis": {
+        "title": "Waarschuwing: Cannabis is Federaal Misdrijf",
+        "description": "Marihuana is legaal in veel staten (CA, NY, MA) maar FEDERAAL ILLEGAAL. Het vervoeren over staatsgrenzen of naar luchthavens is een federaal misdrijf. Nooit hebben op federale grond."
+      },
+      "rightTurn": {
+        "title": "Rechtsaf bij Rood Licht",
+        "description": "Overal legaal TENZIJ het bord zegt \"No Turn on Red\". Uitzondering: Illegaal in New York City. 4-weg stops: Wie eerst aankomt gaat eerst."
+      }
+    },
+    "dailyLifeSection": {
+      "title": "DAGELIJKS LEVEN",
+      "esim": {
+        "title": "eSIM voor Mobiele Data",
+        "description": "Amerikaanse providers hebben 3G uitgezet. Telefoon moet VoLTE ondersteunen. Gebruik eSIM apps zoals Airalo of GigSky voor data in plaats van dure fysieke SIM-kaarten."
+      },
+      "metric": {
+        "title": "Metrisch naar Imperiaal Conversiegids",
+        "description": "100°F = 38°C (Zeer Warm), 32°F = 0°C (Vriespunt). 1 Mijl = 1.6 KM. Datumformaat: MM/DD/JJJJ (12/10/26 = 10 december)."
+      },
+      "restrooms": {
+        "title": "Openbare Toiletten Zeldzaam",
+        "description": "Amerikaanse steden hebben zeer weinig openbare toiletten. Gebruik hotellobby's of grote warenhuizen. Bekijk de toiletzoeker van de app."
+      }
+    },
     "tabs": {
       "safety": "Veiligheid",
       "emergency": "Noodgevallen",

@@ -2091,42 +2091,155 @@
   },
   "criticalInfo": {
     "title": "Informações Críticas",
+    "subtitle": "Informações essenciais de segurança e viagem para visitantes da Copa do Mundo FIFA 2026.",
     "solution": "Solução",
+    "preventionTips": "Dicas de Prevenção",
+    "viewModes": {
+      "generalInfo": "Informações Gerais",
+      "travelEntry": "Viagem e Entrada",
+      "medical": "Médico"
+    },
+    "categories": {
+      "safety": "Segurança",
+      "emergency": "Emergência",
+      "financial": "Financeiro",
+      "legal": "Legal",
+      "dailyLife": "Vida Diária"
+    },
+    "safetySection": {
+      "title": "Informações Críticas de Segurança",
+      "unsafeNeighborhoods": {
+        "title": "Bairros Inseguros Perto do Estádio",
+        "description": "Estádio cercado por áreas que variam em segurança de quarteirão em quarteirão.",
+        "tips": "Fique com as multidões de pedestres. Use os estacionamentos designados para caronas. Se a multidão diminuir, volte."
+      },
+      "followHomeRobberies": {
+        "title": "Roubos de Perseguição até Casa (Itens de Luxo)",
+        "description": "Ladrões visam pessoas usando joias/relógios caros ao sair dos locais.",
+        "tips": "Vista-se discretamente ao sair do estádio. Esconda correntes dentro da camisa, evite mostrar relógios de luxo."
+      },
+      "pickpocketing": {
+        "title": "Furtos em Estações de Trânsito",
+        "description": "Pontos de alta densidade como portões de entrada, escadas rolantes e plataformas de transporte lotadas.",
+        "tips": "Mantenha objetos de valor em bolsos frontais ou bolsas transversais. Fique alerta em espaços lotados."
+      },
+      "ticketScams": {
+        "title": "Golpes de Ingressos e Mercadorias",
+        "description": "Ingressos falsos e camisas falsificadas vendidos fora dos estádios.",
+        "tips": "Só compre em apps oficiais (Ticketmaster, FIFA). Nunca compre de indivíduos na rua."
+      },
+      "carBreakIns": {
+        "title": "Arrombamentos de Carros e Segurança de Estacionamento",
+        "description": "Ladrões quebram janelas de carros para pegar bolsas em segundos, frequentemente em plena luz do dia.",
+        "tips": "Nunca deixe nada visível em carros alugados. Deixe os bancos traseiros abaixados para que os ladrões vejam que o porta-malas está vazio."
+      },
+      "heatWarning": {
+        "title": "Alerta de Calor",
+        "description": "Calor extremo e umidade em junho/julho. A exaustão por calor é um risco real.",
+        "tips": "Beba água constantemente, use protetor solar, faça pausas na sombra, conheça os sinais de insolação."
+      }
+    },
+    "emergencySection": {
+      "title": "Informações de Emergência",
+      "subtitle": "Informações importantes para sua segurança e conveniência",
+      "healthEmergency": "SAÚDE E EMERGÊNCIA",
+      "911": {
+        "title": "Número de Emergência 911",
+        "description": "Ligue 911 para Polícia/Bombeiros/Ambulância (apenas emergências com risco de vida). Disponível 24/7."
+      },
+      "988": {
+        "title": "Linha de Crise 988",
+        "description": "Ligue 988 para a Linha de Prevenção ao Suicídio e Crise (emergências de saúde mental). Gratuito e disponível para turistas 24/7."
+      },
+      "311": {
+        "title": "311 Não-Emergência",
+        "description": "Ligue 311 para serviços municipais não urgentes (reclamações de barulho, objetos perdidos). Disponível na maioria das cidades-sede."
+      },
+      "medicalLocator": {
+        "title": "Localizador de Instalações Médicas",
+        "description": "Encontre as salas de emergência e centros de atendimento urgente mais próximos de cada estádio. Toque para abrir o Localizador Médico com mapas e direções."
+      }
+    },
+    "financialSection": {
+      "title": "FINANCEIRO",
+      "tipping": {
+        "title": "Gorjeta é Obrigatória",
+        "description": "18-22% para refeições, $1-2 por bebida em bares, $2-5 para serviço de quarto por noite. Use a calculadora de gorjetas do app."
+      },
+      "salesTax": {
+        "title": "Imposto de Venda Não Incluído",
+        "description": "Preços nas prateleiras são SEM IMPOSTOS. No caixa, espere 6-10% a mais. Diferente da Europa/Ásia, turistas NÃO PODEM obter reembolso de IVA/Imposto no aeroporto."
+      },
+      "creditHolds": {
+        "title": "Bloqueios de Cartão de Crédito",
+        "description": "Hotéis e aluguel de carros colocam \"bloqueios\" de $200-$500 nos cartões. Isso reduz seu limite de gastos imediatamente. Evite usar cartões de débito pois o dinheiro realmente sai da sua conta."
+      }
+    },
+    "legalSection": {
+      "title": "LEGAL",
+      "alcoholAge": {
+        "title": "Idade para Álcool 21 Estritamente Aplicada",
+        "description": "A idade para beber é estritamente 21. O passaporte é a única identificação garantida aceita. Andar com recipientes abertos (cerveja) é ilegal em quase todas as cidades."
+      },
+      "cannabis": {
+        "title": "Aviso: Cannabis é Crime Federal",
+        "description": "Maconha é legal em muitos estados (CA, NY, MA) mas ILEGAL FEDERALMENTE. Transportá-la entre estados ou em aeroportos é crime federal. Nunca a tenha em território federal."
+      },
+      "rightTurn": {
+        "title": "Virar à Direita no Vermelho",
+        "description": "Legal em todo lugar A MENOS que a placa diga \"No Turn on Red\". Exceção: Ilegal em Nova York. Paradas de 4 vias: Quem chega primeiro passa primeiro."
+      }
+    },
+    "dailyLifeSection": {
+      "title": "VIDA DIÁRIA",
+      "esim": {
+        "title": "eSIM para Dados Móveis",
+        "description": "Operadoras dos EUA desligaram 3G. O telefone deve suportar VoLTE. Use apps de eSIM como Airalo ou GigSky para dados ao invés de cartões SIM físicos caros."
+      },
+      "metric": {
+        "title": "Guia de Conversão Métrico para Imperial",
+        "description": "100°F = 38°C (Muito Quente), 32°F = 0°C (Congelamento). 1 Milha = 1.6 KM. Formato de data: MM/DD/AAAA (12/10/26 = 10 de dezembro)."
+      },
+      "restrooms": {
+        "title": "Banheiros Públicos Raros",
+        "description": "Cidades dos EUA têm muito poucos banheiros públicos. Use lobbies de hotéis ou grandes lojas de departamentos. Consulte o localizador de banheiros do app."
+      }
+    },
     "tabs": {
-      "safety": "Safety",
-      "emergency": "Emergency",
-      "travel": "Travel",
-      "consulates": "Consulates"
+      "safety": "Segurança",
+      "emergency": "Emergência",
+      "travel": "Viagem",
+      "consulates": "Consulados"
     },
     "safety": {
-      "title": "Stadium Safety Guide",
-      "preventionTips": "Prevention Tips"
+      "title": "Guia de Segurança do Estádio",
+      "preventionTips": "Dicas de Prevenção"
     },
     "emergency": {
-      "title": "Emergency Services",
-      "medicalFacilities": "Medical Facilities",
-      "hospitals": "Hospitals & ERs",
-      "urgentCare": "Urgent Care",
-      "distance": "Distance",
-      "drivingTime": "Driving",
-      "hours": "Hours",
-      "selectCity": "Select a city to view nearby medical facilities"
+      "title": "Serviços de Emergência",
+      "medicalFacilities": "Instalações Médicas",
+      "hospitals": "Hospitais e Pronto-Socorros",
+      "urgentCare": "Atendimento Urgente",
+      "distance": "Distância",
+      "drivingTime": "Dirigindo",
+      "hours": "Horas",
+      "selectCity": "Selecione uma cidade para ver instalações médicas próximas"
     },
     "consulates": {
-      "title": "Consulates",
-      "selectCity": "Select a city to view consulate information",
-      "whatCanDo": "What Your Consulate Can Do",
+      "title": "Consulados",
+      "selectCity": "Selecione uma cidade para ver informações do consulado",
+      "whatCanDo": "O Que Seu Consulado Pode Fazer",
       "canDoList": [
-        "Issue emergency passports",
-        "Provide lists of local doctors/lawyers",
-        "Contact family in emergencies",
-        "Visit you if arrested"
+        "Emitir passaportes de emergência",
+        "Fornecer listas de médicos/advogados locais",
+        "Contatar família em emergências",
+        "Visitá-lo se preso"
       ],
       "cannotDoList": [
-        "Pay your bills or give you money",
-        "Get you out of jail",
-        "Provide legal advice",
-        "Investigate crimes"
+        "Pagar suas contas ou dar dinheiro",
+        "Tirá-lo da prisão",
+        "Fornecer aconselhamento jurídico",
+        "Investigar crimes"
       ]
     }
   },

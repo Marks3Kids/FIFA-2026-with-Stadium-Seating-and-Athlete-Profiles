@@ -2091,42 +2091,155 @@
   },
   "criticalInfo": {
     "title": "重要情報",
+    "subtitle": "FIFA 2026ワールドカップ訪問者向けの重要な安全・旅行情報。",
     "solution": "解決策",
+    "preventionTips": "予防のヒント",
+    "viewModes": {
+      "generalInfo": "一般情報",
+      "travelEntry": "旅行・入国",
+      "medical": "医療"
+    },
+    "categories": {
+      "safety": "安全",
+      "emergency": "緊急",
+      "financial": "金銭",
+      "legal": "法律",
+      "dailyLife": "日常生活"
+    },
+    "safetySection": {
+      "title": "重要な安全情報",
+      "unsafeNeighborhoods": {
+        "title": "スタジアム近くの危険な地域",
+        "description": "スタジアムはブロックごとに安全性が異なるエリアに囲まれています。",
+        "tips": "歩行者の群衆と一緒にいてください。指定されたライドシェア駐車場を使用してください。群衆が減ったら、引き返してください。"
+      },
+      "followHomeRobberies": {
+        "title": "尾行強盗（高級品）",
+        "description": "泥棒は会場を去る際に高価なジュエリー/時計を身につけている人を狙います。",
+        "tips": "スタジアムを出る時は地味な服装で。チェーンはシャツの中に隠し、高級時計は見せないでください。"
+      },
+      "pickpocketing": {
+        "title": "交通機関でのスリ",
+        "description": "入場ゲート、エスカレーター、混雑した駅のホームなどの高密度エリア。",
+        "tips": "貴重品は前ポケットやボディバッグに入れてください。混雑した場所では警戒を怠らないでください。"
+      },
+      "ticketScams": {
+        "title": "チケット・グッズ詐欺",
+        "description": "スタジアム外で販売される偽チケットや偽造ジャージ。",
+        "tips": "公式アプリ（Ticketmaster, FIFA）からのみ購入してください。路上の個人から絶対に購入しないでください。"
+      },
+      "carBreakIns": {
+        "title": "車上荒らしと駐車場の安全",
+        "description": "泥棒は数秒でバッグをつかむために車の窓を割ります。白昼堂々と行われることも多いです。",
+        "tips": "レンタカーに何も見えるように残さないでください。泥棒がトランクが空だと分かるように後部座席を倒しておいてください。"
+      },
+      "heatWarning": {
+        "title": "熱中症警報",
+        "description": "6月/7月は極度の暑さと湿気があります。熱中症は現実的なリスクです。",
+        "tips": "常に水を飲み、日焼け止めを塗り、日陰で休憩し、熱中症の兆候を知っておいてください。"
+      }
+    },
+    "emergencySection": {
+      "title": "緊急情報",
+      "subtitle": "あなたの安全と利便性のための重要な情報",
+      "healthEmergency": "健康・緊急事態",
+      "911": {
+        "title": "緊急番号 911",
+        "description": "警察/消防/救急車には911に電話してください（生命を脅かす緊急事態のみ）。24時間対応。"
+      },
+      "988": {
+        "title": "危機ホットライン 988",
+        "description": "自殺予防・危機ライン（メンタルヘルスの緊急事態）には988に電話してください。無料で観光客も24時間利用可能。"
+      },
+      "311": {
+        "title": "311 非緊急",
+        "description": "非緊急の市サービス（騒音苦情、遺失物）には311に電話してください。ほとんどの開催都市で利用可能。"
+      },
+      "medicalLocator": {
+        "title": "医療施設検索",
+        "description": "各スタジアム近くの最寄りの救急室と緊急ケアセンターを見つけてください。タップして地図と道順付きの医療検索を開きます。"
+      }
+    },
+    "financialSection": {
+      "title": "金銭",
+      "tipping": {
+        "title": "チップは必須",
+        "description": "食事に18-22%、バーで1杯あたり$1-2、ホテルのハウスキーピングに1泊$2-5。アプリのチップ計算機を使用してください。"
+      },
+      "salesTax": {
+        "title": "消費税は含まれていません",
+        "description": "棚の価格は税抜きです。レジでは6-10%高くなります。ヨーロッパ/アジアと違い、観光客は空港で消費税の払い戻しを受けられません。"
+      },
+      "creditHolds": {
+        "title": "クレジットカードの一時保留",
+        "description": "ホテルやレンタカーはカードに$200-$500の「一時保留」をかけます。これにより利用限度額が即座に減ります。デビットカードは実際にお金が引き落とされるので避けてください。"
+      }
+    },
+    "legalSection": {
+      "title": "法律",
+      "alcoholAge": {
+        "title": "飲酒年齢21歳厳守",
+        "description": "飲酒年齢は厳格に21歳です。パスポートが唯一の確実に受け入れられる身分証明書です。開封済み容器（ビール）を持ち歩くことはほぼ全ての都市で違法です。"
+      },
+      "cannabis": {
+        "title": "警告：大麻は連邦犯罪",
+        "description": "マリファナは多くの州（CA, NY, MA）で合法ですが、連邦レベルでは違法です。州境を越えたり空港に持ち込むことは連邦犯罪です。連邦の土地では絶対に所持しないでください。"
+      },
+      "rightTurn": {
+        "title": "赤信号での右折",
+        "description": "「No Turn on Red」の標識がない限り、どこでも合法です。例外：ニューヨーク市では違法。4方向一時停止：先に到着した車が先に進みます。"
+      }
+    },
+    "dailyLifeSection": {
+      "title": "日常生活",
+      "esim": {
+        "title": "モバイルデータ用eSIM",
+        "description": "米国の通信事業者は3Gを停止しました。電話はVoLTEをサポートする必要があります。高価な物理SIMカードの代わりにAiraloやGigSkyなどのeSIMアプリをデータ用に使用してください。"
+      },
+      "metric": {
+        "title": "メートル法から帝国単位への変換ガイド",
+        "description": "100°F = 38°C（非常に暑い）、32°F = 0°C（氷点）。1マイル = 1.6 KM。日付形式：月/日/年（12/10/26 = 12月10日）。"
+      },
+      "restrooms": {
+        "title": "公衆トイレは少ない",
+        "description": "米国の都市には公衆トイレがほとんどありません。ホテルのロビーや大型デパートを利用してください。アプリのトイレ検索を確認してください。"
+      }
+    },
     "tabs": {
-      "safety": "Safety",
-      "emergency": "Emergency",
-      "travel": "Travel",
-      "consulates": "Consulates"
+      "safety": "安全",
+      "emergency": "緊急",
+      "travel": "旅行",
+      "consulates": "領事館"
     },
     "safety": {
-      "title": "Stadium Safety Guide",
-      "preventionTips": "Prevention Tips"
+      "title": "スタジアム安全ガイド",
+      "preventionTips": "予防のヒント"
     },
     "emergency": {
-      "title": "Emergency Services",
-      "medicalFacilities": "Medical Facilities",
-      "hospitals": "Hospitals & ERs",
-      "urgentCare": "Urgent Care",
-      "distance": "Distance",
-      "drivingTime": "Driving",
-      "hours": "Hours",
-      "selectCity": "Select a city to view nearby medical facilities"
+      "title": "緊急サービス",
+      "medicalFacilities": "医療施設",
+      "hospitals": "病院・救急室",
+      "urgentCare": "緊急ケア",
+      "distance": "距離",
+      "drivingTime": "運転",
+      "hours": "時間",
+      "selectCity": "近くの医療施設を表示する都市を選択"
     },
     "consulates": {
-      "title": "Consulates",
-      "selectCity": "Select a city to view consulate information",
-      "whatCanDo": "What Your Consulate Can Do",
+      "title": "領事館",
+      "selectCity": "領事館情報を表示する都市を選択",
+      "whatCanDo": "領事館ができること",
       "canDoList": [
-        "Issue emergency passports",
-        "Provide lists of local doctors/lawyers",
-        "Contact family in emergencies",
-        "Visit you if arrested"
+        "緊急パスポートの発行",
+        "地元の医師/弁護士のリストを提供",
+        "緊急時に家族に連絡",
+        "逮捕された場合の面会"
       ],
       "cannotDoList": [
-        "Pay your bills or give you money",
-        "Get you out of jail",
-        "Provide legal advice",
-        "Investigate crimes"
+        "請求書の支払いやお金の提供",
+        "刑務所からの釈放",
+        "法的アドバイスの提供",
+        "犯罪の捜査"
       ]
     }
   },
