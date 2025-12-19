@@ -95,12 +95,22 @@ export async function registerRoutes(
   // Matches API
   app.get("/api/matches", async (req, res) => {
     try {
-      const { stage } = req.query;
+      const { stage, locale } = req.query;
+      let matches;
+      
       if (stage && typeof stage === "string") {
-        const matches = await storage.getMatchesByStage(stage);
-        return res.json(matches);
+        matches = await storage.getMatchesByStage(stage);
+      } else {
+        matches = await storage.getAllMatches();
       }
-      const matches = await storage.getAllMatches();
+      
+      // If locale is provided and not English, translate team names
+      if (locale && locale !== "en" && typeof locale === "string") {
+        const { translateMatches } = await import("./translationService");
+        const translatedMatches = await translateMatches(matches, locale);
+        return res.json(translatedMatches);
+      }
+      
       res.json(matches);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch matches" });

@@ -71,6 +71,7 @@ export const matches = pgTable("matches", {
   stadium: text("stadium").notNull(),
   city: text("city").notNull(),
   stage: text("stage").notNull(),
+  translations: jsonb("translations").$type<Record<string, { team1?: string; team2?: string; city?: string }>>(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 

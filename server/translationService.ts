@@ -1,8 +1,8 @@
 import OpenAI from "openai";
 import { db } from "../db";
-import { newsItems, knockoutBrackets } from "@shared/schema";
+import { newsItems, knockoutBrackets, matches } from "@shared/schema";
 import { eq } from "drizzle-orm";
-import type { KnockoutBracket } from "@shared/schema";
+import type { KnockoutBracket, Match } from "@shared/schema";
 
 const openai = new OpenAI({
   apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
@@ -295,4 +295,166 @@ export async function translateKnockoutBrackets(
   );
 
   return translatedBrackets;
+}
+
+// Match Translation Functions
+interface MatchTranslationResult {
+  team1?: string;
+  team2?: string;
+  city?: string;
+}
+
+function needsTranslation(teamName: string): boolean {
+  const placeholderPatterns = [
+    /Winner/i,
+    /Playoff/i,
+    /Play-off/i,
+    /Runner-up/i,
+    /TBD/i,
+    /UEFA/i,
+    /CAF/i,
+    /AFC/i,
+    /CONCACAF/i,
+    /CONMEBOL/i,
+    /OFC/i,
+  ];
+  return placeholderPatterns.some(pattern => pattern.test(teamName));
+}
+
+async function translateMatchTeams(
+  matchId: number,
+  team1: string,
+  team2: string,
+  city: string,
+  targetLocale: string
+): Promise<MatchTranslationResult> {
+  if (!SUPPORTED_LOCALES.includes(targetLocale)) {
+    return { team1, team2, city };
+  }
+
+  const team1NeedsTranslation = needsTranslation(team1);
+  const team2NeedsTranslation = needsTranslation(team2);
+  
+  if (!team1NeedsTranslation && !team2NeedsTranslation) {
+    return { team1, team2, city };
+  }
+
+  const languageName = LOCALE_NAMES[targetLocale];
+
+  try {
+    const prompt = `Translate the following World Cup match information to ${languageName}. 
+
+For team names that are placeholders (like "UEFA Playoff D Winner", "Winner Group A"), translate the meaning.
+For actual country names, keep them in the original language or use the standard localized version.
+For city names, use the localized version (e.g., "Mexico City" becomes "Ciudad de México" in Spanish).
+
+Return JSON with these fields: "team1", "team2", "city"
+
+team1: ${team1}
+team2: ${team2}
+city: ${city}`;
+
+    const response = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content: "You are a professional sports translator specializing in World Cup content. Translate placeholder team names accurately while keeping actual country names recognizable. Return only valid JSON.",
+        },
+        {
+          role: "user",
+          content: prompt,
+        },
+      ],
+      response_format: { type: "json_object" },
+      max_tokens: 200,
+    });
+
+    const content = response.choices[0]?.message?.content;
+    if (!content) {
+      return { team1, team2, city };
+    }
+
+    const parsed = JSON.parse(content) as MatchTranslationResult;
+    
+    await cacheMatchTranslation(matchId, targetLocale, parsed);
+    
+    return parsed;
+  } catch (error) {
+    console.error(`[Translation] Error translating match to ${targetLocale}:`, error);
+    return { team1, team2, city };
+  }
+}
+
+async function cacheMatchTranslation(
+  matchId: number,
+  locale: string,
+  translation: MatchTranslationResult
+): Promise<void> {
+  try {
+    const [existing] = await db
+      .select({ translations: matches.translations })
+      .from(matches)
+      .where(eq(matches.id, matchId));
+
+    const currentTranslations = existing?.translations || {};
+    const updatedTranslations = {
+      ...currentTranslations,
+      [locale]: translation,
+    };
+
+    await db
+      .update(matches)
+      .set({ translations: updatedTranslations })
+      .where(eq(matches.id, matchId));
+
+    console.log(`[Translation] Cached ${locale} translation for match #${matchId}`);
+  } catch (error) {
+    console.error(`[Translation] Error caching match translation:`, error);
+  }
+}
+
+export async function translateMatches(
+  matchList: Match[],
+  locale: string
+): Promise<Match[]> {
+  if (locale === "en" || !SUPPORTED_LOCALES.includes(locale)) {
+    return matchList;
+  }
+
+  const translatedMatches = await Promise.all(
+    matchList.map(async (match) => {
+      const cachedTranslation = match.translations?.[locale];
+      
+      if (cachedTranslation) {
+        return {
+          ...match,
+          team1: cachedTranslation.team1 || match.team1,
+          team2: cachedTranslation.team2 || match.team2,
+          city: cachedTranslation.city || match.city,
+        };
+      }
+
+      if (!needsTranslation(match.team1) && !needsTranslation(match.team2)) {
+        return match;
+      }
+
+      const translation = await translateMatchTeams(
+        match.id,
+        match.team1,
+        match.team2,
+        match.city,
+        locale
+      );
+
+      return {
+        ...match,
+        team1: translation.team1 || match.team1,
+        team2: translation.team2 || match.team2,
+        city: translation.city || match.city,
+      };
+    })
+  );
+
+  return translatedMatches;
 }
