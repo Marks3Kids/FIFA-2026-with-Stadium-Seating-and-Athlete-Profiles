@@ -99,11 +99,14 @@ export default function Teams() {
               className="bg-white border-l-4 border-l-primary rounded-xl p-5 hover:shadow-lg hover:scale-[1.02] transition-all group cursor-pointer"
             >
               <div className="flex items-start justify-between mb-3">
-                <div>
-                  <h3 className="font-bold text-xl text-gray-900 leading-tight">
-                    {team.teamName}
-                  </h3>
-                  <p className="text-sm text-gray-500">{team.name}</p>
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl drop-shadow-sm">{team.flag}</span>
+                  <div>
+                    <h3 className="font-bold text-xl text-gray-900 leading-tight">
+                      {team.teamName}
+                    </h3>
+                    <p className="text-sm text-gray-500">{team.name}</p>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="inline-flex items-center gap-1 bg-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full">
