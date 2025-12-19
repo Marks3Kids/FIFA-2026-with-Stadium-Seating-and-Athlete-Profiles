@@ -930,7 +930,7 @@ export function TeamDetailModal({ team, isOpen, onClose }: TeamDetailModalProps)
                   {t("teamDetail.seasonHighlights")}
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  {seasonData.highlights}
+                  {t(`teamHighlights.${team.name}`)}
                 </p>
               </div>
 
