@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { TeamDetailModal } from "@/components/TeamDetailModal";
 import { Search, Users, Trophy } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
@@ -18,6 +19,7 @@ interface Team {
 export default function Teams() {
   const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
   
   const { data: teams = [], isLoading } = useQuery<Team[]>({
     queryKey: ["/api/teams"],
@@ -91,7 +93,11 @@ export default function Teams() {
 
         <div className="grid grid-cols-1 gap-4">
           {sortedAndFilteredTeams.map((team) => (
-            <div key={team.id} className="bg-white border-l-4 border-l-primary rounded-xl p-5 hover:shadow-lg transition-shadow group cursor-pointer">
+            <div 
+              key={team.id} 
+              onClick={() => setSelectedTeam(team)}
+              className="bg-white border-l-4 border-l-primary rounded-xl p-5 hover:shadow-lg hover:scale-[1.02] transition-all group cursor-pointer"
+            >
               <div className="flex items-start justify-between mb-3">
                 <div>
                   <h3 className="font-bold text-xl text-gray-900 leading-tight">
@@ -127,6 +133,12 @@ export default function Teams() {
           ))}
         </div>
       </div>
+
+      <TeamDetailModal
+        team={selectedTeam}
+        isOpen={!!selectedTeam}
+        onClose={() => setSelectedTeam(null)}
+      />
     </Layout>
   );
 }
