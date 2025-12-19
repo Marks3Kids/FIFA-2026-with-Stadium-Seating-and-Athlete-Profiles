@@ -16,7 +16,7 @@ export function Layout({ children, hideNav = false, hideTitle = false, pageTitle
       {!hideNav && <HeaderNav />}
       {!hideTitle && (
         <div className="pt-4 px-4">
-          <div className="flex items-center gap-3 bg-gradient-to-r from-emerald-900/30 via-emerald-800/20 to-emerald-900/30 border border-emerald-500/20 rounded-xl px-4 py-3">
+          <div className="relative flex items-center gap-3 bg-gradient-to-r from-emerald-900/30 via-emerald-800/20 to-emerald-900/30 border border-emerald-500/20 rounded-xl px-4 py-3">
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg flex-shrink-0">
               <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="currentColor">
                 <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5"/>
@@ -33,7 +33,7 @@ export function Layout({ children, hideNav = false, hideTitle = false, pageTitle
               <p className="text-[10px] text-muted-foreground uppercase tracking-widest">2026</p>
             </div>
             {pageTitle && (
-              <div className="flex-1 flex justify-center">
+              <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 pointer-events-none">
                 <div className="bg-primary/20 border border-primary/30 rounded-full px-4 py-1.5">
                   <span className="text-sm font-display font-semibold text-primary">{t(pageTitle)}</span>
                 </div>
