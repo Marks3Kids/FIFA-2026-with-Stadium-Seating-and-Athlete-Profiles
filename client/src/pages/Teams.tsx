@@ -56,7 +56,7 @@ export default function Teams() {
     <Layout pageTitle="nav.teams">
       <div className="pt-12 px-6 pb-20">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-display font-bold text-primary mb-2">World Cup 2026</h1>
+          <h1 className="text-4xl font-display font-bold text-primary mb-2">{t("header.worldCup")} {t("header.year")}</h1>
           <h2 className="text-2xl font-bold text-white mb-4">{t("teams.title")}</h2>
           <p className="text-sm text-muted-foreground max-w-lg mx-auto">
             {t("teams.description", "Complete roster information, current season records, and match highlights for all competing nations. Updated regularly in December 2025, March 2026, and May 2026.")}
