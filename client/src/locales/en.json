@@ -2255,15 +2255,58 @@
       "title": "Customs & Immigration",
       "subtitle": "Entry requirements and procedures",
       "visaRequirements": "Visa Requirements",
+      "visaItems": {
+        "esta": {
+          "title": "ESTA",
+          "description": "$21, apply 72 hours before (UK, EU, Australia, Japan, 41 countries)"
+        },
+        "b1b2": {
+          "title": "B-1/B-2 Visa",
+          "description": "Required for Brazil, Argentina, Mexico, Colombia, etc."
+        },
+        "fifa-pass": {
+          "title": "FIFA Pass",
+          "description": "Expedited visa interviews for official ticket holders"
+        }
+      },
       "firstPointOfEntry": {
         "title": "First Point of Entry Rule (Critical)",
-        "description": "You MUST clear Immigration and Customs at your FIRST US airport, even if connecting to another city."
+        "description": "You MUST clear Immigration and Customs at your FIRST US airport, even if connecting to another city.",
+        "steps": [
+          "Immigration (Passport Control)",
+          "Collect checked bags",
+          "Walk through Customs",
+          "Re-check bags for connecting flight",
+          "Go through TSA security again"
+        ]
       },
       "mpcTip": {
         "title": "Tip: Download Mobile Passport Control (MPC) app for express lanes",
         "button": "Download Mobile Passport Control App"
       },
-      "additionalInfo": "Additional Customs Information"
+      "additionalInfo": "Additional Customs Information",
+      "additionalItems": {
+        "customs-declaration": {
+          "title": "Customs Declaration Form",
+          "description": "Complete CBP Declaration Form 6059B on the plane or use the CBP One app. Declare all food, plants, and items over $800 value."
+        },
+        "duty-free": {
+          "title": "Duty-Free Allowances",
+          "description": "Adults can bring: 1L alcohol, 200 cigarettes or 100 cigars (non-Cuban), gifts up to $100. Over limits = pay duty tax."
+        },
+        "cash-declaration": {
+          "title": "Cash Declaration Required",
+          "description": "MUST declare if carrying $10,000+ in cash/monetary instruments. Failure to declare = seizure and potential criminal charges."
+        },
+        "food-restrictions": {
+          "title": "Food & Agriculture Restrictions",
+          "description": "Many foods PROHIBITED: fresh fruits, vegetables, meats, dairy from most countries. Fines up to $10,000. Declare everything or dispose before customs."
+        },
+        "global-entry": {
+          "title": "Global Entry / TSA PreCheck",
+          "description": "If you have Global Entry, use automated kiosks for faster processing. TSA PreCheck speeds up domestic security lines."
+        }
+      }
     },
     "citySafetySection": {
       "title": "City Safety Guide",

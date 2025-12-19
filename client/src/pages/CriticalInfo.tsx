@@ -2363,58 +2363,10 @@ const consulatesData: CityConsulates[] = [
   }
 ];
 
-const customsData = {
-  visaRequirements: [
-    {
-      id: "esta",
-      title: "ESTA",
-      description: "ESTA: $21, apply 72 hours before (UK, EU, Australia, Japan, 41 countries)"
-    },
-    {
-      id: "b1b2",
-      title: "B-1/B-2 Visa",
-      description: "B-1/B-2 Visa: Required for Brazil, Argentina, Mexico, Colombia, etc."
-    },
-    {
-      id: "fifa-pass",
-      title: "FIFA Pass",
-      description: "FIFA Pass: Expedited visa interviews for official ticket holders"
-    }
-  ],
-  firstPointOfEntry: [
-    "Immigration (Passport Control)",
-    "Collect checked bags",
-    "Walk through Customs",
-    "Re-check bags for connecting flight",
-    "Go through TSA security again"
-  ],
-  additionalInfo: [
-    {
-      id: "customs-declaration",
-      title: "Customs Declaration Form",
-      description: "Complete CBP Declaration Form 6059B on the plane or use the CBP One app. Declare all food, plants, and items over $800 value."
-    },
-    {
-      id: "duty-free",
-      title: "Duty-Free Allowances",
-      description: "Adults can bring: 1L alcohol, 200 cigarettes or 100 cigars (non-Cuban), gifts up to $100. Over limits = pay duty tax."
-    },
-    {
-      id: "cash-declaration",
-      title: "Cash Declaration Required",
-      description: "MUST declare if carrying $10,000+ in cash/monetary instruments. Failure to declare = seizure and potential criminal charges."
-    },
-    {
-      id: "food-restrictions",
-      title: "Food & Agriculture Restrictions",
-      description: "Many foods PROHIBITED: fresh fruits, vegetables, meats, dairy from most countries. Fines up to $10,000. Declare everything or dispose before customs."
-    },
-    {
-      id: "global-entry",
-      title: "Global Entry / TSA PreCheck",
-      description: "If you have Global Entry, use automated kiosks for faster processing. TSA PreCheck speeds up domestic security lines."
-    }
-  ]
+const customsDataKeys = {
+  visaRequirements: ["esta", "b1b2", "fifa-pass"],
+  firstPointOfEntrySteps: 5,
+  additionalInfo: ["customs-declaration", "duty-free", "cash-declaration", "food-restrictions", "global-entry"]
 };
 
 export default function CriticalInfo() {
@@ -2715,10 +2667,10 @@ export default function CriticalInfo() {
 
                 <div className="space-y-3">
                   <h3 className="font-bold text-white">{t("criticalInfo.customsSection.visaRequirements")}</h3>
-                  {customsData.visaRequirements.map((item) => (
-                    <div key={item.id} className="bg-card border border-white/5 rounded-xl p-4" data-testid={`customs-${item.id}`}>
+                  {customsDataKeys.visaRequirements.map((id) => (
+                    <div key={id} className="bg-card border border-white/5 rounded-xl p-4" data-testid={`customs-${id}`}>
                       <p className="text-sm text-muted-foreground">
-                        <span className="text-white font-medium">{item.title}</span>: {item.description.split(': ')[1]}
+                        <span className="text-white font-medium">{t(`criticalInfo.customsSection.visaItems.${id}.title`)}</span>: {t(`criticalInfo.customsSection.visaItems.${id}.description`)}
                       </p>
                     </div>
                   ))}
@@ -2731,7 +2683,7 @@ export default function CriticalInfo() {
                       {t("criticalInfo.customsSection.firstPointOfEntry.description")}
                     </p>
                     <ol className="space-y-2 text-sm text-muted-foreground">
-                      {customsData.firstPointOfEntry.map((step, i) => (
+                      {(t("criticalInfo.customsSection.firstPointOfEntry.steps", { returnObjects: true }) as string[]).map((step, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <span className="text-primary font-medium">{i + 1}.</span>
                           {step}
@@ -2763,10 +2715,10 @@ export default function CriticalInfo() {
 
                 <div className="space-y-3">
                   <h3 className="font-bold text-white">{t("criticalInfo.customsSection.additionalInfo")}</h3>
-                  {customsData.additionalInfo.map((item) => (
-                    <div key={item.id} className="bg-card border border-white/5 rounded-xl p-4" data-testid={`customs-${item.id}`}>
-                      <h4 className="font-bold text-white mb-1">{item.title}</h4>
-                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                  {customsDataKeys.additionalInfo.map((id) => (
+                    <div key={id} className="bg-card border border-white/5 rounded-xl p-4" data-testid={`customs-${id}`}>
+                      <h4 className="font-bold text-white mb-1">{t(`criticalInfo.customsSection.additionalItems.${id}.title`)}</h4>
+                      <p className="text-sm text-muted-foreground">{t(`criticalInfo.customsSection.additionalItems.${id}.description`)}</p>
                     </div>
                   ))}
                 </div>

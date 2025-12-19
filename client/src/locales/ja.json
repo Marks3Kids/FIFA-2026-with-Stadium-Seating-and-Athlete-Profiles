@@ -2254,15 +2254,58 @@
       "title": "税関と入国管理",
       "subtitle": "入国要件と手続き",
       "visaRequirements": "ビザ要件",
+      "visaItems": {
+        "esta": {
+          "title": "ESTA",
+          "description": "21ドル、72時間前に申請（英国、EU、オーストラリア、日本、41カ国）"
+        },
+        "b1b2": {
+          "title": "B-1/B-2ビザ",
+          "description": "ブラジル、アルゼンチン、メキシコ、コロンビアなどに必要"
+        },
+        "fifa-pass": {
+          "title": "FIFA Pass",
+          "description": "公式チケット保有者向けの迅速なビザ面接"
+        }
+      },
       "firstPointOfEntry": {
         "title": "最初の入国地点ルール（重要）",
-        "description": "別の都市への乗り継ぎがあっても、最初に到着した米国の空港で入国審査と税関手続きを行う必要があります。"
+        "description": "別の都市への乗り継ぎがあっても、最初に到着した米国の空港で入国審査と税関手続きを行う必要があります。",
+        "steps": [
+          "入国審査（パスポートコントロール）",
+          "預け荷物を受け取る",
+          "税関を通過",
+          "乗り継ぎ便のため荷物を再チェックイン",
+          "TSAセキュリティを再通過"
+        ]
       },
       "mpcTip": {
         "title": "ヒント：エクスプレスレーン用にMobile Passport Control (MPC)アプリをダウンロード",
         "button": "Mobile Passport Controlアプリをダウンロード"
       },
-      "additionalInfo": "追加の税関情報"
+      "additionalInfo": "追加の税関情報",
+      "additionalItems": {
+        "customs-declaration": {
+          "title": "税関申告書",
+          "description": "機内でCBP申告書6059Bを記入するか、CBP Oneアプリを使用してください。すべての食品、植物、800ドル以上の価値がある物品を申告してください。"
+        },
+        "duty-free": {
+          "title": "免税枠",
+          "description": "大人は持ち込み可能：アルコール1L、タバコ200本または葉巻100本（キューバ産以外）、100ドルまでの贈り物。超過分は関税を支払う必要があります。"
+        },
+        "cash-declaration": {
+          "title": "現金申告が必要",
+          "description": "10,000ドル以上の現金/金融商品を持ち込む場合は申告が必須。申告しない場合は没収と刑事告発の可能性があります。"
+        },
+        "food-restrictions": {
+          "title": "食品・農産物の制限",
+          "description": "多くの食品が禁止：新鮮な果物、野菜、肉類、ほとんどの国からの乳製品。罰金は最大10,000ドル。すべてを申告するか、税関前に処分してください。"
+        },
+        "global-entry": {
+          "title": "Global Entry / TSA PreCheck",
+          "description": "Global Entryをお持ちの場合、自動キオスクを使用してより迅速に処理できます。TSA PreCheckは国内セキュリティラインを高速化します。"
+        }
+      }
     },
     "citySafetySection": {
       "title": "都市安全ガイド",

@@ -2254,15 +2254,58 @@
       "title": "Douanes et Immigration",
       "subtitle": "Exigences et procédures d'entrée",
       "visaRequirements": "Exigences de Visa",
+      "visaItems": {
+        "esta": {
+          "title": "ESTA",
+          "description": "21$, demander 72 heures avant (Royaume-Uni, UE, Australie, Japon, 41 pays)"
+        },
+        "b1b2": {
+          "title": "Visa B-1/B-2",
+          "description": "Requis pour le Brésil, l'Argentine, le Mexique, la Colombie, etc."
+        },
+        "fifa-pass": {
+          "title": "FIFA Pass",
+          "description": "Entretiens de visa accélérés pour les détenteurs de billets officiels"
+        }
+      },
       "firstPointOfEntry": {
         "title": "Règle du Premier Point d'Entrée (Critique)",
-        "description": "Vous DEVEZ passer l'Immigration et les Douanes à votre PREMIER aéroport américain, même si vous avez une correspondance vers une autre ville."
+        "description": "Vous DEVEZ passer l'Immigration et les Douanes à votre PREMIER aéroport américain, même si vous avez une correspondance vers une autre ville.",
+        "steps": [
+          "Immigration (Contrôle des Passeports)",
+          "Récupérer les bagages enregistrés",
+          "Passer les Douanes",
+          "Réenregistrer les bagages pour le vol de correspondance",
+          "Repasser la sécurité TSA"
+        ]
       },
       "mpcTip": {
         "title": "Conseil: Téléchargez l'app Mobile Passport Control (MPC) pour les files express",
         "button": "Télécharger l'App Mobile Passport Control"
       },
-      "additionalInfo": "Informations Douanières Supplémentaires"
+      "additionalInfo": "Informations Douanières Supplémentaires",
+      "additionalItems": {
+        "customs-declaration": {
+          "title": "Formulaire de Déclaration Douanière",
+          "description": "Remplissez le Formulaire de Déclaration CBP 6059B dans l'avion ou utilisez l'app CBP One. Déclarez tous les aliments, plantes et articles de plus de 800$ de valeur."
+        },
+        "duty-free": {
+          "title": "Franchises Hors Taxes",
+          "description": "Les adultes peuvent apporter: 1L d'alcool, 200 cigarettes ou 100 cigares (non cubains), cadeaux jusqu'à 100$. Au-delà des limites = payer des droits."
+        },
+        "cash-declaration": {
+          "title": "Déclaration de Devises Requise",
+          "description": "DOIT déclarer si vous transportez 10 000$+ en espèces/instruments monétaires. Non-déclaration = saisie et possibles poursuites pénales."
+        },
+        "food-restrictions": {
+          "title": "Restrictions Alimentaires et Agricoles",
+          "description": "Beaucoup d'aliments INTERDITS: fruits frais, légumes, viandes, produits laitiers de la plupart des pays. Amendes jusqu'à 10 000$. Déclarez tout ou jetez avant les douanes."
+        },
+        "global-entry": {
+          "title": "Global Entry / TSA PreCheck",
+          "description": "Si vous avez Global Entry, utilisez les bornes automatiques pour un traitement plus rapide. TSA PreCheck accélère les files de sécurité domestiques."
+        }
+      }
     },
     "citySafetySection": {
       "title": "Guide de Sécurité par Ville",

@@ -2254,15 +2254,58 @@
       "title": "Dogana e Immigrazione",
       "subtitle": "Requisiti e procedure di ingresso",
       "visaRequirements": "Requisiti per il Visto",
+      "visaItems": {
+        "esta": {
+          "title": "ESTA",
+          "description": "$21, richiedere 72 ore prima (Regno Unito, UE, Australia, Giappone, 41 paesi)"
+        },
+        "b1b2": {
+          "title": "Visto B-1/B-2",
+          "description": "Richiesto per Brasile, Argentina, Messico, Colombia, ecc."
+        },
+        "fifa-pass": {
+          "title": "FIFA Pass",
+          "description": "Colloqui per visti accelerati per possessori di biglietti ufficiali"
+        }
+      },
       "firstPointOfEntry": {
         "title": "Regola del Primo Punto di Ingresso (Critico)",
-        "description": "DEVI passare l'Immigrazione e la Dogana al tuo PRIMO aeroporto USA, anche se hai una coincidenza per un'altra città."
+        "description": "DEVI passare l'Immigrazione e la Dogana al tuo PRIMO aeroporto USA, anche se hai una coincidenza per un'altra città.",
+        "steps": [
+          "Immigrazione (Controllo Passaporti)",
+          "Ritirare bagaglio registrato",
+          "Passare la Dogana",
+          "Reimbarcare il bagaglio per il volo in coincidenza",
+          "Passare nuovamente la sicurezza TSA"
+        ]
       },
       "mpcTip": {
         "title": "Consiglio: Scarica l'app Mobile Passport Control (MPC) per le corsie veloci",
         "button": "Scarica l'App Mobile Passport Control"
       },
-      "additionalInfo": "Informazioni Doganali Aggiuntive"
+      "additionalInfo": "Informazioni Doganali Aggiuntive",
+      "additionalItems": {
+        "customs-declaration": {
+          "title": "Modulo di Dichiarazione Doganale",
+          "description": "Compila il Modulo di Dichiarazione CBP 6059B in aereo o usa l'app CBP One. Dichiara tutti gli alimenti, piante e articoli oltre $800 di valore."
+        },
+        "duty-free": {
+          "title": "Franchigie Duty-Free",
+          "description": "Gli adulti possono portare: 1L di alcol, 200 sigarette o 100 sigari (non cubani), regali fino a $100. Oltre i limiti = pagare dazi."
+        },
+        "cash-declaration": {
+          "title": "Dichiarazione Contanti Obbligatoria",
+          "description": "DEVE dichiarare se trasporti $10.000+ in contanti/strumenti monetari. Mancata dichiarazione = sequestro e possibili accuse penali."
+        },
+        "food-restrictions": {
+          "title": "Restrizioni Alimentari e Agricole",
+          "description": "Molti alimenti VIETATI: frutta fresca, verdure, carni, latticini dalla maggior parte dei paesi. Multe fino a $10.000. Dichiara tutto o smaltisci prima della dogana."
+        },
+        "global-entry": {
+          "title": "Global Entry / TSA PreCheck",
+          "description": "Se hai Global Entry, usa i chioschi automatizzati per elaborazione più rapida. TSA PreCheck velocizza le file di sicurezza nazionali."
+        }
+      }
     },
     "citySafetySection": {
       "title": "Guida alla Sicurezza delle Città",

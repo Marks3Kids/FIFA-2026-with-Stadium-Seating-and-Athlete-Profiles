@@ -2254,15 +2254,58 @@
       "title": "Alfândega e Imigração",
       "subtitle": "Requisitos e procedimentos de entrada",
       "visaRequirements": "Requisitos de Visto",
+      "visaItems": {
+        "esta": {
+          "title": "ESTA",
+          "description": "$21, solicitar 72 horas antes (Reino Unido, UE, Austrália, Japão, 41 países)"
+        },
+        "b1b2": {
+          "title": "Visto B-1/B-2",
+          "description": "Necessário para Brasil, Argentina, México, Colômbia, etc."
+        },
+        "fifa-pass": {
+          "title": "FIFA Pass",
+          "description": "Entrevistas de visto aceleradas para portadores de ingressos oficiais"
+        }
+      },
       "firstPointOfEntry": {
         "title": "Regra do Primeiro Ponto de Entrada (Crítico)",
-        "description": "Você DEVE passar pela Imigração e Alfândega no seu PRIMEIRO aeroporto dos EUA, mesmo se tiver conexão para outra cidade."
+        "description": "Você DEVE passar pela Imigração e Alfândega no seu PRIMEIRO aeroporto dos EUA, mesmo se tiver conexão para outra cidade.",
+        "steps": [
+          "Imigração (Controle de Passaportes)",
+          "Recolher bagagem despachada",
+          "Passar pela Alfândega",
+          "Redespachar bagagem para voo de conexão",
+          "Passar novamente pela segurança TSA"
+        ]
       },
       "mpcTip": {
         "title": "Dica: Baixe o app Mobile Passport Control (MPC) para filas expressas",
         "button": "Baixar App Mobile Passport Control"
       },
-      "additionalInfo": "Informações Adicionais de Alfândega"
+      "additionalInfo": "Informações Adicionais de Alfândega",
+      "additionalItems": {
+        "customs-declaration": {
+          "title": "Formulário de Declaração Aduaneira",
+          "description": "Preencha o Formulário de Declaração CBP 6059B no avião ou use o app CBP One. Declare todos os alimentos, plantas e itens acima de $800 de valor."
+        },
+        "duty-free": {
+          "title": "Franquias Isentas de Impostos",
+          "description": "Adultos podem trazer: 1L de álcool, 200 cigarros ou 100 charutos (não cubanos), presentes até $100. Acima dos limites = pagar taxas."
+        },
+        "cash-declaration": {
+          "title": "Declaração de Dinheiro Obrigatória",
+          "description": "DEVE declarar se carregar $10.000+ em dinheiro/instrumentos monetários. Não declarar = apreensão e possíveis acusações criminais."
+        },
+        "food-restrictions": {
+          "title": "Restrições de Alimentos e Agricultura",
+          "description": "Muitos alimentos PROIBIDOS: frutas frescas, vegetais, carnes, laticínios da maioria dos países. Multas até $10.000. Declare tudo ou descarte antes da alfândega."
+        },
+        "global-entry": {
+          "title": "Global Entry / TSA PreCheck",
+          "description": "Se tiver Global Entry, use quiosques automatizados para processamento mais rápido. TSA PreCheck acelera as filas de segurança domésticas."
+        }
+      }
     },
     "citySafetySection": {
       "title": "Guia de Segurança por Cidade",

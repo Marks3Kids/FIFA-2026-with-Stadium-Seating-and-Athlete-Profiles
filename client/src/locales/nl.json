@@ -2254,15 +2254,58 @@
       "title": "Douane & Immigratie",
       "subtitle": "Inreisvereisten en procedures",
       "visaRequirements": "Visumvereisten",
+      "visaItems": {
+        "esta": {
+          "title": "ESTA",
+          "description": "$21, 72 uur van tevoren aanvragen (VK, EU, Australië, Japan, 41 landen)"
+        },
+        "b1b2": {
+          "title": "B-1/B-2 Visum",
+          "description": "Vereist voor Brazilië, Argentinië, Mexico, Colombia, enz."
+        },
+        "fifa-pass": {
+          "title": "FIFA Pass",
+          "description": "Versnelde visum-interviews voor officiële tickethouders"
+        }
+      },
       "firstPointOfEntry": {
         "title": "Eerste Punt van Binnenkomst Regel (Kritiek)",
-        "description": "U MOET de immigratie- en douanecontrole doorlopen op uw EERSTE Amerikaanse luchthaven, zelfs als u een aansluiting heeft naar een andere stad."
+        "description": "U MOET de immigratie- en douanecontrole doorlopen op uw EERSTE Amerikaanse luchthaven, zelfs als u een aansluiting heeft naar een andere stad.",
+        "steps": [
+          "Immigratie (Paspoortcontrole)",
+          "Ingecheckte bagage ophalen",
+          "Door de Douane lopen",
+          "Bagage opnieuw inchecken voor aansluitende vlucht",
+          "TSA-beveiliging opnieuw doorlopen"
+        ]
       },
       "mpcTip": {
         "title": "Tip: Download de Mobile Passport Control (MPC) app voor expresrijen",
         "button": "Download Mobile Passport Control App"
       },
-      "additionalInfo": "Aanvullende Douane-informatie"
+      "additionalInfo": "Aanvullende Douane-informatie",
+      "additionalItems": {
+        "customs-declaration": {
+          "title": "Douaneaangifteformulier",
+          "description": "Vul het CBP-aangifteformulier 6059B in het vliegtuig in of gebruik de CBP One app. Geef alle voedingsmiddelen, planten en artikelen met een waarde boven $800 aan."
+        },
+        "duty-free": {
+          "title": "Belastingvrije Limieten",
+          "description": "Volwassenen mogen meenemen: 1L alcohol, 200 sigaretten of 100 sigaren (niet-Cubaans), geschenken tot $100. Boven de limieten = invoerrechten betalen."
+        },
+        "cash-declaration": {
+          "title": "Geldaangifte Vereist",
+          "description": "MOET aangeven bij het dragen van $10.000+ in contanten/geldinstrumenten. Niet aangeven = inbeslagname en mogelijke strafrechtelijke vervolging."
+        },
+        "food-restrictions": {
+          "title": "Voedsel- & Landbouwbeperkingen",
+          "description": "Veel voedsel VERBODEN: verse fruit, groenten, vlees, zuivel uit de meeste landen. Boetes tot $10.000. Alles aangeven of voor de douane weggooien."
+        },
+        "global-entry": {
+          "title": "Global Entry / TSA PreCheck",
+          "description": "Met Global Entry kunt u automatische kiosken gebruiken voor snellere verwerking. TSA PreCheck versnelt binnenlandse beveiligingsrijen."
+        }
+      }
     },
     "citySafetySection": {
       "title": "Stadsveiligheidsgids",

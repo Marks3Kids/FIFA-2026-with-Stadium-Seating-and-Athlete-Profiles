@@ -2254,15 +2254,58 @@
       "title": "Zoll & Einwanderung",
       "subtitle": "Einreisebestimmungen und Verfahren",
       "visaRequirements": "Visumanforderungen",
+      "visaItems": {
+        "esta": {
+          "title": "ESTA",
+          "description": "21$, 72 Stunden vorher beantragen (UK, EU, Australien, Japan, 41 Länder)"
+        },
+        "b1b2": {
+          "title": "B-1/B-2 Visum",
+          "description": "Erforderlich für Brasilien, Argentinien, Mexiko, Kolumbien, usw."
+        },
+        "fifa-pass": {
+          "title": "FIFA Pass",
+          "description": "Beschleunigte Visa-Interviews für offizielle Ticketinhaber"
+        }
+      },
       "firstPointOfEntry": {
         "title": "Regel des Ersten Einreisepunkts (Kritisch)",
-        "description": "Sie MÜSSEN die Einwanderungs- und Zollkontrolle an Ihrem ERSTEN US-Flughafen passieren, auch wenn Sie zu einer anderen Stadt weiterreisen."
+        "description": "Sie MÜSSEN die Einwanderungs- und Zollkontrolle an Ihrem ERSTEN US-Flughafen passieren, auch wenn Sie zu einer anderen Stadt weiterreisen.",
+        "steps": [
+          "Einwanderung (Passkontrolle)",
+          "Aufgegebenes Gepäck abholen",
+          "Durch den Zoll gehen",
+          "Gepäck für Anschlussflug erneut aufgeben",
+          "TSA-Sicherheitskontrolle erneut passieren"
+        ]
       },
       "mpcTip": {
         "title": "Tipp: Laden Sie die Mobile Passport Control (MPC) App für Express-Schlangen herunter",
         "button": "Mobile Passport Control App Herunterladen"
       },
-      "additionalInfo": "Zusätzliche Zollinformationen"
+      "additionalInfo": "Zusätzliche Zollinformationen",
+      "additionalItems": {
+        "customs-declaration": {
+          "title": "Zollerklärungsformular",
+          "description": "Füllen Sie das CBP-Erklärungsformular 6059B im Flugzeug aus oder nutzen Sie die CBP One App. Deklarieren Sie alle Lebensmittel, Pflanzen und Artikel über 800$ Wert."
+        },
+        "duty-free": {
+          "title": "Zollfreie Grenzen",
+          "description": "Erwachsene dürfen mitbringen: 1L Alkohol, 200 Zigaretten oder 100 Zigarren (nicht-kubanisch), Geschenke bis 100$. Über den Limits = Zoll zahlen."
+        },
+        "cash-declaration": {
+          "title": "Bargeld-Erklärung Erforderlich",
+          "description": "MUSS deklariert werden bei 10.000$+ in bar/Zahlungsmitteln. Nicht-Deklaration = Beschlagnahme und mögliche Strafanzeige."
+        },
+        "food-restrictions": {
+          "title": "Lebensmittel- & Landwirtschaftsbeschränkungen",
+          "description": "Viele Lebensmittel VERBOTEN: frisches Obst, Gemüse, Fleisch, Milchprodukte aus den meisten Ländern. Strafen bis 10.000$. Alles deklarieren oder vor dem Zoll entsorgen."
+        },
+        "global-entry": {
+          "title": "Global Entry / TSA PreCheck",
+          "description": "Mit Global Entry nutzen Sie automatische Kioske für schnellere Abwicklung. TSA PreCheck beschleunigt Inlands-Sicherheitskontrollen."
+        }
+      }
     },
     "citySafetySection": {
       "title": "Stadtsicherheitsführer",
