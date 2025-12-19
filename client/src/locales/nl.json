@@ -2329,6 +2329,313 @@
         "high": "HOOG",
         "moderate": "MATIG",
         "low": "LAAG"
+      },
+      "cities": {
+        "miami": {
+          "heatWarning": "De gevoelstemperatuur kan in juni/juli oplopen tot 49°C (120°F). Hoge luchtvochtigheid maakt afkoelen moeilijk. Hitte-uitputting is een serieus risico.",
+          "ticketScams": "Pas op voor neptickets die nabij Hard Rock Stadium worden verkocht. Koop alleen via FIFA.com of Ticketmaster. Namaakshirts zijn gangbaar op straat.",
+          "localConcerns": [
+            "Orkaanseizoen loopt van juni tot november - volg weeralarmen",
+            "Intense zonnestraling - gebruik SPF 50+ en smeer regelmatig opnieuw in",
+            "Muggen kunnen ziektes overdragen - gebruik muggenspray vooral bij schemering",
+            "Sterke stromingen bij stranden - zwem alleen bij bewaakte stranden"
+          ],
+          "safeAreas": [
+            { "name": "Miami Beach", "description": "Toeristisch strandgebied met veel politieaanwezigheid, goed verlichte Art Deco-wijk en 24/7 activiteit op Ocean Drive." },
+            { "name": "Brickell", "description": "Het financiële district van Miami met chique hoogbouw, moderne restaurants en uitstekende beloopbaarheid. Dag en nacht zeer veilig." },
+            { "name": "Coral Gables", "description": "Welvarende woonwijk bekend om Mediterrane architectuur, boomrijke straten en het prachtige winkelgebied Miracle Mile." },
+            { "name": "Coconut Grove", "description": "Bohemien waterfrontbuurt met terrascafés, boetieks en veilige wandelpaden langs de baai." },
+            { "name": "Wynwood", "description": "Beroemd kunstdistrict met kleurrijke muurschilderingen en galeries. Overdag zeer veilig; wees voorzichtig na middernacht." }
+          ],
+          "avoidAreas": ["Overtown", "Liberty City", "Little Haiti (na het donker)", "Opa-locka"],
+          "tips": ["Blijf gehydrateerd - drink voortdurend water", "Zoek airconditioning op tussen 11:00-16:00 uur", "Gebruik Uber/Lyft in plaats van lange afstanden te lopen in de hitte"]
+        },
+        "houston": {
+          "heatWarning": "Temperaturen stijgen regelmatig boven 40°C (105°F). Subtropische luchtvochtigheid maakt het nog warmer. Alle 21 risicovolle hittedagen in de zomer van 2025 waren klimaatgerelateerd.",
+          "ticketScams": "Het NRG Stadium-gebied trekt handelaren met neptickets aan. Parkeeroplichting komt voor - gebruik alleen officiële parkeerplaatsen.",
+          "localConcerns": [
+            "Plotselinge overstromingen tijdens zomerstormen - vermijd tunnels",
+            "Het elektriciteitsnet kan onder druk staan tijdens hittegolven",
+            "Uitgestrekte stad - beperkt openbaar vervoer, plan transport vooruit",
+            "Ernstige verkeersopstoppingen - reken op extra reistijd"
+          ],
+          "safeAreas": [
+            { "name": "The Heights", "description": "Historische buurt met Victoriaanse huizen, trendy restaurants en een beloopbaar winkelgebied aan 19th Street. Gezinsvriendelijke sfeer." },
+            { "name": "Montrose", "description": "Eclectische, LHBTI-vriendelijke buurt met diverse restaurants, vintageswinkels en levendig nachtleven. Veilig en gastvrij." },
+            { "name": "River Oaks", "description": "De rijkste buurt van Houston met luxe landgoederen, exclusief winkelen en uitstekende beveiliging. Thuisbasis van veel consulaten." },
+            { "name": "Galleria area", "description": "Groot winkel- en zakendistrict rondom het beroemde Galleria-winkelcentrum. Goed gepatrouilleerd met veel nabijgelegen hotels." },
+            { "name": "Downtown", "description": "Zakendistrict, overdag veilig met musea, theaters en sportvenues. Gebruik rideshare voor avondritten terug." }
+          ],
+          "avoidAreas": ["Third Ward (delen)", "Sunnyside", "Acres Homes", "South Park"],
+          "tips": ["Neem overal een waterfles mee", "Ken de locatie van koelcentra", "Controleer op waarschuwingen voor plotselinge overstromingen tijdens stormen"]
+        },
+        "dallas": {
+          "heatWarning": "Opeenvolgende dagen boven 40°C (105°F) gedurende juni. Kan oplopen tot 43°C (110°F). Dallas staat op de 4e plaats van meest oncomfortabele Amerikaanse steden in de zomer.",
+          "ticketScams": "AT&T Stadium (Arlington) is enorm - oplichters opereren op parkeerplaatsen. Nep-parkeervergunningen worden online verkocht.",
+          "localConcerns": [
+            "Zware onweersbuien en tornado's mogelijk in juni",
+            "Stadion ligt in Arlington - 32 km van Dallas, plan vervoer vooruit",
+            "Zeer autoafhankelijk - beperkt openbaar vervoer naar stadion",
+            "Overal tolwegen - zorg voor contant geld of TollTag"
+          ],
+          "safeAreas": [
+            { "name": "Uptown", "description": "Trendy stadsbuurt met beloopbare straten, rooftopbars en uitstekende restaurants. Populair bij jonge professionals, zeer veilig." },
+            { "name": "Highland Park", "description": "Een van Amerika's rijkste enclaves met prachtige villa's, verzorgde tuinen en een eigen politiekorps. Uiterst veilig." },
+            { "name": "Bishop Arts District", "description": "Charmant kunst- en entertainmentdistrict in Oak Cliff met lokale boetieks, galeries en diverse eetgelegenheden." },
+            { "name": "Deep Ellum", "description": "Historisch uitgaansdistrict met live muzieklocaties en straatkunst. Overdag veilig; gebruik rideshare 's nachts." },
+            { "name": "Victory Park", "description": "Moderne gemengde ontwikkeling nabij American Airlines Center met chic dineren en entertainment. Goed beveiligd gebied." }
+          ],
+          "avoidAreas": ["South Dallas", "Pleasant Grove", "Fair Park (na het donker)", "delen van Oak Cliff"],
+          "tips": ["Boek stadionparkeren vooraf", "Gebruik DART light rail waar beschikbaar", "Neem een draagbare ventilator en koeldoek mee"]
+        },
+        "atlanta": {
+          "heatWarning": "45-50 dagen met temperaturen boven 32°C (90°F) verwacht in de zomer. Het stedelijke hitte-eilandeffect maakt downtown enkele graden warmer dan de buitenwijken.",
+          "ticketScams": "Mercedes-Benz Stadium ligt in het centrum - straatverkopers verkopen neptickets en merchandise. Gebruik alleen officiële kanalen.",
+          "localConcerns": [
+            "Verkeer behoort tot het slechtste in de VS - MARTA-trein aanbevolen",
+            "Buurten veranderen snel van blok tot blok",
+            "Luchtvochtigheid maakt hitte drukkender",
+            "Dagelijkse onweersbuien in de zomermiddagen"
+          ],
+          "safeAreas": [
+            { "name": "Midtown", "description": "Cultureel hart van Atlanta met Piedmont Park, High Museum en uitstekend dineren. MARTA-bereikbaar en beloopbaar." },
+            { "name": "Buckhead", "description": "Chic winkel- en restaurantdistrict bekend om Lenox Square winkelcentrum en luxe hotels. Veel politieaanwezigheid." },
+            { "name": "Virginia-Highland", "description": "Charmante woonbuurt met lokale boetieks, koffiezaken en boomrijke straten. Zeer beloopbaar." },
+            { "name": "Inman Park", "description": "Atlanta's eerste geplande voorstad met Victoriaanse huizen, toegang tot de BeltLine-wandelroute en eclectische restaurants." },
+            { "name": "Decatur", "description": "Onafhankelijke stad binnen metro Atlanta bekend om zijn stadsplein, uitstekende scholen en gezinsvriendelijke sfeer." }
+          ],
+          "avoidAreas": ["Bankhead", "Vine City (delen)", "English Avenue", "Pittsburgh (na het donker)"],
+          "tips": ["Gebruik MARTA voor toegang tot het stadion", "Blijf in aangewezen fanzones", "Zoek schuilplaats bij middagstormen"]
+        },
+        "new-york": {
+          "heatWarning": "Hittegolven mogelijk maar minder ernstig dan in zuidelijke steden. Luchtvochtigheid kan oncomfortabel zijn. Metroperrons zijn extreem warm.",
+          "ticketScams": "Oplichters rond MetLife Stadium opereren bij vervoersknooppunten (Penn Station, Port Authority). Koop nooit bij straatverkopers.",
+          "localConcerns": [
+            "Stadion ligt in New Jersey - 16 km van Manhattan",
+            "NJ Transit-treinen naar stadion kunnen overvol zijn",
+            "Zakkenrollerij in drukke metro's",
+            "Opdringerige straatverkopers in toeristische gebieden"
+          ],
+          "safeAreas": [
+            { "name": "Midtown Manhattan", "description": "Hart van NYC met Times Square, Broadway-theaters en grote hotels. Extreem druk maar 24/7 goed gepatrouilleerd." },
+            { "name": "Upper East/West Side", "description": "Welvarende woonbuurten met wereldklasse musea, toegang tot Central Park en uitstekende restaurants." },
+            { "name": "SoHo", "description": "Trendy winkeldistrict met geplaveide straten, designerboetieks en gietijzeren architectuur. Veilig en modieus." },
+            { "name": "Brooklyn Heights", "description": "Historische buurt met adembenemend uitzicht op Manhattan, straten met brownstones en de beroemde Promenade." },
+            { "name": "Hoboken", "description": "Waterfrontstad in NJ met uitzicht op de Manhattan-skyline, uitstekende restaurants en directe PATH-trein naar NYC. Zeer veilig." }
+          ],
+          "avoidAreas": ["Delen van de Bronx", "East New York", "Brownsville", "sommige gebieden van Newark"],
+          "tips": ["Koop NJ Transit-tickets vooraf", "Houd bezittingen veilig in de metro", "Reken op 2+ uur om het stadion vanuit Manhattan te bereiken"]
+        },
+        "los-angeles": {
+          "heatWarning": "Binnenlandse gebieden kunnen boven 38°C (100°F) komen. Kustgebieden zijn koeler. SoFi Stadium in Inglewood kan erg warm zijn.",
+          "ticketScams": "Het SoFi Stadium-gebied heeft georganiseerde scalpingoperaties. Nep-VIP-ervaringen worden online verkocht. Verifieer alle tickets via officiële apps.",
+          "localConcerns": [
+            "Auto essentieel - slechtste verkeer in de VS",
+            "Extreme smog tijdens hittegolven",
+            "Daklozenopvangkampen in sommige gebieden",
+            "Aardbevingen mogelijk (ken de veiligheidsprocedures)"
+          ],
+          "safeAreas": [
+            { "name": "Santa Monica", "description": "Iconische strandstad met de beroemde pier, Third Street Promenade winkelen en zeebries. Toeristisch en veilig." },
+            { "name": "Beverly Hills", "description": "Wereldberoemde luxe bestemming met Rodeo Drive winkelen, celebrity-huizen en uitstekende beveiliging. Zeer exclusief." },
+            { "name": "West Hollywood", "description": "Levendige LHBTI-vriendelijke buurt met Sunset Strip nachtleven, trendy restaurants en beloopbare straten." },
+            { "name": "Pasadena", "description": "Charmante stad met Old Town dineren, de Rose Bowl en Caltech. Voelt als een klein stadje binnen LA." },
+            { "name": "Manhattan Beach", "description": "Chique kustgemeenschap met prachtige stranden, fietspaden en gezinsvriendelijke sfeer. Zeer veilig." }
+          ],
+          "avoidAreas": ["Skid Row", "delen van South LA", "Compton", "sommige gebieden van Inglewood"],
+          "tips": ["Reken op 2+ uur voor elke rit", "Blijf gehydrateerd - droge hitte is misleidend", "Download een aardbevingswaarschuwings-app"]
+        },
+        "seattle": {
+          "heatWarning": "Doorgaans mild zomerweer (21-27°C / 70-80°F). Occasionele hittegolven maar zeldzaam. Airconditioning niet gebruikelijk - hotels hebben het mogelijk niet.",
+          "ticketScams": "Lumen Field heeft minder oplichtersactiviteit dan andere steden, maar koop nog steeds alleen via officiële bronnen.",
+          "localConcerns": [
+            "Regen mogelijk zelfs in de zomer - neem lagen mee",
+            "Dakloze bevolking zichtbaar in het centrum",
+            "Heuvels maken wandelen vermoeiend",
+            "Rookontwikkeling door bosbranden uit Oost-Washington mogelijk in de zomer"
+          ],
+          "safeAreas": [
+            { "name": "Capitol Hill", "description": "Seattle's meest levendige buurt met LHBTI-cultuur, uitstekend nachtleven, koffiezaken en beloopbare straten." },
+            { "name": "Queen Anne", "description": "Heuvelachtige woonwijk met adembenemend stadsuitzicht vanaf Kerry Park, boetieks en rustige boomrijke straten." },
+            { "name": "Ballard", "description": "Voormalig Scandinavisch vissersdorp, nu hippe buurt met craftbrouwerijen, restaurants en zondagse boerenmarkt." },
+            { "name": "Fremont", "description": "Eigenzinnige artistieke buurt die zichzelf het 'Centrum van het Universum' noemt, met de beroemde Fremont Troll en eclectische winkels." },
+            { "name": "Bellevue", "description": "Chique stad aan de oostkant met luxe winkelen in Bellevue Square, uitstekende Aziatische keuken en zeer lage criminaliteitscijfers." }
+          ],
+          "avoidAreas": ["Pioneer Square (na het donker)", "delen van SODO", "bepaalde gebieden langs Aurora Ave"],
+          "tips": ["Light rail verbindt luchthaven met centrum en stadion", "Neem een regenjas mee, ook in de zomer", "Controleer luchtkwaliteit bij actieve bosbranden"]
+        },
+        "san-francisco": {
+          "heatWarning": "SF zelf is koel (15-21°C / 60-70°F) maar Levi's Stadium in Santa Clara kan boven 35°C (95°F) komen. Kleed je in lagen.",
+          "ticketScams": "Tech-savvy oplichters maken geavanceerde nep-ticketsites. Gebruik alleen FIFA.com of Ticketmaster.",
+          "localConcerns": [
+            "Stadion ligt 72 km van SF - plan vervoer",
+            "Epidemie van auto-inbraken - laat nooit iets in auto's achter",
+            "Dakloze bevolking in SF stadscentrum",
+            "BART-treinen kunnen laat op de avond onveilig zijn"
+          ],
+          "safeAreas": [
+            { "name": "Marina District", "description": "Welvarende waterfrontbuurt met Crissy Field, boetiekshoppen op Chestnut Street en uitzicht op de Golden Gate." },
+            { "name": "Pacific Heights", "description": "San Francisco's meest prestigieuze buurt met Victoriaanse villa's, chic dineren en winkelen op Fillmore Street." },
+            { "name": "Noe Valley", "description": "Gezinsvriendelijke buurt bekend als 'Stroller Valley' met winkels op 24th Street, zonnig weer en rustige straten." },
+            { "name": "Palo Alto", "description": "Thuisbasis van Stanford University, charmant centrum, uitstekende restaurants en zeer veilige voorstedelijke sfeer nabij stadion." },
+            { "name": "Saratoga", "description": "Chique Silicon Valley-stadje met wijngaarden, wandelroutes en vredige sfeer. Zeer dicht bij Levi's Stadium." }
+          ],
+          "avoidAreas": ["Tenderloin", "delen van SOMA", "sommige gebieden van Oakland"],
+          "tips": ["Gebruik Caltrain naar stadion", "Laat nooit iets zichtbaar in geparkeerde auto", "Neem lagen mee - temperatuur varieert drastisch"]
+        },
+        "boston": {
+          "heatWarning": "Zomervochtigheid kan 29°C (85°F) laten voelen als 35°C (95°F). Gillette Stadium in Foxborough heeft geen schaduw - wees voorbereid.",
+          "ticketScams": "Patriots-fans controleren het Gillette Stadium-gebied - buitenstaanders die tickets verkopen zijn waarschijnlijk oplichters.",
+          "localConcerns": [
+            "Stadion ligt 48 km ten zuiden van Boston in Foxborough",
+            "Beperkt openbaar vervoer naar stadion (forensentrein alleen op wedstrijddagen)",
+            "Agressieve Boston sportfancultuur",
+            "Overal bouwwerkzaamheden in het centrum"
+          ],
+          "safeAreas": [
+            { "name": "Back Bay", "description": "Elegante Victoriaanse buurt met Newbury Street winkelen, brownstone-rijke Commonwealth Ave en chic dineren." },
+            { "name": "Beacon Hill", "description": "Historische geplaveide straten, gaslantaarns en federale rijhuizen. Een van Amerika's meest pittoreske buurten." },
+            { "name": "Cambridge", "description": "Thuisbasis van Harvard en MIT met intellectuele sfeer, boekwinkels, divers dineren en levendig Harvard Square." },
+            { "name": "Brookline", "description": "Welvarende voorstedelijke sfeer binnen stadsgrenzen, uitstekend openbaar vervoer (Green Line) en Coolidge Corner winkels." },
+            { "name": "North End", "description": "Boston's Little Italy met authentieke Italiaanse restaurants, banketbakkerijen en smalle Europees aandoende straten. Zeer beloopbaar." }
+          ],
+          "avoidAreas": ["Delen van Roxbury", "Dorchester (sommige gebieden)", "Mattapan"],
+          "tips": ["Boek stadionparkeren van tevoren", "Forensentrein raakt snel vol - kom vroeg", "Respecteer lokale fancultuur"]
+        },
+        "philadelphia": {
+          "heatWarning": "Zomerse hittegolven met hoge luchtvochtigheid. Stedelijk hitte-eilandeffect in het centrum.",
+          "ticketScams": "Lincoln Financial Field-gebied heeft georganiseerde scalping. Nep-Eagles/Phillies-merchandise wordt nabij stadions verkocht.",
+          "localConcerns": [
+            "Wapengeweld in sommige buurten",
+            "SEPTA openbaar vervoer betrouwbaar maar druk",
+            "Philly-fans staan bekend als rumoerig",
+            "Straten kunnen verwarrend zijn om te navigeren"
+          ],
+          "safeAreas": [
+            { "name": "Center City", "description": "Centrum van Philadelphia met historische bezienswaardigheden, Reading Terminal Market en grote hotels. Goed gepatrouilleerd en druk." },
+            { "name": "Rittenhouse Square", "description": "Philadelphia's meest prestigieuze park omringd door chic dineren, boetieks en prachtige brownstones." },
+            { "name": "Old City", "description": "Historisch district met Independence Hall, Liberty Bell, geplaveide straten en uitstekende restaurants." },
+            { "name": "University City", "description": "Thuisbasis van UPenn en Drexel met studentenenergie, divers dineren en goede vervoersverbindingen." },
+            { "name": "Chestnut Hill", "description": "Charmante voorstedelijke dorpssfeer met boetiekshoppen, Wissahickon-wandelpaden en boomrijke straten." }
+          ],
+          "avoidAreas": ["North Philadelphia", "Kensington", "delen van West Philadelphia"],
+          "tips": ["Gebruik SEPTA Broad Street Line naar stadion", "Blijf in goed verlichte gebieden na het donker", "Wees je bewust van je omgeving"]
+        },
+        "kansas-city": {
+          "heatWarning": "Warme en vochtige zomers, regelmatig boven 35°C (95°F) met hoge luchtvochtigheid. Arrowhead Stadium biedt weinig schaduw.",
+          "ticketScams": "Chiefs-fans zijn toegewijd - wees op je hoede voor iedereen die geen duidelijke local is en tickets verkoopt.",
+          "localConcerns": [
+            "Zware onweersbuien en tornado's mogelijk",
+            "Zeer autoafhankelijke stad",
+            "Stadion ligt in Missouri (KC strekt zich over twee staten uit)",
+            "Beperkte internationale keukenopties"
+          ],
+          "safeAreas": [
+            { "name": "Country Club Plaza", "description": "Spaans geïnspireerd buitenlucht winkeldistrict met fonteinen, chique winkels en uitstekende restaurants. KC's topbestemming." },
+            { "name": "Westport", "description": "Uitgaansdistrict met livemuziek, diverse bars en restaurants. Populair nachtlevengebied, over het algemeen veilig." },
+            { "name": "Brookside", "description": "Charmante buurt met lokale winkels, boomrijke straten en sterke gemeenschapsgevoel. Gezinsvriendelijke sfeer." },
+            { "name": "Overland Park", "description": "Welvarende voorstad in Kansas met uitstekend winkelen, dineren en zeer lage criminaliteitscijfers. Centrum van bedrijfshoofdkantoren." },
+            { "name": "Crown Center", "description": "Gemengde ontwikkeling met hotels, winkels en attracties waaronder Legoland. Goed beveiligd en gezinsvriendelijk." }
+          ],
+          "avoidAreas": ["East Side-buurten", "delen van Northeast KC", "Ivanhoe"],
+          "tips": ["Tailgaten-cultuur is groot - doe respectvol mee", "Volg tornado-waarschuwingen", "Breng zonbescherming mee voor het stadion"]
+        },
+        "mexico-city": {
+          "heatWarning": "Hoge ligging (2.240 m) betekent koelere temperaturen dan verwacht (21-27°C / 70-80°F). Maar hoogteziekte is een zorg - acclimatiseer voor inspanning.",
+          "ticketScams": "Het Azteca Stadium-gebied heeft geavanceerde oplichterij. Valse tickets zien er zeer echt uit. Koop alleen via FIFA.com.",
+          "localConcerns": [
+            "Hoogteziekte - neem het de eerste 2 dagen rustig aan",
+            "Zakkenrollerij in de metro (vooral lijn B)",
+            "Politie-afpersing mogelijk",
+            "Kraanwater onveilig - drink alleen flessenwater",
+            "Luchtvervuiling kan ernstig zijn"
+          ],
+          "safeAreas": [
+            { "name": "Polanco", "description": "De chicste buurt van Mexico-Stad met designerboetieks, wereldklasse restaurants en uitstekende musea. Zeer veilig." },
+            { "name": "Roma Norte", "description": "Trendy bohemien buurt met Art Deco-architectuur, hippe cafés en levendige foodscene. Populair bij expats." },
+            { "name": "Condesa", "description": "Groene, beloopbare buurt met Art Nouveau-gebouwen, terascafés in Parque México en uitstekend nachtleven." },
+            { "name": "Coyoacán", "description": "Historische koloniale buurt met Frida Kahlo Museum, geplaveide straten en charmant centraal plein. Gezinsvriendelijk." },
+            { "name": "Santa Fe", "description": "Modern zakendistrict met glimmende torens, chique winkelcentra en internationale hotels. Corporate en zeer beveiligd." }
+          ],
+          "avoidAreas": ["Tepito", "Doctores", "Iztapalapa", "lege straten overal na het donker"],
+          "tips": ["Gebruik uitsluitend Uber/DiDi - nooit straattaxi's", "Houd telefoon in je zak (motorscooterdieven)", "Drink veel water voor de hoogte"]
+        },
+        "guadalajara": {
+          "heatWarning": "Warm maar niet extreem (27-32°C / 80-90°F). Regenseizoen juni-oktober betekent dagelijks middagonweer.",
+          "ticketScams": "Estadio Akron-gebied ziet nepticketverkoop. Gebruik alleen officiële FIFA-kanalen.",
+          "localConcerns": [
+            "Staat Jalisco heeft kartelactiviteit - blijf in toeristische gebieden",
+            "Motorscooter-telefoondieven in Colonia Americana & Centro",
+            "Veiligheid verschilt sterk tussen dag en nacht",
+            "Beperkt Engels gesproken buiten toeristische gebieden"
+          ],
+          "safeAreas": [
+            { "name": "Colonia Americana", "description": "Expatvriendelijke buurt met Art Deco-villa's, trendy cafés en Chapultepec Avenue nachtleven. Hip en beloopbaar." },
+            { "name": "Providencia", "description": "Chique woonwijk met uitstekende restaurants, winkelcentra en boomrijke straten. Zeer veilige buurt." },
+            { "name": "Zapopan", "description": "Thuisbasis van de beroemde Basílica met extra beveiliging, moderne winkelcentra en groeiende restaurantscene." },
+            { "name": "Chapalita", "description": "Gezinsgerichte woonwijk met parken, lokale winkels en rustige straten. Uitstekend voor gezinnen met kinderen." },
+            { "name": "Historic Center", "description": "Prachtige koloniale architectuur met de kathedraal en Teatro Degollado. Overdag veilig met politieaanwezigheid." }
+          ],
+          "avoidAreas": ["Analco", "Las Juntas", "Lomas del Paraíso", "Cerro del Cuatro"],
+          "tips": ["Gebruik Uber voor alle nachtelijke ritten", "Loop niet alleen na het donker", "Houd waardevolle spullen altijd verborgen"]
+        },
+        "monterrey": {
+          "heatWarning": "Woestijnklimaat met temperaturen regelmatig boven 38°C (100°F) in juni/juli. Zeer droge hitte.",
+          "ticketScams": "Estadio BBVA-gebied - dezelfde voorzichtigheid als in andere Mexicaanse steden. Gebruik alleen officiële ticketbronnen.",
+          "localConcerns": [
+            "Staat Nuevo León heeft geschiedenis van kartelactiviteit",
+            "Zeer warm en droog - blijf gehydrateerd",
+            "Zakenstad - minder toeristische infrastructuur",
+            "Sommige gebieden nabij de Amerikaanse grens zijn riskant"
+          ],
+          "safeAreas": [
+            { "name": "San Pedro Garza García", "description": "Mexico's rijkste gemeente met luxe winkelcentra, fine dining en privébeveiliging. Heeft het gevoel van een besloten woonwijk." },
+            { "name": "Valle Oriente", "description": "Modern zakendistrict met bedrijfstorens, chique hotels en uitstekende restaurants. Zeer goed gepatrouilleerd." },
+            { "name": "Cumbres", "description": "Chique woonwijk populair bij gezinnen, met winkelplaza's en een voorstedelijke sfeer." },
+            { "name": "Centro", "description": "Historisch centrum met de beroemde Macroplaza en Barrio Antiguo. Overdag veilig met toeristenpolitie." },
+            { "name": "Barrio Antiguo", "description": "Trendy uitgaansdistrict met bars, restaurants en kunstgalerieën. Populair en goed verlicht 's avonds." }
+          ],
+          "avoidAreas": ["Gebieden nabij staatsgrenzen", "Industriële zones", "Buitenwijken na het donker"],
+          "tips": ["Blijf in zakendistricten", "Gebruik door hotel geregeld vervoer", "Neem overal water mee"]
+        },
+        "toronto": {
+          "heatWarning": "Over het algemeen comfortabel (24-29°C / 75-85°F) maar luchtvochtigheid kan pieken. Milder dan zuidelijke Amerikaanse steden.",
+          "ticketScams": "BMO Field is een kleiner stadion - minder oplichtersactiviteit maar gebruik nog steeds alleen officiële ticketbronnen.",
+          "localConcerns": [
+            "Hoge kosten van levensonderhoud - alles is duur",
+            "TTC openbaar vervoer betrouwbaar maar druk",
+            "Wapengeweld is toegenomen in sommige gebieden",
+            "Zeer multicultureel - respecteer diversiteit"
+          ],
+          "safeAreas": [
+            { "name": "Downtown Core", "description": "Financieel district met CN Tower, PATH ondergronds winkelen en belangrijke attracties. Druk en goed gepatrouilleerd." },
+            { "name": "Yorkville", "description": "Toronto's chicste buurt met designerboetieks, beroemdhedenwaarnemingen en fine dining. Zeer veilig." },
+            { "name": "The Annex", "description": "Levendige buurt nabij University of Toronto met Victoriaanse huizen, boekwinkels en diverse restaurants." },
+            { "name": "Leslieville", "description": "Trendy buurt in het oosten met indie-winkels, brunchplekken en sterke gemeenschapsgevoel. Gezinsvriendelijk." },
+            { "name": "Distillery District", "description": "Prachtig gerestaureerd Victoriaans industrieel gebied met galeries, restaurants en geplaveide straten. Autovrije zone." }
+          ],
+          "avoidAreas": ["Jane and Finch", "delen van Scarborough", "Regent Park (verbetert maar voorzichtigheid geboden)"],
+          "tips": ["Schaf PRESTO-kaart aan voor vervoer", "Fooi wordt verwacht (15-20%)", "Download TTC-app voor realtime vervoer"]
+        },
+        "vancouver": {
+          "heatWarning": "Mild zomerweer (21-24°C / 70-75°F). BC Place is een overdekt stadion. Regen mogelijk zelfs in de zomer.",
+          "ticketScams": "Minder oplichtersactiviteit dan in Amerikaanse steden maar wees normaal voorzichtig met onofficiële verkopers.",
+          "localConcerns": [
+            "Downtown Eastside heeft zichtbare drugscrisis - vermijd Hastings Street",
+            "Zeer dure stad - budget dienovereenkomstig",
+            "Bosbranden-rook mogelijk vanuit het binnenland van BC",
+            "Huurwoningencrisis - boek accommodatie vroeg"
+          ],
+          "safeAreas": [
+            { "name": "Yaletown", "description": "Verbouwd pakhuisdistrict met trendy restaurants, boetieks en toegang tot de waterkant-seawall. Zeer beloopbaar en veilig." },
+            { "name": "Gastown", "description": "Historische buurt met de beroemde stoomklok, geplaveide straten en chic dineren. Toeristisch (vermijd het oostelijk eind)." },
+            { "name": "Kitsilano", "description": "Strandbuurt met biologische cafés, yogastudio's en adembenemend bergzicht. Populair bij jonge professionals." },
+            { "name": "West End", "description": "Dichtbevolkte woonwijk nabij Stanley Park en English Bay Beach. LHBTI-vriendelijk en zeer veilig." },
+            { "name": "North Vancouver", "description": "Aan de overkant van de haven met bergpaden, Capilano Suspension Bridge en voorstedelijke veiligheid. Prachtige natuurlijke omgeving." }
+          ],
+          "avoidAreas": ["Downtown Eastside", "delen van East Hastings", "Surrey Central (na het donker)"],
+          "tips": ["SkyTrain verbindt luchthaven met centrum en stadion", "Breng lagen mee - weer verandert snel", "Cannabis is legaal maar volg de regels"]
+        }
       }
     },
     "prohibitedSection": {

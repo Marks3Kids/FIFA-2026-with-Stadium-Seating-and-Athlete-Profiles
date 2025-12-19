@@ -448,24 +448,37 @@ const dailyLifeData: InfoSection[] = [
   }
 ];
 
-interface SafeArea {
-  name: string;
-  description: string;
-}
-
-interface CitySafety {
+interface CitySafetyKey {
   id: string;
   city: string;
   country: string;
-  heatWarning: string | null;
-  ticketScams: string;
-  localConcerns: string[];
-  safeAreas: SafeArea[];
-  avoidAreas: string[];
-  tips: string[];
+  heatLevel: "extreme" | "severe" | "high" | "moderate" | "low";
+  safeAreaCount: number;
+  localConcernsCount: number;
+  avoidAreasCount: number;
+  tipsCount: number;
 }
 
-const citySafetyData: CitySafety[] = [
+const citySafetyKeys: CitySafetyKey[] = [
+  { id: "miami", city: "Miami", country: "USA", heatLevel: "extreme", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 4, tipsCount: 3 },
+  { id: "houston", city: "Houston", country: "USA", heatLevel: "severe", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 4, tipsCount: 3 },
+  { id: "dallas", city: "Dallas", country: "USA", heatLevel: "extreme", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 4, tipsCount: 3 },
+  { id: "atlanta", city: "Atlanta", country: "USA", heatLevel: "high", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 4, tipsCount: 3 },
+  { id: "new-york", city: "New York / New Jersey", country: "USA", heatLevel: "moderate", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 4, tipsCount: 3 },
+  { id: "los-angeles", city: "Los Angeles", country: "USA", heatLevel: "moderate", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 4, tipsCount: 3 },
+  { id: "seattle", city: "Seattle", country: "USA", heatLevel: "low", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 4, tipsCount: 3 },
+  { id: "san-francisco", city: "San Francisco Bay Area", country: "USA", heatLevel: "low", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 4, tipsCount: 3 },
+  { id: "boston", city: "Boston", country: "USA", heatLevel: "moderate", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 4, tipsCount: 3 },
+  { id: "philadelphia", city: "Philadelphia", country: "USA", heatLevel: "moderate", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 4, tipsCount: 3 },
+  { id: "kansas-city", city: "Kansas City", country: "USA", heatLevel: "high", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 4, tipsCount: 3 },
+  { id: "mexico-city", city: "Mexico City", country: "Mexico", heatLevel: "moderate", safeAreaCount: 5, localConcernsCount: 5, avoidAreasCount: 4, tipsCount: 3 },
+  { id: "guadalajara", city: "Guadalajara", country: "Mexico", heatLevel: "moderate", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 4, tipsCount: 3 },
+  { id: "monterrey", city: "Monterrey", country: "Mexico", heatLevel: "extreme", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 3, tipsCount: 3 },
+  { id: "toronto", city: "Toronto", country: "Canada", heatLevel: "low", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 3, tipsCount: 3 },
+  { id: "vancouver", city: "Vancouver", country: "Canada", heatLevel: "low", safeAreaCount: 5, localConcernsCount: 4, avoidAreasCount: 3, tipsCount: 3 }
+];
+
+const citySafetyData = [
   {
     id: "miami",
     city: "Miami",
@@ -2742,7 +2755,7 @@ export default function CriticalInfo() {
                         <span className="text-lg">🇺🇸</span> {t("criticalInfo.citySafetySection.countries.usa")}
                       </h3>
                       <div className="grid grid-cols-2 gap-3">
-                        {citySafetyData.filter(c => c.country === "USA").map((city) => (
+                        {citySafetyKeys.filter(c => c.country === "USA").map((city) => (
                           <button
                             key={city.id}
                             onClick={() => setSelectedCity(city.id)}
@@ -2753,17 +2766,15 @@ export default function CriticalInfo() {
                               <MapPin className="w-4 h-4 text-primary" />
                               <span className="font-medium text-white text-sm">{city.city}</span>
                             </div>
-                            {city.heatWarning && (
-                              <div className={`text-[10px] mt-1 px-2 py-0.5 rounded-full inline-block ${
-                                city.heatWarning.startsWith("EXTREME") ? "bg-red-500/20 text-red-400" :
-                                city.heatWarning.startsWith("SEVERE") ? "bg-orange-500/20 text-orange-400" :
-                                city.heatWarning.startsWith("HIGH") ? "bg-yellow-500/20 text-yellow-400" :
-                                city.heatWarning.startsWith("MODERATE") ? "bg-blue-500/20 text-blue-400" :
-                                "bg-green-500/20 text-green-400"
-                              }`}>
-                                {city.heatWarning.split(":")[0]}
-                              </div>
-                            )}
+                            <div className={`text-[10px] mt-1 px-2 py-0.5 rounded-full inline-block ${
+                              city.heatLevel === "extreme" ? "bg-red-500/20 text-red-400" :
+                              city.heatLevel === "severe" ? "bg-orange-500/20 text-orange-400" :
+                              city.heatLevel === "high" ? "bg-yellow-500/20 text-yellow-400" :
+                              city.heatLevel === "moderate" ? "bg-blue-500/20 text-blue-400" :
+                              "bg-green-500/20 text-green-400"
+                            }`}>
+                              {t(`criticalInfo.citySafetySection.heatLevels.${city.heatLevel}`)}
+                            </div>
                           </button>
                         ))}
                       </div>
@@ -2774,7 +2785,7 @@ export default function CriticalInfo() {
                         <span className="text-lg">🇲🇽</span> {t("criticalInfo.citySafetySection.countries.mexico")}
                       </h3>
                       <div className="grid grid-cols-2 gap-3">
-                        {citySafetyData.filter(c => c.country === "Mexico").map((city) => (
+                        {citySafetyKeys.filter(c => c.country === "Mexico").map((city) => (
                           <button
                             key={city.id}
                             onClick={() => setSelectedCity(city.id)}
@@ -2785,15 +2796,13 @@ export default function CriticalInfo() {
                               <MapPin className="w-4 h-4 text-primary" />
                               <span className="font-medium text-white text-sm">{city.city}</span>
                             </div>
-                            {city.heatWarning && (
-                              <div className={`text-[10px] mt-1 px-2 py-0.5 rounded-full inline-block ${
-                                city.heatWarning.startsWith("EXTREME") ? "bg-red-500/20 text-red-400" :
-                                city.heatWarning.startsWith("MODERATE") ? "bg-blue-500/20 text-blue-400" :
-                                "bg-yellow-500/20 text-yellow-400"
-                              }`}>
-                                {city.heatWarning.split(":")[0]}
-                              </div>
-                            )}
+                            <div className={`text-[10px] mt-1 px-2 py-0.5 rounded-full inline-block ${
+                              city.heatLevel === "extreme" ? "bg-red-500/20 text-red-400" :
+                              city.heatLevel === "moderate" ? "bg-blue-500/20 text-blue-400" :
+                              "bg-yellow-500/20 text-yellow-400"
+                            }`}>
+                              {t(`criticalInfo.citySafetySection.heatLevels.${city.heatLevel}`)}
+                            </div>
                           </button>
                         ))}
                       </div>
@@ -2804,7 +2813,7 @@ export default function CriticalInfo() {
                         <span className="text-lg">🇨🇦</span> {t("criticalInfo.citySafetySection.countries.canada")}
                       </h3>
                       <div className="grid grid-cols-2 gap-3">
-                        {citySafetyData.filter(c => c.country === "Canada").map((city) => (
+                        {citySafetyKeys.filter(c => c.country === "Canada").map((city) => (
                           <button
                             key={city.id}
                             onClick={() => setSelectedCity(city.id)}
@@ -2815,14 +2824,12 @@ export default function CriticalInfo() {
                               <MapPin className="w-4 h-4 text-primary" />
                               <span className="font-medium text-white text-sm">{city.city}</span>
                             </div>
-                            {city.heatWarning && (
-                              <div className={`text-[10px] mt-1 px-2 py-0.5 rounded-full inline-block ${
-                                city.heatWarning.startsWith("LOW") ? "bg-green-500/20 text-green-400" :
-                                "bg-blue-500/20 text-blue-400"
-                              }`}>
-                                {city.heatWarning.split(":")[0]}
-                              </div>
-                            )}
+                            <div className={`text-[10px] mt-1 px-2 py-0.5 rounded-full inline-block ${
+                              city.heatLevel === "low" ? "bg-green-500/20 text-green-400" :
+                              "bg-blue-500/20 text-blue-400"
+                            }`}>
+                              {t(`criticalInfo.citySafetySection.heatLevels.${city.heatLevel}`)}
+                            </div>
                           </button>
                         ))}
                       </div>
@@ -2831,8 +2838,9 @@ export default function CriticalInfo() {
                 ) : (
                   <>
                     {(() => {
-                      const city = citySafetyData.find(c => c.id === selectedCity);
-                      if (!city) return null;
+                      const cityKey = citySafetyKeys.find(c => c.id === selectedCity);
+                      if (!cityKey) return null;
+                      const heatLevel = cityKey.heatLevel;
                       return (
                         <div className="space-y-5">
                           <button
@@ -2849,49 +2857,47 @@ export default function CriticalInfo() {
                               <MapPin className="w-5 h-5 text-primary" />
                             </div>
                             <div>
-                              <h2 className="text-xl font-display font-bold text-white">{city.city}</h2>
-                              <p className="text-sm text-muted-foreground">{city.country}</p>
+                              <h2 className="text-xl font-display font-bold text-white">{cityKey.city}</h2>
+                              <p className="text-sm text-muted-foreground">{cityKey.country}</p>
                             </div>
                           </div>
 
-                          {city.heatWarning && (
-                            <div className={`rounded-xl p-4 border ${
-                              city.heatWarning.startsWith("EXTREME") ? "bg-red-500/10 border-red-500/30" :
-                              city.heatWarning.startsWith("SEVERE") ? "bg-orange-500/10 border-orange-500/30" :
-                              city.heatWarning.startsWith("HIGH") ? "bg-yellow-500/10 border-yellow-500/30" :
-                              city.heatWarning.startsWith("MODERATE") ? "bg-blue-500/10 border-blue-500/30" :
-                              "bg-green-500/10 border-green-500/30"
-                            }`}>
-                              <div className="flex items-start gap-3">
-                                <Thermometer className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
-                                  city.heatWarning.startsWith("EXTREME") ? "text-red-400" :
-                                  city.heatWarning.startsWith("SEVERE") ? "text-orange-400" :
-                                  city.heatWarning.startsWith("HIGH") ? "text-yellow-400" :
-                                  city.heatWarning.startsWith("MODERATE") ? "text-blue-400" :
+                          <div className={`rounded-xl p-4 border ${
+                            heatLevel === "extreme" ? "bg-red-500/10 border-red-500/30" :
+                            heatLevel === "severe" ? "bg-orange-500/10 border-orange-500/30" :
+                            heatLevel === "high" ? "bg-yellow-500/10 border-yellow-500/30" :
+                            heatLevel === "moderate" ? "bg-blue-500/10 border-blue-500/30" :
+                            "bg-green-500/10 border-green-500/30"
+                          }`}>
+                            <div className="flex items-start gap-3">
+                              <Thermometer className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
+                                heatLevel === "extreme" ? "text-red-400" :
+                                heatLevel === "severe" ? "text-orange-400" :
+                                heatLevel === "high" ? "text-yellow-400" :
+                                heatLevel === "moderate" ? "text-blue-400" :
+                                "text-green-400"
+                              }`} />
+                              <div>
+                                <div className={`text-sm font-bold mb-1 ${
+                                  heatLevel === "extreme" ? "text-red-400" :
+                                  heatLevel === "severe" ? "text-orange-400" :
+                                  heatLevel === "high" ? "text-yellow-400" :
+                                  heatLevel === "moderate" ? "text-blue-400" :
                                   "text-green-400"
-                                }`} />
-                                <div>
-                                  <div className={`text-sm font-bold mb-1 ${
-                                    city.heatWarning.startsWith("EXTREME") ? "text-red-400" :
-                                    city.heatWarning.startsWith("SEVERE") ? "text-orange-400" :
-                                    city.heatWarning.startsWith("HIGH") ? "text-yellow-400" :
-                                    city.heatWarning.startsWith("MODERATE") ? "text-blue-400" :
-                                    "text-green-400"
-                                  }`}>
-                                    {t("criticalInfo.citySafetySection.heatWarning")}: {city.heatWarning.split(":")[0]}
-                                  </div>
-                                  <p className="text-sm text-muted-foreground">{city.heatWarning.split(": ").slice(1).join(": ")}</p>
+                                }`}>
+                                  {t("criticalInfo.citySafetySection.heatWarning")}: {t(`criticalInfo.citySafetySection.heatLevels.${heatLevel}`)}
                                 </div>
+                                <p className="text-sm text-muted-foreground">{t(`criticalInfo.citySafetySection.cities.${cityKey.id}.heatWarning`)}</p>
                               </div>
                             </div>
-                          )}
+                          </div>
 
                           <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4">
                             <div className="flex items-start gap-3">
                               <TicketX className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                               <div>
                                 <div className="text-sm font-bold text-amber-400 mb-1">{t("criticalInfo.citySafetySection.ticketScams")}</div>
-                                <p className="text-sm text-muted-foreground">{city.ticketScams}</p>
+                                <p className="text-sm text-muted-foreground">{t(`criticalInfo.citySafetySection.cities.${cityKey.id}.ticketScams`)}</p>
                               </div>
                             </div>
                           </div>
@@ -2903,7 +2909,7 @@ export default function CriticalInfo() {
                             </div>
                             <div className="bg-card border border-white/5 rounded-xl p-4">
                               <ul className="space-y-2">
-                                {city.localConcerns.map((concern, i) => (
+                                {(t(`criticalInfo.citySafetySection.cities.${cityKey.id}.localConcerns`, { returnObjects: true }) as string[]).map((concern, i) => (
                                   <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
                                     <span className="text-red-400 mt-0.5">•</span>
                                     {concern}
@@ -2921,19 +2927,19 @@ export default function CriticalInfo() {
                             </div>
                             <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4">
                               <div className="space-y-2">
-                                {city.safeAreas.map((area, i) => {
-                                  const areaKey = `${city.id}-${area.name}`;
-                                  const isExpanded = expandedSafeArea === areaKey;
+                                {(t(`criticalInfo.citySafetySection.cities.${cityKey.id}.safeAreas`, { returnObjects: true }) as {name: string, description: string}[]).map((area, i) => {
+                                  const areaKeyStr = `${cityKey.id}-${area.name}`;
+                                  const isExpanded = expandedSafeArea === areaKeyStr;
                                   return (
                                     <div key={i}>
                                       <button
-                                        onClick={() => setExpandedSafeArea(isExpanded ? null : areaKey)}
+                                        onClick={() => setExpandedSafeArea(isExpanded ? null : areaKeyStr)}
                                         className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
                                           isExpanded 
                                             ? "bg-green-500/30 text-green-300" 
                                             : "bg-green-500/20 text-green-400 hover:bg-green-500/25"
                                         }`}
-                                        data-testid={`safe-area-${city.id}-${i}`}
+                                        data-testid={`safe-area-${cityKey.id}-${i}`}
                                       >
                                         <div className="flex items-center justify-between">
                                           <span className="font-medium">{area.name}</span>
@@ -2963,7 +2969,7 @@ export default function CriticalInfo() {
                             </div>
                             <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
                               <div className="flex flex-wrap gap-2">
-                                {city.avoidAreas.map((area, i) => (
+                                {(t(`criticalInfo.citySafetySection.cities.${cityKey.id}.avoidAreas`, { returnObjects: true }) as string[]).map((area, i) => (
                                   <span key={i} className="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs">
                                     {area}
                                   </span>
@@ -2979,7 +2985,7 @@ export default function CriticalInfo() {
                             </div>
                             <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4">
                               <ul className="space-y-2">
-                                {city.tips.map((tip, i) => (
+                                {(t(`criticalInfo.citySafetySection.cities.${cityKey.id}.tips`, { returnObjects: true }) as string[]).map((tip, i) => (
                                   <li key={i} className="flex items-start gap-2 text-sm text-yellow-100/80">
                                     <span className="text-yellow-400 mt-0.5">💡</span>
                                     {tip}

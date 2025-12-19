@@ -2329,6 +2329,313 @@
         "high": "ALTO",
         "moderate": "MODERADO",
         "low": "BAJO"
+      },
+      "cities": {
+        "miami": {
+          "heatWarning": "El índice de calor puede alcanzar 120°F (49°C) en junio/julio. La alta humedad dificulta enfriarse. El agotamiento por calor es un riesgo serio.",
+          "ticketScams": "Cuidado con boletos falsos vendidos cerca del Hard Rock Stadium. Solo compre en FIFA.com o Ticketmaster. Las camisetas falsificadas son comunes en las calles.",
+          "localConcerns": [
+            "La temporada de huracanes va de junio a noviembre - monitoree alertas meteorológicas",
+            "Fuerte exposición solar - use protector SPF 50+ y reaplique frecuentemente",
+            "Los mosquitos transmiten enfermedades - use repelente especialmente al amanecer/atardecer",
+            "Corrientes de resaca en playas - nade solo en áreas con salvavidas"
+          ],
+          "safeAreas": [
+            { "name": "Miami Beach", "description": "Zona turística frente al mar con fuerte presencia policial, distrito Art Deco bien iluminado y actividad 24/7 en Ocean Drive." },
+            { "name": "Brickell", "description": "Distrito financiero de Miami con rascacielos de lujo, restaurantes modernos y excelente caminabilidad. Muy seguro día y noche." },
+            { "name": "Coral Gables", "description": "Zona residencial próspera conocida por su arquitectura mediterránea, calles arboladas y el hermoso distrito comercial Miracle Mile." },
+            { "name": "Coconut Grove", "description": "Barrio bohemio frente al agua con cafés al aire libre, tiendas boutique y senderos seguros para caminar junto a la bahía." },
+            { "name": "Wynwood", "description": "Famoso distrito de arte con murales coloridos y galerías. Muy seguro durante el día; tenga precaución después de medianoche." }
+          ],
+          "avoidAreas": ["Overtown", "Liberty City", "Little Haiti (después del anochecer)", "Opa-locka"],
+          "tips": ["Manténgase hidratado - beba agua constantemente", "Busque aire acondicionado entre 11am-4pm", "Use Uber/Lyft en lugar de caminar largas distancias con calor"]
+        },
+        "houston": {
+          "heatWarning": "Las temperaturas regularmente superan los 105°F (40°C). La humedad subtropical hace que se sienta aún más caliente. Los 21 días de calor peligroso en verano 2025 fueron inducidos por el cambio climático.",
+          "ticketScams": "El área del NRG Stadium tiene revendedores con boletos falsos. Las estafas en estacionamientos son comunes - use solo lotes oficiales.",
+          "localConcerns": [
+            "Inundaciones repentinas durante tormentas de verano - evite pasos subterráneos",
+            "La red eléctrica puede fallar durante olas de calor",
+            "Ciudad muy extensa - transporte público limitado, planifique el transporte",
+            "Congestión de tráfico severa - deje tiempo extra"
+          ],
+          "safeAreas": [
+            { "name": "The Heights", "description": "Barrio histórico con casas victorianas, restaurantes de moda y distrito comercial peatonal en la Calle 19. Ambiente familiar." },
+            { "name": "Montrose", "description": "Barrio ecléctico y amigable con la comunidad LGBTQ con gastronomía diversa, tiendas vintage y vida nocturna vibrante. Seguro y acogedor." },
+            { "name": "River Oaks", "description": "El barrio más rico de Houston con mansiones de lujo, tiendas exclusivas y excelente seguridad. Hogar de muchos consulados." },
+            { "name": "Galleria area", "description": "Principal distrito comercial y de negocios centrado en el famoso centro comercial Galleria. Bien patrullado con muchos hoteles cercanos." },
+            { "name": "Downtown", "description": "Distrito de negocios seguro durante el día con museos, teatros y venues deportivos. Use transporte compartido para regresos nocturnos." }
+          ],
+          "avoidAreas": ["Third Ward (partes)", "Sunnyside", "Acres Homes", "South Park"],
+          "tips": ["Lleve botella de agua a todas partes", "Conozca la ubicación de centros de enfriamiento", "Revise alertas de inundaciones durante tormentas"]
+        },
+        "dallas": {
+          "heatWarning": "Días consecutivos sobre 105°F (40°C) durante todo junio. Puede superar 110°F. Dallas ocupa el 4to lugar como ciudad más incómoda de EE.UU. en verano.",
+          "ticketScams": "El AT&T Stadium (Arlington) es enorme - los estafadores operan en áreas de estacionamiento. Se venden pases de estacionamiento falsos en línea.",
+          "localConcerns": [
+            "Tormentas severas y tornados posibles en junio",
+            "El estadio está en Arlington - a 20 millas de Dallas, planifique transporte",
+            "Muy dependiente del auto - transporte público limitado al estadio",
+            "Carreteras de peaje por todas partes - tenga efectivo o TollTag"
+          ],
+          "safeAreas": [
+            { "name": "Uptown", "description": "Barrio urbano de moda con calles peatonales, bares en terrazas y excelentes restaurantes. Popular entre profesionales jóvenes, muy seguro." },
+            { "name": "Highland Park", "description": "Uno de los enclaves más ricos de América con hermosas mansiones, jardines cuidados y su propia fuerza policial. Extremadamente seguro." },
+            { "name": "Bishop Arts District", "description": "Encantador distrito de artes y entretenimiento en Oak Cliff con boutiques locales, galerías y opciones gastronómicas diversas." },
+            { "name": "Deep Ellum", "description": "Histórico distrito de entretenimiento con venues de música en vivo y arte callejero. Seguro durante el día; use transporte compartido de noche." },
+            { "name": "Victory Park", "description": "Desarrollo moderno de uso mixto cerca del American Airlines Center con restaurantes exclusivos y entretenimiento. Área bien vigilada." }
+          ],
+          "avoidAreas": ["South Dallas", "Pleasant Grove", "Fair Park (después del anochecer)", "partes de Oak Cliff"],
+          "tips": ["Reserve estacionamiento del estadio con anticipación", "Use el tren ligero DART donde esté disponible", "Lleve ventilador portátil y toalla refrescante"]
+        },
+        "atlanta": {
+          "heatWarning": "Se pronostican 45-50 días que alcanzarán 90°F+ en verano. El efecto de isla de calor urbana hace que el centro sea varios grados más caliente que los suburbios.",
+          "ticketScams": "El Mercedes-Benz Stadium está en el centro - los vendedores callejeros venden boletos y mercancía falsa. Use solo canales oficiales.",
+          "localConcerns": [
+            "El tráfico está entre los peores de EE.UU. - se recomienda el tren MARTA",
+            "Los barrios cambian rápidamente de una cuadra a otra",
+            "La humedad hace que el calor se sienta más opresivo",
+            "Tormentas eléctricas vespertinas diarias en verano"
+          ],
+          "safeAreas": [
+            { "name": "Midtown", "description": "Corazón cultural de Atlanta con Piedmont Park, High Museum y excelente gastronomía. Accesible por MARTA y caminable." },
+            { "name": "Buckhead", "description": "Distrito exclusivo de compras y restaurantes conocido por el centro comercial Lenox Square y hoteles de lujo. Fuerte presencia policial." },
+            { "name": "Virginia-Highland", "description": "Encantador barrio residencial con boutiques locales, cafeterías y calles arboladas. Muy caminable." },
+            { "name": "Inman Park", "description": "Primer suburbio planificado de Atlanta con casas victorianas, acceso al sendero BeltLine y restaurantes eclécticos." },
+            { "name": "Decatur", "description": "Ciudad independiente dentro del área metropolitana de Atlanta conocida por su plaza céntrica, excelentes escuelas y ambiente familiar." }
+          ],
+          "avoidAreas": ["Bankhead", "Vine City (partes)", "English Avenue", "Pittsburgh (después del anochecer)"],
+          "tips": ["Use MARTA para acceder al estadio", "Permanezca en zonas de aficionados designadas", "Busque refugio durante tormentas vespertinas"]
+        },
+        "new-york": {
+          "heatWarning": "Posibles olas de calor pero menos severas que en ciudades del sur. La humedad puede ser incómoda. Las plataformas del metro son extremadamente calurosas.",
+          "ticketScams": "Los estafadores del MetLife Stadium operan en centros de transporte (Penn Station, Port Authority). Nunca compre a vendedores callejeros.",
+          "localConcerns": [
+            "El estadio está en Nueva Jersey - a 10 millas de Manhattan",
+            "Los trenes NJ Transit al estadio pueden estar sobrecargados",
+            "Carteristas en metros abarrotados",
+            "Vendedores callejeros agresivos en áreas turísticas"
+          ],
+          "safeAreas": [
+            { "name": "Midtown Manhattan", "description": "Corazón de NYC con Times Square, teatros de Broadway y hoteles principales. Extremadamente concurrido pero bien vigilado 24/7." },
+            { "name": "Upper East/West Side", "description": "Barrios residenciales prósperos con museos de clase mundial, acceso a Central Park y excelentes restaurantes." },
+            { "name": "SoHo", "description": "Distrito de compras de moda con calles empedradas, boutiques de diseñador y arquitectura de hierro fundido. Seguro y elegante." },
+            { "name": "Brooklyn Heights", "description": "Barrio histórico con impresionantes vistas de Manhattan, calles con brownstones y el famoso Paseo Marítimo." },
+            { "name": "Hoboken", "description": "Ciudad costera de NJ con vistas del skyline de Manhattan, excelentes restaurantes y tren PATH directo a NYC. Muy seguro." }
+          ],
+          "avoidAreas": ["Partes del Bronx", "East New York", "Brownsville", "algunas áreas de Newark"],
+          "tips": ["Compre boletos de NJ Transit con anticipación", "Mantenga sus pertenencias seguras en el metro", "Deje más de 2 horas para llegar al estadio desde Manhattan"]
+        },
+        "los-angeles": {
+          "heatWarning": "Las áreas interiores pueden alcanzar más de 100°F. Las zonas costeras son más frescas. El SoFi Stadium en Inglewood puede ser muy caluroso.",
+          "ticketScams": "El área del SoFi Stadium tiene operaciones organizadas de reventa. Se venden experiencias VIP falsas en línea. Verifique todos los boletos en apps oficiales.",
+          "localConcerns": [
+            "El auto es esencial - el peor tráfico de EE.UU.",
+            "Smog extremo durante olas de calor",
+            "Campamentos de personas sin hogar en algunas áreas",
+            "Terremotos posibles (conozca los procedimientos de seguridad)"
+          ],
+          "safeAreas": [
+            { "name": "Santa Monica", "description": "Icónica ciudad playera con el famoso muelle, compras en Third Street Promenade y brisas oceánicas. Amigable para turistas y seguro." },
+            { "name": "Beverly Hills", "description": "Destino de lujo mundialmente famoso con compras en Rodeo Drive, casas de celebridades y excelente seguridad. Muy exclusivo." },
+            { "name": "West Hollywood", "description": "Vibrante barrio amigable con la comunidad LGBTQ con vida nocturna en Sunset Strip, restaurantes de moda y calles peatonales." },
+            { "name": "Pasadena", "description": "Encantadora ciudad con gastronomía en Old Town, el Rose Bowl y Caltech. Se siente como un pueblo pequeño dentro de LA." },
+            { "name": "Manhattan Beach", "description": "Comunidad costera exclusiva con hermosas playas, carriles para bicicletas y ambiente familiar. Muy seguro." }
+          ],
+          "avoidAreas": ["Skid Row", "partes del sur de LA", "Compton", "algunas áreas de Inglewood"],
+          "tips": ["Deje más de 2 horas para cualquier viaje", "Manténgase hidratado - el calor seco es engañoso", "Descargue la app de alerta de terremotos"]
+        },
+        "seattle": {
+          "heatWarning": "Clima de verano típicamente templado (70-80°F). Olas de calor ocasionales pero raras. El aire acondicionado no es común - los hoteles pueden no tenerlo.",
+          "ticketScams": "Lumen Field tiene menos actividad de estafas que otras ciudades, pero aún así compre solo de fuentes oficiales.",
+          "localConcerns": [
+            "Lluvia posible incluso en verano - traiga capas de ropa",
+            "Población sin hogar visible en el centro",
+            "Las colinas hacen que caminar sea agotador",
+            "Humo de incendios forestales del este de WA posible en verano"
+          ],
+          "safeAreas": [
+            { "name": "Capitol Hill", "description": "El barrio más vibrante de Seattle con cultura LGBTQ, excelente vida nocturna, cafeterías y calles peatonales." },
+            { "name": "Queen Anne", "description": "Zona residencial con colinas con impresionantes vistas de la ciudad desde Kerry Park, tiendas boutique y calles tranquilas arboladas." },
+            { "name": "Ballard", "description": "Antiguo pueblo pesquero escandinavo ahora barrio de moda con cervecerías artesanales, restaurantes y mercado dominical de agricultores." },
+            { "name": "Fremont", "description": "Barrio artístico peculiar autoproclamado 'Centro del Universo' con el famoso Troll de Fremont y tiendas eclécticas." },
+            { "name": "Bellevue", "description": "Ciudad exclusiva del lado este con compras de lujo en Bellevue Square, excelente cocina asiática y tasas de criminalidad muy bajas." }
+          ],
+          "avoidAreas": ["Pioneer Square (después del anochecer)", "partes de SODO", "ciertas áreas de Aurora Ave"],
+          "tips": ["El tren ligero conecta aeropuerto con centro y estadio", "Traiga chaqueta impermeable incluso en verano", "Verifique la calidad del aire si hay incendios forestales activos"]
+        },
+        "san-francisco": {
+          "heatWarning": "SF mismo es fresco (60-70°F) pero el Levi's Stadium en Santa Clara puede alcanzar más de 95°F. Vístase en capas.",
+          "ticketScams": "Estafadores expertos en tecnología crean sitios falsos de boletos sofisticados. Solo use FIFA.com o Ticketmaster.",
+          "localConcerns": [
+            "El estadio está a 45 millas de SF - planifique el transporte",
+            "Epidemia de robos con rotura de ventanas en autos - nunca deje nada en los vehículos",
+            "Población sin hogar en el centro de la ciudad de SF",
+            "Los trenes BART pueden ser inseguros a altas horas de la noche"
+          ],
+          "safeAreas": [
+            { "name": "Marina District", "description": "Barrio próspero frente al agua con Crissy Field, compras boutique en Chestnut Street y vistas del Golden Gate." },
+            { "name": "Pacific Heights", "description": "El barrio más prestigioso de San Francisco con mansiones victorianas, restaurantes exclusivos y compras en Fillmore Street." },
+            { "name": "Noe Valley", "description": "Barrio familiar conocido como 'Valle de las Carriolas' con tiendas en la Calle 24, clima soleado y calles tranquilas." },
+            { "name": "Palo Alto", "description": "Hogar de la Universidad de Stanford, encantador centro, excelentes restaurantes y ambiente suburbano muy seguro cerca del estadio." },
+            { "name": "Saratoga", "description": "Exclusiva ciudad del Silicon Valley con bodegas, senderos para caminatas y atmósfera pacífica. Muy cerca del Levi's Stadium." }
+          ],
+          "avoidAreas": ["Tenderloin", "partes de SOMA", "algunas áreas de Oakland"],
+          "tips": ["Use Caltrain al estadio", "Nunca deje nada visible en el auto estacionado", "Traiga capas - la temperatura varía dramáticamente"]
+        },
+        "boston": {
+          "heatWarning": "La humedad del verano puede hacer que 85°F se sienta como 95°F. El Gillette Stadium en Foxborough no tiene sombra - esté preparado.",
+          "ticketScams": "Los fanáticos de los Patriots controlan el área del Gillette Stadium - los forasteros que venden boletos probablemente son estafadores.",
+          "localConcerns": [
+            "El estadio está a 30 millas al sur de Boston en Foxborough",
+            "Transporte público limitado al estadio (tren suburbano solo en días de partido)",
+            "Cultura agresiva de fanáticos deportivos de Boston",
+            "Construcción por todas partes en el centro"
+          ],
+          "safeAreas": [
+            { "name": "Back Bay", "description": "Elegante barrio victoriano con compras en Newbury Street, Commonwealth Ave con brownstones y restaurantes exclusivos." },
+            { "name": "Beacon Hill", "description": "Calles históricas empedradas, farolas de gas y casas de estilo Federal. Uno de los barrios más pintorescos de América." },
+            { "name": "Cambridge", "description": "Hogar de Harvard y MIT con atmósfera intelectual, librerías, gastronomía diversa y vibrante Harvard Square." },
+            { "name": "Brookline", "description": "Ambiente suburbano próspero dentro de los límites de la ciudad, excelente transporte público (Línea Verde) y tiendas de Coolidge Corner." },
+            { "name": "North End", "description": "La Pequeña Italia de Boston con auténticos restaurantes italianos, pastelerías y calles estrechas de estilo europeo. Muy caminable." }
+          ],
+          "avoidAreas": ["Partes de Roxbury", "Dorchester (algunas áreas)", "Mattapan"],
+          "tips": ["Reserve estacionamiento del estadio con anticipación", "El tren suburbano se llena rápido - llegue temprano", "Respete la cultura local de fanáticos"]
+        },
+        "philadelphia": {
+          "heatWarning": "Olas de calor de verano con alta humedad. Efecto de isla de calor urbana en el centro.",
+          "ticketScams": "El área del Lincoln Financial Field tiene reventa organizada. Se vende mercancía falsa de Eagles/Phillies cerca de los estadios.",
+          "localConcerns": [
+            "Violencia armada en algunos barrios",
+            "Transporte público SEPTA confiable pero abarrotado",
+            "Los fanáticos de Filadelfia tienen reputación de ser ruidosos",
+            "Las calles pueden ser confusas de navegar"
+          ],
+          "safeAreas": [
+            { "name": "Center City", "description": "Centro de Filadelfia con sitios históricos, Reading Terminal Market y hoteles principales. Bien patrullado y concurrido." },
+            { "name": "Rittenhouse Square", "description": "El parque más prestigioso de Filadelfia rodeado de restaurantes exclusivos, boutiques y hermosos brownstones." },
+            { "name": "Old City", "description": "Distrito histórico con Independence Hall, la Campana de la Libertad, calles empedradas y excelentes restaurantes." },
+            { "name": "University City", "description": "Hogar de UPenn y Drexel con energía estudiantil, gastronomía diversa y buenas conexiones de transporte." },
+            { "name": "Chestnut Hill", "description": "Encantador ambiente de pueblo suburbano con tiendas boutique, senderos de Wissahickon y calles arboladas." }
+          ],
+          "avoidAreas": ["North Philadelphia", "Kensington", "partes de West Philadelphia"],
+          "tips": ["Use la Línea Broad Street de SEPTA al estadio", "Permanezca en áreas bien iluminadas después del anochecer", "Esté atento a su entorno"]
+        },
+        "kansas-city": {
+          "heatWarning": "Veranos calurosos y húmedos, regularmente 95°F+ con alta humedad. El Arrowhead Stadium ofrece poca sombra.",
+          "ticketScams": "Los fanáticos de los Chiefs son devotos - desconfíe de cualquiera que no sea obviamente local vendiendo boletos.",
+          "localConcerns": [
+            "Tormentas severas y tornados posibles",
+            "Ciudad muy dependiente del auto",
+            "El estadio está en el lado de Missouri (KC abarca dos estados)",
+            "Opciones limitadas de comida internacional"
+          ],
+          "safeAreas": [
+            { "name": "Country Club Plaza", "description": "Distrito comercial al aire libre de estilo español con fuentes, tiendas exclusivas y excelentes restaurantes. El principal destino de KC." },
+            { "name": "Westport", "description": "Distrito de entretenimiento con música en vivo, bares diversos y restaurantes. Zona de vida nocturna popular, generalmente segura." },
+            { "name": "Brookside", "description": "Barrio encantador con tiendas locales, calles arboladas y fuerte sentido de comunidad. Atmósfera familiar." },
+            { "name": "Overland Park", "description": "Suburbio próspero de Kansas con excelentes compras, restaurantes y tasas de criminalidad muy bajas. Centro de sedes corporativas." },
+            { "name": "Crown Center", "description": "Desarrollo de uso mixto con hoteles, tiendas y atracciones incluyendo Legoland. Bien vigilado y familiar." }
+          ],
+          "avoidAreas": ["Barrios del East Side", "partes del noreste de KC", "Ivanhoe"],
+          "tips": ["La cultura del tailgating es enorme - únase respetuosamente", "Monitoree advertencias de tornados", "Traiga protección solar para el estadio"]
+        },
+        "mexico-city": {
+          "heatWarning": "La alta altitud (2,240 m) significa temperaturas más frescas de lo esperado (21-27°C). Pero el mal de altura es una preocupación - aclimátese antes de hacer esfuerzo.",
+          "ticketScams": "El área del Estadio Azteca tiene operaciones sofisticadas de estafa. Los boletos falsificados parecen muy reales. Solo compre en FIFA.com.",
+          "localConcerns": [
+            "Mal de altura - tome las cosas con calma los primeros 2 días",
+            "Carteristas en el Metro (especialmente Línea B)",
+            "Posible extorsión policial",
+            "Agua del grifo no potable - beba solo embotellada",
+            "La contaminación del aire puede ser severa"
+          ],
+          "safeAreas": [
+            { "name": "Polanco", "description": "El barrio más exclusivo de Ciudad de México con boutiques de diseñador, restaurantes de clase mundial y excelentes museos. Muy seguro." },
+            { "name": "Roma Norte", "description": "Barrio bohemio de moda con arquitectura Art Deco, cafés hipster y vibrante escena gastronómica. Popular entre expatriados." },
+            { "name": "Condesa", "description": "Barrio verde y caminable con edificios Art Nouveau, cafés al aire libre en el Parque México y excelente vida nocturna." },
+            { "name": "Coyoacán", "description": "Barrio colonial histórico con el Museo Frida Kahlo, calles empedradas y encantadora plaza central. Familiar." },
+            { "name": "Santa Fe", "description": "Distrito de negocios moderno con torres relucientes, centros comerciales exclusivos y hoteles internacionales. Corporativo y muy seguro." }
+          ],
+          "avoidAreas": ["Tepito", "Doctores", "Iztapalapa", "calles vacías en cualquier lugar después del anochecer"],
+          "tips": ["Use Uber/DiDi exclusivamente - nunca taxis callejeros", "Mantenga el teléfono en el bolsillo (ladrones en moto)", "Beba mucha agua por la altitud"]
+        },
+        "guadalajara": {
+          "heatWarning": "Cálido pero no extremo (27-32°C). La temporada de lluvias de junio a octubre significa tormentas vespertinas diarias.",
+          "ticketScams": "El área del Estadio Akron tiene venta de boletos falsos. Solo use canales oficiales de FIFA.",
+          "localConcerns": [
+            "El estado de Jalisco tiene presencia de cárteles - quédese en áreas turísticas",
+            "Ladrones de teléfonos en moto en Colonia Americana y Centro",
+            "La seguridad es muy diferente de día vs noche",
+            "Inglés limitado fuera de áreas turísticas"
+          ],
+          "safeAreas": [
+            { "name": "Colonia Americana", "description": "Barrio amigable con expatriados con mansiones Art Deco, cafés de moda y vida nocturna en Avenida Chapultepec. Moderno y caminable." },
+            { "name": "Providencia", "description": "Zona residencial exclusiva con excelentes restaurantes, centros comerciales y calles arboladas. Barrio muy seguro." },
+            { "name": "Zapopan", "description": "Hogar de la famosa Basílica con seguridad adicional, centros comerciales modernos y creciente escena gastronómica." },
+            { "name": "Chapalita", "description": "Zona residencial orientada a familias con parques, tiendas locales y calles tranquilas. Excelente para familias con niños." },
+            { "name": "Historic Center", "description": "Hermosa arquitectura colonial con la Catedral y el Teatro Degollado. Seguro durante el día con presencia policial." }
+          ],
+          "avoidAreas": ["Analco", "Las Juntas", "Lomas del Paraíso", "Cerro del Cuatro"],
+          "tips": ["Use Uber para cualquier viaje nocturno", "No camine solo después del anochecer", "Mantenga los objetos de valor ocultos siempre"]
+        },
+        "monterrey": {
+          "heatWarning": "Clima desértico con temperaturas que regularmente superan los 100°F (38°C) en junio/julio. Calor muy seco.",
+          "ticketScams": "Área del Estadio BBVA - la misma precaución que en otras ciudades mexicanas. Use solo fuentes oficiales de boletos.",
+          "localConcerns": [
+            "El estado de Nuevo León tiene historial de actividad de cárteles",
+            "Muy caluroso y seco - manténgase hidratado",
+            "Ciudad de negocios - menos infraestructura turística",
+            "Algunas áreas cerca de la frontera de EE.UU. son de alto riesgo"
+          ],
+          "safeAreas": [
+            { "name": "San Pedro Garza García", "description": "El municipio más rico de México con centros comerciales de lujo, alta gastronomía y seguridad privada. Sensación esencialmente de comunidad cerrada." },
+            { "name": "Valle Oriente", "description": "Distrito de negocios moderno con torres corporativas, hoteles exclusivos y excelentes restaurantes. Muy bien patrullado." },
+            { "name": "Cumbres", "description": "Zona residencial exclusiva popular entre familias, con plazas comerciales y atmósfera suburbana." },
+            { "name": "Centro", "description": "Centro histórico con la famosa Macroplaza y Barrio Antiguo. Seguro durante el día con presencia de policía turística." },
+            { "name": "Barrio Antiguo", "description": "Distrito de vida nocturna de moda con bares, restaurantes y galerías de arte. Popular y bien iluminado en las noches." }
+          ],
+          "avoidAreas": ["Áreas cerca de las fronteras estatales", "Zonas industriales", "Afueras después del anochecer"],
+          "tips": ["Quédese en distritos de negocios", "Use transporte organizado por el hotel", "Lleve agua a todas partes"]
+        },
+        "toronto": {
+          "heatWarning": "Generalmente cómodo (24-29°C) pero la humedad puede aumentar repentinamente. Más templado que las ciudades del sur de EE.UU.",
+          "ticketScams": "BMO Field es un venue más pequeño - menos actividad de estafas pero aún use solo fuentes oficiales de boletos.",
+          "localConcerns": [
+            "Alto costo de vida - todo es caro",
+            "Transporte público TTC confiable pero abarrotado",
+            "La violencia armada ha aumentado en algunas áreas",
+            "Muy multicultural - respete la diversidad"
+          ],
+          "safeAreas": [
+            { "name": "Downtown Core", "description": "Distrito financiero con CN Tower, compras subterráneas PATH y principales atracciones. Concurrido y bien vigilado." },
+            { "name": "Yorkville", "description": "El barrio más exclusivo de Toronto con boutiques de diseñador, avistamientos de celebridades y alta gastronomía. Muy seguro." },
+            { "name": "The Annex", "description": "Barrio vibrante cerca de la Universidad de Toronto con casas victorianas, librerías y restaurantes diversos." },
+            { "name": "Leslieville", "description": "Barrio de moda en el lado este con tiendas independientes, lugares de brunch y fuerte sentido de comunidad. Familiar." },
+            { "name": "Distillery District", "description": "Área industrial victoriana bellamente restaurada con galerías, restaurantes y calles empedradas. Zona libre de autos." }
+          ],
+          "avoidAreas": ["Jane and Finch", "partes de Scarborough", "Regent Park (mejorando pero precaución)"],
+          "tips": ["Obtenga tarjeta PRESTO para el transporte", "Se espera propina (15-20%)", "Descargue la app TTC para transporte en tiempo real"]
+        },
+        "vancouver": {
+          "heatWarning": "Clima de verano templado (21-24°C). BC Place es un estadio cubierto. Lluvia posible incluso en verano.",
+          "ticketScams": "Menos actividad de estafas que en ciudades de EE.UU. pero ejerza precaución normal con vendedores no oficiales.",
+          "localConcerns": [
+            "El Downtown Eastside tiene crisis de drogas visible - evite Hastings Street",
+            "Ciudad muy cara - presupueste en consecuencia",
+            "Humo de incendios forestales posible del interior de BC",
+            "Crisis de viviendas de alquiler - reserve alojamiento temprano"
+          ],
+          "safeAreas": [
+            { "name": "Yaletown", "description": "Distrito de almacenes convertidos con restaurantes de moda, boutiques y acceso al paseo marítimo. Muy caminable y seguro." },
+            { "name": "Gastown", "description": "Barrio histórico con el famoso reloj de vapor, calles empedradas y gastronomía exclusiva. Amigable para turistas (evite el extremo este)." },
+            { "name": "Kitsilano", "description": "Barrio playero con cafés orgánicos, estudios de yoga e impresionantes vistas de las montañas. Popular entre jóvenes profesionales." },
+            { "name": "West End", "description": "Área residencial densamente poblada cerca de Stanley Park y English Bay Beach. Amigable con la comunidad LGBTQ y muy seguro." },
+            { "name": "North Vancouver", "description": "Al otro lado del puerto con senderos de montaña, Capilano Suspension Bridge y seguridad suburbana. Hermoso entorno natural." }
+          ],
+          "avoidAreas": ["Downtown Eastside", "partes de East Hastings", "Surrey Central (después del anochecer)"],
+          "tips": ["El SkyTrain conecta aeropuerto con centro y estadio", "Traiga capas - el clima cambia rápidamente", "El cannabis es legal pero siga las reglas"]
+        }
       }
     },
     "prohibitedSection": {
