@@ -89,6 +89,31 @@ Preferred communication style: Simple, everyday language.
 
 **Session Management:** The application includes infrastructure for sessions via connect-pg-simple (PostgreSQL session store) though implementation is not fully visible in the provided code.
 
+### Automatic News Feed System
+
+**RSS Feed Integration:** The application fetches live soccer news from multiple reliable RSS sources:
+- ESPN Soccer (`https://www.espn.com/espn/rss/soccer/news`)
+- BBC Sport Football (`http://feeds.bbci.co.uk/sport/football/rss.xml`)
+- Sky Sports Football (`https://www.skysports.com/rss/11095`)
+
+**News Service (`server/newsService.ts`):** Centralized service that:
+- Fetches and parses RSS feeds using `rss-parser` package
+- Deduplicates news items by title
+- Stores top 10 items sorted by publish date in the database
+- Auto-refreshes every 4 hours on incoming requests
+- Provides manual refresh endpoint at `/api/news/refresh`
+
+**API Endpoints:**
+- `GET /api/news?limit=3` - Returns latest news items (limit validated 1-10)
+- `POST /api/news/refresh` - Forces immediate RSS feed refresh
+
+**Home Page Display:** Interactive news carousel showing top 3 items with:
+- Category badges and timestamps ("39m ago" format)
+- Source attribution (ESPN, BBC Sport, Sky Sports)
+- Article descriptions and external links
+- Manual refresh button with loading states
+- Empty state handling when no news available
+
 ### Cross-Device Consistency
 
 **Flag Images:** All country/region flags throughout the app use image URLs from flagcdn.com instead of emoji flags. This ensures consistent visual display across all devices and browsers, as emoji flags can render inconsistently or as text codes on some platforms.
