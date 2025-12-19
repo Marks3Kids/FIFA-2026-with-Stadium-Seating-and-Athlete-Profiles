@@ -395,7 +395,7 @@ export const knockoutBrackets = pgTable("knockout_brackets", {
   status: text("status").notNull().default("pending"), // "pending", "scheduled", "completed"
   winnerId: integer("winner_id"), // References teams table
   score: text("score"), // e.g., "2-1"
-  translations: jsonb("translations").$type<Record<string, { team1Slot: string; team2Slot: string }>>(),
+  translations: jsonb("translations").$type<Record<string, { team1Slot: string; team2Slot: string; stadium?: string; city?: string }>>(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 

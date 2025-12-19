@@ -161,32 +161,44 @@ export async function getTranslatedNews(
 interface BracketTranslationResult {
   team1Slot: string;
   team2Slot: string;
+  stadium?: string;
+  city?: string;
 }
 
 async function translateBracketSlots(
   bracketId: number,
   team1Slot: string,
   team2Slot: string,
+  stadium: string,
+  city: string,
   targetLocale: string
 ): Promise<BracketTranslationResult> {
   if (!SUPPORTED_LOCALES.includes(targetLocale)) {
-    return { team1Slot, team2Slot };
+    return { team1Slot, team2Slot, stadium, city };
   }
 
   const languageName = LOCALE_NAMES[targetLocale];
 
   try {
-    const prompt = `Translate the following World Cup bracket slot names to ${languageName}. These are placeholder names indicating which team will play (e.g., "Winner Group A" means the team that wins Group A). Return only JSON with "team1Slot" and "team2Slot" fields.
+    const prompt = `Translate the following World Cup bracket information to ${languageName}. 
+    
+For team slots, translate the placeholder meaning (e.g., "Winner Group A" = the team that wins Group A).
+For stadium names, keep the official name but you may add translated descriptors if needed.
+For city names, use the localized version (e.g., "New York" stays as-is in most languages, but "Mexico City" becomes "Ciudad de México" in Spanish).
+
+Return JSON with these fields: "team1Slot", "team2Slot", "stadium", "city"
 
 team1Slot: ${team1Slot}
-team2Slot: ${team2Slot}`;
+team2Slot: ${team2Slot}
+stadium: ${stadium}
+city: ${city}`;
 
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
-          content: "You are a professional sports translator. Translate bracket slot names accurately. Return only valid JSON.",
+          content: "You are a professional sports translator specializing in World Cup content. Translate accurately while keeping proper nouns recognizable. Return only valid JSON.",
         },
         {
           role: "user",
@@ -194,12 +206,12 @@ team2Slot: ${team2Slot}`;
         },
       ],
       response_format: { type: "json_object" },
-      max_tokens: 200,
+      max_tokens: 300,
     });
 
     const content = response.choices[0]?.message?.content;
     if (!content) {
-      return { team1Slot, team2Slot };
+      return { team1Slot, team2Slot, stadium, city };
     }
 
     const parsed = JSON.parse(content) as BracketTranslationResult;
@@ -209,7 +221,7 @@ team2Slot: ${team2Slot}`;
     return parsed;
   } catch (error) {
     console.error(`[Translation] Error translating bracket to ${targetLocale}:`, error);
-    return { team1Slot, team2Slot };
+    return { team1Slot, team2Slot, stadium, city };
   }
 }
 
@@ -258,6 +270,8 @@ export async function translateKnockoutBrackets(
           ...bracket,
           team1Slot: cachedTranslation.team1Slot,
           team2Slot: cachedTranslation.team2Slot,
+          stadium: cachedTranslation.stadium || bracket.stadium,
+          city: cachedTranslation.city || bracket.city,
         };
       }
 
@@ -265,6 +279,8 @@ export async function translateKnockoutBrackets(
         bracket.id,
         bracket.team1Slot,
         bracket.team2Slot,
+        bracket.stadium,
+        bracket.city,
         locale
       );
 
@@ -272,6 +288,8 @@ export async function translateKnockoutBrackets(
         ...bracket,
         team1Slot: translation.team1Slot,
         team2Slot: translation.team2Slot,
+        stadium: translation.stadium || bracket.stadium,
+        city: translation.city || bracket.city,
       };
     })
   );
