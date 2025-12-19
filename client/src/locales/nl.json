@@ -2091,6 +2091,7 @@
   },
   "criticalInfo": {
     "title": "Kritieke informatie",
+    "solution": "Oplossing",
     "tabs": {
       "safety": "Veiligheid",
       "emergency": "Noodgevallen",

@@ -2090,7 +2090,8 @@
     "disclaimer": "表示されている価格は1泊あたりの推定料金であり、日程や空室状況によって異なる場合があります。ワールドカップ期間中は需要が非常に高くなるため、お早めにご予約ください。"
   },
   "criticalInfo": {
-    "title": "Critical Information",
+    "title": "重要情報",
+    "solution": "解決策",
     "tabs": {
       "safety": "Safety",
       "emergency": "Emergency",

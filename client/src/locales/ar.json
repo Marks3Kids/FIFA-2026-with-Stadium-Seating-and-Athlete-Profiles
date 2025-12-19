@@ -2090,7 +2090,8 @@
     "disclaimer": "الأسعار المعروضة هي أسعار تقديرية لليلة الواحدة وقد تختلف حسب التواريخ والتوافر. احجز مبكراً لتواريخ كأس العالم حيث سيكون الطلب مرتفعاً للغاية."
   },
   "criticalInfo": {
-    "title": "Critical Information",
+    "title": "معلومات هامة",
+    "solution": "الحل",
     "tabs": {
       "safety": "Safety",
       "emergency": "Emergency",

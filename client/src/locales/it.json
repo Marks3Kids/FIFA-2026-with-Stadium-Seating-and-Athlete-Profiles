@@ -2091,6 +2091,7 @@
   },
   "criticalInfo": {
     "title": "Informazioni critiche",
+    "solution": "Soluzione",
     "tabs": {
       "safety": "Sicurezza",
       "emergency": "Emergenza",

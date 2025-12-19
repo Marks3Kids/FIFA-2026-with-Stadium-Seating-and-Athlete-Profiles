@@ -7,6 +7,7 @@ import {
   MapPin, Thermometer, TicketX, AlertCircle, CheckCircle, XCircle, Lightbulb, ArrowLeft, Building2
 } from "lucide-react";
 import { getFlagUrlByCode } from "@/lib/flags";
+import { useTranslation } from "react-i18next";
 
 type InfoCategory = "safety" | "emergency" | "financial" | "legal" | "daily";
 type TravelCategory = "customs" | "travel-safety" | "prohibited" | "tvguide" | "transport" | "consulates";
@@ -2417,6 +2418,7 @@ const customsData = {
 };
 
 export default function CriticalInfo() {
+  const { t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState<InfoCategory>("safety");
   const [activeTravelCategory, setActiveTravelCategory] = useState<TravelCategory>("customs");
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
@@ -2552,11 +2554,14 @@ export default function CriticalInfo() {
                         </div>
                         <p className="text-sm text-muted-foreground ml-7">{card.description}</p>
                       </div>
-                      {expandedCards.has(card.id) ? (
-                        <ChevronUp className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-1" />
-                      ) : (
-                        <ChevronDown className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-1" />
-                      )}
+                      <div className="flex items-center gap-1 flex-shrink-0 mt-1">
+                        <span className="text-xs text-amber-400 font-medium">{t("criticalInfo.solution")}</span>
+                        {expandedCards.has(card.id) ? (
+                          <ChevronUp className="w-5 h-5 text-amber-400" />
+                        ) : (
+                          <ChevronDown className="w-5 h-5 text-amber-400" />
+                        )}
+                      </div>
                     </button>
 
                     {expandedCards.has(card.id) && (

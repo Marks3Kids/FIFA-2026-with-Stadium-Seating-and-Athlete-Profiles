@@ -2090,7 +2090,8 @@
     "disclaimer": "Os preços mostrados são tarifas noturnas estimadas e podem variar com base nas datas e disponibilidade. Reserve com bastante antecedência para as datas da Copa do Mundo, pois a demanda será extremamente alta."
   },
   "criticalInfo": {
-    "title": "Critical Information",
+    "title": "Informações Críticas",
+    "solution": "Solução",
     "tabs": {
       "safety": "Safety",
       "emergency": "Emergency",
