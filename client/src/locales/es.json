@@ -4,6 +4,9 @@
     "companion": "Compañero",
     "year": "2026"
   },
+  "status": {
+    "tbd": "Por definir"
+  },
   "common": {
     "back": "Volver",
     "cancel": "Cancelar",

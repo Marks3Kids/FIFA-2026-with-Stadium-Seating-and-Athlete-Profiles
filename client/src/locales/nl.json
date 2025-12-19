@@ -4,6 +4,9 @@
     "companion": "Gids",
     "year": "2026"
   },
+  "status": {
+    "tbd": "Nog te bepalen"
+  },
   "common": {
     "back": "Terug",
     "cancel": "Annuleren",

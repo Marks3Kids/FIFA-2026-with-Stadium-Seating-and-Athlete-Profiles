@@ -102,7 +102,7 @@ export default function Teams() {
                 <div className="flex items-center gap-2">
                   <span className="inline-flex items-center gap-1 bg-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full">
                     <Users className="w-3 h-3" />
-                    {team.rank === 99 ? 'TBD' : `#${team.rank}`}
+                    {team.rank === 99 ? t("status.tbd") : `#${team.rank}`}
                   </span>
                 </div>
               </div>
@@ -110,13 +110,13 @@ export default function Teams() {
               <div className="flex items-center gap-1.5 text-gray-500 mb-3">
                 <Users className="w-4 h-4" />
                 <span className="text-xs">{t("teams.headCoach")}:</span>
-                <span className="text-sm font-medium text-gray-700">{team.coach}</span>
+                <span className="text-sm font-medium text-gray-700">{team.coach === "TBD" ? t("status.tbd") : team.coach}</span>
               </div>
 
               <div className="flex items-center gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3">
                 <div>
                   <span className="font-medium">{t("teams.record2025")}:</span>{" "}
-                  <span className="text-gray-700">{team.record}</span>
+                  <span className="text-gray-700">{team.record === "TBD" ? t("status.tbd") : team.record}</span>
                 </div>
               </div>
 

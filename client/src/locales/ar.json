@@ -4,6 +4,9 @@
     "companion": "الرفيق",
     "year": "2026"
   },
+  "status": {
+    "tbd": "لم يحدد بعد"
+  },
   "common": {
     "back": "Back",
     "cancel": "Cancel",

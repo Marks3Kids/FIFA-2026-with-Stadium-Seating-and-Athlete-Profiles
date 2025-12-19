@@ -4,6 +4,9 @@
     "companion": "Begleiter",
     "year": "2026"
   },
+  "status": {
+    "tbd": "Noch offen"
+  },
   "common": {
     "back": "Zurück",
     "cancel": "Abbrechen",
