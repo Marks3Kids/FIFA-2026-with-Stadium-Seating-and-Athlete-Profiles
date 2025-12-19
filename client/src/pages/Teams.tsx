@@ -1,5 +1,5 @@
 import { Layout } from "@/components/Layout";
-import { Search, Users } from "lucide-react";
+import { Search, Users, Trophy } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { useState, useMemo } from "react";
@@ -55,7 +55,28 @@ export default function Teams() {
   return (
     <Layout pageTitle="nav.teams">
       <div className="pt-12 px-6 pb-20">
-        <h1 className="text-4xl font-display font-bold text-white mb-6">{t("teams.title")}</h1>
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-display font-bold text-primary mb-2">World Cup 2026</h1>
+          <h2 className="text-2xl font-bold text-white mb-4">{t("teams.title")}</h2>
+          <p className="text-sm text-muted-foreground max-w-lg mx-auto">
+            {t("teams.description", "Complete roster information, current season records, and match highlights for all competing nations. Updated regularly in December 2025, March 2026, and May 2026.")}
+          </p>
+        </div>
+
+        <div className="bg-gray-100 border border-gray-200 rounded-xl p-4 mb-6 text-center">
+          <p className="text-sm text-gray-700">
+            <span className="font-bold text-gray-900">{t("teams.qualifiedCount", "42 of 48 teams qualified")}</span>
+            {" • "}
+            {t("teams.playoffInfo", "The final 6 teams will be determined through the FIFA Play-Off Tournament in March 2026 featuring: Bolivia, Congo DR, Iraq, Jamaica, New Caledonia, and Suriname competing for the remaining spots.")}
+          </p>
+        </div>
+
+        <div className="flex justify-center mb-8">
+          <button className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 px-6 rounded-full transition-colors">
+            <Trophy className="w-4 h-4" />
+            {t("teams.viewKnockoutBrackets", "View Knockout Brackets")}
+          </button>
+        </div>
         
         <div className="relative mb-6">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
