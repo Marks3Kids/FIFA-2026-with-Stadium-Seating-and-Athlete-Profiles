@@ -79,14 +79,17 @@ export default function Matches() {
                 ) : (
                   matches.map((match) => (
                     <div key={match.id} className="bg-card border border-white/5 rounded-xl p-0 overflow-hidden group">
-                      <div className="bg-white/5 px-4 py-2 flex justify-between items-center border-b border-white/5">
-                        <div className="flex items-center space-x-2 text-muted-foreground">
-                          <Calendar className="w-3 h-3" />
-                          <span className="text-[10px] font-bold uppercase tracking-wider">{match.date}</span>
-                        </div>
-                        <div className="flex items-center space-x-2 text-muted-foreground">
-                          <MapPin className="w-3 h-3" />
-                          <span className="text-[10px] font-bold uppercase tracking-wider">{match.city}</span>
+                      <div className="bg-white/5 px-4 py-2 flex items-center justify-center border-b border-white/5">
+                        <div className="flex items-center space-x-4 text-muted-foreground">
+                          <div className="flex items-center space-x-1.5">
+                            <Calendar className="w-3 h-3" />
+                            <span className="text-[10px] font-bold uppercase tracking-wider">{match.date}</span>
+                          </div>
+                          <span className="text-white/30">•</span>
+                          <div className="flex items-center space-x-1.5">
+                            <MapPin className="w-3 h-3" />
+                            <span className="text-[10px] font-bold uppercase tracking-wider">{match.city}</span>
+                          </div>
                         </div>
                       </div>
                       
