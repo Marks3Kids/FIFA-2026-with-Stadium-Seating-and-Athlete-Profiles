@@ -123,14 +123,14 @@ export default function Home() {
             className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors disabled:opacity-50"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
-            {isRefreshing ? "Updating..." : "Refresh"}
+            {isRefreshing ? t("home.news.updating") : t("home.news.refresh")}
           </button>
         </div>
 
         {dataUpdatedAt && (
           <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground mb-4">
             <Clock className="w-3 h-3" />
-            <span>Last updated: {formatLastUpdated()}</span>
+            <span>{t("home.news.lastUpdated")}: {formatLastUpdated()}</span>
           </div>
         )}
         
@@ -147,12 +147,12 @@ export default function Home() {
         ) : news.length === 0 ? (
           <div className="bg-card border border-white/5 p-6 rounded-xl text-center">
             <Newspaper className="w-10 h-10 text-muted-foreground mx-auto mb-3" />
-            <p className="text-muted-foreground text-sm">No news available</p>
+            <p className="text-muted-foreground text-sm">{t("home.news.noNews")}</p>
             <button
               onClick={handleRefreshNews}
               className="mt-3 text-primary text-sm hover:underline"
             >
-              Tap to load news
+              {t("home.news.tapToLoad")}
             </button>
           </div>
         ) : (
@@ -192,11 +192,11 @@ export default function Home() {
                   {item.link ? (
                     <span className="text-[10px] text-primary flex items-center gap-1">
                       <ExternalLink className="w-3 h-3" />
-                      Read full article
+                      {t("home.news.readFullArticle")}
                     </span>
                   ) : (
                     <span className="text-[10px] text-muted-foreground flex items-center gap-1">
-                      Tap for details
+                      {t("home.news.tapForDetails")}
                     </span>
                   )}
                   <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
@@ -207,7 +207,7 @@ export default function Home() {
         )}
 
         <p className="text-[10px] text-muted-foreground text-center mt-4">
-          News updates automatically every 4 hours from ESPN & Goal.com
+          {t("home.news.autoUpdateNotice")}
         </p>
       </div>
 

@@ -125,6 +125,16 @@
     "potDrawAlt": "Coppa del Mondo FIFA 2026: i sorteggi",
     "viewSchedule": "Visualizza il calendario delle partite",
     "latestNews": "Ultime notizie",
+    "news": {
+      "refresh": "Aggiorna",
+      "updating": "Aggiornamento...",
+      "lastUpdated": "Ultimo aggiornamento",
+      "noNews": "Nessuna notizia disponibile",
+      "tapToLoad": "Tocca per caricare le notizie",
+      "readFullArticle": "Leggi l'articolo completo",
+      "tapForDetails": "Tocca per i dettagli",
+      "autoUpdateNotice": "Le notizie vengono aggiornate automaticamente ogni 4 ore da ESPN, BBC Sport e Sky Sports"
+    },
     "explore": "Esplorare",
     "hostCities": "Città ospitanti",
     "discoverVenues": "Scopri tutte le 16 sedi",

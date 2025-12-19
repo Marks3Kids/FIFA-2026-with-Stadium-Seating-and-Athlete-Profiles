@@ -125,6 +125,16 @@
     "potDrawAlt": "Bombos del sorteo de la Copa Mundial de la FIFA 2026",
     "viewSchedule": "Ver el calendario de partidos",
     "latestNews": "Últimas noticias",
+    "news": {
+      "refresh": "Actualizar",
+      "updating": "Actualizando...",
+      "lastUpdated": "Última actualización",
+      "noNews": "No hay noticias disponibles",
+      "tapToLoad": "Toca para cargar noticias",
+      "readFullArticle": "Leer artículo completo",
+      "tapForDetails": "Toca para más detalles",
+      "autoUpdateNotice": "Las noticias se actualizan automáticamente cada 4 horas de ESPN, BBC Sport y Sky Sports"
+    },
     "explore": "Explore",
     "hostCities": "Ciudades anfitrionas",
     "discoverVenues": "Descubra las 16 sedes",

@@ -125,6 +125,16 @@
     "potDrawAlt": "FIFA World Cup 2026 Draw Pots",
     "viewSchedule": "View Match Schedule",
     "latestNews": "Latest News",
+    "news": {
+      "refresh": "Refresh",
+      "updating": "Updating...",
+      "lastUpdated": "Last updated",
+      "noNews": "No news available",
+      "tapToLoad": "Tap to load news",
+      "readFullArticle": "Read full article",
+      "tapForDetails": "Tap for details",
+      "autoUpdateNotice": "News updates automatically every 4 hours from ESPN, BBC Sport & Sky Sports"
+    },
     "explore": "Explore",
     "hostCities": "Host Cities",
     "discoverVenues": "Discover all 16 venues",

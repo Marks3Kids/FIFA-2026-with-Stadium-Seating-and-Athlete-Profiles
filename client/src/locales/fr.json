@@ -125,6 +125,16 @@
     "potDrawAlt": "Tirage au sort de la Coupe du Monde de la FIFA 2026",
     "viewSchedule": "Voir le programme des matches",
     "latestNews": "Dernières nouvelles",
+    "news": {
+      "refresh": "Actualiser",
+      "updating": "Mise à jour...",
+      "lastUpdated": "Dernière mise à jour",
+      "noNews": "Aucune actualité disponible",
+      "tapToLoad": "Appuyez pour charger les actualités",
+      "readFullArticle": "Lire l'article complet",
+      "tapForDetails": "Appuyez pour plus de détails",
+      "autoUpdateNotice": "Les actualités se mettent à jour automatiquement toutes les 4 heures depuis ESPN, BBC Sport et Sky Sports"
+    },
     "explore": "Explorer",
     "hostCities": "Villes d'accueil",
     "discoverVenues": "Découvrez les 16 sites",

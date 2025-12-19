@@ -125,6 +125,16 @@
     "potDrawAlt": "FIFA World Cup 2026 Auslosungstöpfe",
     "viewSchedule": "Spielplan ansehen",
     "latestNews": "Neueste Nachrichten",
+    "news": {
+      "refresh": "Aktualisieren",
+      "updating": "Wird aktualisiert...",
+      "lastUpdated": "Zuletzt aktualisiert",
+      "noNews": "Keine Nachrichten verfügbar",
+      "tapToLoad": "Tippen um Nachrichten zu laden",
+      "readFullArticle": "Vollständigen Artikel lesen",
+      "tapForDetails": "Tippen für Details",
+      "autoUpdateNotice": "Nachrichten werden automatisch alle 4 Stunden von ESPN, BBC Sport & Sky Sports aktualisiert"
+    },
     "explore": "Erkunden Sie",
     "hostCities": "Gastgeberstädte",
     "discoverVenues": "Entdecken Sie alle 16 Veranstaltungsorte",

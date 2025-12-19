@@ -125,6 +125,16 @@
     "potDrawAlt": "FIFA Wereldkampioenschap 2026 Loting",
     "viewSchedule": "Wedstrijdschema bekijken",
     "latestNews": "Laatste nieuws",
+    "news": {
+      "refresh": "Vernieuwen",
+      "updating": "Bijwerken...",
+      "lastUpdated": "Laatst bijgewerkt",
+      "noNews": "Geen nieuws beschikbaar",
+      "tapToLoad": "Tik om nieuws te laden",
+      "readFullArticle": "Lees het volledige artikel",
+      "tapForDetails": "Tik voor details",
+      "autoUpdateNotice": "Nieuws wordt elke 4 uur automatisch bijgewerkt van ESPN, BBC Sport en Sky Sports"
+    },
     "explore": "Verken",
     "hostCities": "Gaststeden",
     "discoverVenues": "Ontdek alle 16 locaties",
