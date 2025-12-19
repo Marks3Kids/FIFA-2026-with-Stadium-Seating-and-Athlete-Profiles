@@ -199,7 +199,9 @@
       "groupStage": "Groepsfase",
       "roundOf32": "Ronde van 32",
       "roundOf16": "Ronde van 16",
-      "quarterFinals": "Kwartfinales"
+      "quarterFinals": "Kwartfinales",
+      "semifinals": "Halve finales",
+      "final": "Finale"
     }
   },
   "cities": {

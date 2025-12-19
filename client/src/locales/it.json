@@ -198,8 +198,10 @@
     "stages": {
       "groupStage": "Fase a gruppi",
       "roundOf32": "Turno dei 32",
-      "roundOf16": "Andata degli ottavi di finale",
-      "quarterFinals": "Quarti di finale"
+      "roundOf16": "Ottavi di finale",
+      "quarterFinals": "Quarti di finale",
+      "semifinals": "Semifinali",
+      "final": "Finale"
     }
   },
   "cities": {

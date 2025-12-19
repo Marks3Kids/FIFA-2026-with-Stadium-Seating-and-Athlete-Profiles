@@ -21,7 +21,9 @@ export default function Matches() {
     { key: "Group Stage", label: t("matches.stages.groupStage") },
     { key: "Round of 32", label: t("matches.stages.roundOf32") },
     { key: "Round of 16", label: t("matches.stages.roundOf16") },
-    { key: "Quarter-finals", label: t("matches.stages.quarterFinals") },
+    { key: "Quarterfinals", label: t("matches.stages.quarterFinals") },
+    { key: "Semifinals", label: t("matches.stages.semifinals") },
+    { key: "Final", label: t("matches.stages.final") },
   ];
   
   const { data: allMatches = [], isLoading } = useQuery<Match[]>({
@@ -62,7 +64,12 @@ export default function Matches() {
           </TabsList>
 
           {stages.map((stage) => {
-            const matches = allMatches.filter((m) => m.stage === stage.key);
+            const matches = allMatches.filter((m) => {
+              if (stage.key === "Group Stage") {
+                return m.stage.startsWith("Group ");
+              }
+              return m.stage === stage.key || m.stage.includes(stage.key);
+            });
             return (
               <TabsContent key={stage.key} value={stage.key} className="space-y-4 mt-0">
                 {matches.length === 0 ? (

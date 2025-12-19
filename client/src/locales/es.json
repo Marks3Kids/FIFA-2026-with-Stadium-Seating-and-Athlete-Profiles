@@ -197,9 +197,11 @@
     "localTime": "Hora local",
     "stages": {
       "groupStage": "Fase de grupos",
-      "roundOf32": "Octavos de final",
+      "roundOf32": "Ronda de 32",
       "roundOf16": "Octavos de final",
-      "quarterFinals": "Cuartos de final"
+      "quarterFinals": "Cuartos de final",
+      "semifinals": "Semifinales",
+      "final": "Final"
     }
   },
   "cities": {

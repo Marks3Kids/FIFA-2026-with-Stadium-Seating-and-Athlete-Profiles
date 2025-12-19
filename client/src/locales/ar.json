@@ -191,15 +191,17 @@
     "viewKnockoutBrackets": "عرض جدول خروج المغلوب"
   },
   "matches": {
-    "title": "Match Schedule",
-    "loading": "Loading matches...",
-    "noMatches": "No matches scheduled for this stage yet",
-    "localTime": "Local Time",
+    "title": "جدول المباريات",
+    "loading": "جارٍ تحميل المباريات...",
+    "noMatches": "لا توجد مباريات مجدولة لهذه المرحلة بعد",
+    "localTime": "التوقيت المحلي",
     "stages": {
-      "groupStage": "Group Stage",
-      "roundOf32": "Round of 32",
-      "roundOf16": "Round of 16",
-      "quarterFinals": "Quarter-finals"
+      "groupStage": "مرحلة المجموعات",
+      "roundOf32": "دور الـ32",
+      "roundOf16": "دور الـ16",
+      "quarterFinals": "ربع النهائي",
+      "semifinals": "نصف النهائي",
+      "final": "النهائي"
     }
   },
   "cities": {

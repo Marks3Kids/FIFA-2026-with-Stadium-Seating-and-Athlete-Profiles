@@ -191,15 +191,17 @@
     "viewKnockoutBrackets": "ノックアウトトーナメント表を見る"
   },
   "matches": {
-    "title": "Match Schedule",
-    "loading": "Loading matches...",
-    "noMatches": "No matches scheduled for this stage yet",
-    "localTime": "Local Time",
+    "title": "試合スケジュール",
+    "loading": "試合を読み込み中...",
+    "noMatches": "このステージにはまだ試合が予定されていません",
+    "localTime": "現地時間",
     "stages": {
-      "groupStage": "Group Stage",
-      "roundOf32": "Round of 32",
-      "roundOf16": "Round of 16",
-      "quarterFinals": "Quarter-finals"
+      "groupStage": "グループステージ",
+      "roundOf32": "ラウンド32",
+      "roundOf16": "ラウンド16",
+      "quarterFinals": "準々決勝",
+      "semifinals": "準決勝",
+      "final": "決勝"
     }
   },
   "cities": {

@@ -199,7 +199,9 @@
       "groupStage": "Gruppenphase",
       "roundOf32": "Runde der 32",
       "roundOf16": "Achtelfinale",
-      "quarterFinals": "Viertelfinale"
+      "quarterFinals": "Viertelfinale",
+      "semifinals": "Halbfinale",
+      "final": "Finale"
     }
   },
   "cities": {

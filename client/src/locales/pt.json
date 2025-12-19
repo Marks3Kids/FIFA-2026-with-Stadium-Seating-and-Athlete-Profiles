@@ -191,15 +191,17 @@
     "viewKnockoutBrackets": "Ver Quadro Eliminatório"
   },
   "matches": {
-    "title": "Match Schedule",
-    "loading": "Loading matches...",
-    "noMatches": "No matches scheduled for this stage yet",
-    "localTime": "Local Time",
+    "title": "Calendário de Jogos",
+    "loading": "Carregando jogos...",
+    "noMatches": "Ainda não há jogos agendados para esta fase",
+    "localTime": "Hora Local",
     "stages": {
-      "groupStage": "Group Stage",
-      "roundOf32": "Round of 32",
-      "roundOf16": "Round of 16",
-      "quarterFinals": "Quarter-finals"
+      "groupStage": "Fase de Grupos",
+      "roundOf32": "Oitavas de Final",
+      "roundOf16": "Oitavas de Final",
+      "quarterFinals": "Quartas de Final",
+      "semifinals": "Semifinais",
+      "final": "Final"
     }
   },
   "cities": {

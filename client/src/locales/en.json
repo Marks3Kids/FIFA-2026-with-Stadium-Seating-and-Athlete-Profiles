@@ -199,7 +199,9 @@
       "groupStage": "Group Stage",
       "roundOf32": "Round of 32",
       "roundOf16": "Round of 16",
-      "quarterFinals": "Quarter-finals"
+      "quarterFinals": "Quarterfinals",
+      "semifinals": "Semifinals",
+      "final": "Final"
     }
   },
   "cities": {
