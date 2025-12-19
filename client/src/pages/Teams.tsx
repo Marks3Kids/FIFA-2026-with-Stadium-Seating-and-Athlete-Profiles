@@ -16,6 +16,70 @@ interface Team {
   points: string;
 }
 
+const countryCodeMap: Record<string, string> = {
+  "Algeria": "dz",
+  "Argentina": "ar",
+  "Australia": "au",
+  "Austria": "at",
+  "Belgium": "be",
+  "Bolivia": "bo",
+  "Brazil": "br",
+  "Cameroon": "cm",
+  "Canada": "ca",
+  "Chile": "cl",
+  "Colombia": "co",
+  "Costa Rica": "cr",
+  "Croatia": "hr",
+  "Czech Republic": "cz",
+  "Denmark": "dk",
+  "DR Congo": "cd",
+  "Ecuador": "ec",
+  "Egypt": "eg",
+  "England": "gb-eng",
+  "France": "fr",
+  "Germany": "de",
+  "Honduras": "hn",
+  "Hungary": "hu",
+  "Iran": "ir",
+  "Iraq": "iq",
+  "Italy": "it",
+  "Jamaica": "jm",
+  "Japan": "jp",
+  "Mexico": "mx",
+  "Morocco": "ma",
+  "Netherlands": "nl",
+  "New Zealand": "nz",
+  "Nigeria": "ng",
+  "Panama": "pa",
+  "Paraguay": "py",
+  "Peru": "pe",
+  "Poland": "pl",
+  "Portugal": "pt",
+  "Qatar": "qa",
+  "Saudi Arabia": "sa",
+  "Scotland": "gb-sct",
+  "Senegal": "sn",
+  "Serbia": "rs",
+  "Slovenia": "si",
+  "South Africa": "za",
+  "South Korea": "kr",
+  "Spain": "es",
+  "Switzerland": "ch",
+  "Tunisia": "tn",
+  "Turkey": "tr",
+  "Ukraine": "ua",
+  "United States": "us",
+  "Uruguay": "uy",
+  "Uzbekistan": "uz",
+  "Venezuela": "ve",
+  "Wales": "gb-wls",
+};
+
+function getFlagUrl(countryName: string): string {
+  const code = countryCodeMap[countryName] || "un";
+  return `https://flagcdn.com/w80/${code}.png`;
+}
+
 export default function Teams() {
   const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState("");
@@ -100,7 +164,11 @@ export default function Teams() {
             >
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-4">
-                  <span className="text-4xl drop-shadow-sm">{team.flag}</span>
+                  <img 
+                    src={getFlagUrl(team.name)} 
+                    alt={`${team.name} flag`}
+                    className="w-12 h-8 object-cover rounded shadow-sm border border-gray-200"
+                  />
                   <div>
                     <h3 className="font-bold text-xl text-gray-900 leading-tight">
                       {team.teamName}
