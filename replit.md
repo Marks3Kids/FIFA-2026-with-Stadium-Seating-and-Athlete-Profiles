@@ -141,33 +141,35 @@ Components using flag images:
 - History.tsx - Historical tournament data
 - Players.tsx - Player nationality flags
 
-### Interactive Knockout Bracket System
+### Match Schedule System
 
-**Database Schema (`shared/schema.ts` - knockoutBrackets table):**
-- Stores 32 tournament matches across 6 stages (Round of 32, Round of 16, Quarterfinals, Semifinals, Third Place, Final)
-- Each match includes team slots, venue information (stadium, city, country), and translations JSONB column
-- Supports bracket sides (left/right/center) for visual layout
+**Complete Tournament Schedule:**
+- 104 total matches across all tournament stages
+- 72 group stage matches (Groups A-L, 6 matches per group)
+- 32 knockout matches (Round of 32 through Final)
+- Official schedule released December 6, 2025
+
+**Matches Page UI (`client/src/pages/Matches.tsx`):**
+- Stage tabs for navigation: Group Stage, Round of 32, Round of 16, Quarterfinals, Semifinals, Final
+- Match cards display team names, venue, city, date, and match status
+- All stage names translated via i18next for 9 supported languages
 
 **Bracket Translation (`server/translationService.ts`):**
 - Translates placeholder slot names (e.g., "Winner Group A" → "Ganador Grupo A" for Spanish)
-- Uses same OpenAI GPT-4o-mini integration as news translation
-- Caches translations in database JSONB column per bracket match
+- Translates stadium and city names for international users
+- Uses OpenAI GPT-4o-mini integration
+- Caches translations in database JSONB column per match
 - First translation: ~934ms (API call), cached: ~24ms
 
 **API Endpoints:**
-- `GET /api/knockout-brackets?stage=final&locale=es` - Fetch brackets with optional stage filter and translation
-- `POST /api/knockout-brackets/seed` - Reset and seed bracket data
+- `GET /api/matches?stage=Final&locale=es` - Fetch matches with stage filter and translation
+- `GET /api/knockout-brackets?stage=final&locale=es` - Fetch knockout bracket data
 
-**UI Component (`client/src/components/KnockoutBracketModal.tsx`):**
-- Full-screen modal accessible from "View Knockout Brackets" button on Teams page
-- Horizontal scroll with stage tabs (Round of 32, Round of 16, Quarterfinals, etc.)
-- Match cards display team slots, venue, city, country, and match status
-- All stage names and UI labels translated via i18next
-
-**Bracket Structure:**
-- 16 Round of 32 matches (8 left side, 8 right side)
-- 8 Round of 16 matches
-- 4 Quarterfinal matches
-- 2 Semifinal matches
-- 1 Third Place match
-- 1 Final match at MetLife Stadium, New York/New Jersey
+**Match Structure:**
+- Group Stage: 72 matches across 12 groups (June 11-28, 2026)
+- Round of 32: 16 matches (June 29-July 1, 2026)
+- Round of 16: 8 matches (July 4-6, 2026)
+- Quarterfinals: 4 matches (July 10-11, 2026)
+- Semifinals: 2 matches (July 14-15, 2026)
+- Third Place: 1 match (July 18, 2026)
+- Final: 1 match at MetLife Stadium, New York/New Jersey (July 19, 2026)
