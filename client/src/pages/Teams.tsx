@@ -101,8 +101,8 @@ export default function Teams() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="inline-flex items-center gap-1 bg-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full">
-                    <Users className="w-3 h-3" />
-                    {team.rank === 99 ? t("status.tbd") : `#${team.rank}`}
+                    <Trophy className="w-3 h-3" />
+                    {team.rank === 99 ? t("status.tbd") : `${t("status.rank")} #${team.rank}`}
                   </span>
                 </div>
               </div>
