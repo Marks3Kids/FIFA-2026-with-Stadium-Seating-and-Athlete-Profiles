@@ -1,6 +1,5 @@
 import { Layout } from "@/components/Layout";
-import { ArrowRight, MapPin, Shield } from "lucide-react";
-import { Link } from "wouter";
+import { FileText, Scale } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import potsBg from "@assets/image_1764366081093.png";
@@ -73,17 +72,12 @@ export default function Home() {
           </div>
         </div>
 
-        <Link href="/matches" className="w-full bg-primary text-primary-foreground font-bold py-4 rounded-xl flex items-center justify-center space-x-2 hover:bg-primary/90 transition-all active:scale-[0.98] shadow-[0_0_20px_rgba(34,197,94,0.3)]">
-            <span className="uppercase tracking-widest text-sm">{t("home.viewSchedule")}</span>
-            <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
+        </div>
 
       {/* Latest Updates */}
       <div className="px-6 py-6">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-display font-bold text-white">{t("home.latestNews")}</h2>
-          <Link href="/updates" className="text-xs font-bold text-primary uppercase tracking-widest hover:text-primary/80">{t("common.viewAll")}</Link>
         </div>
         
         <div className="space-y-4">
@@ -103,24 +97,38 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Featured Sections */}
+      {/* Legal & Terms Section */}
       <div className="px-6 pb-24">
-        <h2 className="text-2xl font-display font-bold text-white mb-6">{t("home.explore")}</h2>
-        <div className="grid grid-cols-2 gap-4">
-          <Link href="/cities" className="bg-card border border-white/5 p-4 rounded-xl h-32 flex flex-col justify-between group hover:border-primary/50 transition-colors">
-              <MapPin className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
-              <div>
-                <span className="block text-sm font-bold text-white">{t("home.hostCities")}</span>
-                <span className="text-[10px] text-muted-foreground">{t("home.discoverVenues")}</span>
-              </div>
-          </Link>
-          <Link href="/teams" className="bg-card border border-white/5 p-4 rounded-xl h-32 flex flex-col justify-between group hover:border-primary/50 transition-colors">
-              <Shield className="w-6 h-6 text-accent group-hover:scale-110 transition-transform" />
-              <div>
-                <span className="block text-sm font-bold text-white">{t("home.qualifiedTeams")}</span>
-                <span className="text-[10px] text-muted-foreground">{t("home.seeWhoQualified")}</span>
-              </div>
-          </Link>
+        <div className="bg-card border border-white/5 rounded-xl p-5 space-y-4">
+          <div className="flex items-center gap-2 mb-2">
+            <Scale className="w-5 h-5 text-muted-foreground" />
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider">{t("legal.title")}</h3>
+          </div>
+          
+          <div className="space-y-3 text-xs text-muted-foreground leading-relaxed">
+            <p>{t("legal.disclaimer")}</p>
+            <p>{t("legal.noAffiliation")}</p>
+            <p>{t("legal.informationalPurposes")}</p>
+            <p>{t("legal.thirdPartyLinks")}</p>
+            <p>{t("legal.accuracyDisclaimer")}</p>
+          </div>
+
+          <div className="border-t border-white/5 pt-4 mt-4">
+            <div className="flex items-center gap-2 mb-2">
+              <FileText className="w-4 h-4 text-muted-foreground" />
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("legal.termsTitle")}</h4>
+            </div>
+            <div className="space-y-2 text-xs text-muted-foreground leading-relaxed">
+              <p>{t("legal.termsAcceptance")}</p>
+              <p>{t("legal.intellectualProperty")}</p>
+              <p>{t("legal.liabilityLimitation")}</p>
+              <p>{t("legal.privacyStatement")}</p>
+            </div>
+          </div>
+
+          <p className="text-[10px] text-muted-foreground/60 pt-2 border-t border-white/5">
+            {t("legal.copyright")}
+          </p>
         </div>
       </div>
     </Layout>

@@ -48,6 +48,20 @@
     "qualifiedTeams": "Qualifizierte Teams",
     "seeWhoQualified": "Sehen Sie, wer sich durchgesetzt hat"
   },
+  "legal": {
+    "title": "Rechtliche Informationen",
+    "disclaimer": "HAFTUNGSAUSSCHLUSS: Diese Anwendung ist eine unabhängige, von Fans erstellte Begleit-App und ist nicht mit der FIFA, der FIFA Weltmeisterschaft oder offiziellen Organisationseinrichtungen verbunden, unterstützt oder verknüpft.",
+    "noAffiliation": "Alle Marken, Logos und Markennamen sind Eigentum ihrer jeweiligen Inhaber. Jede Verwendung dieser Marken dient nur zu Informationszwecken und impliziert keine Unterstützung.",
+    "informationalPurposes": "Die in dieser App bereitgestellten Informationen dienen nur allgemeinen Informationszwecken. Obwohl wir uns bemühen, die Informationen aktuell und genau zu halten, geben wir keine Zusicherungen oder Garantien bezüglich der Vollständigkeit, Genauigkeit, Zuverlässigkeit oder Verfügbarkeit der Informationen.",
+    "thirdPartyLinks": "Diese App kann Links zu Websites und Diensten Dritter enthalten. Wir sind nicht verantwortlich für den Inhalt, die Genauigkeit oder die Praktiken dieser externen Websites.",
+    "accuracyDisclaimer": "Spielpläne, Veranstaltungsortinformationen, Transportdetails und andere Daten können sich ändern. Benutzer sollten alle Informationen über offizielle Quellen überprüfen, bevor sie Reisearrangements treffen.",
+    "termsTitle": "Nutzungsbedingungen",
+    "termsAcceptance": "Durch die Nutzung dieser Anwendung stimmen Sie diesen Bedingungen zu. Diese App wird \"wie besehen\" ohne jegliche Garantien, ausdrücklich oder stillschweigend, bereitgestellt.",
+    "intellectualProperty": "Alle für diese App erstellten Inhalte, mit Ausnahme von Materialien Dritter, sind urheberrechtlich geschützt. Sie dürfen ohne Genehmigung nicht reproduzieren, verteilen oder abgeleitete Werke erstellen.",
+    "liabilityLimitation": "Unter keinen Umständen haften die App-Entwickler für direkte, indirekte, zufällige, Folge- oder besondere Schäden, die aus Ihrer Nutzung dieser Anwendung entstehen.",
+    "privacyStatement": "Wir respektieren Ihre Privatsphäre. Alle gesammelten personenbezogenen Daten werden ausschließlich zur Verbesserung Ihrer Erfahrung verwendet und nicht ohne Ihre Zustimmung an Dritte weitergegeben.",
+    "copyright": "© 2025 World Cup Companion. Alle Rechte vorbehalten. Dies ist eine inoffizielle Fan-Anwendung."
+  },
   "teams": {
     "title": "Qualifizierte Teams",
     "searchPlaceholder": "Teams suchen...",

@@ -48,6 +48,20 @@
     "qualifiedTeams": "Qualified Teams",
     "seeWhoQualified": "See who made the cut"
   },
+  "legal": {
+    "title": "Legal Information",
+    "disclaimer": "DISCLAIMER: This application is an independent fan-made companion app and is not affiliated with, endorsed by, or connected to FIFA, the FIFA World Cup, or any official organizing bodies.",
+    "noAffiliation": "All trademarks, logos, and brand names are the property of their respective owners. Any use of these marks is for informational purposes only and does not imply endorsement.",
+    "informationalPurposes": "The information provided in this app is for general informational purposes only. While we strive to keep the information up to date and accurate, we make no representations or warranties of any kind about the completeness, accuracy, reliability, or availability of the information.",
+    "thirdPartyLinks": "This app may contain links to third-party websites and services. We are not responsible for the content, accuracy, or practices of these external sites.",
+    "accuracyDisclaimer": "Match schedules, venue information, transportation details, and other data are subject to change. Users should verify all information through official sources before making travel arrangements.",
+    "termsTitle": "Terms of Use",
+    "termsAcceptance": "By using this application, you agree to these terms. This app is provided \"as is\" without any warranties, express or implied.",
+    "intellectualProperty": "All content created for this app, excluding third-party materials, is protected by copyright. You may not reproduce, distribute, or create derivative works without permission.",
+    "liabilityLimitation": "Under no circumstances shall the app developers be liable for any direct, indirect, incidental, consequential, or special damages arising from your use of this application.",
+    "privacyStatement": "We respect your privacy. Any personal data collected is used solely to improve your experience and is not shared with third parties without your consent.",
+    "copyright": "© 2025 World Cup Companion. All rights reserved. This is an unofficial fan application."
+  },
   "teams": {
     "title": "Qualified Teams",
     "searchPlaceholder": "Search teams...",

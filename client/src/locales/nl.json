@@ -48,6 +48,20 @@
     "qualifiedTeams": "Gekwalificeerde teams",
     "seeWhoQualified": "Kijk wie de knoop heeft doorgehakt"
   },
+  "legal": {
+    "title": "Juridische Informatie",
+    "disclaimer": "DISCLAIMER: Deze applicatie is een onafhankelijke, door fans gemaakte begeleidende app en is niet gelieerd aan, goedgekeurd door of verbonden met FIFA, het FIFA Wereldkampioenschap of enige officiële organiserende instanties.",
+    "noAffiliation": "Alle handelsmerken, logo's en merknamen zijn eigendom van hun respectieve eigenaars. Elk gebruik van deze merken is uitsluitend voor informatieve doeleinden en impliceert geen goedkeuring.",
+    "informationalPurposes": "De informatie in deze app wordt uitsluitend verstrekt voor algemene informatiedoeleinden. Hoewel we ernaar streven de informatie up-to-date en nauwkeurig te houden, doen we geen verklaringen of garanties van welke aard dan ook over de volledigheid, nauwkeurigheid, betrouwbaarheid of beschikbaarheid van de informatie.",
+    "thirdPartyLinks": "Deze app kan links bevatten naar websites en diensten van derden. Wij zijn niet verantwoordelijk voor de inhoud, nauwkeurigheid of praktijken van deze externe sites.",
+    "accuracyDisclaimer": "Wedstrijdschema's, locatie-informatie, vervoersdetails en andere gegevens kunnen worden gewijzigd. Gebruikers dienen alle informatie te verifiëren via officiële bronnen voordat zij reisarrangementen maken.",
+    "termsTitle": "Gebruiksvoorwaarden",
+    "termsAcceptance": "Door deze applicatie te gebruiken, gaat u akkoord met deze voorwaarden. Deze app wordt geleverd \"zoals het is\" zonder enige garanties, expliciet of impliciet.",
+    "intellectualProperty": "Alle content die voor deze app is gemaakt, met uitzondering van materialen van derden, is auteursrechtelijk beschermd. U mag niet reproduceren, distribueren of afgeleide werken maken zonder toestemming.",
+    "liabilityLimitation": "In geen geval zijn de app-ontwikkelaars aansprakelijk voor directe, indirecte, incidentele, gevolgschade of speciale schade die voortvloeit uit uw gebruik van deze applicatie.",
+    "privacyStatement": "Wij respecteren uw privacy. Alle verzamelde persoonlijke gegevens worden uitsluitend gebruikt om uw ervaring te verbeteren en worden niet gedeeld met derden zonder uw toestemming.",
+    "copyright": "© 2025 World Cup Companion. Alle rechten voorbehouden. Dit is een onofficiële fan-applicatie."
+  },
   "teams": {
     "title": "Gekwalificeerde teams",
     "searchPlaceholder": "Zoekteams...",

@@ -48,6 +48,20 @@
     "qualifiedTeams": "Qualified Teams",
     "seeWhoQualified": "See who made the cut"
   },
+  "legal": {
+    "title": "Informações Legais",
+    "disclaimer": "AVISO: Este aplicativo é um app de acompanhamento independente criado por fãs e não é afiliado, endossado ou conectado à FIFA, à Copa do Mundo da FIFA ou a quaisquer órgãos organizadores oficiais.",
+    "noAffiliation": "Todas as marcas registradas, logotipos e nomes de marcas são propriedade de seus respectivos proprietários. Qualquer uso dessas marcas é apenas para fins informativos e não implica endosso.",
+    "informationalPurposes": "As informações fornecidas neste app são apenas para fins informativos gerais. Embora nos esforcemos para manter as informações atualizadas e precisas, não fazemos representações ou garantias de qualquer tipo sobre a completude, precisão, confiabilidade ou disponibilidade das informações.",
+    "thirdPartyLinks": "Este app pode conter links para sites e serviços de terceiros. Não somos responsáveis pelo conteúdo, precisão ou práticas desses sites externos.",
+    "accuracyDisclaimer": "Horários de jogos, informações de locais, detalhes de transporte e outros dados estão sujeitos a alterações. Os usuários devem verificar todas as informações através de fontes oficiais antes de fazer arranjos de viagem.",
+    "termsTitle": "Termos de Uso",
+    "termsAcceptance": "Ao usar este aplicativo, você concorda com estes termos. Este app é fornecido \"como está\" sem quaisquer garantias, expressas ou implícitas.",
+    "intellectualProperty": "Todo o conteúdo criado para este app, excluindo materiais de terceiros, é protegido por direitos autorais. Você não pode reproduzir, distribuir ou criar trabalhos derivados sem permissão.",
+    "liabilityLimitation": "Em nenhuma circunstância os desenvolvedores do app serão responsáveis por quaisquer danos diretos, indiretos, incidentais, consequentes ou especiais decorrentes do uso deste aplicativo.",
+    "privacyStatement": "Respeitamos sua privacidade. Quaisquer dados pessoais coletados são usados exclusivamente para melhorar sua experiência e não são compartilhados com terceiros sem seu consentimento.",
+    "copyright": "© 2025 World Cup Companion. Todos os direitos reservados. Este é um aplicativo não oficial de fãs."
+  },
   "teams": {
     "title": "Qualified Teams",
     "searchPlaceholder": "Search teams...",
