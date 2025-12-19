@@ -177,7 +177,7 @@ export default function Concierge() {
   };
 
   return (
-    <Layout hideBottomNav>
+    <Layout hideNav>
       <div className="flex flex-col h-[100dvh] bg-background">
         <div className="flex-shrink-0 bg-gradient-to-b from-card to-background border-b border-white/5 pt-12 px-6 pb-4">
           <div className="flex items-center justify-between mb-2">
