@@ -140,3 +140,34 @@ Components using flag images:
 - CriticalInfo.tsx - Host cities, broadcast regions, consulates
 - History.tsx - Historical tournament data
 - Players.tsx - Player nationality flags
+
+### Interactive Knockout Bracket System
+
+**Database Schema (`shared/schema.ts` - knockoutBrackets table):**
+- Stores 32 tournament matches across 6 stages (Round of 32, Round of 16, Quarterfinals, Semifinals, Third Place, Final)
+- Each match includes team slots, venue information (stadium, city, country), and translations JSONB column
+- Supports bracket sides (left/right/center) for visual layout
+
+**Bracket Translation (`server/translationService.ts`):**
+- Translates placeholder slot names (e.g., "Winner Group A" → "Ganador Grupo A" for Spanish)
+- Uses same OpenAI GPT-4o-mini integration as news translation
+- Caches translations in database JSONB column per bracket match
+- First translation: ~934ms (API call), cached: ~24ms
+
+**API Endpoints:**
+- `GET /api/knockout-brackets?stage=final&locale=es` - Fetch brackets with optional stage filter and translation
+- `POST /api/knockout-brackets/seed` - Reset and seed bracket data
+
+**UI Component (`client/src/components/KnockoutBracketModal.tsx`):**
+- Full-screen modal accessible from "View Knockout Brackets" button on Teams page
+- Horizontal scroll with stage tabs (Round of 32, Round of 16, Quarterfinals, etc.)
+- Match cards display team slots, venue, city, country, and match status
+- All stage names and UI labels translated via i18next
+
+**Bracket Structure:**
+- 16 Round of 32 matches (8 left side, 8 right side)
+- 8 Round of 16 matches
+- 4 Quarterfinal matches
+- 2 Semifinal matches
+- 1 Third Place match
+- 1 Final match at MetLife Stadium, New York/New Jersey
