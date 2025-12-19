@@ -2373,6 +2373,15 @@
     "consulatesSection": {
       "title": "Consulates by City",
       "subtitle": "Find your country's consulate in each host city",
+      "whenToContact": "When to Contact Your Consulate",
+      "reasons": [
+        "Lost or stolen passport",
+        "Emergency evacuation assistance",
+        "Arrest or detention by local authorities",
+        "Death of a citizen abroad",
+        "Voting abroad during elections"
+      ],
+      "consulatesCount": "consulates",
       "emergencyNote": {
         "title": "Before you travel",
         "description": "Register with your country's embassy and save your consulate's emergency contact number."

@@ -2436,13 +2436,13 @@ export default function CriticalInfo() {
     { id: "daily", labelKey: "criticalInfo.categories.dailyLife", icon: Sun, available: true },
   ];
 
-  const travelCategories: { id: TravelCategory; label: string; icon: any; available: boolean }[] = [
-    { id: "customs", label: "Customs", icon: Stamp, available: true },
-    { id: "travel-safety", label: "Safety", icon: ShieldCheck, available: true },
-    { id: "prohibited", label: "Prohibited", icon: Ban, available: true },
-    { id: "tvguide", label: "TV Guide", icon: Tv, available: true },
-    { id: "transport", label: "Transport", icon: Plane, available: true },
-    { id: "consulates", label: "Consulates", icon: Building2, available: true },
+  const travelCategories: { id: TravelCategory; labelKey: string; icon: any; available: boolean }[] = [
+    { id: "customs", labelKey: "criticalInfo.travelCategories.customs", icon: Stamp, available: true },
+    { id: "travel-safety", labelKey: "criticalInfo.travelCategories.safety", icon: ShieldCheck, available: true },
+    { id: "prohibited", labelKey: "criticalInfo.travelCategories.prohibited", icon: Ban, available: true },
+    { id: "tvguide", labelKey: "criticalInfo.travelCategories.tvguide", icon: Tv, available: true },
+    { id: "transport", labelKey: "criticalInfo.travelCategories.transport", icon: Plane, available: true },
+    { id: "consulates", labelKey: "criticalInfo.travelCategories.consulates", icon: Building2, available: true },
   ];
 
   const toggleCard = (id: string) => {
@@ -2697,7 +2697,7 @@ export default function CriticalInfo() {
                   data-testid={`travel-category-${cat.id}`}
                 >
                   <cat.icon className="w-4 h-4" />
-                  {cat.label}
+                  {t(cat.labelKey)}
                   {!cat.available && <span className="text-[10px] ml-1">(Soon)</span>}
                 </button>
               ))}
@@ -2708,13 +2708,13 @@ export default function CriticalInfo() {
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <Stamp className="w-5 h-5 text-primary" />
-                    <h2 className="text-xl font-display font-bold text-white">Customs & Immigration</h2>
+                    <h2 className="text-xl font-display font-bold text-white">{t("criticalInfo.customsSection.title")}</h2>
                   </div>
-                  <p className="text-muted-foreground text-sm">Entry requirements and procedures</p>
+                  <p className="text-muted-foreground text-sm">{t("criticalInfo.customsSection.subtitle")}</p>
                 </div>
 
                 <div className="space-y-3">
-                  <h3 className="font-bold text-white">Visa Requirements</h3>
+                  <h3 className="font-bold text-white">{t("criticalInfo.customsSection.visaRequirements")}</h3>
                   {customsData.visaRequirements.map((item) => (
                     <div key={item.id} className="bg-card border border-white/5 rounded-xl p-4" data-testid={`customs-${item.id}`}>
                       <p className="text-sm text-muted-foreground">
@@ -2725,10 +2725,10 @@ export default function CriticalInfo() {
                 </div>
 
                 <div className="space-y-3">
-                  <h3 className="font-bold text-red-400">First Point of Entry Rule (Critical)</h3>
+                  <h3 className="font-bold text-red-400">{t("criticalInfo.customsSection.firstPointOfEntry.title")}</h3>
                   <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
                     <p className="text-white font-medium mb-3">
-                      You MUST clear Immigration and Customs at your FIRST US airport, even if connecting to another city.
+                      {t("criticalInfo.customsSection.firstPointOfEntry.description")}
                     </p>
                     <ol className="space-y-2 text-sm text-muted-foreground">
                       {customsData.firstPointOfEntry.map((step, i) => (
@@ -2745,7 +2745,7 @@ export default function CriticalInfo() {
                   <div className="flex items-start gap-2">
                     <span className="text-yellow-400 text-lg">💡</span>
                     <div>
-                      <p className="text-white font-medium text-sm">Tip: Download Mobile Passport Control (MPC) app for express lanes</p>
+                      <p className="text-white font-medium text-sm">{t("criticalInfo.customsSection.mpcTip.title")}</p>
                       <a 
                         href="https://www.cbp.gov/travel/us-citizens/mobile-passport-control" 
                         target="_blank" 
@@ -2754,7 +2754,7 @@ export default function CriticalInfo() {
                         data-testid="link-mpc-app"
                       >
                         <Plane className="w-4 h-4" />
-                        Download Mobile Passport Control App
+                        {t("criticalInfo.customsSection.mpcTip.button")}
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     </div>
@@ -2762,7 +2762,7 @@ export default function CriticalInfo() {
                 </div>
 
                 <div className="space-y-3">
-                  <h3 className="font-bold text-white">Additional Customs Information</h3>
+                  <h3 className="font-bold text-white">{t("criticalInfo.customsSection.additionalInfo")}</h3>
                   {customsData.additionalInfo.map((item) => (
                     <div key={item.id} className="bg-card border border-white/5 rounded-xl p-4" data-testid={`customs-${item.id}`}>
                       <h4 className="font-bold text-white mb-1">{item.title}</h4>
@@ -2780,14 +2780,14 @@ export default function CriticalInfo() {
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <ShieldCheck className="w-5 h-5 text-primary" />
-                        <h2 className="text-xl font-display font-bold text-white">City Safety Guide</h2>
+                        <h2 className="text-xl font-display font-bold text-white">{t("criticalInfo.citySafetySection.title")}</h2>
                       </div>
-                      <p className="text-muted-foreground text-sm">Select a host city to view safety information</p>
+                      <p className="text-muted-foreground text-sm">{t("criticalInfo.citySafetySection.subtitle")}</p>
                     </div>
 
                     <div className="space-y-4">
                       <h3 className="font-bold text-white flex items-center gap-2">
-                        <span className="text-lg">🇺🇸</span> United States
+                        <span className="text-lg">🇺🇸</span> {t("criticalInfo.citySafetySection.countries.usa")}
                       </h3>
                       <div className="grid grid-cols-2 gap-3">
                         {citySafetyData.filter(c => c.country === "USA").map((city) => (
@@ -2819,7 +2819,7 @@ export default function CriticalInfo() {
 
                     <div className="space-y-4">
                       <h3 className="font-bold text-white flex items-center gap-2">
-                        <span className="text-lg">🇲🇽</span> Mexico
+                        <span className="text-lg">🇲🇽</span> {t("criticalInfo.citySafetySection.countries.mexico")}
                       </h3>
                       <div className="grid grid-cols-2 gap-3">
                         {citySafetyData.filter(c => c.country === "Mexico").map((city) => (
@@ -2849,7 +2849,7 @@ export default function CriticalInfo() {
 
                     <div className="space-y-4">
                       <h3 className="font-bold text-white flex items-center gap-2">
-                        <span className="text-lg">🇨🇦</span> Canada
+                        <span className="text-lg">🇨🇦</span> {t("criticalInfo.citySafetySection.countries.canada")}
                       </h3>
                       <div className="grid grid-cols-2 gap-3">
                         {citySafetyData.filter(c => c.country === "Canada").map((city) => (
@@ -2889,7 +2889,7 @@ export default function CriticalInfo() {
                             data-testid="button-back-cities"
                           >
                             <ArrowLeft className="w-4 h-4" />
-                            <span className="text-sm font-medium">Back to Cities</span>
+                            <span className="text-sm font-medium">{t("criticalInfo.citySafetySection.backToCities")}</span>
                           </button>
 
                           <div className="flex items-center gap-3">
@@ -2926,7 +2926,7 @@ export default function CriticalInfo() {
                                     city.heatWarning.startsWith("MODERATE") ? "text-blue-400" :
                                     "text-green-400"
                                   }`}>
-                                    Heat Warning: {city.heatWarning.split(":")[0]}
+                                    {t("criticalInfo.citySafetySection.heatWarning")}: {city.heatWarning.split(":")[0]}
                                   </div>
                                   <p className="text-sm text-muted-foreground">{city.heatWarning.split(": ").slice(1).join(": ")}</p>
                                 </div>
@@ -2938,7 +2938,7 @@ export default function CriticalInfo() {
                             <div className="flex items-start gap-3">
                               <TicketX className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                               <div>
-                                <div className="text-sm font-bold text-amber-400 mb-1">Ticket Scams</div>
+                                <div className="text-sm font-bold text-amber-400 mb-1">{t("criticalInfo.citySafetySection.ticketScams")}</div>
                                 <p className="text-sm text-muted-foreground">{city.ticketScams}</p>
                               </div>
                             </div>
@@ -2947,7 +2947,7 @@ export default function CriticalInfo() {
                           <div className="space-y-3">
                             <div className="flex items-center gap-2">
                               <AlertCircle className="w-4 h-4 text-red-400" />
-                              <h3 className="font-bold text-white text-sm">Local Concerns</h3>
+                              <h3 className="font-bold text-white text-sm">{t("criticalInfo.citySafetySection.localConcerns")}</h3>
                             </div>
                             <div className="bg-card border border-white/5 rounded-xl p-4">
                               <ul className="space-y-2">
@@ -2964,8 +2964,8 @@ export default function CriticalInfo() {
                           <div className="space-y-3">
                             <div className="flex items-center gap-2">
                               <CheckCircle className="w-4 h-4 text-green-400" />
-                              <h3 className="font-bold text-white text-sm">Safe Areas</h3>
-                              <span className="text-[10px] text-muted-foreground">(tap for details)</span>
+                              <h3 className="font-bold text-white text-sm">{t("criticalInfo.citySafetySection.safeAreas")}</h3>
+                              <span className="text-[10px] text-muted-foreground">{t("criticalInfo.citySafetySection.tapForDetails")}</span>
                             </div>
                             <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4">
                               <div className="space-y-2">
@@ -3007,7 +3007,7 @@ export default function CriticalInfo() {
                           <div className="space-y-3">
                             <div className="flex items-center gap-2">
                               <XCircle className="w-4 h-4 text-red-400" />
-                              <h3 className="font-bold text-white text-sm">Areas to Avoid</h3>
+                              <h3 className="font-bold text-white text-sm">{t("criticalInfo.citySafetySection.areasToAvoid")}</h3>
                             </div>
                             <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
                               <div className="flex flex-wrap gap-2">
@@ -3023,7 +3023,7 @@ export default function CriticalInfo() {
                           <div className="space-y-3">
                             <div className="flex items-center gap-2">
                               <Lightbulb className="w-4 h-4 text-yellow-400" />
-                              <h3 className="font-bold text-white text-sm">Tips</h3>
+                              <h3 className="font-bold text-white text-sm">{t("criticalInfo.citySafetySection.tips")}</h3>
                             </div>
                             <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4">
                               <ul className="space-y-2">
@@ -3049,9 +3049,9 @@ export default function CriticalInfo() {
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <Ban className="w-5 h-5 text-red-400" />
-                    <h2 className="text-xl font-display font-bold text-white">Prohibited Items</h2>
+                    <h2 className="text-xl font-display font-bold text-white">{t("criticalInfo.prohibitedSection.title")}</h2>
                   </div>
-                  <p className="text-muted-foreground text-sm">Do not bring these items when entering the United States or stadiums</p>
+                  <p className="text-muted-foreground text-sm">{t("criticalInfo.prohibitedSection.subtitle")}</p>
                 </div>
 
                 <div className="flex gap-2 mb-4">
@@ -3064,7 +3064,7 @@ export default function CriticalInfo() {
                     }`}
                     data-testid="tab-prohibited-customs"
                   >
-                    Entry to USA
+                    {t("criticalInfo.prohibitedSection.entryToUSA")}
                   </button>
                   <button
                     onClick={() => setExpandedCards(new Set(["stadium"]))}
@@ -3075,7 +3075,7 @@ export default function CriticalInfo() {
                     }`}
                     data-testid="tab-prohibited-stadium"
                   >
-                    Stadium Entry
+                    {t("criticalInfo.prohibitedSection.stadiumEntry")}
                   </button>
                 </div>
 
@@ -3109,7 +3109,7 @@ export default function CriticalInfo() {
                                 <div className="bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">
                                   <div className="flex items-center gap-2">
                                     <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
-                                    <span className="text-sm text-red-400">Penalty: {item.penalty}</span>
+                                    <span className="text-sm text-red-400">{t("criticalInfo.prohibitedSection.penalty")}: {item.penalty}</span>
                                   </div>
                                 </div>
                               </div>
@@ -3127,8 +3127,8 @@ export default function CriticalInfo() {
                       <div className="flex items-start gap-2">
                         <span className="text-lg">🎒</span>
                         <div>
-                          <p className="text-white font-medium text-sm">CLEAR BAG POLICY</p>
-                          <p className="text-sm text-amber-100/80 mt-1">Most stadiums only allow clear plastic bags (max 12" x 6" x 12") or small clutches. Arrive early and check venue-specific rules.</p>
+                          <p className="text-white font-medium text-sm">{t("criticalInfo.prohibitedSection.clearBagPolicy.title")}</p>
+                          <p className="text-sm text-amber-100/80 mt-1">{t("criticalInfo.prohibitedSection.clearBagPolicy.description")}</p>
                         </div>
                       </div>
                     </div>
@@ -3175,15 +3175,11 @@ export default function CriticalInfo() {
                       <div className="flex items-start gap-2">
                         <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                         <div>
-                          <p className="text-green-400 font-medium text-sm mb-2">WHAT YOU CAN BRING</p>
+                          <p className="text-green-400 font-medium text-sm mb-2">{t("criticalInfo.prohibitedSection.whatYouCanBring.title")}</p>
                           <ul className="text-sm text-green-100/80 space-y-1">
-                            <li>• Clear bag meeting size requirements</li>
-                            <li>• Tickets (physical/digital) + valid ID/passport</li>
-                            <li>• Mobile phone and small charger</li>
-                            <li>• Small flags without poles</li>
-                            <li>• Sunscreen and hats</li>
-                            <li>• Empty reusable water bottle (some venues)</li>
-                            <li>• Factory-sealed medications</li>
+                            {(t("criticalInfo.prohibitedSection.whatYouCanBring.items", { returnObjects: true }) as string[]).map((item, i) => (
+                              <li key={i}>• {item}</li>
+                            ))}
                           </ul>
                         </div>
                       </div>
@@ -3198,9 +3194,9 @@ export default function CriticalInfo() {
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <Tv className="w-5 h-5 text-primary" />
-                    <h2 className="text-xl font-display font-bold text-white">TV Guide</h2>
+                    <h2 className="text-xl font-display font-bold text-white">{t("criticalInfo.tvGuideSection.title")}</h2>
                   </div>
-                  <p className="text-muted-foreground text-sm">How to watch FIFA World Cup 2026 - All 104 matches, June 11 - July 19</p>
+                  <p className="text-muted-foreground text-sm">{t("criticalInfo.tvGuideSection.subtitle")}</p>
                 </div>
 
                 <div className="flex gap-2 mb-4">
@@ -3213,7 +3209,7 @@ export default function CriticalInfo() {
                     }`}
                     data-testid="tab-tv-english"
                   >
-                    English
+                    {t("criticalInfo.tvGuideSection.tabs.english")}
                   </button>
                   <button
                     onClick={() => setExpandedCards(new Set(["tv-spanish"]))}
@@ -3224,7 +3220,7 @@ export default function CriticalInfo() {
                     }`}
                     data-testid="tab-tv-spanish"
                   >
-                    Spanish
+                    {t("criticalInfo.tvGuideSection.tabs.spanish")}
                   </button>
                   <button
                     onClick={() => setExpandedCards(new Set(["tv-international"]))}
@@ -3235,7 +3231,7 @@ export default function CriticalInfo() {
                     }`}
                     data-testid="tab-tv-international"
                   >
-                    International
+                    {t("criticalInfo.tvGuideSection.tabs.international")}
                   </button>
                 </div>
 
@@ -3366,7 +3362,7 @@ export default function CriticalInfo() {
                   <div className="flex items-start gap-2">
                     <Lightbulb className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-amber-400 font-medium text-sm mb-2">STREAMING TIPS</p>
+                      <p className="text-amber-400 font-medium text-sm mb-2">{t("criticalInfo.tvGuideSection.streamingTips")}</p>
                       <ul className="text-sm text-amber-100/80 space-y-1">
                         {tvGuideData.streamingTips.map((tip, i) => (
                           <li key={i}>• {tip}</li>
@@ -3383,9 +3379,9 @@ export default function CriticalInfo() {
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <Plane className="w-5 h-5 text-primary" />
-                    <h2 className="text-xl font-display font-bold text-white">Private Transport</h2>
+                    <h2 className="text-xl font-display font-bold text-white">{t("criticalInfo.transportSection.title")}</h2>
                   </div>
-                  <p className="text-muted-foreground text-sm">Private jets, aircraft, and yacht information for World Cup host cities</p>
+                  <p className="text-muted-foreground text-sm">{t("criticalInfo.transportSection.subtitle")}</p>
                 </div>
 
                 <div className="flex gap-2 mb-4">
@@ -3398,7 +3394,7 @@ export default function CriticalInfo() {
                     }`}
                     data-testid="tab-transport-jets"
                   >
-                    Private Jets
+                    {t("criticalInfo.transportSection.tabs.jets")}
                   </button>
                   <button
                     onClick={() => setExpandedCards(new Set(["transport-yachts"]))}
@@ -3409,7 +3405,7 @@ export default function CriticalInfo() {
                     }`}
                     data-testid="tab-transport-yachts"
                   >
-                    Yachts
+                    {t("criticalInfo.transportSection.tabs.yachts")}
                   </button>
                   <button
                     onClick={() => setExpandedCards(new Set(["transport-customs"]))}
@@ -3420,7 +3416,7 @@ export default function CriticalInfo() {
                     }`}
                     data-testid="tab-transport-customs"
                   >
-                    Clearance
+                    {t("criticalInfo.transportSection.tabs.clearance")}
                   </button>
                 </div>
 
@@ -3430,15 +3426,15 @@ export default function CriticalInfo() {
                       <div className="flex items-start gap-2">
                         <Plane className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
                         <div>
-                          <p className="text-blue-400 font-medium text-sm mb-1">FBO = Fixed Base Operator</p>
-                          <p className="text-xs text-blue-100/80">Private terminals providing fuel, hangars, lounges, customs, and concierge services for private aircraft.</p>
+                          <p className="text-blue-400 font-medium text-sm mb-1">{t("criticalInfo.transportSection.fboInfo.title")}</p>
+                          <p className="text-xs text-blue-100/80">{t("criticalInfo.transportSection.fboInfo.description")}</p>
                         </div>
                       </div>
                     </div>
 
                     <div className="space-y-4">
                       <h3 className="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2">
-                        <span>🇺🇸</span> USA Host Cities
+                        <span>🇺🇸</span> {t("criticalInfo.transportSection.usaHostCities")}
                       </h3>
                       {privateTransportData.usaCities.map((city) => (
                         <div key={city.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`airport-city-${city.id}`}>
@@ -3459,7 +3455,7 @@ export default function CriticalInfo() {
                             <div className="flex items-center gap-2">
                               <img src={getFlagUrlByCode(city.flag, 40)} alt={city.city} className="w-6 h-4 object-cover rounded" />
                               <span className="font-bold text-white">{city.city}</span>
-                              <span className="text-xs text-muted-foreground">({city.airports.length} airports)</span>
+                              <span className="text-xs text-muted-foreground">({city.airports.length} {t("criticalInfo.transportSection.airports")})</span>
                             </div>
                             {expandedCards.has(`airport-${city.id}`) ? (
                               <ChevronUp className="w-4 h-4 text-muted-foreground" />
@@ -3479,7 +3475,7 @@ export default function CriticalInfo() {
                                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                                       airport.customs ? "bg-green-500/20 text-green-400" : "bg-orange-500/20 text-orange-400"
                                     }`}>
-                                      {airport.customs ? "CBP On-Site" : "No CBP"}
+                                      {airport.customs ? t("criticalInfo.transportSection.cbpOnSite") : t("criticalInfo.transportSection.noCBP")}
                                     </span>
                                   </div>
                                   <div className="flex flex-wrap gap-1 mb-2">
@@ -3498,7 +3494,7 @@ export default function CriticalInfo() {
 
                     <div className="space-y-4">
                       <h3 className="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2">
-                        <span>🇲🇽</span> Mexico Host Cities
+                        <span>🇲🇽</span> {t("criticalInfo.transportSection.mexicoHostCities")}
                       </h3>
                       {privateTransportData.mexicoCities.map((city) => (
                         <div key={city.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`airport-city-${city.id}`}>
@@ -3536,7 +3532,7 @@ export default function CriticalInfo() {
                                       <p className="text-xs text-muted-foreground">{airport.code} • {airport.distance}</p>
                                     </div>
                                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-green-500/20 text-green-400">
-                                      CIQ On-Site
+                                      {t("criticalInfo.transportSection.ciqOnSite")}
                                     </span>
                                   </div>
                                   <div className="flex flex-wrap gap-1 mb-2">
@@ -3555,7 +3551,7 @@ export default function CriticalInfo() {
 
                     <div className="space-y-4">
                       <h3 className="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2">
-                        <span>🇨🇦</span> Canada Host Cities
+                        <span>🇨🇦</span> {t("criticalInfo.transportSection.canadaHostCities")}
                       </h3>
                       {privateTransportData.canadaCities.map((city) => (
                         <div key={city.id} className="bg-card border border-white/5 rounded-xl overflow-hidden" data-testid={`airport-city-${city.id}`}>
@@ -3593,7 +3589,7 @@ export default function CriticalInfo() {
                                       <p className="text-xs text-muted-foreground">{airport.code} • {airport.distance}</p>
                                     </div>
                                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-green-500/20 text-green-400">
-                                      CBSA On-Site
+                                      {t("criticalInfo.transportSection.cbsaOnSite")}
                                     </span>
                                   </div>
                                   <div className="flex flex-wrap gap-1 mb-2">
@@ -3618,8 +3614,8 @@ export default function CriticalInfo() {
                       <div className="flex items-start gap-2">
                         <Anchor className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
                         <div>
-                          <p className="text-cyan-400 font-medium text-sm mb-1">Superyacht Berths</p>
-                          <p className="text-xs text-cyan-100/80">Book marina berths 6+ months ahead during World Cup. Miami has the best superyacht infrastructure in the US.</p>
+                          <p className="text-cyan-400 font-medium text-sm mb-1">{t("criticalInfo.transportSection.yachtInfo.title")}</p>
+                          <p className="text-xs text-cyan-100/80">{t("criticalInfo.transportSection.yachtInfo.description")}</p>
                         </div>
                       </div>
                     </div>
@@ -3638,7 +3634,7 @@ export default function CriticalInfo() {
                               <div className="flex items-start justify-between mb-2">
                                 <h4 className="font-bold text-white text-sm">{marina.name}</h4>
                                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400">
-                                  Max: {marina.maxLength}
+                                  {t("criticalInfo.transportSection.maxLength")}: {marina.maxLength}
                                 </span>
                               </div>
                               <p className="text-xs text-muted-foreground">{marina.features}</p>
@@ -3652,14 +3648,11 @@ export default function CriticalInfo() {
                       <div className="flex items-start gap-2">
                         <Ship className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                         <div>
-                          <p className="text-amber-400 font-medium text-sm mb-2">YACHT ENTRY CHECKLIST</p>
+                          <p className="text-amber-400 font-medium text-sm mb-2">{t("criticalInfo.transportSection.yachtChecklist.title")}</p>
                           <ul className="text-sm text-amber-100/80 space-y-1">
-                            <li>• Report arrival via CBP ROAM app within 24 hours</li>
-                            <li>• Fly Q flag when entering territorial waters</li>
-                            <li>• Stay onboard until customs clearance complete</li>
-                            <li>• All passengers report to nearest CBP office</li>
-                            <li>• Foreign yachts 300+ tons: notify USCG 96 hrs ahead</li>
-                            <li>• Apply for cruising license at first port of entry</li>
+                            {(t("criticalInfo.transportSection.yachtChecklist.items", { returnObjects: true }) as string[]).map((item, i) => (
+                              <li key={i}>• {item}</li>
+                            ))}
                           </ul>
                         </div>
                       </div>
@@ -3743,7 +3736,7 @@ export default function CriticalInfo() {
                   <div className="flex items-start gap-2">
                     <Lightbulb className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-primary font-medium text-sm mb-2">PRIVATE TRANSPORT TIPS</p>
+                      <p className="text-primary font-medium text-sm mb-2">{t("criticalInfo.transportSection.transportTips")}</p>
                       <ul className="text-sm text-primary/80 space-y-1">
                         {privateTransportData.tips.map((tip, i) => (
                           <li key={i}>• {tip}</li>
@@ -3760,8 +3753,8 @@ export default function CriticalInfo() {
                 <div className="flex items-center gap-3 mb-4">
                   <Building2 className="w-6 h-6 text-blue-400" />
                   <div>
-                    <h2 className="text-xl font-display font-bold text-white">Consulates by City</h2>
-                    <p className="text-sm text-muted-foreground">Find your country's consulate in each host city</p>
+                    <h2 className="text-xl font-display font-bold text-white">{t("criticalInfo.consulatesSection.title")}</h2>
+                    <p className="text-sm text-muted-foreground">{t("criticalInfo.consulatesSection.subtitle")}</p>
                   </div>
                 </div>
 
@@ -3769,13 +3762,11 @@ export default function CriticalInfo() {
                   <div className="flex items-start gap-2">
                     <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-amber-200 font-medium text-sm mb-1">When to Contact Your Consulate</p>
+                      <p className="text-amber-200 font-medium text-sm mb-1">{t("criticalInfo.consulatesSection.whenToContact")}</p>
                       <ul className="text-xs text-amber-200/80 space-y-1">
-                        <li>• Lost or stolen passport</li>
-                        <li>• Emergency evacuation assistance</li>
-                        <li>• Arrest or detention by local authorities</li>
-                        <li>• Death of a citizen abroad</li>
-                        <li>• Voting abroad during elections</li>
+                        {(t("criticalInfo.consulatesSection.reasons", { returnObjects: true }) as string[]).map((reason, i) => (
+                          <li key={i}>• {reason}</li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -3795,7 +3786,7 @@ export default function CriticalInfo() {
                           </span>
                           <div className="text-left">
                             <h3 className="font-bold text-white">{cityData.city}</h3>
-                            <p className="text-xs text-muted-foreground">{cityData.consulates.length} consulates</p>
+                            <p className="text-xs text-muted-foreground">{cityData.consulates.length} {t("criticalInfo.consulatesSection.consulatesCount")}</p>
                           </div>
                         </div>
                         {expandedCards.has(`consulate-${cityData.id}`) ? (

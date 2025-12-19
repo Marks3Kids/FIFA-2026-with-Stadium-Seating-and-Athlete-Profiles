@@ -2372,6 +2372,15 @@
     "consulatesSection": {
       "title": "都市別領事館",
       "subtitle": "各開催都市であなたの国の領事館を見つける",
+      "whenToContact": "領事館に連絡すべき時",
+      "reasons": [
+        "パスポートの紛失または盗難",
+        "緊急避難支援",
+        "現地当局による逮捕または拘留",
+        "海外での市民の死亡",
+        "選挙時の在外投票"
+      ],
+      "consulatesCount": "領事館",
       "emergencyNote": {
         "title": "渡航前に",
         "description": "自国の大使館に登録し、領事館の緊急連絡先を保存してください。"

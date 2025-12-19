@@ -2372,6 +2372,15 @@
     "consulatesSection": {
       "title": "Consulados por Ciudad",
       "subtitle": "Encuentre el consulado de su país en cada ciudad sede",
+      "whenToContact": "Cuándo Contactar a Su Consulado",
+      "reasons": [
+        "Pasaporte perdido o robado",
+        "Asistencia de evacuación de emergencia",
+        "Arresto o detención por autoridades locales",
+        "Fallecimiento de un ciudadano en el extranjero",
+        "Votación en el extranjero durante elecciones"
+      ],
+      "consulatesCount": "consulados",
       "emergencyNote": {
         "title": "Antes de viajar",
         "description": "Regístrese con la embajada de su país y guarde el número de emergencia de su consulado."

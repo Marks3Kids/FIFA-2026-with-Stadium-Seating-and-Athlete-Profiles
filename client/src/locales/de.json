@@ -2372,6 +2372,15 @@
     "consulatesSection": {
       "title": "Konsulate nach Stadt",
       "subtitle": "Finden Sie das Konsulat Ihres Landes in jeder Gastgeberstadt",
+      "whenToContact": "Wann Sie Ihr Konsulat Kontaktieren Sollten",
+      "reasons": [
+        "Verlorener oder gestohlener Reisepass",
+        "Notfall-Evakuierungshilfe",
+        "Festnahme oder Inhaftierung durch lokale Behörden",
+        "Tod eines Staatsbürgers im Ausland",
+        "Wählen im Ausland bei Wahlen"
+      ],
+      "consulatesCount": "Konsulate",
       "emergencyNote": {
         "title": "Vor der Reise",
         "description": "Registrieren Sie sich bei der Botschaft Ihres Landes und speichern Sie die Notrufnummer Ihres Konsulats."

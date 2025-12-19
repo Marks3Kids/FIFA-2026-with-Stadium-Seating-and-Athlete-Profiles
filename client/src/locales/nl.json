@@ -2372,6 +2372,15 @@
     "consulatesSection": {
       "title": "Consulaten per Stad",
       "subtitle": "Vind het consulaat van uw land in elke gaststad",
+      "whenToContact": "Wanneer Contact Opnemen met Uw Consulaat",
+      "reasons": [
+        "Verloren of gestolen paspoort",
+        "Noodevacuatiehulp",
+        "Arrestatie of detentie door lokale autoriteiten",
+        "Overlijden van een burger in het buitenland",
+        "Stemmen in het buitenland tijdens verkiezingen"
+      ],
+      "consulatesCount": "consulaten",
       "emergencyNote": {
         "title": "Voor uw reis",
         "description": "Registreer u bij de ambassade van uw land en bewaar het noodnummer van uw consulaat."
