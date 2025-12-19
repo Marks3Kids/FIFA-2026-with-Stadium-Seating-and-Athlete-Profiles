@@ -303,16 +303,18 @@ export function TeamDetailModal({ team, isOpen, onClose }: TeamDetailModalProps)
           <X className="w-5 h-5 text-gray-400" />
         </button>
         
-        <DialogHeader className="pb-4 border-b border-gray-700">
+        <DialogHeader className="pb-4 border-b border-gray-700 pr-8">
           <div className="flex items-center gap-3">
             <div className="text-4xl">{team.flag}</div>
-            <div>
+            <div className="flex-1">
               <DialogTitle className="text-2xl font-bold text-white">
                 {team.teamName}
               </DialogTitle>
               <p className="text-gray-400">{team.name}</p>
             </div>
-            <span className="ml-auto inline-flex items-center gap-1 bg-amber-100 text-amber-700 text-sm font-bold px-3 py-1 rounded-full">
+          </div>
+          <div className="mt-3">
+            <span className="inline-flex items-center gap-1 bg-amber-100 text-amber-700 text-sm font-bold px-3 py-1 rounded-full">
               <Trophy className="w-4 h-4" />
               {team.rank === 99 ? t("status.tbd") : `${t("status.rank")} #${team.rank}`}
             </span>
