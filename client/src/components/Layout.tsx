@@ -25,7 +25,7 @@ export function Layout({ children, hideNav = false, hideTitle = false, pageTitle
                 <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="0.75" opacity="0.5"/>
               </svg>
             </div>
-            <div className="flex-1">
+            <div>
               <h1 className="text-lg font-display font-bold leading-tight">
                 <span className="text-emerald-400">World Cup</span>{" "}
                 <span className="text-white">Companion</span>
@@ -33,8 +33,10 @@ export function Layout({ children, hideNav = false, hideTitle = false, pageTitle
               <p className="text-[10px] text-muted-foreground uppercase tracking-widest">2026</p>
             </div>
             {pageTitle && (
-              <div className="flex-shrink-0 bg-white/5 border border-white/10 rounded-lg px-3 py-1.5">
-                <span className="text-sm font-display font-semibold text-white">{t(pageTitle)}</span>
+              <div className="flex-1 flex justify-center">
+                <div className="bg-primary/20 border border-primary/30 rounded-full px-4 py-1.5">
+                  <span className="text-sm font-display font-semibold text-primary">{t(pageTitle)}</span>
+                </div>
               </div>
             )}
           </div>
