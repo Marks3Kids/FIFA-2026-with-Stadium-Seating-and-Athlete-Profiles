@@ -2909,12 +2909,15 @@ export default function CriticalInfo() {
                             </div>
                             <div className="bg-card border border-white/5 rounded-xl p-4">
                               <ul className="space-y-2">
-                                {(t(`criticalInfo.citySafetySection.cities.${cityKey.id}.localConcerns`, { returnObjects: true }) as string[]).map((concern, i) => (
-                                  <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                                    <span className="text-red-400 mt-0.5">•</span>
-                                    {concern}
-                                  </li>
-                                ))}
+                                {(() => {
+                                  const concerns = t(`criticalInfo.citySafetySection.cities.${cityKey.id}.localConcerns`, { returnObjects: true });
+                                  return Array.isArray(concerns) ? concerns.map((concern: string, i: number) => (
+                                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                      <span className="text-red-400 mt-0.5">•</span>
+                                      {concern}
+                                    </li>
+                                  )) : null;
+                                })()}
                               </ul>
                             </div>
                           </div>
@@ -2927,37 +2930,40 @@ export default function CriticalInfo() {
                             </div>
                             <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4">
                               <div className="space-y-2">
-                                {(t(`criticalInfo.citySafetySection.cities.${cityKey.id}.safeAreas`, { returnObjects: true }) as {name: string, description: string}[]).map((area, i) => {
-                                  const areaKeyStr = `${cityKey.id}-${area.name}`;
-                                  const isExpanded = expandedSafeArea === areaKeyStr;
-                                  return (
-                                    <div key={i}>
-                                      <button
-                                        onClick={() => setExpandedSafeArea(isExpanded ? null : areaKeyStr)}
-                                        className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
-                                          isExpanded 
-                                            ? "bg-green-500/30 text-green-300" 
-                                            : "bg-green-500/20 text-green-400 hover:bg-green-500/25"
-                                        }`}
-                                        data-testid={`safe-area-${cityKey.id}-${i}`}
-                                      >
-                                        <div className="flex items-center justify-between">
-                                          <span className="font-medium">{area.name}</span>
-                                          {isExpanded ? (
-                                            <ChevronUp className="w-4 h-4 flex-shrink-0" />
-                                          ) : (
-                                            <ChevronDown className="w-4 h-4 flex-shrink-0" />
-                                          )}
-                                        </div>
-                                      </button>
-                                      {isExpanded && (
-                                        <div className="mt-2 px-3 py-2 bg-green-500/10 rounded-lg border border-green-500/20">
-                                          <p className="text-sm text-green-100/80">{area.description}</p>
-                                        </div>
-                                      )}
-                                    </div>
-                                  );
-                                })}
+                                {(() => {
+                                  const safeAreas = t(`criticalInfo.citySafetySection.cities.${cityKey.id}.safeAreas`, { returnObjects: true });
+                                  return Array.isArray(safeAreas) ? safeAreas.map((area: {name: string, description: string}, i: number) => {
+                                    const areaKeyStr = `${cityKey.id}-${area.name}`;
+                                    const isExpanded = expandedSafeArea === areaKeyStr;
+                                    return (
+                                      <div key={i}>
+                                        <button
+                                          onClick={() => setExpandedSafeArea(isExpanded ? null : areaKeyStr)}
+                                          className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
+                                            isExpanded 
+                                              ? "bg-green-500/30 text-green-300" 
+                                              : "bg-green-500/20 text-green-400 hover:bg-green-500/25"
+                                          }`}
+                                          data-testid={`safe-area-${cityKey.id}-${i}`}
+                                        >
+                                          <div className="flex items-center justify-between">
+                                            <span className="font-medium">{area.name}</span>
+                                            {isExpanded ? (
+                                              <ChevronUp className="w-4 h-4 flex-shrink-0" />
+                                            ) : (
+                                              <ChevronDown className="w-4 h-4 flex-shrink-0" />
+                                            )}
+                                          </div>
+                                        </button>
+                                        {isExpanded && (
+                                          <div className="mt-2 px-3 py-2 bg-green-500/10 rounded-lg border border-green-500/20">
+                                            <p className="text-sm text-green-100/80">{area.description}</p>
+                                          </div>
+                                        )}
+                                      </div>
+                                    );
+                                  }) : null;
+                                })()}
                               </div>
                             </div>
                           </div>
@@ -2969,11 +2975,14 @@ export default function CriticalInfo() {
                             </div>
                             <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
                               <div className="flex flex-wrap gap-2">
-                                {(t(`criticalInfo.citySafetySection.cities.${cityKey.id}.avoidAreas`, { returnObjects: true }) as string[]).map((area, i) => (
-                                  <span key={i} className="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs">
-                                    {area}
-                                  </span>
-                                ))}
+                                {(() => {
+                                  const avoidAreas = t(`criticalInfo.citySafetySection.cities.${cityKey.id}.avoidAreas`, { returnObjects: true });
+                                  return Array.isArray(avoidAreas) ? avoidAreas.map((area: string, i: number) => (
+                                    <span key={i} className="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs">
+                                      {area}
+                                    </span>
+                                  )) : null;
+                                })()}
                               </div>
                             </div>
                           </div>
@@ -2985,12 +2994,15 @@ export default function CriticalInfo() {
                             </div>
                             <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4">
                               <ul className="space-y-2">
-                                {(t(`criticalInfo.citySafetySection.cities.${cityKey.id}.tips`, { returnObjects: true }) as string[]).map((tip, i) => (
-                                  <li key={i} className="flex items-start gap-2 text-sm text-yellow-100/80">
-                                    <span className="text-yellow-400 mt-0.5">💡</span>
-                                    {tip}
-                                  </li>
-                                ))}
+                                {(() => {
+                                  const tips = t(`criticalInfo.citySafetySection.cities.${cityKey.id}.tips`, { returnObjects: true });
+                                  return Array.isArray(tips) ? tips.map((tip: string, i: number) => (
+                                    <li key={i} className="flex items-start gap-2 text-sm text-yellow-100/80">
+                                      <span className="text-yellow-400 mt-0.5">💡</span>
+                                      {tip}
+                                    </li>
+                                  )) : null;
+                                })()}
                               </ul>
                             </div>
                           </div>
