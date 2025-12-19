@@ -98,6 +98,27 @@
     "matches": "Correspondances",
     "liveUpdates": "Mises à jour en direct"
   },
+  "bracket": {
+    "title": "Tableau à Élimination Directe",
+    "subtitle": "Structure du Tournoi de la Coupe du Monde FIFA 2026",
+    "roundOf32": "32èmes de finale",
+    "roundOf16": "Huitièmes de finale",
+    "quarterfinals": "Quarts de finale",
+    "semifinals": "Demi-finales",
+    "thirdPlace": "3ème place",
+    "final": "Finale",
+    "match": "Match",
+    "pending": "En attente",
+    "scheduled": "Programmé",
+    "completed": "Terminé",
+    "noData": "Données du tableau pas encore disponibles",
+    "drawPending": "Le tirage au sort officiel déterminera les positions des équipes",
+    "noMatches": "Pas encore de matchs à cette étape",
+    "finalMatch": "La Finale",
+    "finalInfo": "Le match de championnat se jouera au MetLife Stadium à New York/New Jersey",
+    "aboutTitle": "À propos de la Phase Éliminatoire",
+    "aboutDescription": "La phase éliminatoire de la Coupe du Monde FIFA 2026 commence après la phase de groupes, avec 32 équipes en compétition dans des matchs à élimination directe dans 16 villes hôtes aux États-Unis, au Canada et au Mexique."
+  },
   "nav": {
     "home": "Accueil",
     "matches": "Matchs",

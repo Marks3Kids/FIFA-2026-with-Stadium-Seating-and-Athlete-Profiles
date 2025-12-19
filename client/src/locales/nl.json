@@ -98,6 +98,27 @@
     "matches": "Lucifers",
     "liveUpdates": "Live updates"
   },
+  "bracket": {
+    "title": "Knock-out Schema",
+    "subtitle": "Toernooistructuur van het FIFA WK 2026",
+    "roundOf32": "32ste finales",
+    "roundOf16": "Achtste finales",
+    "quarterfinals": "Kwartfinales",
+    "semifinals": "Halve finales",
+    "thirdPlace": "Troostfinale",
+    "final": "Finale",
+    "match": "Wedstrijd",
+    "pending": "In afwachting",
+    "scheduled": "Gepland",
+    "completed": "Voltooid",
+    "noData": "Schema gegevens nog niet beschikbaar",
+    "drawPending": "De officiële loting bepaalt de posities van de teams",
+    "noMatches": "Nog geen wedstrijden in deze fase",
+    "finalMatch": "De Finale",
+    "finalInfo": "De finale wordt gespeeld in het MetLife Stadium in New York/New Jersey",
+    "aboutTitle": "Over de Knock-out Fase",
+    "aboutDescription": "De knock-out fase van het FIFA WK 2026 begint na de groepsfase, met 32 teams die strijden in directe eliminatiewedstrijden in 16 gaststeden in de VS, Canada en Mexico."
+  },
   "nav": {
     "home": "Home",
     "matches": "Wedstrijden",

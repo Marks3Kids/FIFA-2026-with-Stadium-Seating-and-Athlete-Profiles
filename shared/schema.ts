@@ -376,3 +376,33 @@ export const stadiumSectionsQuerySchema = z.object({
 export const playersQuerySchema = z.object({
   teamId: z.string().regex(/^\d+$/).optional(),
 });
+
+// Knockout bracket matches for the tournament
+export const knockoutBrackets = pgTable("knockout_brackets", {
+  id: serial("id").primaryKey(),
+  stage: text("stage").notNull(), // "round_of_32", "round_of_16", "quarterfinal", "semifinal", "third_place", "final"
+  matchNumber: integer("match_number").notNull(), // Position in the bracket
+  bracketSide: text("bracket_side").notNull(), // "left" or "right" side of bracket
+  team1Slot: text("team1_slot").notNull(), // e.g., "Winner Group A" or actual team name
+  team2Slot: text("team2_slot").notNull(), // e.g., "Runner-up Group B" or actual team name
+  team1Id: integer("team1_id"), // References teams table if assigned
+  team2Id: integer("team2_id"), // References teams table if assigned
+  stadium: text("stadium").notNull(),
+  city: text("city").notNull(),
+  country: text("country").notNull(),
+  matchDate: text("match_date"), // Date of the match if scheduled
+  matchTime: text("match_time"), // Time of the match if scheduled
+  status: text("status").notNull().default("pending"), // "pending", "scheduled", "completed"
+  winnerId: integer("winner_id"), // References teams table
+  score: text("score"), // e.g., "2-1"
+  translations: jsonb("translations").$type<Record<string, { team1Slot: string; team2Slot: string }>>(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertKnockoutBracketSchema = createInsertSchema(knockoutBrackets).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertKnockoutBracket = z.infer<typeof insertKnockoutBracketSchema>;
+export type KnockoutBracket = typeof knockoutBrackets.$inferSelect;

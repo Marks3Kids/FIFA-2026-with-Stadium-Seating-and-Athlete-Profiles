@@ -98,6 +98,27 @@
     "matches": "Streichhölzer",
     "liveUpdates": "Live-Updates"
   },
+  "bracket": {
+    "title": "K.o.-Runde",
+    "subtitle": "Turnierstruktur der FIFA Weltmeisterschaft 2026",
+    "roundOf32": "Runde der 32",
+    "roundOf16": "Achtelfinale",
+    "quarterfinals": "Viertelfinale",
+    "semifinals": "Halbfinale",
+    "thirdPlace": "Spiel um Platz 3",
+    "final": "Finale",
+    "match": "Spiel",
+    "pending": "Ausstehend",
+    "scheduled": "Geplant",
+    "completed": "Abgeschlossen",
+    "noData": "Turnierbaum noch nicht verfügbar",
+    "drawPending": "Die offizielle Auslosung wird die Positionen der Teams bestimmen",
+    "noMatches": "Noch keine Spiele in dieser Runde",
+    "finalMatch": "Das Finale",
+    "finalInfo": "Das Endspiel findet im MetLife Stadium in New York/New Jersey statt",
+    "aboutTitle": "Über die K.o.-Phase",
+    "aboutDescription": "Die K.o.-Phase der FIFA WM 2026 beginnt nach der Gruppenphase mit 32 Teams, die in Einzelausscheidungsspielen in 16 Austragungsorten in den USA, Kanada und Mexiko antreten."
+  },
   "nav": {
     "home": "Startseite",
     "matches": "Spiele",

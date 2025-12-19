@@ -96,7 +96,28 @@
     "teams": "Teams",
     "cities": "Cities",
     "matches": "Matches",
-    "liveUpdates": "Live Updates"
+    "liveUpdates": "Atualizações ao Vivo"
+  },
+  "bracket": {
+    "title": "Chaves Eliminatórias",
+    "subtitle": "Estrutura do Torneio da Copa do Mundo FIFA 2026",
+    "roundOf32": "Fase de 32",
+    "roundOf16": "Oitavas de Final",
+    "quarterfinals": "Quartas de Final",
+    "semifinals": "Semifinais",
+    "thirdPlace": "Disputa de 3º Lugar",
+    "final": "Final",
+    "match": "Jogo",
+    "pending": "Pendente",
+    "scheduled": "Agendado",
+    "completed": "Concluído",
+    "noData": "Dados das chaves ainda não disponíveis",
+    "drawPending": "O sorteio oficial determinará as posições das equipes",
+    "noMatches": "Ainda não há jogos nesta fase",
+    "finalMatch": "A Final",
+    "finalInfo": "A final será disputada no MetLife Stadium em Nova York/Nova Jersey",
+    "aboutTitle": "Sobre a Fase Eliminatória",
+    "aboutDescription": "A fase eliminatória da Copa do Mundo FIFA 2026 começa após a fase de grupos, com 32 equipes competindo em jogos eliminatórios em 16 cidades-sede nos EUA, Canadá e México."
   },
   "nav": {
     "home": "Início",

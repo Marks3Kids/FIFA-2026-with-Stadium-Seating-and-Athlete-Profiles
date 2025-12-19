@@ -98,6 +98,27 @@
     "matches": "Matches",
     "liveUpdates": "Live Updates"
   },
+  "bracket": {
+    "title": "Knockout Brackets",
+    "subtitle": "2026 FIFA World Cup Tournament Structure",
+    "roundOf32": "Round of 32",
+    "roundOf16": "Round of 16",
+    "quarterfinals": "Quarterfinals",
+    "semifinals": "Semifinals",
+    "thirdPlace": "3rd Place",
+    "final": "Final",
+    "match": "Match",
+    "pending": "Pending",
+    "scheduled": "Scheduled",
+    "completed": "Completed",
+    "noData": "Bracket data not available yet",
+    "drawPending": "The official draw will determine team positions",
+    "noMatches": "No matches in this stage yet",
+    "finalMatch": "The Final",
+    "finalInfo": "The championship match will be held at MetLife Stadium in New York/New Jersey",
+    "aboutTitle": "About the Knockout Stage",
+    "aboutDescription": "The 2026 FIFA World Cup knockout stage begins after the group stage, featuring 32 teams competing in single-elimination matches across 16 host cities in the USA, Canada, and Mexico. Team positions will be determined by the official FIFA draw."
+  },
   "nav": {
     "home": "Home",
     "matches": "Matches",

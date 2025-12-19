@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { TeamDetailModal } from "@/components/TeamDetailModal";
+import { KnockoutBracketModal } from "@/components/KnockoutBracketModal";
 import { Search, Users, Trophy } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
@@ -21,6 +22,7 @@ export default function Teams() {
   const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
+  const [showBracketModal, setShowBracketModal] = useState(false);
   
   const { data: teams = [], isLoading } = useQuery<Team[]>({
     queryKey: ["/api/teams"],
@@ -75,7 +77,10 @@ export default function Teams() {
         </div>
 
         <div className="flex justify-center mb-8">
-          <button className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 px-6 rounded-full transition-colors">
+          <button 
+            onClick={() => setShowBracketModal(true)}
+            className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 px-6 rounded-full transition-colors"
+          >
             <Trophy className="w-4 h-4" />
             {t("teams.viewKnockoutBrackets", "View Knockout Brackets")}
           </button>
@@ -146,6 +151,11 @@ export default function Teams() {
         team={selectedTeam}
         isOpen={!!selectedTeam}
         onClose={() => setSelectedTeam(null)}
+      />
+
+      <KnockoutBracketModal
+        isOpen={showBracketModal}
+        onClose={() => setShowBracketModal(false)}
       />
     </Layout>
   );

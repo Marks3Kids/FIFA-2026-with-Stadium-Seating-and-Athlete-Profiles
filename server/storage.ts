@@ -33,6 +33,8 @@ import {
   type InsertTournamentHistory,
   type StadiumSection,
   type InsertStadiumSection,
+  type KnockoutBracket,
+  type InsertKnockoutBracket,
   users,
   teams,
   cities,
@@ -49,7 +51,8 @@ import {
   purchases,
   players,
   tournamentHistory,
-  stadiumSections
+  stadiumSections,
+  knockoutBrackets
 } from "@shared/schema";
 import { db } from "../db";
 import { eq } from "drizzle-orm";
@@ -126,6 +129,12 @@ export interface IStorage {
   getStadiumSections(stadiumName: string): Promise<StadiumSection[]>;
   getAllStadiumSections(): Promise<StadiumSection[]>;
   createStadiumSection(section: InsertStadiumSection): Promise<StadiumSection>;
+  
+  getAllKnockoutBrackets(): Promise<KnockoutBracket[]>;
+  getKnockoutBracketsByStage(stage: string): Promise<KnockoutBracket[]>;
+  createKnockoutBracket(bracket: InsertKnockoutBracket): Promise<KnockoutBracket>;
+  updateKnockoutBracket(id: number, bracket: Partial<InsertKnockoutBracket>): Promise<KnockoutBracket | undefined>;
+  deleteAllKnockoutBrackets(): Promise<void>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -391,6 +400,28 @@ export class DatabaseStorage implements IStorage {
   async createStadiumSection(section: InsertStadiumSection): Promise<StadiumSection> {
     const [newSection] = await db.insert(stadiumSections).values(section).returning();
     return newSection;
+  }
+
+  async getAllKnockoutBrackets(): Promise<KnockoutBracket[]> {
+    return await db.select().from(knockoutBrackets);
+  }
+
+  async getKnockoutBracketsByStage(stage: string): Promise<KnockoutBracket[]> {
+    return await db.select().from(knockoutBrackets).where(eq(knockoutBrackets.stage, stage));
+  }
+
+  async createKnockoutBracket(bracket: InsertKnockoutBracket): Promise<KnockoutBracket> {
+    const [newBracket] = await db.insert(knockoutBrackets).values(bracket).returning();
+    return newBracket;
+  }
+
+  async updateKnockoutBracket(id: number, bracket: Partial<InsertKnockoutBracket>): Promise<KnockoutBracket | undefined> {
+    const [updatedBracket] = await db.update(knockoutBrackets).set(bracket).where(eq(knockoutBrackets.id, id)).returning();
+    return updatedBracket;
+  }
+
+  async deleteAllKnockoutBrackets(): Promise<void> {
+    await db.delete(knockoutBrackets);
   }
 }
 

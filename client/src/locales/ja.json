@@ -96,7 +96,28 @@
     "teams": "Teams",
     "cities": "Cities",
     "matches": "Matches",
-    "liveUpdates": "Live Updates"
+    "liveUpdates": "ライブ更新"
+  },
+  "bracket": {
+    "title": "ノックアウトステージ",
+    "subtitle": "FIFA ワールドカップ 2026 トーナメント構造",
+    "roundOf32": "ラウンド32",
+    "roundOf16": "ベスト16",
+    "quarterfinals": "準々決勝",
+    "semifinals": "準決勝",
+    "thirdPlace": "3位決定戦",
+    "final": "決勝",
+    "match": "試合",
+    "pending": "未定",
+    "scheduled": "予定",
+    "completed": "終了",
+    "noData": "ブラケットデータはまだ利用できません",
+    "drawPending": "公式抽選でチームの位置が決定されます",
+    "noMatches": "このステージにはまだ試合がありません",
+    "finalMatch": "決勝戦",
+    "finalInfo": "決勝戦はニューヨーク/ニュージャージーのメットライフスタジアムで開催されます",
+    "aboutTitle": "ノックアウトステージについて",
+    "aboutDescription": "FIFA ワールドカップ 2026 のノックアウトステージはグループステージ後に始まり、32チームがアメリカ、カナダ、メキシコの16都市で行われる一発勝負の試合で競います。"
   },
   "nav": {
     "home": "ホーム",

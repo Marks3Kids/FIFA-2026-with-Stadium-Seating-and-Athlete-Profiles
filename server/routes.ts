@@ -117,6 +117,43 @@ export async function registerRoutes(
     }
   });
 
+  // Knockout Brackets API
+  app.get("/api/knockout-brackets", async (req, res) => {
+    try {
+      const { stage, locale } = req.query;
+      let brackets;
+      
+      if (stage && typeof stage === "string") {
+        brackets = await storage.getKnockoutBracketsByStage(stage);
+      } else {
+        brackets = await storage.getAllKnockoutBrackets();
+      }
+      
+      // If locale is provided and not English, translate the slot names
+      if (locale && locale !== "en" && typeof locale === "string") {
+        const { translateKnockoutBrackets } = await import("./translationService");
+        const translatedBrackets = await translateKnockoutBrackets(brackets, locale);
+        return res.json(translatedBrackets);
+      }
+      
+      res.json(brackets);
+    } catch (error) {
+      console.error("Error fetching knockout brackets:", error);
+      res.status(500).json({ error: "Failed to fetch knockout brackets" });
+    }
+  });
+
+  app.post("/api/knockout-brackets/seed", async (req, res) => {
+    try {
+      const { seedKnockoutBrackets } = await import("./knockoutBracketSeed");
+      await seedKnockoutBrackets();
+      res.json({ success: true, message: "Knockout brackets seeded successfully" });
+    } catch (error) {
+      console.error("Error seeding knockout brackets:", error);
+      res.status(500).json({ error: "Failed to seed knockout brackets" });
+    }
+  });
+
   // News API - Auto-refreshing from RSS feeds with translation support
   app.get("/api/news", async (req, res) => {
     try {
