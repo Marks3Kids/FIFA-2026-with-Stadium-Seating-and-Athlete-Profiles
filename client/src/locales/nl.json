@@ -3100,12 +3100,25 @@
     "capacity": "Capaciteit",
     "pricingNote": "Prijsinformatie",
     "pricingDisclaimer": "De getoonde prijzen zijn geschatte bereiken op basis van wedstrijdcategorie en zitplaatslocatie. Werkelijke ticketprijzen worden bepaald door FIFA en geautoriseerde verkopers.",
-    "sectionLegend": "Sectielegenda",
+    "sectionLegend": "FIFA Ticketcategorieën",
+    "viewOfficialMaps": "Bekijk Officiële Kaarten",
     "sectionTypes": {
-      "premium": "Premium",
-      "club": "Club Niveau",
-      "standard": "Standaard",
-      "economy": "Economy"
+      "category1": "Categorie 1",
+      "category2": "Categorie 2",
+      "category3": "Categorie 3",
+      "category4": "Categorie 4"
+    },
+    "categoryLocations": {
+      "category1": "Onderste niveau, centrale zijlijnen",
+      "category2": "Bovenste niveau zijkanten + onderste hoeken",
+      "category3": "Bovenste niveau achter de goals",
+      "category4": "Bovenste hoeken (beperkt)"
+    },
+    "categoryViews": {
+      "category1": "Beste uitzicht - dichtst bij het veld, duurste",
+      "category2": "Goed algemeen uitzicht, middelhoge prijsklasse",
+      "category3": "Doellijn perspectief, gematigde prijzen",
+      "category4": "Meest betaalbaar, alleen voor bewoners gastland"
     },
     "pitchView": "VELDWEERGAVE",
     "levels": {

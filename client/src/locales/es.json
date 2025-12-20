@@ -3100,12 +3100,25 @@
     "capacity": "Capacidad",
     "pricingNote": "Información de Precios",
     "pricingDisclaimer": "Los precios mostrados son rangos estimados según la categoría del partido y ubicación del asiento. Los precios reales son establecidos por FIFA y vendedores autorizados.",
-    "sectionLegend": "Leyenda de Secciones",
+    "sectionLegend": "Categorías de Entradas FIFA",
+    "viewOfficialMaps": "Ver Mapas Oficiales",
     "sectionTypes": {
-      "premium": "Premium",
-      "club": "Nivel Club",
-      "standard": "Estándar",
-      "economy": "Económica"
+      "category1": "Categoría 1",
+      "category2": "Categoría 2",
+      "category3": "Categoría 3",
+      "category4": "Categoría 4"
+    },
+    "categoryLocations": {
+      "category1": "Nivel inferior, líneas laterales centrales",
+      "category2": "Nivel superior laterales + esquinas inferiores",
+      "category3": "Nivel superior detrás de las porterías",
+      "category4": "Esquinas superiores (limitado)"
+    },
+    "categoryViews": {
+      "category1": "Mejores vistas - más cerca del campo, más costoso",
+      "category2": "Buenas vistas generales, rango de precio medio-alto",
+      "category3": "Perspectiva de línea de gol, precio moderado",
+      "category4": "Más económico, solo residentes del país anfitrión"
     },
     "pitchView": "VISTA AL CAMPO",
     "levels": {

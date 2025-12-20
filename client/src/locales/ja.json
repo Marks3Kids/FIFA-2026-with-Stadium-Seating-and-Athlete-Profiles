@@ -3100,12 +3100,25 @@
     "capacity": "収容人数",
     "pricingNote": "価格情報",
     "pricingDisclaimer": "表示価格は試合カテゴリーと座席位置に基づく推定範囲です。実際のチケット価格はFIFAおよび公認販売店により設定されます。",
-    "sectionLegend": "セクション凡例",
+    "sectionLegend": "FIFAチケットカテゴリー",
+    "viewOfficialMaps": "公式マップを見る",
     "sectionTypes": {
-      "premium": "プレミアム",
-      "club": "クラブレベル",
-      "standard": "スタンダード",
-      "economy": "エコノミー"
+      "category1": "カテゴリー1",
+      "category2": "カテゴリー2",
+      "category3": "カテゴリー3",
+      "category4": "カテゴリー4"
+    },
+    "categoryLocations": {
+      "category1": "下層、センターサイドライン",
+      "category2": "上層サイド + 下層コーナー",
+      "category3": "上層ゴール裏",
+      "category4": "上層コーナー（限定）"
+    },
+    "categoryViews": {
+      "category1": "最高の眺望 - ピッチに最も近く、最高価格",
+      "category2": "良好な全体視野、中〜高価格帯",
+      "category3": "ゴールライン視点、中程度の価格",
+      "category4": "最も手頃、開催国居住者のみ"
     },
     "pitchView": "ピッチビュー",
     "levels": {
