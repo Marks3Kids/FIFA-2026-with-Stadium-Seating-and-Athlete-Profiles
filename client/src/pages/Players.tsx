@@ -102,7 +102,23 @@ export default function Players() {
     <Layout pageTitle="nav.players">
       <div className="pt-12 px-6 pb-20">
         <h1 className="text-4xl font-display font-bold text-white mb-2">{t("players.title")}</h1>
-        <p className="text-muted-foreground mb-6">{t("players.subtitle")}</p>
+        <p className="text-muted-foreground mb-4">{t("players.subtitle")}</p>
+
+        <div className="bg-card/50 border border-white/10 rounded-xl p-3 mb-6">
+          <p className="text-xs text-muted-foreground">
+            <span className="font-semibold text-white">{t("players.key")}:</span>{" "}
+            <span className="inline-flex items-center mx-1">
+              <span className="w-4 h-4 bg-yellow-500 rounded-full flex items-center justify-center mr-1">
+                <span className="text-[8px] font-bold text-black">C</span>
+              </span>
+              = {t("players.keyCaption")}
+            </span>
+            <span className="mx-2">|</span>
+            <span className="font-medium text-white">{t("players.caps")}</span> = {t("players.keyCaps")}
+            <span className="mx-2">|</span>
+            <span className="font-medium text-white">{t("players.intlGoals")}</span> = {t("players.keyIntlGoals")}
+          </p>
+        </div>
 
         <div className="relative mb-6">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
