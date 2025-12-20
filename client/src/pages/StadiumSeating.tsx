@@ -45,10 +45,10 @@ const sectionColors: Record<string, { bg: string; border: string; text: string }
 };
 
 const categoryDescriptions: Record<string, { location: string; view: string; priceRange: string }> = {
-  category1: { location: "Lower tier, center sidelines", view: "Best views - closest to field", priceRange: "$250 - $6,730" },
-  category2: { location: "Upper tier sidelines + lower corners", view: "Good overall views", priceRange: "$165 - $4,210" },
-  category3: { location: "Upper tier behind goals", view: "Goal-line perspective", priceRange: "$110 - $2,790" },
-  category4: { location: "Upper tier corners", view: "Most affordable option", priceRange: "$60 - $1,825" },
+  category1: { location: "Lower tier, center sidelines", view: "Best views - closest to field", priceRange: "$250 - $6,730 USD" },
+  category2: { location: "Upper tier sidelines + lower corners", view: "Good overall views", priceRange: "$165 - $4,210 USD" },
+  category3: { location: "Upper tier behind goals", view: "Goal-line perspective", priceRange: "$110 - $2,790 USD" },
+  category4: { location: "Upper tier corners", view: "Most affordable option", priceRange: "$60 - $1,825 USD" },
 };
 
 export default function StadiumSeating() {

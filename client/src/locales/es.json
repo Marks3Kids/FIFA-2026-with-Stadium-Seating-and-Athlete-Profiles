@@ -2184,7 +2184,7 @@
       "title": "FINANCIERO",
       "tipping": {
         "title": "La Propina es Obligatoria",
-        "description": "18-22% para comidas, $1-2 por bebida en bares, $2-5 para servicio de habitación por noche. Use la calculadora de propinas de la app."
+        "description": "18-22% para comidas, $1-2 USD por bebida en bares, $2-5 USD para servicio de habitación por noche. Use la calculadora de propinas de la app."
       },
       "salesTax": {
         "title": "Impuesto de Venta No Incluido",
@@ -2192,7 +2192,7 @@
       },
       "creditHolds": {
         "title": "Retenciones de Tarjeta de Crédito",
-        "description": "Hoteles y alquileres de autos colocan \"retenciones\" de $200-$500 en tarjetas. Esto reduce su límite de gasto inmediatamente. Evite usar tarjetas de débito ya que el dinero realmente sale de su cuenta."
+        "description": "Hoteles y alquileres de autos colocan \"retenciones\" de $200-$500 USD en tarjetas. Esto reduce su límite de gasto inmediatamente. Evite usar tarjetas de débito ya que el dinero realmente sale de su cuenta."
       }
     },
     "legalSection": {
@@ -2277,7 +2277,7 @@
       "visaItems": {
         "esta": {
           "title": "ESTA",
-          "description": "$21, solicitar 72 horas antes (Reino Unido, UE, Australia, Japón, 41 países)"
+          "description": "$21 USD, solicitar 72 horas antes (Reino Unido, UE, Australia, Japón, 41 países)"
         },
         "b1b2": {
           "title": "Visa B-1/B-2",
@@ -2311,15 +2311,15 @@
         },
         "duty-free": {
           "title": "Franquicias Libre de Impuestos",
-          "description": "Adultos pueden traer: 1L de alcohol, 200 cigarrillos o 100 puros (no cubanos), regalos hasta $100. Exceder límites = pagar impuestos."
+          "description": "Adultos pueden traer: 1L de alcohol, 200 cigarrillos o 100 puros (no cubanos), regalos hasta $100 USD. Exceder límites = pagar impuestos."
         },
         "cash-declaration": {
           "title": "Declaración de Efectivo Requerida",
-          "description": "DEBE declarar si lleva $10,000+ en efectivo/instrumentos monetarios. No declarar = confiscación y posibles cargos criminales."
+          "description": "DEBE declarar si lleva $10,000+ USD en efectivo/instrumentos monetarios. No declarar = confiscación y posibles cargos criminales."
         },
         "food-restrictions": {
           "title": "Restricciones de Alimentos y Agricultura",
-          "description": "Muchos alimentos PROHIBIDOS: frutas frescas, verduras, carnes, lácteos de la mayoría de países. Multas hasta $10,000. Declare todo o deséchelo antes de aduanas."
+          "description": "Muchos alimentos PROHIBIDOS: frutas frescas, verduras, carnes, lácteos de la mayoría de países. Multas hasta $10,000 USD. Declare todo o deséchelo antes de aduanas."
         },
         "global-entry": {
           "title": "Global Entry / TSA PreCheck",
@@ -2935,7 +2935,7 @@
             "Dolor de pecho, síntomas de derrame cerebral",
             "Sangrado severo o trauma",
             "Dificultad para respirar",
-            "Costo: $1,000 - $5,000+",
+            "Costo: $1,000 - $5,000+ USD",
             "Espera: 2-8 horas típicamente"
           ]
         },
@@ -2946,7 +2946,7 @@
             "Esguinces, cortes menores",
             "Gripe, fiebre, infecciones",
             "Radiografías, suturas, análisis",
-            "Costo: $100 - $200",
+            "Costo: $100 - $200 USD",
             "Espera: 15-45 minutos"
           ]
         },
@@ -3106,7 +3106,7 @@
     "selectDescription": "Selecciona un estadio arriba para ver las secciones y precios",
     "capacity": "Capacidad",
     "pricingNote": "Cómo Funciona el Precio FIFA",
-    "pricingDisclaimer": "FIFA usa precios dinámicos - Los partidos de Fase de Grupos comienzan alrededor de $60-$250, mientras que la Final va de $1,825-$6,730. Los asientos de Categoría 4 están restringidos a residentes de EE.UU., Canadá y México.",
+    "pricingDisclaimer": "FIFA usa precios dinámicos - Los partidos de Fase de Grupos comienzan alrededor de $60-$250 USD, mientras que la Final va de $1,825-$6,730 USD. Los asientos de Categoría 4 están restringidos a residentes de EE.UU., Canadá y México.",
     "sectionLegend": "Categorías de Entradas FIFA",
     "viewOfficialMaps": "Ver Mapas Oficiales",
     "sectionTypes": {

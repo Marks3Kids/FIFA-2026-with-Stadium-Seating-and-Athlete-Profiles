@@ -41,11 +41,11 @@ const busHubs: BusHub[] = [
       { name: "NJ Transit Bus", url: "https://www.njtransit.com" },
     ],
     routes: [
-      { to: "Boston", toKey: "boston", duration: "4h 15m", price: "$15-45" },
-      { to: "Philadelphia", toKey: "philadelphia", duration: "2h 00m", price: "$10-30" },
-      { to: "Washington DC", toKey: "washingtonDc", duration: "4h 30m", price: "$20-50" },
-      { to: "Baltimore", toKey: "baltimore", duration: "3h 30m", price: "$15-40" },
-      { to: "Atlantic City", toKey: "atlanticCity", duration: "2h 30m", price: "$10-25" },
+      { to: "Boston", toKey: "boston", duration: "4h 15m", price: "$15-45 USD" },
+      { to: "Philadelphia", toKey: "philadelphia", duration: "2h 00m", price: "$10-30 USD" },
+      { to: "Washington DC", toKey: "washingtonDc", duration: "4h 30m", price: "$20-50 USD" },
+      { to: "Baltimore", toKey: "baltimore", duration: "3h 30m", price: "$15-40 USD" },
+      { to: "Atlantic City", toKey: "atlanticCity", duration: "2h 30m", price: "$10-25 USD" },
     ],
     matchDayServices: [
       { name: "NJ Transit Express", description: "NJ Transit express buses to MetLife Stadium", descriptionKey: "njTransitMetLife" },
@@ -68,10 +68,10 @@ const busHubs: BusHub[] = [
       { name: "LA Metro Bus", url: "https://www.metro.net" },
     ],
     routes: [
-      { to: "San Diego", toKey: "sanDiego", duration: "2h 30m", price: "$12-35" },
-      { to: "Las Vegas", toKey: "lasVegas", duration: "5h 00m", price: "$20-55" },
-      { to: "San Francisco", toKey: "sanFrancisco", duration: "7h 00m", price: "$25-65" },
-      { to: "Phoenix", toKey: "phoenix", duration: "6h 00m", price: "$25-55" },
+      { to: "San Diego", toKey: "sanDiego", duration: "2h 30m", price: "$12-35 USD" },
+      { to: "Las Vegas", toKey: "lasVegas", duration: "5h 00m", price: "$20-55 USD" },
+      { to: "San Francisco", toKey: "sanFrancisco", duration: "7h 00m", price: "$25-65 USD" },
+      { to: "Phoenix", toKey: "phoenix", duration: "6h 00m", price: "$25-55 USD" },
     ],
     matchDayServices: [
       { name: "Metro Express", description: "Metro express buses to SoFi Stadium", descriptionKey: "metroSofi" },
@@ -94,10 +94,10 @@ const busHubs: BusHub[] = [
       { name: "Miami-Dade Transit", url: "https://www.miamidade.gov/transit" },
     ],
     routes: [
-      { to: "Orlando", toKey: "orlando", duration: "4h 00m", price: "$15-40" },
-      { to: "Tampa", toKey: "tampa", duration: "5h 00m", price: "$20-50" },
-      { to: "Fort Lauderdale", toKey: "fortLauderdale", duration: "0h 45m", price: "$5-15" },
-      { to: "West Palm Beach", toKey: "westPalmBeach", duration: "1h 30m", price: "$10-25" },
+      { to: "Orlando", toKey: "orlando", duration: "4h 00m", price: "$15-40 USD" },
+      { to: "Tampa", toKey: "tampa", duration: "5h 00m", price: "$20-50 USD" },
+      { to: "Fort Lauderdale", toKey: "fortLauderdale", duration: "0h 45m", price: "$5-15 USD" },
+      { to: "West Palm Beach", toKey: "westPalmBeach", duration: "1h 30m", price: "$10-25 USD" },
     ],
     matchDayServices: [
       { name: "Stadium Express", description: "Express shuttles to Hard Rock Stadium", descriptionKey: "expressHardRock" },
@@ -120,10 +120,10 @@ const busHubs: BusHub[] = [
       { name: "DART Bus", url: "https://www.dart.org" },
     ],
     routes: [
-      { to: "Houston", toKey: "houston", duration: "4h 00m", price: "$15-40" },
-      { to: "Austin", toKey: "austin", duration: "3h 30m", price: "$15-35" },
-      { to: "San Antonio", toKey: "sanAntonio", duration: "5h 00m", price: "$20-45" },
-      { to: "Oklahoma City", toKey: "oklahomaCity", duration: "3h 30m", price: "$20-40" },
+      { to: "Houston", toKey: "houston", duration: "4h 00m", price: "$15-40 USD" },
+      { to: "Austin", toKey: "austin", duration: "3h 30m", price: "$15-35 USD" },
+      { to: "San Antonio", toKey: "sanAntonio", duration: "5h 00m", price: "$20-45 USD" },
+      { to: "Oklahoma City", toKey: "oklahomaCity", duration: "3h 30m", price: "$20-40 USD" },
     ],
     matchDayServices: [
       { name: "DART Express", description: "DART express routes to AT&T Stadium", descriptionKey: "dartAttStadium" },
@@ -146,10 +146,10 @@ const busHubs: BusHub[] = [
       { name: "MARTA Bus", url: "https://www.itsmarta.com" },
     ],
     routes: [
-      { to: "Charlotte", toKey: "charlotte", duration: "4h 00m", price: "$20-45" },
-      { to: "Nashville", toKey: "nashville", duration: "4h 00m", price: "$20-45" },
-      { to: "Birmingham", toKey: "birmingham", duration: "2h 30m", price: "$15-35" },
-      { to: "Jacksonville", toKey: "jacksonville", duration: "5h 30m", price: "$25-50" },
+      { to: "Charlotte", toKey: "charlotte", duration: "4h 00m", price: "$20-45 USD" },
+      { to: "Nashville", toKey: "nashville", duration: "4h 00m", price: "$20-45 USD" },
+      { to: "Birmingham", toKey: "birmingham", duration: "2h 30m", price: "$15-35 USD" },
+      { to: "Jacksonville", toKey: "jacksonville", duration: "5h 30m", price: "$25-50 USD" },
     ],
     matchDayServices: [
       { name: "MARTA Rail", description: "MARTA rail + shuttle to Mercedes-Benz Stadium", descriptionKey: "martaMercedesBenz" },
@@ -172,10 +172,10 @@ const busHubs: BusHub[] = [
       { name: "METRO Bus", url: "https://www.ridemetro.org" },
     ],
     routes: [
-      { to: "Dallas", toKey: "dallas", duration: "4h 00m", price: "$15-40" },
-      { to: "San Antonio", toKey: "sanAntonio", duration: "3h 00m", price: "$15-35" },
-      { to: "Austin", toKey: "austin", duration: "2h 45m", price: "$15-35" },
-      { to: "New Orleans", toKey: "newOrleans", duration: "5h 30m", price: "$25-55" },
+      { to: "Dallas", toKey: "dallas", duration: "4h 00m", price: "$15-40 USD" },
+      { to: "San Antonio", toKey: "sanAntonio", duration: "3h 00m", price: "$15-35 USD" },
+      { to: "Austin", toKey: "austin", duration: "2h 45m", price: "$15-35 USD" },
+      { to: "New Orleans", toKey: "newOrleans", duration: "5h 30m", price: "$25-55 USD" },
     ],
     matchDayServices: [
       { name: "METRORail", description: "METRORail to NRG Stadium", descriptionKey: "metroRailNrg" },
@@ -198,9 +198,9 @@ const busHubs: BusHub[] = [
       { name: "King County Metro", url: "https://kingcounty.gov/metro" },
     ],
     routes: [
-      { to: "Portland", toKey: "portland", duration: "3h 30m", price: "$15-35" },
-      { to: "Vancouver BC", toKey: "vancouverBc", duration: "4h 00m", price: "$25-50" },
-      { to: "Spokane", toKey: "spokane", duration: "5h 00m", price: "$25-50" },
+      { to: "Portland", toKey: "portland", duration: "3h 30m", price: "$15-35 USD" },
+      { to: "Vancouver BC", toKey: "vancouverBc", duration: "4h 00m", price: "$25-50 USD" },
+      { to: "Spokane", toKey: "spokane", duration: "5h 00m", price: "$25-50 USD" },
     ],
     matchDayServices: [
       { name: "Sound Transit", description: "Sound Transit express to Lumen Field", descriptionKey: "soundTransitLumen" },
@@ -223,10 +223,10 @@ const busHubs: BusHub[] = [
       { name: "AC Transit", url: "https://www.actransit.org" },
     ],
     routes: [
-      { to: "Los Angeles", toKey: "losAngeles", duration: "7h 00m", price: "$25-60" },
-      { to: "Sacramento", toKey: "sacramento", duration: "2h 00m", price: "$10-30" },
-      { to: "San Jose", toKey: "sanJose", duration: "1h 15m", price: "$8-20" },
-      { to: "Reno", toKey: "reno", duration: "4h 30m", price: "$20-45" },
+      { to: "Los Angeles", toKey: "losAngeles", duration: "7h 00m", price: "$25-60 USD" },
+      { to: "Sacramento", toKey: "sacramento", duration: "2h 00m", price: "$10-30 USD" },
+      { to: "San Jose", toKey: "sanJose", duration: "1h 15m", price: "$8-20 USD" },
+      { to: "Reno", toKey: "reno", duration: "4h 30m", price: "$20-45 USD" },
     ],
     matchDayServices: [
       { name: "VTA Express", description: "VTA express to Levi's Stadium", descriptionKey: "vtaLevis" },
@@ -374,9 +374,9 @@ const busHubs: BusHub[] = [
       { name: "MBTA Bus", url: "https://www.mbta.com" },
     ],
     routes: [
-      { to: "New York", toKey: "newYork", duration: "4h 15m", price: "$15-45" },
-      { to: "Providence", toKey: "providence", duration: "1h 00m", price: "$10-25" },
-      { to: "Hartford", toKey: "hartford", duration: "2h 00m", price: "$15-30" },
+      { to: "New York", toKey: "newYork", duration: "4h 15m", price: "$15-45 USD" },
+      { to: "Providence", toKey: "providence", duration: "1h 00m", price: "$10-25 USD" },
+      { to: "Hartford", toKey: "hartford", duration: "2h 00m", price: "$15-30 USD" },
     ],
     matchDayServices: [
       { name: "MBTA Shuttle", description: "MBTA buses to Gillette Stadium shuttle", descriptionKey: "mbtaGillette" },
@@ -399,9 +399,9 @@ const busHubs: BusHub[] = [
       { name: "SEPTA Bus", url: "https://www.septa.org" },
     ],
     routes: [
-      { to: "New York", toKey: "newYork", duration: "2h 00m", price: "$10-30" },
-      { to: "Washington DC", toKey: "washingtonDc", duration: "3h 00m", price: "$15-35" },
-      { to: "Baltimore", toKey: "baltimore", duration: "2h 00m", price: "$12-30" },
+      { to: "New York", toKey: "newYork", duration: "2h 00m", price: "$10-30 USD" },
+      { to: "Washington DC", toKey: "washingtonDc", duration: "3h 00m", price: "$15-35 USD" },
+      { to: "Baltimore", toKey: "baltimore", duration: "2h 00m", price: "$12-30 USD" },
     ],
     matchDayServices: [
       { name: "SEPTA Express", description: "SEPTA stadium express buses", descriptionKey: "septaStadium" },
@@ -423,9 +423,9 @@ const busHubs: BusHub[] = [
       { name: "Burlington Trailways", url: "https://www.burlingtontrailways.com" },
     ],
     routes: [
-      { to: "St. Louis", toKey: "stLouis", duration: "4h 00m", price: "$20-45" },
-      { to: "Omaha", toKey: "omaha", duration: "3h 00m", price: "$20-40" },
-      { to: "Denver", toKey: "denver", duration: "9h 00m", price: "$40-80" },
+      { to: "St. Louis", toKey: "stLouis", duration: "4h 00m", price: "$20-45 USD" },
+      { to: "Omaha", toKey: "omaha", duration: "3h 00m", price: "$20-40 USD" },
+      { to: "Denver", toKey: "denver", duration: "9h 00m", price: "$40-80 USD" },
     ],
     matchDayServices: [
       { name: "Arrowhead Express", description: "Express shuttles to Arrowhead Stadium", descriptionKey: "arrowheadExpress" },

@@ -43,7 +43,7 @@ const lodgingData: CityLodging[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$100-200/night",
+        priceRange: "$100-200 USD/night",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         accommodations: [
@@ -56,7 +56,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$200-400/night",
+        priceRange: "$200-400 USD/night",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         accommodations: [
@@ -69,7 +69,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$400-700/night",
+        priceRange: "$400-700 USD/night",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         accommodations: [
@@ -82,7 +82,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$700+/night",
+        priceRange: "$700+ USD/night",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         accommodations: [
@@ -104,7 +104,7 @@ const lodgingData: CityLodging[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$100-200/night",
+        priceRange: "$100-200 USD/night",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         accommodations: [
@@ -117,7 +117,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$200-400/night",
+        priceRange: "$200-400 USD/night",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         accommodations: [
@@ -130,7 +130,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$400-700/night",
+        priceRange: "$400-700 USD/night",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         accommodations: [
@@ -143,7 +143,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$700+/night",
+        priceRange: "$700+ USD/night",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         accommodations: [
@@ -165,7 +165,7 @@ const lodgingData: CityLodging[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$100-200/night",
+        priceRange: "$100-200 USD/night",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         accommodations: [
@@ -178,7 +178,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$200-400/night",
+        priceRange: "$200-400 USD/night",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         accommodations: [
@@ -191,7 +191,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$400-700/night",
+        priceRange: "$400-700 USD/night",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         accommodations: [
@@ -204,7 +204,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$700+/night",
+        priceRange: "$700+ USD/night",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         accommodations: [
@@ -226,7 +226,7 @@ const lodgingData: CityLodging[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$80-150/night",
+        priceRange: "$80-150 USD/night",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         accommodations: [
@@ -239,7 +239,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$150-300/night",
+        priceRange: "$150-300 USD/night",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         accommodations: [
@@ -252,7 +252,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$300-500/night",
+        priceRange: "$300-500 USD/night",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         accommodations: [
@@ -265,7 +265,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$500+/night",
+        priceRange: "$500+ USD/night",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         accommodations: [
@@ -287,7 +287,7 @@ const lodgingData: CityLodging[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$80-150/night",
+        priceRange: "$80-150 USD/night",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         accommodations: [
@@ -300,7 +300,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$150-300/night",
+        priceRange: "$150-300 USD/night",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         accommodations: [
@@ -313,7 +313,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$300-500/night",
+        priceRange: "$300-500 USD/night",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         accommodations: [
@@ -326,7 +326,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$500+/night",
+        priceRange: "$500+ USD/night",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         accommodations: [
@@ -348,7 +348,7 @@ const lodgingData: CityLodging[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$80-150/night",
+        priceRange: "$80-150 USD/night",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         accommodations: [
@@ -361,7 +361,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$150-300/night",
+        priceRange: "$150-300 USD/night",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         accommodations: [
@@ -374,7 +374,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$300-500/night",
+        priceRange: "$300-500 USD/night",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         accommodations: [
@@ -387,7 +387,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$500+/night",
+        priceRange: "$500+ USD/night",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         accommodations: [
@@ -409,7 +409,7 @@ const lodgingData: CityLodging[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$100-180/night",
+        priceRange: "$100-180 USD/night",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         accommodations: [
@@ -422,7 +422,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$180-350/night",
+        priceRange: "$180-350 USD/night",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         accommodations: [
@@ -435,7 +435,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$350-550/night",
+        priceRange: "$350-550 USD/night",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         accommodations: [
@@ -448,7 +448,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$550+/night",
+        priceRange: "$550+ USD/night",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         accommodations: [
@@ -470,7 +470,7 @@ const lodgingData: CityLodging[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$120-200/night",
+        priceRange: "$120-200 USD/night",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         accommodations: [
@@ -483,7 +483,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$200-400/night",
+        priceRange: "$200-400 USD/night",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         accommodations: [
@@ -496,7 +496,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$400-700/night",
+        priceRange: "$400-700 USD/night",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         accommodations: [
@@ -509,7 +509,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$700+/night",
+        priceRange: "$700+ USD/night",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         accommodations: [
@@ -531,7 +531,7 @@ const lodgingData: CityLodging[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$100-200/night",
+        priceRange: "$100-200 USD/night",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         accommodations: [
@@ -544,7 +544,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$200-400/night",
+        priceRange: "$200-400 USD/night",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         accommodations: [
@@ -557,7 +557,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$400-650/night",
+        priceRange: "$400-650 USD/night",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         accommodations: [
@@ -570,7 +570,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$650+/night",
+        priceRange: "$650+ USD/night",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         accommodations: [
@@ -592,7 +592,7 @@ const lodgingData: CityLodging[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$80-150/night",
+        priceRange: "$80-150 USD/night",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         accommodations: [
@@ -605,7 +605,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$150-300/night",
+        priceRange: "$150-300 USD/night",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         accommodations: [
@@ -618,7 +618,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$300-500/night",
+        priceRange: "$300-500 USD/night",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         accommodations: [
@@ -631,7 +631,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$500+/night",
+        priceRange: "$500+ USD/night",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         accommodations: [
@@ -653,7 +653,7 @@ const lodgingData: CityLodging[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$70-130/night",
+        priceRange: "$70-130 USD/night",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         accommodations: [
@@ -666,7 +666,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$130-250/night",
+        priceRange: "$130-250 USD/night",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         accommodations: [
@@ -679,7 +679,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$250-400/night",
+        priceRange: "$250-400 USD/night",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         accommodations: [
@@ -692,7 +692,7 @@ const lodgingData: CityLodging[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$400+/night",
+        priceRange: "$400+ USD/night",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         accommodations: [

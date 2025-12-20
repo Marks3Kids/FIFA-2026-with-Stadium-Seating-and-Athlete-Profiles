@@ -54,7 +54,7 @@ const cities: CityInfo[] = [
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7AllAreas" },
       { name: "Via", url: "https://ridewithvia.com", availabilityKey: "sharedRidesLowerCost" },
     ],
-    dailyRates: { economy: "$45-75", midsize: "$55-95", suv: "$75-130", luxury: "$120-250" },
+    dailyRates: { economy: "$45-75 USD", midsize: "$55-95 USD", suv: "$75-130 USD", luxury: "$120-250 USD" },
     parkingInfo: [
       "parkingNewYork1",
       "parkingNewYork2",
@@ -83,7 +83,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7Everywhere" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7Everywhere" },
     ],
-    dailyRates: { economy: "$40-65", midsize: "$50-85", suv: "$70-120", luxury: "$110-220" },
+    dailyRates: { economy: "$40-65 USD", midsize: "$50-85 USD", suv: "$70-120 USD", luxury: "$110-220 USD" },
     parkingInfo: [
       "parkingLosAngeles1",
       "parkingLosAngeles2",
@@ -113,7 +113,7 @@ const cities: CityInfo[] = [
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7AllAreas" },
       { name: "Freebee", url: "https://ridefreebee.com", availabilityKey: "freeSelectZones" },
     ],
-    dailyRates: { economy: "$35-60", midsize: "$45-80", suv: "$65-110", luxury: "$100-200" },
+    dailyRates: { economy: "$35-60 USD", midsize: "$45-80 USD", suv: "$65-110 USD", luxury: "$100-200 USD" },
     parkingInfo: [
       "parkingMiami1",
       "parkingMiami2",
@@ -141,7 +141,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7DfwMetro" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7DfwMetro" },
     ],
-    dailyRates: { economy: "$35-55", midsize: "$45-75", suv: "$60-100", luxury: "$90-180" },
+    dailyRates: { economy: "$35-55 USD", midsize: "$45-75 USD", suv: "$60-100 USD", luxury: "$90-180 USD" },
     parkingInfo: [
       "parkingDallas1",
       "parkingDallas2",
@@ -169,7 +169,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7MetroArea" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7MetroArea" },
     ],
-    dailyRates: { economy: "$35-55", midsize: "$45-70", suv: "$60-100", luxury: "$85-170" },
+    dailyRates: { economy: "$35-55 USD", midsize: "$45-70 USD", suv: "$60-100 USD", luxury: "$85-170 USD" },
     parkingInfo: [
       "parkingAtlanta1",
       "parkingAtlanta2",
@@ -197,7 +197,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7GreaterHouston" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7GreaterHouston" },
     ],
-    dailyRates: { economy: "$35-55", midsize: "$45-70", suv: "$55-95", luxury: "$80-160" },
+    dailyRates: { economy: "$35-55 USD", midsize: "$45-70 USD", suv: "$55-95 USD", luxury: "$80-160 USD" },
     parkingInfo: [
       "parkingHouston1",
       "parkingHouston2",
@@ -225,7 +225,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7PugetSound" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7PugetSound" },
     ],
-    dailyRates: { economy: "$40-65", midsize: "$50-85", suv: "$70-115", luxury: "$100-200" },
+    dailyRates: { economy: "$40-65 USD", midsize: "$50-85 USD", suv: "$70-115 USD", luxury: "$100-200 USD" },
     parkingInfo: [
       "parkingSeattle1",
       "parkingSeattle2",
@@ -253,7 +253,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7BayArea" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7BayArea" },
     ],
-    dailyRates: { economy: "$45-75", midsize: "$55-95", suv: "$75-130", luxury: "$120-250" },
+    dailyRates: { economy: "$45-75 USD", midsize: "$55-95 USD", suv: "$75-130 USD", luxury: "$120-250 USD" },
     parkingInfo: [
       "parkingSanFrancisco1",
       "parkingSanFrancisco2",
@@ -420,7 +420,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7GreaterBoston" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7GreaterBoston" },
     ],
-    dailyRates: { economy: "$45-70", midsize: "$55-90", suv: "$70-120", luxury: "$110-220" },
+    dailyRates: { economy: "$45-70 USD", midsize: "$55-90 USD", suv: "$70-120 USD", luxury: "$110-220 USD" },
     parkingInfo: [
       "parkingBoston1",
       "parkingBoston2",
@@ -448,7 +448,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7Philadelphia" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7Philadelphia" },
     ],
-    dailyRates: { economy: "$40-65", midsize: "$50-80", suv: "$65-110", luxury: "$95-190" },
+    dailyRates: { economy: "$40-65 USD", midsize: "$50-80 USD", suv: "$65-110 USD", luxury: "$95-190 USD" },
     parkingInfo: [
       "parkingPhiladelphia1",
       "parkingPhiladelphia2",
@@ -476,7 +476,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7KcMetro" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7KcMetro" },
     ],
-    dailyRates: { economy: "$30-50", midsize: "$40-65", suv: "$55-90", luxury: "$80-160" },
+    dailyRates: { economy: "$30-50 USD", midsize: "$40-65 USD", suv: "$55-90 USD", luxury: "$80-160 USD" },
     parkingInfo: [
       "parkingKansasCity1",
       "parkingKansasCity2",

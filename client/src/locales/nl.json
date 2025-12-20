@@ -2184,7 +2184,7 @@
       "title": "FINANCIEEL",
       "tipping": {
         "title": "Fooi Geven is Verplicht",
-        "description": "18-22% voor maaltijden, $1-2 per drankje in bars, $2-5 voor kamerservice per nacht. Gebruik de fooicalculator van de app."
+        "description": "18-22% voor maaltijden, $1-2 USD per drankje in bars, $2-5 USD voor kamerservice per nacht. Gebruik de fooicalculator van de app."
       },
       "salesTax": {
         "title": "Verkoopbelasting Niet Inbegrepen",
@@ -2192,7 +2192,7 @@
       },
       "creditHolds": {
         "title": "Creditcard Reserveringen",
-        "description": "Hotels en autoverhuur plaatsen $200-$500 \"reserveringen\" op kaarten. Dit vermindert direct je bestedingslimiet. Vermijd betaalkaarten omdat het geld daadwerkelijk van je rekening gaat."
+        "description": "Hotels en autoverhuur plaatsen $200-$500 USD \"reserveringen\" op kaarten. Dit vermindert direct je bestedingslimiet. Vermijd betaalkaarten omdat het geld daadwerkelijk van je rekening gaat."
       }
     },
     "legalSection": {
@@ -2277,7 +2277,7 @@
       "visaItems": {
         "esta": {
           "title": "ESTA",
-          "description": "$21, 72 uur van tevoren aanvragen (VK, EU, Australië, Japan, 41 landen)"
+          "description": "$21 USD, 72 uur van tevoren aanvragen (VK, EU, Australië, Japan, 41 landen)"
         },
         "b1b2": {
           "title": "B-1/B-2 Visum",
@@ -2307,11 +2307,11 @@
       "additionalItems": {
         "customs-declaration": {
           "title": "Douaneaangifteformulier",
-          "description": "Vul het CBP-aangifteformulier 6059B in het vliegtuig in of gebruik de CBP One app. Geef alle voedingsmiddelen, planten en artikelen met een waarde boven $800 aan."
+          "description": "Vul het CBP-aangifteformulier 6059B in het vliegtuig in of gebruik de CBP One app. Geef alle voedingsmiddelen, planten en artikelen met een waarde boven $800 USD aan."
         },
         "duty-free": {
           "title": "Belastingvrije Limieten",
-          "description": "Volwassenen mogen meenemen: 1L alcohol, 200 sigaretten of 100 sigaren (niet-Cubaans), geschenken tot $100. Boven de limieten = invoerrechten betalen."
+          "description": "Volwassenen mogen meenemen: 1L alcohol, 200 sigaretten of 100 sigaren (niet-Cubaans), geschenken tot $100 USD. Boven de limieten = invoerrechten betalen."
         },
         "cash-declaration": {
           "title": "Geldaangifte Vereist",
@@ -2946,7 +2946,7 @@
             "Verstuikingen, kleine snijwonden",
             "Griep, koorts, infecties",
             "Röntgenfoto's, hechtingen, testen",
-            "Kosten: $100 - $200",
+            "Kosten: $100 - $200 USD",
             "Wachttijd: 15-45 minuten"
           ]
         },
@@ -3106,7 +3106,7 @@
     "selectDescription": "Selecteer een stadion hierboven om secties en prijzen te bekijken",
     "capacity": "Capaciteit",
     "pricingNote": "Hoe FIFA-prijzen Werken",
-    "pricingDisclaimer": "FIFA gebruikt dynamische prijzen - Groepsfasewedstrijden starten rond $60-$250, terwijl de Finale varieert van $1.825-$6.730. Categorie 4-stoelen zijn beperkt tot inwoners van de VS, Canada en Mexico.",
+    "pricingDisclaimer": "FIFA gebruikt dynamische prijzen - Groepsfasewedstrijden starten rond $60-$250 USD, terwijl de Finale varieert van $1.825-$6.730. Categorie 4-stoelen zijn beperkt tot inwoners van de VS, Canada en Mexico.",
     "sectionLegend": "FIFA Ticketcategorieën",
     "viewOfficialMaps": "Bekijk Officiële Kaarten",
     "sectionTypes": {

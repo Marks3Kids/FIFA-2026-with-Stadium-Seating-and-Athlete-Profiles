@@ -941,31 +941,31 @@
         "24_7KcMetro": "24/7 KC Metro"
       },
       "parking": {
-        "parkingNewYork1": "MetLife Stadium: $40-60 per evento",
+        "parkingNewYork1": "MetLife Stadium: $40-60 USD per evento",
         "parkingNewYork2": "Parcheggio su strada limitato a Manhattan",
         "parkingNewYork3": "Utilizzare i parcheggi Park & Ride nel NJ",
-        "parkingLosAngeles1": "SoFi Stadium: $50-80 per evento",
+        "parkingLosAngeles1": "SoFi Stadium: $50-80 USD per evento",
         "parkingLosAngeles2": "Parcheggio prepagato consigliato",
         "parkingLosAngeles3": "Zone di discesa Uber/Lyft disponibili",
-        "parkingMiami1": "Hard Rock Stadium: $40-60 per evento",
+        "parkingMiami1": "Hard Rock Stadium: $40-60 USD per evento",
         "parkingMiami2": "Parcheggi sulla spiaggia disponibili",
         "parkingMiami3": "Corsie a pedaggio espresso per lo stadio",
-        "parkingDallas1": "AT&T Stadium: $40-75 per evento",
+        "parkingDallas1": "AT&T Stadium: $40-75 USD per evento",
         "parkingDallas2": "Prenotare il parcheggio online in anticipo",
         "parkingDallas3": "Parcheggio gratuito alle stazioni DART",
-        "parkingAtlanta1": "Mercedes-Benz Stadium: $20-60 per evento",
+        "parkingAtlanta1": "Mercedes-Benz Stadium: $20-60 USD per evento",
         "parkingAtlanta2": "Parcheggi MARTA Park & Ride",
         "parkingAtlanta3": "I parcheggi del centro si riempiono rapidamente",
-        "parkingHouston1": "NRG Stadium: $25-60 per evento",
+        "parkingHouston1": "NRG Stadium: $25-60 USD per evento",
         "parkingHouston2": "Contanti e carte accettati nei parcheggi",
         "parkingHouston3": "Park & Ride dalla zona Galleria",
-        "parkingSeattle1": "Lumen Field: $25-50 per evento",
+        "parkingSeattle1": "Lumen Field: $25-50 USD per evento",
         "parkingSeattle2": "Parcheggi Pioneer Square nelle vicinanze",
         "parkingSeattle3": "Metropolitana leggera per Stadium Station",
-        "parkingSanFrancisco1": "Levi's Stadium: $40-60 per evento",
+        "parkingSanFrancisco1": "Levi's Stadium: $40-60 USD per evento",
         "parkingSanFrancisco2": "Parcheggi della metropolitana leggera VTA",
         "parkingSanFrancisco3": "Incentivi per il car pooling disponibili",
-        "parkingToronto1": "BMO Field: CAD $30-50 per evento",
+        "parkingToronto1": "BMO Field: CAD $30-50 USD per evento",
         "parkingToronto2": "Parcheggi TTC Park & Ride",
         "parkingToronto3": "Parcheggio limitato a Exhibition Place",
         "parkingVancouver1": "BC Place: CAD $20-40 per evento",
@@ -980,13 +980,13 @@
         "parkingGuadalajara1": "Estadio Akron: MXN $80-150 per evento",
         "parkingGuadalajara2": "Parcheggio prepagato disponibile online",
         "parkingGuadalajara3": "Zone discesa taxi allo stadio",
-        "parkingBoston1": "Gillette Stadium: $40-60 per evento",
+        "parkingBoston1": "Gillette Stadium: $40-60 USD per evento",
         "parkingBoston2": "Treno pendolare dalla South Station",
         "parkingBoston3": "Parcheggio prepagato consigliato",
-        "parkingPhiladelphia1": "Lincoln Financial Field: $30-50 per evento",
+        "parkingPhiladelphia1": "Lincoln Financial Field: $30-50 USD per evento",
         "parkingPhiladelphia2": "Accesso SEPTA Broad Street Line",
         "parkingPhiladelphia3": "Parcheggi Sports Complex",
-        "parkingKansasCity1": "Arrowhead Stadium: $35-60 per evento",
+        "parkingKansasCity1": "Arrowhead Stadium: $35-60 USD per evento",
         "parkingKansasCity2": "I parcheggi tailgate si riempiono presto",
         "parkingKansasCity3": "Prenotare il parcheggio online in anticipo"
       },
@@ -2184,7 +2184,7 @@
       "title": "FINANZIARIO",
       "tipping": {
         "title": "La Mancia è Obbligatoria",
-        "description": "18-22% per i pasti, $1-2 per drink al bar, $2-5 per il servizio in camera a notte. Usa il calcolatore di mance dell'app."
+        "description": "18-22% per i pasti, $1-2 USD per drink al bar, $2-5 USD per il servizio in camera a notte. Usa il calcolatore di mance dell'app."
       },
       "salesTax": {
         "title": "Tassa di Vendita Non Inclusa",
@@ -2192,7 +2192,7 @@
       },
       "creditHolds": {
         "title": "Blocchi Carta di Credito",
-        "description": "Hotel e noleggio auto mettono \"blocchi\" di $200-$500 sulle carte. Questo riduce immediatamente il tuo limite di spesa. Evita le carte di debito perché i soldi escono effettivamente dal tuo conto."
+        "description": "Hotel e noleggio auto mettono \"blocchi\" di $200-$500 USD sulle carte. Questo riduce immediatamente il tuo limite di spesa. Evita le carte di debito perché i soldi escono effettivamente dal tuo conto."
       }
     },
     "legalSection": {
@@ -2277,7 +2277,7 @@
       "visaItems": {
         "esta": {
           "title": "ESTA",
-          "description": "$21, richiedere 72 ore prima (Regno Unito, UE, Australia, Giappone, 41 paesi)"
+          "description": "$21 USD, richiedere 72 ore prima (Regno Unito, UE, Australia, Giappone, 41 paesi)"
         },
         "b1b2": {
           "title": "Visto B-1/B-2",
@@ -2307,11 +2307,11 @@
       "additionalItems": {
         "customs-declaration": {
           "title": "Modulo di Dichiarazione Doganale",
-          "description": "Compila il Modulo di Dichiarazione CBP 6059B in aereo o usa l'app CBP One. Dichiara tutti gli alimenti, piante e articoli oltre $800 di valore."
+          "description": "Compila il Modulo di Dichiarazione CBP 6059B in aereo o usa l'app CBP One. Dichiara tutti gli alimenti, piante e articoli oltre $800 USD di valore."
         },
         "duty-free": {
           "title": "Franchigie Duty-Free",
-          "description": "Gli adulti possono portare: 1L di alcol, 200 sigarette o 100 sigari (non cubani), regali fino a $100. Oltre i limiti = pagare dazi."
+          "description": "Gli adulti possono portare: 1L di alcol, 200 sigarette o 100 sigari (non cubani), regali fino a $100 USD. Oltre i limiti = pagare dazi."
         },
         "cash-declaration": {
           "title": "Dichiarazione Contanti Obbligatoria",
@@ -2946,7 +2946,7 @@
             "Distorsioni, tagli minori",
             "Influenza, febbre, infezioni",
             "Radiografie, punti, esami",
-            "Costo: $100 - $200",
+            "Costo: $100 - $200 USD",
             "Attesa: 15-45 minuti"
           ]
         },
@@ -3106,7 +3106,7 @@
     "selectDescription": "Seleziona uno stadio sopra per visualizzare le sezioni e i prezzi",
     "capacity": "Capacità",
     "pricingNote": "Come Funzionano i Prezzi FIFA",
-    "pricingDisclaimer": "La FIFA utilizza prezzi dinamici - Le partite della Fase a Gironi partono da circa $60-$250, mentre la Finale va da $1.825-$6.730. I posti di Categoria 4 sono riservati ai residenti di USA, Canada e Messico.",
+    "pricingDisclaimer": "La FIFA utilizza prezzi dinamici - Le partite della Fase a Gironi partono da circa $60-$250 USD, mentre la Finale va da $1.825-$6.730. I posti di Categoria 4 sono riservati ai residenti di USA, Canada e Messico.",
     "sectionLegend": "Categorie Biglietti FIFA",
     "viewOfficialMaps": "Vedi Mappe Ufficiali",
     "sectionTypes": {

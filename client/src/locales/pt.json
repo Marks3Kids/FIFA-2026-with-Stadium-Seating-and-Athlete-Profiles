@@ -2183,7 +2183,7 @@
       "title": "FINANCEIRO",
       "tipping": {
         "title": "Gorjeta é Obrigatória",
-        "description": "18-22% para refeições, $1-2 por bebida em bares, $2-5 para serviço de quarto por noite. Use a calculadora de gorjetas do app."
+        "description": "18-22% para refeições, $1-2 USD por bebida em bares, $2-5 USD para serviço de quarto por noite. Use a calculadora de gorjetas do app."
       },
       "salesTax": {
         "title": "Imposto de Venda Não Incluído",
@@ -2191,7 +2191,7 @@
       },
       "creditHolds": {
         "title": "Bloqueios de Cartão de Crédito",
-        "description": "Hotéis e aluguel de carros colocam \"bloqueios\" de $200-$500 nos cartões. Isso reduz seu limite de gastos imediatamente. Evite usar cartões de débito pois o dinheiro realmente sai da sua conta."
+        "description": "Hotéis e aluguel de carros colocam \"bloqueios\" de $200-$500 USD nos cartões. Isso reduz seu limite de gastos imediatamente. Evite usar cartões de débito pois o dinheiro realmente sai da sua conta."
       }
     },
     "legalSection": {
@@ -2276,7 +2276,7 @@
       "visaItems": {
         "esta": {
           "title": "ESTA",
-          "description": "$21, solicitar 72 horas antes (Reino Unido, UE, Austrália, Japão, 41 países)"
+          "description": "$21 USD, solicitar 72 horas antes (Reino Unido, UE, Austrália, Japão, 41 países)"
         },
         "b1b2": {
           "title": "Visto B-1/B-2",
@@ -2306,11 +2306,11 @@
       "additionalItems": {
         "customs-declaration": {
           "title": "Formulário de Declaração Aduaneira",
-          "description": "Preencha o Formulário de Declaração CBP 6059B no avião ou use o app CBP One. Declare todos os alimentos, plantas e itens acima de $800 de valor."
+          "description": "Preencha o Formulário de Declaração CBP 6059B no avião ou use o app CBP One. Declare todos os alimentos, plantas e itens acima de $800 USD de valor."
         },
         "duty-free": {
           "title": "Franquias Isentas de Impostos",
-          "description": "Adultos podem trazer: 1L de álcool, 200 cigarros ou 100 charutos (não cubanos), presentes até $100. Acima dos limites = pagar taxas."
+          "description": "Adultos podem trazer: 1L de álcool, 200 cigarros ou 100 charutos (não cubanos), presentes até $100 USD. Acima dos limites = pagar taxas."
         },
         "cash-declaration": {
           "title": "Declaração de Dinheiro Obrigatória",
@@ -2945,7 +2945,7 @@
             "Entorses, cortes pequenos",
             "Gripe, febre, infecções",
             "Raio-X, pontos, exames",
-            "Custo: $100 - $200",
+            "Custo: $100 - $200 USD",
             "Espera: 15-45 minutos"
           ]
         },
@@ -3105,7 +3105,7 @@
     "selectDescription": "Selecione um estádio acima para ver as seções e preços",
     "capacity": "Capacidade",
     "pricingNote": "Como Funciona o Preço da FIFA",
-    "pricingDisclaimer": "A FIFA usa preços dinâmicos - Jogos da Fase de Grupos começam em torno de $60-$250, enquanto a Final varia de $1.825-$6.730. Assentos da Categoria 4 são restritos a residentes dos EUA, Canadá e México.",
+    "pricingDisclaimer": "A FIFA usa preços dinâmicos - Jogos da Fase de Grupos começam em torno de $60-$250 USD, enquanto a Final varia de $1.825-$6.730. Assentos da Categoria 4 são restritos a residentes dos EUA, Canadá e México.",
     "sectionLegend": "Categorias de Ingressos FIFA",
     "viewOfficialMaps": "Ver Mapas Oficiais",
     "sectionTypes": {

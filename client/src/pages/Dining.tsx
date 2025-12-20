@@ -42,7 +42,7 @@ const diningData: CityDining[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$10-25",
+        priceRange: "$10-25 USD",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         restaurants: [
@@ -55,7 +55,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$25-50",
+        priceRange: "$25-50 USD",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         restaurants: [
@@ -68,7 +68,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$50-100",
+        priceRange: "$50-100 USD",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         restaurants: [
@@ -81,7 +81,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$100+",
+        priceRange: "$100+ USD",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         restaurants: [
@@ -103,7 +103,7 @@ const diningData: CityDining[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$10-25",
+        priceRange: "$10-25 USD",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         restaurants: [
@@ -116,7 +116,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$25-50",
+        priceRange: "$25-50 USD",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         restaurants: [
@@ -129,7 +129,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$50-100",
+        priceRange: "$50-100 USD",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         restaurants: [
@@ -142,7 +142,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$100+",
+        priceRange: "$100+ USD",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         restaurants: [
@@ -164,7 +164,7 @@ const diningData: CityDining[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$10-25",
+        priceRange: "$10-25 USD",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         restaurants: [
@@ -177,7 +177,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$25-50",
+        priceRange: "$25-50 USD",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         restaurants: [
@@ -190,7 +190,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$50-100",
+        priceRange: "$50-100 USD",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         restaurants: [
@@ -203,7 +203,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$100+",
+        priceRange: "$100+ USD",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         restaurants: [
@@ -225,7 +225,7 @@ const diningData: CityDining[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$10-25",
+        priceRange: "$10-25 USD",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         restaurants: [
@@ -238,7 +238,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$25-50",
+        priceRange: "$25-50 USD",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         restaurants: [
@@ -251,7 +251,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$50-100",
+        priceRange: "$50-100 USD",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         restaurants: [
@@ -264,7 +264,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$100+",
+        priceRange: "$100+ USD",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         restaurants: [
@@ -286,7 +286,7 @@ const diningData: CityDining[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$10-25",
+        priceRange: "$10-25 USD",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         restaurants: [
@@ -299,7 +299,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$25-50",
+        priceRange: "$25-50 USD",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         restaurants: [
@@ -312,7 +312,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$50-100",
+        priceRange: "$50-100 USD",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         restaurants: [
@@ -325,7 +325,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$100+",
+        priceRange: "$100+ USD",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         restaurants: [
@@ -347,7 +347,7 @@ const diningData: CityDining[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$10-25",
+        priceRange: "$10-25 USD",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         restaurants: [
@@ -360,7 +360,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$25-50",
+        priceRange: "$25-50 USD",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         restaurants: [
@@ -373,7 +373,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$50-100",
+        priceRange: "$50-100 USD",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         restaurants: [
@@ -386,7 +386,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$100+",
+        priceRange: "$100+ USD",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         restaurants: [
@@ -408,7 +408,7 @@ const diningData: CityDining[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$10-25",
+        priceRange: "$10-25 USD",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         restaurants: [
@@ -421,7 +421,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$25-50",
+        priceRange: "$25-50 USD",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         restaurants: [
@@ -434,7 +434,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$50-100",
+        priceRange: "$50-100 USD",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         restaurants: [
@@ -447,7 +447,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$100+",
+        priceRange: "$100+ USD",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         restaurants: [
@@ -469,7 +469,7 @@ const diningData: CityDining[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$10-25",
+        priceRange: "$10-25 USD",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         restaurants: [
@@ -482,7 +482,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$25-50",
+        priceRange: "$25-50 USD",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         restaurants: [
@@ -495,7 +495,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$50-100",
+        priceRange: "$50-100 USD",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         restaurants: [
@@ -508,7 +508,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$100+",
+        priceRange: "$100+ USD",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         restaurants: [
@@ -530,7 +530,7 @@ const diningData: CityDining[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$10-25",
+        priceRange: "$10-25 USD",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         restaurants: [
@@ -543,7 +543,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$25-50",
+        priceRange: "$25-50 USD",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         restaurants: [
@@ -556,7 +556,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$50-100",
+        priceRange: "$50-100 USD",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         restaurants: [
@@ -569,7 +569,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$100+",
+        priceRange: "$100+ USD",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         restaurants: [
@@ -591,7 +591,7 @@ const diningData: CityDining[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$10-25",
+        priceRange: "$10-25 USD",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         restaurants: [
@@ -604,7 +604,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$25-50",
+        priceRange: "$25-50 USD",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         restaurants: [
@@ -617,7 +617,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$50-100",
+        priceRange: "$50-100 USD",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         restaurants: [
@@ -630,7 +630,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$100+",
+        priceRange: "$100+ USD",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         restaurants: [
@@ -652,7 +652,7 @@ const diningData: CityDining[] = [
     categories: [
       {
         category: "Budget",
-        priceRange: "$10-25",
+        priceRange: "$10-25 USD",
         color: "text-green-400",
         bgColor: "bg-green-500/10 border-green-500/20",
         restaurants: [
@@ -665,7 +665,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Mid-Range",
-        priceRange: "$25-50",
+        priceRange: "$25-50 USD",
         color: "text-blue-400",
         bgColor: "bg-blue-500/10 border-blue-500/20",
         restaurants: [
@@ -678,7 +678,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Upscale",
-        priceRange: "$50-100",
+        priceRange: "$50-100 USD",
         color: "text-purple-400",
         bgColor: "bg-purple-500/10 border-purple-500/20",
         restaurants: [
@@ -691,7 +691,7 @@ const diningData: CityDining[] = [
       },
       {
         category: "Luxury",
-        priceRange: "$100+",
+        priceRange: "$100+ USD",
         color: "text-amber-400",
         bgColor: "bg-amber-500/10 border-amber-500/20",
         restaurants: [

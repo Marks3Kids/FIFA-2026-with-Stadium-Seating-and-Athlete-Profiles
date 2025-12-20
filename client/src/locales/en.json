@@ -941,31 +941,31 @@
         "24_7KcMetro": "24/7 KC Metro"
       },
       "parking": {
-        "parkingNewYork1": "MetLife Stadium: $40-60 per event",
+        "parkingNewYork1": "MetLife Stadium: $40-60 USD per event",
         "parkingNewYork2": "Limited street parking in Manhattan",
         "parkingNewYork3": "Use Park & Ride lots in NJ",
-        "parkingLosAngeles1": "SoFi Stadium: $50-80 per event",
+        "parkingLosAngeles1": "SoFi Stadium: $50-80 USD per event",
         "parkingLosAngeles2": "Pre-paid parking recommended",
         "parkingLosAngeles3": "Uber/Lyft drop-off zones available",
-        "parkingMiami1": "Hard Rock Stadium: $40-60 per event",
+        "parkingMiami1": "Hard Rock Stadium: $40-60 USD per event",
         "parkingMiami2": "Beach parking garages available",
         "parkingMiami3": "Express toll lanes to stadium",
-        "parkingDallas1": "AT&T Stadium: $40-75 per event",
+        "parkingDallas1": "AT&T Stadium: $40-75 USD per event",
         "parkingDallas2": "Reserve parking in advance online",
         "parkingDallas3": "Free parking at DART stations",
-        "parkingAtlanta1": "Mercedes-Benz Stadium: $20-60 per event",
+        "parkingAtlanta1": "Mercedes-Benz Stadium: $20-60 USD per event",
         "parkingAtlanta2": "MARTA Park & Ride locations",
         "parkingAtlanta3": "Downtown garages fill up quickly",
-        "parkingHouston1": "NRG Stadium: $25-60 per event",
+        "parkingHouston1": "NRG Stadium: $25-60 USD per event",
         "parkingHouston2": "Cash and card accepted at lots",
         "parkingHouston3": "Park & Ride from Galleria area",
-        "parkingSeattle1": "Lumen Field: $25-50 per event",
+        "parkingSeattle1": "Lumen Field: $25-50 USD per event",
         "parkingSeattle2": "Pioneer Square garages nearby",
         "parkingSeattle3": "Light rail to Stadium Station",
-        "parkingSanFrancisco1": "Levi's Stadium: $40-60 per event",
+        "parkingSanFrancisco1": "Levi's Stadium: $40-60 USD per event",
         "parkingSanFrancisco2": "VTA light rail parking lots",
         "parkingSanFrancisco3": "Carpool incentives available",
-        "parkingToronto1": "BMO Field: CAD $30-50 per event",
+        "parkingToronto1": "BMO Field: CAD $30-50 USD per event",
         "parkingToronto2": "TTC Park & Ride locations",
         "parkingToronto3": "Exhibition Place parking limited",
         "parkingVancouver1": "BC Place: CAD $20-40 per event",
@@ -980,13 +980,13 @@
         "parkingGuadalajara1": "Estadio Akron: MXN $80-150 per event",
         "parkingGuadalajara2": "Pre-paid parking available online",
         "parkingGuadalajara3": "Taxi drop-off zones at stadium",
-        "parkingBoston1": "Gillette Stadium: $40-60 per event",
+        "parkingBoston1": "Gillette Stadium: $40-60 USD per event",
         "parkingBoston2": "Commuter rail from South Station",
         "parkingBoston3": "Pre-paid parking recommended",
-        "parkingPhiladelphia1": "Lincoln Financial Field: $30-50 per event",
+        "parkingPhiladelphia1": "Lincoln Financial Field: $30-50 USD per event",
         "parkingPhiladelphia2": "SEPTA Broad Street Line access",
         "parkingPhiladelphia3": "Sports Complex parking lots",
-        "parkingKansasCity1": "Arrowhead Stadium: $35-60 per event",
+        "parkingKansasCity1": "Arrowhead Stadium: $35-60 USD per event",
         "parkingKansasCity2": "Tailgate lots fill early",
         "parkingKansasCity3": "Book parking online in advance"
       },
@@ -2185,7 +2185,7 @@
       "title": "FINANCIAL",
       "tipping": {
         "title": "Tipping is Mandatory",
-        "description": "18-22% for dining, $1-2 per drink at bars, $2-5 for hotel housekeeping per night. Use the app's tipping calculator."
+        "description": "18-22% for dining, $1-2 USD per drink at bars, $2-5 USD for hotel housekeeping per night. Use the app's tipping calculator."
       },
       "salesTax": {
         "title": "Sales Tax Not Included",
@@ -2193,7 +2193,7 @@
       },
       "creditHolds": {
         "title": "Credit Card Holds",
-        "description": "Hotels and rental cars place $200-$500 \"holds\" on cards. This reduces your spending limit immediately. Avoid using debit cards as money actually leaves your account."
+        "description": "Hotels and rental cars place $200-$500 USD \"holds\" on cards. This reduces your spending limit immediately. Avoid using debit cards as money actually leaves your account."
       }
     },
     "legalSection": {
@@ -2278,7 +2278,7 @@
       "visaItems": {
         "esta": {
           "title": "ESTA",
-          "description": "$21, apply 72 hours before (UK, EU, Australia, Japan, 41 countries)"
+          "description": "$21 USD, apply 72 hours before (UK, EU, Australia, Japan, 41 countries)"
         },
         "b1b2": {
           "title": "B-1/B-2 Visa",
@@ -2308,19 +2308,19 @@
       "additionalItems": {
         "customs-declaration": {
           "title": "Customs Declaration Form",
-          "description": "Complete CBP Declaration Form 6059B on the plane or use the CBP One app. Declare all food, plants, and items over $800 value."
+          "description": "Complete CBP Declaration Form 6059B on the plane or use the CBP One app. Declare all food, plants, and items over $800 USD value."
         },
         "duty-free": {
           "title": "Duty-Free Allowances",
-          "description": "Adults can bring: 1L alcohol, 200 cigarettes or 100 cigars (non-Cuban), gifts up to $100. Over limits = pay duty tax."
+          "description": "Adults can bring: 1L alcohol, 200 cigarettes or 100 cigars (non-Cuban), gifts up to $100 USD. Over limits = pay duty tax."
         },
         "cash-declaration": {
           "title": "Cash Declaration Required",
-          "description": "MUST declare if carrying $10,000+ in cash/monetary instruments. Failure to declare = seizure and potential criminal charges."
+          "description": "MUST declare if carrying $10,000+ USD in cash/monetary instruments. Failure to declare = seizure and potential criminal charges."
         },
         "food-restrictions": {
           "title": "Food & Agriculture Restrictions",
-          "description": "Many foods PROHIBITED: fresh fruits, vegetables, meats, dairy from most countries. Fines up to $10,000. Declare everything or dispose before customs."
+          "description": "Many foods PROHIBITED: fresh fruits, vegetables, meats, dairy from most countries. Fines up to $10,000 USD. Declare everything or dispose before customs."
         },
         "global-entry": {
           "title": "Global Entry / TSA PreCheck",
@@ -2702,7 +2702,7 @@
           "fruitsVegetables": {
             "name": "Fresh Fruits & Vegetables",
             "description": "Almost all fresh produce prohibited to prevent invasive pests. This includes fruits, vegetables, seeds, and plants. Some items may be allowed from Canada/Mexico.",
-            "penalty": "$300-$1,000 fine"
+            "penalty": "$300-$1,000 USD fine"
           },
           "dairy": {
             "name": "Dairy Products",
@@ -2936,7 +2936,7 @@
             "Chest pain, stroke symptoms",
             "Severe bleeding or trauma",
             "Difficulty breathing",
-            "Cost: $1,000 - $5,000+",
+            "Cost: $1,000 - $5,000+ USD",
             "Wait: 2-8 hours typical"
           ]
         },
@@ -2947,7 +2947,7 @@
             "Sprains, minor cuts",
             "Flu, fever, infections",
             "X-rays, stitches, tests",
-            "Cost: $100 - $200",
+            "Cost: $100 - $200 USD",
             "Wait: 15-45 minutes"
           ]
         },
@@ -3107,7 +3107,7 @@
     "selectDescription": "Select a venue above to view seating sections and pricing information",
     "capacity": "Capacity",
     "pricingNote": "How FIFA Pricing Works",
-    "pricingDisclaimer": "FIFA uses dynamic pricing - Group Stage matches start around $60-$250, while the Final ranges from $1,825-$6,730. Category 4 seats are restricted to US, Canada & Mexico residents only.",
+    "pricingDisclaimer": "FIFA uses dynamic pricing - Group Stage matches start around $60-$250 USD, while the Final ranges from $1,825-$6,730 USD. Category 4 seats are restricted to US, Canada & Mexico residents only.",
     "sectionLegend": "FIFA Ticket Categories",
     "viewOfficialMaps": "View Official Maps",
     "sectionTypes": {
