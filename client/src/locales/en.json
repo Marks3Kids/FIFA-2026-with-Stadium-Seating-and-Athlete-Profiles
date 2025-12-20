@@ -3201,6 +3201,15 @@
     "selectTeam": "Select Team",
     "winnerOf": "Winner of",
     "worldCupFinal": "World Cup Final",
-    "selectWinnersToAdvance": "Select winners to advance teams to the next round"
+    "selectWinnersToAdvance": "Select winners to advance teams to the next round",
+    "howItWorks": "How It Works",
+    "step1Title": "Step 1: Round of 32 (Manual)",
+    "step1Desc": "Tap 'Select Team' to choose which 2 teams you predict will face each other in each match. Pick from all 48 qualified teams. Then tap to select who you think will win.",
+    "step2Title": "Step 2: Later Rounds (Automatic)",
+    "step2Desc": "From Round of 16 onwards, teams are automatically loaded based on your previous picks. The winners you selected will appear as the contenders. Simply tap to pick who advances.",
+    "step3Title": "Step 3: Pick Your Champion",
+    "step3Desc": "Continue picking winners through Quarterfinals, Semifinals, and the Final to select your predicted World Cup 2026 Champion!",
+    "noteTitle": "Important Note",
+    "noteDesc": "If you change a pick in an earlier round, all dependent picks in later rounds will be cleared automatically. Your progress is saved automatically."
   }
 }

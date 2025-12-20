@@ -3200,6 +3200,15 @@
     "selectTeam": "Sélectionner une Équipe",
     "winnerOf": "Gagnant de",
     "worldCupFinal": "Finale de la Coupe du Monde",
-    "selectWinnersToAdvance": "Sélectionnez les gagnants pour faire avancer les équipes au tour suivant"
+    "selectWinnersToAdvance": "Sélectionnez les gagnants pour faire avancer les équipes au tour suivant",
+    "howItWorks": "Comment Ça Marche",
+    "step1Title": "Étape 1: 32èmes (Manuel)",
+    "step1Desc": "Appuyez sur 'Sélectionner une Équipe' pour choisir les 2 équipes que vous prédisez s'affronter dans chaque match. Choisissez parmi les 48 équipes qualifiées. Ensuite, appuyez pour sélectionner qui vous pensez gagnera.",
+    "step2Title": "Étape 2: Tours Suivants (Automatique)",
+    "step2Desc": "À partir des huitièmes de finale, les équipes sont chargées automatiquement selon vos choix précédents. Les gagnants que vous avez sélectionnés apparaîtront comme prétendants. Appuyez simplement pour choisir qui avance.",
+    "step3Title": "Étape 3: Choisissez Votre Champion",
+    "step3Desc": "Continuez à choisir les gagnants des quarts, demi-finales et finale pour sélectionner votre champion prédit de la Coupe du Monde 2026!",
+    "noteTitle": "Note Importante",
+    "noteDesc": "Si vous changez un choix dans un tour précédent, tous les choix dépendants dans les tours suivants seront effacés automatiquement. Votre progression est sauvegardée automatiquement."
   }
 }

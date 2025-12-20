@@ -8,7 +8,9 @@ import {
   RotateCcw, 
   Download,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  HelpCircle,
+  X
 } from "lucide-react";
 import { getFlagUrl } from "@/lib/flags";
 
@@ -39,6 +41,7 @@ const ROUNDS = [
 export default function BracketChallenge() {
   const { t } = useTranslation();
   const [currentRoundIndex, setCurrentRoundIndex] = useState(0);
+  const [showHelp, setShowHelp] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [predictions, setPredictions] = useState<BracketPredictions>(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -517,7 +520,48 @@ export default function BracketChallenge() {
             <Download className="w-4 h-4" />
             {t("bracket.downloadPDF")}
           </a>
+          <button
+            onClick={() => setShowHelp(true)}
+            className="flex items-center justify-center gap-2 bg-primary/20 border border-primary/30 rounded-lg px-4 py-2 text-sm text-primary hover:bg-primary/30 transition-colors"
+          >
+            <HelpCircle className="w-4 h-4" />
+            {t("bracket.howItWorks")}
+          </button>
         </div>
+
+        {showHelp && (
+          <div className="fixed inset-0 bg-black/70 z-[200] flex items-center justify-center p-4" onClick={() => setShowHelp(false)}>
+            <div 
+              className="bg-card border border-white/20 rounded-xl max-w-md w-full max-h-[80vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between p-4 border-b border-white/10">
+                <h3 className="font-display font-bold text-white">{t("bracket.howItWorks")}</h3>
+                <button onClick={() => setShowHelp(false)} className="text-muted-foreground hover:text-white">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="p-4 space-y-4">
+                <div className="bg-primary/10 border border-primary/20 rounded-lg p-3">
+                  <h4 className="font-bold text-primary text-sm mb-2">{t("bracket.step1Title")}</h4>
+                  <p className="text-xs text-muted-foreground">{t("bracket.step1Desc")}</p>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded-lg p-3">
+                  <h4 className="font-bold text-white text-sm mb-2">{t("bracket.step2Title")}</h4>
+                  <p className="text-xs text-muted-foreground">{t("bracket.step2Desc")}</p>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded-lg p-3">
+                  <h4 className="font-bold text-white text-sm mb-2">{t("bracket.step3Title")}</h4>
+                  <p className="text-xs text-muted-foreground">{t("bracket.step3Desc")}</p>
+                </div>
+                <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-3">
+                  <h4 className="font-bold text-yellow-400 text-sm mb-2">{t("bracket.noteTitle")}</h4>
+                  <p className="text-xs text-muted-foreground">{t("bracket.noteDesc")}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="flex gap-1 mb-4 overflow-x-auto pb-2">
           {ROUNDS.map((round, idx) => {

@@ -3199,6 +3199,15 @@
     "selectTeam": "Selecionar Equipe",
     "winnerOf": "Vencedor de",
     "worldCupFinal": "Final da Copa do Mundo",
-    "selectWinnersToAdvance": "Selecione os vencedores para avançar as equipes para a próxima rodada"
+    "selectWinnersToAdvance": "Selecione os vencedores para avançar as equipes para a próxima rodada",
+    "howItWorks": "Como Funciona",
+    "step1Title": "Passo 1: Fase de 32 (Manual)",
+    "step1Desc": "Toque em 'Selecionar Equipe' para escolher as 2 equipes que você prevê que se enfrentarão em cada partida. Escolha entre as 48 equipes classificadas. Em seguida, toque para selecionar quem você acha que vai ganhar.",
+    "step2Title": "Passo 2: Rodadas Posteriores (Automático)",
+    "step2Desc": "A partir das oitavas de final, as equipes são carregadas automaticamente com base em suas escolhas anteriores. Os vencedores que você selecionou aparecerão como candidatos. Simplesmente toque para escolher quem avança.",
+    "step3Title": "Passo 3: Escolha Seu Campeão",
+    "step3Desc": "Continue escolhendo vencedores nas quartas de final, semifinais e final para selecionar seu Campeão previsto da Copa do Mundo 2026!",
+    "noteTitle": "Nota Importante",
+    "noteDesc": "Se você mudar uma escolha em uma rodada anterior, todas as escolhas dependentes em rodadas posteriores serão apagadas automaticamente. Seu progresso é salvo automaticamente."
   }
 }

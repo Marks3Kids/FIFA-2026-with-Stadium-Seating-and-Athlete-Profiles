@@ -3200,6 +3200,15 @@
     "selectTeam": "Team Auswählen",
     "winnerOf": "Gewinner von",
     "worldCupFinal": "WM-Finale",
-    "selectWinnersToAdvance": "Wählen Sie Gewinner, um Teams in die nächste Runde zu bringen"
+    "selectWinnersToAdvance": "Wählen Sie Gewinner, um Teams in die nächste Runde zu bringen",
+    "howItWorks": "So Funktioniert's",
+    "step1Title": "Schritt 1: Runde der 32 (Manuell)",
+    "step1Desc": "Tippen Sie auf 'Team Auswählen', um die 2 Teams auszuwählen, die Ihrer Meinung nach in jedem Spiel aufeinandertreffen werden. Wählen Sie aus allen 48 qualifizierten Teams. Tippen Sie dann, um auszuwählen, wer Ihrer Meinung nach gewinnt.",
+    "step2Title": "Schritt 2: Spätere Runden (Automatisch)",
+    "step2Desc": "Ab dem Achtelfinale werden Teams automatisch basierend auf Ihren vorherigen Tipps geladen. Die von Ihnen ausgewählten Gewinner erscheinen als Kontrahenten. Tippen Sie einfach, um auszuwählen, wer weiterkommt.",
+    "step3Title": "Schritt 3: Wählen Sie Ihren Champion",
+    "step3Desc": "Wählen Sie weiter Gewinner im Viertelfinale, Halbfinale und Finale, um Ihren vorhergesagten WM 2026 Champion auszuwählen!",
+    "noteTitle": "Wichtiger Hinweis",
+    "noteDesc": "Wenn Sie einen Tipp in einer früheren Runde ändern, werden alle abhängigen Tipps in späteren Runden automatisch gelöscht. Ihr Fortschritt wird automatisch gespeichert."
   }
 }

@@ -3200,6 +3200,15 @@
     "selectTeam": "Selecteer Team",
     "winnerOf": "Winnaar van",
     "worldCupFinal": "WK Finale",
-    "selectWinnersToAdvance": "Selecteer winnaars om teams naar de volgende ronde te laten gaan"
+    "selectWinnersToAdvance": "Selecteer winnaars om teams naar de volgende ronde te laten gaan",
+    "howItWorks": "Hoe Het Werkt",
+    "step1Title": "Stap 1: 32ste Finales (Handmatig)",
+    "step1Desc": "Tik op 'Selecteer Team' om te kiezen welke 2 teams je voorspelt dat tegen elkaar zullen spelen in elke wedstrijd. Kies uit alle 48 gekwalificeerde teams. Tik vervolgens om te selecteren wie je denkt dat wint.",
+    "step2Title": "Stap 2: Latere Rondes (Automatisch)",
+    "step2Desc": "Vanaf de achtste finales worden teams automatisch geladen op basis van je eerdere keuzes. De winnaars die je hebt geselecteerd verschijnen als deelnemers. Tik gewoon om te kiezen wie doorgaat.",
+    "step3Title": "Stap 3: Kies Je Kampioen",
+    "step3Desc": "Blijf winnaars kiezen in de kwartfinales, halve finales en finale om je voorspelde WK 2026 Kampioen te selecteren!",
+    "noteTitle": "Belangrijke Opmerking",
+    "noteDesc": "Als je een keuze in een eerdere ronde wijzigt, worden alle afhankelijke keuzes in latere rondes automatisch gewist. Je voortgang wordt automatisch opgeslagen."
   }
 }

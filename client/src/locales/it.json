@@ -3200,6 +3200,15 @@
     "selectTeam": "Seleziona Squadra",
     "winnerOf": "Vincitore di",
     "worldCupFinal": "Finale Mondiale",
-    "selectWinnersToAdvance": "Seleziona i vincitori per far avanzare le squadre al turno successivo"
+    "selectWinnersToAdvance": "Seleziona i vincitori per far avanzare le squadre al turno successivo",
+    "howItWorks": "Come Funziona",
+    "step1Title": "Passo 1: Sedicesimi (Manuale)",
+    "step1Desc": "Tocca 'Seleziona Squadra' per scegliere le 2 squadre che prevedi si affronteranno in ogni partita. Scegli tra tutte le 48 squadre qualificate. Poi tocca per selezionare chi pensi vincerà.",
+    "step2Title": "Passo 2: Turni Successivi (Automatico)",
+    "step2Desc": "Dagli ottavi di finale in poi, le squadre vengono caricate automaticamente in base alle tue scelte precedenti. I vincitori che hai selezionato appariranno come contendenti. Tocca semplicemente per scegliere chi avanza.",
+    "step3Title": "Passo 3: Scegli il Tuo Campione",
+    "step3Desc": "Continua a scegliere i vincitori nei quarti, semifinali e finale per selezionare il tuo Campione previsto del Mondiale 2026!",
+    "noteTitle": "Nota Importante",
+    "noteDesc": "Se cambi una scelta in un turno precedente, tutte le scelte dipendenti nei turni successivi verranno cancellate automaticamente. I tuoi progressi vengono salvati automaticamente."
   }
 }
