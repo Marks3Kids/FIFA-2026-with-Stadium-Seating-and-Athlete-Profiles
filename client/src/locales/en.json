@@ -97,7 +97,9 @@
     "cities": "Cities",
     "matches": "Matches",
     "liveUpdates": "Live Updates",
-    "tip": "Tip"
+    "tip": "Tip",
+    "previous": "Previous",
+    "next": "Next"
   },
   "bracket": {
     "title": "Knockout Brackets",
@@ -3198,6 +3200,7 @@
     "pickWinner": "Pick Winner",
     "selectTeam": "Select Team",
     "winnerOf": "Winner of",
-    "worldCupFinal": "World Cup Final"
+    "worldCupFinal": "World Cup Final",
+    "selectWinnersToAdvance": "Select winners to advance teams to the next round"
   }
 }
