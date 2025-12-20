@@ -33,7 +33,11 @@ const NAV_ITEMS = [
   { icon: LogIn, labelKey: "nav.signIn", path: "/profile" },
 ];
 
-export function HeaderNav() {
+interface HeaderNavProps {
+  inline?: boolean;
+}
+
+export function HeaderNav({ inline = false }: HeaderNavProps) {
   const { t, i18n } = useTranslation();
   const [location] = useLocation();
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -81,8 +85,12 @@ export function HeaderNav() {
 
   const currentLanguage = LANGUAGES.find((l) => l.code === selectedLanguage) || LANGUAGES[0];
 
+  const containerClass = inline
+    ? "flex items-center gap-2"
+    : `fixed top-4 z-50 ${isRTL ? 'left-4' : 'right-4'} flex items-center gap-2`;
+
   return (
-    <div className={`fixed top-4 z-50 ${isRTL ? 'left-4' : 'right-4'} flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+    <div className={containerClass}>
       <div className="relative" ref={langRef}>
         <button
           onClick={() => setIsLangOpen(!isLangOpen)}
