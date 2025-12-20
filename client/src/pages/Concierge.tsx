@@ -8,11 +8,6 @@ import {
   User, 
   Loader2, 
   ArrowLeft,
-  UtensilsCrossed,
-  Hotel,
-  MapPin,
-  Plane,
-  HelpCircle,
   RefreshCw
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -23,30 +18,19 @@ interface Message {
   content: string;
 }
 
-type Category = "dining" | "lodging" | "activities" | "travel" | "general";
-
-interface CategoryConfig {
-  id: Category;
-  icon: React.ElementType;
-  color: string;
-  bgColor: string;
-}
-
 export default function Concierge() {
   const { t, i18n } = useTranslation();
   const [, navigate] = useLocation();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const categories: CategoryConfig[] = [
-    { id: "dining", icon: UtensilsCrossed, color: "text-orange-400", bgColor: "bg-orange-500/20" },
-    { id: "lodging", icon: Hotel, color: "text-blue-400", bgColor: "bg-blue-500/20" },
-    { id: "activities", icon: MapPin, color: "text-green-400", bgColor: "bg-green-500/20" },
-    { id: "travel", icon: Plane, color: "text-purple-400", bgColor: "bg-purple-500/20" },
-    { id: "general", icon: HelpCircle, color: "text-yellow-400", bgColor: "bg-yellow-500/20" },
+  const quickPrompts = [
+    t("concierge.quickPrompts.restaurants"),
+    t("concierge.quickPrompts.hotels"),
+    t("concierge.quickPrompts.transportation"),
+    t("concierge.quickPrompts.stadiumTips"),
   ];
 
   const getProfileContext = () => {
@@ -64,42 +48,6 @@ export default function Concierge() {
       return null;
     }
     return null;
-  };
-
-  const getCategoryPrompts = (category: Category): string[] => {
-    const prompts: Record<Category, string[]> = {
-      dining: [
-        t("concierge.categories.dining.prompts.bestRestaurants"),
-        t("concierge.categories.dining.prompts.budgetEats"),
-        t("concierge.categories.dining.prompts.localSpecialties"),
-        t("concierge.categories.dining.prompts.matchDayFood"),
-      ],
-      lodging: [
-        t("concierge.categories.lodging.prompts.nearStadium"),
-        t("concierge.categories.lodging.prompts.budgetHotels"),
-        t("concierge.categories.lodging.prompts.luxuryStay"),
-        t("concierge.categories.lodging.prompts.airbnbVsHotel"),
-      ],
-      activities: [
-        t("concierge.categories.activities.prompts.mustSee"),
-        t("concierge.categories.activities.prompts.fanZones"),
-        t("concierge.categories.activities.prompts.nightlife"),
-        t("concierge.categories.activities.prompts.familyFriendly"),
-      ],
-      travel: [
-        t("concierge.categories.travel.prompts.cityToCity"),
-        t("concierge.categories.travel.prompts.airportTransfer"),
-        t("concierge.categories.travel.prompts.publicTransit"),
-        t("concierge.categories.travel.prompts.carRental"),
-      ],
-      general: [
-        t("concierge.categories.general.prompts.visaInfo"),
-        t("concierge.categories.general.prompts.stadiumRules"),
-        t("concierge.categories.general.prompts.safetyTips"),
-        t("concierge.categories.general.prompts.currencyExchange"),
-      ],
-    };
-    return prompts[category];
   };
 
   const scrollToBottom = () => {
@@ -159,7 +107,6 @@ export default function Concierge() {
 
   const handleNewConversation = () => {
     setMessages([]);
-    setSelectedCategory(null);
   };
 
   const formatMessage = (content: string) => {
@@ -222,73 +169,21 @@ export default function Concierge() {
                 </p>
               </div>
               
-              {!selectedCategory ? (
-                <div className="space-y-4">
-                  <p className="text-xs text-muted-foreground uppercase tracking-wider text-center">{t("concierge.selectCategory")}</p>
-                  <div className="grid grid-cols-2 gap-3">
-                    {categories.map((cat) => {
-                      const Icon = cat.icon;
-                      return (
-                        <button
-                          key={cat.id}
-                          onClick={() => setSelectedCategory(cat.id)}
-                          className={`flex flex-col items-center gap-2 p-4 rounded-xl border border-white/5 bg-card hover:border-white/20 transition-all active:scale-95`}
-                          data-testid={`category-${cat.id}`}
-                        >
-                          <div className={`w-12 h-12 rounded-full ${cat.bgColor} flex items-center justify-center`}>
-                            <Icon className={`w-6 h-6 ${cat.color}`} />
-                          </div>
-                          <span className="text-sm font-medium text-white">{t(`concierge.categories.${cat.id}.title`)}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                  
-                  <div className="pt-4 border-t border-white/5">
-                    <p className="text-xs text-muted-foreground text-center mb-3">{t("concierge.orTypeQuestion")}</p>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      {(() => {
-                        const cat = categories.find(c => c.id === selectedCategory)!;
-                        const Icon = cat.icon;
-                        return (
-                          <>
-                            <div className={`w-8 h-8 rounded-full ${cat.bgColor} flex items-center justify-center`}>
-                              <Icon className={`w-4 h-4 ${cat.color}`} />
-                            </div>
-                            <span className="text-sm font-medium text-white">{t(`concierge.categories.${selectedCategory}.title`)}</span>
-                          </>
-                        );
-                      })()}
-                    </div>
+              <div className="space-y-3">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider text-center">{t("concierge.tryAsking")}</p>
+                <div className="space-y-2">
+                  {quickPrompts.map((prompt, i) => (
                     <button
-                      onClick={() => setSelectedCategory(null)}
-                      className="text-xs text-muted-foreground hover:text-white transition-colors"
-                      data-testid="button-change-category"
+                      key={i}
+                      onClick={() => handleQuickPrompt(prompt)}
+                      className="w-full text-left px-4 py-3 bg-card border border-white/5 rounded-xl text-sm text-white hover:bg-white/5 hover:border-white/10 transition-colors active:scale-[0.98]"
+                      data-testid={`quick-prompt-${i}`}
                     >
-                      {t("concierge.changeCategory")}
+                      {prompt}
                     </button>
-                  </div>
-                  
-                  <p className="text-xs text-muted-foreground">{t("concierge.suggestedQuestions")}</p>
-                  <div className="space-y-2">
-                    {getCategoryPrompts(selectedCategory).map((prompt, i) => (
-                      <button
-                        key={i}
-                        onClick={() => handleQuickPrompt(prompt)}
-                        className="w-full text-left px-4 py-3 bg-card border border-white/5 rounded-xl text-sm text-white hover:bg-white/5 hover:border-white/10 transition-colors"
-                        data-testid={`quick-prompt-${selectedCategory}-${i}`}
-                      >
-                        {prompt}
-                      </button>
-                    ))}
-                  </div>
+                  ))}
                 </div>
-              )}
+              </div>
             </div>
           ) : (
             <>

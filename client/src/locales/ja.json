@@ -2993,7 +2993,7 @@
     "title": "AIコンシェルジュ",
     "subtitle": "ワールドカップ旅行のエキスパート",
     "welcome": "ようこそ！",
-    "welcomeMessage": "FIFA 2026のAIコンシェルジュです。カテゴリを選択するか、何でもお聞きください！",
+    "welcomeMessage": "FIFA 2026のAIコンシェルジュです。旅行、レストラン、宿泊施設、大会についてお気軽にご質問ください！",
     "selectCategory": "何をお手伝いしましょうか？",
     "orTypeQuestion": "または下に質問を入力してください",
     "changeCategory": "変更",
@@ -3053,8 +3053,13 @@
       "stayMiami": "マイアミでおすすめの宿泊場所は？",
       "laToDallas": "LAからダラスへの行き方は？",
       "visaRequirements": "アメリカ入国に必要なビザは？",
-      "stadiumItems": "スタジアムに持ち込めるものは？"
-    }
+      "stadiumItems": "スタジアムに持ち込めるものは？",
+      "restaurants": "マイアミのスタジアム近くのおすすめレストランは?",
+      "hotels": "メットライフスタジアム徒歩圏内のホテルは?",
+      "transportation": "開催都市間の移動に最適な方法は?",
+      "stadiumTips": "スタジアムに持ち込み禁止のアイテムは?"
+    },
+    "tryAsking": "こんな質問を試してみて..."
   },
   "errors": {
     "loadingFailed": "Failed to load data",

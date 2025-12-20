@@ -2993,7 +2993,7 @@
     "title": "AI Conciërge",
     "subtitle": "Uw WK-reisexpert",
     "welcome": "Welkom!",
-    "welcomeMessage": "Ik ben uw AI-conciërge voor FIFA 2026. Selecteer een categorie of stel mij een vraag!",
+    "welcomeMessage": "Ik ben je AI-conciërge voor FIFA 2026. Vraag me alles over reizen, restaurants, accommodatie of het toernooi!",
     "selectCategory": "Hoe kan ik u helpen?",
     "orTypeQuestion": "Of typ hieronder uw eigen vraag",
     "changeCategory": "Wijzigen",
@@ -3053,8 +3053,13 @@
       "stayMiami": "Beste plekken om te verblijven in Miami?",
       "laToDallas": "Hoe kom ik van LA naar Dallas?",
       "visaRequirements": "Visumvereisten voor toegang tot de VS",
-      "stadiumItems": "Wat kan ik meenemen naar het stadion?"
-    }
+      "stadiumItems": "Wat kan ik meenemen naar het stadion?",
+      "restaurants": "Beste restaurants bij het stadion in Miami?",
+      "hotels": "Hotels op loopafstand van MetLife Stadium?",
+      "transportation": "Beste manier om tussen gaststeden te reizen?",
+      "stadiumTips": "Welke items zijn verboden in stadions?"
+    },
+    "tryAsking": "Probeer te vragen..."
   },
   "errors": {
     "loadingFailed": "Geen gegevens geladen",

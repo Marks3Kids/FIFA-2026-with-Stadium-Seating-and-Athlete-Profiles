@@ -2993,7 +2993,7 @@
     "title": "Concierge IA",
     "subtitle": "Il tuo esperto di viaggi per il Mondiale",
     "welcome": "Benvenuto!",
-    "welcomeMessage": "Sono il tuo concierge IA per FIFA 2026. Seleziona una categoria o fammi una domanda!",
+    "welcomeMessage": "Sono il tuo concierge AI per FIFA 2026. Chiedimi di viaggi, ristoranti, alloggi o del torneo!",
     "selectCategory": "Come posso aiutarti?",
     "orTypeQuestion": "Oppure scrivi la tua domanda qui sotto",
     "changeCategory": "Cambia",
@@ -3053,8 +3053,13 @@
       "stayMiami": "I migliori posti dove alloggiare a Miami?",
       "laToDallas": "Come arrivare da Los Angeles a Dallas?",
       "visaRequirements": "Requisiti per il visto d'ingresso negli USA",
-      "stadiumItems": "Cosa posso portare allo stadio?"
-    }
+      "stadiumItems": "Cosa posso portare allo stadio?",
+      "restaurants": "Migliori ristoranti vicino allo stadio a Miami?",
+      "hotels": "Hotel a pochi passi dal MetLife Stadium?",
+      "transportation": "Miglior modo per viaggiare tra le città ospitanti?",
+      "stadiumTips": "Quali oggetti sono vietati negli stadi?"
+    },
+    "tryAsking": "Prova a chiedere..."
   },
   "errors": {
     "loadingFailed": "Impossibile caricare i dati",

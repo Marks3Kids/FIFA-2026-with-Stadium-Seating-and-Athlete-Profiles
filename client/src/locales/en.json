@@ -2994,7 +2994,7 @@
     "title": "AI Concierge",
     "subtitle": "Your World Cup travel expert",
     "welcome": "Welcome!",
-    "welcomeMessage": "I'm your AI concierge for FIFA 2026. Select a category or ask me anything!",
+    "welcomeMessage": "I'm your AI concierge for FIFA 2026. Ask me anything about travel, dining, lodging, or the tournament!",
     "selectCategory": "What can I help you with?",
     "orTypeQuestion": "Or type your own question below",
     "changeCategory": "Change",
@@ -3054,8 +3054,13 @@
       "stayMiami": "Best places to stay in Miami?",
       "laToDallas": "How to get from LA to Dallas?",
       "visaRequirements": "Visa requirements for US entry",
-      "stadiumItems": "What can I bring to the stadium?"
-    }
+      "stadiumItems": "What can I bring to the stadium?",
+      "restaurants": "Best restaurants near the stadium in Miami?",
+      "hotels": "Hotels within walking distance of MetLife Stadium?",
+      "transportation": "Best way to travel between host cities?",
+      "stadiumTips": "What items are prohibited at World Cup stadiums?"
+    },
+    "tryAsking": "Try asking..."
   },
   "errors": {
     "loadingFailed": "Failed to load data",
