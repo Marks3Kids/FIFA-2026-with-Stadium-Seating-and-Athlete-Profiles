@@ -3098,8 +3098,8 @@
     "selectPrompt": "Kies een Stadion",
     "selectDescription": "Selecteer een stadion hierboven om secties en prijzen te bekijken",
     "capacity": "Capaciteit",
-    "pricingNote": "Prijsinformatie",
-    "pricingDisclaimer": "De getoonde prijzen zijn geschatte bereiken op basis van wedstrijdcategorie en zitplaatslocatie. Werkelijke ticketprijzen worden bepaald door FIFA en geautoriseerde verkopers.",
+    "pricingNote": "Hoe FIFA-prijzen Werken",
+    "pricingDisclaimer": "FIFA gebruikt dynamische prijzen - Groepsfasewedstrijden starten rond $60-$250, terwijl de Finale varieert van $1.825-$6.730. Categorie 4-stoelen zijn beperkt tot inwoners van de VS, Canada en Mexico.",
     "sectionLegend": "FIFA Ticketcategorieën",
     "viewOfficialMaps": "Bekijk Officiële Kaarten",
     "sectionTypes": {

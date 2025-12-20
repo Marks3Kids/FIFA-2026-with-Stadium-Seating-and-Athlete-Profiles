@@ -3097,8 +3097,8 @@
     "selectPrompt": "Escolha um Estádio",
     "selectDescription": "Selecione um estádio acima para ver as seções e preços",
     "capacity": "Capacidade",
-    "pricingNote": "Informações de Preços",
-    "pricingDisclaimer": "Os preços mostrados são faixas estimadas com base na categoria da partida e localização do assento. Os preços reais são definidos pela FIFA e revendedores autorizados.",
+    "pricingNote": "Como Funciona o Preço da FIFA",
+    "pricingDisclaimer": "A FIFA usa preços dinâmicos - Jogos da Fase de Grupos começam em torno de $60-$250, enquanto a Final varia de $1.825-$6.730. Assentos da Categoria 4 são restritos a residentes dos EUA, Canadá e México.",
     "sectionLegend": "Categorias de Ingressos FIFA",
     "viewOfficialMaps": "Ver Mapas Oficiais",
     "sectionTypes": {

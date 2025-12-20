@@ -3098,8 +3098,8 @@
     "selectPrompt": "スタジアムを選んでください",
     "selectDescription": "上のスタジアムを選択すると、座席セクションと価格を表示できます",
     "capacity": "収容人数",
-    "pricingNote": "価格情報",
-    "pricingDisclaimer": "表示価格は試合カテゴリーと座席位置に基づく推定範囲です。実際のチケット価格はFIFAおよび公認販売店により設定されます。",
+    "pricingNote": "FIFA価格の仕組み",
+    "pricingDisclaimer": "FIFAはダイナミックプライシングを採用 - グループステージは約$60-$250から、決勝は$1,825-$6,730の範囲です。カテゴリー4席は米国、カナダ、メキシコ居住者限定です。",
     "sectionLegend": "FIFAチケットカテゴリー",
     "viewOfficialMaps": "公式マップを見る",
     "sectionTypes": {

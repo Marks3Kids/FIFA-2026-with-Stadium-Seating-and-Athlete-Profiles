@@ -3098,8 +3098,8 @@
     "selectPrompt": "Choisir un Stade",
     "selectDescription": "Sélectionnez un stade ci-dessus pour voir les sections et les tarifs",
     "capacity": "Capacité",
-    "pricingNote": "Informations sur les Prix",
-    "pricingDisclaimer": "Les prix indiqués sont des fourchettes estimées selon la catégorie du match et l'emplacement. Les prix réels sont fixés par la FIFA et les revendeurs autorisés.",
+    "pricingNote": "Comment Fonctionne la Tarification FIFA",
+    "pricingDisclaimer": "La FIFA utilise une tarification dynamique - Les matchs de Phase de Groupes commencent autour de 60$-250$, tandis que la Finale va de 1 825$-6 730$. Les places de Catégorie 4 sont réservées aux résidents des USA, Canada et Mexique.",
     "sectionLegend": "Catégories de Billets FIFA",
     "viewOfficialMaps": "Voir les Plans Officiels",
     "sectionTypes": {

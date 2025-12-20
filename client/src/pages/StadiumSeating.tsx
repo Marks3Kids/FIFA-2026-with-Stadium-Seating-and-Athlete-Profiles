@@ -44,11 +44,11 @@ const sectionColors: Record<string, { bg: string; border: string; text: string }
   category4: { bg: "bg-green-500/20", border: "border-green-500/50", text: "text-green-400" },
 };
 
-const categoryDescriptions: Record<string, { location: string; view: string }> = {
-  category1: { location: "Lower tier, center sidelines", view: "Best views - closest to field" },
-  category2: { location: "Upper tier sidelines + lower corners", view: "Good overall views" },
-  category3: { location: "Upper tier behind goals", view: "Goal-line perspective" },
-  category4: { location: "Upper tier corners", view: "Most affordable option" },
+const categoryDescriptions: Record<string, { location: string; view: string; priceRange: string }> = {
+  category1: { location: "Lower tier, center sidelines", view: "Best views - closest to field", priceRange: "$250 - $6,730" },
+  category2: { location: "Upper tier sidelines + lower corners", view: "Good overall views", priceRange: "$165 - $4,210" },
+  category3: { location: "Upper tier behind goals", view: "Goal-line perspective", priceRange: "$110 - $2,790" },
+  category4: { location: "Upper tier corners", view: "Most affordable option", priceRange: "$60 - $1,825" },
 };
 
 export default function StadiumSeating() {
@@ -194,11 +194,16 @@ export default function StadiumSeating() {
                   const desc = categoryDescriptions[type];
                   return (
                     <div key={type} className={`${colors.bg} ${colors.border} border rounded-lg p-3`} data-testid={`legend-${type}`}>
-                      <div className="flex items-center space-x-2 mb-1">
-                        <div className={`w-3 h-3 rounded-full ${colors.text.replace("text-", "bg-")}`} />
-                        <span className={`text-sm font-bold ${colors.text}`}>
-                          {t(`stadiumSeating.sectionTypes.${type}`)}
-                        </span>
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center space-x-2">
+                          <div className={`w-3 h-3 rounded-full ${colors.text.replace("text-", "bg-")}`} />
+                          <span className={`text-sm font-bold ${colors.text}`}>
+                            {t(`stadiumSeating.sectionTypes.${type}`)}
+                          </span>
+                        </div>
+                        {desc && (
+                          <span className="text-xs font-semibold text-white">{desc.priceRange}</span>
+                        )}
                       </div>
                       {desc && (
                         <div className="ml-5">

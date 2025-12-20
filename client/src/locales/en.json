@@ -3099,8 +3099,8 @@
     "selectPrompt": "Choose a Stadium",
     "selectDescription": "Select a venue above to view seating sections and pricing information",
     "capacity": "Capacity",
-    "pricingNote": "Pricing Information",
-    "pricingDisclaimer": "Prices shown are estimated ranges based on match category and seat location. Actual ticket prices are set by FIFA and authorized resellers.",
+    "pricingNote": "How FIFA Pricing Works",
+    "pricingDisclaimer": "FIFA uses dynamic pricing - Group Stage matches start around $60-$250, while the Final ranges from $1,825-$6,730. Category 4 seats are restricted to US, Canada & Mexico residents only.",
     "sectionLegend": "FIFA Ticket Categories",
     "viewOfficialMaps": "View Official Maps",
     "sectionTypes": {

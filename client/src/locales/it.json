@@ -3098,8 +3098,8 @@
     "selectPrompt": "Scegli uno Stadio",
     "selectDescription": "Seleziona uno stadio sopra per visualizzare le sezioni e i prezzi",
     "capacity": "Capacità",
-    "pricingNote": "Informazioni sui Prezzi",
-    "pricingDisclaimer": "I prezzi mostrati sono intervalli stimati in base alla categoria della partita e alla posizione del posto. I prezzi effettivi sono stabiliti dalla FIFA e dai rivenditori autorizzati.",
+    "pricingNote": "Come Funzionano i Prezzi FIFA",
+    "pricingDisclaimer": "La FIFA utilizza prezzi dinamici - Le partite della Fase a Gironi partono da circa $60-$250, mentre la Finale va da $1.825-$6.730. I posti di Categoria 4 sono riservati ai residenti di USA, Canada e Messico.",
     "sectionLegend": "Categorie Biglietti FIFA",
     "viewOfficialMaps": "Vedi Mappe Ufficiali",
     "sectionTypes": {
