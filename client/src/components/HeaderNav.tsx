@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Home, Calendar, Flag, MapPin, Menu, Globe, ChevronDown, Train, Hotel, Utensils, Info, Sparkles, Settings, LogIn } from "lucide-react";
+import { Home, Calendar, Flag, MapPin, Menu, Globe, ChevronDown, Train, Hotel, Utensils, Info, Sparkles, Settings, LogIn, Trophy } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
 import { getLanguageFlagUrl } from "@/lib/flags";
@@ -28,6 +28,7 @@ const NAV_ITEMS = [
   { icon: Info, labelKey: "nav.essentialGuide", path: "/critical-info" },
   { icon: Calendar, labelKey: "nav.planner", path: "/planner" },
   { icon: Sparkles, labelKey: "nav.aiConcierge", path: "/concierge" },
+  { icon: Trophy, labelKey: "nav.history", path: "/history" },
   { icon: Settings, labelKey: "nav.settings", path: "/settings" },
   { icon: LogIn, labelKey: "nav.signIn", path: "/profile" },
 ];
