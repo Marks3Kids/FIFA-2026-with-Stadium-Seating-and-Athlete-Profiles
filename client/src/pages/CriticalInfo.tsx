@@ -3788,7 +3788,7 @@ export default function CriticalInfo() {
             ) : (
               <div className="space-y-6">
                 <div className="bg-gradient-to-br from-red-900/30 to-red-950/20 border border-red-500/20 rounded-2xl p-4">
-                  <h2 className="text-lg font-display font-bold text-white mb-3 flex items-center gap-2">
+                  <h2 className="text-lg font-display font-bold text-white mb-3 flex items-center gap-2 normal-case">
                     <Heart className="w-5 h-5 text-red-400" />
                     {t('criticalInfo.medicalSection.erVsUrgentCare.title')}
                   </h2>
