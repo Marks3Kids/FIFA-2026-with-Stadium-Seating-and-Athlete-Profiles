@@ -2908,7 +2908,7 @@
     },
     "medicalSection": {
       "erVsUrgentCare": {
-        "title": "ER vs DB (Dringliche Behandlung): Den Unterschied kennen",
+        "title": "ER (Notaufnahme) vs DB (Dringliche Behandlung): Den Unterschied kennen",
         "emergencyRoom": {
           "label": "Notaufnahme",
           "items": [

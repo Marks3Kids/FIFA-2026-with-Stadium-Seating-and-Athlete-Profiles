@@ -2908,7 +2908,7 @@
     },
     "medicalSection": {
       "erVsUrgentCare": {
-        "title": "ER vs AU (Atención Urgente): Conoce la Diferencia",
+        "title": "ER (Sala de Emergencias) vs AU (Atención Urgente): Conoce la Diferencia",
         "emergencyRoom": {
           "label": "Sala de Emergencias",
           "items": [

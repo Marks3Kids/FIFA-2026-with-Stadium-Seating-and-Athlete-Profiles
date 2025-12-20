@@ -2909,7 +2909,7 @@
     },
     "medicalSection": {
       "erVsUrgentCare": {
-        "title": "ER vs UC (Urgent Care): Know the Difference",
+        "title": "ER (Emergency Room) vs UC (Urgent Care): Know the Difference",
         "emergencyRoom": {
           "label": "Emergency Room",
           "items": [

@@ -2908,7 +2908,7 @@
     },
     "medicalSection": {
       "erVsUrgentCare": {
-        "title": "ER مقابل UC (الرعاية العاجلة): اعرف الفرق",
+        "title": "ER (غرفة الطوارئ) مقابل UC (الرعاية العاجلة): اعرف الفرق",
         "emergencyRoom": {
           "label": "غرفة الطوارئ",
           "items": [
