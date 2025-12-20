@@ -357,7 +357,10 @@ export default function BracketChallenge() {
         </button>
         
         {isOpen && (
-          <div className="absolute z-50 left-0 right-0 mt-1 max-h-40 overflow-y-auto bg-card border border-white/20 rounded-lg shadow-xl">
+          <div className="absolute z-[100] left-0 right-0 mt-1 max-h-60 overflow-y-auto bg-card border border-white/20 rounded-lg shadow-xl">
+            {availableTeams.length === 0 ? (
+              <div className="px-3 py-2 text-xs text-muted-foreground">No teams available</div>
+            ) : null}
             {availableTeams.map(team => (
               <button
                 key={team.id}
