@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Home, Calendar, Flag, MapPin, Menu, Globe, ChevronDown, Train, Hotel, Utensils, Info, Sparkles, Settings, LogIn, Trophy, Users } from "lucide-react";
+import { Home, Calendar, Flag, MapPin, Menu, Globe, ChevronDown, Train, Hotel, Utensils, Info, Sparkles, Settings, LogIn, Trophy, Users, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
 import { getLanguageFlagUrl } from "@/lib/flags";
@@ -22,6 +22,7 @@ const NAV_ITEMS = [
   { icon: Flag, labelKey: "nav.teams", path: "/teams" },
   { icon: Calendar, labelKey: "nav.matches", path: "/matches" },
   { icon: Trophy, labelKey: "nav.history", path: "/history" },
+  { icon: TrendingUp, labelKey: "nav.odds", path: "/odds" },
   { icon: Users, labelKey: "nav.players", path: "/players" },
   { icon: MapPin, labelKey: "nav.stadiumSeating", path: "/stadium-seating" },
   { icon: MapPin, labelKey: "nav.hostCities", path: "/cities" },
