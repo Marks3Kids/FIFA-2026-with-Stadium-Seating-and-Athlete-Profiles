@@ -117,6 +117,10 @@ app.use(
 
 app.use(express.urlencoded({ extended: false }));
 
+// Serve static files from public directory (for downloadable bracket PDF)
+import path from "path";
+app.use('/downloads', express.static(path.join(process.cwd(), 'public')));
+
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
     hour: "numeric",

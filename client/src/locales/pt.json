@@ -137,6 +137,7 @@
     "menu": "Menu",
     "history": "História",
     "odds": "Cotações do Torneio",
+    "bracket": "Desafio do Bracket",
     "players": "Jogadores",
     "stadiumSeating": "Assentos do Estádio"
   },
@@ -337,6 +338,7 @@
     "aiConcierge": "Concierge IA",
     "history": "História da Copa",
     "odds": "Cotações do Torneio",
+    "bracket": "Desafio do Bracket",
     "account": "Conta",
     "viewEditProfile": "Ver e editar perfil",
     "settings": "Configurações",
@@ -3171,5 +3173,25 @@
       "gamblingHelpAustralia": "Ajuda para Jogos Online (Austrália)",
       "adiccionesEspana": "Adicciones España"
     }
+  },
+  "bracket": {
+    "title": "Desafio do Bracket",
+    "subtitle": "Escolha os vencedores da Copa 2026",
+    "yourPick": "Seu Campeão Escolhido",
+    "champion2026": "Campeão da Copa 2026",
+    "complete": "Completo",
+    "selectChampion": "Complete o bracket para escolher seu campeão",
+    "reset": "Reiniciar",
+    "downloadPDF": "Imprimir Bracket",
+    "share": "Compartilhar",
+    "roundOf32": "32 avos de final",
+    "roundOf16": "Oitavas de final",
+    "quarterfinals": "Quartas de final",
+    "semifinals": "Semifinais",
+    "final": "Final",
+    "matches": "jogos",
+    "match": "Jogo",
+    "confirmReset": "Tem certeza que deseja reiniciar todas as suas previsões?",
+    "disclaimer": "Este é um jogo de previsões apenas para entretenimento. Preencha seu bracket e compare com amigos!"
   }
 }

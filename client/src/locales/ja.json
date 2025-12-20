@@ -137,6 +137,7 @@
     "menu": "メニュー",
     "history": "歴史",
     "odds": "大会オッズ",
+    "bracket": "ブラケットチャレンジ",
     "players": "選手",
     "stadiumSeating": "スタジアム座席"
   },
@@ -337,6 +338,7 @@
     "aiConcierge": "AIコンシェルジュ",
     "history": "W杯の歴史",
     "odds": "大会オッズ",
+    "bracket": "ブラケットチャレンジ",
     "account": "アカウント",
     "viewEditProfile": "プロフィールを表示・編集",
     "settings": "設定",
@@ -3172,5 +3174,25 @@
       "gamblingHelpAustralia": "ギャンブルヘルプオンライン（オーストラリア）",
       "adiccionesEspana": "アディクシオネス・エスパーニャ"
     }
+  },
+  "bracket": {
+    "title": "ブラケットチャレンジ",
+    "subtitle": "ワールドカップ2026の勝者を予想",
+    "yourPick": "あなたのチャンピオン予想",
+    "champion2026": "2026ワールドカップチャンピオン",
+    "complete": "完了",
+    "selectChampion": "ブラケットを完成させてチャンピオンを選択",
+    "reset": "リセット",
+    "downloadPDF": "ブラケットを印刷",
+    "share": "共有",
+    "roundOf32": "ベスト32",
+    "roundOf16": "ベスト16",
+    "quarterfinals": "準々決勝",
+    "semifinals": "準決勝",
+    "final": "決勝",
+    "matches": "試合",
+    "match": "試合",
+    "confirmReset": "すべての予想をリセットしてもよろしいですか？",
+    "disclaimer": "これはエンターテイメント目的の予想ゲームです。ブラケットを記入して友達と比較しよう！"
   }
 }

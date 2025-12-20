@@ -137,6 +137,7 @@
     "menu": "Menu",
     "history": "Geschiedenis",
     "odds": "Toernooi Odds",
+    "bracket": "Bracket Uitdaging",
     "players": "Spelers",
     "stadiumSeating": "Stadionzitplaatsen"
   },
@@ -337,6 +338,7 @@
     "aiConcierge": "AI conciërge",
     "history": "WK Geschiedenis",
     "odds": "Toernooi Odds",
+    "bracket": "Bracket Uitdaging",
     "account": "Account",
     "viewEditProfile": "Profiel bekijken en bewerken",
     "settings": "Instellingen",
@@ -3172,5 +3174,25 @@
       "gamblingHelpAustralia": "Online Gokhulp (Australië)",
       "adiccionesEspana": "Adicciones España"
     }
+  },
+  "bracket": {
+    "title": "Bracket Uitdaging",
+    "subtitle": "Kies je WK 2026 winnaars",
+    "yourPick": "Jouw Kampioen Keuze",
+    "champion2026": "Wereldkampioen 2026",
+    "complete": "Compleet",
+    "selectChampion": "Vul het bracket in om je kampioen te kiezen",
+    "reset": "Resetten",
+    "downloadPDF": "Bracket Printen",
+    "share": "Delen",
+    "roundOf32": "Ronde van 32",
+    "roundOf16": "Achtste finales",
+    "quarterfinals": "Kwartfinales",
+    "semifinals": "Halve finales",
+    "final": "Finale",
+    "matches": "wedstrijden",
+    "match": "Wedstrijd",
+    "confirmReset": "Weet je zeker dat je al je voorspellingen wilt resetten?",
+    "disclaimer": "Dit is een voorspellingsspel alleen voor entertainment. Vul je bracket in en vergelijk met vrienden!"
   }
 }

@@ -137,6 +137,7 @@
     "menu": "Menu",
     "history": "Storia",
     "odds": "Quote del Torneo",
+    "bracket": "Sfida del Tabellone",
     "players": "Giocatori",
     "stadiumSeating": "Posti allo Stadio"
   },
@@ -337,6 +338,7 @@
     "aiConcierge": "Concierge AI",
     "history": "Storia dei Mondiali",
     "odds": "Quote del Torneo",
+    "bracket": "Sfida del Tabellone",
     "account": "Conto",
     "viewEditProfile": "Visualizza e modifica il profilo",
     "settings": "Impostazioni",
@@ -3172,5 +3174,25 @@
       "gamblingHelpAustralia": "Aiuto per il Gioco Online (Australia)",
       "adiccionesEspana": "Adicciones España"
     }
+  },
+  "bracket": {
+    "title": "Sfida del Tabellone",
+    "subtitle": "Scegli i vincitori del Mondiale 2026",
+    "yourPick": "Il Tuo Campione Scelto",
+    "champion2026": "Campione del Mondo 2026",
+    "complete": "Completo",
+    "selectChampion": "Completa il tabellone per scegliere il tuo campione",
+    "reset": "Azzera",
+    "downloadPDF": "Stampa Tabellone",
+    "share": "Condividi",
+    "roundOf32": "Sedicesimi di finale",
+    "roundOf16": "Ottavi di finale",
+    "quarterfinals": "Quarti di finale",
+    "semifinals": "Semifinali",
+    "final": "Finale",
+    "matches": "partite",
+    "match": "Partita",
+    "confirmReset": "Sei sicuro di voler azzerare tutte le tue previsioni?",
+    "disclaimer": "Questo è un gioco di previsioni solo a scopo di intrattenimento. Compila il tuo tabellone e confrontalo con gli amici!"
   }
 }

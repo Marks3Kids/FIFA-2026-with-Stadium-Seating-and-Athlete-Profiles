@@ -137,6 +137,7 @@
     "menu": "Menu",
     "history": "History",
     "odds": "Tournament Odds",
+    "bracket": "Bracket Challenge",
     "players": "Players",
     "stadiumSeating": "Stadium Seating"
   },
@@ -337,6 +338,7 @@
     "aiConcierge": "AI Concierge",
     "history": "World Cup History",
     "odds": "Tournament Odds",
+    "bracket": "Bracket Challenge",
     "account": "Account",
     "viewEditProfile": "View and edit profile",
     "settings": "Settings",
@@ -3173,5 +3175,29 @@
       "gamblingHelpAustralia": "Gambling Help Online (Australia)",
       "adiccionesEspana": "Adicciones España"
     }
+  },
+  "bracket": {
+    "title": "Bracket Challenge",
+    "subtitle": "Pick your World Cup 2026 winners",
+    "yourPick": "Your Champion Pick",
+    "champion2026": "World Cup 2026 Champion",
+    "complete": "Complete",
+    "selectChampion": "Complete the bracket to select your champion",
+    "reset": "Reset",
+    "downloadPDF": "Print Bracket",
+    "share": "Share",
+    "roundOf32": "Round of 32",
+    "roundOf16": "Round of 16",
+    "quarterfinals": "Quarterfinals",
+    "semifinals": "Semifinals",
+    "final": "Final",
+    "matches": "matches",
+    "match": "Match",
+    "confirmReset": "Are you sure you want to reset all your predictions?",
+    "disclaimer": "This is a prediction game for entertainment purposes only. Fill in your bracket and compare with friends!",
+    "pickWinner": "Pick Winner",
+    "selectTeam": "Select Team",
+    "winnerOf": "Winner of",
+    "worldCupFinal": "World Cup Final"
   }
 }

@@ -137,6 +137,7 @@
     "menu": "Menu",
     "history": "Histoire",
     "odds": "Cotes du Tournoi",
+    "bracket": "Défi du Bracket",
     "players": "Joueurs",
     "stadiumSeating": "Places du Stade"
   },
@@ -337,6 +338,7 @@
     "aiConcierge": "AI Concierge",
     "history": "Histoire de la Coupe du Monde",
     "odds": "Cotes du Tournoi",
+    "bracket": "Défi du Bracket",
     "account": "Compte",
     "viewEditProfile": "Consulter et modifier le profil",
     "settings": "Paramètres",
@@ -3172,5 +3174,25 @@
       "gamblingHelpAustralia": "Aide au Jeu en Ligne (Australie)",
       "adiccionesEspana": "Adicciones España"
     }
+  },
+  "bracket": {
+    "title": "Défi du Bracket",
+    "subtitle": "Choisissez les gagnants de la Coupe du Monde 2026",
+    "yourPick": "Votre Champion Choisi",
+    "champion2026": "Champion de la Coupe du Monde 2026",
+    "complete": "Complet",
+    "selectChampion": "Complétez le bracket pour choisir votre champion",
+    "reset": "Réinitialiser",
+    "downloadPDF": "Imprimer le Bracket",
+    "share": "Partager",
+    "roundOf32": "32e de finale",
+    "roundOf16": "8e de finale",
+    "quarterfinals": "Quarts de finale",
+    "semifinals": "Demi-finales",
+    "final": "Finale",
+    "matches": "matchs",
+    "match": "Match",
+    "confirmReset": "Êtes-vous sûr de vouloir réinitialiser toutes vos prédictions ?",
+    "disclaimer": "Ceci est un jeu de prédiction à des fins de divertissement uniquement. Remplissez votre bracket et comparez avec vos amis !"
   }
 }

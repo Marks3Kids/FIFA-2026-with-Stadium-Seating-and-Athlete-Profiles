@@ -137,6 +137,7 @@
     "menu": "Menú",
     "history": "Historia",
     "odds": "Cuotas del Torneo",
+    "bracket": "Desafío del Bracket",
     "players": "Jugadores",
     "stadiumSeating": "Asientos del Estadio"
   },
@@ -337,6 +338,7 @@
     "aiConcierge": "Conserjería AI",
     "history": "Historia del Mundial",
     "odds": "Cuotas del Torneo",
+    "bracket": "Desafío del Bracket",
     "account": "Cuenta",
     "viewEditProfile": "Ver y editar el perfil",
     "settings": "Ajustes",
@@ -3172,5 +3174,29 @@
       "gamblingHelpAustralia": "Ayuda para el Juego Online (Australia)",
       "adiccionesEspana": "Adicciones España"
     }
+  },
+  "bracket": {
+    "title": "Desafío del Bracket",
+    "subtitle": "Elige a los ganadores del Mundial 2026",
+    "yourPick": "Tu Campeón Elegido",
+    "champion2026": "Campeón del Mundial 2026",
+    "complete": "Completo",
+    "selectChampion": "Completa el bracket para elegir tu campeón",
+    "reset": "Reiniciar",
+    "downloadPDF": "Imprimir Bracket",
+    "share": "Compartir",
+    "roundOf32": "Ronda de 32",
+    "roundOf16": "Octavos de Final",
+    "quarterfinals": "Cuartos de Final",
+    "semifinals": "Semifinales",
+    "final": "Final",
+    "matches": "partidos",
+    "match": "Partido",
+    "confirmReset": "¿Estás seguro de que quieres reiniciar todas tus predicciones?",
+    "disclaimer": "Este es un juego de predicciones solo para entretenimiento. ¡Llena tu bracket y compara con amigos!",
+    "pickWinner": "Elige Ganador",
+    "selectTeam": "Seleccionar Equipo",
+    "winnerOf": "Ganador de",
+    "worldCupFinal": "Final de la Copa del Mundo"
   }
 }

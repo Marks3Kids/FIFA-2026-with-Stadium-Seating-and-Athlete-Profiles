@@ -137,6 +137,7 @@
     "menu": "Menü",
     "history": "Geschichte",
     "odds": "Turnier-Quoten",
+    "bracket": "Bracket-Challenge",
     "players": "Spieler",
     "stadiumSeating": "Stadionsitzplätze"
   },
@@ -337,6 +338,7 @@
     "aiConcierge": "AI Hausmeister",
     "history": "WM-Geschichte",
     "odds": "Turnier-Quoten",
+    "bracket": "Bracket-Challenge",
     "account": "Konto",
     "viewEditProfile": "Profil ansehen und bearbeiten",
     "settings": "Einstellungen",
@@ -3172,5 +3174,25 @@
       "gamblingHelpAustralia": "Glücksspiel-Hilfe Online (Australien)",
       "adiccionesEspana": "Adicciones España"
     }
+  },
+  "bracket": {
+    "title": "Bracket-Challenge",
+    "subtitle": "Wählen Sie Ihre WM 2026 Gewinner",
+    "yourPick": "Ihr Champion-Tipp",
+    "champion2026": "Weltmeister 2026",
+    "complete": "Vollständig",
+    "selectChampion": "Vervollständigen Sie das Bracket um Ihren Champion zu wählen",
+    "reset": "Zurücksetzen",
+    "downloadPDF": "Bracket Drucken",
+    "share": "Teilen",
+    "roundOf32": "Runde der 32",
+    "roundOf16": "Achtelfinale",
+    "quarterfinals": "Viertelfinale",
+    "semifinals": "Halbfinale",
+    "final": "Finale",
+    "matches": "Spiele",
+    "match": "Spiel",
+    "confirmReset": "Möchten Sie wirklich alle Ihre Vorhersagen zurücksetzen?",
+    "disclaimer": "Dies ist ein Vorhersagespiel nur zur Unterhaltung. Füllen Sie Ihr Bracket aus und vergleichen Sie mit Freunden!"
   }
 }
