@@ -1220,7 +1220,9 @@
       "ratesUpdated": "Última actualización de las tarifas",
       "refreshRates": "Tasas de actualización",
       "ratesMayBeStale": "Las tarifas pueden estar obsoletas. Toque actualizar para actualizar.",
-      "liveRates": "Tipos de cambio en tiempo real proporcionados por Frankfurter API"
+      "liveRates": "Tipos de cambio en tiempo real proporcionados por Frankfurter API",
+      "quickConvertTo": "Conversión rápida a",
+      "hostCountryCurrencies": "Monedas de los países anfitriones"
     }
   },
   "dining": {

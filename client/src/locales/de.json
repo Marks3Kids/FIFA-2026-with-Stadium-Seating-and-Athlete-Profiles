@@ -1220,7 +1220,9 @@
       "ratesUpdated": "Preise zuletzt aktualisiert",
       "refreshRates": "Aktualisierungsraten",
       "ratesMayBeStale": "Die Preise können veraltet sein. Tippen Sie zum Aktualisieren auf Aktualisieren.",
-      "liveRates": "Live-Wechselkurse, bereitgestellt von der Frankfurter API"
+      "liveRates": "Live-Wechselkurse, bereitgestellt von der Frankfurter API",
+      "quickConvertTo": "Schnellumrechnung zu",
+      "hostCountryCurrencies": "Währungen der Gastländer"
     }
   },
   "dining": {

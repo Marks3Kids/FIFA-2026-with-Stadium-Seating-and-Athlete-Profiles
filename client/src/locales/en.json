@@ -1220,7 +1220,9 @@
       "ratesUpdated": "Rates last updated",
       "refreshRates": "Refresh rates",
       "ratesMayBeStale": "Rates may be stale. Tap refresh to update.",
-      "liveRates": "Live exchange rates provided by Frankfurter API"
+      "liveRates": "Live exchange rates provided by Frankfurter API",
+      "quickConvertTo": "Quick Convert to",
+      "hostCountryCurrencies": "Host Country Currencies"
     }
   },
   "dining": {

@@ -1220,7 +1220,9 @@
       "ratesUpdated": "آخر تحديث للأسعار",
       "refreshRates": "تحديث الأسعار",
       "ratesMayBeStale": "قد تكون الأسعار قديمة. اضغط للتحديث.",
-      "liveRates": "أسعار الصرف الحية مقدمة من Frankfurter API"
+      "liveRates": "أسعار الصرف الحية مقدمة من Frankfurter API",
+      "quickConvertTo": "تحويل سريع إلى",
+      "hostCountryCurrencies": "عملات الدول المضيفة"
     }
   },
   "dining": {

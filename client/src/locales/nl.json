@@ -1220,7 +1220,9 @@
       "ratesUpdated": "Laatst bijgewerkte tarieven",
       "refreshRates": "Vernieuwingspercentages",
       "ratesMayBeStale": "Tarieven kunnen verouderd zijn. Tik op vernieuwen om bij te werken.",
-      "liveRates": "Live wisselkoersen geleverd door Frankfurter API"
+      "liveRates": "Live wisselkoersen geleverd door Frankfurter API",
+      "quickConvertTo": "Snel omrekenen naar",
+      "hostCountryCurrencies": "Valuta's van gastlanden"
     }
   },
   "dining": {

@@ -1220,7 +1220,9 @@
       "ratesUpdated": "Dernière mise à jour des taux",
       "refreshRates": "Taux de rafraîchissement",
       "ratesMayBeStale": "Les tarifs peuvent être périmés. Appuyez sur rafraîchir pour les mettre à jour.",
-      "liveRates": "Taux de change en direct fournis par Frankfurter API"
+      "liveRates": "Taux de change en direct fournis par Frankfurter API",
+      "quickConvertTo": "Conversion rapide vers",
+      "hostCountryCurrencies": "Devises des pays hôtes"
     }
   },
   "dining": {

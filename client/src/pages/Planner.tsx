@@ -1030,7 +1030,7 @@ function CurrencyConverter({ onBack }: { onBack: () => void }) {
             )}
 
             <div>
-              <p className="text-sm text-muted-foreground mb-3">Quick Convert to {toCurrency}</p>
+              <p className="text-sm text-muted-foreground mb-3">{t("planner.currency.quickConvertTo")} {toCurrency}</p>
               <div className="grid grid-cols-4 gap-2">
                 {[10, 50, 100, 500].map((val) => (
                   <button
@@ -1050,7 +1050,7 @@ function CurrencyConverter({ onBack }: { onBack: () => void }) {
             </div>
 
             <div>
-              <p className="text-sm text-muted-foreground mb-3">Host Country Currencies</p>
+              <p className="text-sm text-muted-foreground mb-3">{t("planner.currency.hostCountryCurrencies")}</p>
               <div className="grid grid-cols-3 gap-2">
                 {["USD", "CAD", "MXN"].map((code) => (
                     <button

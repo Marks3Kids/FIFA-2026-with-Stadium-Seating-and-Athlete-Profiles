@@ -1219,7 +1219,9 @@
       "ratesUpdated": "Taxas atualizadas",
       "refreshRates": "Atualizar taxas",
       "ratesMayBeStale": "As taxas podem estar desatualizadas",
-      "liveRates": "Taxas em tempo real"
+      "liveRates": "Taxas em tempo real",
+      "quickConvertTo": "Conversão rápida para",
+      "hostCountryCurrencies": "Moedas dos países anfitriões"
     }
   },
   "dining": {

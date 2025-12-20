@@ -1220,7 +1220,9 @@
       "ratesUpdated": "最終更新",
       "refreshRates": "レートを更新",
       "ratesMayBeStale": "レートが古い可能性があります。更新をタップしてください。",
-      "liveRates": "Frankfurter APIによるリアルタイム為替レート"
+      "liveRates": "Frankfurter APIによるリアルタイム為替レート",
+      "quickConvertTo": "クイック変換先",
+      "hostCountryCurrencies": "開催国の通貨"
     }
   },
   "dining": {
