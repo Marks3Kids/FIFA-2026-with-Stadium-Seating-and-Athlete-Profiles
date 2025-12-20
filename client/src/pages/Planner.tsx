@@ -1293,20 +1293,20 @@ function TimeZoneConverter({ onBack }: { onBack: () => void }) {
 
           <div>
             <p className="text-sm text-muted-foreground mb-3">{t("planner.timezone.quickSelect")}</p>
-            <div className="grid grid-cols-3 gap-2">
-              {HOST_CITY_TIMEZONES.filter(c => ["New York/New Jersey", "Los Angeles", "Mexico City"].includes(c.city)).map((city) => (
+            <div className="grid grid-cols-5 gap-2">
+              {HOST_CITY_TIMEZONES.filter(c => ["New York/New Jersey", "Dallas", "Los Angeles", "Mexico City", "Toronto"].includes(c.city)).map((city) => (
                 <button
                   key={city.city}
                   onClick={() => setSelectedCity(city)}
-                  className={`py-3 rounded-xl text-center transition-colors flex flex-col items-center ${
+                  className={`py-2 px-1 rounded-xl text-center transition-colors flex flex-col items-center ${
                     selectedCity.city === city.city
                       ? "bg-blue-500 text-white"
                       : "bg-card border border-white/10 text-white hover:bg-white/5"
                   }`}
                   data-testid={`quick-city-${city.city}`}
                 >
-                  <img src={`https://flagcdn.com/w40/${city.flag}.png`} alt={city.country} className="w-8 h-6 object-cover rounded mb-1" />
-                  <div className="text-xs font-medium">{city.city.split('/')[0]}</div>
+                  <img src={`https://flagcdn.com/w40/${city.flag}.png`} alt={city.country} className="w-6 h-4 object-cover rounded mb-1" />
+                  <div className="text-[10px] font-medium leading-tight">{city.city.split('/')[0].split(' ')[0]}</div>
                 </button>
               ))}
             </div>
