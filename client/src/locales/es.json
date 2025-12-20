@@ -96,7 +96,8 @@
     "teams": "Equipos",
     "cities": "Ciudades",
     "matches": "Partidos",
-    "liveUpdates": "Actualizaciones en directo"
+    "liveUpdates": "Actualizaciones en directo",
+    "tip": "Consejo"
   },
   "bracket": {
     "title": "Cuadro de Eliminatorias",
@@ -2903,6 +2904,61 @@
       "emergencyNote": {
         "title": "Antes de viajar",
         "description": "Regístrese con la embajada de su país y guarde el número de emergencia de su consulado."
+      }
+    },
+    "medicalSection": {
+      "erVsUrgentCare": {
+        "title": "Urgencias vs Atención Urgente: Conoce la Diferencia",
+        "emergencyRoom": {
+          "label": "Sala de Emergencias",
+          "items": [
+            "Emergencias que amenazan la vida",
+            "Dolor de pecho, síntomas de derrame cerebral",
+            "Sangrado severo o trauma",
+            "Dificultad para respirar",
+            "Costo: $1,000 - $5,000+",
+            "Espera: 2-8 horas típicamente"
+          ]
+        },
+        "urgentCare": {
+          "label": "Atención Urgente",
+          "items": [
+            "Problemas no mortales",
+            "Esguinces, cortes menores",
+            "Gripe, fiebre, infecciones",
+            "Radiografías, suturas, análisis",
+            "Costo: $100 - $200",
+            "Espera: 15-45 minutos"
+          ]
+        },
+        "tip": "Para problemas no urgentes como lesiones deportivas, deshidratación o enfermedades leves, visita primero Atención Urgente. Ahorrarás miles de dólares y horas de espera."
+      },
+      "selectHostCity": {
+        "title": "Seleccionar Ciudad Sede",
+        "description": "Encuentra Salas de Emergencia y centros de Atención Urgente cerca de cada estadio"
+      },
+      "hostCityHeaders": {
+        "usa": "Ciudades Sede de EE.UU.",
+        "mexico": "Ciudades Sede de México",
+        "canada": "Ciudades Sede de Canadá"
+      },
+      "buttons": {
+        "call": "Llamar",
+        "directions": "Direcciones"
+      },
+      "facilityTypes": {
+        "er": "ER",
+        "uc": "AU"
+      },
+      "medicalTips": {
+        "title": "CONSEJOS MÉDICOS PARA TURISTAS",
+        "items": [
+          "Mantén los documentos del seguro de viaje accesibles",
+          "Guarda los números de emergencia en tu teléfono",
+          "Las farmacias (CVS, Walgreens) ofrecen atención básica",
+          "Las aplicaciones de telemedicina funcionan para problemas menores",
+          "Las facturas del hospital se pueden negociar después"
+        ]
       }
     }
   },

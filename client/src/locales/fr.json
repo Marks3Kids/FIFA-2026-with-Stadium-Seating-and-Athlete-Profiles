@@ -96,7 +96,8 @@
     "teams": "Les équipes",
     "cities": "Villes",
     "matches": "Correspondances",
-    "liveUpdates": "Mises à jour en direct"
+    "liveUpdates": "Mises à jour en direct",
+    "tip": "Conseil"
   },
   "bracket": {
     "title": "Tableau à Élimination Directe",
@@ -2903,6 +2904,61 @@
       "emergencyNote": {
         "title": "Avant de voyager",
         "description": "Inscrivez-vous auprès de l'ambassade de votre pays et enregistrez le numéro d'urgence de votre consulat."
+      }
+    },
+    "medicalSection": {
+      "erVsUrgentCare": {
+        "title": "Urgences vs Soins Urgents: Connaître la Différence",
+        "emergencyRoom": {
+          "label": "Salle des Urgences",
+          "items": [
+            "Urgences vitales",
+            "Douleur thoracique, symptômes d'AVC",
+            "Saignement grave ou traumatisme",
+            "Difficulté à respirer",
+            "Coût: 1 000 $ - 5 000 $+",
+            "Attente: 2-8 heures typiquement"
+          ]
+        },
+        "urgentCare": {
+          "label": "Soins Urgents",
+          "items": [
+            "Problèmes non vitaux",
+            "Entorses, coupures mineures",
+            "Grippe, fièvre, infections",
+            "Radiographies, points de suture, tests",
+            "Coût: 100 $ - 200 $",
+            "Attente: 15-45 minutes"
+          ]
+        },
+        "tip": "Pour les problèmes non urgents comme les blessures sportives, la déshydratation ou les maladies bénignes, visitez d'abord les Soins Urgents. Vous économiserez des milliers de dollars et des heures d'attente."
+      },
+      "selectHostCity": {
+        "title": "Sélectionner une Ville Hôte",
+        "description": "Trouvez les Salles d'Urgence et les centres de Soins Urgents près de chaque stade"
+      },
+      "hostCityHeaders": {
+        "usa": "Villes Hôtes USA",
+        "mexico": "Villes Hôtes Mexique",
+        "canada": "Villes Hôtes Canada"
+      },
+      "buttons": {
+        "call": "Appeler",
+        "directions": "Itinéraire"
+      },
+      "facilityTypes": {
+        "er": "URG",
+        "uc": "SU"
+      },
+      "medicalTips": {
+        "title": "CONSEILS MÉDICAUX POUR LES TOURISTES",
+        "items": [
+          "Gardez les documents d'assurance voyage accessibles",
+          "Enregistrez les numéros d'urgence dans votre téléphone",
+          "Les pharmacies (CVS, Walgreens) offrent des soins de base",
+          "Les applications de télémédecine fonctionnent pour les problèmes mineurs",
+          "Les factures d'hôpital peuvent être négociées ultérieurement"
+        ]
       }
     }
   },

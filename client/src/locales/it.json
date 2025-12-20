@@ -96,7 +96,8 @@
     "teams": "Squadre",
     "cities": "Città",
     "matches": "Abbinamenti",
-    "liveUpdates": "Aggiornamenti in tempo reale"
+    "liveUpdates": "Aggiornamenti in tempo reale",
+    "tip": "Suggerimento"
   },
   "bracket": {
     "title": "Tabellone ad Eliminazione",
@@ -2903,6 +2904,61 @@
       "emergencyNote": {
         "title": "Prima di viaggiare",
         "description": "Registrati presso l'ambasciata del tuo paese e salva il numero di emergenza del tuo consolato."
+      }
+    },
+    "medicalSection": {
+      "erVsUrgentCare": {
+        "title": "Pronto Soccorso vs Clinica Urgenze: Conosci la Differenza",
+        "emergencyRoom": {
+          "label": "Pronto Soccorso",
+          "items": [
+            "Emergenze potenzialmente letali",
+            "Dolore al petto, sintomi di ictus",
+            "Emorragie gravi o traumi",
+            "Difficoltà respiratorie",
+            "Costo: $1.000 - $5.000+",
+            "Attesa: 2-8 ore tipicamente"
+          ]
+        },
+        "urgentCare": {
+          "label": "Clinica Urgenze",
+          "items": [
+            "Problemi non potenzialmente letali",
+            "Distorsioni, tagli minori",
+            "Influenza, febbre, infezioni",
+            "Radiografie, punti, esami",
+            "Costo: $100 - $200",
+            "Attesa: 15-45 minuti"
+          ]
+        },
+        "tip": "Per problemi non urgenti come infortuni sportivi, disidratazione o malattie lievi, visita prima la Clinica Urgenze. Risparmierai migliaia di dollari e ore di attesa."
+      },
+      "selectHostCity": {
+        "title": "Seleziona Città Ospitante",
+        "description": "Trova Pronto Soccorso e Cliniche Urgenze vicino a ogni stadio"
+      },
+      "hostCityHeaders": {
+        "usa": "Città Ospitanti USA",
+        "mexico": "Città Ospitanti Messico",
+        "canada": "Città Ospitanti Canada"
+      },
+      "buttons": {
+        "call": "Chiama",
+        "directions": "Indicazioni"
+      },
+      "facilityTypes": {
+        "er": "PS",
+        "uc": "CU"
+      },
+      "medicalTips": {
+        "title": "CONSIGLI MEDICI PER TURISTI",
+        "items": [
+          "Tieni i documenti dell'assicurazione viaggio accessibili",
+          "Salva i numeri di emergenza nel telefono",
+          "Le farmacie (CVS, Walgreens) offrono cure di base",
+          "Le app di telemedicina funzionano per problemi minori",
+          "Le fatture ospedaliere possono essere negoziate in seguito"
+        ]
       }
     }
   },

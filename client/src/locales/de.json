@@ -96,7 +96,8 @@
     "teams": "Mannschaften",
     "cities": "Städte",
     "matches": "Streichhölzer",
-    "liveUpdates": "Live-Updates"
+    "liveUpdates": "Live-Updates",
+    "tip": "Tipp"
   },
   "bracket": {
     "title": "K.o.-Runde",
@@ -2903,6 +2904,61 @@
       "emergencyNote": {
         "title": "Vor der Reise",
         "description": "Registrieren Sie sich bei der Botschaft Ihres Landes und speichern Sie die Notrufnummer Ihres Konsulats."
+      }
+    },
+    "medicalSection": {
+      "erVsUrgentCare": {
+        "title": "Notaufnahme vs. Dringliche Behandlung: Den Unterschied kennen",
+        "emergencyRoom": {
+          "label": "Notaufnahme",
+          "items": [
+            "Lebensbedrohliche Notfälle",
+            "Brustschmerzen, Schlaganfall-Symptome",
+            "Schwere Blutungen oder Traumata",
+            "Atembeschwerden",
+            "Kosten: 1.000 $ - 5.000 $+",
+            "Wartezeit: typisch 2-8 Stunden"
+          ]
+        },
+        "urgentCare": {
+          "label": "Dringliche Behandlung",
+          "items": [
+            "Nicht lebensbedrohliche Probleme",
+            "Verstauchungen, kleine Schnittwunden",
+            "Grippe, Fieber, Infektionen",
+            "Röntgen, Nähte, Tests",
+            "Kosten: 100 $ - 200 $",
+            "Wartezeit: 15-45 Minuten"
+          ]
+        },
+        "tip": "Bei nicht lebensbedrohlichen Problemen wie Sportverletzungen, Dehydrierung oder leichten Erkrankungen besuchen Sie zuerst die dringliche Behandlung. Sie sparen tausende Dollar und Stunden Wartezeit."
+      },
+      "selectHostCity": {
+        "title": "Gastgeberstadt auswählen",
+        "description": "Finden Sie Notaufnahmen und dringliche Behandlungseinrichtungen in der Nähe jedes Stadions"
+      },
+      "hostCityHeaders": {
+        "usa": "USA Gastgeberstädte",
+        "mexico": "Mexiko Gastgeberstädte",
+        "canada": "Kanada Gastgeberstädte"
+      },
+      "buttons": {
+        "call": "Anrufen",
+        "directions": "Wegbeschreibung"
+      },
+      "facilityTypes": {
+        "er": "NA",
+        "uc": "DB"
+      },
+      "medicalTips": {
+        "title": "MEDIZINISCHE TIPPS FÜR TOURISTEN",
+        "items": [
+          "Reiseversicherungsdokumente griffbereit halten",
+          "Notrufnummern im Handy speichern",
+          "Apotheken (CVS, Walgreens) bieten Grundversorgung",
+          "Telemedizin-Apps funktionieren bei kleineren Problemen",
+          "Krankenhausrechnungen können später verhandelt werden"
+        ]
       }
     }
   },

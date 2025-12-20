@@ -96,7 +96,8 @@
     "teams": "Teams",
     "cities": "Steden",
     "matches": "Lucifers",
-    "liveUpdates": "Live updates"
+    "liveUpdates": "Live updates",
+    "tip": "Tip"
   },
   "bracket": {
     "title": "Knock-out Schema",
@@ -2903,6 +2904,61 @@
       "emergencyNote": {
         "title": "Voor uw reis",
         "description": "Registreer u bij de ambassade van uw land en bewaar het noodnummer van uw consulaat."
+      }
+    },
+    "medicalSection": {
+      "erVsUrgentCare": {
+        "title": "Spoedeisende Hulp vs Huisartsenpost: Ken het Verschil",
+        "emergencyRoom": {
+          "label": "Spoedeisende Hulp",
+          "items": [
+            "Levensbedreigende noodgevallen",
+            "Pijn op de borst, beroertesymptomen",
+            "Ernstige bloedingen of trauma",
+            "Ademhalingsmoeilijkheden",
+            "Kosten: $1.000 - $5.000+",
+            "Wachttijd: 2-8 uur typisch"
+          ]
+        },
+        "urgentCare": {
+          "label": "Huisartsenpost",
+          "items": [
+            "Niet-levensbedreigende problemen",
+            "Verstuikingen, kleine snijwonden",
+            "Griep, koorts, infecties",
+            "Röntgenfoto's, hechtingen, testen",
+            "Kosten: $100 - $200",
+            "Wachttijd: 15-45 minuten"
+          ]
+        },
+        "tip": "Voor niet-urgente problemen zoals sportblessures, uitdroging of lichte ziekte, bezoek eerst de Huisartsenpost. U bespaart duizenden dollars en uren wachttijd."
+      },
+      "selectHostCity": {
+        "title": "Selecteer Gaststad",
+        "description": "Vind Spoedeisende Hulp en Huisartsenposten bij elk stadion"
+      },
+      "hostCityHeaders": {
+        "usa": "VS Gaststeden",
+        "mexico": "Mexico Gaststeden",
+        "canada": "Canada Gaststeden"
+      },
+      "buttons": {
+        "call": "Bellen",
+        "directions": "Routebeschrijving"
+      },
+      "facilityTypes": {
+        "er": "SEH",
+        "uc": "HAP"
+      },
+      "medicalTips": {
+        "title": "MEDISCHE TIPS VOOR TOERISTEN",
+        "items": [
+          "Houd reisverzekeringsdocumenten bij de hand",
+          "Sla noodnummers op in uw telefoon",
+          "Apotheken (CVS, Walgreens) bieden basiszorg",
+          "Telemedicijnapps werken voor kleine problemen",
+          "Ziekenhuisrekeningen kunnen later worden onderhandeld"
+        ]
       }
     }
   },
