@@ -1127,8 +1127,8 @@
       "overview": "Panoramica",
       "transport": "Trasporto",
       "stays": "Soggiorni",
-      "dining": "Pranzo",
-      "matches": "Abbinamenti",
+      "dining": "Ristoranti",
+      "matches": "Partite",
       "agenda": "Ordine del giorno",
       "docs": "Documenti",
       "contacts": "Contatti"
@@ -1137,7 +1137,7 @@
       "flights": "Voli/Transito",
       "stays": "Soggiorni",
       "reservations": "Prenotazioni",
-      "matches": "Abbinamenti"
+      "matches": "Partite"
     },
     "transport": {
       "title": "Trasporto",
@@ -1164,7 +1164,7 @@
       "checkOut": "Partenza"
     },
     "dining": {
-      "title": "Pranzo",
+      "title": "Ristoranti",
       "noItems": "Non sono ancora state aggiunte prenotazioni per la ristorazione.",
       "restaurantName": "Nome del ristorante",
       "cuisinePlaceholder": "Tipo di cucina",
@@ -1173,7 +1173,7 @@
       "partySize": "Dimensione del partito"
     },
     "matchesTab": {
-      "title": "Abbinamenti",
+      "title": "Partite",
       "noItems": "Non sono ancora state aggiunte partite.",
       "matchPlaceholder": "Ad esempio, USA contro Messico",
       "stadium": "Palcoscenico",

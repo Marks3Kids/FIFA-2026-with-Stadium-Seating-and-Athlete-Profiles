@@ -1126,18 +1126,18 @@
     "tabs": {
       "overview": "Overzicht",
       "transport": "Transport",
-      "stays": "Blijft",
-      "dining": "Eetkamer",
-      "matches": "Lucifers",
+      "stays": "Verblijven",
+      "dining": "Eten",
+      "matches": "Wedstrijden",
       "agenda": "Agenda",
       "docs": "Docs",
       "contacts": "Contacten"
     },
     "stats": {
       "flights": "Vluchten/Transfers",
-      "stays": "Blijft",
+      "stays": "Verblijven",
       "reservations": "Reserveringen",
-      "matches": "Lucifers"
+      "matches": "Wedstrijden"
     },
     "transport": {
       "title": "Vervoer",
@@ -1156,7 +1156,7 @@
       }
     },
     "stays": {
-      "title": "Blijft",
+      "title": "Verblijven",
       "noItems": "Er zijn nog geen verblijven toegevoegd.",
       "hotelName": "Naam hotel/eigendom",
       "address": "Adres",
@@ -1164,7 +1164,7 @@
       "checkOut": "Check-out"
     },
     "dining": {
-      "title": "Eetkamer",
+      "title": "Restaurants",
       "noItems": "Er zijn nog geen reserveringen toegevoegd.",
       "restaurantName": "Naam restaurant",
       "cuisinePlaceholder": "Type keuken",
@@ -1173,7 +1173,7 @@
       "partySize": "Grootte van de partij"
     },
     "matchesTab": {
-      "title": "Lucifers",
+      "title": "Wedstrijden",
       "noItems": "Er zijn nog geen wedstrijden toegevoegd.",
       "matchPlaceholder": "bijv. VS vs Mexico",
       "stadium": "Stadium",
