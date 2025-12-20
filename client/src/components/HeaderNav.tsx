@@ -82,7 +82,7 @@ export function HeaderNav() {
   const currentLanguage = LANGUAGES.find((l) => l.code === selectedLanguage) || LANGUAGES[0];
 
   return (
-    <div className={`fixed top-4 z-50 ${isRTL ? 'left-4' : 'right-4'} flex items-center gap-2`}>
+    <div className={`fixed top-4 z-50 ${isRTL ? 'left-4' : 'right-4'} flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
       <div className="relative" ref={langRef}>
         <button
           onClick={() => setIsLangOpen(!isLangOpen)}
@@ -100,7 +100,7 @@ export function HeaderNav() {
         </button>
 
         {isLangOpen && (
-          <div className="absolute right-0 top-full mt-2 bg-card border border-white/10 rounded-xl shadow-xl overflow-hidden z-50 min-w-[180px] animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className={`absolute ${isRTL ? 'left-0' : 'right-0'} top-full mt-2 bg-card border border-white/10 rounded-xl shadow-xl overflow-hidden z-50 min-w-[180px] animate-in fade-in slide-in-from-top-2 duration-200`}>
             <div className="py-1 max-h-[320px] overflow-y-auto">
               {LANGUAGES.map((lang) => (
                 <button
@@ -139,7 +139,7 @@ export function HeaderNav() {
         </button>
 
         {isNavOpen && (
-          <div className="absolute right-0 top-full mt-2 bg-card border border-white/10 rounded-xl shadow-xl overflow-hidden z-50 min-w-[200px] animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className={`absolute ${isRTL ? 'left-0' : 'right-0'} top-full mt-2 bg-card border border-white/10 rounded-xl shadow-xl overflow-hidden z-50 min-w-[200px] animate-in fade-in slide-in-from-top-2 duration-200`}>
             <div className="py-1">
               {NAV_ITEMS.map(({ icon: Icon, labelKey, path }) => {
                 const isActive = location === path;
