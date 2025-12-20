@@ -335,6 +335,7 @@
     "planner": "Planificateur",
     "aiConcierge": "AI Concierge",
     "history": "Histoire de la Coupe du Monde",
+    "odds": "Cotes du Tournoi",
     "account": "Compte",
     "viewEditProfile": "Consulter et modifier le profil",
     "settings": "Paramètres",
@@ -3144,5 +3145,22 @@
     "seatCapacity": "Capacité de Places",
     "amenities": "Commodités",
     "checkAvailability": "Vérifier la Disponibilité sur FIFA"
+  },
+  "odds": {
+    "title": "Cotes du Tournoi",
+    "subtitle": "Cotes de paris actuelles pour la Coupe du Monde FIFA 2026",
+    "disclaimer": "À Titre Informatif Uniquement",
+    "disclaimerDetail": "Les cotes affichées sont uniquement à des fins de divertissement et d'information. Les cotes réelles varient selon les bookmakers et changent fréquemment. Jouez responsablement.",
+    "championshipOdds": "Cotes pour Gagner le Championnat",
+    "championshipDescription": "Cotes actuelles de Las Vegas pour les équipes gagnant la Coupe du Monde FIFA 2026. Les nombres positifs montrent le profit potentiel sur un pari de 100$.",
+    "groupWinners": "Cotes des Vainqueurs de Phase de Groupes",
+    "groupDescription": "Cotes pour finir premier dans chaque groupe. Les nombres négatifs indiquent les favoris.",
+    "group": "Groupe",
+    "matchOdds": "Cotes des Matchs",
+    "matchOddsComingSoon": "Cotes des Matchs Bientôt Disponibles",
+    "matchOddsDescription": "Les lignes de paris pour les matchs individuels seront disponibles à l'approche du tournoi et une fois le calendrier officiel finalisé.",
+    "responsibleGambling": "Problème de Jeu? De l'Aide est Disponible.",
+    "responsibleGamblingMessage": "L'addiction au jeu est une condition sérieuse qui peut affecter n'importe qui. Si vous ou quelqu'un que vous connaissez a un problème de jeu, une aide confidentielle gratuite est disponible 24h/24.",
+    "getHelp": "Obtenir de l'Aide - Ressources de Soutien"
   }
 }

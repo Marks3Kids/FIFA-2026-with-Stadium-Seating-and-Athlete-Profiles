@@ -27,6 +27,7 @@ import Menu from "@/pages/Menu";
 import History from "@/pages/History";
 import Players from "@/pages/Players";
 import StadiumSeating from "@/pages/StadiumSeating";
+import TournamentOdds from "@/pages/TournamentOdds";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -54,6 +55,7 @@ function Router() {
       <Route path="/history" component={History} />
       <Route path="/players" component={Players} />
       <Route path="/stadium-seating" component={StadiumSeating} />
+      <Route path="/odds" component={TournamentOdds} />
       <Route component={NotFound} />
     </Switch>
   );

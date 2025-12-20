@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { 
-  Utensils, Hotel, Train, Info, Calendar, User, Settings, LogOut, Sparkles, ChevronRight, Trophy, Users, MapPin
+  Utensils, Hotel, Train, Info, Calendar, User, Settings, LogOut, Sparkles, ChevronRight, Trophy, Users, MapPin, TrendingUp
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useTranslation } from "react-i18next";
@@ -34,6 +34,7 @@ export default function Menu() {
     { id: "planner", icon: Calendar, labelKey: "menu.planner", color: "text-green-400", href: "/planner", active: true },
     { id: "ai-concierge", icon: Sparkles, labelKey: "menu.aiConcierge", color: "text-yellow-400", href: "/concierge", active: true },
     { id: "history", icon: Trophy, labelKey: "menu.history", color: "text-amber-400", href: "/history", active: true },
+    { id: "odds", icon: TrendingUp, labelKey: "menu.odds", color: "text-lime-400", href: "/odds", active: true },
   ];
 
   const handleSignOut = () => {

@@ -335,6 +335,7 @@
     "planner": "Planner",
     "aiConcierge": "AI conciërge",
     "history": "WK Geschiedenis",
+    "odds": "Toernooi Odds",
     "account": "Account",
     "viewEditProfile": "Profiel bekijken en bewerken",
     "settings": "Instellingen",
@@ -3144,5 +3145,22 @@
     "seatCapacity": "Zitcapaciteit",
     "amenities": "Voorzieningen",
     "checkAvailability": "Beschikbaarheid Controleren op FIFA"
+  },
+  "odds": {
+    "title": "Toernooi Odds",
+    "subtitle": "Huidige weddenschapskansen voor het FIFA WK 2026",
+    "disclaimer": "Alleen voor Informatieve Doeleinden",
+    "disclaimerDetail": "De getoonde odds zijn alleen voor entertainment en informatie. Werkelijke odds variëren per bookmaker en veranderen regelmatig. Gok verantwoord.",
+    "championshipOdds": "Odds om het Kampioenschap te Winnen",
+    "championshipDescription": "Huidige Vegas odds voor teams die het FIFA WK 2026 winnen. Positieve getallen tonen potentiële winst op een inzet van $100.",
+    "groupWinners": "Odds voor Groepsfase Winnaars",
+    "groupDescription": "Odds om eerste te eindigen in elke groep. Negatieve getallen geven favorieten aan.",
+    "group": "Groep",
+    "matchOdds": "Wedstrijd Odds",
+    "matchOddsComingSoon": "Wedstrijd Odds Binnenkort Beschikbaar",
+    "matchOddsDescription": "Individuele wedstrijdlijnen worden beschikbaar naarmate het toernooi nadert en het officiële schema is vastgesteld.",
+    "responsibleGambling": "Gokprobleem? Hulp is Beschikbaar.",
+    "responsibleGamblingMessage": "Gokverslaving is een serieuze aandoening die iedereen kan treffen. Als u of iemand die u kent een gokprobleem heeft, is gratis vertrouwelijke hulp 24/7 beschikbaar.",
+    "getHelp": "Hulp Krijgen - Ondersteuningsbronnen"
   }
 }

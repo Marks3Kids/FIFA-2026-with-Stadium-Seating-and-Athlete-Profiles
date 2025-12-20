@@ -335,6 +335,7 @@
     "planner": "Planner",
     "aiConcierge": "AI Concierge",
     "history": "World Cup History",
+    "odds": "Tournament Odds",
     "account": "Account",
     "viewEditProfile": "View and edit profile",
     "settings": "Settings",
@@ -3145,5 +3146,22 @@
     "seatCapacity": "Seat Capacity",
     "amenities": "Amenities",
     "checkAvailability": "Check Availability on FIFA"
+  },
+  "odds": {
+    "title": "Tournament Odds",
+    "subtitle": "Current betting odds for FIFA World Cup 2026",
+    "disclaimer": "For Informational Purposes Only",
+    "disclaimerDetail": "Odds shown are for entertainment and informational purposes only. Actual odds vary by sportsbook and change frequently. Always gamble responsibly.",
+    "championshipOdds": "Championship Winner Odds",
+    "championshipDescription": "Current Vegas odds for teams to win the 2026 FIFA World Cup. Positive numbers show potential profit on a $100 bet.",
+    "groupWinners": "Group Stage Winner Odds",
+    "groupDescription": "Odds to finish first in each group. Negative numbers indicate favorites.",
+    "group": "Group",
+    "matchOdds": "Match Odds",
+    "matchOddsComingSoon": "Match Odds Coming Soon",
+    "matchOddsDescription": "Individual match betting lines will be available as the tournament approaches and the official schedule is finalized.",
+    "responsibleGambling": "Gambling Problem? Help is Available.",
+    "responsibleGamblingMessage": "Gambling addiction is a serious condition that can affect anyone. If you or someone you know has a gambling problem, free confidential help is available 24/7.",
+    "getHelp": "Get Help - Support Resources"
   }
 }

@@ -335,6 +335,7 @@
     "planner": "プランナー",
     "aiConcierge": "AIコンシェルジュ",
     "history": "W杯の歴史",
+    "odds": "大会オッズ",
     "account": "アカウント",
     "viewEditProfile": "プロフィールを表示・編集",
     "settings": "設定",
@@ -3144,5 +3145,22 @@
     "seatCapacity": "座席数",
     "amenities": "設備",
     "checkAvailability": "FIFAで空席確認"
+  },
+  "odds": {
+    "title": "大会オッズ",
+    "subtitle": "FIFAワールドカップ2026の現在のベッティングオッズ",
+    "disclaimer": "情報提供のみを目的としています",
+    "disclaimerDetail": "表示されているオッズはエンターテインメントおよび情報提供のみを目的としています。実際のオッズはブックメーカーによって異なり、頻繁に変動します。責任あるギャンブルを心がけてください。",
+    "championshipOdds": "優勝オッズ",
+    "championshipDescription": "FIFAワールドカップ2026優勝の現在のベガスオッズ。正の数字は100ドルの賭けに対する潜在的な利益を示しています。",
+    "groupWinners": "グループステージ優勝オッズ",
+    "groupDescription": "各グループで1位になるオッズ。負の数字は本命を示しています。",
+    "group": "グループ",
+    "matchOdds": "試合オッズ",
+    "matchOddsComingSoon": "試合オッズは近日公開",
+    "matchOddsDescription": "個別の試合のベッティングラインは、大会が近づき公式スケジュールが確定次第利用可能になります。",
+    "responsibleGambling": "ギャンブル依存症？サポートがあります。",
+    "responsibleGamblingMessage": "ギャンブル依存症は誰にでも影響を与える可能性のある深刻な状態です。あなたまたはあなたの知人がギャンブルの問題を抱えている場合、24時間年中無休で無料の秘密厳守のサポートが利用可能です。",
+    "getHelp": "ヘルプを得る - サポートリソース"
   }
 }

@@ -335,6 +335,7 @@
     "planner": "Planificador",
     "aiConcierge": "Conserjería AI",
     "history": "Historia del Mundial",
+    "odds": "Cuotas del Torneo",
     "account": "Cuenta",
     "viewEditProfile": "Ver y editar el perfil",
     "settings": "Ajustes",
@@ -3144,5 +3145,22 @@
     "seatCapacity": "Capacidad de Asientos",
     "amenities": "Comodidades",
     "checkAvailability": "Verificar Disponibilidad en FIFA"
+  },
+  "odds": {
+    "title": "Cuotas del Torneo",
+    "subtitle": "Cuotas de apuestas actuales para la Copa Mundial FIFA 2026",
+    "disclaimer": "Solo con Fines Informativos",
+    "disclaimerDetail": "Las cuotas mostradas son solo para entretenimiento e información. Las cuotas reales varían según la casa de apuestas y cambian frecuentemente. Apuesta responsablemente.",
+    "championshipOdds": "Cuotas para Ganar el Campeonato",
+    "championshipDescription": "Cuotas actuales de Las Vegas para equipos que ganen la Copa Mundial FIFA 2026. Los números positivos muestran ganancia potencial en una apuesta de $100.",
+    "groupWinners": "Cuotas de Ganadores de Fase de Grupos",
+    "groupDescription": "Cuotas para terminar primero en cada grupo. Los números negativos indican favoritos.",
+    "group": "Grupo",
+    "matchOdds": "Cuotas de Partidos",
+    "matchOddsComingSoon": "Cuotas de Partidos Próximamente",
+    "matchOddsDescription": "Las líneas de apuestas de partidos individuales estarán disponibles cuando se acerque el torneo y se finalice el calendario oficial.",
+    "responsibleGambling": "¿Problema con el Juego? Hay Ayuda Disponible.",
+    "responsibleGamblingMessage": "La adicción al juego es una condición seria que puede afectar a cualquiera. Si tú o alguien que conoces tiene un problema con el juego, hay ayuda confidencial gratuita disponible 24/7.",
+    "getHelp": "Obtener Ayuda - Recursos de Apoyo"
   }
 }

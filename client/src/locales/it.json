@@ -335,6 +335,7 @@
     "planner": "Pianificatore",
     "aiConcierge": "Concierge AI",
     "history": "Storia dei Mondiali",
+    "odds": "Quote del Torneo",
     "account": "Conto",
     "viewEditProfile": "Visualizza e modifica il profilo",
     "settings": "Impostazioni",
@@ -3144,5 +3145,22 @@
     "seatCapacity": "Capacità Posti",
     "amenities": "Servizi",
     "checkAvailability": "Verifica Disponibilità su FIFA"
+  },
+  "odds": {
+    "title": "Quote del Torneo",
+    "subtitle": "Quote di scommesse attuali per la Coppa del Mondo FIFA 2026",
+    "disclaimer": "Solo a Scopo Informativo",
+    "disclaimerDetail": "Le quote mostrate sono solo a scopo di intrattenimento e informazione. Le quote reali variano per bookmaker e cambiano frequentemente. Scommetti responsabilmente.",
+    "championshipOdds": "Quote per Vincere il Campionato",
+    "championshipDescription": "Quote attuali di Las Vegas per le squadre che vincono la Coppa del Mondo FIFA 2026. I numeri positivi mostrano il profitto potenziale su una scommessa di $100.",
+    "groupWinners": "Quote dei Vincitori della Fase a Gironi",
+    "groupDescription": "Quote per finire primo in ogni girone. I numeri negativi indicano i favoriti.",
+    "group": "Girone",
+    "matchOdds": "Quote delle Partite",
+    "matchOddsComingSoon": "Quote delle Partite in Arrivo",
+    "matchOddsDescription": "Le linee di scommesse per le singole partite saranno disponibili quando il torneo si avvicina e il calendario ufficiale è finalizzato.",
+    "responsibleGambling": "Problema di Gioco? Aiuto Disponibile.",
+    "responsibleGamblingMessage": "La dipendenza dal gioco è una condizione seria che può colpire chiunque. Se tu o qualcuno che conosci ha un problema di gioco, è disponibile un aiuto confidenziale gratuito 24/7.",
+    "getHelp": "Ottieni Aiuto - Risorse di Supporto"
   }
 }

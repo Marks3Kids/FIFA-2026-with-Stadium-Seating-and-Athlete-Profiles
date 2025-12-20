@@ -335,6 +335,7 @@
     "planner": "Planer",
     "aiConcierge": "AI Hausmeister",
     "history": "WM-Geschichte",
+    "odds": "Turnier-Quoten",
     "account": "Konto",
     "viewEditProfile": "Profil ansehen und bearbeiten",
     "settings": "Einstellungen",
@@ -3144,5 +3145,22 @@
     "seatCapacity": "Sitzplatzkapazität",
     "amenities": "Annehmlichkeiten",
     "checkAvailability": "Verfügbarkeit bei FIFA prüfen"
+  },
+  "odds": {
+    "title": "Turnier-Quoten",
+    "subtitle": "Aktuelle Wettquoten für die FIFA WM 2026",
+    "disclaimer": "Nur zu Informationszwecken",
+    "disclaimerDetail": "Die angezeigten Quoten dienen nur zur Unterhaltung und Information. Tatsächliche Quoten variieren je nach Buchmacher und ändern sich häufig. Spielen Sie verantwortungsvoll.",
+    "championshipOdds": "Quoten für den Meisterschaftsgewinn",
+    "championshipDescription": "Aktuelle Vegas-Quoten für Teams, die die FIFA WM 2026 gewinnen. Positive Zahlen zeigen potenziellen Gewinn bei einer 100$-Wette.",
+    "groupWinners": "Quoten für Gruppensieger",
+    "groupDescription": "Quoten für den ersten Platz in jeder Gruppe. Negative Zahlen zeigen Favoriten an.",
+    "group": "Gruppe",
+    "matchOdds": "Spielquoten",
+    "matchOddsComingSoon": "Spielquoten Demnächst Verfügbar",
+    "matchOddsDescription": "Individuelle Spielwettlinien werden verfügbar sein, wenn sich das Turnier nähert und der offizielle Spielplan finalisiert ist.",
+    "responsibleGambling": "Glücksspielproblem? Hilfe ist Verfügbar.",
+    "responsibleGamblingMessage": "Spielsucht ist eine ernste Erkrankung, die jeden betreffen kann. Wenn Sie oder jemand, den Sie kennen, ein Glücksspielproblem hat, ist kostenlose vertrauliche Hilfe rund um die Uhr verfügbar.",
+    "getHelp": "Hilfe Holen - Unterstützungsressourcen"
   }
 }
