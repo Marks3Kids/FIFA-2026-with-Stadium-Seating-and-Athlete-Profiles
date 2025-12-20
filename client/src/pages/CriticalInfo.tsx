@@ -834,285 +834,121 @@ const citySafetyData = [
   }
 ];
 
-interface ProhibitedItem {
+interface ProhibitedItemKey {
   id: string;
-  name: string;
-  description: string;
-  penalty: string;
+  translationKey: string;
   severity: "critical" | "high" | "medium";
 }
 
-interface ProhibitedCategory {
+interface ProhibitedCategoryKey {
   id: string;
-  title: string;
+  translationKey: string;
   icon: string;
-  items: ProhibitedItem[];
+  items: ProhibitedItemKey[];
 }
 
-const prohibitedData: {
-  customs: ProhibitedCategory[];
-  stadium: ProhibitedCategory[];
+const prohibitedDataKeys: {
+  customs: ProhibitedCategoryKey[];
+  stadium: ProhibitedCategoryKey[];
 } = {
   customs: [
     {
       id: "food",
-      title: "FOOD",
+      translationKey: "food",
       icon: "🍎",
       items: [
-        {
-          id: "kinder-eggs",
-          name: "Kinder Surprise Eggs",
-          description: "Banned as choking hazard (toy inside chocolate shell). Regular Kinder products without embedded toys are allowed.",
-          penalty: "Confiscation",
-          severity: "medium"
-        },
-        {
-          id: "meats",
-          name: "Meats (Fresh, Dried, Canned)",
-          description: "Cannot bring fresh, dried, or canned meats including bouillon with meat products. This includes beef jerky, ham, salami, and meat-based instant noodle seasonings.",
-          penalty: "Confiscation, possible fine",
-          severity: "high"
-        },
-        {
-          id: "fruits-vegetables",
-          name: "Fresh Fruits & Vegetables",
-          description: "Almost all fresh produce prohibited to prevent invasive pests. This includes fruits, vegetables, seeds, and plants. Some items may be allowed from Canada/Mexico.",
-          penalty: "$300-$1,000 fine",
-          severity: "critical"
-        },
-        {
-          id: "dairy",
-          name: "Dairy Products",
-          description: "Most dairy products prohibited except hard cheeses. No milk, cream, butter, or soft cheeses from most countries.",
-          penalty: "Confiscation, possible fine",
-          severity: "high"
-        }
+        { id: "kinder-eggs", translationKey: "kinderEggs", severity: "medium" },
+        { id: "meats", translationKey: "meats", severity: "high" },
+        { id: "fruits-vegetables", translationKey: "fruitsVegetables", severity: "critical" },
+        { id: "dairy", translationKey: "dairy", severity: "high" }
       ]
     },
     {
       id: "drugs",
-      title: "DRUGS",
+      translationKey: "drugs",
       icon: "💊",
       items: [
-        {
-          id: "cannabis",
-          name: "Marijuana/Cannabis/CBD",
-          description: "Strictly prohibited at airports and borders despite state legality. Federal jurisdiction applies at all ports of entry. CBD products also prohibited if they contain any THC.",
-          penalty: "Arrest, fine, deportation",
-          severity: "critical"
-        },
-        {
-          id: "prescription",
-          name: "Prescription Medications (Undeclared)",
-          description: "Must be in original labeled containers with prescription. Some medications legal in your country may be controlled substances in the US (e.g., codeine, some sleep aids).",
-          penalty: "Confiscation, possible arrest",
-          severity: "high"
-        }
+        { id: "cannabis", translationKey: "cannabis", severity: "critical" },
+        { id: "prescription", translationKey: "prescription", severity: "high" }
       ]
     },
     {
       id: "currency",
-      title: "CURRENCY",
+      translationKey: "currency",
       icon: "💵",
       items: [
-        {
-          id: "cash-over-10k",
-          name: "Cash Over $10,000 (Undeclared)",
-          description: "No limit on cash, but MUST declare on FinCEN Form 105 if carrying over $10,000 USD. Includes cash equivalents like traveler's checks and money orders.",
-          penalty: "Seizure of ALL cash if not declared",
-          severity: "critical"
-        }
+        { id: "cash-over-10k", translationKey: "cashOver10k", severity: "critical" }
       ]
     },
     {
       id: "items",
-      title: "ITEMS",
+      translationKey: "items",
       icon: "📦",
       items: [
-        {
-          id: "drones",
-          name: "Drones",
-          description: "Can bring through customs but must register with FAA if over 250g. Strict No Drone Zones around all stadiums during matches. Flying near stadium is federal crime.",
-          penalty: "Federal crime if flown near stadium",
-          severity: "high"
-        },
-        {
-          id: "counterfeit",
-          name: "Counterfeit Goods",
-          description: "Fake designer items, knockoff jerseys, and pirated media are seized at customs. Genuine items for personal use are fine.",
-          penalty: "Confiscation, possible fine",
-          severity: "medium"
-        },
-        {
-          id: "cuban-products",
-          name: "Cuban Cigars & Products",
-          description: "Cuban cigars and rum are prohibited from entering the United States regardless of where purchased.",
-          penalty: "Confiscation, possible fine",
-          severity: "medium"
-        }
+        { id: "drones", translationKey: "drones", severity: "high" },
+        { id: "counterfeit", translationKey: "counterfeit", severity: "medium" },
+        { id: "cuban-products", translationKey: "cubanProducts", severity: "medium" }
       ]
     },
     {
       id: "weapons",
-      title: "WEAPONS",
+      translationKey: "weapons",
       icon: "🔫",
       items: [
-        {
-          id: "firearms",
-          name: "Undeclared Firearms",
-          description: "All firearms must be declared and transported in checked luggage only, unloaded and in locked hard-sided container. Never in carry-on.",
-          penalty: "Arrest, federal charges",
-          severity: "critical"
-        },
-        {
-          id: "knives",
-          name: "Knives & Sharp Objects",
-          description: "No knives, box cutters, or sharp objects in carry-on luggage. Must be in checked bags.",
-          penalty: "Confiscation, possible fine",
-          severity: "high"
-        }
+        { id: "firearms", translationKey: "firearms", severity: "critical" },
+        { id: "knives", translationKey: "knives", severity: "high" }
       ]
     }
   ],
   stadium: [
     {
       id: "bags",
-      title: "BAGS & CONTAINERS",
+      translationKey: "bags",
       icon: "🎒",
       items: [
-        {
-          id: "backpacks",
-          name: "Backpacks & Large Bags",
-          description: "No backpacks, sports bags, or bags larger than 12\" x 6\" x 12\". Most stadiums enforce CLEAR BAG POLICY - only transparent bags allowed.",
-          penalty: "Denied entry",
-          severity: "critical"
-        },
-        {
-          id: "coolers",
-          name: "Coolers & Hard-Sided Containers",
-          description: "No coolers, hard-sided bags, or luggage allowed inside stadium.",
-          penalty: "Denied entry",
-          severity: "high"
-        }
+        { id: "backpacks", translationKey: "backpacks", severity: "critical" },
+        { id: "coolers", translationKey: "coolers", severity: "high" }
       ]
     },
     {
       id: "electronics",
-      title: "ELECTRONICS",
+      translationKey: "electronics",
       icon: "📷",
       items: [
-        {
-          id: "pro-cameras",
-          name: "Professional Cameras",
-          description: "No cameras with lenses over 200mm. No detachable lens cameras without media credentials. Phone cameras and small point-and-shoots allowed.",
-          penalty: "Denied entry or confiscation",
-          severity: "high"
-        },
-        {
-          id: "tripods",
-          name: "Tripods & Selfie Sticks",
-          description: "No tripods, monopods, or selfie sticks allowed in stadium.",
-          penalty: "Denied entry",
-          severity: "medium"
-        },
-        {
-          id: "drones-stadium",
-          name: "Drones",
-          description: "Absolute ban on drones near stadiums. No Drone Zone extends several miles around each venue during matches.",
-          penalty: "Federal crime, arrest",
-          severity: "critical"
-        },
-        {
-          id: "laptops",
-          name: "Laptops",
-          description: "Laptops generally not allowed. Tablets without keyboard cases usually permitted.",
-          penalty: "Denied entry",
-          severity: "medium"
-        }
+        { id: "pro-cameras", translationKey: "proCameras", severity: "high" },
+        { id: "tripods", translationKey: "tripods", severity: "medium" },
+        { id: "drones-stadium", translationKey: "drones", severity: "critical" },
+        { id: "laptops", translationKey: "laptops", severity: "medium" }
       ]
     },
     {
       id: "noisemakers",
-      title: "NOISEMAKERS",
+      translationKey: "noisemakers",
       icon: "📢",
       items: [
-        {
-          id: "airhorns",
-          name: "Air Horns & Vuvuzelas",
-          description: "No air horns, vuvuzelas, or compressed air noisemakers. These are strictly banned at all FIFA events.",
-          penalty: "Confiscation",
-          severity: "high"
-        },
-        {
-          id: "drums",
-          name: "Drums & Musical Instruments",
-          description: "No drums, megaphones, or large musical instruments unless part of official supporter group with permission.",
-          penalty: "Denied entry",
-          severity: "medium"
-        }
+        { id: "airhorns", translationKey: "airhorns", severity: "high" },
+        { id: "drums", translationKey: "drums", severity: "medium" }
       ]
     },
     {
       id: "food-drink",
-      title: "FOOD & DRINKS",
+      translationKey: "foodDrink",
       icon: "🥤",
       items: [
-        {
-          id: "outside-food",
-          name: "Outside Food & Beverages",
-          description: "No outside food or drinks allowed. Exception for medical needs, baby food, and sealed water bottles (some venues).",
-          penalty: "Confiscation",
-          severity: "medium"
-        },
-        {
-          id: "alcohol",
-          name: "Alcohol",
-          description: "No outside alcohol. Alcohol sold inside stadium but consumption regulated. Visibly intoxicated fans may be denied entry.",
-          penalty: "Denied entry or ejection",
-          severity: "high"
-        }
+        { id: "outside-food", translationKey: "outsideFood", severity: "medium" },
+        { id: "alcohol", translationKey: "alcohol", severity: "high" }
       ]
     },
     {
       id: "other",
-      title: "OTHER PROHIBITED",
+      translationKey: "other",
       icon: "⛔",
       items: [
-        {
-          id: "umbrellas",
-          name: "Large Umbrellas",
-          description: "No large or rigid umbrellas. Small collapsible umbrellas may be allowed at some venues.",
-          penalty: "Denied entry",
-          severity: "medium"
-        },
-        {
-          id: "flags-poles",
-          name: "Flags with Poles",
-          description: "No flag poles, sticks, or rigid supports. Flags larger than 2m x 1.5m prohibited. Hand-held flags without poles allowed.",
-          penalty: "Denied entry or confiscation",
-          severity: "medium"
-        },
-        {
-          id: "laser-pointers",
-          name: "Laser Pointers",
-          description: "Absolutely banned. Using laser pointer at players or officials is criminal offense.",
-          penalty: "Arrest, lifetime ban",
-          severity: "critical"
-        },
-        {
-          id: "fireworks",
-          name: "Fireworks & Flares",
-          description: "No fireworks, flares, smoke bombs, or pyrotechnics of any kind.",
-          penalty: "Arrest, criminal charges",
-          severity: "critical"
-        },
-        {
-          id: "political",
-          name: "Political/Offensive Material",
-          description: "No political banners, discriminatory symbols, or offensive materials. FIFA has strict anti-discrimination policies.",
-          penalty: "Denied entry, possible ban",
-          severity: "high"
-        }
+        { id: "umbrellas", translationKey: "umbrellas", severity: "medium" },
+        { id: "flags-poles", translationKey: "flagsPoles", severity: "medium" },
+        { id: "laser-pointers", translationKey: "laserPointers", severity: "critical" },
+        { id: "fireworks", translationKey: "fireworks", severity: "critical" },
+        { id: "political", translationKey: "political", severity: "high" }
       ]
     }
   ]
@@ -3051,11 +2887,11 @@ export default function CriticalInfo() {
 
                 {(expandedCards.has("customs") || (!expandedCards.has("stadium") && !expandedCards.has("customs"))) && (
                   <div className="space-y-6">
-                    {prohibitedData.customs.map((category) => (
+                    {prohibitedDataKeys.customs.map((category) => (
                       <div key={category.id} className="space-y-3">
                         <div className="flex items-center gap-2">
                           <span className="text-lg">{category.icon}</span>
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wide">{category.title}</h3>
+                          <h3 className="text-sm font-bold text-white uppercase tracking-wide">{t(`criticalInfo.prohibitedSection.customs.${category.translationKey}.title`)}</h3>
                         </div>
                         <div className="space-y-3">
                           {category.items.map((item) => (
@@ -3066,20 +2902,20 @@ export default function CriticalInfo() {
                             >
                               <div className="p-4">
                                 <div className="flex items-start justify-between gap-3 mb-2">
-                                  <h4 className="font-bold text-white">{item.name}</h4>
+                                  <h4 className="font-bold text-white">{t(`criticalInfo.prohibitedSection.customs.${category.translationKey}.${item.translationKey}.name`)}</h4>
                                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${
                                     item.severity === "critical" ? "bg-red-500 text-white" :
                                     item.severity === "high" ? "bg-orange-500 text-white" :
                                     "bg-yellow-500 text-black"
                                   }`}>
-                                    {item.severity}
+                                    {t(`criticalInfo.prohibitedSection.severity.${item.severity}`)}
                                   </span>
                                 </div>
-                                <p className="text-sm text-muted-foreground mb-3">{item.description}</p>
+                                <p className="text-sm text-muted-foreground mb-3">{t(`criticalInfo.prohibitedSection.customs.${category.translationKey}.${item.translationKey}.description`)}</p>
                                 <div className="bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">
                                   <div className="flex items-center gap-2">
                                     <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
-                                    <span className="text-sm text-red-400">{t("criticalInfo.prohibitedSection.penalty")}: {item.penalty}</span>
+                                    <span className="text-sm text-red-400">{t("criticalInfo.prohibitedSection.penalty")}: {t(`criticalInfo.prohibitedSection.customs.${category.translationKey}.${item.translationKey}.penalty`)}</span>
                                   </div>
                                 </div>
                               </div>
@@ -3103,11 +2939,11 @@ export default function CriticalInfo() {
                       </div>
                     </div>
 
-                    {prohibitedData.stadium.map((category) => (
+                    {prohibitedDataKeys.stadium.map((category) => (
                       <div key={category.id} className="space-y-3">
                         <div className="flex items-center gap-2">
                           <span className="text-lg">{category.icon}</span>
-                          <h3 className="text-sm font-bold text-white uppercase tracking-wide">{category.title}</h3>
+                          <h3 className="text-sm font-bold text-white uppercase tracking-wide">{t(`criticalInfo.prohibitedSection.stadium.${category.translationKey}.title`)}</h3>
                         </div>
                         <div className="space-y-3">
                           {category.items.map((item) => (
@@ -3118,20 +2954,20 @@ export default function CriticalInfo() {
                             >
                               <div className="p-4">
                                 <div className="flex items-start justify-between gap-3 mb-2">
-                                  <h4 className="font-bold text-white">{item.name}</h4>
+                                  <h4 className="font-bold text-white">{t(`criticalInfo.prohibitedSection.stadium.${category.translationKey}.${item.translationKey}.name`)}</h4>
                                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${
                                     item.severity === "critical" ? "bg-red-500 text-white" :
                                     item.severity === "high" ? "bg-orange-500 text-white" :
                                     "bg-yellow-500 text-black"
                                   }`}>
-                                    {item.severity}
+                                    {t(`criticalInfo.prohibitedSection.severity.${item.severity}`)}
                                   </span>
                                 </div>
-                                <p className="text-sm text-muted-foreground mb-3">{item.description}</p>
+                                <p className="text-sm text-muted-foreground mb-3">{t(`criticalInfo.prohibitedSection.stadium.${category.translationKey}.${item.translationKey}.description`)}</p>
                                 <div className="bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">
                                   <div className="flex items-center gap-2">
                                     <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
-                                    <span className="text-sm text-red-400">Penalty: {item.penalty}</span>
+                                    <span className="text-sm text-red-400">{t("criticalInfo.prohibitedSection.penalty")}: {t(`criticalInfo.prohibitedSection.stadium.${category.translationKey}.${item.translationKey}.penalty`)}</span>
                                   </div>
                                 </div>
                               </div>
