@@ -3092,7 +3092,8 @@
     "totalGoals": "通算得点",
     "totalAssists": "通算アシスト",
     "watchHighlights": "ハイライトを見る",
-    "fullBiography": "詳細プロフィール"
+    "fullBiography": "詳細プロフィール",
+    "rosterNotice": "選手リストは、各国代表がワールドカップ2026の公式メンバーを発表次第更新されます。最終的な26人のメンバーは2026年5月/6月に発表予定です。"
   },
   "stadiumSeating": {
     "title": "スタジアム座席",

@@ -104,7 +104,7 @@ export default function Players() {
         <h1 className="text-4xl font-display font-bold text-white mb-2">{t("players.title")}</h1>
         <p className="text-muted-foreground mb-4">{t("players.subtitle")}</p>
 
-        <div className="bg-card/50 border border-white/10 rounded-xl p-3 mb-6">
+        <div className="bg-card/50 border border-white/10 rounded-xl p-3 mb-4">
           <p className="text-xs text-muted-foreground">
             <span className="font-semibold text-white">{t("players.key")}:</span>{" "}
             <span className="inline-flex items-center mx-1">
@@ -117,6 +117,12 @@ export default function Players() {
             <span className="font-medium text-white">{t("players.caps")}</span> = {t("players.keyCaps")}
             <span className="mx-2">|</span>
             <span className="font-medium text-white">{t("players.intlGoals")}</span> = {t("players.keyIntlGoals")}
+          </p>
+        </div>
+
+        <div className="bg-primary/10 border border-primary/20 rounded-xl p-3 mb-6">
+          <p className="text-xs text-primary/90">
+            {t("players.rosterNotice")}
           </p>
         </div>
 
