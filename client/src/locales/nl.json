@@ -1223,6 +1223,21 @@
       "liveRates": "Live wisselkoersen geleverd door Frankfurter API",
       "quickConvertTo": "Snel omrekenen naar",
       "hostCountryCurrencies": "Valuta's van gastlanden"
+    },
+    "timezoneConverter": "Tijdzone Omrekenen",
+    "compareTimezones": "Vergelijk gastheersteden en thuistijden",
+    "timezone": {
+      "yourTime": "Jouw Tijd",
+      "difference": "Tijdsverschil",
+      "sameTime": "Zelfde tijd",
+      "hours": "uur",
+      "selectHostCity": "Selecteer Gaststad",
+      "yourTimezone": "Jouw Tijdzone",
+      "detected": "Gedetecteerd",
+      "yourDevice": "Jouw Apparaat",
+      "commonTimezones": "Veelvoorkomende Tijdzones",
+      "quickSelect": "Snelle Stadskeuze",
+      "tip": "Wedstrijdtijden worden weergegeven in lokale stadiontijd. Gebruik deze tool om naar jouw thuistijd te converteren zodat je de aftrap niet mist!"
     }
   },
   "dining": {

@@ -1223,6 +1223,21 @@
       "liveRates": "أسعار الصرف الحية مقدمة من Frankfurter API",
       "quickConvertTo": "تحويل سريع إلى",
       "hostCountryCurrencies": "عملات الدول المضيفة"
+    },
+    "timezoneConverter": "محول المنطقة الزمنية",
+    "compareTimezones": "قارن أوقات المدن المضيفة ومنزلك",
+    "timezone": {
+      "yourTime": "وقتك",
+      "difference": "فارق التوقيت",
+      "sameTime": "نفس الوقت",
+      "hours": "ساعات",
+      "selectHostCity": "اختر المدينة المضيفة",
+      "yourTimezone": "منطقتك الزمنية",
+      "detected": "تم الكشف",
+      "yourDevice": "جهازك",
+      "commonTimezones": "المناطق الزمنية الشائعة",
+      "quickSelect": "اختيار سريع للمدينة",
+      "tip": "تُعرض أوقات المباريات بالتوقيت المحلي للملعب. استخدم هذه الأداة للتحويل إلى توقيتك المحلي حتى لا تفوتك بداية المباراة!"
     }
   },
   "dining": {

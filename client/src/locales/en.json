@@ -1223,6 +1223,21 @@
       "liveRates": "Live exchange rates provided by Frankfurter API",
       "quickConvertTo": "Quick Convert to",
       "hostCountryCurrencies": "Host Country Currencies"
+    },
+    "timezoneConverter": "Time Zone Converter",
+    "compareTimezones": "Compare host city and home times",
+    "timezone": {
+      "yourTime": "Your Time",
+      "difference": "Time Difference",
+      "sameTime": "Same time",
+      "hours": "hours",
+      "selectHostCity": "Select Host City",
+      "yourTimezone": "Your Time Zone",
+      "detected": "Detected",
+      "yourDevice": "Your Device",
+      "commonTimezones": "Common Time Zones",
+      "quickSelect": "Quick Select Host City",
+      "tip": "Match times are shown in local stadium time. Use this tool to convert to your home time so you don't miss kickoff!"
     }
   },
   "dining": {

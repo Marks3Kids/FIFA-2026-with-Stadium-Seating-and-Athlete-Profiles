@@ -1223,6 +1223,21 @@
       "liveRates": "Live-Wechselkurse, bereitgestellt von der Frankfurter API",
       "quickConvertTo": "Schnellumrechnung zu",
       "hostCountryCurrencies": "Währungen der Gastländer"
+    },
+    "timezoneConverter": "Zeitzonen-Umrechner",
+    "compareTimezones": "Vergleiche Gastgeberstadt- und Heimatzeiten",
+    "timezone": {
+      "yourTime": "Ihre Zeit",
+      "difference": "Zeitunterschied",
+      "sameTime": "Gleiche Zeit",
+      "hours": "Stunden",
+      "selectHostCity": "Gastgeberstadt Auswählen",
+      "yourTimezone": "Ihre Zeitzone",
+      "detected": "Erkannt",
+      "yourDevice": "Ihr Gerät",
+      "commonTimezones": "Häufige Zeitzonen",
+      "quickSelect": "Schnellauswahl Stadt",
+      "tip": "Spielzeiten werden in lokaler Stadionzeit angezeigt. Nutzen Sie dieses Tool, um in Ihre Heimatzeit umzurechnen und den Anpfiff nicht zu verpassen!"
     }
   },
   "dining": {

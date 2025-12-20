@@ -1223,6 +1223,21 @@
       "liveRates": "Frankfurter APIによるリアルタイム為替レート",
       "quickConvertTo": "クイック変換先",
       "hostCountryCurrencies": "開催国の通貨"
+    },
+    "timezoneConverter": "タイムゾーン変換",
+    "compareTimezones": "開催都市と自宅の時間を比較",
+    "timezone": {
+      "yourTime": "あなたの時間",
+      "difference": "時差",
+      "sameTime": "同じ時間",
+      "hours": "時間",
+      "selectHostCity": "開催都市を選択",
+      "yourTimezone": "あなたのタイムゾーン",
+      "detected": "検出済み",
+      "yourDevice": "あなたのデバイス",
+      "commonTimezones": "一般的なタイムゾーン",
+      "quickSelect": "都市をクイック選択",
+      "tip": "試合時間はスタジアムの現地時間で表示されます。このツールを使って自宅の時間に変換し、キックオフを見逃さないようにしましょう！"
     }
   },
   "dining": {

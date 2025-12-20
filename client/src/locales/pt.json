@@ -1222,6 +1222,21 @@
       "liveRates": "Taxas em tempo real",
       "quickConvertTo": "Conversão rápida para",
       "hostCountryCurrencies": "Moedas dos países anfitriões"
+    },
+    "timezoneConverter": "Conversor de Fuso Horário",
+    "compareTimezones": "Compare horários das cidades sede e sua casa",
+    "timezone": {
+      "yourTime": "Seu Horário",
+      "difference": "Diferença de Horário",
+      "sameTime": "Mesmo horário",
+      "hours": "horas",
+      "selectHostCity": "Selecionar Cidade Sede",
+      "yourTimezone": "Seu Fuso Horário",
+      "detected": "Detectado",
+      "yourDevice": "Seu Dispositivo",
+      "commonTimezones": "Fusos Horários Comuns",
+      "quickSelect": "Seleção Rápida de Cidade",
+      "tip": "Os horários dos jogos são mostrados no horário local do estádio. Use esta ferramenta para converter para seu horário local e não perder o início!"
     }
   },
   "dining": {

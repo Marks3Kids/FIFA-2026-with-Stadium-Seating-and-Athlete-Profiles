@@ -1223,6 +1223,21 @@
       "liveRates": "Tipos de cambio en tiempo real proporcionados por Frankfurter API",
       "quickConvertTo": "Conversión rápida a",
       "hostCountryCurrencies": "Monedas de los países anfitriones"
+    },
+    "timezoneConverter": "Conversor de Zona Horaria",
+    "compareTimezones": "Compara horarios de ciudades sede y tu zona",
+    "timezone": {
+      "yourTime": "Tu Hora",
+      "difference": "Diferencia Horaria",
+      "sameTime": "Misma hora",
+      "hours": "horas",
+      "selectHostCity": "Seleccionar Ciudad Sede",
+      "yourTimezone": "Tu Zona Horaria",
+      "detected": "Detectado",
+      "yourDevice": "Tu Dispositivo",
+      "commonTimezones": "Zonas Horarias Comunes",
+      "quickSelect": "Selección Rápida de Ciudad",
+      "tip": "Los horarios de partidos se muestran en hora local del estadio. ¡Usa esta herramienta para convertir a tu hora local y no perderte el inicio!"
     }
   },
   "dining": {

@@ -6,13 +6,13 @@ import { apiRequest } from "@/lib/queryClient";
 import { 
   Plus, ArrowLeft, Calendar, Plane, Hotel, Utensils, Ticket, 
   FileText, Phone, Clock, MapPin, Trash2, ChevronRight, Luggage,
-  ArrowRightLeft, RefreshCw, DollarSign
+  ArrowRightLeft, RefreshCw, DollarSign, Globe
 } from "lucide-react";
 import { Link } from "wouter";
 import type { Trip, TripTransportation, TripStay, TripDining, TripMatch, TripAgenda, TripDocument, TripContact } from "@shared/schema";
 import { getCurrencyFlagUrl } from "@/lib/flags";
 
-type ViewMode = "list" | "create" | "detail" | "currency";
+type ViewMode = "list" | "create" | "detail" | "currency" | "timezone";
 type DetailTab = "overview" | "transport" | "stays" | "dining" | "matches" | "agenda" | "docs" | "contacts";
 
 interface ExchangeRates {
@@ -167,6 +167,10 @@ export default function Planner() {
     return <CurrencyConverter onBack={() => setView("list")} />;
   }
 
+  if (view === "timezone") {
+    return <TimeZoneConverter onBack={() => setView("list")} />;
+  }
+
   return (
     <Layout pageTitle="nav.planner">
       <div className="pt-12 px-6 pb-8">
@@ -185,22 +189,41 @@ export default function Planner() {
           {t("planner.description")}
         </p>
 
-        <button
-          onClick={() => setView("currency")}
-          className="w-full bg-gradient-to-r from-emerald-600/20 to-primary/20 border border-primary/30 rounded-2xl p-4 flex items-center justify-between mb-6 hover:border-primary/50 transition-colors"
-          data-testid="button-currency-converter"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-              <DollarSign className="w-6 h-6 text-primary" />
+        <div className="grid grid-cols-1 gap-4 mb-6">
+          <button
+            onClick={() => setView("currency")}
+            className="w-full bg-gradient-to-r from-emerald-600/20 to-primary/20 border border-primary/30 rounded-2xl p-4 flex items-center justify-between hover:border-primary/50 transition-colors"
+            data-testid="button-currency-converter"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+                <DollarSign className="w-6 h-6 text-primary" />
+              </div>
+              <div className="text-left">
+                <h3 className="font-bold text-white">{t("planner.currencyConverter")}</h3>
+                <p className="text-sm text-muted-foreground">{t("planner.convertCurrencies")}</p>
+              </div>
             </div>
-            <div className="text-left">
-              <h3 className="font-bold text-white">{t("planner.currencyConverter")}</h3>
-              <p className="text-sm text-muted-foreground">{t("planner.convertCurrencies")}</p>
+            <ChevronRight className="w-5 h-5 text-primary rtl-flip" />
+          </button>
+
+          <button
+            onClick={() => setView("timezone")}
+            className="w-full bg-gradient-to-r from-blue-600/20 to-blue-500/20 border border-blue-500/30 rounded-2xl p-4 flex items-center justify-between hover:border-blue-500/50 transition-colors"
+            data-testid="button-timezone-converter"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+                <Globe className="w-6 h-6 text-blue-400" />
+              </div>
+              <div className="text-left">
+                <h3 className="font-bold text-white">{t("planner.timezoneConverter")}</h3>
+                <p className="text-sm text-muted-foreground">{t("planner.compareTimezones")}</p>
+              </div>
             </div>
-          </div>
-          <ChevronRight className="w-5 h-5 text-primary rtl-flip" />
-        </button>
+            <ChevronRight className="w-5 h-5 text-blue-400 rtl-flip" />
+          </button>
+        </div>
 
         {isLoading ? (
           <div className="text-center text-muted-foreground py-12">{t("planner.loadingTrips")}</div>
@@ -1091,6 +1114,210 @@ function CurrencyConverter({ onBack }: { onBack: () => void }) {
             </p>
           </div>
         )}
+      </div>
+    </Layout>
+  );
+}
+
+const HOST_CITY_TIMEZONES = [
+  { city: "New York/New Jersey", timezone: "America/New_York", country: "USA", flag: "us" },
+  { city: "Los Angeles", timezone: "America/Los_Angeles", country: "USA", flag: "us" },
+  { city: "Miami", timezone: "America/New_York", country: "USA", flag: "us" },
+  { city: "Houston", timezone: "America/Chicago", country: "USA", flag: "us" },
+  { city: "Dallas", timezone: "America/Chicago", country: "USA", flag: "us" },
+  { city: "Atlanta", timezone: "America/New_York", country: "USA", flag: "us" },
+  { city: "Seattle", timezone: "America/Los_Angeles", country: "USA", flag: "us" },
+  { city: "San Francisco", timezone: "America/Los_Angeles", country: "USA", flag: "us" },
+  { city: "Philadelphia", timezone: "America/New_York", country: "USA", flag: "us" },
+  { city: "Boston (Foxborough)", timezone: "America/New_York", country: "USA", flag: "us" },
+  { city: "Kansas City", timezone: "America/Chicago", country: "USA", flag: "us" },
+  { city: "Mexico City", timezone: "America/Mexico_City", country: "Mexico", flag: "mx" },
+  { city: "Guadalajara", timezone: "America/Mexico_City", country: "Mexico", flag: "mx" },
+  { city: "Monterrey", timezone: "America/Monterrey", country: "Mexico", flag: "mx" },
+  { city: "Toronto", timezone: "America/Toronto", country: "Canada", flag: "ca" },
+  { city: "Vancouver", timezone: "America/Vancouver", country: "Canada", flag: "ca" },
+];
+
+const COMMON_TIMEZONES = [
+  { label: "London (GMT)", timezone: "Europe/London" },
+  { label: "Paris (CET)", timezone: "Europe/Paris" },
+  { label: "Tokyo (JST)", timezone: "Asia/Tokyo" },
+  { label: "Sydney (AEST)", timezone: "Australia/Sydney" },
+  { label: "Dubai (GST)", timezone: "Asia/Dubai" },
+  { label: "São Paulo (BRT)", timezone: "America/Sao_Paulo" },
+  { label: "Buenos Aires (ART)", timezone: "America/Argentina/Buenos_Aires" },
+];
+
+function TimeZoneConverter({ onBack }: { onBack: () => void }) {
+  const { t } = useTranslation();
+  const [selectedCity, setSelectedCity] = useState(HOST_CITY_TIMEZONES[0]);
+  const [homeTimezone, setHomeTimezone] = useState(() => {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone;
+  });
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (date: Date, timezone: string) => {
+    return new Intl.DateTimeFormat('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+      timeZone: timezone,
+    }).format(date);
+  };
+
+  const formatDate = (date: Date, timezone: string) => {
+    return new Intl.DateTimeFormat('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      timeZone: timezone,
+    }).format(date);
+  };
+
+  const getTimeDifference = () => {
+    const homeOffset = new Date().toLocaleString('en-US', { timeZone: homeTimezone, timeZoneName: 'shortOffset' });
+    const cityOffset = new Date().toLocaleString('en-US', { timeZone: selectedCity.timezone, timeZoneName: 'shortOffset' });
+    
+    const homeMatch = homeOffset.match(/GMT([+-]\d+)/);
+    const cityMatch = cityOffset.match(/GMT([+-]\d+)/);
+    
+    const homeHours = homeMatch ? parseInt(homeMatch[1]) : 0;
+    const cityHours = cityMatch ? parseInt(cityMatch[1]) : 0;
+    
+    const diff = cityHours - homeHours;
+    
+    if (diff === 0) return t("planner.timezone.sameTime");
+    if (diff > 0) return `+${diff} ${t("planner.timezone.hours")}`;
+    return `${diff} ${t("planner.timezone.hours")}`;
+  };
+
+  const getTimezoneName = (timezone: string) => {
+    try {
+      return new Intl.DateTimeFormat('en-US', {
+        timeZone: timezone,
+        timeZoneName: 'short',
+      }).formatToParts(currentTime).find(p => p.type === 'timeZoneName')?.value || timezone;
+    } catch {
+      return timezone;
+    }
+  };
+
+  return (
+    <Layout pageTitle="planner.timezoneConverter">
+      <div className="pt-12 px-6 pb-8">
+        <button 
+          onClick={onBack}
+          className="flex items-center gap-2 text-muted-foreground hover:text-white transition-colors mb-6"
+          data-testid="button-back-from-timezone"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          {t("common.back")}
+        </button>
+
+        <div className="flex items-center gap-3 mb-6">
+          <Globe className="w-8 h-8 text-blue-400" />
+          <h1 className="text-3xl font-display font-bold text-white">{t("planner.timezoneConverter")}</h1>
+        </div>
+
+        <div className="space-y-6">
+          <div className="bg-gradient-to-r from-blue-600/20 to-blue-500/20 border border-blue-500/30 rounded-2xl p-6">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="text-center">
+                <p className="text-xs text-muted-foreground mb-1">{t("planner.timezone.yourTime")}</p>
+                <p className="text-2xl font-display font-bold text-white">{formatTime(currentTime, homeTimezone)}</p>
+                <p className="text-xs text-muted-foreground">{formatDate(currentTime, homeTimezone)}</p>
+                <p className="text-xs text-blue-400 mt-1">{getTimezoneName(homeTimezone)}</p>
+              </div>
+              <div className="text-center">
+                <p className="text-xs text-muted-foreground mb-1">{selectedCity.city}</p>
+                <p className="text-2xl font-display font-bold text-primary">{formatTime(currentTime, selectedCity.timezone)}</p>
+                <p className="text-xs text-muted-foreground">{formatDate(currentTime, selectedCity.timezone)}</p>
+                <p className="text-xs text-blue-400 mt-1">{getTimezoneName(selectedCity.timezone)}</p>
+              </div>
+            </div>
+            <div className="mt-4 text-center">
+              <span className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-medium">
+                <Clock className="w-4 h-4" />
+                {t("planner.timezone.difference")}: {getTimeDifference()}
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <label className="text-sm text-muted-foreground mb-2 block">{t("planner.timezone.selectHostCity")}</label>
+            <select
+              value={selectedCity.city}
+              onChange={(e) => {
+                const city = HOST_CITY_TIMEZONES.find(c => c.city === e.target.value);
+                if (city) setSelectedCity(city);
+              }}
+              className="w-full bg-card border border-white/10 rounded-xl px-4 py-4 text-white font-medium focus:outline-none focus:border-primary appearance-none"
+              data-testid="select-host-city"
+            >
+              {HOST_CITY_TIMEZONES.map((city) => (
+                <option key={city.city} value={city.city} className="bg-card">
+                  {city.city}, {city.country}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="text-sm text-muted-foreground mb-2 block">{t("planner.timezone.yourTimezone")}</label>
+            <select
+              value={homeTimezone}
+              onChange={(e) => setHomeTimezone(e.target.value)}
+              className="w-full bg-card border border-white/10 rounded-xl px-4 py-4 text-white font-medium focus:outline-none focus:border-primary appearance-none"
+              data-testid="select-home-timezone"
+            >
+              <optgroup label={t("planner.timezone.detected")}>
+                <option value={Intl.DateTimeFormat().resolvedOptions().timeZone} className="bg-card">
+                  {Intl.DateTimeFormat().resolvedOptions().timeZone} ({t("planner.timezone.yourDevice")})
+                </option>
+              </optgroup>
+              <optgroup label={t("planner.timezone.commonTimezones")}>
+                {COMMON_TIMEZONES.map((tz) => (
+                  <option key={tz.timezone} value={tz.timezone} className="bg-card">
+                    {tz.label}
+                  </option>
+                ))}
+              </optgroup>
+            </select>
+          </div>
+
+          <div>
+            <p className="text-sm text-muted-foreground mb-3">{t("planner.timezone.quickSelect")}</p>
+            <div className="grid grid-cols-3 gap-2">
+              {HOST_CITY_TIMEZONES.filter(c => ["New York/New Jersey", "Los Angeles", "Mexico City"].includes(c.city)).map((city) => (
+                <button
+                  key={city.city}
+                  onClick={() => setSelectedCity(city)}
+                  className={`py-3 rounded-xl text-center transition-colors flex flex-col items-center ${
+                    selectedCity.city === city.city
+                      ? "bg-blue-500 text-white"
+                      : "bg-card border border-white/10 text-white hover:bg-white/5"
+                  }`}
+                  data-testid={`quick-city-${city.city}`}
+                >
+                  <img src={`https://flagcdn.com/w40/${city.flag}.png`} alt={city.country} className="w-8 h-6 object-cover rounded mb-1" />
+                  <div className="text-xs font-medium">{city.city.split('/')[0]}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-card/50 border border-white/5 rounded-xl p-4">
+            <p className="text-xs text-muted-foreground text-center">
+              {t("planner.timezone.tip")}
+            </p>
+          </div>
+        </div>
       </div>
     </Layout>
   );
