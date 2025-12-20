@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { 
   AlertTriangle, Shield, Phone, DollarSign, Scale, Sun, 
@@ -2229,6 +2229,20 @@ export default function CriticalInfo() {
   const [expandedSafeArea, setExpandedSafeArea] = useState<string | null>(null);
   const [selectedMedicalCity, setSelectedMedicalCity] = useState<CityMedicalData | null>(null);
   const [facilityFilter, setFacilityFilter] = useState<"all" | "er" | "urgent">("all");
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const userAgent = navigator.userAgent || navigator.vendor;
+      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth <= 768;
+      setIsMobile(isMobileDevice || (isTouchDevice && isSmallScreen));
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const categories: { id: InfoCategory; labelKey: string; icon: any; available: boolean }[] = [
     { id: "safety", labelKey: "criticalInfo.categories.safety", icon: Shield, available: true },
@@ -3764,25 +3778,32 @@ export default function CriticalInfo() {
                           <div className="text-xs text-muted-foreground">{facility.hours}</div>
                         </div>
 
-                        <div className="flex gap-2">
-                          <a
-                            href={`tel:${facility.phone}`}
-                            className="flex-1 bg-primary text-primary-foreground py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1"
-                            data-testid={`call-${facility.id}`}
-                          >
-                            <Phone className="w-3 h-3" />
-                            {t('criticalInfo.medicalSection.buttons.call')}
-                          </a>
-                          <a
-                            href={`https://www.google.com/maps/dir/?api=1&origin=${selectedMedicalCity.stadiumLat},${selectedMedicalCity.stadiumLng}&destination=${facility.lat},${facility.lng}&travelmode=driving&hl=${currentLanguage}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 bg-card border border-white/10 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1"
-                            data-testid={`directions-${facility.id}`}
-                          >
-                            <MapPin className="w-3 h-3" />
-                            {t('criticalInfo.medicalSection.buttons.directions')}
-                          </a>
+                        <div className="flex flex-col gap-2">
+                          <div className="flex gap-2">
+                            <a
+                              href={`tel:${facility.phone}`}
+                              className="flex-1 bg-primary text-primary-foreground py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1"
+                              data-testid={`call-${facility.id}`}
+                            >
+                              <Phone className="w-3 h-3" />
+                              {t('criticalInfo.medicalSection.buttons.call')}
+                            </a>
+                            <a
+                              href={`https://www.google.com/maps/dir/?api=1&origin=${selectedMedicalCity.stadiumLat},${selectedMedicalCity.stadiumLng}&destination=${facility.lat},${facility.lng}&travelmode=driving&hl=${currentLanguage}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-1 bg-card border border-white/10 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1"
+                              data-testid={`directions-${facility.id}`}
+                            >
+                              <MapPin className="w-3 h-3" />
+                              {t('criticalInfo.medicalSection.buttons.directions')}
+                            </a>
+                          </div>
+                          {!isMobile && (
+                            <p className="text-[10px] text-muted-foreground text-center">
+                              {t('criticalInfo.medicalSection.facilityView.desktopCallNote')}
+                            </p>
+                          )}
                         </div>
                       </div>
                     ))}

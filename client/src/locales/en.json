@@ -2968,7 +2968,8 @@
         "filterErOnly": "ER Only",
         "filterUrgentCare": "Urgent Care",
         "emergencyRoomBadge": "EMERGENCY ROOM",
-        "urgentCareBadge": "URGENT CARE"
+        "urgentCareBadge": "URGENT CARE",
+        "desktopCallNote": "On desktop, select your preferred calling app when prompted"
       }
     }
   },

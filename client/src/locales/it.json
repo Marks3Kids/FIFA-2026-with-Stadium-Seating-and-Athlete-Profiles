@@ -2967,7 +2967,8 @@
         "filterErOnly": "Solo PS",
         "filterUrgentCare": "Clinica Urgenze",
         "emergencyRoomBadge": "PRONTO SOCCORSO",
-        "urgentCareBadge": "CLINICA URGENZE"
+        "urgentCareBadge": "CLINICA URGENZE",
+        "desktopCallNote": "Su desktop, seleziona la tua app di chiamata preferita quando richiesto"
       }
     }
   },

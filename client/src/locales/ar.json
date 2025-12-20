@@ -2967,7 +2967,8 @@
         "filterErOnly": "الطوارئ فقط",
         "filterUrgentCare": "الرعاية العاجلة",
         "emergencyRoomBadge": "غرفة الطوارئ",
-        "urgentCareBadge": "الرعاية العاجلة"
+        "urgentCareBadge": "الرعاية العاجلة",
+        "desktopCallNote": "على الكمبيوتر، اختر تطبيق الاتصال المفضل لديك عند الطلب"
       }
     }
   },

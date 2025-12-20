@@ -2967,7 +2967,8 @@
         "filterErOnly": "救急室のみ",
         "filterUrgentCare": "緊急医療クリニック",
         "emergencyRoomBadge": "救急室",
-        "urgentCareBadge": "緊急医療クリニック"
+        "urgentCareBadge": "緊急医療クリニック",
+        "desktopCallNote": "パソコンでは、プロンプトが表示されたら通話アプリを選択してください"
       }
     }
   },

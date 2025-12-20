@@ -2967,7 +2967,8 @@
         "filterErOnly": "Urgences seulement",
         "filterUrgentCare": "Soins Urgents",
         "emergencyRoomBadge": "SALLE DES URGENCES",
-        "urgentCareBadge": "SOINS URGENTS"
+        "urgentCareBadge": "SOINS URGENTS",
+        "desktopCallNote": "Sur ordinateur, sélectionnez votre application d'appel préférée lorsque vous y êtes invité"
       }
     }
   },

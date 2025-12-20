@@ -2967,7 +2967,8 @@
         "filterErOnly": "Solo ER",
         "filterUrgentCare": "Atención Urgente",
         "emergencyRoomBadge": "SALA DE EMERGENCIAS",
-        "urgentCareBadge": "ATENCIÓN URGENTE"
+        "urgentCareBadge": "ATENCIÓN URGENTE",
+        "desktopCallNote": "En escritorio, selecciona tu aplicación de llamadas preferida cuando se te solicite"
       }
     }
   },

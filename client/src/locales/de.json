@@ -2967,7 +2967,8 @@
         "filterErOnly": "Nur Notaufnahme",
         "filterUrgentCare": "Dringliche Behandlung",
         "emergencyRoomBadge": "NOTAUFNAHME",
-        "urgentCareBadge": "DRINGLICHE BEHANDLUNG"
+        "urgentCareBadge": "DRINGLICHE BEHANDLUNG",
+        "desktopCallNote": "Auf dem Desktop wählen Sie bei Aufforderung Ihre bevorzugte Anruf-App"
       }
     }
   },

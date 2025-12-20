@@ -2967,7 +2967,8 @@
         "filterErOnly": "Apenas PS",
         "filterUrgentCare": "Atendimento de Urgência",
         "emergencyRoomBadge": "PRONTO-SOCORRO",
-        "urgentCareBadge": "ATENDIMENTO DE URGÊNCIA"
+        "urgentCareBadge": "ATENDIMENTO DE URGÊNCIA",
+        "desktopCallNote": "No computador, selecione seu aplicativo de chamadas preferido quando solicitado"
       }
     }
   },

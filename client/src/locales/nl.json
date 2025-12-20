@@ -2967,7 +2967,8 @@
         "filterErOnly": "Alleen SEH",
         "filterUrgentCare": "Huisartsenpost",
         "emergencyRoomBadge": "SPOEDEISENDE HULP",
-        "urgentCareBadge": "HUISARTSENPOST"
+        "urgentCareBadge": "HUISARTSENPOST",
+        "desktopCallNote": "Op desktop, selecteer uw favoriete bel-app wanneer daarom wordt gevraagd"
       }
     }
   },
