@@ -30,7 +30,7 @@ export default function Menu() {
     { id: "transportation", icon: Train, labelKey: "menu.transportation", color: "text-blue-400", href: "/transportation", active: true },
     { id: "lodging", icon: Hotel, labelKey: "menu.lodging", color: "text-purple-400", href: "/lodging", active: true },
     { id: "dining", icon: Utensils, labelKey: "menu.dining", color: "text-orange-400", href: "/dining", active: true },
-    { id: "critical-info", icon: Info, labelKey: "menu.criticalInfo", color: "text-red-400", href: "/critical-info", active: true },
+    { id: "critical-info", icon: Info, labelKey: "nav.essentialGuide", color: "text-red-400", href: "/critical-info", active: true },
     { id: "planner", icon: Calendar, labelKey: "menu.planner", color: "text-green-400", href: "/planner", active: true },
     { id: "ai-concierge", icon: Sparkles, labelKey: "menu.aiConcierge", color: "text-yellow-400", href: "/concierge", active: true },
     { id: "history", icon: Trophy, labelKey: "menu.history", color: "text-amber-400", href: "/history", active: true },
