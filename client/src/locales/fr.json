@@ -2908,7 +2908,7 @@
     },
     "medicalSection": {
       "erVsUrgentCare": {
-        "title": "Urgences vs Soins Urgents: Connaître la Différence",
+        "title": "ER vs SU (Soins Urgents): Connaître la Différence",
         "emergencyRoom": {
           "label": "Salle des Urgences",
           "items": [

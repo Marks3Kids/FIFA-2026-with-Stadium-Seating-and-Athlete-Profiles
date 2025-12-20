@@ -2908,7 +2908,7 @@
     },
     "medicalSection": {
       "erVsUrgentCare": {
-        "title": "救急室 vs 緊急医療クリニック：違いを知ろう",
+        "title": "ER vs UC (緊急医療クリニック)：違いを知ろう",
         "emergencyRoom": {
           "label": "救急室",
           "items": [
