@@ -3002,6 +3002,8 @@
     "inputPlaceholder": "Me pergunte sobre a Copa 2026...",
     "thinking": "Pensando...",
     "error": "Desculpe, ocorreu um erro. Tente novamente.",
+    "messageInfo": "1 mensagem = até 4.000 caracteres (sua pergunta + resposta da IA combinados).",
+    "purchaseInfo": "Precisa de mais mensagens? Vá para Configurações > Conta para comprar créditos de mensagens de IA adicionais.",
     "disclaimer": "Respostas de IA podem nem sempre ser precisas. Verifique detalhes importantes.",
     "categories": {
       "dining": {

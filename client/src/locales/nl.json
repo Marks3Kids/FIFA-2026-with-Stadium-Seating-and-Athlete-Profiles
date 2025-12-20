@@ -3003,6 +3003,8 @@
     "inputPlaceholder": "Vraag mij iets over het WK 2026...",
     "thinking": "Denken...",
     "error": "Sorry, er is een fout opgetreden. Probeer het opnieuw.",
+    "messageInfo": "1 bericht = maximaal 4.000 tekens (je vraag + AI-antwoord gecombineerd).",
+    "purchaseInfo": "Meer berichten nodig? Ga naar Instellingen > Account om extra AI-berichttegoeden te kopen.",
     "disclaimer": "AI-antwoorden zijn mogelijk niet altijd nauwkeurig. Controleer belangrijke details.",
     "categories": {
       "dining": {

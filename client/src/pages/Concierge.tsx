@@ -8,7 +8,9 @@ import {
   User, 
   Loader2, 
   ArrowLeft,
-  RefreshCw
+  RefreshCw,
+  Info,
+  CreditCard
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "wouter";
@@ -275,9 +277,19 @@ export default function Concierge() {
             </button>
           </div>
           
-          <p className="text-xs text-muted-foreground text-center mt-3">
-            {t("concierge.disclaimer")}
-          </p>
+          <div className="mt-3 space-y-2">
+            <div className="flex items-start gap-2 text-xs text-muted-foreground bg-white/5 rounded-lg px-3 py-2">
+              <Info className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-blue-400" />
+              <span>{t("concierge.messageInfo")}</span>
+            </div>
+            <div className="flex items-start gap-2 text-xs text-muted-foreground bg-white/5 rounded-lg px-3 py-2">
+              <CreditCard className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-primary" />
+              <span>{t("concierge.purchaseInfo")}</span>
+            </div>
+            <p className="text-xs text-muted-foreground text-center">
+              {t("concierge.disclaimer")}
+            </p>
+          </div>
         </div>
       </div>
     </Layout>

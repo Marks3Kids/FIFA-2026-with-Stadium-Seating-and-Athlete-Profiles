@@ -3003,6 +3003,8 @@
     "inputPlaceholder": "Posez-moi des questions sur la Coupe du Monde 2026...",
     "thinking": "Réflexion...",
     "error": "Désolé, une erreur s'est produite. Veuillez réessayer.",
+    "messageInfo": "1 message = jusqu'à 4 000 caractères (votre question + réponse IA combinées).",
+    "purchaseInfo": "Besoin de plus de messages ? Allez dans Paramètres > Compte pour acheter des crédits de messages IA supplémentaires.",
     "disclaimer": "Les réponses IA peuvent ne pas toujours être exactes. Vérifiez les détails importants.",
     "categories": {
       "dining": {

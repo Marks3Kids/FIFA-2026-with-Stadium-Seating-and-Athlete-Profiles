@@ -3003,6 +3003,8 @@
     "inputPlaceholder": "Fragen Sie mich zur WM 2026...",
     "thinking": "Denke nach...",
     "error": "Entschuldigung, ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "messageInfo": "1 Nachricht = bis zu 4.000 Zeichen (Ihre Frage + KI-Antwort kombiniert).",
+    "purchaseInfo": "Mehr Nachrichten benötigt? Gehen Sie zu Einstellungen > Konto, um zusätzliche KI-Nachrichtenkredit zu kaufen.",
     "disclaimer": "KI-Antworten sind möglicherweise nicht immer korrekt. Überprüfen Sie wichtige Details.",
     "categories": {
       "dining": {

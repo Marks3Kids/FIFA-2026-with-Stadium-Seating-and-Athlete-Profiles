@@ -3004,6 +3004,8 @@
     "inputPlaceholder": "Ask me anything about World Cup 2026...",
     "thinking": "Thinking...",
     "error": "I'm sorry, I encountered an error. Please try again.",
+    "messageInfo": "1 message = up to 4,000 characters (your question + AI response combined).",
+    "purchaseInfo": "Need more messages? Go to Settings > Account to purchase additional AI message credits.",
     "disclaimer": "AI-powered responses may not always be accurate. Verify important details.",
     "categories": {
       "dining": {

@@ -3003,6 +3003,8 @@
     "inputPlaceholder": "Chiedimi del Mondiale 2026...",
     "thinking": "Sto pensando...",
     "error": "Mi dispiace, si è verificato un errore. Riprova.",
+    "messageInfo": "1 messaggio = fino a 4.000 caratteri (la tua domanda + risposta IA combinati).",
+    "purchaseInfo": "Hai bisogno di più messaggi? Vai su Impostazioni > Account per acquistare crediti aggiuntivi per messaggi IA.",
     "disclaimer": "Le risposte IA potrebbero non essere sempre accurate. Verifica i dettagli importanti.",
     "categories": {
       "dining": {
