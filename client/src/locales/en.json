@@ -3101,12 +3101,25 @@
     "capacity": "Capacity",
     "pricingNote": "Pricing Information",
     "pricingDisclaimer": "Prices shown are estimated ranges based on match category and seat location. Actual ticket prices are set by FIFA and authorized resellers.",
-    "sectionLegend": "Section Legend",
+    "sectionLegend": "FIFA Ticket Categories",
+    "viewOfficialMaps": "View Official Maps",
     "sectionTypes": {
-      "premium": "Premium",
-      "club": "Club Level",
-      "standard": "Standard",
-      "economy": "Economy"
+      "category1": "Category 1",
+      "category2": "Category 2",
+      "category3": "Category 3",
+      "category4": "Category 4"
+    },
+    "categoryLocations": {
+      "category1": "Lower tier, center sidelines",
+      "category2": "Upper tier sidelines + lower corners",
+      "category3": "Upper tier behind goals",
+      "category4": "Upper tier corners (limited)"
+    },
+    "categoryViews": {
+      "category1": "Best views - closest to field, most expensive",
+      "category2": "Good overall views, mid-to-high price range",
+      "category3": "Goal-line perspective, moderate pricing",
+      "category4": "Most affordable, host country residents only"
     },
     "pitchView": "PITCH VIEW",
     "levels": {

@@ -38,10 +38,17 @@ const stadiumData = [
 ];
 
 const sectionColors: Record<string, { bg: string; border: string; text: string }> = {
-  premium: { bg: "bg-amber-500/20", border: "border-amber-500/50", text: "text-amber-400" },
-  club: { bg: "bg-purple-500/20", border: "border-purple-500/50", text: "text-purple-400" },
-  standard: { bg: "bg-blue-500/20", border: "border-blue-500/50", text: "text-blue-400" },
-  economy: { bg: "bg-green-500/20", border: "border-green-500/50", text: "text-green-400" },
+  category1: { bg: "bg-amber-500/20", border: "border-amber-500/50", text: "text-amber-400" },
+  category2: { bg: "bg-purple-500/20", border: "border-purple-500/50", text: "text-purple-400" },
+  category3: { bg: "bg-blue-500/20", border: "border-blue-500/50", text: "text-blue-400" },
+  category4: { bg: "bg-green-500/20", border: "border-green-500/50", text: "text-green-400" },
+};
+
+const categoryDescriptions: Record<string, { location: string; view: string }> = {
+  category1: { location: "Lower tier, center sidelines", view: "Best views - closest to field" },
+  category2: { location: "Upper tier sidelines + lower corners", view: "Good overall views" },
+  category3: { location: "Upper tier behind goals", view: "Goal-line perspective" },
+  category4: { location: "Upper tier corners", view: "Most affordable option" },
 };
 
 export default function StadiumSeating() {
@@ -170,18 +177,38 @@ export default function StadiumSeating() {
             )}
 
             <div className="mb-6">
-              <div className="flex items-center space-x-2 mb-4">
+              <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-white">{t("stadiumSeating.sectionLegend")}</h3>
+                <a
+                  href="https://gpcustomersupportfwc2026.tickets.fifa.com/hc/en-gb/articles/28784010437021"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-primary hover:underline flex items-center gap-1"
+                >
+                  {t("stadiumSeating.viewOfficialMaps")}
+                  <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
-              <div className="grid grid-cols-2 gap-3">
-                {Object.entries(sectionColors).map(([type, colors]) => (
-                  <div key={type} className={`${colors.bg} ${colors.border} border rounded-lg p-3 flex items-center space-x-2`} data-testid={`legend-${type}`}>
-                    <div className={`w-3 h-3 rounded-full ${colors.text.replace("text-", "bg-")}`} />
-                    <span className={`text-sm font-medium capitalize ${colors.text}`}>
-                      {t(`stadiumSeating.sectionTypes.${type}`)}
-                    </span>
-                  </div>
-                ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {Object.entries(sectionColors).map(([type, colors]) => {
+                  const desc = categoryDescriptions[type];
+                  return (
+                    <div key={type} className={`${colors.bg} ${colors.border} border rounded-lg p-3`} data-testid={`legend-${type}`}>
+                      <div className="flex items-center space-x-2 mb-1">
+                        <div className={`w-3 h-3 rounded-full ${colors.text.replace("text-", "bg-")}`} />
+                        <span className={`text-sm font-bold ${colors.text}`}>
+                          {t(`stadiumSeating.sectionTypes.${type}`)}
+                        </span>
+                      </div>
+                      {desc && (
+                        <div className="ml-5">
+                          <p className="text-xs text-white">{t(`stadiumSeating.categoryLocations.${type}`)}</p>
+                          <p className="text-xs text-muted-foreground">{t(`stadiumSeating.categoryViews.${type}`)}</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
