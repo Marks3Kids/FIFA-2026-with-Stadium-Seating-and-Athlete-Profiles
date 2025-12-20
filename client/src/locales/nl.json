@@ -97,7 +97,9 @@
     "cities": "Steden",
     "matches": "Lucifers",
     "liveUpdates": "Live updates",
-    "tip": "Tip"
+    "tip": "Tip",
+    "previous": "Vorige",
+    "next": "Volgende"
   },
   "bracket": {
     "title": "Knock-out Schema",
@@ -3193,6 +3195,11 @@
     "matches": "wedstrijden",
     "match": "Wedstrijd",
     "confirmReset": "Weet je zeker dat je al je voorspellingen wilt resetten?",
-    "disclaimer": "Dit is een voorspellingsspel alleen voor entertainment. Vul je bracket in en vergelijk met vrienden!"
+    "disclaimer": "Dit is een voorspellingsspel alleen voor entertainment. Vul je bracket in en vergelijk met vrienden!",
+    "pickWinner": "Kies Winnaar",
+    "selectTeam": "Selecteer Team",
+    "winnerOf": "Winnaar van",
+    "worldCupFinal": "WK Finale",
+    "selectWinnersToAdvance": "Selecteer winnaars om teams naar de volgende ronde te laten gaan"
   }
 }

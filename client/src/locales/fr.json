@@ -97,7 +97,9 @@
     "cities": "Villes",
     "matches": "Correspondances",
     "liveUpdates": "Mises à jour en direct",
-    "tip": "Conseil"
+    "tip": "Conseil",
+    "previous": "Précédent",
+    "next": "Suivant"
   },
   "bracket": {
     "title": "Tableau à Élimination Directe",
@@ -3193,6 +3195,11 @@
     "matches": "matchs",
     "match": "Match",
     "confirmReset": "Êtes-vous sûr de vouloir réinitialiser toutes vos prédictions ?",
-    "disclaimer": "Ceci est un jeu de prédiction à des fins de divertissement uniquement. Remplissez votre bracket et comparez avec vos amis !"
+    "disclaimer": "Ceci est un jeu de prédiction à des fins de divertissement uniquement. Remplissez votre bracket et comparez avec vos amis !",
+    "pickWinner": "Choisir le Gagnant",
+    "selectTeam": "Sélectionner une Équipe",
+    "winnerOf": "Gagnant de",
+    "worldCupFinal": "Finale de la Coupe du Monde",
+    "selectWinnersToAdvance": "Sélectionnez les gagnants pour faire avancer les équipes au tour suivant"
   }
 }

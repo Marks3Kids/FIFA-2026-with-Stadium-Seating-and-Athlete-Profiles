@@ -97,7 +97,9 @@
     "cities": "Cities",
     "matches": "Matches",
     "liveUpdates": "ライブ更新",
-    "tip": "ヒント"
+    "tip": "ヒント",
+    "previous": "前へ",
+    "next": "次へ"
   },
   "bracket": {
     "title": "ノックアウトステージ",
@@ -3193,6 +3195,11 @@
     "matches": "試合",
     "match": "試合",
     "confirmReset": "すべての予想をリセットしてもよろしいですか？",
-    "disclaimer": "これはエンターテイメント目的の予想ゲームです。ブラケットを記入して友達と比較しよう！"
+    "disclaimer": "これはエンターテイメント目的の予想ゲームです。ブラケットを記入して友達と比較しよう！",
+    "pickWinner": "勝者を選ぶ",
+    "selectTeam": "チームを選択",
+    "winnerOf": "の勝者",
+    "worldCupFinal": "ワールドカップ決勝",
+    "selectWinnersToAdvance": "勝者を選んで次のラウンドに進出させてください"
   }
 }

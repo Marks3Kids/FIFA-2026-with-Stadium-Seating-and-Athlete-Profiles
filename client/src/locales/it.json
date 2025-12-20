@@ -97,7 +97,9 @@
     "cities": "Città",
     "matches": "Abbinamenti",
     "liveUpdates": "Aggiornamenti in tempo reale",
-    "tip": "Suggerimento"
+    "tip": "Suggerimento",
+    "previous": "Precedente",
+    "next": "Successivo"
   },
   "bracket": {
     "title": "Tabellone ad Eliminazione",
@@ -3193,6 +3195,11 @@
     "matches": "partite",
     "match": "Partita",
     "confirmReset": "Sei sicuro di voler azzerare tutte le tue previsioni?",
-    "disclaimer": "Questo è un gioco di previsioni solo a scopo di intrattenimento. Compila il tuo tabellone e confrontalo con gli amici!"
+    "disclaimer": "Questo è un gioco di previsioni solo a scopo di intrattenimento. Compila il tuo tabellone e confrontalo con gli amici!",
+    "pickWinner": "Scegli il Vincitore",
+    "selectTeam": "Seleziona Squadra",
+    "winnerOf": "Vincitore di",
+    "worldCupFinal": "Finale Mondiale",
+    "selectWinnersToAdvance": "Seleziona i vincitori per far avanzare le squadre al turno successivo"
   }
 }

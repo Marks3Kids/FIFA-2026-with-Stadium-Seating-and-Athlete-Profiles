@@ -97,7 +97,9 @@
     "cities": "Städte",
     "matches": "Streichhölzer",
     "liveUpdates": "Live-Updates",
-    "tip": "Tipp"
+    "tip": "Tipp",
+    "previous": "Zurück",
+    "next": "Weiter"
   },
   "bracket": {
     "title": "K.o.-Runde",
@@ -3193,6 +3195,11 @@
     "matches": "Spiele",
     "match": "Spiel",
     "confirmReset": "Möchten Sie wirklich alle Ihre Vorhersagen zurücksetzen?",
-    "disclaimer": "Dies ist ein Vorhersagespiel nur zur Unterhaltung. Füllen Sie Ihr Bracket aus und vergleichen Sie mit Freunden!"
+    "disclaimer": "Dies ist ein Vorhersagespiel nur zur Unterhaltung. Füllen Sie Ihr Bracket aus und vergleichen Sie mit Freunden!",
+    "pickWinner": "Gewinner Wählen",
+    "selectTeam": "Team Auswählen",
+    "winnerOf": "Gewinner von",
+    "worldCupFinal": "WM-Finale",
+    "selectWinnersToAdvance": "Wählen Sie Gewinner, um Teams in die nächste Runde zu bringen"
   }
 }

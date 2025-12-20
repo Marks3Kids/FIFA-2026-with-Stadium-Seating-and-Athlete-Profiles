@@ -97,7 +97,9 @@
     "cities": "Cities",
     "matches": "Matches",
     "liveUpdates": "Atualizações ao Vivo",
-    "tip": "Dica"
+    "tip": "Dica",
+    "previous": "Anterior",
+    "next": "Próximo"
   },
   "bracket": {
     "title": "Chaves Eliminatórias",
@@ -3192,6 +3194,11 @@
     "matches": "jogos",
     "match": "Jogo",
     "confirmReset": "Tem certeza que deseja reiniciar todas as suas previsões?",
-    "disclaimer": "Este é um jogo de previsões apenas para entretenimento. Preencha seu bracket e compare com amigos!"
+    "disclaimer": "Este é um jogo de previsões apenas para entretenimento. Preencha seu bracket e compare com amigos!",
+    "pickWinner": "Escolher Vencedor",
+    "selectTeam": "Selecionar Equipe",
+    "winnerOf": "Vencedor de",
+    "worldCupFinal": "Final da Copa do Mundo",
+    "selectWinnersToAdvance": "Selecione os vencedores para avançar as equipes para a próxima rodada"
   }
 }

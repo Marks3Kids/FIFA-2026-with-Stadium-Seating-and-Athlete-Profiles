@@ -97,7 +97,9 @@
     "cities": "Ciudades",
     "matches": "Partidos",
     "liveUpdates": "Actualizaciones en directo",
-    "tip": "Consejo"
+    "tip": "Consejo",
+    "previous": "Anterior",
+    "next": "Siguiente"
   },
   "bracket": {
     "title": "Cuadro de Eliminatorias",
@@ -3197,6 +3199,7 @@
     "pickWinner": "Elige Ganador",
     "selectTeam": "Seleccionar Equipo",
     "winnerOf": "Ganador de",
-    "worldCupFinal": "Final de la Copa del Mundo"
+    "worldCupFinal": "Final de la Copa del Mundo",
+    "selectWinnersToAdvance": "Selecciona ganadores para avanzar equipos a la siguiente ronda"
   }
 }
