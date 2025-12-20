@@ -2664,6 +2664,175 @@
           "Garrafa de água reutilizável vazia (alguns locais)",
           "Medicamentos com lacre de fábrica"
         ]
+      },
+      "customs": {
+        "food": {
+          "title": "ALIMENTOS",
+          "kinderEggs": {
+            "name": "Ovos Kinder Surpresa",
+            "description": "Proibidos como risco de asfixia (brinquedo dentro da casca de chocolate). Produtos Kinder normais sem brinquedos embutidos são permitidos.",
+            "penalty": "Confisco"
+          },
+          "meats": {
+            "name": "Carnes (Frescas, Secas, Enlatadas)",
+            "description": "Não é permitido trazer carnes frescas, secas ou enlatadas, incluindo caldos com produtos de carne. Isso inclui charque, presunto, salame e temperos de macarrão instantâneo à base de carne.",
+            "penalty": "Confisco, possível multa"
+          },
+          "fruitsVegetables": {
+            "name": "Frutas e Vegetais Frescos",
+            "description": "Quase todos os produtos frescos são proibidos para prevenir pragas invasoras. Isso inclui frutas, vegetais, sementes e plantas. Alguns itens do Canadá/México podem ser permitidos.",
+            "penalty": "Multa de $300-$1.000"
+          },
+          "dairy": {
+            "name": "Produtos Lácteos",
+            "description": "A maioria dos produtos lácteos é proibida, exceto queijos duros. Não são permitidos leite, creme, manteiga ou queijos macios da maioria dos países.",
+            "penalty": "Confisco, possível multa"
+          }
+        },
+        "drugs": {
+          "title": "DROGAS",
+          "cannabis": {
+            "name": "Maconha/Cannabis/CBD",
+            "description": "Estritamente proibidos em aeroportos e fronteiras, apesar da legalidade estadual. A jurisdição federal se aplica em todos os pontos de entrada. Produtos de CBD também são proibidos se contiverem qualquer THC.",
+            "penalty": "Prisão, multa, deportação"
+          },
+          "prescription": {
+            "name": "Medicamentos com Receita (Não Declarados)",
+            "description": "Devem estar em recipientes originais rotulados com receita médica. Alguns medicamentos legais em seu país podem ser substâncias controladas nos EUA (ex: codeína, alguns soníferos).",
+            "penalty": "Confisco, possível prisão"
+          }
+        },
+        "currency": {
+          "title": "MOEDA",
+          "cashOver10k": {
+            "name": "Dinheiro Acima de $10.000 (Não Declarado)",
+            "description": "Não há limite para dinheiro, mas DEVE ser declarado no Formulário FinCEN 105 se transportar mais de $10.000 USD. Inclui equivalentes em dinheiro como cheques de viagem e ordens de pagamento.",
+            "penalty": "Apreensão de TODO o dinheiro se não declarado"
+          }
+        },
+        "items": {
+          "title": "ITENS",
+          "drones": {
+            "name": "Drones",
+            "description": "Podem passar pela alfândega, mas devem ser registrados na FAA se acima de 250g. Zonas estritas de proibição de drones ao redor de todos os estádios durante os jogos. Voar perto do estádio é crime federal.",
+            "penalty": "Crime federal se voar perto do estádio"
+          },
+          "counterfeit": {
+            "name": "Produtos Falsificados",
+            "description": "Itens de grife falsos, camisas piratas e mídia pirata são apreendidos na alfândega. Itens genuínos para uso pessoal são permitidos.",
+            "penalty": "Confisco, possível multa"
+          },
+          "cubanProducts": {
+            "name": "Charutos e Produtos Cubanos",
+            "description": "Charutos e rum cubanos são proibidos de entrar nos Estados Unidos, independentemente de onde foram comprados.",
+            "penalty": "Confisco, possível multa"
+          }
+        },
+        "weapons": {
+          "title": "ARMAS",
+          "firearms": {
+            "name": "Armas de Fogo Não Declaradas",
+            "description": "Todas as armas de fogo devem ser declaradas e transportadas apenas em bagagem despachada, descarregadas e em estojo rígido trancado. Nunca em bagagem de mão.",
+            "penalty": "Prisão, acusações federais"
+          },
+          "knives": {
+            "name": "Facas e Objetos Cortantes",
+            "description": "Sem facas, estiletes ou objetos cortantes em bagagem de mão. Devem estar em bagagem despachada.",
+            "penalty": "Confisco, possível multa"
+          }
+        }
+      },
+      "stadium": {
+        "bags": {
+          "title": "BOLSAS E RECIPIENTES",
+          "backpacks": {
+            "name": "Mochilas e Bolsas Grandes",
+            "description": "Sem mochilas, bolsas esportivas ou bolsas maiores que 30 x 15 x 30 cm. A maioria dos estádios aplica a POLÍTICA DE BOLSA TRANSPARENTE - apenas bolsas transparentes permitidas.",
+            "penalty": "Entrada negada"
+          },
+          "coolers": {
+            "name": "Caixas Térmicas e Recipientes Rígidos",
+            "description": "Nenhuma caixa térmica, bolsa rígida ou bagagem permitida dentro do estádio.",
+            "penalty": "Entrada negada"
+          }
+        },
+        "electronics": {
+          "title": "ELETRÔNICOS",
+          "proCameras": {
+            "name": "Câmeras Profissionais",
+            "description": "Sem câmeras com lentes acima de 200mm. Sem câmeras com lentes intercambiáveis sem credencial de mídia. Câmeras de celular e compactas pequenas são permitidas.",
+            "penalty": "Entrada negada ou confisco"
+          },
+          "tripods": {
+            "name": "Tripés e Paus de Selfie",
+            "description": "Nenhum tripé, monopé ou pau de selfie permitido no estádio.",
+            "penalty": "Entrada negada"
+          },
+          "drones": {
+            "name": "Drones",
+            "description": "Proibição absoluta de drones perto dos estádios. A zona de proibição de drones se estende por vários quilômetros ao redor de cada local durante os jogos.",
+            "penalty": "Crime federal, prisão"
+          },
+          "laptops": {
+            "name": "Laptops",
+            "description": "Laptops geralmente não são permitidos. Tablets sem capas de teclado geralmente são permitidos.",
+            "penalty": "Entrada negada"
+          }
+        },
+        "noisemakers": {
+          "title": "INSTRUMENTOS DE BARULHO",
+          "airhorns": {
+            "name": "Buzinas de Ar e Vuvuzelas",
+            "description": "Sem buzinas de ar, vuvuzelas ou instrumentos de barulho de ar comprimido. Estes são estritamente proibidos em todos os eventos da FIFA.",
+            "penalty": "Confisco"
+          },
+          "drums": {
+            "name": "Tambores e Instrumentos Musicais",
+            "description": "Sem tambores, megafones ou instrumentos musicais grandes, a menos que façam parte de grupo oficial de torcida com permissão.",
+            "penalty": "Entrada negada"
+          }
+        },
+        "foodDrink": {
+          "title": "COMIDAS E BEBIDAS",
+          "outsideFood": {
+            "name": "Comidas e Bebidas de Fora",
+            "description": "Nenhuma comida ou bebida de fora permitida. Exceção para necessidades médicas, comida de bebê e garrafas de água lacradas (alguns locais).",
+            "penalty": "Confisco"
+          },
+          "alcohol": {
+            "name": "Álcool",
+            "description": "Sem álcool de fora. Álcool é vendido dentro do estádio, mas o consumo é regulado. Torcedores visivelmente embriagados podem ter a entrada negada.",
+            "penalty": "Entrada negada ou expulsão"
+          }
+        },
+        "other": {
+          "title": "OUTROS PROIBIDOS",
+          "umbrellas": {
+            "name": "Guarda-chuvas Grandes",
+            "description": "Sem guarda-chuvas grandes ou rígidos. Guarda-chuvas pequenos dobráveis podem ser permitidos em alguns locais.",
+            "penalty": "Entrada negada"
+          },
+          "flagsPoles": {
+            "name": "Bandeiras com Mastros",
+            "description": "Sem mastros de bandeira, bastões ou suportes rígidos. Bandeiras maiores que 2m x 1,5m proibidas. Bandeiras de mão sem mastros são permitidas.",
+            "penalty": "Entrada negada ou confisco"
+          },
+          "laserPointers": {
+            "name": "Ponteiros Laser",
+            "description": "Absolutamente proibidos. Usar ponteiro laser em jogadores ou árbitros é crime.",
+            "penalty": "Prisão, banimento vitalício"
+          },
+          "fireworks": {
+            "name": "Fogos de Artifício e Sinalizadores",
+            "description": "Nenhum fogo de artifício, sinalizador, bomba de fumaça ou pirotecnia de qualquer tipo.",
+            "penalty": "Prisão, acusações criminais"
+          },
+          "political": {
+            "name": "Material Político/Ofensivo",
+            "description": "Sem faixas políticas, símbolos discriminatórios ou materiais ofensivos. A FIFA tem políticas rígidas antidiscriminação.",
+            "penalty": "Entrada negada, possível banimento"
+          }
+        }
       }
     },
     "tvGuideSection": {

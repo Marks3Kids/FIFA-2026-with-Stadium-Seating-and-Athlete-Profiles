@@ -2664,6 +2664,175 @@
           "Lege herbruikbare waterfles (sommige locaties)",
           "Medicijnen in fabrieksverzegeling"
         ]
+      },
+      "customs": {
+        "food": {
+          "title": "VOEDSEL",
+          "kinderEggs": {
+            "name": "Kinder Surprise Eieren",
+            "description": "Verboden als verstikkingsgevaar (speelgoed in chocoladeschaal). Gewone Kinder-producten zonder ingebedde speeltjes zijn toegestaan.",
+            "penalty": "Inbeslagname"
+          },
+          "meats": {
+            "name": "Vlees (Vers, Gedroogd, Ingeblikt)",
+            "description": "Geen vers, gedroogd of ingeblikt vlees meenemen, inclusief bouillon met vleesproducten. Dit omvat beef jerky, ham, salami en smaakmakers op vleesbasis voor instant noedels.",
+            "penalty": "Inbeslagname, mogelijke boete"
+          },
+          "fruitsVegetables": {
+            "name": "Verse Groenten en Fruit",
+            "description": "Bijna alle verse producten zijn verboden om invasieve plagen te voorkomen. Dit omvat fruit, groenten, zaden en planten. Sommige artikelen kunnen worden toegestaan vanuit Canada/Mexico.",
+            "penalty": "Boete $300-$1.000"
+          },
+          "dairy": {
+            "name": "Zuivelproducten",
+            "description": "De meeste zuivelproducten zijn verboden, behalve harde kazen. Geen melk, room, boter of zachte kazen uit de meeste landen.",
+            "penalty": "Inbeslagname, mogelijke boete"
+          }
+        },
+        "drugs": {
+          "title": "DRUGS",
+          "cannabis": {
+            "name": "Marihuana/Cannabis/CBD",
+            "description": "Strikt verboden op luchthavens en grenzen ondanks staatslegaliteit. Federale jurisdictie geldt bij alle toegangspunten. CBD-producten zijn ook verboden als ze THC bevatten.",
+            "penalty": "Arrestatie, boete, uitzetting"
+          },
+          "prescription": {
+            "name": "Voorschriftmedicijnen (Niet Aangegeven)",
+            "description": "Moeten in originele gelabelde verpakkingen met voorschrift zijn. Sommige medicijnen die legaal zijn in uw land kunnen gecontroleerde stoffen zijn in de VS (bijv. codeïne, sommige slaapmiddelen).",
+            "penalty": "Inbeslagname, mogelijke arrestatie"
+          }
+        },
+        "currency": {
+          "title": "VALUTA",
+          "cashOver10k": {
+            "name": "Contant Geld Boven $10.000 (Niet Aangegeven)",
+            "description": "Geen limiet op contant geld, maar MOET aangeven op FinCEN-formulier 105 bij het dragen van meer dan $10.000 USD. Inclusief contante equivalenten zoals reischeques en postwissel.",
+            "penalty": "Inbeslagname van ALLE contanten indien niet aangegeven"
+          }
+        },
+        "items": {
+          "title": "ARTIKELEN",
+          "drones": {
+            "name": "Drones",
+            "description": "Kunnen door de douane worden meegenomen maar moeten worden geregistreerd bij de FAA indien zwaarder dan 250g. Strikte No Drone Zones rond alle stadions tijdens wedstrijden. Vliegen nabij stadion is een federaal misdrijf.",
+            "penalty": "Federaal misdrijf indien gevlogen nabij stadion"
+          },
+          "counterfeit": {
+            "name": "Namaakgoederen",
+            "description": "Neppe designerartikelen, namaakshirts en illegale media worden in beslag genomen bij de douane. Echte artikelen voor persoonlijk gebruik zijn toegestaan.",
+            "penalty": "Inbeslagname, mogelijke boete"
+          },
+          "cubanProducts": {
+            "name": "Cubaanse Sigaren en Producten",
+            "description": "Cubaanse sigaren en rum zijn verboden bij binnenkomst in de Verenigde Staten, ongeacht waar ze zijn gekocht.",
+            "penalty": "Inbeslagname, mogelijke boete"
+          }
+        },
+        "weapons": {
+          "title": "WAPENS",
+          "firearms": {
+            "name": "Niet-Aangegeven Vuurwapens",
+            "description": "Alle vuurwapens moeten worden aangegeven en alleen in ingecheckte bagage worden vervoerd, ontladen en in een vergrendelde harde koffer. Nooit in handbagage.",
+            "penalty": "Arrestatie, federale aanklachten"
+          },
+          "knives": {
+            "name": "Messen en Scherpe Voorwerpen",
+            "description": "Geen messen, stanleymessen of scherpe voorwerpen in handbagage. Moeten in ingecheckte bagage.",
+            "penalty": "Inbeslagname, mogelijke boete"
+          }
+        }
+      },
+      "stadium": {
+        "bags": {
+          "title": "TASSEN EN CONTAINERS",
+          "backpacks": {
+            "name": "Rugzakken en Grote Tassen",
+            "description": "Geen rugzakken, sporttassen of tassen groter dan 12\" x 6\" x 12\". De meeste stadions hanteren het DOORZICHTIGE TAS BELEID - alleen transparante tassen toegestaan.",
+            "penalty": "Toegang geweigerd"
+          },
+          "coolers": {
+            "name": "Koelboxen en Harde Containers",
+            "description": "Geen koelboxen, harde tassen of bagage toegestaan in het stadion.",
+            "penalty": "Toegang geweigerd"
+          }
+        },
+        "electronics": {
+          "title": "ELEKTRONICA",
+          "proCameras": {
+            "name": "Professionele Camera's",
+            "description": "Geen camera's met lenzen langer dan 200mm. Geen camera's met verwisselbare lenzen zonder perscredentials. Telefooncamera's en kleine compact camera's toegestaan.",
+            "penalty": "Toegang geweigerd of inbeslagname"
+          },
+          "tripods": {
+            "name": "Statieven en Selfiesticks",
+            "description": "Geen statieven, monopods of selfiesticks toegestaan in het stadion.",
+            "penalty": "Toegang geweigerd"
+          },
+          "drones": {
+            "name": "Drones",
+            "description": "Absoluut verbod op drones nabij stadions. No Drone Zone strekt zich meerdere kilometers uit rond elke locatie tijdens wedstrijden.",
+            "penalty": "Federaal misdrijf, arrestatie"
+          },
+          "laptops": {
+            "name": "Laptops",
+            "description": "Laptops zijn over het algemeen niet toegestaan. Tablets zonder toetsenbordhoezen zijn meestal wel toegestaan.",
+            "penalty": "Toegang geweigerd"
+          }
+        },
+        "noisemakers": {
+          "title": "LAWAAÏMAKERS",
+          "airhorns": {
+            "name": "Luchthorens en Vuvuzela's",
+            "description": "Geen luchthorens, vuvuzela's of perslucht-lawaaïmakers. Deze zijn strikt verboden bij alle FIFA-evenementen.",
+            "penalty": "Inbeslagname"
+          },
+          "drums": {
+            "name": "Trommels en Muziekinstrumenten",
+            "description": "Geen trommels, megafoons of grote muziekinstrumenten tenzij onderdeel van officiële supportersgroep met toestemming.",
+            "penalty": "Toegang geweigerd"
+          }
+        },
+        "foodDrink": {
+          "title": "ETEN EN DRINKEN",
+          "outsideFood": {
+            "name": "Eten en Drinken van Buiten",
+            "description": "Geen eten of drinken van buiten toegestaan. Uitzondering voor medische behoeften, babyvoeding en verzegelde waterflessen (sommige locaties).",
+            "penalty": "Inbeslagname"
+          },
+          "alcohol": {
+            "name": "Alcohol",
+            "description": "Geen alcohol van buiten. Alcohol wordt verkocht in het stadion maar consumptie is gereguleerd. Zichtbaar dronken fans kan toegang worden geweigerd.",
+            "penalty": "Toegang geweigerd of verwijdering"
+          }
+        },
+        "other": {
+          "title": "ANDERE VERBODEN ARTIKELEN",
+          "umbrellas": {
+            "name": "Grote Paraplu's",
+            "description": "Geen grote of stijve paraplu's. Kleine opvouwbare paraplu's kunnen bij sommige locaties worden toegestaan.",
+            "penalty": "Toegang geweigerd"
+          },
+          "flagsPoles": {
+            "name": "Vlaggen met Stokken",
+            "description": "Geen vlaggenstokken, stokken of stijve steunen. Vlaggen groter dan 2m x 1,5m verboden. Handheld vlaggen zonder stokken toegestaan.",
+            "penalty": "Toegang geweigerd of inbeslagname"
+          },
+          "laserPointers": {
+            "name": "Laserpennen",
+            "description": "Absoluut verboden. Het gebruik van een laserpen op spelers of officials is een strafbaar feit.",
+            "penalty": "Arrestatie, levenslang stadionverbod"
+          },
+          "fireworks": {
+            "name": "Vuurwerk en Fakkels",
+            "description": "Geen vuurwerk, fakkels, rookbommen of pyrotechniek van welke aard dan ook.",
+            "penalty": "Arrestatie, strafrechtelijke vervolging"
+          },
+          "political": {
+            "name": "Politiek/Aanstootgevend Materiaal",
+            "description": "Geen politieke spandoeken, discriminerende symbolen of aanstootgevend materiaal. FIFA heeft strikt anti-discriminatiebeleid.",
+            "penalty": "Toegang geweigerd, mogelijk stadionverbod"
+          }
+        }
       }
     },
     "tvGuideSection": {
