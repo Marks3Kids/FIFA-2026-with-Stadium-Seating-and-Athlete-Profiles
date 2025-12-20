@@ -2219,7 +2219,8 @@ const customsDataKeys = {
 };
 
 export default function CriticalInfo() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language || 'en';
   const [activeCategory, setActiveCategory] = useState<InfoCategory>("safety");
   const [activeTravelCategory, setActiveTravelCategory] = useState<TravelCategory>("customs");
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
@@ -3684,7 +3685,7 @@ export default function CriticalInfo() {
                     </div>
                   </div>
                   <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${selectedMedicalCity.stadiumLat},${selectedMedicalCity.stadiumLng}`}
+                    href={`https://www.google.com/maps/search/?api=1&query=${selectedMedicalCity.stadiumLat},${selectedMedicalCity.stadiumLng}&hl=${currentLanguage}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
@@ -3773,7 +3774,7 @@ export default function CriticalInfo() {
                             {t('criticalInfo.medicalSection.buttons.call')}
                           </a>
                           <a
-                            href={`https://www.google.com/maps/dir/?api=1&origin=${selectedMedicalCity.stadiumLat},${selectedMedicalCity.stadiumLng}&destination=${facility.lat},${facility.lng}&travelmode=driving`}
+                            href={`https://www.google.com/maps/dir/?api=1&origin=${selectedMedicalCity.stadiumLat},${selectedMedicalCity.stadiumLng}&destination=${facility.lat},${facility.lng}&travelmode=driving&hl=${currentLanguage}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 bg-card border border-white/10 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1"
