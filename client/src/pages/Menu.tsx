@@ -10,7 +10,7 @@ export default function Menu() {
   const { t } = useTranslation();
   const [, setLocation] = useLocation();
   const [showSignOut, setShowSignOut] = useState(false);
-  const [userName, setUserName] = useState(t("menu.defaultUserName"));
+  const [customUserName, setCustomUserName] = useState<string | null>(null);
 
   useEffect(() => {
     const profile = localStorage.getItem("wc2026_profile");
@@ -18,7 +18,7 @@ export default function Menu() {
       try {
         const parsed = JSON.parse(profile);
         if (parsed.displayName) {
-          setUserName(parsed.displayName);
+          setCustomUserName(parsed.displayName);
         }
       } catch (e) {}
     }
@@ -39,7 +39,7 @@ export default function Menu() {
   const handleSignOut = () => {
     localStorage.removeItem("wc2026_profile");
     localStorage.removeItem("wc2026_settings");
-    setUserName(t("menu.defaultUserName"));
+    setCustomUserName(null);
     setShowSignOut(false);
     setLocation("/");
   };
@@ -87,7 +87,7 @@ export default function Menu() {
                 <User className="w-5 h-5 text-white" />
               </div>
               <div>
-                <span className="font-medium text-white block">{userName}</span>
+                <span className="font-medium text-white block">{customUserName || t("menu.defaultUserName")}</span>
                 <span className="text-xs text-muted-foreground">{t("menu.viewEditProfile")}</span>
               </div>
             </div>
