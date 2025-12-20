@@ -3,7 +3,6 @@ import { FileText, Scale, RefreshCw, ExternalLink, Clock, Newspaper, ChevronRigh
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import potsBg from "@assets/image_1764366081093.png";
 
 interface NewsItem {
   id: number;
@@ -82,17 +81,6 @@ export default function Home() {
         <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
           {t("home.updateInfo")}
         </p>
-      </div>
-
-      {/* POT Draw Image - Full Width */}
-      <div className="px-4 py-4">
-        <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-          <img 
-            src={potsBg} 
-            alt={t("home.potDrawAlt")}
-            className="w-full h-auto object-contain"
-          />
-        </div>
       </div>
 
       {/* Stats Section */}
