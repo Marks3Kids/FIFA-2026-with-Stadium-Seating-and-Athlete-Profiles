@@ -80,11 +80,11 @@ export default function TournamentOdds() {
   ];
 
   const helpResources = [
-    { name: "National Council on Problem Gambling (US)", phone: "1-800-522-4700", url: "https://www.ncpgambling.org" },
-    { name: "Gamblers Anonymous", phone: null, url: "https://www.gamblersanonymous.org" },
-    { name: "GamCare (UK)", phone: "0808-8020-133", url: "https://www.gamcare.org.uk" },
-    { name: "Gambling Help Online (Australia)", phone: "1800-858-858", url: "https://www.gamblinghelponline.org.au" },
-    { name: "Adicciones España", phone: "900-200-225", url: "https://www.adicciones.es" },
+    { nameKey: "odds.helpResources.ncpg", phone: "1-800-522-4700", url: "https://www.ncpgambling.org" },
+    { nameKey: "odds.helpResources.gamblersAnonymous", phone: null, url: "https://www.gamblersanonymous.org" },
+    { nameKey: "odds.helpResources.gamcare", phone: "0808-8020-133", url: "https://www.gamcare.org.uk" },
+    { nameKey: "odds.helpResources.gamblingHelpAustralia", phone: "1800-858-858", url: "https://www.gamblinghelponline.org.au" },
+    { nameKey: "odds.helpResources.adiccionesEspana", phone: "900-200-225", url: "https://www.adicciones.es" },
   ];
 
   return (
@@ -229,7 +229,7 @@ export default function TournamentOdds() {
             <div className="mt-3 space-y-2">
               {helpResources.map((resource) => (
                 <a
-                  key={resource.name}
+                  key={resource.nameKey}
                   href={resource.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -237,7 +237,7 @@ export default function TournamentOdds() {
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-white text-sm font-medium">{resource.name}</p>
+                      <p className="text-white text-sm font-medium">{t(resource.nameKey)}</p>
                       {resource.phone && (
                         <p className="text-primary text-xs font-mono">{resource.phone}</p>
                       )}

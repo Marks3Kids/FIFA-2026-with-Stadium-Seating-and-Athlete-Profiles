@@ -3162,6 +3162,13 @@
     "matchOddsDescription": "個別の試合のベッティングラインは、大会が近づき公式スケジュールが確定次第利用可能になります。",
     "responsibleGambling": "ギャンブル依存症？サポートがあります。",
     "responsibleGamblingMessage": "ギャンブル依存症は誰にでも影響を与える可能性のある深刻な状態です。あなたまたはあなたの知人がギャンブルの問題を抱えている場合、24時間年中無休で無料の秘密厳守のサポートが利用可能です。",
-    "getHelp": "ヘルプを得る - サポートリソース"
+    "getHelp": "ヘルプを得る - サポートリソース",
+    "helpResources": {
+      "ncpg": "全米問題ギャンブル評議会（米国）",
+      "gamblersAnonymous": "ギャンブラーズ・アノニマス",
+      "gamcare": "ギャムケア（英国）",
+      "gamblingHelpAustralia": "ギャンブルヘルプオンライン（オーストラリア）",
+      "adiccionesEspana": "アディクシオネス・エスパーニャ"
+    }
   }
 }

@@ -3162,6 +3162,13 @@
     "matchOddsDescription": "Individuelle Spielwettlinien werden verfügbar sein, wenn sich das Turnier nähert und der offizielle Spielplan finalisiert ist.",
     "responsibleGambling": "Glücksspielproblem? Hilfe ist Verfügbar.",
     "responsibleGamblingMessage": "Spielsucht ist eine ernste Erkrankung, die jeden betreffen kann. Wenn Sie oder jemand, den Sie kennen, ein Glücksspielproblem hat, ist kostenlose vertrauliche Hilfe rund um die Uhr verfügbar.",
-    "getHelp": "Hilfe Holen - Unterstützungsressourcen"
+    "getHelp": "Hilfe Holen - Unterstützungsressourcen",
+    "helpResources": {
+      "ncpg": "Nationaler Rat für Glücksspielprobleme (USA)",
+      "gamblersAnonymous": "Anonyme Spieler",
+      "gamcare": "GamCare (Großbritannien)",
+      "gamblingHelpAustralia": "Glücksspiel-Hilfe Online (Australien)",
+      "adiccionesEspana": "Adicciones España"
+    }
   }
 }

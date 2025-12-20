@@ -3163,6 +3163,13 @@
     "matchOddsDescription": "Individual match betting lines will be available as the tournament approaches and the official schedule is finalized.",
     "responsibleGambling": "Gambling Problem? Help is Available.",
     "responsibleGamblingMessage": "Gambling addiction is a serious condition that can affect anyone. If you or someone you know has a gambling problem, free confidential help is available 24/7.",
-    "getHelp": "Get Help - Support Resources"
+    "getHelp": "Get Help - Support Resources",
+    "helpResources": {
+      "ncpg": "National Council on Problem Gambling (US)",
+      "gamblersAnonymous": "Gamblers Anonymous",
+      "gamcare": "GamCare (UK)",
+      "gamblingHelpAustralia": "Gambling Help Online (Australia)",
+      "adiccionesEspana": "Adicciones España"
+    }
   }
 }

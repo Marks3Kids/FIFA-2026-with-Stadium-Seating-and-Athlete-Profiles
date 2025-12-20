@@ -3162,6 +3162,13 @@
     "matchOddsDescription": "Individuele wedstrijdlijnen worden beschikbaar naarmate het toernooi nadert en het officiële schema is vastgesteld.",
     "responsibleGambling": "Gokprobleem? Hulp is Beschikbaar.",
     "responsibleGamblingMessage": "Gokverslaving is een serieuze aandoening die iedereen kan treffen. Als u of iemand die u kent een gokprobleem heeft, is gratis vertrouwelijke hulp 24/7 beschikbaar.",
-    "getHelp": "Hulp Krijgen - Ondersteuningsbronnen"
+    "getHelp": "Hulp Krijgen - Ondersteuningsbronnen",
+    "helpResources": {
+      "ncpg": "Nationale Raad voor Gokproblemen (VS)",
+      "gamblersAnonymous": "Anonieme Gokkers",
+      "gamcare": "GamCare (VK)",
+      "gamblingHelpAustralia": "Online Gokhulp (Australië)",
+      "adiccionesEspana": "Adicciones España"
+    }
   }
 }

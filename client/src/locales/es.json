@@ -3162,6 +3162,13 @@
     "matchOddsDescription": "Las líneas de apuestas de partidos individuales estarán disponibles cuando se acerque el torneo y se finalice el calendario oficial.",
     "responsibleGambling": "¿Problema con el Juego? Hay Ayuda Disponible.",
     "responsibleGamblingMessage": "La adicción al juego es una condición seria que puede afectar a cualquiera. Si tú o alguien que conoces tiene un problema con el juego, hay ayuda confidencial gratuita disponible 24/7.",
-    "getHelp": "Obtener Ayuda - Recursos de Apoyo"
+    "getHelp": "Obtener Ayuda - Recursos de Apoyo",
+    "helpResources": {
+      "ncpg": "Consejo Nacional sobre Problemas de Juego (EE.UU.)",
+      "gamblersAnonymous": "Jugadores Anónimos",
+      "gamcare": "GamCare (Reino Unido)",
+      "gamblingHelpAustralia": "Ayuda para el Juego Online (Australia)",
+      "adiccionesEspana": "Adicciones España"
+    }
   }
 }

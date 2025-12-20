@@ -3162,6 +3162,13 @@
     "matchOddsDescription": "Les lignes de paris pour les matchs individuels seront disponibles à l'approche du tournoi et une fois le calendrier officiel finalisé.",
     "responsibleGambling": "Problème de Jeu? De l'Aide est Disponible.",
     "responsibleGamblingMessage": "L'addiction au jeu est une condition sérieuse qui peut affecter n'importe qui. Si vous ou quelqu'un que vous connaissez a un problème de jeu, une aide confidentielle gratuite est disponible 24h/24.",
-    "getHelp": "Obtenir de l'Aide - Ressources de Soutien"
+    "getHelp": "Obtenir de l'Aide - Ressources de Soutien",
+    "helpResources": {
+      "ncpg": "Conseil National sur le Jeu Problématique (États-Unis)",
+      "gamblersAnonymous": "Joueurs Anonymes",
+      "gamcare": "GamCare (Royaume-Uni)",
+      "gamblingHelpAustralia": "Aide au Jeu en Ligne (Australie)",
+      "adiccionesEspana": "Adicciones España"
+    }
   }
 }

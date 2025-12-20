@@ -3161,6 +3161,13 @@
     "matchOddsDescription": "As linhas de apostas de partidas individuais estarão disponíveis quando o torneio se aproximar e o calendário oficial for finalizado.",
     "responsibleGambling": "Problema com Jogos? Ajuda Está Disponível.",
     "responsibleGamblingMessage": "O vício em jogos é uma condição séria que pode afetar qualquer pessoa. Se você ou alguém que conhece tem um problema com jogos, ajuda confidencial gratuita está disponível 24/7.",
-    "getHelp": "Obter Ajuda - Recursos de Apoio"
+    "getHelp": "Obter Ajuda - Recursos de Apoio",
+    "helpResources": {
+      "ncpg": "Conselho Nacional sobre Problemas de Jogo (EUA)",
+      "gamblersAnonymous": "Jogadores Anônimos",
+      "gamcare": "GamCare (Reino Unido)",
+      "gamblingHelpAustralia": "Ajuda para Jogos Online (Austrália)",
+      "adiccionesEspana": "Adicciones España"
+    }
   }
 }
