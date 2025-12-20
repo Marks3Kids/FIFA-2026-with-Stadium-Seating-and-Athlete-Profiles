@@ -96,7 +96,8 @@
     "teams": "Teams",
     "cities": "Cities",
     "matches": "Matches",
-    "liveUpdates": "Live Updates"
+    "liveUpdates": "Live Updates",
+    "tip": "Tip"
   },
   "bracket": {
     "title": "Knockout Brackets",
@@ -2904,6 +2905,61 @@
       "emergencyNote": {
         "title": "Before you travel",
         "description": "Register with your country's embassy and save your consulate's emergency contact number."
+      }
+    },
+    "medicalSection": {
+      "erVsUrgentCare": {
+        "title": "ER vs Urgent Care: Know the Difference",
+        "emergencyRoom": {
+          "label": "Emergency Room",
+          "items": [
+            "Life-threatening emergencies",
+            "Chest pain, stroke symptoms",
+            "Severe bleeding or trauma",
+            "Difficulty breathing",
+            "Cost: $1,000 - $5,000+",
+            "Wait: 2-8 hours typical"
+          ]
+        },
+        "urgentCare": {
+          "label": "Urgent Care",
+          "items": [
+            "Non-life-threatening issues",
+            "Sprains, minor cuts",
+            "Flu, fever, infections",
+            "X-rays, stitches, tests",
+            "Cost: $100 - $200",
+            "Wait: 15-45 minutes"
+          ]
+        },
+        "tip": "For non-emergency issues like sports injuries, dehydration, or minor illness, visit Urgent Care first. You'll save thousands of dollars and hours of waiting time."
+      },
+      "selectHostCity": {
+        "title": "Select Host City",
+        "description": "Find Emergency Rooms and Urgent Care facilities near each stadium"
+      },
+      "hostCityHeaders": {
+        "usa": "USA Host Cities",
+        "mexico": "Mexico Host Cities",
+        "canada": "Canada Host Cities"
+      },
+      "buttons": {
+        "call": "Call",
+        "directions": "Directions"
+      },
+      "facilityTypes": {
+        "er": "ER",
+        "uc": "UC"
+      },
+      "medicalTips": {
+        "title": "MEDICAL TIPS FOR TOURISTS",
+        "items": [
+          "Keep travel insurance documents accessible",
+          "Save emergency numbers in your phone",
+          "Pharmacies (CVS, Walgreens) offer basic care",
+          "Telemedicine apps work for minor issues",
+          "Hospital bills can be negotiated down later"
+        ]
       }
     }
   },

@@ -3790,47 +3790,41 @@ export default function CriticalInfo() {
                 <div className="bg-gradient-to-br from-red-900/30 to-red-950/20 border border-red-500/20 rounded-2xl p-4">
                   <h2 className="text-lg font-display font-bold text-white mb-3 flex items-center gap-2">
                     <Heart className="w-5 h-5 text-red-400" />
-                    ER vs Urgent Care: Know the Difference
+                    {t('criticalInfo.medicalSection.erVsUrgentCare.title')}
                   </h2>
                   <div className="grid grid-cols-2 gap-3">
                     <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-3">
-                      <div className="text-xs font-bold text-red-400 uppercase mb-2">Emergency Room</div>
+                      <div className="text-xs font-bold text-red-400 uppercase mb-2">{t('criticalInfo.medicalSection.erVsUrgentCare.emergencyRoom.label')}</div>
                       <ul className="text-xs text-white/80 space-y-1">
-                        <li>• Life-threatening emergencies</li>
-                        <li>• Chest pain, stroke symptoms</li>
-                        <li>• Severe bleeding or trauma</li>
-                        <li>• Difficulty breathing</li>
-                        <li>• Cost: $1,000 - $5,000+</li>
-                        <li>• Wait: 2-8 hours typical</li>
+                        {(t('criticalInfo.medicalSection.erVsUrgentCare.emergencyRoom.items', { returnObjects: true }) as string[]).map((item, idx) => (
+                          <li key={idx}>• {item}</li>
+                        ))}
                       </ul>
                     </div>
                     <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-3">
-                      <div className="text-xs font-bold text-blue-400 uppercase mb-2">Urgent Care</div>
+                      <div className="text-xs font-bold text-blue-400 uppercase mb-2">{t('criticalInfo.medicalSection.erVsUrgentCare.urgentCare.label')}</div>
                       <ul className="text-xs text-white/80 space-y-1">
-                        <li>• Non-life-threatening issues</li>
-                        <li>• Sprains, minor cuts</li>
-                        <li>• Flu, fever, infections</li>
-                        <li>• X-rays, stitches, tests</li>
-                        <li>• Cost: $100 - $200</li>
-                        <li>• Wait: 15-45 minutes</li>
+                        {(t('criticalInfo.medicalSection.erVsUrgentCare.urgentCare.items', { returnObjects: true }) as string[]).map((item, idx) => (
+                          <li key={idx}>• {item}</li>
+                        ))}
                       </ul>
                     </div>
                   </div>
                   <div className="mt-3 bg-amber-500/10 border border-amber-500/20 rounded-lg p-3">
                     <p className="text-xs text-amber-200">
-                      <strong>Tip:</strong> For non-emergency issues like sports injuries, dehydration, or minor illness, visit Urgent Care first. You'll save thousands of dollars and hours of waiting time.
+                      <strong>{t('common.tip')}:</strong> {t('criticalInfo.medicalSection.erVsUrgentCare.tip')}
                     </p>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-bold text-white mb-3">Select Host City</h3>
-                  <p className="text-sm text-muted-foreground mb-4">Find Emergency Rooms and Urgent Care facilities near each stadium</p>
+                  <h3 className="text-lg font-bold text-white mb-3">{t('criticalInfo.medicalSection.selectHostCity.title')}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">{t('criticalInfo.medicalSection.selectHostCity.description')}</p>
                 </div>
 
                 <div className="space-y-2">
                   <h4 className="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2">
-                    <span>🇺🇸</span> USA Host Cities
+                    <span>🇺🇸</span> {t('criticalInfo.medicalSection.hostCityHeaders.usa')}
                   </h4>
                   {medicalFacilitiesData.filter(c => c.country === "USA").map((city) => (
                     <button
@@ -3860,7 +3854,7 @@ export default function CriticalInfo() {
 
                 <div className="space-y-2">
                   <h4 className="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2">
-                    <span>🇲🇽</span> Mexico Host Cities
+                    <span>🇲🇽</span> {t('criticalInfo.medicalSection.hostCityHeaders.mexico')}
                   </h4>
                   {medicalFacilitiesData.filter(c => c.country === "Mexico").map((city) => (
                     <button
@@ -3890,7 +3884,7 @@ export default function CriticalInfo() {
 
                 <div className="space-y-2">
                   <h4 className="text-sm font-bold text-white uppercase tracking-wide flex items-center gap-2">
-                    <span>🇨🇦</span> Canada Host Cities
+                    <span>🇨🇦</span> {t('criticalInfo.medicalSection.hostCityHeaders.canada')}
                   </h4>
                   {medicalFacilitiesData.filter(c => c.country === "Canada").map((city) => (
                     <button
@@ -3922,13 +3916,11 @@ export default function CriticalInfo() {
                   <div className="flex items-start gap-2">
                     <Lightbulb className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-primary font-medium text-sm mb-2">MEDICAL TIPS FOR TOURISTS</p>
+                      <p className="text-primary font-medium text-sm mb-2">{t('criticalInfo.medicalSection.medicalTips.title')}</p>
                       <ul className="text-sm text-primary/80 space-y-1">
-                        <li>• Keep travel insurance documents accessible</li>
-                        <li>• Save emergency numbers in your phone</li>
-                        <li>• Pharmacies (CVS, Walgreens) offer basic care</li>
-                        <li>• Telemedicine apps work for minor issues</li>
-                        <li>• Hospital bills can be negotiated down later</li>
+                        {(t('criticalInfo.medicalSection.medicalTips.items', { returnObjects: true }) as string[]).map((item, idx) => (
+                          <li key={idx}>• {item}</li>
+                        ))}
                       </ul>
                     </div>
                   </div>
