@@ -3672,7 +3672,7 @@ export default function CriticalInfo() {
                   data-testid="back-from-city"
                 >
                   <ArrowLeft className="w-4 h-4" />
-                  Back to all cities
+                  {t('criticalInfo.medicalSection.facilityView.backToAllCities')}
                 </button>
 
                 <div className="bg-gradient-to-br from-red-900/30 to-red-950/20 border border-red-500/20 rounded-2xl p-4">
@@ -3691,7 +3691,7 @@ export default function CriticalInfo() {
                     data-testid="stadium-map-link"
                   >
                     <MapPin className="w-3 h-3" />
-                    View stadium on map
+                    {t('criticalInfo.medicalSection.facilityView.viewStadiumOnMap')}
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>
@@ -3702,21 +3702,21 @@ export default function CriticalInfo() {
                     className={`flex-1 py-2 rounded-lg text-sm font-medium ${facilityFilter === "all" ? "bg-white text-black" : "bg-card text-muted-foreground"}`}
                     data-testid="filter-all"
                   >
-                    All
+                    {t('criticalInfo.medicalSection.facilityView.filterAll')}
                   </button>
                   <button
                     onClick={() => setFacilityFilter("er")}
                     className={`flex-1 py-2 rounded-lg text-sm font-medium ${facilityFilter === "er" ? "bg-red-500 text-white" : "bg-card text-muted-foreground"}`}
                     data-testid="filter-er"
                   >
-                    ER Only
+                    {t('criticalInfo.medicalSection.facilityView.filterErOnly')}
                   </button>
                   <button
                     onClick={() => setFacilityFilter("urgent")}
                     className={`flex-1 py-2 rounded-lg text-sm font-medium ${facilityFilter === "urgent" ? "bg-blue-500 text-white" : "bg-card text-muted-foreground"}`}
                     data-testid="filter-urgent"
                   >
-                    Urgent Care
+                    {t('criticalInfo.medicalSection.facilityView.filterUrgentCare')}
                   </button>
                 </div>
 
@@ -3741,7 +3741,7 @@ export default function CriticalInfo() {
                                   ? "bg-red-500 text-white" 
                                   : "bg-blue-500 text-white"
                               }`}>
-                                {facility.type === "er" ? "EMERGENCY ROOM" : "URGENT CARE"}
+                                {facility.type === "er" ? t('criticalInfo.medicalSection.facilityView.emergencyRoomBadge') : t('criticalInfo.medicalSection.facilityView.urgentCareBadge')}
                               </span>
                             </div>
                             <h3 className="font-bold text-white">{facility.name}</h3>
@@ -3752,7 +3752,9 @@ export default function CriticalInfo() {
                         <div className="flex items-center gap-4 mb-3">
                           <div className="flex items-center gap-1">
                             <MapPin className="w-3 h-3 text-primary" />
-                            <span className="text-sm text-primary font-medium">{facility.distance}</span>
+                            <span className="text-sm text-primary font-medium">
+                              {facility.distance} ({(parseFloat(facility.distance) * 1.6).toFixed(1)} km)
+                            </span>
                           </div>
                           <div className="flex items-center gap-1">
                             <Car className="w-3 h-3 text-muted-foreground" />
@@ -3768,7 +3770,7 @@ export default function CriticalInfo() {
                             data-testid={`call-${facility.id}`}
                           >
                             <Phone className="w-3 h-3" />
-                            Call
+                            {t('criticalInfo.medicalSection.buttons.call')}
                           </a>
                           <a
                             href={`https://www.google.com/maps/dir/?api=1&origin=${selectedMedicalCity.stadiumLat},${selectedMedicalCity.stadiumLng}&destination=${facility.lat},${facility.lng}&travelmode=driving`}
@@ -3778,7 +3780,7 @@ export default function CriticalInfo() {
                             data-testid={`directions-${facility.id}`}
                           >
                             <MapPin className="w-3 h-3" />
-                            Directions
+                            {t('criticalInfo.medicalSection.buttons.directions')}
                           </a>
                         </div>
                       </div>

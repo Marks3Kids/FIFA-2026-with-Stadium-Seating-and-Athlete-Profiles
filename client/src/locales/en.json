@@ -2960,6 +2960,15 @@
           "Telemedicine apps work for minor issues",
           "Hospital bills can be negotiated down later"
         ]
+      },
+      "facilityView": {
+        "backToAllCities": "Back to all cities",
+        "viewStadiumOnMap": "View stadium on map",
+        "filterAll": "All",
+        "filterErOnly": "ER Only",
+        "filterUrgentCare": "Urgent Care",
+        "emergencyRoomBadge": "EMERGENCY ROOM",
+        "urgentCareBadge": "URGENT CARE"
       }
     }
   },

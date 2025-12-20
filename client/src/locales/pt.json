@@ -2959,6 +2959,15 @@
           "Apps de telemedicina funcionam para problemas menores",
           "Contas hospitalares podem ser negociadas depois"
         ]
+      },
+      "facilityView": {
+        "backToAllCities": "Voltar para todas as cidades",
+        "viewStadiumOnMap": "Ver estádio no mapa",
+        "filterAll": "Todos",
+        "filterErOnly": "Apenas PS",
+        "filterUrgentCare": "Atendimento de Urgência",
+        "emergencyRoomBadge": "PRONTO-SOCORRO",
+        "urgentCareBadge": "ATENDIMENTO DE URGÊNCIA"
       }
     }
   },

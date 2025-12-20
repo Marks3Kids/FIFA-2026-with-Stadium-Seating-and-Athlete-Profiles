@@ -2959,6 +2959,15 @@
           "Telemedizin-Apps funktionieren bei kleineren Problemen",
           "Krankenhausrechnungen können später verhandelt werden"
         ]
+      },
+      "facilityView": {
+        "backToAllCities": "Zurück zu allen Städten",
+        "viewStadiumOnMap": "Stadion auf Karte anzeigen",
+        "filterAll": "Alle",
+        "filterErOnly": "Nur Notaufnahme",
+        "filterUrgentCare": "Dringliche Behandlung",
+        "emergencyRoomBadge": "NOTAUFNAHME",
+        "urgentCareBadge": "DRINGLICHE BEHANDLUNG"
       }
     }
   },

@@ -2959,6 +2959,15 @@
           "Las aplicaciones de telemedicina funcionan para problemas menores",
           "Las facturas del hospital se pueden negociar después"
         ]
+      },
+      "facilityView": {
+        "backToAllCities": "Volver a todas las ciudades",
+        "viewStadiumOnMap": "Ver estadio en el mapa",
+        "filterAll": "Todos",
+        "filterErOnly": "Solo ER",
+        "filterUrgentCare": "Atención Urgente",
+        "emergencyRoomBadge": "SALA DE EMERGENCIAS",
+        "urgentCareBadge": "ATENCIÓN URGENTE"
       }
     }
   },

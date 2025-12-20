@@ -2959,6 +2959,15 @@
           "Le app di telemedicina funzionano per problemi minori",
           "Le fatture ospedaliere possono essere negoziate in seguito"
         ]
+      },
+      "facilityView": {
+        "backToAllCities": "Torna a tutte le città",
+        "viewStadiumOnMap": "Vedi stadio sulla mappa",
+        "filterAll": "Tutti",
+        "filterErOnly": "Solo PS",
+        "filterUrgentCare": "Clinica Urgenze",
+        "emergencyRoomBadge": "PRONTO SOCCORSO",
+        "urgentCareBadge": "CLINICA URGENZE"
       }
     }
   },

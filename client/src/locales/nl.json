@@ -2959,6 +2959,15 @@
           "Telemedicijnapps werken voor kleine problemen",
           "Ziekenhuisrekeningen kunnen later worden onderhandeld"
         ]
+      },
+      "facilityView": {
+        "backToAllCities": "Terug naar alle steden",
+        "viewStadiumOnMap": "Bekijk stadion op kaart",
+        "filterAll": "Alle",
+        "filterErOnly": "Alleen SEH",
+        "filterUrgentCare": "Huisartsenpost",
+        "emergencyRoomBadge": "SPOEDEISENDE HULP",
+        "urgentCareBadge": "HUISARTSENPOST"
       }
     }
   },

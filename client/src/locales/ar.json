@@ -2959,6 +2959,15 @@
           "تطبيقات التطبيب عن بعد تعمل للمشاكل البسيطة",
           "يمكن التفاوض على فواتير المستشفى لاحقاً"
         ]
+      },
+      "facilityView": {
+        "backToAllCities": "العودة إلى جميع المدن",
+        "viewStadiumOnMap": "عرض الملعب على الخريطة",
+        "filterAll": "الكل",
+        "filterErOnly": "الطوارئ فقط",
+        "filterUrgentCare": "الرعاية العاجلة",
+        "emergencyRoomBadge": "غرفة الطوارئ",
+        "urgentCareBadge": "الرعاية العاجلة"
       }
     }
   },

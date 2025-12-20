@@ -2959,6 +2959,15 @@
           "Les applications de télémédecine fonctionnent pour les problèmes mineurs",
           "Les factures d'hôpital peuvent être négociées ultérieurement"
         ]
+      },
+      "facilityView": {
+        "backToAllCities": "Retour à toutes les villes",
+        "viewStadiumOnMap": "Voir le stade sur la carte",
+        "filterAll": "Tous",
+        "filterErOnly": "Urgences seulement",
+        "filterUrgentCare": "Soins Urgents",
+        "emergencyRoomBadge": "SALLE DES URGENCES",
+        "urgentCareBadge": "SOINS URGENTS"
       }
     }
   },

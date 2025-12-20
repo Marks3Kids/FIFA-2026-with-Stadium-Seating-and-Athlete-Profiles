@@ -2959,6 +2959,15 @@
           "遠隔医療アプリは軽症に対応可能",
           "病院の請求書は後で交渉して減額できます"
         ]
+      },
+      "facilityView": {
+        "backToAllCities": "すべての都市に戻る",
+        "viewStadiumOnMap": "地図でスタジアムを見る",
+        "filterAll": "すべて",
+        "filterErOnly": "救急室のみ",
+        "filterUrgentCare": "緊急医療クリニック",
+        "emergencyRoomBadge": "救急室",
+        "urgentCareBadge": "緊急医療クリニック"
       }
     }
   },
