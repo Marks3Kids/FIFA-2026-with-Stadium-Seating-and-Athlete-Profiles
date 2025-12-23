@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { 
-  Utensils, Hotel, Train, Info, Calendar, User, Settings, LogOut, Sparkles, ChevronRight, Trophy, Users, MapPin, TrendingUp, Target
+  Utensils, Hotel, Train, Info, Calendar, User, Settings, LogOut, Sparkles, ChevronRight, Trophy, Users, MapPin, TrendingUp, Target, Church
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useTranslation } from "react-i18next";
@@ -36,6 +36,7 @@ export default function Menu() {
     { id: "history", icon: Trophy, labelKey: "menu.history", color: "text-amber-400", href: "/history", active: true },
     { id: "odds", icon: TrendingUp, labelKey: "menu.odds", color: "text-lime-400", href: "/odds", active: true },
     { id: "bracket", icon: Target, labelKey: "menu.bracket", color: "text-emerald-400", href: "/bracket", active: true },
+    { id: "religious-services", icon: Church, labelKey: "menu.religiousServices", color: "text-indigo-400", href: "/religious-services", active: true },
   ];
 
   const handleSignOut = () => {
