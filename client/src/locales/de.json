@@ -3187,7 +3187,10 @@
     "catholic": "Katholische Kirchen",
     "islamic": "Moscheen",
     "featured": "Empfohlene Kirchen",
-    "searchAll": "Alle Protestantischen Kirchen Suchen"
+    "searchAll": "Alle Protestantischen Kirchen Suchen",
+    "churches": {
+      "abundantLife": "Kirche des Reichlichen Lebens"
+    }
   },
   "bracket": {
     "title": "Bracket-Challenge",

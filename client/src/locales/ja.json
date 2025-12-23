@@ -3187,7 +3187,10 @@
     "catholic": "カトリック教会",
     "islamic": "モスク",
     "featured": "おすすめの教会",
-    "searchAll": "すべてのプロテスタント教会を検索"
+    "searchAll": "すべてのプロテスタント教会を検索",
+    "churches": {
+      "abundantLife": "アバンダントライフ教会"
+    }
   },
   "bracket": {
     "title": "ブラケットチャレンジ",

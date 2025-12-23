@@ -3187,7 +3187,10 @@
     "catholic": "Églises Catholiques",
     "islamic": "Mosquées",
     "featured": "Églises en Vedette",
-    "searchAll": "Rechercher Toutes les Églises Protestantes"
+    "searchAll": "Rechercher Toutes les Églises Protestantes",
+    "churches": {
+      "abundantLife": "Église Vie Abondante"
+    }
   },
   "bracket": {
     "title": "Défi du Bracket",

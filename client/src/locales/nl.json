@@ -3187,7 +3187,10 @@
     "catholic": "Katholieke Kerken",
     "islamic": "Moskeeën",
     "featured": "Uitgelichte Kerken",
-    "searchAll": "Zoek Alle Protestantse Kerken"
+    "searchAll": "Zoek Alle Protestantse Kerken",
+    "churches": {
+      "abundantLife": "Overvloedig Leven Kerk"
+    }
   },
   "bracket": {
     "title": "Bracket Uitdaging",

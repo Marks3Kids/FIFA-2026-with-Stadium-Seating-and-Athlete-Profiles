@@ -1,5 +1,5 @@
 export interface FeaturedChurch {
-  name: string;
+  nameKey: string;
   campus?: string;
   address: string;
   mapUrl: string;
@@ -86,31 +86,31 @@ export const religiousServices: ReligiousService[] = [
     islamicMapUrl: "https://www.google.com/maps/search/Mosque+in+Kansas+City+Missouri",
     featuredChurches: [
       {
-        name: "Abundant Life Church",
+        nameKey: "abundantLife",
         campus: "Crossroads",
         address: "1840 Cherry St, Kansas City, MO 64108",
         mapUrl: "https://www.google.com/maps/search/Abundant+Life+Church+1840+Cherry+St+Kansas+City+MO"
       },
       {
-        name: "Abundant Life Church",
+        nameKey: "abundantLife",
         campus: "Blue Springs",
         address: "1241 MO-7, Blue Springs, MO 64014",
         mapUrl: "https://www.google.com/maps/search/Abundant+Life+Church+1241+MO-7+Blue+Springs+MO"
       },
       {
-        name: "Abundant Life Church",
+        nameKey: "abundantLife",
         campus: "Independence",
         address: "112 West 23rd St S, Independence, MO 64055",
         mapUrl: "https://www.google.com/maps/search/Abundant+Life+Church+112+West+23rd+St+Independence+MO"
       },
       {
-        name: "Abundant Life Church",
+        nameKey: "abundantLife",
         campus: "Overland Park",
         address: "13400 W 119th St, Overland Park, KS 66210",
         mapUrl: "https://www.google.com/maps/search/Abundant+Life+Church+13400+W+119th+St+Overland+Park+KS"
       },
       {
-        name: "Abundant Life Church",
+        nameKey: "abundantLife",
         campus: "Lee's Summit",
         address: "304 SW Persels Rd, Lee's Summit, MO 64081",
         mapUrl: "https://www.google.com/maps/search/Abundant+Life+Church+304+SW+Persels+Rd+Lees+Summit+MO"

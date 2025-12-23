@@ -3187,7 +3187,10 @@
     "catholic": "Chiese Cattoliche",
     "islamic": "Moschee",
     "featured": "Chiese in Evidenza",
-    "searchAll": "Cerca Tutte le Chiese Protestanti"
+    "searchAll": "Cerca Tutte le Chiese Protestanti",
+    "churches": {
+      "abundantLife": "Chiesa Vita Abbondante"
+    }
   },
   "bracket": {
     "title": "Sfida del Tabellone",

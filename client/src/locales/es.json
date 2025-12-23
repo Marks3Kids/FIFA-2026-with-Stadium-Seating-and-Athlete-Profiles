@@ -3187,7 +3187,10 @@
     "catholic": "Iglesias Católicas",
     "islamic": "Mezquitas",
     "featured": "Iglesias Destacadas",
-    "searchAll": "Buscar Todas las Iglesias Protestantes"
+    "searchAll": "Buscar Todas las Iglesias Protestantes",
+    "churches": {
+      "abundantLife": "Iglesia Vida Abundante"
+    }
   },
   "bracket": {
     "title": "Desafío del Bracket",

@@ -2579,7 +2579,7 @@ export default function CriticalInfo() {
                                           <Church className="w-5 h-5 flex-shrink-0" />
                                           <div className="flex-1">
                                             <span className="text-white text-sm font-medium block">
-                                              {church.name}{church.campus ? ` - ${church.campus}` : ''}
+                                              {t(`religiousServices.churches.${church.nameKey}`)}{church.campus ? ` - ${church.campus}` : ''}
                                             </span>
                                             <span className="text-xs text-muted-foreground">{church.address}</span>
                                           </div>
