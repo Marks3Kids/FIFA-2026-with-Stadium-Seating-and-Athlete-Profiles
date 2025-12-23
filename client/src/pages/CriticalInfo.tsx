@@ -2639,6 +2639,18 @@ export default function CriticalInfo() {
                                 </span>
                                 <ExternalLink className="w-4 h-4 text-muted-foreground" />
                               </a>
+                              <a
+                                href={service.synagogueMapUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-3 p-3 rounded-lg border text-amber-400 bg-amber-400/10 border-amber-400/20 hover:opacity-80 transition-opacity"
+                              >
+                                <Star className="w-5 h-5 flex-shrink-0" />
+                                <span className="text-white text-sm font-medium flex-1">
+                                  {t("religiousServices.synagogue")}
+                                </span>
+                                <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                              </a>
                             </div>
                           </div>
                         );
