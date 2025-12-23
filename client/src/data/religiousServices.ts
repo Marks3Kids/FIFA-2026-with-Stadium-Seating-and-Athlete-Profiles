@@ -1,9 +1,17 @@
+export interface FeaturedChurch {
+  name: string;
+  campus?: string;
+  address: string;
+  mapUrl: string;
+}
+
 export interface ReligiousService {
   cityKey: string;
   countryKey: string;
   protestantMapUrl: string;
   catholicMapUrl: string;
   islamicMapUrl: string;
+  featuredChurches?: FeaturedChurch[];
 }
 
 export const religiousServices: ReligiousService[] = [
@@ -75,7 +83,39 @@ export const religiousServices: ReligiousService[] = [
     countryKey: "usa",
     protestantMapUrl: "https://www.google.com/maps/search/Protestant+church+in+Kansas+City+Missouri",
     catholicMapUrl: "https://www.google.com/maps/search/Catholic+church+in+Kansas+City+Missouri",
-    islamicMapUrl: "https://www.google.com/maps/search/Mosque+in+Kansas+City+Missouri"
+    islamicMapUrl: "https://www.google.com/maps/search/Mosque+in+Kansas+City+Missouri",
+    featuredChurches: [
+      {
+        name: "Abundant Life Church",
+        campus: "Crossroads",
+        address: "1840 Cherry St, Kansas City, MO 64108",
+        mapUrl: "https://www.google.com/maps/search/Abundant+Life+Church+1840+Cherry+St+Kansas+City+MO"
+      },
+      {
+        name: "Abundant Life Church",
+        campus: "Blue Springs",
+        address: "1241 MO-7, Blue Springs, MO 64014",
+        mapUrl: "https://www.google.com/maps/search/Abundant+Life+Church+1241+MO-7+Blue+Springs+MO"
+      },
+      {
+        name: "Abundant Life Church",
+        campus: "Independence",
+        address: "112 West 23rd St S, Independence, MO 64055",
+        mapUrl: "https://www.google.com/maps/search/Abundant+Life+Church+112+West+23rd+St+Independence+MO"
+      },
+      {
+        name: "Abundant Life Church",
+        campus: "Overland Park",
+        address: "13400 W 119th St, Overland Park, KS 66210",
+        mapUrl: "https://www.google.com/maps/search/Abundant+Life+Church+13400+W+119th+St+Overland+Park+KS"
+      },
+      {
+        name: "Abundant Life Church",
+        campus: "Lee's Summit",
+        address: "304 SW Persels Rd, Lee's Summit, MO 64081",
+        mapUrl: "https://www.google.com/maps/search/Abundant+Life+Church+304+SW+Persels+Rd+Lees+Summit+MO"
+      }
+    ]
   },
   {
     cityKey: "boston",

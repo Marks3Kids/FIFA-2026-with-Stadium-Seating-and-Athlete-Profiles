@@ -4,7 +4,7 @@ import {
   AlertTriangle, Shield, Phone, DollarSign, Scale, Sun, 
   ChevronDown, ChevronUp, Heart, Gavel, Coffee, Plane, 
   ShieldCheck, Ban, Tv, Car, ExternalLink, Stamp, Anchor, Ship,
-  MapPin, Thermometer, TicketX, AlertCircle, CheckCircle, XCircle, Lightbulb, ArrowLeft, Building2, Church, Cross, Moon
+  MapPin, Thermometer, TicketX, AlertCircle, CheckCircle, XCircle, Lightbulb, ArrowLeft, Building2, Church, Cross, Moon, Star
 } from "lucide-react";
 import { getFlagUrlByCode, getFlagUrl } from "@/lib/flags";
 import { useTranslation } from "react-i18next";
@@ -2530,6 +2530,36 @@ export default function CriticalInfo() {
                               {t(`cities.cityNames.${service.cityKey}`)}
                             </h3>
                           </div>
+                          
+                          {service.featuredChurches && service.featuredChurches.length > 0 && (
+                            <div className="mb-4">
+                              <div className="flex items-center gap-2 mb-3">
+                                <Star className="w-4 h-4 text-yellow-400" />
+                                <span className="text-sm font-bold text-yellow-400">{t("religiousServices.featured")}</span>
+                              </div>
+                              <div className="space-y-2 mb-4">
+                                {service.featuredChurches.map((church, idx) => (
+                                  <a
+                                    key={idx}
+                                    href={church.mapUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-3 p-3 rounded-lg border text-yellow-400 bg-yellow-400/10 border-yellow-400/20 hover:opacity-80 transition-opacity"
+                                  >
+                                    <Church className="w-5 h-5 flex-shrink-0" />
+                                    <div className="flex-1">
+                                      <span className="text-white text-sm font-medium block">
+                                        {church.name}{church.campus ? ` - ${church.campus}` : ''}
+                                      </span>
+                                      <span className="text-xs text-muted-foreground">{church.address}</span>
+                                    </div>
+                                    <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          
                           <div className="space-y-2">
                             <a
                               href={service.protestantMapUrl}
