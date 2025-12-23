@@ -2522,84 +2522,127 @@ export default function CriticalInfo() {
                           {t(`cities.countries.${countryKey}`)}
                         </h2>
                       </div>
-                      {countryCities.map((service) => (
-                        <div key={service.cityKey} className="bg-card border border-white/10 rounded-xl p-4 mb-4">
-                          <div className="flex items-center gap-3 mb-4">
-                            <MapPin className="w-5 h-5 text-primary" />
-                            <h3 className="text-lg font-display font-bold text-white">
-                              {t(`cities.cityNames.${service.cityKey}`)}
-                            </h3>
-                          </div>
-                          
-                          {service.featuredChurches && service.featuredChurches.length > 0 && (
-                            <div className="mb-4">
-                              <div className="flex items-center gap-2 mb-3">
-                                <Star className="w-4 h-4 text-yellow-400" />
-                                <span className="text-sm font-bold text-yellow-400">{t("religiousServices.featured")}</span>
-                              </div>
-                              <div className="space-y-2 mb-4">
-                                {service.featuredChurches.map((church, idx) => (
-                                  <a
-                                    key={idx}
-                                    href={church.mapUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-3 p-3 rounded-lg border text-yellow-400 bg-yellow-400/10 border-yellow-400/20 hover:opacity-80 transition-opacity"
+                      {countryCities.map((service) => {
+                        const hasFeaturedChurches = service.featuredChurches && service.featuredChurches.length > 0;
+                        const protestantExpandKey = `protestant-${service.cityKey}`;
+                        const isProtestantExpanded = expandedCards.has(protestantExpandKey);
+                        
+                        return (
+                          <div key={service.cityKey} className="bg-card border border-white/10 rounded-xl p-4 mb-4">
+                            <div className="flex items-center gap-3 mb-4">
+                              <MapPin className="w-5 h-5 text-primary" />
+                              <h3 className="text-lg font-display font-bold text-white">
+                                {t(`cities.cityNames.${service.cityKey}`)}
+                              </h3>
+                            </div>
+                            
+                            <div className="space-y-2">
+                              {hasFeaturedChurches ? (
+                                <div>
+                                  <button
+                                    onClick={() => {
+                                      const newExpanded = new Set(expandedCards);
+                                      if (isProtestantExpanded) {
+                                        newExpanded.delete(protestantExpandKey);
+                                      } else {
+                                        newExpanded.add(protestantExpandKey);
+                                      }
+                                      setExpandedCards(newExpanded);
+                                    }}
+                                    className="flex items-center gap-3 p-3 rounded-lg border text-blue-400 bg-blue-400/10 border-blue-400/20 hover:opacity-80 transition-opacity w-full"
                                   >
                                     <Church className="w-5 h-5 flex-shrink-0" />
-                                    <div className="flex-1">
-                                      <span className="text-white text-sm font-medium block">
-                                        {church.name}{church.campus ? ` - ${church.campus}` : ''}
-                                      </span>
-                                      <span className="text-xs text-muted-foreground">{church.address}</span>
+                                    <span className="text-white text-sm font-medium flex-1 text-left">
+                                      {t("religiousServices.protestant")}
+                                    </span>
+                                    {isProtestantExpanded ? (
+                                      <ChevronUp className="w-4 h-4 text-muted-foreground" />
+                                    ) : (
+                                      <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                                    )}
+                                  </button>
+                                  
+                                  {isProtestantExpanded && (
+                                    <div className="mt-2 ml-4 space-y-2">
+                                      <div className="flex items-center gap-2 mb-2">
+                                        <Star className="w-4 h-4 text-yellow-400" />
+                                        <span className="text-sm font-bold text-yellow-400">{t("religiousServices.featured")}</span>
+                                      </div>
+                                      {service.featuredChurches!.map((church, idx) => (
+                                        <a
+                                          key={idx}
+                                          href={church.mapUrl}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="flex items-center gap-3 p-3 rounded-lg border text-yellow-400 bg-yellow-400/10 border-yellow-400/20 hover:opacity-80 transition-opacity"
+                                        >
+                                          <Church className="w-5 h-5 flex-shrink-0" />
+                                          <div className="flex-1">
+                                            <span className="text-white text-sm font-medium block">
+                                              {church.name}{church.campus ? ` - ${church.campus}` : ''}
+                                            </span>
+                                            <span className="text-xs text-muted-foreground">{church.address}</span>
+                                          </div>
+                                          <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                                        </a>
+                                      ))}
+                                      <a
+                                        href={service.protestantMapUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-3 p-3 rounded-lg border text-blue-400 bg-blue-400/10 border-blue-400/20 hover:opacity-80 transition-opacity"
+                                      >
+                                        <Church className="w-5 h-5 flex-shrink-0" />
+                                        <span className="text-white text-sm font-medium flex-1">
+                                          {t("religiousServices.searchAll")}
+                                        </span>
+                                        <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                                      </a>
                                     </div>
-                                    <ExternalLink className="w-4 h-4 text-muted-foreground" />
-                                  </a>
-                                ))}
-                              </div>
+                                  )}
+                                </div>
+                              ) : (
+                                <a
+                                  href={service.protestantMapUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center gap-3 p-3 rounded-lg border text-blue-400 bg-blue-400/10 border-blue-400/20 hover:opacity-80 transition-opacity"
+                                >
+                                  <Church className="w-5 h-5 flex-shrink-0" />
+                                  <span className="text-white text-sm font-medium flex-1">
+                                    {t("religiousServices.protestant")}
+                                  </span>
+                                  <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                                </a>
+                              )}
+                              <a
+                                href={service.catholicMapUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-3 p-3 rounded-lg border text-purple-400 bg-purple-400/10 border-purple-400/20 hover:opacity-80 transition-opacity"
+                              >
+                                <Cross className="w-5 h-5 flex-shrink-0" />
+                                <span className="text-white text-sm font-medium flex-1">
+                                  {t("religiousServices.catholic")}
+                                </span>
+                                <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                              </a>
+                              <a
+                                href={service.islamicMapUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-3 p-3 rounded-lg border text-emerald-400 bg-emerald-400/10 border-emerald-400/20 hover:opacity-80 transition-opacity"
+                              >
+                                <Moon className="w-5 h-5 flex-shrink-0" />
+                                <span className="text-white text-sm font-medium flex-1">
+                                  {t("religiousServices.islamic")}
+                                </span>
+                                <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                              </a>
                             </div>
-                          )}
-                          
-                          <div className="space-y-2">
-                            <a
-                              href={service.protestantMapUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-3 p-3 rounded-lg border text-blue-400 bg-blue-400/10 border-blue-400/20 hover:opacity-80 transition-opacity"
-                            >
-                              <Church className="w-5 h-5 flex-shrink-0" />
-                              <span className="text-white text-sm font-medium flex-1">
-                                {t("religiousServices.protestant")}
-                              </span>
-                              <ExternalLink className="w-4 h-4 text-muted-foreground" />
-                            </a>
-                            <a
-                              href={service.catholicMapUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-3 p-3 rounded-lg border text-purple-400 bg-purple-400/10 border-purple-400/20 hover:opacity-80 transition-opacity"
-                            >
-                              <Cross className="w-5 h-5 flex-shrink-0" />
-                              <span className="text-white text-sm font-medium flex-1">
-                                {t("religiousServices.catholic")}
-                              </span>
-                              <ExternalLink className="w-4 h-4 text-muted-foreground" />
-                            </a>
-                            <a
-                              href={service.islamicMapUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-3 p-3 rounded-lg border text-emerald-400 bg-emerald-400/10 border-emerald-400/20 hover:opacity-80 transition-opacity"
-                            >
-                              <Moon className="w-5 h-5 flex-shrink-0" />
-                              <span className="text-white text-sm font-medium flex-1">
-                                {t("religiousServices.islamic")}
-                              </span>
-                              <ExternalLink className="w-4 h-4 text-muted-foreground" />
-                            </a>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   );
                 })}

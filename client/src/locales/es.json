@@ -3186,7 +3186,8 @@
     "protestant": "Iglesias Protestantes",
     "catholic": "Iglesias Católicas",
     "islamic": "Mezquitas",
-    "featured": "Iglesias Destacadas"
+    "featured": "Iglesias Destacadas",
+    "searchAll": "Buscar Todas las Iglesias Protestantes"
   },
   "bracket": {
     "title": "Desafío del Bracket",
