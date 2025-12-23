@@ -29,7 +29,6 @@ import Players from "@/pages/Players";
 import StadiumSeating from "@/pages/StadiumSeating";
 import TournamentOdds from "@/pages/TournamentOdds";
 import BracketChallenge from "@/pages/BracketChallenge";
-import ReligiousServices from "@/pages/ReligiousServices";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -59,7 +58,6 @@ function Router() {
       <Route path="/stadium-seating" component={StadiumSeating} />
       <Route path="/odds" component={TournamentOdds} />
       <Route path="/bracket" component={BracketChallenge} />
-      <Route path="/religious-services" component={ReligiousServices} />
       <Route component={NotFound} />
     </Switch>
   );

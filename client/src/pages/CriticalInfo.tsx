@@ -4,12 +4,13 @@ import {
   AlertTriangle, Shield, Phone, DollarSign, Scale, Sun, 
   ChevronDown, ChevronUp, Heart, Gavel, Coffee, Plane, 
   ShieldCheck, Ban, Tv, Car, ExternalLink, Stamp, Anchor, Ship,
-  MapPin, Thermometer, TicketX, AlertCircle, CheckCircle, XCircle, Lightbulb, ArrowLeft, Building2
+  MapPin, Thermometer, TicketX, AlertCircle, CheckCircle, XCircle, Lightbulb, ArrowLeft, Building2, Church, Cross, Moon
 } from "lucide-react";
-import { getFlagUrlByCode } from "@/lib/flags";
+import { getFlagUrlByCode, getFlagUrl } from "@/lib/flags";
 import { useTranslation } from "react-i18next";
+import { religiousServices } from "@/data/religiousServices";
 
-type InfoCategory = "safety" | "emergency" | "financial" | "legal" | "daily";
+type InfoCategory = "safety" | "emergency" | "financial" | "legal" | "daily" | "religious";
 type TravelCategory = "customs" | "travel-safety" | "prohibited" | "tvguide" | "transport" | "consulates";
 
 interface SafetyCard {
@@ -2250,6 +2251,7 @@ export default function CriticalInfo() {
     { id: "financial", labelKey: "criticalInfo.categories.financial", icon: DollarSign, available: true },
     { id: "legal", labelKey: "criticalInfo.categories.legal", icon: Scale, available: true },
     { id: "daily", labelKey: "criticalInfo.categories.dailyLife", icon: Sun, available: true },
+    { id: "religious", labelKey: "criticalInfo.categories.religiousServices", icon: Church, available: true },
   ];
 
   const travelCategories: { id: TravelCategory; labelKey: string; icon: any; available: boolean }[] = [
@@ -2490,6 +2492,87 @@ export default function CriticalInfo() {
                     ))}
                   </div>
                 </div>
+              </div>
+            )}
+
+            {activeCategory === "religious" && (
+              <div className="space-y-6">
+                <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 mb-4">
+                  <p className="text-sm text-muted-foreground">
+                    {t("religiousServices.disclaimer")}
+                  </p>
+                </div>
+
+                {["usa", "canada", "mexico"].map((countryKey) => {
+                  const countryCities = religiousServices.filter(s => s.countryKey === countryKey);
+                  const countryFlags: Record<string, string> = {
+                    usa: getFlagUrl("United States"),
+                    canada: getFlagUrl("Canada"),
+                    mexico: getFlagUrl("Mexico")
+                  };
+                  return (
+                    <div key={countryKey} className="mb-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <img 
+                          src={countryFlags[countryKey]} 
+                          alt={t(`cities.countries.${countryKey}`)} 
+                          className="w-8 h-6 object-cover rounded"
+                        />
+                        <h2 className="text-xl font-display font-bold text-white">
+                          {t(`cities.countries.${countryKey}`)}
+                        </h2>
+                      </div>
+                      {countryCities.map((service) => (
+                        <div key={service.cityKey} className="bg-card border border-white/10 rounded-xl p-4 mb-4">
+                          <div className="flex items-center gap-3 mb-4">
+                            <MapPin className="w-5 h-5 text-primary" />
+                            <h3 className="text-lg font-display font-bold text-white">
+                              {t(`cities.cityNames.${service.cityKey}`)}
+                            </h3>
+                          </div>
+                          <div className="space-y-2">
+                            <a
+                              href={service.protestantMapUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-3 p-3 rounded-lg border text-blue-400 bg-blue-400/10 border-blue-400/20 hover:opacity-80 transition-opacity"
+                            >
+                              <Church className="w-5 h-5 flex-shrink-0" />
+                              <span className="text-white text-sm font-medium flex-1">
+                                {t("religiousServices.protestant")}
+                              </span>
+                              <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                            </a>
+                            <a
+                              href={service.catholicMapUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-3 p-3 rounded-lg border text-purple-400 bg-purple-400/10 border-purple-400/20 hover:opacity-80 transition-opacity"
+                            >
+                              <Cross className="w-5 h-5 flex-shrink-0" />
+                              <span className="text-white text-sm font-medium flex-1">
+                                {t("religiousServices.catholic")}
+                              </span>
+                              <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                            </a>
+                            <a
+                              href={service.islamicMapUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-3 p-3 rounded-lg border text-emerald-400 bg-emerald-400/10 border-emerald-400/20 hover:opacity-80 transition-opacity"
+                            >
+                              <Moon className="w-5 h-5 flex-shrink-0" />
+                              <span className="text-white text-sm font-medium flex-1">
+                                {t("religiousServices.islamic")}
+                              </span>
+                              <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                            </a>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  );
+                })}
               </div>
             )}
           </>

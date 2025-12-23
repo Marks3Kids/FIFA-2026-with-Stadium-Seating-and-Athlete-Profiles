@@ -2129,7 +2129,8 @@
       "emergency": "Noodgeval",
       "financial": "Financieel",
       "legal": "Juridisch",
-      "dailyLife": "Dagelijks Leven"
+      "dailyLife": "Dagelijks Leven",
+      "religiousServices": "Religie"
     },
     "safetySection": {
       "title": "Kritieke Veiligheidsinformatie",

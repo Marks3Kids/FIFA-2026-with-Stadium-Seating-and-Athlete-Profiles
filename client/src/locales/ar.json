@@ -2129,7 +2129,8 @@
       "emergency": "الطوارئ",
       "financial": "مالي",
       "legal": "قانوني",
-      "dailyLife": "الحياة اليومية"
+      "dailyLife": "الحياة اليومية",
+      "religiousServices": "الدين"
     },
     "safetySection": {
       "title": "معلومات السلامة الحرجة",

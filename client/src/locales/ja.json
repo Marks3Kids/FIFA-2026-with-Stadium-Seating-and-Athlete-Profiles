@@ -2129,7 +2129,8 @@
       "emergency": "緊急",
       "financial": "金銭",
       "legal": "法律",
-      "dailyLife": "日常生活"
+      "dailyLife": "日常生活",
+      "religiousServices": "宗教"
     },
     "safetySection": {
       "title": "重要な安全情報",

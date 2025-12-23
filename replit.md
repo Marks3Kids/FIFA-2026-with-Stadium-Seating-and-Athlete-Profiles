@@ -141,6 +141,21 @@ Components using flag images:
 - History.tsx - Historical tournament data
 - Players.tsx - Player nationality flags
 
+### Religious Services Feature
+
+**Location:** Integrated as a tab within the Essential Travel Guide (CriticalInfo.tsx) under "General Info" section
+
+**Functionality:**
+- Shows Google Maps search links for places of worship in all 16 host cities
+- Three religious services supported: Protestant Churches, Catholic Churches, and Mosques
+- Organized by country (USA, Canada, Mexico) with city cards
+- Each service type opens Google Maps search for that type of worship place in that city
+- Color-coded buttons (blue for Protestant, purple for Catholic, emerald for Islamic)
+
+**Data Source:** `client/src/data/religiousServices.ts` contains cityKey, countryKey, and Google Maps URLs for each service type
+
+**Translations:** All content translated across 9 languages (EN, ES, FR, DE, PT, AR, JA, IT, NL) in the `religiousServices` and `criticalInfo.categories.religiousServices` translation keys
+
 ### Match Schedule System
 
 **Complete Tournament Schedule:**

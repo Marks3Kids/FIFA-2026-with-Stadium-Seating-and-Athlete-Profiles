@@ -2129,7 +2129,8 @@
       "emergency": "Urgence",
       "financial": "Financier",
       "legal": "Juridique",
-      "dailyLife": "Vie Quotidienne"
+      "dailyLife": "Vie Quotidienne",
+      "religiousServices": "Religion"
     },
     "safetySection": {
       "title": "Informations Critiques de Sécurité",

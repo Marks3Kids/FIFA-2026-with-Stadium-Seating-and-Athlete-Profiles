@@ -2130,7 +2130,8 @@
       "emergency": "Emergency",
       "financial": "Financial",
       "legal": "Legal",
-      "dailyLife": "Daily Life"
+      "dailyLife": "Daily Life",
+      "religiousServices": "Religious"
     },
     "safetySection": {
       "title": "Critical Safety Information",
