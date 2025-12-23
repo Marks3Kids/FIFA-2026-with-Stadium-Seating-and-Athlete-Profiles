@@ -341,6 +341,7 @@
     "history": "W杯の歴史",
     "odds": "大会オッズ",
     "bracket": "ブラケットチャレンジ",
+    "religiousServices": "宗教サービス",
     "account": "アカウント",
     "viewEditProfile": "プロフィールを表示・編集",
     "settings": "設定",
@@ -3176,6 +3177,14 @@
       "gamblingHelpAustralia": "ギャンブルヘルプオンライン（オーストラリア）",
       "adiccionesEspana": "アディクシオネス・エスパーニャ"
     }
+  },
+  "religiousServices": {
+    "title": "宗教サービス",
+    "subtitle": "開催都市で礼拝所を見つける",
+    "disclaimer": "リンクはGoogleマップを開き、近くのサービスを見つけるのに役立ちます。時間と空き状況は異なる場合があります。各場所に直接ご確認ください。",
+    "protestant": "プロテスタント教会",
+    "catholic": "カトリック教会",
+    "islamic": "モスク"
   },
   "bracket": {
     "title": "ブラケットチャレンジ",

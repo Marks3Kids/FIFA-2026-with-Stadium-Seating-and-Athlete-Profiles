@@ -341,6 +341,7 @@
     "history": "WM-Geschichte",
     "odds": "Turnier-Quoten",
     "bracket": "Bracket-Challenge",
+    "religiousServices": "Religiöse Dienste",
     "account": "Konto",
     "viewEditProfile": "Profil ansehen und bearbeiten",
     "settings": "Einstellungen",
@@ -3176,6 +3177,14 @@
       "gamblingHelpAustralia": "Glücksspiel-Hilfe Online (Australien)",
       "adiccionesEspana": "Adicciones España"
     }
+  },
+  "religiousServices": {
+    "title": "Religiöse Dienste",
+    "subtitle": "Finden Sie Gotteshäuser in den Austragungsorten",
+    "disclaimer": "Links öffnen Google Maps, um Ihnen bei der Suche nach Gottesdiensten in der Nähe zu helfen. Zeiten und Verfügbarkeit können variieren. Bitte überprüfen Sie direkt bei jedem Standort.",
+    "protestant": "Protestantische Kirchen",
+    "catholic": "Katholische Kirchen",
+    "islamic": "Moscheen"
   },
   "bracket": {
     "title": "Bracket-Challenge",

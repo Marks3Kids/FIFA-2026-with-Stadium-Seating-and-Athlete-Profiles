@@ -341,6 +341,7 @@
     "history": "Storia dei Mondiali",
     "odds": "Quote del Torneo",
     "bracket": "Sfida del Tabellone",
+    "religiousServices": "Servizi Religiosi",
     "account": "Conto",
     "viewEditProfile": "Visualizza e modifica il profilo",
     "settings": "Impostazioni",
@@ -3176,6 +3177,14 @@
       "gamblingHelpAustralia": "Aiuto per il Gioco Online (Australia)",
       "adiccionesEspana": "Adicciones España"
     }
+  },
+  "religiousServices": {
+    "title": "Servizi Religiosi",
+    "subtitle": "Trova luoghi di culto nelle città ospitanti",
+    "disclaimer": "I link aprono Google Maps per aiutarti a trovare servizi nelle vicinanze. Gli orari e la disponibilità possono variare. Si prega di verificare direttamente presso ogni luogo.",
+    "protestant": "Chiese Protestanti",
+    "catholic": "Chiese Cattoliche",
+    "islamic": "Moschee"
   },
   "bracket": {
     "title": "Sfida del Tabellone",

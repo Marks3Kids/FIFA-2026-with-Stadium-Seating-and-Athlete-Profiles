@@ -341,6 +341,7 @@
     "history": "World Cup History",
     "odds": "Tournament Odds",
     "bracket": "Bracket Challenge",
+    "religiousServices": "Religious Services",
     "account": "Account",
     "viewEditProfile": "View and edit profile",
     "settings": "Settings",
@@ -3177,6 +3178,14 @@
       "gamblingHelpAustralia": "Gambling Help Online (Australia)",
       "adiccionesEspana": "Adicciones España"
     }
+  },
+  "religiousServices": {
+    "title": "Religious Services",
+    "subtitle": "Find places of worship in host cities",
+    "disclaimer": "Links open Google Maps to help you find nearby services. Service times and availability may vary. Please verify directly with each location.",
+    "protestant": "Protestant Churches",
+    "catholic": "Catholic Churches",
+    "islamic": "Mosques"
   },
   "bracket": {
     "title": "Bracket Challenge",

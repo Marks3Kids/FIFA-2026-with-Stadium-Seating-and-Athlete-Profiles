@@ -341,6 +341,7 @@
     "history": "WK Geschiedenis",
     "odds": "Toernooi Odds",
     "bracket": "Bracket Uitdaging",
+    "religiousServices": "Religieuze Diensten",
     "account": "Account",
     "viewEditProfile": "Profiel bekijken en bewerken",
     "settings": "Instellingen",
@@ -3176,6 +3177,14 @@
       "gamblingHelpAustralia": "Online Gokhulp (Australië)",
       "adiccionesEspana": "Adicciones España"
     }
+  },
+  "religiousServices": {
+    "title": "Religieuze Diensten",
+    "subtitle": "Vind gebedshuizen in de gaststeden",
+    "disclaimer": "Links openen Google Maps om u te helpen nabijgelegen diensten te vinden. Tijden en beschikbaarheid kunnen variëren. Neem rechtstreeks contact op met elke locatie.",
+    "protestant": "Protestantse Kerken",
+    "catholic": "Katholieke Kerken",
+    "islamic": "Moskeeën"
   },
   "bracket": {
     "title": "Bracket Uitdaging",

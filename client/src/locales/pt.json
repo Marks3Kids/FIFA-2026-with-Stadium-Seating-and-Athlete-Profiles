@@ -341,6 +341,7 @@
     "history": "História da Copa",
     "odds": "Cotações do Torneio",
     "bracket": "Desafio do Bracket",
+    "religiousServices": "Serviços Religiosos",
     "account": "Conta",
     "viewEditProfile": "Ver e editar perfil",
     "settings": "Configurações",
@@ -3175,6 +3176,14 @@
       "gamblingHelpAustralia": "Ajuda para Jogos Online (Austrália)",
       "adiccionesEspana": "Adicciones España"
     }
+  },
+  "religiousServices": {
+    "title": "Serviços Religiosos",
+    "subtitle": "Encontre locais de culto nas cidades-sede",
+    "disclaimer": "Os links abrem o Google Maps para ajudá-lo a encontrar serviços próximos. Horários e disponibilidade podem variar. Por favor, verifique diretamente com cada local.",
+    "protestant": "Igrejas Protestantes",
+    "catholic": "Igrejas Católicas",
+    "islamic": "Mesquitas"
   },
   "bracket": {
     "title": "Desafio do Bracket",

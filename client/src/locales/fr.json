@@ -341,6 +341,7 @@
     "history": "Histoire de la Coupe du Monde",
     "odds": "Cotes du Tournoi",
     "bracket": "Défi du Bracket",
+    "religiousServices": "Services Religieux",
     "account": "Compte",
     "viewEditProfile": "Consulter et modifier le profil",
     "settings": "Paramètres",
@@ -3176,6 +3177,14 @@
       "gamblingHelpAustralia": "Aide au Jeu en Ligne (Australie)",
       "adiccionesEspana": "Adicciones España"
     }
+  },
+  "religiousServices": {
+    "title": "Services Religieux",
+    "subtitle": "Trouvez des lieux de culte dans les villes hôtes",
+    "disclaimer": "Les liens ouvrent Google Maps pour vous aider à trouver des services à proximité. Les horaires et la disponibilité peuvent varier. Veuillez vérifier directement auprès de chaque emplacement.",
+    "protestant": "Églises Protestantes",
+    "catholic": "Églises Catholiques",
+    "islamic": "Mosquées"
   },
   "bracket": {
     "title": "Défi du Bracket",
