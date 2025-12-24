@@ -43,12 +43,27 @@ The app uses a 4-tier one-time purchase model:
 
 4. **$24.99 - AI Concierge**
    - Everything in Logistics
-   - Unlimited AI assistance
+   - 50 AI messages/month with option to buy more
    - Personalized recommendations
    - Real-time travel support
    - Visa & entry guidance
    - Trip planning tools
    - 24/7 concierge access
+
+### AI Concierge Behavior Guidelines
+
+**The City-Expert Switch:**
+The AI is not just a general advisor - it's a "Local Expert" for whichever city the user is currently viewing. When a user selects a city, the AI must instantly prioritize that city's unique quirks.
+
+**City-Specific Examples:**
+- **Houston:** Mention humidity and underground tunnel system for cooling
+- **Toronto:** Mention the "PATH" underground walkway system
+- **Miami:** Heat index warnings, Art Deco district navigation
+- **Dallas:** AT&T Stadium climate control, local BBQ recommendations
+- **Mexico City:** Altitude acclimatization, Aztec cultural sites
+- **Seattle:** Rain preparedness, coffee culture
+
+**Tone Goal:** Remove the "Stranger" feeling from the traveler. Make every host city feel like their home city. Be warm, knowledgeable, and specific - like a local friend showing them around.
 
 **Stripe Price IDs:**
 - Team Info: `price_1ShxFJEwO7dpbt1exGRi7Mbt`
