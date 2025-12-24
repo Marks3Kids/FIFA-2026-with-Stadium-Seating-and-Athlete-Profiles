@@ -6,6 +6,7 @@ import { SubscriptionProvider } from "@/contexts/SubscriptionContext";
 import "@/lib/i18n";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import LandingPage from "@/pages/LandingPage";
 import Home from "@/pages/Home";
 import Matches from "@/pages/Matches";
 import Teams from "@/pages/Teams";
@@ -35,7 +36,8 @@ import NotFound from "@/pages/not-found";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" component={LandingPage} />
+      <Route path="/home" component={Home} />
       <Route path="/teams" component={Teams} />
       <Route path="/cities" component={Cities} />
       <Route path="/menu" component={Menu} />
