@@ -1,4 +1,5 @@
 import { cityVaults } from '@/data/cityVaults';
+import { createWeatherAlert } from './NotificationService';
 
 interface WeatherData {
   city: string;
@@ -164,8 +165,41 @@ export function getCoolingStations(cityKey: string): { name: string; type: strin
   ];
 }
 
+const WEATHER_ALERT_KEY = 'weather_alert_last_triggered';
+const WEATHER_ALERT_COOLDOWN = 4 * 60 * 60 * 1000;
+
 export async function checkForWeatherAlerts(cityKey: string): Promise<WeatherAlert | null> {
+  const lastTriggered = localStorage.getItem(`${WEATHER_ALERT_KEY}_${cityKey}`);
+  const now = Date.now();
+  
+  if (lastTriggered && now - parseInt(lastTriggered) < WEATHER_ALERT_COOLDOWN) {
+    return null;
+  }
+
   const weather = await getWeatherForCity(cityKey);
   if (!weather) return null;
-  return generateWeatherAlert(weather, cityKey);
+  
+  const alert = generateWeatherAlert(weather, cityKey);
+  if (!alert) return null;
+
+  localStorage.setItem(`${WEATHER_ALERT_KEY}_${cityKey}`, now.toString());
+
+  const hydrationTips = getHydrationRecommendations(weather.temperatureF);
+  const coolingStations = getCoolingStations(cityKey);
+
+  let recommendation = alert.recommendation;
+  if (hydrationTips.length > 0) {
+    recommendation += '\n\n• ' + hydrationTips.slice(0, 3).join('\n• ');
+  }
+  if (coolingStations.length > 0) {
+    recommendation += '\n\n📍 Nearest cooling station: ' + coolingStations[0].name;
+  }
+
+  createWeatherAlert(
+    CITY_NAMES[cityKey] || cityKey,
+    weather.temperatureF,
+    recommendation
+  );
+
+  return alert;
 }
