@@ -146,9 +146,38 @@ All 16 host cities have Google Maps search links for each service type.
 - 32 knockout matches
 - Final: MetLife Stadium, July 19, 2026
 
+### PWA (Progressive Web App)
+
+**Configuration:** VitePWA plugin in vite.config.ts
+
+**Features:**
+- Installable on mobile devices
+- Offline caching for fonts and flag images
+- App manifest with Championship Concierge branding
+- Themed with emerald green (#22C55E)
+
+### Watch Party Features
+
+**Host City Watch Parties (`client/src/data/watchParties.ts`):**
+- Official fan fest locations for each of 16 host cities
+- Popular bar/venue recommendations
+- Google Maps links for each venue
+- Integrated into Cities page dialog modals
+
+**Global Watch Hubs (`client/src/pages/WatchHubs.tsx`):**
+- Watch party locations for all 48 qualifying nations
+- Organized by continent (Europe, South America, North America, etc.)
+- Search functionality by country or city
+- Primary venues with capacity info and Google Maps links
+- Accessible via /watch-hubs route and main navigation
+
 ## Recent Changes (December 2025)
 
 - **Landing Page:** New landing page at "/" with hero, features, and integrated pricing
+- **PWA Enabled:** App is now installable with offline caching
+- **Global Watch Hubs:** New /watch-hubs page showing watch parties for all 48 qualifying nations
+- **Watch Parties in Cities:** Host city modals now show local watch party venues
+- **AI Concierge Limit:** Changed from "unlimited" to "50 messages/month with option to buy more"
 - **Major Rebrand:** "World Cup Companion" → "Championship Concierge"
 - **New Pricing:** 4-tier structure (Free, $4.99, $14.99, $24.99)
 - **Email Capture:** Lead generation for free bracket downloads
@@ -160,9 +189,13 @@ All 16 host cities have Google Maps search links for each service type.
 
 - `client/src/pages/LandingPage.tsx` - Main landing page with hero and pricing
 - `client/src/components/PricingSection.tsx` - Shared pricing component (used by LandingPage and Pricing)
+- `client/src/pages/WatchHubs.tsx` - Global Watch Hubs page for 48 nations
+- `client/src/pages/Cities.tsx` - Host cities with integrated watch party venues
+- `client/src/data/watchParties.ts` - Watch party data for 16 host cities
+- `client/src/data/globalWatchHubs.ts` - Watch hub data for 48 qualifying countries
 - `client/src/pages/Pricing.tsx` - Dedicated pricing page
 - `client/src/contexts/SubscriptionContext.tsx` - Subscription state management
 - `client/src/components/ProtectedRoute.tsx` - Content gating by tier
 - `server/routes.ts` - API endpoints including leads capture
 - `shared/schema.ts` - Database schema including leads table
-- `scripts/create-new-pricing.ts` - Stripe product/price creation script
+- `vite.config.ts` - Vite configuration including PWA plugin
