@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { 
   ArrowLeft, Bell, Globe, Moon, Volume2, Vibrate, 
-  MapPin, Shield, Trash2, Check, ChevronRight
+  MapPin, Shield, Trash2, Check, ChevronRight, Navigation
 } from "lucide-react";
 import { Link } from "wouter";
 import { useTranslation } from "react-i18next";
+import { LocationSettings } from "@/components/LocationSettings";
 
 interface SettingsData {
   notifications: boolean;
@@ -245,6 +246,14 @@ export default function Settings() {
                 <ToggleSwitch enabled={settings.dataSharing} onToggle={() => handleToggle("dataSharing")} />
               </div>
             </div>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-display font-bold text-white mb-4 flex items-center gap-2">
+              <Navigation className="w-5 h-5 text-cyan-400" />
+              {t("location.currentCity")}
+            </h2>
+            <LocationSettings />
           </div>
 
           <div>

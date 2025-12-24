@@ -3333,5 +3333,24 @@
     "infoDescription": "Whether you're traveling during the World Cup or watching from home, find the biggest and best watch party locations in each qualifying nation. These official and community-organized fan zones bring together supporters from around the globe.",
     "capacity": "Capacity",
     "noResults": "No watch hubs found for your search"
+  },
+  "location": {
+    "welcomeTo": "Welcome to {{city}}!",
+    "youAreIn": "You are in {{city}}",
+    "notSupported": "Location Not Supported",
+    "notSupportedDesc": "Your browser does not support location services.",
+    "enableLocation": "Enable Location",
+    "enableLocationDesc": "Allow location access to receive city-specific updates and welcome messages when you arrive in a host city.",
+    "locationEnabled": "Location Tracking Enabled",
+    "locationEnabledDesc": "You'll receive notifications when entering host cities.",
+    "disableLocation": "Disable Location",
+    "primedAndReady": "Medical and religious maps for {{city}} are primed and ready for you.",
+    "currentCity": "Current City",
+    "notInHostCity": "Not in a host city",
+    "trackingActive": "Location tracking active",
+    "trackingInactive": "Location tracking inactive",
+    "simulateCity": "Simulate City (Demo)",
+    "permissionDenied": "Location permission denied",
+    "permissionDeniedDesc": "Please enable location access in your browser settings."
   }
 }
