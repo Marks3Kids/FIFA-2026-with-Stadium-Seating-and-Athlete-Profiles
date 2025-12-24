@@ -35,6 +35,38 @@ Everyone is in the building, but some have better seats. The AI provides value a
 
 - **Key Principle:** Never leave the user empty-handed. Always give them something useful, then show what more they could have.
 
+### Launch Roadmap - Regional Priority Instruction
+
+This roadmap maximizes app value during the critical first week of the 2026 tournament.
+
+**Phase 1: The "Opening Triangle" Mastery (June 11-12, 2026)**
+Focus on 100% data accuracy for the three cities where host nations kick off:
+- Mexico City (Mexico opener - June 11)
+- New York/New Jersey (USA opener)
+- Toronto (Canada opener - June 12)
+
+By mastering these three cities first, the Concierge establishes global authority on Day 1.
+
+**Phase 2: Regional Rollout (June 13-20, 2026)**
+Expand expertise into regional clusters for fans traveling between matches:
+
+*The East Coast Corridor ("Safe Route"):*
+- Cities: New York/New Jersey, Philadelphia, Boston
+- Concierge Focus: Train schedules (Amtrak/NJ Transit) so fans can attend matches in multiple cities without a car
+
+*The Central Heart:*
+- Cities: Dallas, Houston, Kansas City, Monterrey
+- Concierge Focus: Heat-safety protocols and indoor "cooling zone" maps for high-temperature Texas/Mexico matches
+
+**Phase 3: The "Remote Fan" Engagement (Global)**
+Push Remote Fan features globally to the $240M market:
+
+*The "Moment" Feed:*
+- Live alerts beyond scores (e.g., "History made: This is the first time a stadium has hosted three openers")
+
+*Bracket Mastery:*
+- Real-time updates on teams moving toward Knockout stages in the user's specific time zone
+
 ## External Dependencies
 -   **Stripe:** For payment processing, subscription management, and webhook integration (`stripe-replit-sync` package).
     -   Products: Championship Concierge - Team Info (prod_TfHo6dxkResAo8), Championship Concierge - Logistics (prod_TfHo6jtr8E71AB), Championship Concierge - AI Concierge (prod_TfHoStUqBCCA7O).
