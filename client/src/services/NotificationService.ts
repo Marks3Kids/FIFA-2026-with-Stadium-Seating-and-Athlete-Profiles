@@ -1,6 +1,18 @@
+export type NotificationType = 
+  | 'welcome' 
+  | 'weather' 
+  | 'gameday' 
+  | 'safety' 
+  | 'transport' 
+  | 'general'
+  | 'reminder'
+  | 'stadium'
+  | 'currency'
+  | 'matchResult';
+
 export interface AppNotification {
   id: string;
-  type: 'welcome' | 'weather' | 'gameday' | 'safety' | 'transport' | 'general';
+  type: NotificationType;
   title: string;
   body: string;
   icon?: string;
@@ -165,3 +177,46 @@ export function createTransportNotification(
     { sendPush: true, actionUrl }
   );
 }
+
+export interface AddNotificationOptions {
+  type: NotificationType;
+  title: string;
+  message: string;
+  icon?: string;
+  priority?: 'low' | 'medium' | 'high';
+  actionUrl?: string;
+  data?: Record<string, unknown>;
+}
+
+export const NotificationService = {
+  addNotification(options: AddNotificationOptions): AppNotification {
+    return createNotification(
+      options.type,
+      `${options.icon || ''} ${options.title}`.trim(),
+      options.message,
+      { 
+        sendPush: options.priority === 'high', 
+        actionUrl: options.actionUrl,
+        data: options.data,
+      }
+    );
+  },
+
+  getAll(): AppNotification[] {
+    return getStoredNotifications();
+  },
+
+  markRead(id: string): void {
+    markNotificationRead(id);
+  },
+
+  clearAll(): void {
+    clearNotifications();
+  },
+
+  markAllAsRead(): void {
+    const notifications = getStoredNotifications();
+    const updated = notifications.map(n => ({ ...n, read: true }));
+    localStorage.setItem('wc2026_notifications', JSON.stringify(updated));
+  },
+};
