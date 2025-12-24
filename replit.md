@@ -25,6 +25,16 @@ PostgreSQL is used as the database, accessed via Neon serverless driver. Drizzle
 -   **Watch Party Features:** Includes host city watch party locations with official fan fests and popular venues, and a "Global Watch Hubs" page listing watch party locations for all 48 qualifying nations with search functionality.
 -   **City-Specific Context:** The AI Concierge proactively provides city-specific warnings, safety resources, and recommendations based on the user's current location, aiming to remove the "stranger" feeling.
 
+### AI Concierge - The Upsell Logic ("Digital Tiered Stadium")
+
+Everyone is in the building, but some have better seats. The AI provides value at every tier while showcasing what's available at higher levels.
+
+- **For Free/Team Info Users:** If a user asks a complex question about safety, religious locations, or transport that is locked behind a higher tier, provide a "Taste of the Service."
+
+- **Example Response:** "I can see three medical facilities within 1 mile of your current location in Kansas City. To receive the exact GPS coordinates, 'Safe-Walk' routes, and direct-dial emergency contacts, you can upgrade to the Full Concierge experience."
+
+- **Key Principle:** Never leave the user empty-handed. Always give them something useful, then show what more they could have.
+
 ## External Dependencies
 -   **Stripe:** For payment processing, subscription management, and webhook integration (`stripe-replit-sync` package).
     -   Products: Championship Concierge - Team Info (prod_TfHo6dxkResAo8), Championship Concierge - Logistics (prod_TfHo6jtr8E71AB), Championship Concierge - AI Concierge (prod_TfHoStUqBCCA7O).
