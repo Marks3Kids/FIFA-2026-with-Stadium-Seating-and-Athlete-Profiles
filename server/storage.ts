@@ -35,6 +35,8 @@ import {
   type InsertStadiumSection,
   type KnockoutBracket,
   type InsertKnockoutBracket,
+  type Lead,
+  type InsertLead,
   users,
   teams,
   cities,
@@ -52,7 +54,8 @@ import {
   players,
   tournamentHistory,
   stadiumSections,
-  knockoutBrackets
+  knockoutBrackets,
+  leads
 } from "@shared/schema";
 import { db } from "../db";
 import { eq } from "drizzle-orm";
@@ -135,6 +138,8 @@ export interface IStorage {
   createKnockoutBracket(bracket: InsertKnockoutBracket): Promise<KnockoutBracket>;
   updateKnockoutBracket(id: number, bracket: Partial<InsertKnockoutBracket>): Promise<KnockoutBracket | undefined>;
   deleteAllKnockoutBrackets(): Promise<void>;
+  
+  createLead(lead: InsertLead): Promise<Lead>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -422,6 +427,11 @@ export class DatabaseStorage implements IStorage {
 
   async deleteAllKnockoutBrackets(): Promise<void> {
     await db.delete(knockoutBrackets);
+  }
+
+  async createLead(lead: InsertLead): Promise<Lead> {
+    const [newLead] = await db.insert(leads).values(lead).returning();
+    return newLead;
   }
 }
 

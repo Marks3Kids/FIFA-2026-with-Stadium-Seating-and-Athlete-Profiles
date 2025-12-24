@@ -407,3 +407,21 @@ export const insertKnockoutBracketSchema = createInsertSchema(knockoutBrackets).
 
 export type InsertKnockoutBracket = z.infer<typeof insertKnockoutBracketSchema>;
 export type KnockoutBracket = typeof knockoutBrackets.$inferSelect;
+
+// Email leads for free bracket downloads
+export const leads = pgTable("leads", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  city: text("city").notNull(),
+  source: text("source").default("free_bracket"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertLeadSchema = createInsertSchema(leads).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertLead = z.infer<typeof insertLeadSchema>;
+export type Lead = typeof leads.$inferSelect;

@@ -6,7 +6,7 @@ import { desc } from "drizzle-orm";
 const parser = new Parser({
   timeout: 10000,
   headers: {
-    'User-Agent': 'WorldCupCompanion2026/1.0',
+    'User-Agent': 'ChampionshipConcierge/1.0',
   },
 });
 

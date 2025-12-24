@@ -1,15 +1,15 @@
 import { ReactNode } from "react";
 import { Redirect } from "wouter";
-import { useSubscription } from "@/contexts/SubscriptionContext";
+import { useSubscription, SubscriptionTier } from "@/contexts/SubscriptionContext";
 import { Loader2 } from "lucide-react";
 
 interface ProtectedRouteProps {
   children: ReactNode;
-  requiredTier?: "basic" | "premier";
+  requiredTier?: SubscriptionTier;
 }
 
-export function ProtectedRoute({ children, requiredTier = "basic" }: ProtectedRouteProps) {
-  const { isSubscribed, subscriptionTier, isLoading } = useSubscription();
+export function ProtectedRoute({ children, requiredTier = "team_info" }: ProtectedRouteProps) {
+  const { isSubscribed, hasAccess, isLoading } = useSubscription();
 
   if (isLoading) {
     return (
@@ -23,8 +23,8 @@ export function ProtectedRoute({ children, requiredTier = "basic" }: ProtectedRo
     return <Redirect to="/pricing" />;
   }
 
-  if (requiredTier === "premier" && subscriptionTier === "basic") {
-    return <Redirect to="/upgrade" />;
+  if (!hasAccess(requiredTier)) {
+    return <Redirect to="/pricing" />;
   }
 
   return <>{children}</>;

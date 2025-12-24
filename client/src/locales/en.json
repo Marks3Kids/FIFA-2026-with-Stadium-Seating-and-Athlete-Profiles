@@ -1,7 +1,7 @@
 {
   "header": {
-    "worldCup": "World Cup",
-    "companion": "Companion",
+    "worldCup": "Championship",
+    "companion": "Concierge",
     "year": "2026"
   },
   "status": {
@@ -141,13 +141,14 @@
     "odds": "Tournament Odds",
     "bracket": "Bracket Challenge",
     "players": "Players",
-    "stadiumSeating": "Stadium Seating"
+    "stadiumSeating": "Stadium Seating",
+    "pricing": "Pricing"
   },
   "home": {
-    "title": "FIFA",
-    "year": "2026",
-    "tagline": "The World is Coming to North America",
-    "updateInfo": "This app is updated routinely with the latest information through the end of the 2026 World Cup and into August 2026.",
+    "title": "Championship",
+    "year": "Concierge",
+    "tagline": "Your Essential 2026 World Cup Travel Companion",
+    "updateInfo": "Your complete travel utility for the 2026 World Cup. Updated routinely with the latest information through August 2026.",
     "potDrawAlt": "FIFA World Cup 2026 Draw Pots",
     "viewSchedule": "View Match Schedule",
     "latestNews": "Latest News",
@@ -179,7 +180,7 @@
     "intellectualProperty": "All content created for this app, excluding third-party materials, is protected by copyright. You may not reproduce, distribute, or create derivative works without permission.",
     "liabilityLimitation": "Under no circumstances shall the app developers be liable for any direct, indirect, incidental, consequential, or special damages arising from your use of this application.",
     "privacyStatement": "We respect your privacy. Any personal data collected is used solely to improve your experience and is not shared with third parties without your consent.",
-    "copyright": "© 2026 World Cup Companion. All rights reserved. This is an unofficial fan application."
+    "copyright": "© 2026 Championship Concierge. All rights reserved. This is an unofficial fan application."
   },
   "teams": {
     "title": "Qualified Teams",

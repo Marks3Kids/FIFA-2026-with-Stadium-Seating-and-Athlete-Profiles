@@ -1,14 +1,59 @@
-# WorldCupCompanion2026
+# Championship Concierge
 
 ## Overview
 
-**Website:** WorldCupCompanion2026.com
+**Website:** ChampionshipConcierge.com (formerly WorldCupCompanion2026.com)
 
-This is a mobile-first web application serving as a companion for the 2026 World Cup. The app is branded as "World Cup Companion" with modern football-inspired emerald green colors displayed prominently in the header on every page. The application provides comprehensive information about teams, matches, host cities, and transportation options across the United States, Canada, and Mexico. Built as a full-stack TypeScript application, it features a React frontend with a modern UI using shadcn/ui components and an Express backend with PostgreSQL database storage.
+Championship Concierge is a mobile-first essential travel utility app for the 2026 World Cup, positioning 16 host cities as "Digital Command Centers" with comprehensive safety, comfort, and logistics solutions. The app includes team information, live scores, knockout brackets, and tournament news, but primarily focuses on solving travelers' problems through deep city-specific content including travel safety, medical options, religious services, and emergency resources.
+
+**Strategic Focus:** Essential travel utility over sports entertainment
+**Legal Compliance:** No official FIFA logos or branding to avoid trademark issues
+**Languages:** Supports 9 languages with automatic translation (EN, ES, FR, DE, PT, AR, JA, IT, NL)
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+
+## Pricing Structure
+
+The app uses a 4-tier one-time purchase model:
+
+1. **FREE** - Knockout Bracket PDF
+   - Downloadable/printable bracket
+   - Requires email capture (name, email, city) for lead generation
+   
+2. **$4.99 - Team Info**
+   - All 48 qualified teams
+   - Player rosters & stats
+   - Knockout brackets
+   - Full match schedules
+   - Tournament news
+   - World Cup history
+   - Tournament odds
+
+3. **$14.99 - Logistics** (Most Popular)
+   - Everything in Team Info
+   - 16 host city guides
+   - Transportation options
+   - Lodging recommendations
+   - Restaurant guides
+   - Essential travel info
+   - Safety & medical resources
+   - Religious services
+
+4. **$24.99 - AI Concierge**
+   - Everything in Logistics
+   - Unlimited AI assistance
+   - Personalized recommendations
+   - Real-time travel support
+   - Visa & entry guidance
+   - Trip planning tools
+   - 24/7 concierge access
+
+**Stripe Price IDs:**
+- Team Info: `price_1ShxFJEwO7dpbt1exGRi7Mbt`
+- Logistics: `price_1ShxFKEwO7dpbt1e9luXFlYa`
+- AI Concierge: `price_1ShxFKEwO7dpbt1eNndVr9yu`
 
 ## System Architecture
 
@@ -16,175 +61,105 @@ Preferred communication style: Simple, everyday language.
 
 **Technology Stack:** React with TypeScript, Vite build tool, TailwindCSS for styling
 
-**UI Component System:** The application uses shadcn/ui (New York variant) for consistent, accessible UI components. This provides a comprehensive set of pre-built components including dialogs, cards, navigation, forms, and data display elements.
+**UI Component System:** The application uses shadcn/ui (New York variant) for consistent, accessible UI components.
 
-**Routing:** Client-side routing is handled by Wouter, a lightweight React router. The application is structured as a single-page application (SPA) with multiple routes for different sections (home, matches, teams, cities, transportation, menu).
+**Routing:** Client-side routing is handled by Wouter. Routes include home, matches, teams, cities, transportation, pricing, and more.
 
-**State Management:** TanStack Query (React Query) manages server state, API calls, and data caching. This eliminates the need for a separate global state management solution for server data.
+**State Management:** TanStack Query (React Query) manages server state, API calls, and data caching.
 
-**Design System:** The application uses a dark-mode-first design with a premium sports aesthetic. Custom CSS variables define the color palette with an "electric green" primary color (#22C55E) reminiscent of a football pitch. Two custom fonts are used: Inter for body text and Chakra Petch for display/headings.
+**Subscription Context (`client/src/contexts/SubscriptionContext.tsx`):**
+- Manages 4-tier subscription state: none, free, team_info, logistics, ai_concierge
+- `hasAccess(tier)` method checks if user can access content
+- Stores user email, name, city for free tier leads
+- Persists subscription data in localStorage
 
-**Mobile-First Design:** The entire interface is optimized for mobile devices with touch-friendly navigation, safe area support for notched devices, and responsive layouts that adapt to different screen sizes.
+**Design System:** Dark-mode-first design with emerald green primary color (#22C55E). Fonts: Inter for body, Chakra Petch for headings.
 
 ### Backend Architecture
 
-**Server Framework:** Express.js serves as the HTTP server, handling API routes and static file serving.
+**Server Framework:** Express.js handles API routes and static file serving.
 
-**API Design:** RESTful API endpoints are organized by resource type (teams, cities, matches, news). The API follows conventional REST patterns with GET endpoints for retrieval and POST endpoints for creation.
-
-**Request/Response Handling:** Express middleware handles JSON parsing, URL encoding, and request logging. A custom logging function provides formatted timestamps for all requests.
-
-**Development vs Production:** The application uses different serving strategies based on environment:
-- Development: Vite dev server with HMR (Hot Module Replacement) middleware
-- Production: Pre-built static files served from the dist directory
-
-**Build Process:** A custom build script uses esbuild to bundle the server code and Vite to build the client. Server dependencies are selectively bundled to reduce cold start times by minimizing file system operations.
+**API Endpoints:**
+- Teams, Cities, Matches: Standard CRUD operations
+- News: RSS feed integration with translation
+- Leads: Email capture for free bracket downloads (`POST /api/leads`)
+- Stripe: Checkout sessions, webhooks, subscription verification
 
 ### Data Storage
 
-**Database:** PostgreSQL via Neon serverless driver for connection pooling and edge compatibility
+**Database:** PostgreSQL via Neon serverless driver
 
-**ORM:** Drizzle ORM provides type-safe database access with TypeScript inference. Schema definitions live in a shared directory accessible to both frontend and backend.
+**ORM:** Drizzle ORM with type-safe schemas
 
-**Schema Structure:**
-- **Users:** Authentication and user management (id, username, password)
-- **Teams:** All 48 qualified teams with metadata (name, flag, rank, coach, record, points)
-- **Cities:** Host city information including stadiums, capacity, and match schedules
-- **Matches:** Tournament schedule with team pairings, dates, locations, and tournament stages
-- **News Items:** Breaking news and updates with categories and timestamps
-- **Trips:** User trip planning with 7 related tables (transportation, stays, dining, matches, agenda, documents, contacts)
+**Key Tables:**
+- **Users:** Authentication with Stripe customer/subscription IDs
+- **Teams:** 48 qualified teams with metadata
+- **Cities:** 16 host cities with stadium info
+- **Matches:** Tournament schedule with translations
+- **Leads:** Email captures for free bracket downloads (name, email, city, source)
+- **Purchases:** Subscription tracking by email and tier
 
-**Client-Side Storage:**
-- Profile data (display name, email, phone, home city, nationality, favorite team, travel dates) stored in localStorage
-- Settings preferences (notifications, language, dark mode, sound, haptics, privacy options) stored in localStorage
+### Stripe Integration
 
-**Validation:** Drizzle-zod generates Zod schemas from database schemas, providing runtime validation for API inputs and ensuring type safety across the stack.
+**Package:** `stripe-replit-sync` for automatic webhook and data syncing
 
-**Database Migrations:** Drizzle Kit manages schema migrations with a dedicated configuration file pointing to the shared schema directory.
+**Features:**
+- Managed webhooks auto-configured
+- Products and prices synced to local database
+- Checkout sessions for one-time purchases
+- Customer portal for subscription management
 
-### External Dependencies
-
-**Database Service:** Neon PostgreSQL serverless database accessed via DATABASE_URL environment variable
-
-**AI Concierge:** OpenAI GPT-4o-mini integration for conversational assistance with World Cup planning. The concierge has expertise in all 16 host cities, transportation, lodging, dining, visa requirements, and stadium policies.
-
-**Third-Party Integrations Referenced:**
-- Airline booking systems (Delta, United, American, etc.) - external links only
-- Rail services (Amtrak, VIA Rail) - external links only
-- Car rental companies (Hertz, Enterprise, Avis) - external links only
-- Rideshare apps (Uber, Lyft) - external links only
-
-**Development Tools:**
-- Replit-specific plugins for development banner, cartographer, and runtime error overlay
-- Custom Vite plugin for updating OpenGraph meta tags with deployment URLs
-
-**UI Dependencies:**
-- Radix UI primitives for accessible component foundations
-- Lucide React for iconography
-- TailwindCSS v4 with custom animations
-- Embla Carousel for content carousels
-- React Hook Form with Zod resolvers for form management
-
-**Font Loading:** Google Fonts CDN provides Inter and Chakra Petch font families
-
-**Session Management:** The application includes infrastructure for sessions via connect-pg-simple (PostgreSQL session store) though implementation is not fully visible in the provided code.
-
-### Automatic News Feed System
-
-**RSS Feed Integration:** The application fetches live soccer news from multiple reliable RSS sources:
-- ESPN Soccer (`https://www.espn.com/espn/rss/soccer/news`)
-- BBC Sport Football (`http://feeds.bbci.co.uk/sport/football/rss.xml`)
-- Sky Sports Football (`https://www.skysports.com/rss/11095`)
-
-**News Service (`server/newsService.ts`):** Centralized service that:
-- Fetches and parses RSS feeds using `rss-parser` package
-- Deduplicates news items by title
-- Stores top 10 items sorted by publish date in the database
-- Auto-refreshes every 4 hours on incoming requests
-- Provides manual refresh endpoint at `/api/news/refresh`
-
-**API Endpoints:**
-- `GET /api/news?limit=3&locale=es` - Returns latest news items with optional translation (limit validated 1-10, locale supports es/fr/de/pt/ar/ja/it/nl)
-- `POST /api/news/refresh` - Forces immediate RSS feed refresh
-
-**News Translation (`server/translationService.ts`):**
-- Uses OpenAI GPT-4o-mini via Replit AI Integrations for on-demand translation
-- Translates headlines and descriptions to 8 languages (Spanish, French, German, Portuguese, Arabic, Japanese, Italian, Dutch)
-- Caches translations in database JSONB column to avoid repeat API calls
-- Falls back to English if translation fails
-- Cost-effective: Only translates when a locale is first requested, then serves from cache
-
-**Home Page Display:** Interactive news carousel showing top 3 items with:
-- Category badges and timestamps ("39m ago" format)
-- Source attribution (ESPN, BBC Sport, Sky Sports)
-- Article descriptions and external links
-- Manual refresh button with loading states
-- Empty state handling when no news available
-- Headlines automatically translated based on user's selected language
-
-### Cross-Device Consistency
-
-**Flag Images:** All country/region flags throughout the app use image URLs from flagcdn.com instead of emoji flags. This ensures consistent visual display across all devices and browsers, as emoji flags can render inconsistently or as text codes on some platforms.
-
-**Flag Utility (`client/src/lib/flags.ts`):** A centralized utility provides:
-- `countryCodeMap`: Maps country names to ISO country codes
-- `languageCodeMap`: Maps language codes to flag country codes
-- `currencyCodeMap`: Maps currency codes to flag country codes
-- Helper functions: `getFlagUrl()`, `getLanguageFlagUrl()`, `getCurrencyFlagUrl()`, `getFlagUrlByCode()`
-
-Components using flag images:
-- Teams.tsx - Team cards with country flags
-- TeamDetailModal.tsx - Team detail headers
-- HeaderNav.tsx - Language selector
-- Planner.tsx - Currency converter
-- CriticalInfo.tsx - Host cities, broadcast regions, consulates
-- History.tsx - Historical tournament data
-- Players.tsx - Player nationality flags
+**Products Created:**
+- Championship Concierge - Team Info (prod_TfHo6dxkResAo8)
+- Championship Concierge - Logistics (prod_TfHo6jtr8E71AB)
+- Championship Concierge - AI Concierge (prod_TfHoStUqBCCA7O)
 
 ### Religious Services Feature
 
-**Location:** Integrated as a tab within the Essential Travel Guide (CriticalInfo.tsx) under "General Info" section
+**Location:** Essential Travel Guide > General Info > Religious Services
 
-**Functionality:**
-- Shows Google Maps search links for places of worship in all 16 host cities
-- Three religious services supported: Protestant Churches, Catholic Churches, and Mosques
-- Organized by country (USA, Canada, Mexico) with city cards
-- Each service type opens Google Maps search for that type of worship place in that city
-- Color-coded buttons (blue for Protestant, purple for Catholic, emerald for Islamic)
+**Services Supported:**
+- Protestant Churches (blue button)
+- Catholic Churches (purple button)
+- Mosques (green button)
+- Synagogues (amber button)
 
-**Data Source:** `client/src/data/religiousServices.ts` contains cityKey, countryKey, and Google Maps URLs for each service type
+All 16 host cities have Google Maps search links for each service type.
 
-**Translations:** All content translated across 9 languages (EN, ES, FR, DE, PT, AR, JA, IT, NL) in the `religiousServices` and `criticalInfo.categories.religiousServices` translation keys
+### News Feed System
 
-### Match Schedule System
+**RSS Sources:**
+- ESPN Soccer
+- BBC Sport Football
+- Sky Sports Football
 
-**Complete Tournament Schedule:**
-- 104 total matches across all tournament stages
-- 72 group stage matches (Groups A-L, 6 matches per group)
-- 32 knockout matches (Round of 32 through Final)
-- Official schedule released December 6, 2025
+**Features:**
+- Auto-refreshes every 4 hours
+- Translates headlines to 9 languages via OpenAI
+- Caches translations in database
 
-**Matches Page UI (`client/src/pages/Matches.tsx`):**
-- Stage tabs for navigation: Group Stage, Round of 32, Round of 16, Quarterfinals, Semifinals, Final
-- Match cards display team names, venue, city, date, and match status
-- All stage names translated via i18next for 9 supported languages
+### Match Schedule
 
-**Bracket Translation (`server/translationService.ts`):**
-- Translates placeholder slot names (e.g., "Winner Group A" → "Ganador Grupo A" for Spanish)
-- Translates stadium and city names for international users
-- Uses OpenAI GPT-4o-mini integration
-- Caches translations in database JSONB column per match
-- First translation: ~934ms (API call), cached: ~24ms
+**Tournament Structure:**
+- 104 total matches
+- 72 group stage (12 groups)
+- 32 knockout matches
+- Final: MetLife Stadium, July 19, 2026
 
-**API Endpoints:**
-- `GET /api/matches?stage=Final&locale=es` - Fetch matches with stage filter and translation
-- `GET /api/knockout-brackets?stage=final&locale=es` - Fetch knockout bracket data
+## Recent Changes (December 2025)
 
-**Match Structure:**
-- Group Stage: 72 matches across 12 groups (June 11-28, 2026)
-- Round of 32: 16 matches (June 29-July 1, 2026)
-- Round of 16: 8 matches (July 4-6, 2026)
-- Quarterfinals: 4 matches (July 10-11, 2026)
-- Semifinals: 2 matches (July 14-15, 2026)
-- Third Place: 1 match (July 18, 2026)
-- Final: 1 match at MetLife Stadium, New York/New Jersey (July 19, 2026)
+- **Major Rebrand:** "World Cup Companion" → "Championship Concierge"
+- **New Pricing:** 4-tier structure (Free, $4.99, $14.99, $24.99)
+- **Email Capture:** Lead generation for free bracket downloads
+- **Subscription System:** 4-tier access control (none, free, team_info, logistics, ai_concierge)
+- **Synagogues Added:** Religious services now include synagogues for all 16 cities
+- **Legal Compliance:** Removed any FIFA branding to avoid trademark issues
+
+## Key Files
+
+- `client/src/pages/Pricing.tsx` - 4-tier pricing page with email capture
+- `client/src/contexts/SubscriptionContext.tsx` - Subscription state management
+- `client/src/components/ProtectedRoute.tsx` - Content gating by tier
+- `server/routes.ts` - API endpoints including leads capture
+- `shared/schema.ts` - Database schema including leads table
+- `scripts/create-new-pricing.ts` - Stripe product/price creation script

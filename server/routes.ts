@@ -18,7 +18,8 @@ import {
   insertTripDocumentSchema,
   insertTripContactSchema,
   stadiumSectionsQuerySchema,
-  playersQuerySchema
+  playersQuerySchema,
+  insertLeadSchema
 } from "@shared/schema";
 
 export async function registerRoutes(
@@ -917,6 +918,18 @@ Remember: You're helping fans have the best World Cup experience of their lives!
       res.json(sections);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch stadium sections" });
+    }
+  });
+
+  // Email Leads API (for free bracket downloads)
+  app.post("/api/leads", async (req, res) => {
+    try {
+      const validatedData = insertLeadSchema.parse(req.body);
+      const lead = await storage.createLead(validatedData);
+      res.status(201).json({ success: true, id: lead.id });
+    } catch (error) {
+      console.error("Failed to save lead:", error);
+      res.status(400).json({ error: "Invalid lead data" });
     }
   });
 
