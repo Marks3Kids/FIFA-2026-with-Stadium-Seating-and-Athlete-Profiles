@@ -1,0 +1,26 @@
+The Kansas City Vault (Command Center)
+Host City Motto: “The Soccer Capital of America & The Heart of the Tournament.”
+1. Logistics & Transit (The "Arrowhead" Protocol)
+* The Trap: Arrowhead Stadium (Kansas City Stadium) has 22,000 parking spots, but only 4,000 are available for the public. No ticket, no entry to the grounds.
+* The Solution: Use ConnectKC26. The app will link to the 215+ motorcoaches running "Stadium Direct" routes from regional hubs (Lawrence, Overland Park, Independence, and Downtown).
+* The Streetcar: Use the expanded KC Streetcar (free) to move between the Power & Light District and the Fan Festival at Liberty Memorial.
+2. The Safety Net (Medical & Emergency)
+* English-Speaking/International Expert: Children’s Mercy (downtown) has a dedicated International Travel Medicine Clinic—perfect for families traveling from abroad.
+* Emergency Hub: Saint Luke’s Hospital (near the Plaza) is the primary high-capacity trauma center for the urban core.
+* Gold Feature: One-tap 911 integration that automatically provides the user’s "Section and Row" if they are inside the stadium.
+3. The Spiritual Compass
+* The "Stadium Chapel": Unique to KC, the Faith and Family Chapel is located right at Arrowhead Stadium (south corner). It offers non-denominational services on match days.
+* Regional Diversity:
+* Islamic: The Islamic Center of Greater Kansas City (South KC) is a primary hub for Friday prayers.
+* Jewish: The Jewish Community Center (The J) in Overland Park provides a safe, welcoming environment for visiting fans.
+* Catholic: The Cathedral of the Immaculate Conception (Downtown) is centrally located for those staying in the city core.
+4. Watch Party Scouting
+* The "Vibe" Festival: Liberty Memorial (National WWI Museum). This is the Official FIFA Fan Festival. Features the 65-foot "KC Heart Gateway" and 4,500 sq. ft. of video boards. Best for families and massive crowds.
+* The "Energy" Hub: KC Live! (Power & Light District). High-intensity, adult-focused, and surrounded by bars. This is where the "viral" goal reaction videos will happen.
+* The "Local" Secret: North Kansas City (Northtown). For a more curated, local business vibe with fewer crowds than the official Fan Fest.
+5. The "Comfort" Guide (BBQ & Jazz)
+* The BBQ Trail: The Concierge recommends Joe’s KC (Gas station vibe), Arthur Bryant’s (History), and Q39 (Premium dining) based on the user's distance from their hotel.
+* The Jazz Beat: Direct maps to 18th & Vine and The Blue Room for late-night decompression after a match.
+
+AI Concierge Proactive Message (Example for KC)
+> "Welcome to the Heart of America! I see you've arrived in Kansas City. A quick heads-up: Parking at the stadium is extremely restricted today. I have secured your 'Stadium Direct' bus pass and mapped the shuttle pickup at Union Station. Since you have 3 hours before kickoff, would you like the walking route to the WWI Museum Fan Fest for a photo at the Heart Gateway?"

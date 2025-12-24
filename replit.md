@@ -35,6 +35,38 @@ Everyone is in the building, but some have better seats. The AI provides value a
 
 - **Key Principle:** Never leave the user empty-handed. Always give them something useful, then show what more they could have.
 
+### Host City Vault Structure (Command Center Template)
+
+Each of the 16 host cities has a "Vault" - a comprehensive Command Center with city-specific expertise. The Kansas City Vault serves as the template:
+
+**Host City Motto:** Each city gets a unique tagline (e.g., KC: "The Soccer Capital of America & The Heart of the Tournament")
+
+**1. Logistics & Transit**
+- The Trap: Identify the city's main logistics challenge (e.g., KC: 22,000 parking spots but only 4,000 public)
+- The Solution: Provide vetted alternatives (e.g., ConnectKC26, 215+ motorcoaches from regional hubs)
+- Local Transit: Free/affordable options (e.g., KC Streetcar between Power & Light and Fan Festival)
+
+**2. The Safety Net (Medical & Emergency)**
+- English-Speaking/International Expert: Hospitals with international travel medicine (e.g., Children's Mercy)
+- Emergency Hub: Primary trauma center location (e.g., Saint Luke's Hospital)
+- Gold Feature: One-tap 911 integration with automatic "Section and Row" location if inside stadium
+
+**3. The Spiritual Compass**
+- Stadium Chapel: Any on-site religious services (e.g., KC: Faith and Family Chapel at Arrowhead)
+- Regional Diversity: Islamic Center, Jewish Community Center, Catholic Cathedral locations
+
+**4. Watch Party Scouting**
+- The "Vibe" Festival: Official FIFA Fan Festival location (e.g., Liberty Memorial)
+- The "Energy" Hub: High-intensity adult-focused venues (e.g., KC Live! at Power & Light)
+- The "Local" Secret: Less crowded, local business alternatives (e.g., Northtown)
+
+**5. The "Comfort" Guide (Local Culture)**
+- City-specific recommendations (e.g., KC: BBQ Trail - Joe's KC, Arthur Bryant's, Q39)
+- Nightlife/Decompression (e.g., KC: 18th & Vine Jazz District, The Blue Room)
+
+**AI Concierge Proactive Message (KC Example):**
+"Welcome to the Heart of America! I see you've arrived in Kansas City. A quick heads-up: Parking at the stadium is extremely restricted today. I have secured your 'Stadium Direct' bus pass and mapped the shuttle pickup at Union Station. Since you have 3 hours before kickoff, would you like the walking route to the WWI Museum Fan Fest for a photo at the Heart Gateway?"
+
 ### Launch Roadmap - Regional Priority Instruction
 
 This roadmap maximizes app value during the critical first week of the 2026 tournament.
