@@ -163,3 +163,9 @@ export function getCoolingStations(cityKey: string): { name: string; type: strin
     { name: 'Nearby Shopping Centers', type: 'Mall' },
   ];
 }
+
+export async function checkForWeatherAlerts(cityKey: string): Promise<WeatherAlert | null> {
+  const weather = await getWeatherForCity(cityKey);
+  if (!weather) return null;
+  return generateWeatherAlert(weather, cityKey);
+}

@@ -1033,6 +1033,43 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     }
   });
 
+  // Match results - get finished matches with scores
+  // Since the tournament hasn't started yet, this returns simulated results for demo/testing
+  app.get("/api/matches/results", async (req, res) => {
+    try {
+      const matches = await storage.getAllMatches();
+      
+      // For demo purposes, simulate some finished matches from past dates
+      // In production, this would integrate with a live sports API
+      const now = new Date();
+      const results = matches
+        .filter(match => {
+          if (!match.date) return false;
+          const matchDate = new Date(match.date);
+          // Return matches from before today as "finished"
+          return matchDate < now;
+        })
+        .slice(0, 10) // Limit to 10 for demo
+        .map((match, index) => ({
+          matchId: match.id,
+          homeTeam: match.team1,
+          awayTeam: match.team2,
+          homeScore: Math.floor(Math.random() * 4),
+          awayScore: Math.floor(Math.random() * 4),
+          status: 'finished' as const,
+          venue: match.stadium,
+          city: match.city,
+          date: match.date,
+          time: match.time,
+        }));
+
+      res.json(results);
+    } catch (error) {
+      console.error("Failed to fetch match results:", error);
+      res.status(500).json({ error: "Failed to fetch match results" });
+    }
+  });
+
   return httpServer;
 }
 
