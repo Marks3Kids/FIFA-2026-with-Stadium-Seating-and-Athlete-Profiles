@@ -148,6 +148,7 @@ All 16 host cities have Google Maps search links for each service type.
 
 ## Recent Changes (December 2025)
 
+- **Landing Page:** New landing page at "/" with hero, features, and integrated pricing
 - **Major Rebrand:** "World Cup Companion" → "Championship Concierge"
 - **New Pricing:** 4-tier structure (Free, $4.99, $14.99, $24.99)
 - **Email Capture:** Lead generation for free bracket downloads
@@ -157,7 +158,9 @@ All 16 host cities have Google Maps search links for each service type.
 
 ## Key Files
 
-- `client/src/pages/Pricing.tsx` - 4-tier pricing page with email capture
+- `client/src/pages/LandingPage.tsx` - Main landing page with hero and pricing
+- `client/src/components/PricingSection.tsx` - Shared pricing component (used by LandingPage and Pricing)
+- `client/src/pages/Pricing.tsx` - Dedicated pricing page
 - `client/src/contexts/SubscriptionContext.tsx` - Subscription state management
 - `client/src/components/ProtectedRoute.tsx` - Content gating by tier
 - `server/routes.ts` - API endpoints including leads capture
