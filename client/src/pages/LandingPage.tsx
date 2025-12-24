@@ -171,7 +171,7 @@ export default function LandingPage() {
               endorsed by, or connected to FIFA or any official organizing bodies.
             </p>
             <div className="text-sm text-muted-foreground">
-              &copy; 2025 Championship Concierge
+              &copy; 2026 Championship Concierge
             </div>
           </div>
         </div>
