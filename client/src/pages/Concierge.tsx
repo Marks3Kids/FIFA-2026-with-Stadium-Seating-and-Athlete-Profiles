@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Layout } from "@/components/Layout";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { 
   Send, 
@@ -10,10 +10,18 @@ import {
   ArrowLeft,
   RefreshCw,
   Info,
-  CreditCard
+  CreditCard,
+  Thermometer,
+  Droplets,
+  Bell,
+  MapPin,
+  Volume2
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "wouter";
+import { VoiceConcierge, TalkToConciergeButton } from "@/components/VoiceConcierge";
+import { useLocation as useGeoLocation } from "@/contexts/LocationContext";
+import { generateWeatherAlert, getHydrationRecommendations, getCoolingStations } from "@/services/WeatherService";
 
 interface Message {
   role: "user" | "assistant";
@@ -25,8 +33,36 @@ export default function Concierge() {
   const [, navigate] = useLocation();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
+  const [lastSpokenMessage, setLastSpokenMessage] = useState("");
+  const [showAlerts, setShowAlerts] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  
+  const { currentCity, currentVault } = useGeoLocation();
+
+  const { data: weatherData } = useQuery({
+    queryKey: ['weather', currentCity?.cityKey],
+    queryFn: async () => {
+      if (!currentCity?.cityKey) return null;
+      const res = await fetch(`/api/weather/${currentCity.cityKey}`);
+      if (!res.ok) return null;
+      return res.json();
+    },
+    enabled: !!currentCity?.cityKey,
+    staleTime: 30 * 60 * 1000,
+  });
+
+  const weatherAlert = weatherData && currentCity?.cityKey 
+    ? generateWeatherAlert(weatherData, currentCity.cityKey) 
+    : null;
+
+  const hydrationTips = weatherData?.temperatureF >= 85 
+    ? getHydrationRecommendations(weatherData.temperatureF) 
+    : [];
+
+  const coolingStations = currentCity?.cityKey 
+    ? getCoolingStations(currentCity.cityKey) 
+    : [];
 
   const quickPrompts = [
     t("concierge.quickPrompts.restaurants"),
@@ -34,6 +70,14 @@ export default function Concierge() {
     t("concierge.quickPrompts.transportation"),
     t("concierge.quickPrompts.stadiumTips"),
   ];
+
+  const handleTalkToConcierge = () => {
+    const greeting = currentCity 
+      ? `Welcome to ${currentCity.name}! ${currentVault?.motto || ''} How can I help you today?`
+      : t("concierge.voiceGreeting");
+    
+    setLastSpokenMessage(greeting);
+  };
 
   const getProfileContext = () => {
     try {
@@ -161,7 +205,7 @@ export default function Concierge() {
         <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
           {messages.length === 0 ? (
             <div className="flex flex-col h-full">
-              <div className="text-center mb-6">
+              <div className="text-center mb-4">
                 <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-yellow-400/20 to-orange-500/20 flex items-center justify-center mb-3">
                   <Sparkles className="w-8 h-8 text-yellow-400" />
                 </div>
@@ -170,6 +214,69 @@ export default function Concierge() {
                   {t("concierge.welcomeMessage")}
                 </p>
               </div>
+
+              <div className="mb-4">
+                <TalkToConciergeButton onActivate={handleTalkToConcierge} />
+                {lastSpokenMessage && (
+                  <div className="mt-2 flex justify-center">
+                    <VoiceConcierge text={lastSpokenMessage} autoSpeak={true} />
+                  </div>
+                )}
+              </div>
+
+              {(currentCity || weatherAlert) && (
+                <div className="mb-4 space-y-3">
+                  {currentCity && (
+                    <div className="bg-gradient-to-r from-primary/20 to-emerald-600/20 rounded-xl p-4 border border-primary/30">
+                      <div className="flex items-center gap-3 mb-2">
+                        <MapPin className="w-5 h-5 text-primary" />
+                        <span className="font-bold text-white">{t("location.youAreIn", { city: currentCity.name })}</span>
+                      </div>
+                      {currentVault && (
+                        <p className="text-sm text-gray-300 italic">"{currentVault.motto}"</p>
+                      )}
+                      {weatherData && (
+                        <div className="mt-3 flex items-center gap-4 text-sm">
+                          <div className="flex items-center gap-1">
+                            <Thermometer className="w-4 h-4 text-orange-400" />
+                            <span className="text-white">{weatherData.temperatureF}°F</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Droplets className="w-4 h-4 text-blue-400" />
+                            <span className="text-muted-foreground">{weatherData.humidity}%</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {weatherAlert && (
+                    <div className={`rounded-xl p-4 border ${
+                      weatherAlert.severity === 'high' 
+                        ? 'bg-red-500/20 border-red-500/50' 
+                        : weatherAlert.severity === 'medium'
+                        ? 'bg-orange-500/20 border-orange-500/50'
+                        : 'bg-yellow-500/20 border-yellow-500/50'
+                    }`}>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Bell className="w-5 h-5 text-orange-400" />
+                        <span className="font-bold text-white">{weatherAlert.message}</span>
+                      </div>
+                      <p className="text-sm text-gray-300">{weatherAlert.recommendation}</p>
+                      {hydrationTips.length > 0 && (
+                        <div className="mt-3 space-y-1">
+                          {hydrationTips.slice(0, 3).map((tip, i) => (
+                            <div key={i} className="flex items-start gap-2 text-xs text-gray-400">
+                              <Droplets className="w-3 h-3 mt-0.5 text-blue-400" />
+                              <span>{tip}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
               
               <div className="space-y-3">
                 <p className="text-xs text-muted-foreground uppercase tracking-wider text-center">{t("concierge.tryAsking")}</p>
@@ -221,10 +328,15 @@ export default function Concierge() {
                       }`}
                     >
                       {msg.role === "assistant" ? (
-                        <div 
-                          className="text-sm leading-relaxed"
-                          dangerouslySetInnerHTML={{ __html: formatMessage(msg.content) }}
-                        />
+                        <>
+                          <div 
+                            className="text-sm leading-relaxed"
+                            dangerouslySetInnerHTML={{ __html: formatMessage(msg.content) }}
+                          />
+                          <div className="flex justify-end mt-2 pt-2 border-t border-white/5">
+                            <VoiceConcierge text={msg.content} />
+                          </div>
+                        </>
                       ) : (
                         <p className="text-sm">{msg.content}</p>
                       )}

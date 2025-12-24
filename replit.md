@@ -99,10 +99,51 @@ Push Remote Fan features globally to the $240M market:
 *Bracket Mastery:*
 - Real-time updates on teams moving toward Knockout stages in the user's specific time zone
 
+### Proactive AI Concierge Features (AI Concierge Subscription)
+
+The AI Concierge subscription includes proactive automation with both written and verbal delivery:
+
+**1. Written Alerts (Push Notifications)**
+- Appear on lock screen for quick, actionable info
+- Examples: "🌡️ Hydration Alert: Dallas is 102°F today. Find cooling stations here."
+- Managed via `NotificationService.ts` with persistent storage
+
+**2. Verbal (AI Voice)**
+- "Talk to Concierge" button activates voice greeting
+- Uses Web Speech API for browser-native TTS in 9 languages
+- Voice map: en-US, es-ES, fr-FR, de-DE, pt-BR, ar-SA, zh-CN, ja-JP, ko-KR
+- Component: `VoiceConcierge.tsx`
+
+**3. Automatic Triggers**
+
+*Welcome Trigger (Location-Based):*
+- Activated when geofencing detects user in a host city
+- Pulls Host City Vault data and displays welcome notification
+- Shows city motto, weather, and proactive recommendations
+
+*Weather/Hydration Trigger (API-Based):*
+- Backend connects to OpenWeatherMap API (or simulated data for demo)
+- If temperature exceeds 90°F (32°C), triggers hydration alert
+- Displays cooling stations and hydration tips
+- Service: `WeatherService.ts`, API: `/api/weather/:cityKey`
+
+*Game Day Trigger (Time-Based):*
+- Checks match schedule 3 hours before kickoff
+- Sends transport tip notification specific to city
+- Includes stadium access info, transit routes, QR codes
+- Service: `GameDayService.ts`, API: `/api/gameday/upcoming`
+
+**4. Geofencing System**
+- `LocationContext.tsx` manages city boundary detection
+- 16 host city boundaries with 50-80km radius
+- Background monitoring via `watchPosition` with 60-second cache
+- Simulation mode for testing in Settings
+
 ## External Dependencies
 -   **Stripe:** For payment processing, subscription management, and webhook integration (`stripe-replit-sync` package).
     -   Products: Championship Concierge - Team Info (prod_TfHo6dxkResAo8), Championship Concierge - Logistics (prod_TfHo6jtr8E71AB), Championship Concierge - AI Concierge (prod_TfHoStUqBCCA7O).
 -   **PostgreSQL (Neon):** Database for data storage.
+-   **OpenWeatherMap (Optional):** For real-time weather data. Set `OPENWEATHER_API_KEY` secret if available; otherwise uses simulated weather data.
 -   **OpenAI:** Used for translating news headlines into multiple languages.
 -   **Google Maps:** Integrated for providing location-based services, such as religious service locations and watch party venues.
 -   **RSS Feeds:** External sources like ESPN Soccer, BBC Sport Football, and Sky Sports Football for tournament news.

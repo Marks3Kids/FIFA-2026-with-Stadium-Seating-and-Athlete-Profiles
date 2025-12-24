@@ -933,5 +933,119 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     }
   });
 
+  // Weather API (using OpenWeatherMap)
+  const CITY_COORDINATES: Record<string, { lat: number; lon: number; name: string }> = {
+    kansasCity: { lat: 39.0997, lon: -94.5786, name: 'Kansas City' },
+    newYork: { lat: 40.7128, lon: -74.0060, name: 'New York' },
+    losAngeles: { lat: 34.0522, lon: -118.2437, name: 'Los Angeles' },
+    miami: { lat: 25.7617, lon: -80.1918, name: 'Miami' },
+    dallas: { lat: 32.7767, lon: -96.7970, name: 'Dallas' },
+    houston: { lat: 29.7604, lon: -95.3698, name: 'Houston' },
+    atlanta: { lat: 33.7490, lon: -84.3880, name: 'Atlanta' },
+    philadelphia: { lat: 39.9526, lon: -75.1652, name: 'Philadelphia' },
+    seattle: { lat: 47.6062, lon: -122.3321, name: 'Seattle' },
+    boston: { lat: 42.3601, lon: -71.0589, name: 'Boston' },
+    sanFrancisco: { lat: 37.7749, lon: -122.4194, name: 'San Francisco' },
+    toronto: { lat: 43.6532, lon: -79.3832, name: 'Toronto' },
+    vancouver: { lat: 49.2827, lon: -123.1207, name: 'Vancouver' },
+    mexicoCity: { lat: 19.4326, lon: -99.1332, name: 'Mexico City' },
+    guadalajara: { lat: 20.6597, lon: -103.3496, name: 'Guadalajara' },
+    monterrey: { lat: 25.6866, lon: -100.3161, name: 'Monterrey' },
+  };
+
+  app.get("/api/weather/:cityKey", async (req, res) => {
+    try {
+      const { cityKey } = req.params;
+      const cityCoords = CITY_COORDINATES[cityKey];
+      
+      if (!cityCoords) {
+        return res.status(404).json({ error: "City not found" });
+      }
+
+      const apiKey = process.env.OPENWEATHER_API_KEY;
+      
+      if (!apiKey) {
+        // Return simulated weather data if no API key (for demo purposes)
+        const baseTemp = getSimulatedTemperature(cityKey);
+        return res.json({
+          city: cityCoords.name,
+          temperature: Math.round((baseTemp - 32) * 5/9),
+          temperatureF: baseTemp,
+          description: 'Clear sky',
+          humidity: 65,
+          feelsLike: Math.round((baseTemp + 3 - 32) * 5/9),
+          feelsLikeF: baseTemp + 3,
+          icon: '01d',
+          simulated: true,
+        });
+      }
+
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${cityCoords.lat}&lon=${cityCoords.lon}&appid=${apiKey}&units=imperial`;
+      const response = await fetch(url);
+      
+      if (!response.ok) {
+        throw new Error('Weather API error');
+      }
+      
+      const data = await response.json();
+      
+      res.json({
+        city: cityCoords.name,
+        temperature: Math.round((data.main.temp - 32) * 5/9),
+        temperatureF: Math.round(data.main.temp),
+        description: data.weather[0].description,
+        humidity: data.main.humidity,
+        feelsLike: Math.round((data.main.feels_like - 32) * 5/9),
+        feelsLikeF: Math.round(data.main.feels_like),
+        icon: data.weather[0].icon,
+      });
+    } catch (error) {
+      console.error("Weather API error:", error);
+      res.status(500).json({ error: "Failed to fetch weather" });
+    }
+  });
+
+  // Game Day alerts - get upcoming matches
+  app.get("/api/gameday/upcoming", async (req, res) => {
+    try {
+      const hours = parseInt(req.query.hours as string) || 24;
+      const matches = await storage.getAllMatches();
+      
+      const now = new Date();
+      const cutoff = new Date(now.getTime() + hours * 60 * 60 * 1000);
+      
+      const upcoming = matches.filter(match => {
+        if (!match.date || !match.time) return false;
+        const matchDateTime = new Date(`${match.date}T${match.time}`);
+        return matchDateTime > now && matchDateTime <= cutoff;
+      }).map(match => {
+        const matchDateTime = new Date(`${match.date}T${match.time}`);
+        return {
+          ...match,
+          hoursUntilKickoff: Math.round((matchDateTime.getTime() - now.getTime()) / (60 * 60 * 1000)),
+        };
+      });
+
+      res.json(upcoming);
+    } catch (error) {
+      console.error("Failed to fetch upcoming matches:", error);
+      res.status(500).json({ error: "Failed to fetch upcoming matches" });
+    }
+  });
+
   return httpServer;
+}
+
+// Helper function for simulated weather when no API key
+function getSimulatedTemperature(cityKey: string): number {
+  const hotCities = ['miami', 'dallas', 'houston', 'mexicoCity', 'monterrey', 'guadalajara'];
+  const mildCities = ['seattle', 'sanFrancisco', 'boston', 'vancouver', 'toronto'];
+  
+  if (hotCities.includes(cityKey)) {
+    return 85 + Math.floor(Math.random() * 15); // 85-100°F
+  } else if (mildCities.includes(cityKey)) {
+    return 65 + Math.floor(Math.random() * 15); // 65-80°F
+  } else {
+    return 75 + Math.floor(Math.random() * 15); // 75-90°F
+  }
 }
