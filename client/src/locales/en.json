@@ -332,6 +332,204 @@
       "guadalajara": "Guadalajara is the heart of Mexican tradition, known for mariachi music, tequila, and colonial architecture.\n\nEstadio Akron features a unique volcano-inspired design. The city offers a festive atmosphere and a deep connection to Mexico's cultural roots.",
       "toronto": "A cosmopolitan metropolis on the shores of Lake Ontario, Toronto is known for its diversity and culture. It will host Canada's opening match.\n\nThe city offers a vibrant arts scene, diverse dining, and iconic landmarks like the CN Tower. BMO Field provides an intimate and energetic soccer experience.",
       "vancouver": "Nestled between mountains and the ocean, Vancouver offers stunning Pacific Northwest scenery and a laid-back vibe.\n\nBC Place features a beautiful retractable roof. Visitors can enjoy outdoor adventures, a thriving food scene, and the natural beauty that surrounds this coastal city."
+    },
+    "vault": {
+      "tabs": {
+        "overview": "Overview",
+        "transit": "Transit",
+        "safety": "Safety",
+        "faith": "Faith",
+        "culture": "Culture"
+      },
+      "labels": {
+        "theTrap": "The Trap",
+        "theSolution": "The Solution",
+        "localTransit": "Local Transit",
+        "watchParties": "Watch Parties",
+        "officialFestival": "Official Festival",
+        "highEnergy": "High Energy",
+        "localSecret": "Local Secret",
+        "internationalHospital": "International Hospital",
+        "emergencyTraumaCenter": "Emergency Trauma Center",
+        "emergency": "Emergency",
+        "tapToCall": "Tap to call in emergency",
+        "openInMaps": "Open in Maps"
+      },
+      "mottos": {
+        "kansasCity": "The Soccer Capital of America & The Heart of the Tournament",
+        "newYork": "The World's Stage - Where Champions Are Made",
+        "losAngeles": "City of Angels - Where Dreams Meet the World's Game",
+        "miami": "Where the World Comes to Play",
+        "dallas": "Big D, Big Dreams - Texas-Sized Soccer",
+        "houston": "Space City Meets the Beautiful Game",
+        "atlanta": "The A-Town of Football - Rise Up!",
+        "philadelphia": "Birthplace of Freedom, Home of Football Passion",
+        "seattle": "The Emerald City's Beautiful Game",
+        "boston": "Where Champions Are Made in New England",
+        "sanFrancisco": "Bay Area Brilliance - Tech Meets Football",
+        "toronto": "Canada's World Cup Capital",
+        "vancouver": "Mountains, Ocean, and the Beautiful Game",
+        "mexicoCity": "The Heart of Football - Aztec Legacy Lives",
+        "guadalajara": "Where Mariachi Meets the Beautiful Game",
+        "monterrey": "The Steel City's Football Fortress"
+      },
+      "welcomeMessages": {
+        "kansasCity": "Welcome to the Heart of America! I see you've arrived in Kansas City. A quick heads-up: Parking at the stadium is extremely restricted today. I have secured your 'Stadium Direct' bus pass and mapped the shuttle pickup at Union Station. Since you have 3 hours before kickoff, would you like the walking route to the WWI Museum Fan Fest for a photo at the Heart Gateway?",
+        "newYork": "Welcome to the Big Apple! I've noted your arrival in New York. The PATH trains and NJ Transit are running extended hours for match days. MetLife Stadium is in New Jersey - I've mapped the fastest route from your location. Would you like me to set a departure reminder accounting for stadium security lines?",
+        "losAngeles": "Welcome to LA! Traffic is always a factor here - I've calculated that leaving 3 hours before kickoff from your location will get you to SoFi Stadium comfortably. The Metro E Line has a direct station at the stadium. Would you like cooling station locations mapped? It's expected to be 85°F at kickoff.",
+        "miami": "Welcome to Miami! The heat and humidity are real - I've mapped cooling stations inside Hard Rock Stadium. Pro tip: The Brightline train from Downtown Miami connects to stadium shuttles. Want me to calculate optimal departure time from your hotel?",
+        "dallas": "Howdy and welcome to Dallas! AT&T Stadium is massive - I recommend arriving 2 hours early to explore. DART Rail connects downtown to Arlington Transit for stadium access. Would you like me to map the best BBQ spots for pre-game fuel?",
+        "houston": "Welcome to Space City! Houston's diverse dining scene is perfect for pre-match meals. The METRORail has extended service on match days. Be prepared for Texas heat - I've located all cooling stations at NRG Stadium.",
+        "atlanta": "Welcome to the ATL! Mercedes-Benz Stadium has the most affordable concessions in American sports. MARTA runs direct to the Dome/GWCC station. Would you like recommendations for the best wings before the match?",
+        "philadelphia": "Welcome to Philly! I see you've arrived in the birthplace of American democracy. SEPTA Regional Rail runs extended service to Lincoln Financial Field. Don't forget to grab a cheesesteak - I can recommend the best spots!",
+        "seattle": "Welcome to the Emerald City! Lumen Field's atmosphere is legendary - it holds the record for crowd noise. Sound Transit Link Light Rail runs directly to the stadium. Would you like coffee shop recommendations for pre-match caffeine?",
+        "boston": "Welcome to Beantown! Gillette Stadium is in Foxborough - I recommend the commuter rail from South Station. Would you like me to map the best clam chowder spots for your World Cup experience?",
+        "sanFrancisco": "Welcome to the Bay Area! Levi's Stadium is in Santa Clara - Caltrain and VTA light rail connect directly. Wine country is just an hour away if you have rest days. Want recommendations for the best tech cafes?",
+        "toronto": "Welcome to Toronto! BMO Field is right downtown - the TTC streetcar stops at the stadium. The diverse dining scene is perfect for international visitors. Would you like poutine recommendations?",
+        "vancouver": "Welcome to Vancouver! BC Place is downtown with excellent SkyTrain access. The mountain and ocean views are stunning - I can map scenic routes to the stadium if you want to walk.",
+        "mexicoCity": "¡Bienvenido a la Ciudad de México! Estadio Azteca is a legendary venue - the Metro has direct access. Be mindful of the altitude (2,240m) - hydrate more than usual. Would you like me to map the best taco stands?",
+        "guadalajara": "¡Bienvenido a Guadalajara! The tequila capital welcomes you. Estadio Akron is accessible by macrobús. Would you like mariachi dinner recommendations before the match?",
+        "monterrey": "¡Bienvenido a Monterrey! The mountain backdrop at Estadio BBVA is spectacular. Metrorrey provides stadium access. The city's cabrito (goat) cuisine is a must-try - want recommendations?"
+      },
+      "logistics": {
+        "kansasCity": {
+          "trap": "Arrowhead Stadium has 22,000 parking spots, but only 4,000 are available for the public. No ticket, no entry to the grounds.",
+          "solution": "Use ConnectKC26. The app links to 215+ motorcoaches running 'Stadium Direct' routes from regional hubs (Lawrence, Overland Park, Independence, Downtown).",
+          "transit": ["KC Streetcar (free) - Power & Light District to Fan Festival at Liberty Memorial", "RideKC Bus - Multiple routes to stadium on match days", "Stadium Direct Shuttles from Union Station"]
+        },
+        "newYork": {
+          "trap": "MetLife Stadium is in East Rutherford, NJ - not Manhattan. Traffic on match days can add 2+ hours to your journey.",
+          "solution": "Take NJ Transit from Penn Station to Meadowlands Station (direct service on match days). Avoid driving.",
+          "transit": ["NJ Transit - Direct trains from Penn Station to Meadowlands", "NY Waterway Ferry + Shuttle combo from Manhattan", "PATH train to Hoboken + NJ Transit connection"]
+        },
+        "losAngeles": {
+          "trap": "LA traffic is legendary. SoFi Stadium has limited parking and can take 90+ minutes to exit after matches.",
+          "solution": "Take the Metro E Line direct to Downtown Inglewood station, then walk or shuttle to stadium.",
+          "transit": ["Metro E Line - Direct to Downtown Inglewood", "Stadium Express Bus from Union Station", "LAX FlyAway + Metro connection"]
+        },
+        "miami": {
+          "trap": "Hard Rock Stadium has limited public transit. Surge pricing on rideshares can exceed $100 after matches.",
+          "solution": "Book rideshares in advance or use official stadium shuttles from Tri-Rail stations.",
+          "transit": ["Brightline + Stadium Shuttle from MiamiCentral", "Tri-Rail to Metrorail to Stadium Express", "Pre-booked rideshare with scheduled pickup"]
+        },
+        "dallas": {
+          "trap": "AT&T Stadium is in Arlington, which has minimal public transit. Parking can exceed $75 on match days.",
+          "solution": "Use DART Rail to downtown, then Arlington TEXRail connection with match-day shuttles.",
+          "transit": ["DART Rail + TEXRail to Arlington", "Official stadium shuttle from downtown Dallas", "Pre-paid parking at remote lots with shuttle"]
+        },
+        "houston": {
+          "trap": "NRG Stadium is surrounded by parking lots, but exits can take 90+ minutes. Heat can exceed 100°F.",
+          "solution": "METRORail runs extended hours on match days. Park at remote lots with shuttle service.",
+          "transit": ["METRORail Red Line to NRG Park station", "Park & Ride from downtown Houston", "Stadium Express from multiple hubs"]
+        },
+        "atlanta": {
+          "trap": "Downtown traffic converges at Mercedes-Benz Stadium. Street parking is almost non-existent.",
+          "solution": "MARTA is your best friend - the Dome/GWCC station is steps from the stadium.",
+          "transit": ["MARTA Rail to Dome/GWCC/Philips Arena/CNN Center", "AtlantaLINK shuttle from Buckhead", "Bike share stations near the stadium"]
+        },
+        "philadelphia": {
+          "trap": "Lincoln Financial Field shares a complex with multiple venues. Event overlap creates parking nightmares.",
+          "solution": "SEPTA Broad Street Line runs to NRG station with expanded match-day service.",
+          "transit": ["SEPTA Broad Street Line to AT&T Station", "SEPTA Regional Rail to Temple University + shuttle", "Official shuttles from Center City"]
+        },
+        "seattle": {
+          "trap": "Lumen Field is downtown, but post-match crowds flood I-5 and I-90. Traffic can be brutal.",
+          "solution": "Sound Transit Link Light Rail runs directly to Stadium Station - by far the easiest option.",
+          "transit": ["Sound Transit Link Light Rail to Stadium Station", "Sounder Train on match days from suburbs", "Water Taxi from West Seattle + walk"]
+        },
+        "boston": {
+          "trap": "Gillette Stadium is 25 miles from downtown Boston in Foxborough. There's no direct subway access.",
+          "solution": "MBTA Commuter Rail runs match-day service to Foxboro Station, steps from the stadium.",
+          "transit": ["MBTA Commuter Rail to Foxboro Station", "Official coaches from South Station", "Pre-booked rideshare with return scheduled"]
+        },
+        "sanFrancisco": {
+          "trap": "Levi's Stadium is in Santa Clara (45+ miles from SF). BART doesn't go there directly.",
+          "solution": "Caltrain + VTA Light Rail is the winning combo. Stadium Express buses also run from multiple cities.",
+          "transit": ["Caltrain to Mountain View + VTA Light Rail", "Capitol Corridor Amtrak + VTA connection", "Stadium Express from SF, Oakland, San Jose"]
+        },
+        "toronto": {
+          "trap": "BMO Field is at Exhibition Place. Gardiner Expressway traffic makes driving unpredictable.",
+          "solution": "TTC streetcar (509/510) runs directly to Exhibition. It's the easiest stadium access in North America.",
+          "transit": ["TTC Streetcar 509/510 to Exhibition", "UP Express to Union + Streetcar", "GO Transit from suburbs to Union Station"]
+        },
+        "vancouver": {
+          "trap": "BC Place is downtown, but bridges into Vancouver create bottlenecks. Parking is expensive.",
+          "solution": "SkyTrain is fast and reliable - Stadium-Chinatown station is at the stadium door.",
+          "transit": ["SkyTrain Expo/Millennium Line to Stadium-Chinatown", "SeaBus from North Vancouver + SkyTrain", "Canada Line from YVR Airport"]
+        },
+        "mexicoCity": {
+          "trap": "Estadio Azteca is in south Mexico City. Traffic in the world's 5th-largest metro is intense.",
+          "solution": "Metro Line 2 goes directly to Tasqueña, then Tren Ligero to Estadio Azteca station.",
+          "transit": ["Metro Line 2 + Tren Ligero to Estadio Azteca", "Metrobús Line 1 to Huipulco + walk", "Official stadium shuttles from Centro"]
+        },
+        "guadalajara": {
+          "trap": "Estadio Akron is outside the city center. Taxis can surge 3-4x on match days.",
+          "solution": "Macrobús Line 2 runs to Arcos de Zapopan - then shuttle or short taxi to stadium.",
+          "transit": ["Macrobús Line 2 to Arcos de Zapopan", "Official shuttles from Centro Histórico", "Uber/DiDi with pre-scheduled pickup"]
+        },
+        "monterrey": {
+          "trap": "Estadio BBVA is in Guadalupe. City traffic can be heavy, especially on Sundays.",
+          "solution": "Metrorrey Line 2 + stadium shuttle is the smart move. Pre-book taxis for return.",
+          "transit": ["Metrorrey Line 2 to General I. Zaragoza + shuttle", "Ecovía bus rapid transit", "Pre-booked taxi with return trip"]
+        }
+      },
+      "safety": {
+        "internationalHospital": "International Hospital",
+        "emergencyHub": "Emergency Trauma Center",
+        "call911": "Emergency: 911",
+        "call065": "Emergency: 065 (Mexico)",
+        "call112": "Emergency: 112"
+      },
+      "spiritual": {
+        "types": {
+          "protestant": "Protestant Church",
+          "catholic": "Catholic Cathedral",
+          "islamic": "Mosque / Islamic Center",
+          "jewish": "Synagogue / Jewish Center",
+          "chapel": "Stadium Chapel"
+        }
+      },
+      "watchParty": {
+        "types": {
+          "vibe": "Official Festival",
+          "energy": "High Energy",
+          "local": "Local Secret"
+        }
+      },
+      "comfort": {
+        "categories": {
+          "bbqTrail": "BBQ Trail",
+          "jazzNightlife": "Jazz & Nightlife",
+          "iconicEats": "Iconic NYC Eats",
+          "lateNight": "Late Night",
+          "beachLife": "Beach Life",
+          "latinFlavors": "Latin Flavors",
+          "texMex": "Tex-Mex Trail",
+          "honkyTonks": "Honky Tonks",
+          "spaceCity": "Space City Eats",
+          "breweryScene": "Brewery Scene",
+          "southernSoul": "Southern Soul Food",
+          "musicVenues": "Music Venues",
+          "cubanCuisine": "Cuban Cuisine",
+          "artDeco": "Art Deco District",
+          "seafood": "Seafood",
+          "craftBeer": "Craft Beer",
+          "coffeeTrail": "Coffee Trail",
+          "farmToTable": "Farm to Table",
+          "phillyCheesesteak": "Philly Cheesesteaks",
+          "historyTrail": "History Trail",
+          "wineCountry": "Wine Country",
+          "techCulture": "Tech Culture",
+          "diverseDining": "Diverse Dining",
+          "waterfront": "Waterfront",
+          "mexicanStreetFood": "Mexican Street Food",
+          "historicCenters": "Historic Centers",
+          "tequilaTrail": "Tequila Trail",
+          "mariachiBars": "Mariachi Bars",
+          "mountainViews": "Mountain Views",
+          "carneAsada": "Carne Asada Trail"
+        }
+      }
     }
   },
   "menu": {
