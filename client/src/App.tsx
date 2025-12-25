@@ -33,6 +33,7 @@ import TournamentOdds from "@/pages/TournamentOdds";
 import BracketChallenge from "@/pages/BracketChallenge";
 import Pricing from "@/pages/Pricing";
 import WatchHubs from "@/pages/WatchHubs";
+import AdminVenues from "@/pages/AdminVenues";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -65,6 +66,7 @@ function Router() {
       <Route path="/bracket" component={BracketChallenge} />
       <Route path="/pricing" component={Pricing} />
       <Route path="/watch-hubs" component={WatchHubs} />
+      <Route path="/admin/venues" component={AdminVenues} />
       <Route component={NotFound} />
     </Switch>
   );
