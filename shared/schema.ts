@@ -425,3 +425,66 @@ export const insertLeadSchema = createInsertSchema(leads).omit({
 
 export type InsertLead = z.infer<typeof insertLeadSchema>;
 export type Lead = typeof leads.$inferSelect;
+
+// Watch Hub Venues - approved watch party locations
+export const watchHubVenues = pgTable("watch_hub_venues", {
+  id: serial("id").primaryKey(),
+  countryCode: text("country_code").notNull(), // ISO country code (e.g., "US", "BR", "GB")
+  countryName: text("country_name").notNull(),
+  city: text("city").notNull(),
+  venueName: text("venue_name").notNull(),
+  venueType: text("venue_type").notNull(), // "bar", "fan_zone", "stadium", "restaurant", "public_space"
+  address: text("address"),
+  capacity: text("capacity"),
+  mapsUrl: text("maps_url"),
+  website: text("website"),
+  phone: text("phone"),
+  description: text("description"),
+  isHostCity: integer("is_host_city").default(0), // 1 if this is a host city watch party
+  hostCityKey: text("host_city_key"), // e.g., "kansasCity", "newYork" for host cities
+  isOfficial: integer("is_official").default(0), // 1 if official FIFA Fan Festival
+  isVerified: integer("is_verified").default(0), // 1 if verified by admin
+  submittedBy: text("submitted_by"), // email of submitter if crowdsourced
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertWatchHubVenueSchema = createInsertSchema(watchHubVenues).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertWatchHubVenue = z.infer<typeof insertWatchHubVenueSchema>;
+export type WatchHubVenue = typeof watchHubVenues.$inferSelect;
+
+// Watch Hub Submissions - pending user submissions awaiting approval
+export const watchHubSubmissions = pgTable("watch_hub_submissions", {
+  id: serial("id").primaryKey(),
+  countryCode: text("country_code").notNull(),
+  countryName: text("country_name").notNull(),
+  city: text("city").notNull(),
+  venueName: text("venue_name").notNull(),
+  venueType: text("venue_type").notNull(),
+  address: text("address"),
+  capacity: text("capacity"),
+  mapsUrl: text("maps_url"),
+  website: text("website"),
+  phone: text("phone"),
+  description: text("description"),
+  isHostCity: integer("is_host_city").default(0),
+  hostCityKey: text("host_city_key"),
+  submitterName: text("submitter_name").notNull(),
+  submitterEmail: text("submitter_email").notNull(),
+  status: text("status").notNull().default("pending"), // "pending", "approved", "rejected"
+  reviewedAt: timestamp("reviewed_at"),
+  reviewNotes: text("review_notes"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const insertWatchHubSubmissionSchema = createInsertSchema(watchHubSubmissions).omit({
+  id: true,
+  createdAt: true,
+  reviewedAt: true,
+});
+
+export type InsertWatchHubSubmission = z.infer<typeof insertWatchHubSubmissionSchema>;
+export type WatchHubSubmission = typeof watchHubSubmissions.$inferSelect;
