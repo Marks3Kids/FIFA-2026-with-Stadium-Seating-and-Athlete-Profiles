@@ -89,7 +89,7 @@ export default function Cities() {
                       <h3 className="text-xl font-bold text-white leading-none mb-1">{t(`cities.cityNames.${city.key}`)}</h3>
                       <p className="text-xs text-gray-300">{t(`cities.stadiums.${city.key}`)} • {city.capacity}</p>
                       {vault && (
-                        <p className="text-[10px] text-primary/80 mt-1 italic">"{vault.motto}"</p>
+                        <p className="text-[10px] text-primary/80 mt-1 italic">"{t(`cities.vault.mottos.${city.key}`, vault.motto)}"</p>
                       )}
                     </div>
                   </div>
@@ -103,18 +103,18 @@ export default function Cities() {
                       </div>
                       <DialogTitle className="text-2xl font-display font-bold">{t(`cities.cityNames.${city.key}`)}</DialogTitle>
                       <DialogDescription className="text-muted-foreground text-sm">
-                        {vault?.motto}
+                        {t(`cities.vault.mottos.${city.key}`, vault?.motto || '')}
                       </DialogDescription>
                     </DialogHeader>
                   </div>
 
                   <Tabs defaultValue="overview" className="flex-1 flex flex-col overflow-hidden">
                     <TabsList className="grid grid-cols-5 mx-4 mt-2 bg-white/5">
-                      <TabsTrigger value="overview" className="text-xs">Overview</TabsTrigger>
-                      <TabsTrigger value="logistics" className="text-xs">Transit</TabsTrigger>
-                      <TabsTrigger value="safety" className="text-xs">Safety</TabsTrigger>
-                      <TabsTrigger value="spiritual" className="text-xs">Faith</TabsTrigger>
-                      <TabsTrigger value="comfort" className="text-xs">Culture</TabsTrigger>
+                      <TabsTrigger value="overview" className="text-xs">{t("cities.vault.tabs.overview")}</TabsTrigger>
+                      <TabsTrigger value="logistics" className="text-xs">{t("cities.vault.tabs.transit")}</TabsTrigger>
+                      <TabsTrigger value="safety" className="text-xs">{t("cities.vault.tabs.safety")}</TabsTrigger>
+                      <TabsTrigger value="spiritual" className="text-xs">{t("cities.vault.tabs.faith")}</TabsTrigger>
+                      <TabsTrigger value="comfort" className="text-xs">{t("cities.vault.tabs.culture")}</TabsTrigger>
                     </TabsList>
 
                     <ScrollArea className="flex-1 p-4">
@@ -138,7 +138,7 @@ export default function Cities() {
                           <div className="bg-primary/10 rounded-xl p-4 border border-primary/20">
                             <div className="flex items-center space-x-2 mb-3 text-primary">
                               <Users className="w-4 h-4" />
-                              <span className="text-sm font-bold uppercase tracking-wide">Watch Parties</span>
+                              <span className="text-sm font-bold uppercase tracking-wide">{t("cities.vault.labels.watchParties")}</span>
                             </div>
                             {vault.watchParties.map((wp, idx) => (
                               <a
@@ -150,7 +150,7 @@ export default function Cities() {
                               >
                                 <div>
                                   <p className="text-sm font-bold text-white">{wp.name}</p>
-                                  <p className="text-xs text-muted-foreground">{wp.type === 'vibe' ? '🎉 Official Festival' : wp.type === 'energy' ? '⚡ High Energy' : '🏠 Local Secret'} • {wp.capacity}</p>
+                                  <p className="text-xs text-muted-foreground">{wp.type === 'vibe' ? `🎉 ${t("cities.vault.labels.officialFestival")}` : wp.type === 'energy' ? `⚡ ${t("cities.vault.labels.highEnergy")}` : `🏠 ${t("cities.vault.labels.localSecret")}`} • {wp.capacity}</p>
                                 </div>
                                 <ExternalLink className="w-4 h-4 text-primary flex-shrink-0" />
                               </a>
@@ -165,29 +165,29 @@ export default function Cities() {
                             <div className="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
                               <div className="flex items-center space-x-2 mb-2 text-red-400">
                                 <Info className="w-4 h-4" />
-                                <span className="text-sm font-bold uppercase tracking-wide">The Trap</span>
+                                <span className="text-sm font-bold uppercase tracking-wide">{t("cities.vault.labels.theTrap")}</span>
                               </div>
-                              <p className="text-sm text-gray-300">{vault.logistics.trap}</p>
+                              <p className="text-sm text-gray-300">{t(`cities.vault.logistics.${city.key}.trap`, vault.logistics.trap)}</p>
                             </div>
 
                             <div className="bg-green-500/10 rounded-xl p-4 border border-green-500/20">
                               <div className="flex items-center space-x-2 mb-2 text-green-400">
                                 <Shield className="w-4 h-4" />
-                                <span className="text-sm font-bold uppercase tracking-wide">The Solution</span>
+                                <span className="text-sm font-bold uppercase tracking-wide">{t("cities.vault.labels.theSolution")}</span>
                               </div>
-                              <p className="text-sm text-gray-300">{vault.logistics.solution}</p>
+                              <p className="text-sm text-gray-300">{t(`cities.vault.logistics.${city.key}.solution`, vault.logistics.solution)}</p>
                             </div>
 
                             <div className="bg-white/5 rounded-xl p-4 border border-white/5">
                               <div className="flex items-center space-x-2 mb-3 text-accent">
                                 <Train className="w-4 h-4" />
-                                <span className="text-sm font-bold uppercase tracking-wide">Local Transit</span>
+                                <span className="text-sm font-bold uppercase tracking-wide">{t("cities.vault.labels.localTransit")}</span>
                               </div>
                               <ul className="space-y-2">
                                 {vault.logistics.localTransit.map((transit, idx) => (
                                   <li key={idx} className="text-sm text-gray-300 flex items-start">
                                     <span className="w-1.5 h-1.5 rounded-full bg-primary/50 mr-2 mt-1.5 flex-shrink-0"></span>
-                                    {transit}
+                                    {t(`cities.vault.logistics.${city.key}.transit.${idx}`, transit)}
                                   </li>
                                 ))}
                               </ul>
@@ -202,7 +202,7 @@ export default function Cities() {
                             <div className="bg-blue-500/10 rounded-xl p-4 border border-blue-500/20">
                               <div className="flex items-center space-x-2 mb-2 text-blue-400">
                                 <Heart className="w-4 h-4" />
-                                <span className="text-sm font-bold uppercase tracking-wide">International Hospital</span>
+                                <span className="text-sm font-bold uppercase tracking-wide">{t("cities.vault.labels.internationalHospital")}</span>
                               </div>
                               <a
                                 href={vault.safety.internationalHospital.mapsUrl}
@@ -213,7 +213,7 @@ export default function Cities() {
                                 <p className="text-sm font-bold text-white">{vault.safety.internationalHospital.name}</p>
                                 <p className="text-xs text-muted-foreground">{vault.safety.internationalHospital.specialty}</p>
                                 <p className="text-xs text-blue-400 mt-1 flex items-center gap-1">
-                                  <ExternalLink className="w-3 h-3" /> Open in Maps
+                                  <ExternalLink className="w-3 h-3" /> {t("cities.vault.labels.openInMaps")}
                                 </p>
                               </a>
                             </div>
@@ -221,7 +221,7 @@ export default function Cities() {
                             <div className="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
                               <div className="flex items-center space-x-2 mb-2 text-red-400">
                                 <Shield className="w-4 h-4" />
-                                <span className="text-sm font-bold uppercase tracking-wide">Emergency Trauma Center</span>
+                                <span className="text-sm font-bold uppercase tracking-wide">{t("cities.vault.labels.emergencyTraumaCenter")}</span>
                               </div>
                               <a
                                 href={vault.safety.emergencyHub.mapsUrl}
@@ -232,14 +232,14 @@ export default function Cities() {
                                 <p className="text-sm font-bold text-white">{vault.safety.emergencyHub.name}</p>
                                 <p className="text-xs text-muted-foreground">{vault.safety.emergencyHub.description}</p>
                                 <p className="text-xs text-red-400 mt-1 flex items-center gap-1">
-                                  <ExternalLink className="w-3 h-3" /> Open in Maps
+                                  <ExternalLink className="w-3 h-3" /> {t("cities.vault.labels.openInMaps")}
                                 </p>
                               </a>
                             </div>
 
                             <div className="bg-white/5 rounded-xl p-4 border border-white/5 text-center">
-                              <p className="text-lg font-bold text-white">Emergency: {vault.safety.emergencyNumber}</p>
-                              <p className="text-xs text-muted-foreground">Tap to call in emergency</p>
+                              <p className="text-lg font-bold text-white">{t("cities.vault.labels.emergency")}: {vault.safety.emergencyNumber}</p>
+                              <p className="text-xs text-muted-foreground">{t("cities.vault.labels.tapToCall")}</p>
                             </div>
                           </>
                         )}
@@ -260,7 +260,7 @@ export default function Cities() {
                                 <p className="text-sm font-bold text-white">{service.name}</p>
                                 <p className="text-xs text-muted-foreground mt-1">{service.description}</p>
                                 <p className="text-xs text-primary mt-2 flex items-center gap-1">
-                                  <ExternalLink className="w-3 h-3" /> Open in Maps
+                                  <ExternalLink className="w-3 h-3" /> {t("cities.vault.labels.openInMaps")}
                                 </p>
                               </div>
                             </div>
