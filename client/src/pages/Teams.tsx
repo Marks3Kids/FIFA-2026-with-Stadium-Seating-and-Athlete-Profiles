@@ -1,5 +1,5 @@
 import { Layout } from "@/components/Layout";
-import { TeamDetailModal } from "@/components/TeamDetailModal";
+import { TeamDetailModal, teamSeasonData } from "@/components/TeamDetailModal";
 import { Search, Users, Trophy } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
@@ -123,7 +123,11 @@ export default function Teams() {
               <div className="flex items-center gap-4 text-xs text-gray-500 border-t border-gray-100 pt-3">
                 <div>
                   <span className="font-medium">{t("teams.record2025")}:</span>{" "}
-                  <span className="text-gray-700">{team.record === "TBD" ? t("status.tbd") : team.record}</span>
+                  <span className="text-gray-700">
+                    {teamSeasonData[team.name] 
+                      ? `${teamSeasonData[team.name].wins}W-${teamSeasonData[team.name].ties}T-${teamSeasonData[team.name].losses}L`
+                      : t("status.tbd")}
+                  </span>
                 </div>
               </div>
 

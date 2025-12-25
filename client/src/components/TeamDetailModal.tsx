@@ -20,7 +20,7 @@ interface TeamDetailModalProps {
   onClose: () => void;
 }
 
-const teamSeasonData: Record<string, {
+export const teamSeasonData: Record<string, {
   wins: number;
   ties: number;
   losses: number;
