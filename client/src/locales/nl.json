@@ -333,7 +333,7 @@
         "transit": "Vervoer",
         "safety": "Veiligheid",
         "faith": "Geloof",
-        "culture": "Cultuur"
+        "culture": "Keuken"
       },
       "labels": {
         "theTrap": "De Val",
@@ -366,6 +366,72 @@
         "mexicoCity": "Het Hart van Voetbal - Het Azteekse Erfgoed Leeft",
         "guadalajara": "Waar Mariachi de Mooie Sport Ontmoet",
         "monterrey": "De Voetbalvesting van de Staalstad"
+      },
+      "logistics": {
+        "kansasCity": {
+          "trap": "Arrowhead Stadium heeft 22.000 parkeerplaatsen, maar slechts 4.000 zijn beschikbaar voor het publiek. Geen ticket, geen toegang.",
+          "solution": "Gebruik ConnectKC26. De app verbindt meer dan 215 bussen met 'Stadium Direct'-routes vanaf regionale centra."
+        },
+        "newYork": {
+          "trap": "MetLife Stadium is in East Rutherford, NJ - niet in Manhattan. Verkeer op wedstrijddagen kan meer dan 2 uur toevoegen.",
+          "solution": "Neem NJ Transit vanaf Penn Station naar Meadowlands Station (directe service op wedstrijddagen). Vermijd autorijden."
+        },
+        "losAngeles": {
+          "trap": "LA-verkeer is legendarisch. SoFi Stadium heeft beperkte parkeerplaatsen en het kan meer dan 90 minuten duren om te vertrekken na wedstrijden.",
+          "solution": "Neem de Metro E-lijn direct naar Downtown Inglewood, dan lopen of shuttle naar het stadion."
+        },
+        "miami": {
+          "trap": "Hard Rock Stadium heeft beperkt openbaar vervoer. Rideshare-prijzen kunnen na wedstrijden boven $100 uitkomen.",
+          "solution": "Boek rideshares van tevoren of gebruik officiële stadionshuttles vanaf Tri-Rail-stations."
+        },
+        "dallas": {
+          "trap": "AT&T Stadium is in Arlington, dat minimaal openbaar vervoer heeft. Parkeren kan op wedstrijddagen meer dan $75 kosten.",
+          "solution": "Gebruik DART Rail naar het centrum, dan Arlington TEXRail-verbinding met wedstrijddag-shuttles."
+        },
+        "houston": {
+          "trap": "NRG Stadium is ver van het centrum. De Texas-hitte kan extreem zijn - verwacht temperaturen boven 35°C.",
+          "solution": "Gebruik METRORail naar NRG Park. Hydrateer voortdurend en gebruik de koelstations in het stadion."
+        },
+        "atlanta": {
+          "trap": "De congestie rond Mercedes-Benz Stadium is intens. Parkeerplaatsen vullen zich snel.",
+          "solution": "MARTA is uw beste optie - neem de trein naar station Dome/GWCC/Philips Arena/CNN Center."
+        },
+        "philadelphia": {
+          "trap": "Lincoln Financial Field is in het sportcomplex ten zuiden van Philadelphia. Het I-95-verkeer kan verschrikkelijk zijn.",
+          "solution": "Neem SEPTA Broad Street Line naar AT&T Station naast het stadion."
+        },
+        "seattle": {
+          "trap": "Seattle-regen is echt - bereid u voor op nat weer. Parkeren bij Lumen Field is beperkt en duur.",
+          "solution": "Gebruik Sound Transit Link Light Rail - Station Stadium is op loopafstand van de ingang."
+        },
+        "boston": {
+          "trap": "Gillette Stadium is in Foxborough, 50 km ten zuiden van Boston. Geen regulier openbaar vervoer.",
+          "solution": "Neem de MBTA Commuter Rail vanaf South Station met speciale service op wedstrijddagen."
+        },
+        "sanFrancisco": {
+          "trap": "Levi's Stadium is in Santa Clara, niet in San Francisco. De reis kan meer dan 1 uur duren vanaf SF.",
+          "solution": "Neem Caltrain naar Santa Clara, dan VTA Light Rail naar Great America."
+        },
+        "toronto": {
+          "trap": "BMO Field heeft beperkte verkeerscapaciteit. Wegafsluitingen op wedstrijddagen kunnen vertragingen veroorzaken.",
+          "solution": "Gebruik TTC - tram Lijn 511 brengt u direct voor het stadion. Kom vroeg."
+        },
+        "vancouver": {
+          "trap": "BC Place is in het centrum maar parkeren is zeer beperkt en duur.",
+          "solution": "Gebruik SkyTrain - stations Stadium-Chinatown of Main Street zijn op loopafstand."
+        },
+        "mexicoCity": {
+          "trap": "Estadio Azteca ligt op 2.240m hoogte. De ijle lucht kan vermoeidheid en kortademigheid veroorzaken.",
+          "solution": "Gebruik Metro Lijn 2 naar Tasqueña, dan Tren Ligero. Drink extra vanwege de hoogte."
+        },
+        "guadalajara": {
+          "trap": "Estadio Akron ligt aan de rand van de stad. Taxi's kunnen toeristen te veel in rekening brengen.",
+          "solution": "Gebruik de Macrobús-lijn die het centrum met het stadion verbindt. Spreek de prijs af voordat u instapt."
+        },
+        "monterrey": {
+          "trap": "Estadio BBVA is in Guadalupe. De zomerhitte kan intens zijn met temperaturen boven 38°C.",
+          "solution": "Gebruik Metrorrey Lijn 1 naar Exposición, dan shuttle naar het stadion. Neem zonnebrand en water mee."
+        }
       }
     }
   },

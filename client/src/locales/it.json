@@ -333,7 +333,7 @@
         "transit": "Trasporto",
         "safety": "Sicurezza",
         "faith": "Fede",
-        "culture": "Cultura"
+        "culture": "Cucina"
       },
       "labels": {
         "theTrap": "La Trappola",
@@ -366,6 +366,72 @@
         "mexicoCity": "Il Cuore del Calcio - L'Eredità Azteca Vive",
         "guadalajara": "Dove il Mariachi Incontra il Bel Gioco",
         "monterrey": "La Fortezza del Calcio della Città dell'Acciaio"
+      },
+      "logistics": {
+        "kansasCity": {
+          "trap": "L'Arrowhead Stadium ha 22.000 posti auto, ma solo 4.000 sono disponibili al pubblico. Senza biglietto, nessun ingresso.",
+          "solution": "Usa ConnectKC26. L'app collega oltre 215 autobus con percorsi 'Stadium Direct' dai centri regionali."
+        },
+        "newYork": {
+          "trap": "Il MetLife Stadium è a East Rutherford, NJ - non a Manhattan. Il traffico nei giorni di partita può aggiungere oltre 2 ore.",
+          "solution": "Prendi NJ Transit da Penn Station a Meadowlands Station (servizio diretto nei giorni di partita). Evita di guidare."
+        },
+        "losAngeles": {
+          "trap": "Il traffico di LA è leggendario. SoFi Stadium ha parcheggio limitato e può richiedere oltre 90 minuti per uscire dopo le partite.",
+          "solution": "Prendi la Metro Linea E direttamente a Downtown Inglewood, poi cammina o prendi la navetta per lo stadio."
+        },
+        "miami": {
+          "trap": "Hard Rock Stadium ha trasporto pubblico limitato. I prezzi del rideshare possono superare 100$ dopo le partite.",
+          "solution": "Prenota rideshare in anticipo o usa le navette ufficiali dalle stazioni Tri-Rail."
+        },
+        "dallas": {
+          "trap": "L'AT&T Stadium è ad Arlington, che ha trasporto pubblico minimo. Il parcheggio può superare 75$ nei giorni di partita.",
+          "solution": "Usa DART Rail verso il centro, poi connessione Arlington TEXRail con navette nei giorni di partita."
+        },
+        "houston": {
+          "trap": "NRG Stadium è lontano dal centro. Il caldo del Texas può essere estremo - aspettati temperature oltre 35°C.",
+          "solution": "Usa METRORail verso NRG Park. Idratati costantemente e usa le stazioni di raffreddamento nello stadio."
+        },
+        "atlanta": {
+          "trap": "La congestione intorno al Mercedes-Benz Stadium è intensa. I parcheggi si riempiono rapidamente.",
+          "solution": "MARTA è la tua migliore opzione - prendi il treno fino alla stazione Dome/GWCC/Philips Arena/CNN Center."
+        },
+        "philadelphia": {
+          "trap": "Lincoln Financial Field è nel complesso sportivo a sud di Philadelphia. Il traffico della I-95 può essere terribile.",
+          "solution": "Prendi SEPTA Broad Street Line fino alla stazione AT&T, accanto allo stadio."
+        },
+        "seattle": {
+          "trap": "La pioggia di Seattle è reale - preparati al tempo umido. Il parcheggio vicino al Lumen Field è limitato e costoso.",
+          "solution": "Usa Sound Transit Link Light Rail - la stazione Stadium è a pochi passi dall'ingresso."
+        },
+        "boston": {
+          "trap": "Gillette Stadium è a Foxborough, 50 km a sud di Boston. Non c'è trasporto pubblico regolare.",
+          "solution": "Prendi il treno MBTA Commuter Rail da South Station con servizio speciale nei giorni di partita."
+        },
+        "sanFrancisco": {
+          "trap": "Levi's Stadium è a Santa Clara, non a San Francisco. Il viaggio può richiedere oltre 1 ora da SF.",
+          "solution": "Prendi Caltrain fino a Santa Clara, poi VTA Light Rail fino a Great America."
+        },
+        "toronto": {
+          "trap": "BMO Field ha capacità di traffico limitata. Le chiusure stradali nei giorni di partita possono causare ritardi.",
+          "solution": "Usa TTC - il tram Linea 511 ti lascia davanti allo stadio. Arriva presto."
+        },
+        "vancouver": {
+          "trap": "BC Place è in centro ma il parcheggio è molto limitato e costoso.",
+          "solution": "Usa SkyTrain - le stazioni Stadium-Chinatown o Main Street sono a breve distanza a piedi."
+        },
+        "mexicoCity": {
+          "trap": "L'Estadio Azteca è a 2.240m di altitudine. L'aria rarefatta può causare affaticamento e mancanza di respiro.",
+          "solution": "Usa la Metro Linea 2 fino a Tasqueña, poi Tren Ligero. Idratati di più per l'altitudine."
+        },
+        "guadalajara": {
+          "trap": "L'Estadio Akron è in periferia. I taxi possono sovracaricare i turisti.",
+          "solution": "Usa la linea Macrobús che collega il centro allo stadio. Concorda il prezzo prima di salire sul taxi."
+        },
+        "monterrey": {
+          "trap": "L'Estadio BBVA è a Guadalupe. Il caldo estivo può essere intenso con temperature oltre 38°C.",
+          "solution": "Usa Metrorrey Linea 1 fino a Exposición, poi navetta allo stadio. Porta crema solare e acqua."
+        }
       }
     }
   },
