@@ -3464,6 +3464,48 @@
       "africa": "Afrika",
       "asia": "Asien",
       "oceania": "Ozeanien"
+    },
+    "submission": {
+      "suggestVenue": "Ort Vorschlagen",
+      "dialogTitle": "Public Viewing Ort Vorschlagen",
+      "venueCategory": "Ortstyp",
+      "countryFanZone": "Länder-Fanzone",
+      "hostCityWatchParty": "Gastgeberstadt-Event",
+      "selectHostCity": "Gastgeberstadt wählen",
+      "countryCode": "Ländercode",
+      "countryCodePlaceholder": "US, BR, DE...",
+      "countryName": "Ländername",
+      "city": "Stadt",
+      "cityPlaceholder": "Stadtname",
+      "venueName": "Ortsname",
+      "venueNamePlaceholder": "Stadion, Bar oder Ortsname",
+      "venueType": "Ortstyp",
+      "venueTypes": {
+        "bar": "Sportbar",
+        "fan_zone": "Fanzone / Festival",
+        "stadium": "Stadion / Arena",
+        "restaurant": "Restaurant",
+        "public_space": "Öffentlicher Platz"
+      },
+      "capacity": "Kapazität",
+      "phone": "Telefon",
+      "address": "Adresse",
+      "addressPlaceholder": "Adresse",
+      "mapsUrl": "Google Maps URL",
+      "mapsUrlPlaceholder": "https://maps.google.com/...",
+      "website": "Website",
+      "websitePlaceholder": "https://...",
+      "description": "Beschreibung",
+      "descriptionPlaceholder": "Kurze Beschreibung des Ortes...",
+      "yourInfo": "Ihre Daten (nur zur Verifizierung)",
+      "yourName": "Ihr Name",
+      "yourEmail": "Ihre E-Mail",
+      "submit": "Absenden",
+      "submitting": "Wird gesendet...",
+      "thankYou": "Danke!",
+      "pendingReview": "Ihr Vorschlag wird geprüft.",
+      "submissionFailed": "Fehler. Bitte erneut versuchen.",
+      "required": "*"
     }
   }
 }

@@ -3464,6 +3464,48 @@
       "africa": "أفريقيا",
       "asia": "آسيا",
       "oceania": "أوقيانوسيا"
+    },
+    "submission": {
+      "suggestVenue": "اقترح مكاناً",
+      "dialogTitle": "اقترح مكان مشاهدة",
+      "venueCategory": "نوع المكان",
+      "countryFanZone": "منطقة مشجعي الدولة",
+      "hostCityWatchParty": "حفلة في المدينة المضيفة",
+      "selectHostCity": "اختر المدينة المضيفة",
+      "countryCode": "رمز الدولة",
+      "countryCodePlaceholder": "US, BR, SA...",
+      "countryName": "اسم الدولة",
+      "city": "المدينة",
+      "cityPlaceholder": "اسم المدينة",
+      "venueName": "اسم المكان",
+      "venueNamePlaceholder": "ملعب أو بار أو اسم المكان",
+      "venueType": "نوع المكان",
+      "venueTypes": {
+        "bar": "بار رياضي",
+        "fan_zone": "منطقة المشجعين / مهرجان",
+        "stadium": "ملعب / ساحة",
+        "restaurant": "مطعم",
+        "public_space": "مساحة عامة"
+      },
+      "capacity": "السعة",
+      "phone": "الهاتف",
+      "address": "العنوان",
+      "addressPlaceholder": "العنوان",
+      "mapsUrl": "رابط خرائط جوجل",
+      "mapsUrlPlaceholder": "https://maps.google.com/...",
+      "website": "الموقع",
+      "websitePlaceholder": "https://...",
+      "description": "الوصف",
+      "descriptionPlaceholder": "وصف مختصر للمكان...",
+      "yourInfo": "معلوماتك (للتحقق فقط)",
+      "yourName": "اسمك",
+      "yourEmail": "بريدك الإلكتروني",
+      "submit": "إرسال",
+      "submitting": "جاري الإرسال...",
+      "thankYou": "شكراً لك!",
+      "pendingReview": "اقتراحك قيد المراجعة.",
+      "submissionFailed": "فشل الإرسال. يرجى المحاولة مرة أخرى.",
+      "required": "*"
     }
   }
 }

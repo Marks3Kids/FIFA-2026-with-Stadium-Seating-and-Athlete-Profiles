@@ -3464,6 +3464,48 @@
       "africa": "Africa",
       "asia": "Asia",
       "oceania": "Oceania"
+    },
+    "submission": {
+      "suggestVenue": "Suggerisci un Locale",
+      "dialogTitle": "Suggerisci un Locale per Vedere le Partite",
+      "venueCategory": "Tipo di Locale",
+      "countryFanZone": "Fan Zone del Paese",
+      "hostCityWatchParty": "Festa nella Città Ospitante",
+      "selectHostCity": "Seleziona la città ospitante",
+      "countryCode": "Codice Paese",
+      "countryCodePlaceholder": "US, BR, IT...",
+      "countryName": "Nome del Paese",
+      "city": "Città",
+      "cityPlaceholder": "Nome della città",
+      "venueName": "Nome del Locale",
+      "venueNamePlaceholder": "Stadio, bar o nome del locale",
+      "venueType": "Tipo di Locale",
+      "venueTypes": {
+        "bar": "Bar Sportivo",
+        "fan_zone": "Fan Zone / Festival",
+        "stadium": "Stadio / Arena",
+        "restaurant": "Ristorante",
+        "public_space": "Spazio Pubblico"
+      },
+      "capacity": "Capacità",
+      "phone": "Telefono",
+      "address": "Indirizzo",
+      "addressPlaceholder": "Indirizzo",
+      "mapsUrl": "URL Google Maps",
+      "mapsUrlPlaceholder": "https://maps.google.com/...",
+      "website": "Sito Web",
+      "websitePlaceholder": "https://...",
+      "description": "Descrizione",
+      "descriptionPlaceholder": "Breve descrizione del locale...",
+      "yourInfo": "I tuoi dati (solo per verifica)",
+      "yourName": "Il Tuo Nome",
+      "yourEmail": "La Tua Email",
+      "submit": "Invia",
+      "submitting": "Invio in corso...",
+      "thankYou": "Grazie!",
+      "pendingReview": "Il tuo suggerimento è in attesa di revisione.",
+      "submissionFailed": "Invio fallito. Riprova.",
+      "required": "*"
     }
   }
 }

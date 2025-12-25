@@ -3464,6 +3464,48 @@
       "africa": "アフリカ",
       "asia": "アジア",
       "oceania": "オセアニア"
+    },
+    "submission": {
+      "suggestVenue": "会場を提案",
+      "dialogTitle": "観戦スポットを提案",
+      "venueCategory": "会場タイプ",
+      "countryFanZone": "国のファンゾーン",
+      "hostCityWatchParty": "開催都市のイベント",
+      "selectHostCity": "開催都市を選択",
+      "countryCode": "国コード",
+      "countryCodePlaceholder": "US, BR, JP...",
+      "countryName": "国名",
+      "city": "都市",
+      "cityPlaceholder": "都市名",
+      "venueName": "会場名",
+      "venueNamePlaceholder": "スタジアム、バー、または会場名",
+      "venueType": "会場タイプ",
+      "venueTypes": {
+        "bar": "スポーツバー",
+        "fan_zone": "ファンゾーン / フェスティバル",
+        "stadium": "スタジアム / アリーナ",
+        "restaurant": "レストラン",
+        "public_space": "パブリックビューイング"
+      },
+      "capacity": "収容人数",
+      "phone": "電話",
+      "address": "住所",
+      "addressPlaceholder": "住所",
+      "mapsUrl": "Google マップURL",
+      "mapsUrlPlaceholder": "https://maps.google.com/...",
+      "website": "ウェブサイト",
+      "websitePlaceholder": "https://...",
+      "description": "説明",
+      "descriptionPlaceholder": "会場の簡単な説明...",
+      "yourInfo": "あなたの情報（確認用）",
+      "yourName": "お名前",
+      "yourEmail": "メールアドレス",
+      "submit": "送信",
+      "submitting": "送信中...",
+      "thankYou": "ありがとうございます！",
+      "pendingReview": "ご提案は審査中です。",
+      "submissionFailed": "送信に失敗しました。再試行してください。",
+      "required": "*"
     }
   }
 }

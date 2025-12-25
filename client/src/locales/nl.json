@@ -3464,6 +3464,48 @@
       "africa": "Afrika",
       "asia": "Azië",
       "oceania": "Oceanië"
+    },
+    "submission": {
+      "suggestVenue": "Locatie Voorstellen",
+      "dialogTitle": "Stel een Kijklocatie Voor",
+      "venueCategory": "Type Locatie",
+      "countryFanZone": "Landenzone",
+      "hostCityWatchParty": "Gaststad Evenement",
+      "selectHostCity": "Selecteer gaststad",
+      "countryCode": "Landcode",
+      "countryCodePlaceholder": "US, BR, NL...",
+      "countryName": "Landnaam",
+      "city": "Stad",
+      "cityPlaceholder": "Stadnaam",
+      "venueName": "Locatienaam",
+      "venueNamePlaceholder": "Stadion, bar of locatienaam",
+      "venueType": "Type Locatie",
+      "venueTypes": {
+        "bar": "Sportbar",
+        "fan_zone": "Fanzone / Festival",
+        "stadium": "Stadion / Arena",
+        "restaurant": "Restaurant",
+        "public_space": "Openbare Ruimte"
+      },
+      "capacity": "Capaciteit",
+      "phone": "Telefoon",
+      "address": "Adres",
+      "addressPlaceholder": "Adres",
+      "mapsUrl": "Google Maps URL",
+      "mapsUrlPlaceholder": "https://maps.google.com/...",
+      "website": "Website",
+      "websitePlaceholder": "https://...",
+      "description": "Beschrijving",
+      "descriptionPlaceholder": "Korte beschrijving van de locatie...",
+      "yourInfo": "Jouw gegevens (alleen voor verificatie)",
+      "yourName": "Jouw Naam",
+      "yourEmail": "Jouw E-mail",
+      "submit": "Verzenden",
+      "submitting": "Verzenden...",
+      "thankYou": "Bedankt!",
+      "pendingReview": "Je suggestie wordt beoordeeld.",
+      "submissionFailed": "Fout. Probeer opnieuw.",
+      "required": "*"
     }
   }
 }
