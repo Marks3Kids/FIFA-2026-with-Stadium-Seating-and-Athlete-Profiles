@@ -432,6 +432,622 @@
           "trap": "El Estadio BBVA está en Guadalupe. El calor del verano puede ser intenso con temperaturas superiores a 100°F.",
           "solution": "Usa Metrorrey Línea 1 hasta Exposición, luego shuttle al estadio. Lleva protector solar y agua."
         }
+      },
+      "transit": {
+        "kansasCity": {
+          "0": "Tranvía KC (gratis) - Power & Light District al Festival de Fans en Liberty Memorial",
+          "1": "Autobús RideKC - Múltiples rutas al estadio en días de partido",
+          "2": "Shuttles Stadium Direct desde Union Station"
+        },
+        "newYork": {
+          "0": "NJ Transit - Trenes directos desde Penn Station a Meadowlands",
+          "1": "Ferry NY Waterway + combo de shuttle desde Manhattan",
+          "2": "Tren PATH a Hoboken + conexión NJ Transit"
+        },
+        "losAngeles": {
+          "0": "Metro Línea E - Directo a Downtown Inglewood",
+          "1": "Shuttles LAX FlyAway extendidos para días de partido",
+          "2": "Shuttles gratuitos al estadio desde estacionamientos designados"
+        },
+        "miami": {
+          "0": "Metrorail - Golden Glades hasta la estación Northside",
+          "1": "Shuttles de la Bahía de Biscayne",
+          "2": "Shuttles oficiales del estadio desde estaciones Tri-Rail"
+        },
+        "dallas": {
+          "0": "DART Rail - Líneas Naranja/Verde al centro de Arlington",
+          "1": "TEXRail - Conexión al sistema de shuttles",
+          "2": "Shuttles CentrePort/DFW Airport"
+        },
+        "houston": {
+          "0": "METRORail Línea Roja - Directo a NRG Park",
+          "1": "Park & Ride desde múltiples ubicaciones",
+          "2": "Shuttles del centro de convenciones"
+        },
+        "atlanta": {
+          "0": "MARTA - Estación Dome/GWCC/Philips Arena/CNN Center",
+          "1": "Tranvía de Atlanta - Enlace Centennial Olympic Park",
+          "2": "Rutas de autobús del Beltline"
+        },
+        "philadelphia": {
+          "0": "SEPTA Broad Street Line - Estación AT&T",
+          "1": "Servicio de trolley regional",
+          "2": "Shuttles NJ Transit desde Camden"
+        },
+        "seattle": {
+          "0": "Sound Transit Link Light Rail - Estación Stadium",
+          "1": "King County Metro - Rutas del centro",
+          "2": "Servicio de Ferry + Conexión de Shuttle"
+        },
+        "boston": {
+          "0": "MBTA Commuter Rail - Servicio especial en días de partido",
+          "1": "Shuttles de Boston directos",
+          "2": "Park & Ride desde Providence"
+        },
+        "sanFrancisco": {
+          "0": "Caltrain - Estación Santa Clara",
+          "1": "VTA Light Rail - Estación Great America",
+          "2": "BART conexión a Caltrain en Millbrae"
+        },
+        "toronto": {
+          "0": "Tranvía TTC Línea 511 - Directo a Exhibition",
+          "1": "Tren GO - Estación Exhibition",
+          "2": "Shuttle del centro via Union Station"
+        },
+        "vancouver": {
+          "0": "SkyTrain - Estación Stadium-Chinatown",
+          "1": "Servicio de autobús Canada Line",
+          "2": "SeaBus + conexión de shuttle"
+        },
+        "mexicoCity": {
+          "0": "Metro Línea 2 - Estación Tasqueña",
+          "1": "Tren Ligero - Conexión al estadio",
+          "2": "Metrobús - Rutas del centro"
+        },
+        "guadalajara": {
+          "0": "Macrobús - Línea Centro-Estadio",
+          "1": "Mi Tren - Conexión a shuttles",
+          "2": "Autobuses nocturnos especiales"
+        },
+        "monterrey": {
+          "0": "Metrorrey Línea 1 - Estación Exposición",
+          "1": "Shuttle al estadio desde el centro",
+          "2": "Autobuses expresos especiales"
+        }
+      },
+      "safety": {
+        "kansasCity": {
+          "hospital": {
+            "name": "Hospital Children's Mercy",
+            "specialty": "Clínica de Medicina de Viajes Internacionales - perfecta para familias que viajan del extranjero"
+          },
+          "emergency": {
+            "name": "Hospital Saint Luke's",
+            "description": "Centro de trauma principal de alta capacidad para el núcleo urbano, cerca de la Plaza"
+          }
+        },
+        "newYork": {
+          "hospital": {
+            "name": "Centro Médico NYU Langone",
+            "specialty": "Servicios para Pacientes Internacionales con personal multilingüe"
+          },
+          "emergency": {
+            "name": "Centro Médico Universitario Hackensack",
+            "description": "Centro de trauma principal más cercano al MetLife Stadium"
+          }
+        },
+        "losAngeles": {
+          "hospital": {
+            "name": "Centro Médico Cedars-Sinai",
+            "specialty": "Centro médico de renombre mundial con servicios para pacientes internacionales"
+          },
+          "emergency": {
+            "name": "Centro Médico Harbor-UCLA",
+            "description": "Centro de trauma principal cerca de SoFi Stadium en Torrance"
+          }
+        },
+        "miami": {
+          "hospital": {
+            "name": "Hospital Jackson Memorial",
+            "specialty": "Centro de referencia internacional con servicios multilingües"
+          },
+          "emergency": {
+            "name": "Centro de Trauma Ryder",
+            "description": "Centro de trauma de Nivel I cerca del estadio Hard Rock"
+          }
+        },
+        "dallas": {
+          "hospital": {
+            "name": "Centro Médico UT Southwestern",
+            "specialty": "Medicina de clase mundial con servicios para pacientes internacionales"
+          },
+          "emergency": {
+            "name": "Hospital Parkland",
+            "description": "Centro de trauma principal para la región de Dallas"
+          }
+        },
+        "houston": {
+          "hospital": {
+            "name": "Centro Médico de Texas",
+            "specialty": "El complejo médico más grande del mundo con servicios internacionales"
+          },
+          "emergency": {
+            "name": "Hospital Memorial Hermann",
+            "description": "Centro de trauma de Nivel I, el más cercano a NRG Stadium"
+          }
+        },
+        "atlanta": {
+          "hospital": {
+            "name": "Hospital Emory University",
+            "specialty": "Centro médico académico con clínica de salud de viajes"
+          },
+          "emergency": {
+            "name": "Centro Médico Grady",
+            "description": "Centro de trauma principal del centro de Atlanta"
+          }
+        },
+        "philadelphia": {
+          "hospital": {
+            "name": "Hospital de la Universidad de Pensilvania",
+            "specialty": "Centro médico académico de primer nivel con servicios internacionales"
+          },
+          "emergency": {
+            "name": "Hospital Temple University",
+            "description": "Centro de trauma de Nivel I en el norte de Filadelfia"
+          }
+        },
+        "seattle": {
+          "hospital": {
+            "name": "Centro Médico de la Universidad de Washington",
+            "specialty": "Centro médico académico con clínica de viajes internacionales"
+          },
+          "emergency": {
+            "name": "Centro Médico Harborview",
+            "description": "Único centro de trauma de Nivel I en la región"
+          }
+        },
+        "boston": {
+          "hospital": {
+            "name": "Hospital General de Massachusetts",
+            "specialty": "Centro médico de clase mundial con servicios para pacientes internacionales"
+          },
+          "emergency": {
+            "name": "Centro Médico Beth Israel Deaconess",
+            "description": "Centro de trauma de Nivel I en el área de Boston"
+          }
+        },
+        "sanFrancisco": {
+          "hospital": {
+            "name": "Centro Médico UCSF",
+            "specialty": "Centro médico académico con servicios de medicina de viajes"
+          },
+          "emergency": {
+            "name": "Centro de Trauma Stanford",
+            "description": "Centro de trauma de Nivel I más cercano al Levi's Stadium"
+          }
+        },
+        "toronto": {
+          "hospital": {
+            "name": "Hospital General de Toronto",
+            "specialty": "Centro médico principal con servicios multilingües"
+          },
+          "emergency": {
+            "name": "Centro de Trauma Sunnybrook",
+            "description": "Centro de trauma principal de Toronto"
+          }
+        },
+        "vancouver": {
+          "hospital": {
+            "name": "Hospital General de Vancouver",
+            "specialty": "Centro médico principal con clínica de medicina de viajes"
+          },
+          "emergency": {
+            "name": "Hospital St. Paul's",
+            "description": "Centro de urgencias cerca de BC Place"
+          }
+        },
+        "mexicoCity": {
+          "hospital": {
+            "name": "Hospital ABC",
+            "specialty": "Hospital privado de primer nivel con servicios internacionales"
+          },
+          "emergency": {
+            "name": "Cruz Roja Mexicana",
+            "description": "Servicios de emergencia principales cerca del Estadio Azteca"
+          }
+        },
+        "guadalajara": {
+          "hospital": {
+            "name": "Hospital Country 2000",
+            "specialty": "Hospital privado con servicios multilingües"
+          },
+          "emergency": {
+            "name": "Hospital Civil de Guadalajara",
+            "description": "Centro de trauma principal de la región"
+          }
+        },
+        "monterrey": {
+          "hospital": {
+            "name": "Hospital San José TecSalud",
+            "specialty": "Hospital privado de primer nivel con servicios internacionales"
+          },
+          "emergency": {
+            "name": "Hospital Universitario",
+            "description": "Centro de trauma principal de Monterrey"
+          }
+        }
+      },
+      "faith": {
+        "kansasCity": {
+          "0": { "name": "Capilla de Fe y Familia", "description": "Ubicada en Arrowhead Stadium (esquina sur) - servicios no denominacionales en días de partido" },
+          "1": { "name": "Centro Islámico del Gran Kansas City", "description": "Centro principal para oraciones del viernes en el sur de KC" },
+          "2": { "name": "Centro Comunitario Judío (The J)", "description": "Ambiente seguro y acogedor en Overland Park" },
+          "3": { "name": "Catedral de la Inmaculada Concepción", "description": "Ubicada centralmente en el centro" }
+        },
+        "newYork": {
+          "0": { "name": "Catedral de San Patricio", "description": "Icónica catedral en la Quinta Avenida" },
+          "1": { "name": "Centro Cultural Islámico de NY", "description": "La mezquita más grande de Nueva York" },
+          "2": { "name": "Sinagoga Central", "description": "Sinagoga reformista histórica en Midtown" },
+          "3": { "name": "Iglesia Riverside", "description": "Iglesia interdenominacional con vistas impresionantes" }
+        },
+        "losAngeles": {
+          "0": { "name": "Catedral de Nuestra Señora de los Ángeles", "description": "Catedral moderna en el centro de LA" },
+          "1": { "name": "Mezquita King Fahad", "description": "Una de las mezquitas más grandes del oeste de EE.UU." },
+          "2": { "name": "Templo Sinai", "description": "Sinagoga conservadora histórica en Westwood" },
+          "3": { "name": "Iglesia Metodista Unida de Hollywood", "description": "Iglesia acogedora cerca de Hollywood" }
+        },
+        "miami": {
+          "0": { "name": "Catedral de Santa María", "description": "Catedral principal del Arzobispado de Miami" },
+          "1": { "name": "Centro Islámico del Sur de Florida", "description": "Mezquita principal del área de Miami" },
+          "2": { "name": "Templo Beth Shmuel", "description": "Sinagoga con servicios en español e inglés" },
+          "3": { "name": "Iglesia Trinity Episcopal", "description": "Iglesia histórica en el centro de Miami" }
+        },
+        "dallas": {
+          "0": { "name": "Catedral Santuario de Guadalupe", "description": "La segunda catedral católica más grande de EE.UU." },
+          "1": { "name": "Centro Islámico de Irving", "description": "Una de las mezquitas más grandes de Texas" },
+          "2": { "name": "Templo Emanu-El", "description": "Sinagoga reformista más grande de Texas" },
+          "3": { "name": "Primera Iglesia Bautista de Dallas", "description": "Megaiglesia histórica del centro" }
+        },
+        "houston": {
+          "0": { "name": "Co-Catedral del Sagrado Corazón", "description": "Catedral principal de la Arquidiócesis de Galveston-Houston" },
+          "1": { "name": "Centro Islámico del Gran Houston", "description": "Centro principal para la comunidad musulmana" },
+          "2": { "name": "Congregación Beth Israel", "description": "Sinagoga reformista más antigua de Texas" },
+          "3": { "name": "Iglesia Lakewood", "description": "Una de las megaiglesias más grandes de EE.UU." }
+        },
+        "atlanta": {
+          "0": { "name": "Catedral de Cristo Rey", "description": "Catedral principal de la Arquidiócesis de Atlanta" },
+          "1": { "name": "Masjid Al-Farooq", "description": "Una de las mezquitas más grandes del sureste de EE.UU." },
+          "2": { "name": "El Templo", "description": "Sinagoga reformista histórica de Atlanta" },
+          "3": { "name": "Iglesia Bautista Ebenezer", "description": "Iglesia histórica del Dr. Martin Luther King Jr." }
+        },
+        "philadelphia": {
+          "0": { "name": "Catedral Basílica de los Santos Pedro y Pablo", "description": "Catedral principal de la Arquidiócesis de Filadelfia" },
+          "1": { "name": "Centro Cultural Islámico", "description": "Mezquita principal del centro de Filadelfia" },
+          "2": { "name": "Congregación Rodeph Shalom", "description": "Sinagoga reformista más antigua de Estados Unidos" },
+          "3": { "name": "Iglesia de Cristo", "description": "Iglesia episcopal histórica donde oraron los padres fundadores" }
+        },
+        "seattle": {
+          "0": { "name": "Catedral de San Jaime", "description": "Catedral principal de la Arquidiócesis de Seattle" },
+          "1": { "name": "Centro Islámico de Seattle", "description": "Mezquita principal del área de Seattle" },
+          "2": { "name": "Templo De Hirsch Sinai", "description": "Una de las sinagogas más antiguas del noroeste" },
+          "3": { "name": "Iglesia Plymouth Congregacional", "description": "Iglesia histórica del centro de Seattle" }
+        },
+        "boston": {
+          "0": { "name": "Catedral de la Santa Cruz", "description": "Catedral principal de la Arquidiócesis de Boston" },
+          "1": { "name": "Centro Cultural Islámico de Boston", "description": "Mezquita principal del área de Boston" },
+          "2": { "name": "Templo Israel", "description": "Una de las sinagogas más antiguas de EE.UU." },
+          "3": { "name": "Old North Church", "description": "Iglesia histórica del Freedom Trail" }
+        },
+        "sanFrancisco": {
+          "0": { "name": "Catedral de Santa María de la Asunción", "description": "Catedral moderna del centro de San Francisco" },
+          "1": { "name": "Centro Islámico de San Francisco", "description": "Mezquita principal del área de la bahía" },
+          "2": { "name": "Congregación Sherith Israel", "description": "Una de las sinagogas más antiguas del oeste de EE.UU." },
+          "3": { "name": "Iglesia Grace Cathedral", "description": "Catedral episcopal icónica de San Francisco" }
+        },
+        "toronto": {
+          "0": { "name": "Catedral de San Miguel", "description": "Catedral principal de la Arquidiócesis de Toronto" },
+          "1": { "name": "Centro Islámico de Toronto", "description": "Mezquita principal del centro de Toronto" },
+          "2": { "name": "Congregación Holy Blossom Temple", "description": "Sinagoga reformista más grande de Canadá" },
+          "3": { "name": "Catedral Metropolitana de San Jaime", "description": "Catedral anglicana histórica del centro" }
+        },
+        "vancouver": {
+          "0": { "name": "Catedral del Santo Rosario", "description": "Catedral principal de la Arquidiócesis de Vancouver" },
+          "1": { "name": "Centro Islámico de BC", "description": "Mezquita principal del área de Vancouver" },
+          "2": { "name": "Congregación Beth Israel", "description": "Sinagoga conservadora del centro de Vancouver" },
+          "3": { "name": "Catedral Christ Church", "description": "Catedral anglicana del centro de la ciudad" }
+        },
+        "mexicoCity": {
+          "0": { "name": "Catedral Metropolitana", "description": "La catedral más grande de las Américas" },
+          "1": { "name": "Centro Cultural Islámico de México", "description": "Mezquita principal de la Ciudad de México" },
+          "2": { "name": "Sinagoga Histórica Justo Sierra", "description": "Sinagoga histórica del centro" },
+          "3": { "name": "Basílica de Guadalupe", "description": "El santuario mariano más visitado del mundo" }
+        },
+        "guadalajara": {
+          "0": { "name": "Catedral de Guadalajara", "description": "Catedral icónica del centro histórico" },
+          "1": { "name": "Centro Islámico de Jalisco", "description": "Mezquita principal de Guadalajara" },
+          "2": { "name": "Comunidad Judía de Guadalajara", "description": "Centro comunitario judío" },
+          "3": { "name": "Iglesia de Santa María de Gracia", "description": "Iglesia histórica del centro" }
+        },
+        "monterrey": {
+          "0": { "name": "Catedral Metropolitana de Monterrey", "description": "Catedral principal de la ciudad" },
+          "1": { "name": "Centro Cultural Islámico de Monterrey", "description": "Mezquita del área de Monterrey" },
+          "2": { "name": "Comunidad Judía de Monterrey", "description": "Centro comunitario judío" },
+          "3": { "name": "Basílica de Nuestra Señora del Roble", "description": "Santuario histórico de Monterrey" }
+        }
+      },
+      "cuisine": {
+        "kansasCity": {
+          "0": {
+            "category": "Ruta del BBQ",
+            "items": {
+              "0": { "name": "Joe's KC", "description": "Ambiente de gasolinera, legendarios burnt ends" },
+              "1": { "name": "Arthur Bryant's", "description": "Institución histórica del BBQ de KC" },
+              "2": { "name": "Q39", "description": "Experiencia gastronómica premium" }
+            }
+          },
+          "1": {
+            "category": "Jazz y Vida Nocturna",
+            "items": {
+              "0": { "name": "Distrito 18th & Vine", "description": "Distrito histórico del jazz" },
+              "1": { "name": "The Blue Room", "description": "Descompresión de jazz nocturno después de los partidos" }
+            }
+          }
+        },
+        "newYork": {
+          "0": {
+            "category": "Comida Icónica de NYC",
+            "items": {
+              "0": { "name": "Katz's Delicatessen", "description": "Pastrami legendario desde 1888" },
+              "1": { "name": "Joe's Pizza", "description": "Experiencia clásica de porción de NY" },
+              "2": { "name": "Chelsea Market", "description": "Mercado gastronómico con opciones globales" }
+            }
+          },
+          "1": {
+            "category": "Vida Nocturna",
+            "items": {
+              "0": { "name": "Distrito de Teatro de Broadway", "description": "Disfruta un espectáculo después del partido" },
+              "1": { "name": "Village Vanguard", "description": "Club de jazz histórico" }
+            }
+          }
+        },
+        "losAngeles": {
+          "0": {
+            "category": "Escena Gastronómica de LA",
+            "items": {
+              "0": { "name": "Grand Central Market", "description": "Mercado histórico con cocinas diversas" },
+              "1": { "name": "Koreatown", "description": "BBQ coreano y vida nocturna 24 horas" },
+              "2": { "name": "Calle Olvera", "description": "Mercado mexicano histórico" }
+            }
+          },
+          "1": {
+            "category": "Descompresión en la Playa",
+            "items": {
+              "0": { "name": "Muelle de Santa Mónica", "description": "Entretenimiento icónico frente al mar" },
+              "1": { "name": "Paseo de Venice Beach", "description": "Artistas callejeros y vistas al océano" }
+            }
+          }
+        },
+        "miami": {
+          "0": {
+            "category": "Sabores del Caribe",
+            "items": {
+              "0": { "name": "Calle Ocho", "description": "Experiencia auténtica cubana en Little Havana" },
+              "1": { "name": "Versailles", "description": "Restaurante cubano icónico" },
+              "2": { "name": "Wynwood Walls", "description": "Arte callejero y gastronomía innovadora" }
+            }
+          },
+          "1": {
+            "category": "Vida Nocturna en la Playa",
+            "items": {
+              "0": { "name": "Ocean Drive", "description": "Vida nocturna clásica de South Beach" },
+              "1": { "name": "Distrito de Diseño", "description": "Restaurantes y bares de moda" }
+            }
+          }
+        },
+        "dallas": {
+          "0": {
+            "category": "BBQ y Tex-Mex",
+            "items": {
+              "0": { "name": "Pecan Lodge", "description": "BBQ legendario del Deep Ellum" },
+              "1": { "name": "El Fenix", "description": "Tex-Mex desde 1918" },
+              "2": { "name": "Cattleack Barbeque", "description": "Solo jueves-sábado, vale la pena la espera" }
+            }
+          },
+          "1": {
+            "category": "Vida Nocturna",
+            "items": {
+              "0": { "name": "Deep Ellum", "description": "Música en vivo y bares eclécticos" },
+              "1": { "name": "Uptown Dallas", "description": "Cócteles y rooftops de moda" }
+            }
+          }
+        },
+        "houston": {
+          "0": {
+            "category": "Diversidad Culinaria",
+            "items": {
+              "0": { "name": "Chinatown Houston", "description": "El Chinatown más grande del sur de EE.UU." },
+              "1": { "name": "The Breakfast Klub", "description": "Desayuno sureño icónico" },
+              "2": { "name": "Pappadeaux", "description": "Mariscos cajún de Houston" }
+            }
+          },
+          "1": {
+            "category": "Cultura y Entretenimiento",
+            "items": {
+              "0": { "name": "Distrito de Museos", "description": "19 museos en un área" },
+              "1": { "name": "Washington Avenue", "description": "Vida nocturna vibrante" }
+            }
+          }
+        },
+        "atlanta": {
+          "0": {
+            "category": "Comida Sureña",
+            "items": {
+              "0": { "name": "Mary Mac's Tea Room", "description": "Cocina sureña clásica desde 1945" },
+              "1": { "name": "Fox Bros Bar-B-Q", "description": "BBQ estilo Texas en Atlanta" },
+              "2": { "name": "Busy Bee Cafe", "description": "Soul food histórico" }
+            }
+          },
+          "1": {
+            "category": "Vida Nocturna",
+            "items": {
+              "0": { "name": "Ponce City Market", "description": "Mercado gastronómico y entretenimiento" },
+              "1": { "name": "Buckhead", "description": "Clubes exclusivos y restaurantes" }
+            }
+          }
+        },
+        "philadelphia": {
+          "0": {
+            "category": "Comida Clásica de Philly",
+            "items": {
+              "0": { "name": "Pat's King of Steaks", "description": "El cheesesteak original de Philly" },
+              "1": { "name": "Reading Terminal Market", "description": "Mercado gastronómico histórico" },
+              "2": { "name": "Geno's Steaks", "description": "Rival legendario de cheesesteaks" }
+            }
+          },
+          "1": {
+            "category": "Historia y Cultura",
+            "items": {
+              "0": { "name": "Old City", "description": "Bares históricos y galerías" },
+              "1": { "name": "Fishtown", "description": "Barrio de moda con cervecerías artesanales" }
+            }
+          }
+        },
+        "seattle": {
+          "0": {
+            "category": "Sabores del Noroeste",
+            "items": {
+              "0": { "name": "Pike Place Market", "description": "Mercado icónico con mariscos frescos" },
+              "1": { "name": "Original Starbucks", "description": "La primera tienda Starbucks del mundo" },
+              "2": { "name": "Piroshky Piroshky", "description": "Pasteles rusos artesanales" }
+            }
+          },
+          "1": {
+            "category": "Vida Nocturna",
+            "items": {
+              "0": { "name": "Capitol Hill", "description": "Vida nocturna vibrante y diversa" },
+              "1": { "name": "Ballard", "description": "Cervecerías artesanales y bares de cócteles" }
+            }
+          }
+        },
+        "boston": {
+          "0": {
+            "category": "Mariscos de Nueva Inglaterra",
+            "items": {
+              "0": { "name": "Legal Sea Foods", "description": "Mariscos frescos de Nueva Inglaterra" },
+              "1": { "name": "Union Oyster House", "description": "El restaurante más antiguo de EE.UU." },
+              "2": { "name": "Neptune Oyster", "description": "Rolls de langosta legendarios" }
+            }
+          },
+          "1": {
+            "category": "Historia y Cerveza",
+            "items": {
+              "0": { "name": "Freedom Trail", "description": "Camino histórico con paradas gastronómicas" },
+              "1": { "name": "Samuel Adams Brewery", "description": "Cervecería histórica de Boston" }
+            }
+          }
+        },
+        "sanFrancisco": {
+          "0": {
+            "category": "Cocina de la Bahía",
+            "items": {
+              "0": { "name": "Fisherman's Wharf", "description": "Mariscos frescos y clam chowder" },
+              "1": { "name": "Chinatown", "description": "El Chinatown más antiguo de Norteamérica" },
+              "2": { "name": "Mission District", "description": "Burritos estilo Mission auténticos" }
+            }
+          },
+          "1": {
+            "category": "Vino y Vistas",
+            "items": {
+              "0": { "name": "Napa Valley", "description": "Región vinícola de clase mundial" },
+              "1": { "name": "North Beach", "description": "Little Italy de San Francisco" }
+            }
+          }
+        },
+        "toronto": {
+          "0": {
+            "category": "Diversidad Culinaria",
+            "items": {
+              "0": { "name": "St. Lawrence Market", "description": "Mercado gastronómico histórico" },
+              "1": { "name": "Kensington Market", "description": "Barrio bohemio multicultural" },
+              "2": { "name": "Chinatown Toronto", "description": "Uno de los Chinatowns más grandes de Norteamérica" }
+            }
+          },
+          "1": {
+            "category": "Vida Nocturna",
+            "items": {
+              "0": { "name": "Distrito de Destilerías", "description": "Arquitectura victoriana y bares de moda" },
+              "1": { "name": "King West", "description": "Clubes y restaurantes exclusivos" }
+            }
+          }
+        },
+        "vancouver": {
+          "0": {
+            "category": "Sabores del Pacífico",
+            "items": {
+              "0": { "name": "Granville Island Market", "description": "Mercado público con productos locales" },
+              "1": { "name": "Richmond Night Market", "description": "Mercado nocturno asiático más grande de Norteamérica" },
+              "2": { "name": "Gastown", "description": "Restaurantes de moda en edificios históricos" }
+            }
+          },
+          "1": {
+            "category": "Naturaleza y Relajación",
+            "items": {
+              "0": { "name": "Stanley Park", "description": "Parque urbano icónico frente al mar" },
+              "1": { "name": "Robson Street", "description": "Compras y restaurantes del centro" }
+            }
+          }
+        },
+        "mexicoCity": {
+          "0": {
+            "category": "Gastronomía Mexicana",
+            "items": {
+              "0": { "name": "Mercado de San Juan", "description": "Mercado gourmet con ingredientes exóticos" },
+              "1": { "name": "Pujol", "description": "Uno de los mejores restaurantes del mundo" },
+              "2": { "name": "Tacos El Califa de León", "description": "Tacos legendarios del centro" }
+            }
+          },
+          "1": {
+            "category": "Cultura y Vida Nocturna",
+            "items": {
+              "0": { "name": "Colonia Roma", "description": "Barrio de moda con cantinas y galerías" },
+              "1": { "name": "Coyoacán", "description": "Barrio bohemio con cultura y gastronomía" }
+            }
+          }
+        },
+        "guadalajara": {
+          "0": {
+            "category": "Sabores Tapatíos",
+            "items": {
+              "0": { "name": "Mercado San Juan de Dios", "description": "El mercado techado más grande de Latinoamérica" },
+              "1": { "name": "Birria El Chololo", "description": "Birria tradicional jalisciense" },
+              "2": { "name": "Tortas Ahogadas El Rika", "description": "Especialidad icónica de Guadalajara" }
+            }
+          },
+          "1": {
+            "category": "Tequila y Mariachi",
+            "items": {
+              "0": { "name": "Tlaquepaque", "description": "Pueblo mágico con artesanías y cantinas" },
+              "1": { "name": "Ruta del Tequila", "description": "Destilerías históricas a 1 hora de la ciudad" }
+            }
+          }
+        },
+        "monterrey": {
+          "0": {
+            "category": "Cocina Regia",
+            "items": {
+              "0": { "name": "El Gran Pastor", "description": "Cabrito al pastor tradicional" },
+              "1": { "name": "Mercado Juárez", "description": "Mercado tradicional con antojitos" },
+              "2": { "name": "Pangea", "description": "Alta cocina regiomontana" }
+            }
+          },
+          "1": {
+            "category": "Cerveza y Montañas",
+            "items": {
+              "0": { "name": "Barrio Antiguo", "description": "Zona de bares y vida nocturna" },
+              "1": { "name": "Parque Fundidora", "description": "Parque urbano con cervecerías artesanales" }
+            }
+          }
+        }
       }
     }
   },

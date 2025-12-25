@@ -187,7 +187,7 @@ export default function Cities() {
                                 {vault.logistics.localTransit.map((transit, idx) => (
                                   <li key={idx} className="text-sm text-gray-300 flex items-start">
                                     <span className="w-1.5 h-1.5 rounded-full bg-primary/50 mr-2 mt-1.5 flex-shrink-0"></span>
-                                    {t(`cities.vault.logistics.${city.key}.transit.${idx}`, transit)}
+                                    {t(`cities.vault.transit.${city.key}.${idx}`, transit)}
                                   </li>
                                 ))}
                               </ul>
@@ -210,8 +210,8 @@ export default function Cities() {
                                 rel="noopener noreferrer"
                                 className="block hover:bg-blue-500/10 rounded-lg p-2 -mx-2 transition-colors"
                               >
-                                <p className="text-sm font-bold text-white">{vault.safety.internationalHospital.name}</p>
-                                <p className="text-xs text-muted-foreground">{vault.safety.internationalHospital.specialty}</p>
+                                <p className="text-sm font-bold text-white">{t(`cities.vault.safety.${city.key}.hospital.name`, vault.safety.internationalHospital.name)}</p>
+                                <p className="text-xs text-muted-foreground">{t(`cities.vault.safety.${city.key}.hospital.specialty`, vault.safety.internationalHospital.specialty)}</p>
                                 <p className="text-xs text-blue-400 mt-1 flex items-center gap-1">
                                   <ExternalLink className="w-3 h-3" /> {t("cities.vault.labels.openInMaps")}
                                 </p>
@@ -229,8 +229,8 @@ export default function Cities() {
                                 rel="noopener noreferrer"
                                 className="block hover:bg-red-500/10 rounded-lg p-2 -mx-2 transition-colors"
                               >
-                                <p className="text-sm font-bold text-white">{vault.safety.emergencyHub.name}</p>
-                                <p className="text-xs text-muted-foreground">{vault.safety.emergencyHub.description}</p>
+                                <p className="text-sm font-bold text-white">{t(`cities.vault.safety.${city.key}.emergency.name`, vault.safety.emergencyHub.name)}</p>
+                                <p className="text-xs text-muted-foreground">{t(`cities.vault.safety.${city.key}.emergency.description`, vault.safety.emergencyHub.description)}</p>
                                 <p className="text-xs text-red-400 mt-1 flex items-center gap-1">
                                   <ExternalLink className="w-3 h-3" /> {t("cities.vault.labels.openInMaps")}
                                 </p>
@@ -257,8 +257,8 @@ export default function Cities() {
                             <div className="flex items-start gap-3">
                               <span className="text-2xl">{getSpiritualIcon(service.type)}</span>
                               <div className="flex-1">
-                                <p className="text-sm font-bold text-white">{service.name}</p>
-                                <p className="text-xs text-muted-foreground mt-1">{service.description}</p>
+                                <p className="text-sm font-bold text-white">{t(`cities.vault.faith.${city.key}.${idx}.name`, service.name)}</p>
+                                <p className="text-xs text-muted-foreground mt-1">{t(`cities.vault.faith.${city.key}.${idx}.description`, service.description)}</p>
                                 <p className="text-xs text-primary mt-2 flex items-center gap-1">
                                   <ExternalLink className="w-3 h-3" /> {t("cities.vault.labels.openInMaps")}
                                 </p>
@@ -273,7 +273,7 @@ export default function Cities() {
                           <div key={idx} className="bg-white/5 rounded-xl p-4 border border-white/5">
                             <div className="flex items-center space-x-2 mb-3 text-accent">
                               <Utensils className="w-4 h-4" />
-                              <span className="text-sm font-bold uppercase tracking-wide">{category.category}</span>
+                              <span className="text-sm font-bold uppercase tracking-wide">{t(`cities.vault.cuisine.${city.key}.${idx}.category`, category.category)}</span>
                             </div>
                             <div className="space-y-2">
                               {category.recommendations.map((rec, ridx) => (
@@ -285,8 +285,8 @@ export default function Cities() {
                                   className="flex items-center justify-between bg-background/50 rounded-lg p-3 hover:bg-primary/10 transition-colors"
                                 >
                                   <div>
-                                    <p className="text-sm font-medium text-white">{rec.name}</p>
-                                    <p className="text-xs text-muted-foreground">{rec.description}</p>
+                                    <p className="text-sm font-medium text-white">{t(`cities.vault.cuisine.${city.key}.${idx}.items.${ridx}.name`, rec.name)}</p>
+                                    <p className="text-xs text-muted-foreground">{t(`cities.vault.cuisine.${city.key}.${idx}.items.${ridx}.description`, rec.description)}</p>
                                   </div>
                                   <ExternalLink className="w-4 h-4 text-primary flex-shrink-0" />
                                 </a>
