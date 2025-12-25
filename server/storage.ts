@@ -37,6 +37,10 @@ import {
   type InsertKnockoutBracket,
   type Lead,
   type InsertLead,
+  type WatchHubVenue,
+  type InsertWatchHubVenue,
+  type WatchHubSubmission,
+  type InsertWatchHubSubmission,
   users,
   teams,
   cities,
@@ -55,7 +59,9 @@ import {
   tournamentHistory,
   stadiumSections,
   knockoutBrackets,
-  leads
+  leads,
+  watchHubVenues,
+  watchHubSubmissions
 } from "@shared/schema";
 import { db } from "../db";
 import { eq } from "drizzle-orm";
@@ -140,6 +146,17 @@ export interface IStorage {
   deleteAllKnockoutBrackets(): Promise<void>;
   
   createLead(lead: InsertLead): Promise<Lead>;
+  
+  getAllWatchHubVenues(): Promise<WatchHubVenue[]>;
+  getWatchHubVenuesByCountry(countryCode: string): Promise<WatchHubVenue[]>;
+  getWatchHubVenuesByHostCity(hostCityKey: string): Promise<WatchHubVenue[]>;
+  createWatchHubVenue(venue: InsertWatchHubVenue): Promise<WatchHubVenue>;
+  
+  getAllWatchHubSubmissions(): Promise<WatchHubSubmission[]>;
+  getPendingWatchHubSubmissions(): Promise<WatchHubSubmission[]>;
+  createWatchHubSubmission(submission: InsertWatchHubSubmission): Promise<WatchHubSubmission>;
+  approveWatchHubSubmission(id: number): Promise<WatchHubVenue | undefined>;
+  rejectWatchHubSubmission(id: number, notes: string): Promise<WatchHubSubmission | undefined>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -432,6 +449,73 @@ export class DatabaseStorage implements IStorage {
   async createLead(lead: InsertLead): Promise<Lead> {
     const [newLead] = await db.insert(leads).values(lead).returning();
     return newLead;
+  }
+
+  async getAllWatchHubVenues(): Promise<WatchHubVenue[]> {
+    return await db.select().from(watchHubVenues);
+  }
+
+  async getWatchHubVenuesByCountry(countryCode: string): Promise<WatchHubVenue[]> {
+    return await db.select().from(watchHubVenues).where(eq(watchHubVenues.countryCode, countryCode));
+  }
+
+  async getWatchHubVenuesByHostCity(hostCityKey: string): Promise<WatchHubVenue[]> {
+    return await db.select().from(watchHubVenues).where(eq(watchHubVenues.hostCityKey, hostCityKey));
+  }
+
+  async createWatchHubVenue(venue: InsertWatchHubVenue): Promise<WatchHubVenue> {
+    const [newVenue] = await db.insert(watchHubVenues).values(venue).returning();
+    return newVenue;
+  }
+
+  async getAllWatchHubSubmissions(): Promise<WatchHubSubmission[]> {
+    return await db.select().from(watchHubSubmissions);
+  }
+
+  async getPendingWatchHubSubmissions(): Promise<WatchHubSubmission[]> {
+    return await db.select().from(watchHubSubmissions).where(eq(watchHubSubmissions.status, "pending"));
+  }
+
+  async createWatchHubSubmission(submission: InsertWatchHubSubmission): Promise<WatchHubSubmission> {
+    const [newSubmission] = await db.insert(watchHubSubmissions).values(submission).returning();
+    return newSubmission;
+  }
+
+  async approveWatchHubSubmission(id: number): Promise<WatchHubVenue | undefined> {
+    const [submission] = await db.select().from(watchHubSubmissions).where(eq(watchHubSubmissions.id, id));
+    if (!submission || submission.status !== "pending") return undefined;
+
+    await db.update(watchHubSubmissions)
+      .set({ status: "approved", reviewedAt: new Date() })
+      .where(eq(watchHubSubmissions.id, id));
+
+    const [newVenue] = await db.insert(watchHubVenues).values({
+      countryCode: submission.countryCode,
+      countryName: submission.countryName,
+      city: submission.city,
+      venueName: submission.venueName,
+      venueType: submission.venueType,
+      address: submission.address,
+      capacity: submission.capacity,
+      mapsUrl: submission.mapsUrl,
+      website: submission.website,
+      phone: submission.phone,
+      description: submission.description,
+      isHostCity: submission.isHostCity,
+      hostCityKey: submission.hostCityKey,
+      isVerified: 1,
+      submittedBy: submission.submitterEmail,
+    }).returning();
+
+    return newVenue;
+  }
+
+  async rejectWatchHubSubmission(id: number, notes: string): Promise<WatchHubSubmission | undefined> {
+    const [updated] = await db.update(watchHubSubmissions)
+      .set({ status: "rejected", reviewedAt: new Date(), reviewNotes: notes })
+      .where(eq(watchHubSubmissions.id, id))
+      .returning();
+    return updated;
   }
 }
 

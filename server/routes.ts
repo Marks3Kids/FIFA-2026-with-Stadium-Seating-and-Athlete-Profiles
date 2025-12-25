@@ -19,7 +19,8 @@ import {
   insertTripContactSchema,
   stadiumSectionsQuerySchema,
   playersQuerySchema,
-  insertLeadSchema
+  insertLeadSchema,
+  insertWatchHubSubmissionSchema
 } from "@shared/schema";
 
 export async function registerRoutes(
@@ -1067,6 +1068,107 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     } catch (error) {
       console.error("Failed to fetch match results:", error);
       res.status(500).json({ error: "Failed to fetch match results" });
+    }
+  });
+
+  // Watch Hub Venues API
+  app.get("/api/watch-hubs/venues", async (req, res) => {
+    try {
+      const { countryCode, hostCityKey } = req.query;
+      let venues;
+      
+      if (countryCode && typeof countryCode === "string") {
+        venues = await storage.getWatchHubVenuesByCountry(countryCode);
+      } else if (hostCityKey && typeof hostCityKey === "string") {
+        venues = await storage.getWatchHubVenuesByHostCity(hostCityKey);
+      } else {
+        venues = await storage.getAllWatchHubVenues();
+      }
+      
+      res.json(venues);
+    } catch (error) {
+      console.error("Failed to fetch watch hub venues:", error);
+      res.status(500).json({ error: "Failed to fetch venues" });
+    }
+  });
+
+  // Watch Hub Submissions - Submit a new venue
+  app.post("/api/watch-hubs/submissions", async (req, res) => {
+    try {
+      const validatedData = insertWatchHubSubmissionSchema.parse({
+        ...req.body,
+        status: "pending"
+      });
+      const submission = await storage.createWatchHubSubmission(validatedData);
+      res.status(201).json({ 
+        success: true, 
+        message: "Thank you! Your venue submission is pending review.",
+        submission 
+      });
+    } catch (error: any) {
+      console.error("Failed to submit watch hub venue:", error);
+      res.status(400).json({ error: error.message || "Invalid submission data" });
+    }
+  });
+
+  // Admin: Get all submissions (pending only by default)
+  app.get("/api/watch-hubs/submissions", async (req, res) => {
+    try {
+      const { status } = req.query;
+      let submissions;
+      
+      if (status === "all") {
+        submissions = await storage.getAllWatchHubSubmissions();
+      } else {
+        submissions = await storage.getPendingWatchHubSubmissions();
+      }
+      
+      res.json(submissions);
+    } catch (error) {
+      console.error("Failed to fetch submissions:", error);
+      res.status(500).json({ error: "Failed to fetch submissions" });
+    }
+  });
+
+  // Admin: Approve a submission
+  app.post("/api/watch-hubs/submissions/:id/approve", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ error: "Invalid submission ID" });
+      }
+      
+      const venue = await storage.approveWatchHubSubmission(id);
+      if (!venue) {
+        return res.status(404).json({ error: "Submission not found or already processed" });
+      }
+      
+      res.json({ success: true, venue });
+    } catch (error) {
+      console.error("Failed to approve submission:", error);
+      res.status(500).json({ error: "Failed to approve submission" });
+    }
+  });
+
+  // Admin: Reject a submission
+  app.post("/api/watch-hubs/submissions/:id/reject", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const { notes } = req.body;
+      
+      if (isNaN(id)) {
+        return res.status(400).json({ error: "Invalid submission ID" });
+      }
+      
+      const submission = await storage.rejectWatchHubSubmission(id, notes || "");
+      if (!submission) {
+        return res.status(404).json({ error: "Submission not found" });
+      }
+      
+      res.json({ success: true, submission });
+    } catch (error) {
+      console.error("Failed to reject submission:", error);
+      res.status(500).json({ error: "Failed to reject submission" });
     }
   });
 
