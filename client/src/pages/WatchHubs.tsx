@@ -31,13 +31,7 @@ const hostCities = [
   { key: "monterrey", name: "Monterrey, Mexico" },
 ];
 
-const venueTypes = [
-  { value: "bar", label: "Sports Bar" },
-  { value: "fan_zone", label: "Fan Zone / Festival" },
-  { value: "stadium", label: "Stadium / Arena" },
-  { value: "restaurant", label: "Restaurant" },
-  { value: "public_space", label: "Public Viewing Space" },
-];
+const venueTypeKeys = ["bar", "fan_zone", "stadium", "restaurant", "public_space"] as const;
 
 export default function WatchHubs() {
   const { t } = useTranslation();
@@ -187,24 +181,24 @@ export default function WatchHubs() {
           <DialogTrigger asChild>
             <Button className="w-full mb-6 bg-primary hover:bg-primary/90">
               <Plus className="w-4 h-4 mr-2" />
-              Suggest a Watch Party Venue
+              {t("watchHubs.submission.suggestVenue")}
             </Button>
           </DialogTrigger>
           <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto bg-card">
             <DialogHeader>
-              <DialogTitle className="text-white">Suggest a Watch Party Venue</DialogTitle>
+              <DialogTitle className="text-white">{t("watchHubs.submission.dialogTitle")}</DialogTitle>
             </DialogHeader>
             
             {submissionSuccess ? (
               <div className="flex flex-col items-center py-8">
                 <CheckCircle2 className="w-16 h-16 text-green-500 mb-4" />
-                <p className="text-white font-medium text-center">Thank you!</p>
-                <p className="text-muted-foreground text-sm text-center">Your venue submission is pending review.</p>
+                <p className="text-white font-medium text-center">{t("watchHubs.submission.thankYou")}</p>
+                <p className="text-muted-foreground text-sm text-center">{t("watchHubs.submission.pendingReview")}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <Label className="text-white">Venue Type *</Label>
+                  <Label className="text-white">{t("watchHubs.submission.venueCategory")} {t("watchHubs.submission.required")}</Label>
                   <div className="flex gap-2 flex-wrap">
                     <label className="flex items-center gap-2">
                       <input
@@ -214,7 +208,7 @@ export default function WatchHubs() {
                         onChange={() => setFormData(prev => ({ ...prev, isHostCity: 0, hostCityKey: "" }))}
                         className="accent-primary"
                       />
-                      <span className="text-sm text-muted-foreground">Country Fan Zone</span>
+                      <span className="text-sm text-muted-foreground">{t("watchHubs.submission.countryFanZone")}</span>
                     </label>
                     <label className="flex items-center gap-2">
                       <input
@@ -224,20 +218,20 @@ export default function WatchHubs() {
                         onChange={() => setFormData(prev => ({ ...prev, isHostCity: 1 }))}
                         className="accent-primary"
                       />
-                      <span className="text-sm text-muted-foreground">Host City Watch Party</span>
+                      <span className="text-sm text-muted-foreground">{t("watchHubs.submission.hostCityWatchParty")}</span>
                     </label>
                   </div>
                 </div>
 
                 {formData.isHostCity === 1 && (
                   <div className="space-y-2">
-                    <Label className="text-white">Host City *</Label>
+                    <Label className="text-white">{t("watchHubs.submission.selectHostCity")} {t("watchHubs.submission.required")}</Label>
                     <Select
                       value={formData.hostCityKey}
                       onValueChange={(value) => setFormData(prev => ({ ...prev, hostCityKey: value }))}
                     >
                       <SelectTrigger className="bg-background border-white/10">
-                        <SelectValue placeholder="Select host city" />
+                        <SelectValue placeholder={t("watchHubs.submission.selectHostCity")} />
                       </SelectTrigger>
                       <SelectContent>
                         {hostCities.map(city => (
@@ -251,9 +245,9 @@ export default function WatchHubs() {
                 {formData.isHostCity === 0 && (
                   <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-2">
-                      <Label className="text-white">Country Code *</Label>
+                      <Label className="text-white">{t("watchHubs.submission.countryCode")} {t("watchHubs.submission.required")}</Label>
                       <Input
-                        placeholder="US, BR, FR..."
+                        placeholder={t("watchHubs.submission.countryCodePlaceholder")}
                         value={formData.countryCode}
                         onChange={(e) => setFormData(prev => ({ ...prev, countryCode: e.target.value.toUpperCase() }))}
                         className="bg-background border-white/10"
@@ -262,9 +256,9 @@ export default function WatchHubs() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-white">Country Name *</Label>
+                      <Label className="text-white">{t("watchHubs.submission.countryName")} {t("watchHubs.submission.required")}</Label>
                       <Input
-                        placeholder="United States"
+                        placeholder={t("watchHubs.submission.countryName")}
                         value={formData.countryName}
                         onChange={(e) => setFormData(prev => ({ ...prev, countryName: e.target.value }))}
                         className="bg-background border-white/10"
@@ -275,9 +269,9 @@ export default function WatchHubs() {
                 )}
 
                 <div className="space-y-2">
-                  <Label className="text-white">City *</Label>
+                  <Label className="text-white">{t("watchHubs.submission.city")} {t("watchHubs.submission.required")}</Label>
                   <Input
-                    placeholder="City name"
+                    placeholder={t("watchHubs.submission.cityPlaceholder")}
                     value={formData.city}
                     onChange={(e) => setFormData(prev => ({ ...prev, city: e.target.value }))}
                     className="bg-background border-white/10"
@@ -286,9 +280,9 @@ export default function WatchHubs() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-white">Venue Name *</Label>
+                  <Label className="text-white">{t("watchHubs.submission.venueName")} {t("watchHubs.submission.required")}</Label>
                   <Input
-                    placeholder="Stadium, bar, or venue name"
+                    placeholder={t("watchHubs.submission.venueNamePlaceholder")}
                     value={formData.venueName}
                     onChange={(e) => setFormData(prev => ({ ...prev, venueName: e.target.value }))}
                     className="bg-background border-white/10"
@@ -297,7 +291,7 @@ export default function WatchHubs() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-white">Venue Type *</Label>
+                  <Label className="text-white">{t("watchHubs.submission.venueType")} {t("watchHubs.submission.required")}</Label>
                   <Select
                     value={formData.venueType}
                     onValueChange={(value) => setFormData(prev => ({ ...prev, venueType: value }))}
@@ -306,8 +300,8 @@ export default function WatchHubs() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {venueTypes.map(type => (
-                        <SelectItem key={type.value} value={type.value}>{type.label}</SelectItem>
+                      {venueTypeKeys.map(key => (
+                        <SelectItem key={key} value={key}>{t(`watchHubs.submission.venueTypes.${key}`)}</SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
@@ -315,7 +309,7 @@ export default function WatchHubs() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-2">
-                    <Label className="text-white">Capacity</Label>
+                    <Label className="text-white">{t("watchHubs.submission.capacity")}</Label>
                     <Input
                       placeholder="500"
                       value={formData.capacity}
@@ -324,7 +318,7 @@ export default function WatchHubs() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-white">Phone</Label>
+                    <Label className="text-white">{t("watchHubs.submission.phone")}</Label>
                     <Input
                       placeholder="+1 555-1234"
                       value={formData.phone}
@@ -335,9 +329,9 @@ export default function WatchHubs() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-white">Address</Label>
+                  <Label className="text-white">{t("watchHubs.submission.address")}</Label>
                   <Input
-                    placeholder="Street address"
+                    placeholder={t("watchHubs.submission.addressPlaceholder")}
                     value={formData.address}
                     onChange={(e) => setFormData(prev => ({ ...prev, address: e.target.value }))}
                     className="bg-background border-white/10"
@@ -345,9 +339,9 @@ export default function WatchHubs() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-white">Google Maps URL</Label>
+                  <Label className="text-white">{t("watchHubs.submission.mapsUrl")}</Label>
                   <Input
-                    placeholder="https://maps.google.com/..."
+                    placeholder={t("watchHubs.submission.mapsUrlPlaceholder")}
                     value={formData.mapsUrl}
                     onChange={(e) => setFormData(prev => ({ ...prev, mapsUrl: e.target.value }))}
                     className="bg-background border-white/10"
@@ -355,9 +349,9 @@ export default function WatchHubs() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-white">Website</Label>
+                  <Label className="text-white">{t("watchHubs.submission.website")}</Label>
                   <Input
-                    placeholder="https://..."
+                    placeholder={t("watchHubs.submission.websitePlaceholder")}
                     value={formData.website}
                     onChange={(e) => setFormData(prev => ({ ...prev, website: e.target.value }))}
                     className="bg-background border-white/10"
@@ -365,9 +359,9 @@ export default function WatchHubs() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-white">Description</Label>
+                  <Label className="text-white">{t("watchHubs.submission.description")}</Label>
                   <Textarea
-                    placeholder="Brief description of the venue..."
+                    placeholder={t("watchHubs.submission.descriptionPlaceholder")}
                     value={formData.description}
                     onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
                     className="bg-background border-white/10"
@@ -376,12 +370,12 @@ export default function WatchHubs() {
                 </div>
 
                 <div className="border-t border-white/10 pt-4">
-                  <p className="text-xs text-muted-foreground mb-3">Your contact info (for verification only)</p>
+                  <p className="text-xs text-muted-foreground mb-3">{t("watchHubs.submission.yourInfo")}</p>
                   <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-2">
-                      <Label className="text-white">Your Name *</Label>
+                      <Label className="text-white">{t("watchHubs.submission.yourName")} {t("watchHubs.submission.required")}</Label>
                       <Input
-                        placeholder="Your name"
+                        placeholder={t("watchHubs.submission.yourName")}
                         value={formData.submitterName}
                         onChange={(e) => setFormData(prev => ({ ...prev, submitterName: e.target.value }))}
                         className="bg-background border-white/10"
@@ -389,7 +383,7 @@ export default function WatchHubs() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-white">Your Email *</Label>
+                      <Label className="text-white">{t("watchHubs.submission.yourEmail")} {t("watchHubs.submission.required")}</Label>
                       <Input
                         type="email"
                         placeholder="email@example.com"
@@ -407,12 +401,12 @@ export default function WatchHubs() {
                   className="w-full bg-primary hover:bg-primary/90"
                   disabled={submitVenue.isPending}
                 >
-                  {submitVenue.isPending ? "Submitting..." : "Submit Venue"}
+                  {submitVenue.isPending ? t("watchHubs.submission.submitting") : t("watchHubs.submission.submit")}
                 </Button>
 
                 {submitVenue.isError && (
                   <p className="text-red-500 text-sm text-center">
-                    {submitVenue.error?.message || "Submission failed. Please try again."}
+                    {submitVenue.error?.message || t("watchHubs.submission.submissionFailed")}
                   </p>
                 )}
               </form>
