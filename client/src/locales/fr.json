@@ -326,6 +326,47 @@
       "guadalajara": "Guadalajara est le cœur de la tradition mexicaine, connue pour la musique mariachi, la tequila et l'architecture coloniale.\n\nL'Estadio Akron présente un design unique inspiré d'un volcan. La ville offre une atmosphère festive et une connexion profonde aux racines culturelles du Mexique.",
       "toronto": "Métropole cosmopolite sur les rives du lac Ontario, Toronto est connue pour sa diversité et sa culture. Elle accueillera le match d'ouverture du Canada.\n\nLa ville offre une scène artistique vibrante, une restauration diversifiée et des monuments emblématiques comme la Tour CN. Le BMO Field offre une expérience footballistique intime et énergique.",
       "vancouver": "Nichée entre les montagnes et l'océan, Vancouver offre des paysages époustouflants du Pacific Northwest et une ambiance décontractée.\n\nLe BC Place dispose d'un beau toit rétractable. Les visiteurs peuvent profiter d'aventures en plein air, d'une scène culinaire florissante et de la beauté naturelle qui entoure cette ville côtière."
+    },
+    "vault": {
+      "tabs": {
+        "overview": "Aperçu",
+        "transit": "Transport",
+        "safety": "Sécurité",
+        "faith": "Foi",
+        "culture": "Culture"
+      },
+      "labels": {
+        "theTrap": "Le Piège",
+        "theSolution": "La Solution",
+        "localTransit": "Transport Local",
+        "watchParties": "Soirées Foot",
+        "officialFestival": "Festival Officiel",
+        "highEnergy": "Haute Énergie",
+        "localSecret": "Secret Local",
+        "internationalHospital": "Hôpital International",
+        "emergencyTraumaCenter": "Centre de Traumatologie",
+        "emergency": "Urgence",
+        "tapToCall": "Appuyez pour appeler",
+        "openInMaps": "Ouvrir dans Maps"
+      },
+      "mottos": {
+        "kansasCity": "La Capitale du Football Américain et le Cœur du Tournoi",
+        "newYork": "La Scène Mondiale - Là où se Font les Champions",
+        "losAngeles": "Cité des Anges - Là où les Rêves Rencontrent le Football",
+        "miami": "Là où le Monde Vient Jouer",
+        "dallas": "Grande D, Grands Rêves - Football à la Texane",
+        "houston": "La Ville Spatiale Rencontre le Beau Jeu",
+        "atlanta": "La Ville du Football - Levez-vous!",
+        "philadelphia": "Berceau de la Liberté, Foyer de la Passion du Football",
+        "seattle": "Le Beau Jeu de la Cité Émeraude",
+        "boston": "Là où se Font les Champions en Nouvelle-Angleterre",
+        "sanFrancisco": "Brillance de la Baie - Technologie et Football",
+        "toronto": "La Capitale Mondiale du Canada",
+        "vancouver": "Montagnes, Océan et le Beau Jeu",
+        "mexicoCity": "Le Cœur du Football - L'Héritage Aztèque Vit",
+        "guadalajara": "Là où le Mariachi Rencontre le Beau Jeu",
+        "monterrey": "La Forteresse du Football de la Cité de l'Acier"
+      }
     }
   },
   "menu": {

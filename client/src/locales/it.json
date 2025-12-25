@@ -326,6 +326,47 @@
       "guadalajara": "Guadalajara è il cuore della tradizione messicana, nota per la musica mariachi, la tequila e l'architettura coloniale.\n\nLo Stadio Akron presenta un design unico ispirato a un vulcano. La città offre un'atmosfera festiva e un profondo legame con le radici culturali del Messico.",
       "toronto": "Metropoli cosmopolita sulle rive del Lago Ontario, Toronto è nota per la sua diversità e cultura. Ospiterà la partita inaugurale del Canada.\n\nLa città offre una vivace scena artistica, ristorazione diversificata e punti di riferimento iconici come la CN Tower. Il BMO Field offre un'esperienza calcistica intima ed energica.",
       "vancouver": "Incastonata tra le montagne e l'oceano, Vancouver offre splendidi paesaggi del Pacific Northwest e un'atmosfera rilassata.\n\nIl BC Place presenta un bellissimo tetto retrattile. I visitatori possono godere di avventure all'aperto, una fiorente scena gastronomica e la bellezza naturale che circonda questa città costiera."
+    },
+    "vault": {
+      "tabs": {
+        "overview": "Panoramica",
+        "transit": "Trasporto",
+        "safety": "Sicurezza",
+        "faith": "Fede",
+        "culture": "Cultura"
+      },
+      "labels": {
+        "theTrap": "La Trappola",
+        "theSolution": "La Soluzione",
+        "localTransit": "Trasporto Locale",
+        "watchParties": "Feste Partita",
+        "officialFestival": "Festival Ufficiale",
+        "highEnergy": "Alta Energia",
+        "localSecret": "Segreto Locale",
+        "internationalHospital": "Ospedale Internazionale",
+        "emergencyTraumaCenter": "Centro Trauma",
+        "emergency": "Emergenza",
+        "tapToCall": "Tocca per chiamare",
+        "openInMaps": "Apri in Mappe"
+      },
+      "mottos": {
+        "kansasCity": "La Capitale del Calcio d'America e il Cuore del Torneo",
+        "newYork": "Il Palcoscenico del Mondo - Dove i Campioni Nascono",
+        "losAngeles": "Città degli Angeli - Dove i Sogni Incontrano il Calcio Mondiale",
+        "miami": "Dove il Mondo Viene a Giocare",
+        "dallas": "Grande D, Grandi Sogni - Calcio in Stile Texas",
+        "houston": "La Città Spaziale Incontra il Bel Gioco",
+        "atlanta": "La Città del Calcio - Alzatevi!",
+        "philadelphia": "Culla della Libertà, Casa della Passione Calcistica",
+        "seattle": "Il Bel Gioco della Città di Smeraldo",
+        "boston": "Dove i Campioni Nascono nel New England",
+        "sanFrancisco": "Brillantezza della Baia - Tecnologia e Calcio",
+        "toronto": "La Capitale Mondiale del Canada",
+        "vancouver": "Montagne, Oceano e il Bel Gioco",
+        "mexicoCity": "Il Cuore del Calcio - L'Eredità Azteca Vive",
+        "guadalajara": "Dove il Mariachi Incontra il Bel Gioco",
+        "monterrey": "La Fortezza del Calcio della Città dell'Acciaio"
+      }
     }
   },
   "menu": {

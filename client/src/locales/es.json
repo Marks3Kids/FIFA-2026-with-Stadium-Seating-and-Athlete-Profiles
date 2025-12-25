@@ -326,6 +326,47 @@
       "guadalajara": "Guadalajara es el corazón de la tradición mexicana, conocida por la música de los mariachis, el tequila y la arquitectura colonial.\n\nEl Estadio Akron presenta un diseño único inspirado en un volcán. La ciudad ofrece un ambiente festivo y una profunda conexión con las raíces culturales de México.",
       "toronto": "Toronto, metrópolis cosmopolita a orillas del lago Ontario, es conocida por su diversidad y su cultura. Acogerá el partido inaugural de Canadá.\n\nLa ciudad ofrece una vibrante escena artística, diversos restaurantes y lugares emblemáticos como la Torre CN. El BMO Field ofrece una experiencia futbolística íntima y llena de energía.",
       "vancouver": "Enclavada entre las montañas y el océano, Vancouver ofrece impresionantes paisajes del noroeste del Pacífico y un ambiente relajado.\n\nEl BC Place cuenta con un hermoso techo retráctil. Los visitantes pueden disfrutar de aventuras al aire libre, una floreciente escena gastronómica y la belleza natural que rodea a esta ciudad costera."
+    },
+    "vault": {
+      "tabs": {
+        "overview": "Resumen",
+        "transit": "Transporte",
+        "safety": "Seguridad",
+        "faith": "Fe",
+        "culture": "Cultura"
+      },
+      "labels": {
+        "theTrap": "La Trampa",
+        "theSolution": "La Solución",
+        "localTransit": "Transporte Local",
+        "watchParties": "Fiestas de Partido",
+        "officialFestival": "Festival Oficial",
+        "highEnergy": "Alta Energía",
+        "localSecret": "Secreto Local",
+        "internationalHospital": "Hospital Internacional",
+        "emergencyTraumaCenter": "Centro de Trauma de Emergencia",
+        "emergency": "Emergencia",
+        "tapToCall": "Toca para llamar en emergencia",
+        "openInMaps": "Abrir en Mapas"
+      },
+      "mottos": {
+        "kansasCity": "La Capital del Fútbol de América y El Corazón del Torneo",
+        "newYork": "El Escenario del Mundo - Donde se Hacen Campeones",
+        "losAngeles": "Ciudad de los Ángeles - Donde los Sueños se Encuentran con el Juego del Mundo",
+        "miami": "Donde el Mundo Viene a Jugar",
+        "dallas": "Gran D, Grandes Sueños - Fútbol al Estilo de Texas",
+        "houston": "La Ciudad Espacial Encuentra el Juego Hermoso",
+        "atlanta": "La Ciudad del Fútbol - ¡Levántate!",
+        "philadelphia": "Cuna de la Libertad, Hogar de la Pasión Futbolística",
+        "seattle": "El Juego Hermoso de la Ciudad Esmeralda",
+        "boston": "Donde se Hacen Campeones en Nueva Inglaterra",
+        "sanFrancisco": "Brillantez de la Bahía - Tecnología y Fútbol",
+        "toronto": "La Capital Mundial de Canadá",
+        "vancouver": "Montañas, Océano y el Juego Hermoso",
+        "mexicoCity": "El Corazón del Fútbol - El Legado Azteca Vive",
+        "guadalajara": "Donde el Mariachi se Encuentra con el Juego Hermoso",
+        "monterrey": "La Fortaleza Futbolística de la Ciudad del Acero"
+      }
     }
   },
   "menu": {

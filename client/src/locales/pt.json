@@ -326,6 +326,47 @@
       "guadalajara": "Guadalajara é o coração da tradição mexicana, conhecida pela música mariachi, tequila e arquitetura colonial.\n\nO Estádio Akron apresenta um design único inspirado em vulcão. A cidade oferece uma atmosfera festiva e uma profunda conexão com as raízes culturais do México.",
       "toronto": "Uma metrópole cosmopolita às margens do Lago Ontário, Toronto é conhecida por sua diversidade e cultura. Sediará o jogo de abertura do Canadá.\n\nA cidade oferece uma vibrante cena artística, gastronomia diversificada e marcos icônicos como a CN Tower. O BMO Field proporciona uma experiência futebolística íntima e energética.",
       "vancouver": "Aninhada entre montanhas e o oceano, Vancouver oferece paisagens deslumbrantes do Pacífico Noroeste e um ambiente descontraído.\n\nO BC Place possui um belo teto retrátil. Os visitantes podem desfrutar de aventuras ao ar livre, uma próspera cena gastronômica e a beleza natural que cerca esta cidade costeira."
+    },
+    "vault": {
+      "tabs": {
+        "overview": "Visão Geral",
+        "transit": "Transporte",
+        "safety": "Segurança",
+        "faith": "Fé",
+        "culture": "Cultura"
+      },
+      "labels": {
+        "theTrap": "A Armadilha",
+        "theSolution": "A Solução",
+        "localTransit": "Transporte Local",
+        "watchParties": "Festas de Jogo",
+        "officialFestival": "Festival Oficial",
+        "highEnergy": "Alta Energia",
+        "localSecret": "Segredo Local",
+        "internationalHospital": "Hospital Internacional",
+        "emergencyTraumaCenter": "Centro de Trauma",
+        "emergency": "Emergência",
+        "tapToCall": "Toque para ligar",
+        "openInMaps": "Abrir no Mapas"
+      },
+      "mottos": {
+        "kansasCity": "A Capital do Futebol da América e o Coração do Torneio",
+        "newYork": "O Palco do Mundo - Onde os Campeões São Feitos",
+        "losAngeles": "Cidade dos Anjos - Onde os Sonhos Encontram o Futebol",
+        "miami": "Onde o Mundo Vem Jogar",
+        "dallas": "Grande D, Grandes Sonhos - Futebol ao Estilo do Texas",
+        "houston": "A Cidade Espacial Encontra o Belo Jogo",
+        "atlanta": "A Cidade do Futebol - Levante-se!",
+        "philadelphia": "Berço da Liberdade, Casa da Paixão pelo Futebol",
+        "seattle": "O Belo Jogo da Cidade Esmeralda",
+        "boston": "Onde os Campeões São Feitos na Nova Inglaterra",
+        "sanFrancisco": "Brilho da Baía - Tecnologia e Futebol",
+        "toronto": "A Capital Mundial do Canadá",
+        "vancouver": "Montanhas, Oceano e o Belo Jogo",
+        "mexicoCity": "O Coração do Futebol - O Legado Asteca Vive",
+        "guadalajara": "Onde o Mariachi Encontra o Belo Jogo",
+        "monterrey": "A Fortaleza do Futebol da Cidade do Aço"
+      }
     }
   },
   "menu": {

@@ -326,6 +326,47 @@
       "guadalajara": "Guadalajara ist das Herz der mexikanischen Tradition, bekannt für Mariachi-Musik, Tequila und koloniale Architektur.\n\nDas Estadio Akron weist ein einzigartiges vom Vulkan inspiriertes Design auf. Die Stadt bietet eine festliche Atmosphäre und eine tiefe Verbindung zu Mexikos kulturellen Wurzeln.",
       "toronto": "Eine kosmopolitische Metropole am Ufer des Ontariosees, Toronto ist bekannt für seine Vielfalt und Kultur. Es wird Kanadas Eröffnungsspiel ausrichten.\n\nDie Stadt bietet eine lebendige Kunstszene, vielfältige Gastronomie und ikonische Wahrzeichen wie den CN Tower. Das BMO Field bietet ein intimes und energiegeladenes Fußballerlebnis.",
       "vancouver": "Eingebettet zwischen Bergen und dem Ozean bietet Vancouver atemberaubende Landschaften des pazifischen Nordwestens und eine entspannte Atmosphäre.\n\nBC Place verfügt über ein schönes einziehbares Dach. Besucher können Outdoor-Abenteuer, eine blühende Gastronomieszene und die natürliche Schönheit genießen, die diese Küstenstadt umgibt."
+    },
+    "vault": {
+      "tabs": {
+        "overview": "Überblick",
+        "transit": "Verkehr",
+        "safety": "Sicherheit",
+        "faith": "Glaube",
+        "culture": "Kultur"
+      },
+      "labels": {
+        "theTrap": "Die Falle",
+        "theSolution": "Die Lösung",
+        "localTransit": "Nahverkehr",
+        "watchParties": "Public Viewing",
+        "officialFestival": "Offizielles Festival",
+        "highEnergy": "Hohe Energie",
+        "localSecret": "Geheimtipp",
+        "internationalHospital": "Internationales Krankenhaus",
+        "emergencyTraumaCenter": "Notfall-Traumazentrum",
+        "emergency": "Notfall",
+        "tapToCall": "Tippen zum Anrufen",
+        "openInMaps": "In Karten öffnen"
+      },
+      "mottos": {
+        "kansasCity": "Die Fußballhauptstadt Amerikas und das Herz des Turniers",
+        "newYork": "Die Weltbühne - Wo Champions Gemacht Werden",
+        "losAngeles": "Stadt der Engel - Wo Träume auf den Weltfußball Treffen",
+        "miami": "Wo die Welt zum Spielen Kommt",
+        "dallas": "Großes D, Große Träume - Fußball im Texas-Stil",
+        "houston": "Die Weltraumstadt Trifft den Schönen Sport",
+        "atlanta": "Die Fußballstadt - Erhebt Euch!",
+        "philadelphia": "Wiege der Freiheit, Heimat der Fußballleidenschaft",
+        "seattle": "Der Schöne Sport der Smaragdstadt",
+        "boston": "Wo Champions in Neuengland Gemacht Werden",
+        "sanFrancisco": "Bay Area Brillanz - Technologie Trifft Fußball",
+        "toronto": "Kanadas Welthauptstadt",
+        "vancouver": "Berge, Ozean und der Schöne Sport",
+        "mexicoCity": "Das Herz des Fußballs - Das Aztekische Erbe Lebt",
+        "guadalajara": "Wo Mariachi auf den Schönen Sport Trifft",
+        "monterrey": "Die Fußballfestung der Stahlstadt"
+      }
     }
   },
   "menu": {

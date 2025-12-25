@@ -326,6 +326,47 @@
       "guadalajara": "Guadalajara is het hart van de Mexicaanse traditie, bekend om mariachi-muziek, tequila en koloniale architectuur.\n\nEstadio Akron heeft een uniek door vulkanen geïnspireerd ontwerp. De stad biedt een feestelijke sfeer en een diepe verbinding met Mexico's culturele wortels.",
       "toronto": "Een kosmopolitische metropool aan de oevers van Lake Ontario, Toronto staat bekend om zijn diversiteit en cultuur. Het zal de openingswedstrijd van Canada organiseren.\n\nDe stad biedt een levendige kunstscene, diverse restaurants en iconische bezienswaardigheden zoals de CN Tower. BMO Field biedt een intieme en energieke voetbalervaring.",
       "vancouver": "Genesteld tussen bergen en de oceaan, biedt Vancouver prachtige Pacific Northwest landschappen en een ontspannen sfeer.\n\nBC Place heeft een prachtig intrekbaar dak. Bezoekers kunnen genieten van buitenactiviteiten, een bloeiende eetscene en de natuurlijke schoonheid die deze kuststad omringt."
+    },
+    "vault": {
+      "tabs": {
+        "overview": "Overzicht",
+        "transit": "Vervoer",
+        "safety": "Veiligheid",
+        "faith": "Geloof",
+        "culture": "Cultuur"
+      },
+      "labels": {
+        "theTrap": "De Val",
+        "theSolution": "De Oplossing",
+        "localTransit": "Lokaal Vervoer",
+        "watchParties": "Kijkfeesten",
+        "officialFestival": "Officieel Festival",
+        "highEnergy": "Hoge Energie",
+        "localSecret": "Lokaal Geheim",
+        "internationalHospital": "Internationaal Ziekenhuis",
+        "emergencyTraumaCenter": "Spoedeisende Hulp",
+        "emergency": "Noodgeval",
+        "tapToCall": "Tik om te bellen",
+        "openInMaps": "Open in Kaarten"
+      },
+      "mottos": {
+        "kansasCity": "De Voetbalhoofdstad van Amerika en het Hart van het Toernooi",
+        "newYork": "Het Wereldtoneel - Waar Kampioenen Worden Gemaakt",
+        "losAngeles": "Stad der Engelen - Waar Dromen het Wereldvoetbal Ontmoeten",
+        "miami": "Waar de Wereld Komt Spelen",
+        "dallas": "Groot D, Grote Dromen - Voetbal in Texas-Stijl",
+        "houston": "De Ruimtestad Ontmoet de Mooie Sport",
+        "atlanta": "De Voetbalstad - Sta Op!",
+        "philadelphia": "Wieg van de Vrijheid, Thuis van de Voetbalpassie",
+        "seattle": "De Mooie Sport van de Smaragdstad",
+        "boston": "Waar Kampioenen Worden Gemaakt in New England",
+        "sanFrancisco": "Baai Briljantie - Technologie en Voetbal",
+        "toronto": "Canada's Wereldhoofdstad",
+        "vancouver": "Bergen, Oceaan en de Mooie Sport",
+        "mexicoCity": "Het Hart van Voetbal - Het Azteekse Erfgoed Leeft",
+        "guadalajara": "Waar Mariachi de Mooie Sport Ontmoet",
+        "monterrey": "De Voetbalvesting van de Staalstad"
+      }
     }
   },
   "menu": {
