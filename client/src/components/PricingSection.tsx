@@ -124,7 +124,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
       });
       
       setFreeUser(formData.email, formData.name, formData.city);
-      window.open("/world-cup-2026-bracket.html", "_blank");
+      window.open("/downloads/world-cup-2026-bracket.html", "_blank");
       
       toast({
         title: "Success!",
@@ -133,7 +133,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
       setShowEmailCapture(false);
     } catch (error) {
       console.error("Failed to save lead:", error);
-      window.open("/world-cup-2026-bracket.html", "_blank");
+      window.open("/downloads/world-cup-2026-bracket.html", "_blank");
     } finally {
       setIsLoading(null);
     }
