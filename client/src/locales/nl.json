@@ -3447,5 +3447,23 @@
     "step3Desc": "Blijf winnaars kiezen in de kwartfinales, halve finales en finale om je voorspelde WK 2026 Kampioen te selecteren!",
     "noteTitle": "Belangrijke Opmerking",
     "noteDesc": "Als je een keuze in een eerdere ronde wijzigt, worden alle afhankelijke keuzes in latere rondes automatisch gewist. Je voortgang wordt automatisch opgeslagen."
+  },
+  "watchHubs": {
+    "title": "Wereldwijde Kijkcentra",
+    "subtitle": "Kijkfeesten wereldwijd voor de 48 gekwalificeerde landen",
+    "searchPlaceholder": "Zoeken op land of stad...",
+    "infoTitle": "Vind Jouw Gemeenschap",
+    "infoDescription": "Of je nu reist tijdens het WK of thuis kijkt, vind de beste plekken om wedstrijden te bekijken in elk gekwalificeerd land. Deze officiële en door de gemeenschap georganiseerde fanzones brengen supporters van over de hele wereld samen.",
+    "capacity": "Capaciteit",
+    "noResults": "Geen centra gevonden voor je zoekopdracht",
+    "countries": "landen",
+    "continents": {
+      "europe": "Europa",
+      "southAmerica": "Zuid-Amerika",
+      "northAmerica": "Noord-Amerika",
+      "africa": "Afrika",
+      "asia": "Azië",
+      "oceania": "Oceanië"
+    }
   }
 }

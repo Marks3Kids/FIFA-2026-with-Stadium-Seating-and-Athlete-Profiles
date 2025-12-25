@@ -3447,5 +3447,23 @@
     "step3Desc": "Continua a scegliere i vincitori nei quarti, semifinali e finale per selezionare il tuo Campione previsto del Mondiale 2026!",
     "noteTitle": "Nota Importante",
     "noteDesc": "Se cambi una scelta in un turno precedente, tutte le scelte dipendenti nei turni successivi verranno cancellate automaticamente. I tuoi progressi vengono salvati automaticamente."
+  },
+  "watchHubs": {
+    "title": "Centri di Trasmissione Globali",
+    "subtitle": "Feste di visione in tutto il mondo per le 48 nazioni qualificate",
+    "searchPlaceholder": "Cerca per paese o città...",
+    "infoTitle": "Trova la Tua Comunità",
+    "infoDescription": "Che tu stia viaggiando durante la Coppa del Mondo o guardando da casa, trova i migliori luoghi per vedere le partite in ogni nazione qualificata. Queste zone fan ufficiali e organizzate dalla comunità riuniscono tifosi da tutto il mondo.",
+    "capacity": "Capacità",
+    "noResults": "Nessun centro trovato per la tua ricerca",
+    "countries": "paesi",
+    "continents": {
+      "europe": "Europa",
+      "southAmerica": "Sud America",
+      "northAmerica": "Nord America",
+      "africa": "Africa",
+      "asia": "Asia",
+      "oceania": "Oceania"
+    }
   }
 }

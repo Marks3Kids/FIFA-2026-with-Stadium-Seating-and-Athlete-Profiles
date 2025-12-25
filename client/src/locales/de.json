@@ -3447,5 +3447,23 @@
     "step3Desc": "Wählen Sie weiter Gewinner im Viertelfinale, Halbfinale und Finale, um Ihren vorhergesagten WM 2026 Champion auszuwählen!",
     "noteTitle": "Wichtiger Hinweis",
     "noteDesc": "Wenn Sie einen Tipp in einer früheren Runde ändern, werden alle abhängigen Tipps in späteren Runden automatisch gelöscht. Ihr Fortschritt wird automatisch gespeichert."
+  },
+  "watchHubs": {
+    "title": "Globale Übertragungszentren",
+    "subtitle": "Public Viewing weltweit für die 48 qualifizierten Nationen",
+    "searchPlaceholder": "Nach Land oder Stadt suchen...",
+    "infoTitle": "Finden Sie Ihre Community",
+    "infoDescription": "Ob Sie während der WM reisen oder von zu Hause aus schauen, finden Sie die besten Orte zum Spiele schauen in jeder qualifizierten Nation. Diese offiziellen und Community-organisierten Fanzonen bringen Fans aus aller Welt zusammen.",
+    "capacity": "Kapazität",
+    "noResults": "Keine Zentren für Ihre Suche gefunden",
+    "countries": "Länder",
+    "continents": {
+      "europe": "Europa",
+      "southAmerica": "Südamerika",
+      "northAmerica": "Nordamerika",
+      "africa": "Afrika",
+      "asia": "Asien",
+      "oceania": "Ozeanien"
+    }
   }
 }

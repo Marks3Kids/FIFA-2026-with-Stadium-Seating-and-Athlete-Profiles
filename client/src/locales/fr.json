@@ -3687,5 +3687,23 @@
     "step3Desc": "Continuez à choisir les gagnants des quarts, demi-finales et finale pour sélectionner votre champion prédit de la Coupe du Monde 2026!",
     "noteTitle": "Note Importante",
     "noteDesc": "Si vous changez un choix dans un tour précédent, tous les choix dépendants dans les tours suivants seront effacés automatiquement. Votre progression est sauvegardée automatiquement."
+  },
+  "watchHubs": {
+    "title": "Centres de Diffusion Mondiaux",
+    "subtitle": "Fêtes de visionnage dans le monde entier pour les 48 nations qualifiées",
+    "searchPlaceholder": "Rechercher par pays ou ville...",
+    "infoTitle": "Trouvez Votre Communauté",
+    "infoDescription": "Que vous voyagiez pendant la Coupe du Monde ou que vous regardiez depuis chez vous, trouvez les meilleurs lieux pour voir les matchs dans chaque nation qualifiée. Ces zones de fans officielles et communautaires rassemblent des supporters du monde entier.",
+    "capacity": "Capacité",
+    "noResults": "Aucun centre trouvé pour votre recherche",
+    "countries": "pays",
+    "continents": {
+      "europe": "Europe",
+      "southAmerica": "Amérique du Sud",
+      "northAmerica": "Amérique du Nord",
+      "africa": "Afrique",
+      "asia": "Asie",
+      "oceania": "Océanie"
+    }
   }
 }

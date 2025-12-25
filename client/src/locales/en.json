@@ -3577,7 +3577,16 @@
     "infoTitle": "Find Your Community",
     "infoDescription": "Whether you're traveling during the World Cup or watching from home, find the biggest and best watch party locations in each qualifying nation. These official and community-organized fan zones bring together supporters from around the globe.",
     "capacity": "Capacity",
-    "noResults": "No watch hubs found for your search"
+    "noResults": "No watch hubs found for your search",
+    "countries": "countries",
+    "continents": {
+      "europe": "Europe",
+      "southAmerica": "South America",
+      "northAmerica": "North America",
+      "africa": "Africa",
+      "asia": "Asia",
+      "oceania": "Oceania"
+    }
   },
   "location": {
     "welcomeTo": "Welcome to {{city}}!",

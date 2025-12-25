@@ -15,31 +15,33 @@ export default function WatchHubs() {
       hub.primaryCity.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const continentKeys = ["europe", "southAmerica", "northAmerica", "africa", "asia", "oceania"] as const;
+  
   const groupByContinent = (hubs: typeof globalWatchHubs) => {
     const continents: Record<string, typeof globalWatchHubs> = {
-      "Europe": [],
-      "South America": [],
-      "North America": [],
-      "Africa": [],
-      "Asia": [],
-      "Oceania": []
+      "europe": [],
+      "southAmerica": [],
+      "northAmerica": [],
+      "africa": [],
+      "asia": [],
+      "oceania": []
     };
 
     const continentMap: Record<string, string> = {
-      AR: "South America", AU: "Oceania", AT: "Europe", BE: "Europe", BR: "South America",
-      CM: "Africa", CA: "North America", CL: "South America", CO: "South America", HR: "Europe",
-      CZ: "Europe", DK: "Europe", EC: "South America", EG: "Africa", GB: "Europe",
-      FR: "Europe", DE: "Europe", HU: "Europe", IR: "Asia", IT: "Europe",
-      JP: "Asia", KR: "Asia", MX: "North America", MA: "Africa", NL: "Europe",
-      NG: "Africa", PY: "South America", PE: "South America", PL: "Europe", PT: "Europe",
-      QA: "Asia", SA: "Asia", RS: "Europe", SN: "Africa", SI: "Europe",
-      ZA: "Africa", ES: "Europe", CH: "Europe", TN: "Africa", TR: "Europe",
-      UA: "Europe", US: "North America", UY: "South America", UZ: "Asia", VE: "South America",
-      "GB-WLS": "Europe", DZ: "Africa", "GB-SCT": "Europe"
+      AR: "southAmerica", AU: "oceania", AT: "europe", BE: "europe", BR: "southAmerica",
+      CM: "africa", CA: "northAmerica", CL: "southAmerica", CO: "southAmerica", HR: "europe",
+      CZ: "europe", DK: "europe", EC: "southAmerica", EG: "africa", GB: "europe",
+      FR: "europe", DE: "europe", HU: "europe", IR: "asia", IT: "europe",
+      JP: "asia", KR: "asia", MX: "northAmerica", MA: "africa", NL: "europe",
+      NG: "africa", PY: "southAmerica", PE: "southAmerica", PL: "europe", PT: "europe",
+      QA: "asia", SA: "asia", RS: "europe", SN: "africa", SI: "europe",
+      ZA: "africa", ES: "europe", CH: "europe", TN: "africa", TR: "europe",
+      UA: "europe", US: "northAmerica", UY: "southAmerica", UZ: "asia", VE: "southAmerica",
+      "GB-WLS": "europe", DZ: "africa", "GB-SCT": "europe"
     };
 
     hubs.forEach((hub) => {
-      const continent = continentMap[hub.countryCode] || "Europe";
+      const continent = continentMap[hub.countryCode] || "europe";
       continents[continent].push(hub);
     });
 
@@ -86,13 +88,13 @@ export default function WatchHubs() {
           </p>
         </div>
 
-        {Object.entries(groupedHubs).map(([continent, hubs]) => 
+        {Object.entries(groupedHubs).map(([continentKey, hubs]) => 
           hubs.length > 0 && (
-            <div key={continent} className="mb-8">
+            <div key={continentKey} className="mb-8">
               <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-primary" />
-                {continent}
-                <span className="text-sm font-normal text-muted-foreground">({hubs.length} countries)</span>
+                {t(`watchHubs.continents.${continentKey}`)}
+                <span className="text-sm font-normal text-muted-foreground">({hubs.length} {t("watchHubs.countries")})</span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {hubs.map((hub) => (
