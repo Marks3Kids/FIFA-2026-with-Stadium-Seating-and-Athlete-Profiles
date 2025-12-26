@@ -1,7 +1,5 @@
 import express, { type Request, Response, NextFunction } from "express";
-import { serveStatic } from "./static";
 import { createServer } from "http";
-// Note: registerRoutes is dynamically imported after server starts to avoid blocking
 
 const app = express();
 const httpServer = createServer(app);
@@ -9,13 +7,43 @@ const httpServer = createServer(app);
 // Health check endpoints - respond immediately without any processing
 // These must be registered FIRST before any middleware
 app.get("/", (_req, res) => {
-  // Return minimal HTML that quickly loads the SPA
-  // This is faster than serving the full index.html from disk
-  res.status(200).type('html').send(`<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0;url=/home"></head><body></body></html>`);
+  res.status(200).send("ok");
 });
 app.get("/_health", (_req, res) => {
   res.status(200).send("ok");
 });
+
+// Start listening IMMEDIATELY - don't wait for any other setup
+const port = parseInt(process.env.PORT || "5000", 10);
+httpServer.listen({ port, host: "0.0.0.0", reusePort: true }, () => {
+  console.log(`Server listening on port ${port}`);
+  
+  // All other initialization happens AFTER listen
+  initializeApp();
+});
+
+async function initializeApp() {
+  try {
+    // In production, serve static files
+    if (process.env.NODE_ENV === "production") {
+      const { serveStatic } = await import("./static");
+      serveStatic(app);
+    } else {
+      // In development, set up Vite
+      const { setupVite } = await import("./vite");
+      await setupVite(httpServer, app);
+    }
+    
+    // Register API routes
+    const { registerRoutes } = await import("./routes");
+    await registerRoutes(httpServer, app);
+    console.log("Routes registered successfully");
+  } catch (error) {
+    console.error("Error during initialization:", error);
+  }
+}
+
+// Note: serveStatic is dynamically imported after server starts
 
 declare module "http" {
   interface IncomingMessage {
@@ -187,42 +215,4 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   throw err;
 });
 
-// In production, serve static files immediately (before routes are fully registered)
-// This allows the "/" health check to pass while routes initialize in background
-if (process.env.NODE_ENV === "production") {
-  serveStatic(app);
-}
-
-// ALWAYS serve the app on the port specified in the environment variable PORT
-// Start listening FIRST so health checks pass immediately
-const port = parseInt(process.env.PORT || "5000", 10);
-httpServer.listen(
-  {
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  },
-  () => {
-    log(`serving on port ${port}`);
-    
-    // Now register routes and start background initialization
-    (async () => {
-      try {
-        // In development, set up Vite before routes
-        if (process.env.NODE_ENV !== "production") {
-          const { setupVite } = await import("./vite");
-          await setupVite(httpServer, app);
-        }
-        
-        // Register API routes (dynamically imported to avoid blocking startup)
-        const { registerRoutes } = await import("./routes");
-        await registerRoutes(httpServer, app);
-        log("Routes registered successfully");
-        
-        // Stripe is now initialized lazily on first request - no startup init needed
-      } catch (error) {
-        console.error("Error during initialization:", error);
-      }
-    })();
-  },
-);
+// Old startup code removed - now handled by initializeApp() above
