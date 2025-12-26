@@ -20,10 +20,14 @@ declare module "http" {
 
 let stripeEnabled = false;
 
-// Stripe initialization runs in background - doesn't block server startup
-function initStripeBackground() {
-  // Delay Stripe init by 5 seconds to let health checks pass first
-  setTimeout(async () => {
+// Stripe initialization - runs lazily on first Stripe-related request
+let stripeInitPromise: Promise<void> | null = null;
+
+async function ensureStripeInitialized() {
+  if (stripeEnabled) return;
+  if (stripeInitPromise) return stripeInitPromise;
+  
+  stripeInitPromise = (async () => {
     const databaseUrl = process.env.DATABASE_URL;
     if (!databaseUrl) {
       console.log('DATABASE_URL not set, skipping Stripe initialization');
@@ -57,20 +61,25 @@ function initStripeBackground() {
 
       stripeEnabled = true;
 
-      console.log('Syncing Stripe data...');
+      // Sync in background - don't await
+      console.log('Starting Stripe data sync in background...');
       stripeSync.syncBackfill()
         .then(() => console.log('Stripe data synced'))
         .catch((err: any) => console.error('Error syncing Stripe data:', err));
     } catch (error) {
       console.error('Failed to initialize Stripe:', error);
     }
-  }, 5000);
+  })();
+  
+  return stripeInitPromise;
 }
 
 app.post(
   '/api/stripe/webhook/:uuid',
   express.raw({ type: 'application/json' }),
   async (req, res) => {
+    // Initialize Stripe lazily on first webhook
+    await ensureStripeInitialized();
     if (!stripeEnabled) {
       return res.status(503).json({ error: 'Stripe not configured' });
     }
@@ -99,6 +108,8 @@ app.post(
 );
 
 app.get('/api/stripe/publishable-key', async (_req, res) => {
+  // Initialize Stripe lazily on first key request
+  await ensureStripeInitialized();
   if (!stripeEnabled) {
     return res.status(503).json({ error: 'Stripe not configured', publishableKey: null });
   }
@@ -203,8 +214,7 @@ httpServer.listen(
         await registerRoutes(httpServer, app);
         log("Routes registered successfully");
         
-        // Start Stripe initialization in background
-        initStripeBackground();
+        // Stripe is now initialized lazily on first request - no startup init needed
       } catch (error) {
         console.error("Error during initialization:", error);
       }
