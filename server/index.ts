@@ -1,7 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+// Note: registerRoutes is dynamically imported after server starts to avoid blocking
 
 const app = express();
 const httpServer = createServer(app);
@@ -198,7 +198,8 @@ httpServer.listen(
           await setupVite(httpServer, app);
         }
         
-        // Register API routes (this may take a moment but server is already up)
+        // Register API routes (dynamically imported to avoid blocking startup)
+        const { registerRoutes } = await import("./routes");
         await registerRoutes(httpServer, app);
         log("Routes registered successfully");
         
