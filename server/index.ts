@@ -7,7 +7,6 @@ const app = express();
 const httpServer = createServer(app);
 
 // Health check endpoint - responds immediately without any processing
-// Must be registered FIRST before any other middleware
 app.get("/_health", (_req, res) => {
   res.status(200).send("ok");
 });
