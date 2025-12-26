@@ -4,10 +4,17 @@ import { createServer } from "http";
 const app = express();
 const httpServer = createServer(app);
 
+// Track initialization state
+let appInitialized = false;
+
 // Health check endpoints - respond immediately without any processing
-// These must be registered FIRST before any middleware
-app.get("/", (_req, res) => {
-  res.status(200).send("ok");
+// The "/" route only returns "ok" during startup, before static files are ready
+app.get("/", (req, res, next) => {
+  if (!appInitialized) {
+    res.status(200).send("ok");
+  } else {
+    next(); // Pass to static file serving after initialization
+  }
 });
 app.get("/_health", (_req, res) => {
   res.status(200).send("ok");
@@ -46,6 +53,7 @@ async function initializeApp() {
       console.log("Static files configured");
     }
     
+    appInitialized = true;
     console.log("App initialization complete");
   } catch (error) {
     console.error("Error during initialization:", error);
