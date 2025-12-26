@@ -2,6 +2,7 @@ import { Globe, Shield, Clock, Plane, Hotel, Utensils, Heart, ChevronDown } from
 import { useRef } from "react";
 import { Link } from "wouter";
 import { PricingSection } from "@/components/PricingSection";
+import soccerBallIcon from "../assets/soccer-ball.svg";
 
 const FEATURES = [
   { icon: <Globe className="w-8 h-8" />, title: "16 Host Cities", description: "Comprehensive guides for every venue across USA, Canada & Mexico" },
@@ -24,7 +25,7 @@ export default function LandingPage() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <img src="/header-icon.jpg" alt="Championship Concierge" className="w-12 h-12 rounded-full object-cover border-2 border-primary/50" />
+            <img src={soccerBallIcon} alt="Championship Concierge" className="w-12 h-12" />
             <div>
               <span className="text-lg font-display font-bold">
                 <span className="text-primary">CHAMPIONSHIP</span>{" "}

@@ -1,5 +1,6 @@
 import { HeaderNav } from "./HeaderNav";
 import { useTranslation } from "react-i18next";
+import soccerBallIcon from "../assets/soccer-ball.svg";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -22,9 +23,9 @@ export function Layout({ children, hideNav = false, hideTitle = false, pageTitle
           <div className="relative flex items-center justify-between bg-gradient-to-r from-emerald-900/30 via-emerald-800/20 to-emerald-900/30 border border-emerald-500/20 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 gap-2">
             <div className="flex items-center gap-4 sm:gap-5 min-w-0 flex-shrink">
               <img 
-                src="/header-icon.jpg" 
+                src={soccerBallIcon} 
                 alt="Championship Concierge" 
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover flex-shrink-0 border-2 border-emerald-500/50 shadow-lg"
+                className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 shadow-lg"
               />
               <div className="min-w-0 overflow-hidden">
                 <h1 className="text-sm sm:text-lg font-display font-bold leading-tight truncate whitespace-nowrap">
