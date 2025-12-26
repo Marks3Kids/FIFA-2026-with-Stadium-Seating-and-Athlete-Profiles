@@ -28,6 +28,56 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   
+  // One-time production database seed - GET shows a page with a button
+  app.get("/api/admin/seed-production", (req, res) => {
+    res.send(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Seed Production Database</title>
+        <style>
+          body { font-family: system-ui; background: #0f172a; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+          .container { text-align: center; padding: 40px; background: #1e293b; border-radius: 12px; max-width: 500px; }
+          h1 { color: #10b981; margin-bottom: 20px; }
+          button { background: #10b981; color: white; border: none; padding: 16px 32px; font-size: 18px; border-radius: 8px; cursor: pointer; }
+          button:hover { background: #059669; }
+          button:disabled { background: #4b5563; cursor: not-allowed; }
+          #result { margin-top: 20px; padding: 16px; border-radius: 8px; }
+          .success { background: #065f46; }
+          .error { background: #991b1b; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <h1>Seed Production Database</h1>
+          <p>Click the button below to populate the database with teams, cities, and matches.</p>
+          <button id="seedBtn" onclick="seedDatabase()">Seed Database Now</button>
+          <div id="result"></div>
+        </div>
+        <script>
+          async function seedDatabase() {
+            const btn = document.getElementById('seedBtn');
+            const result = document.getElementById('result');
+            btn.disabled = true;
+            btn.textContent = 'Seeding...';
+            try {
+              const res = await fetch('/api/admin/seed-production', { method: 'POST' });
+              const data = await res.json();
+              result.className = 'success';
+              result.innerHTML = '<strong>Success!</strong><br>' + JSON.stringify(data, null, 2);
+            } catch (err) {
+              result.className = 'error';
+              result.innerHTML = '<strong>Error:</strong> ' + err.message;
+            }
+            btn.disabled = false;
+            btn.textContent = 'Seed Database Now';
+          }
+        </script>
+      </body>
+      </html>
+    `);
+  });
+
   // One-time production database seed endpoint
   app.post("/api/admin/seed-production", async (req, res) => {
     try {
