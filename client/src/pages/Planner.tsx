@@ -175,7 +175,7 @@ export default function Planner() {
     <Layout pageTitle="nav.planner">
       <div className="pt-12 px-6 pb-8">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-4xl font-display font-bold text-white">{t("planner.title")}</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white">{t("planner.title")}</h1>
           <button
             onClick={() => setView("create")}
             className="bg-primary text-primary-foreground p-3 rounded-full"

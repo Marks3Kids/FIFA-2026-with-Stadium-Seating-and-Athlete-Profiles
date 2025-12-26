@@ -18,36 +18,36 @@ export function Layout({ children, hideNav = false, hideTitle = false, pageTitle
       dir={isRTL ? 'rtl' : 'ltr'}
     >
       {!hideTitle && (
-        <div className="pt-4 px-4">
-          <div className="relative flex items-center justify-between bg-gradient-to-r from-emerald-900/30 via-emerald-800/20 to-emerald-900/30 border border-emerald-500/20 rounded-xl px-4 py-3">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg flex-shrink-0">
-                <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="currentColor">
+        <div className="pt-3 sm:pt-4 px-3 sm:px-4">
+          <div className="relative flex items-center justify-between bg-gradient-to-r from-emerald-900/30 via-emerald-800/20 to-emerald-900/30 border border-emerald-500/20 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 gap-2">
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-shrink">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg flex-shrink-0">
+                <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor">
                   <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5"/>
                   <polygon points="12,2 14.5,8 21,8.5 16,13 17.5,20 12,16.5 6.5,20 8,13 3,8.5 9.5,8" fill="currentColor" opacity="0.3"/>
                   <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1"/>
                   <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="0.75" opacity="0.5"/>
                 </svg>
               </div>
-              <div>
-                <h1 className="text-lg font-display font-bold leading-tight">
+              <div className="min-w-0">
+                <h1 className="text-sm sm:text-lg font-display font-bold leading-tight truncate">
                   <span className="text-emerald-400">{t("header.worldCup")}</span>{" "}
                   <span className="text-white">{t("header.companion")}</span>
                 </h1>
-                <p className="text-[10px] text-muted-foreground uppercase tracking-widest">{t("header.year")}</p>
+                <p className="text-[9px] sm:text-[10px] text-muted-foreground uppercase tracking-widest">{t("header.year")}</p>
               </div>
             </div>
             
             {!hideNav && <HeaderNav inline />}
-            
-            {pageTitle && (
-              <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 pointer-events-none">
-                <div className="bg-primary/20 border border-primary/30 rounded-full px-4 py-1.5">
-                  <span className="text-sm font-display font-semibold text-primary">{t(pageTitle)}</span>
-                </div>
-              </div>
-            )}
           </div>
+          
+          {pageTitle && (
+            <div className="flex justify-center mt-2">
+              <div className="bg-primary/20 border border-primary/30 rounded-full px-3 sm:px-4 py-1 sm:py-1.5">
+                <span className="text-xs sm:text-sm font-display font-semibold text-primary">{t(pageTitle)}</span>
+              </div>
+            </div>
+          )}
         </div>
       )}
       {hideTitle && !hideNav && <HeaderNav />}

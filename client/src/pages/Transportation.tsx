@@ -140,7 +140,7 @@ export default function Transportation() {
           data-testid="img-transport-hero"
         />
         <div className="absolute inset-0 z-20 flex flex-col justify-end p-6">
-          <h1 className="text-4xl font-display font-bold text-white drop-shadow-2xl" data-testid="text-page-title">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white drop-shadow-2xl" data-testid="text-page-title">
             {t("transportation.title")}
           </h1>
         </div>

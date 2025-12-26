@@ -97,7 +97,7 @@ export default function StadiumSeating() {
   return (
     <Layout pageTitle="nav.stadiumSeating">
       <div className="pt-12 px-6 pb-20">
-        <h1 className="text-4xl font-display font-bold text-white mb-2">{t("stadiumSeating.title")}</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-2">{t("stadiumSeating.title")}</h1>
         <p className="text-muted-foreground mb-6">{t("stadiumSeating.subtitle")}</p>
 
         <div className="relative mb-6">

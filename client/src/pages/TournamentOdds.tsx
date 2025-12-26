@@ -92,7 +92,7 @@ export default function TournamentOdds() {
       <div className="pt-12 px-6 pb-20">
         <div className="flex items-center space-x-3 mb-2">
           <TrendingUp className="w-8 h-8 text-primary" />
-          <h1 className="text-4xl font-display font-bold text-white">{t("odds.title")}</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white">{t("odds.title")}</h1>
         </div>
         <p className="text-muted-foreground mb-6">{t("odds.subtitle")}</p>
 

@@ -92,24 +92,24 @@ export function HeaderNav({ inline = false }: HeaderNavProps) {
   const currentLanguage = LANGUAGES.find((l) => l.code === selectedLanguage) || LANGUAGES[0];
 
   const containerClass = inline
-    ? "flex items-center gap-2"
-    : `fixed top-4 z-50 ${isRTL ? 'left-4' : 'right-4'} flex items-center gap-2`;
+    ? "flex items-center gap-1.5 sm:gap-2 flex-shrink-0"
+    : `fixed top-4 z-50 ${isRTL ? 'left-4' : 'right-4'} flex items-center gap-1.5 sm:gap-2`;
 
   return (
     <div className={containerClass}>
       <div className="relative" ref={langRef}>
         <button
           onClick={() => setIsLangOpen(!isLangOpen)}
-          className="flex items-center gap-1.5 bg-card/80 backdrop-blur-sm border border-white/10 rounded-full px-3 py-2 text-sm text-white hover:bg-white/10 transition-colors"
+          className="flex items-center gap-1 sm:gap-1.5 bg-card/80 backdrop-blur-sm border border-white/10 rounded-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm text-white hover:bg-white/10 transition-colors"
           aria-label="Select language"
           aria-expanded={isLangOpen}
           aria-haspopup="listbox"
         >
-          <Globe className="w-4 h-4 text-primary" />
+          <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
           <img 
             src={getLanguageFlagUrl(currentLanguage.code, 40)} 
             alt={currentLanguage.name}
-            className="w-5 h-4 object-cover rounded"
+            className="w-4 h-3 sm:w-5 sm:h-4 object-cover rounded"
           />
         </button>
 
@@ -143,13 +143,13 @@ export function HeaderNav({ inline = false }: HeaderNavProps) {
       <div className="relative" ref={navRef}>
         <button
           onClick={() => setIsNavOpen(!isNavOpen)}
-          className="flex items-center gap-1.5 bg-card/80 backdrop-blur-sm border border-white/10 rounded-full px-3 py-2 text-sm text-white hover:bg-white/10 transition-colors"
+          className="flex items-center gap-1 sm:gap-1.5 bg-card/80 backdrop-blur-sm border border-white/10 rounded-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm text-white hover:bg-white/10 transition-colors"
           aria-label="Navigation menu"
           aria-expanded={isNavOpen}
           aria-haspopup="menu"
         >
-          <Menu className="w-4 h-4 text-primary" />
-          <ChevronDown className={cn("w-3 h-3 transition-transform", isNavOpen && "rotate-180")} />
+          <Menu className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+          <ChevronDown className={cn("w-2.5 h-2.5 sm:w-3 sm:h-3 transition-transform", isNavOpen && "rotate-180")} />
         </button>
 
         {isNavOpen && (

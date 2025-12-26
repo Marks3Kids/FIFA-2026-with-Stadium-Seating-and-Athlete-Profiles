@@ -49,7 +49,7 @@ export default function Menu() {
   return (
     <Layout pageTitle="nav.menu">
       <div className="pt-12 px-6 pb-8">
-        <h1 className="text-4xl font-display font-bold text-white mb-8">{t("menu.title")}</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-6 sm:mb-8">{t("menu.title")}</h1>
         
         <div className="grid grid-cols-2 gap-4 mb-8">
           {menuItems.map((item) => (

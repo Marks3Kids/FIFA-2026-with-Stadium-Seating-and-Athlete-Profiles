@@ -101,7 +101,7 @@ export default function Players() {
   return (
     <Layout pageTitle="nav.players">
       <div className="pt-12 px-6 pb-20">
-        <h1 className="text-4xl font-display font-bold text-white mb-2">{t("players.title")}</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-2">{t("players.title")}</h1>
         <p className="text-muted-foreground mb-4">{t("players.subtitle")}</p>
 
         <div className="bg-card/50 border border-white/10 rounded-xl p-3 mb-4">
