@@ -103,7 +103,7 @@
   },
   "bracket": {
     "title": "Chaves Eliminatórias",
-    "subtitle": "Estrutura do Torneio da Copa do Mundo FIFA 2026",
+    "subtitle": "Estrutura do Torneio da Copa do Mundo 2026",
     "roundOf32": "Fase de 32",
     "roundOf16": "Oitavas de Final",
     "quarterfinals": "Quartas de Final",
@@ -148,7 +148,7 @@
     "year": "2026",
     "tagline": "The World is Coming to North America",
     "updateInfo": "This app is updated routinely with the latest information through the end of the 2026 World Cup and into August 2026.",
-    "potDrawAlt": "FIFA World Cup 2026 Draw Pots",
+    "potDrawAlt": "Potes do Sorteio da Copa do Mundo 2026",
     "viewSchedule": "View Match Schedule",
     "latestNews": "Últimas Notícias",
     "news": {
@@ -192,7 +192,7 @@
     "rank": "Ranking #{{rank}}",
     "description": "Informação completa do plantel, registos da temporada atual e destaques dos jogos para todas as nações competidoras. Atualizado regularmente em dezembro 2025, março 2026 e maio 2026.",
     "qualifiedCount": "42 de 48 equipas qualificadas",
-    "playoffInfo": "As 6 equipas finais serão determinadas através do Torneio de Play-Off da FIFA em março 2026 com: Bolívia, Congo DR, Iraque, Jamaica, Nova Caledónia e Suriname a competir pelos lugares restantes.",
+    "playoffInfo": "As 6 equipas finais serão determinadas através do Torneio de Play-Off em março 2026 com: Bolívia, Congo DR, Iraque, Jamaica, Nova Caledónia e Suriname a competir pelos lugares restantes.",
     "viewKnockoutBrackets": "Ver Quadro Eliminatório"
   },
   "matches": {
@@ -1228,7 +1228,7 @@
   },
   "profile": {
     "title": "Perfil",
-    "attendeeTitle": "Participante FIFA 2026",
+    "attendeeTitle": "Participante Copa do Mundo 2026",
     "personalInfo": "Informações Pessoais",
     "displayName": "Nome de Exibição",
     "displayNamePlaceholder": "Seu nome",
@@ -1287,7 +1287,7 @@
       "confirmClearMessage": "This will delete all your saved data.",
       "clearData": "Clear Data"
     },
-    "appInfo": "FIFA 2026 World Cup Companion",
+    "appInfo": "Championship Concierge",
     "version": "Version 1.0.0"
   },
   "planner": {
@@ -2294,7 +2294,7 @@
   },
   "criticalInfo": {
     "title": "Informações Críticas",
-    "subtitle": "Informações essenciais de segurança e viagem para visitantes da Copa do Mundo FIFA 2026.",
+    "subtitle": "Informações essenciais de segurança e viagem para visitantes da Copa do Mundo 2026.",
     "solution": "Solução",
     "preventionTips": "Dicas de Prevenção",
     "viewModes": {
@@ -3041,7 +3041,7 @@
     },
     "tvGuideSection": {
       "title": "Guia de TV",
-      "subtitle": "Como assistir a Copa do Mundo FIFA 2026 - Todos os 104 jogos, 11 de junho - 19 de julho",
+      "subtitle": "Como assistir a Copa do Mundo 2026 - Todos os 104 jogos, 11 de junho - 19 de julho",
       "tabs": {
         "english": "Inglês",
         "spanish": "Espanhol",
@@ -3298,7 +3298,7 @@
   },
   "players": {
     "title": "Perfis dos Jogadores",
-    "subtitle": "Explore as estrelas da Copa do Mundo FIFA 2026",
+    "subtitle": "Explore as estrelas da Copa do Mundo 2026",
     "loading": "Carregando jogadores...",
     "searchPlaceholder": "Pesquisar por nome, posição ou clube...",
     "allTeams": "Todas as Equipes",
@@ -3377,11 +3377,11 @@
   },
   "odds": {
     "title": "Cotações do Torneio",
-    "subtitle": "Cotações de apostas atuais para a Copa do Mundo FIFA 2026",
+    "subtitle": "Cotações de apostas atuais para a Copa do Mundo 2026",
     "disclaimer": "Apenas para Fins Informativos",
     "disclaimerDetail": "As cotações mostradas são apenas para entretenimento e informação. As cotações reais variam por casa de apostas e mudam frequentemente. Aposte com responsabilidade.",
     "championshipOdds": "Cotações para Vencer o Campeonato",
-    "championshipDescription": "Cotações atuais de Vegas para equipes vencerem a Copa do Mundo FIFA 2026. Números positivos mostram lucro potencial em uma aposta de $100.",
+    "championshipDescription": "Cotações atuais de Vegas para equipes vencerem a Copa do Mundo 2026. Números positivos mostram lucro potencial em uma aposta de $100.",
     "groupWinners": "Cotações dos Vencedores da Fase de Grupos",
     "groupDescription": "Cotações para terminar em primeiro em cada grupo. Números negativos indicam favoritos.",
     "group": "Grupo",

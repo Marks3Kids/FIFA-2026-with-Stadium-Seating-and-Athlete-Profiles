@@ -103,7 +103,7 @@
   },
   "bracket": {
     "title": "Tabellone ad Eliminazione",
-    "subtitle": "Struttura del Torneo della Coppa del Mondo FIFA 2026",
+    "subtitle": "Struttura del Torneo della Coppa del Mondo 2026",
     "roundOf32": "Sedicesimi",
     "roundOf16": "Ottavi di Finale",
     "quarterfinals": "Quarti di Finale",
@@ -148,7 +148,7 @@
     "year": "2026",
     "tagline": "Il mondo sta arrivando in Nord America",
     "updateInfo": "Questa applicazione viene aggiornata regolarmente con le ultime informazioni fino alla fine della Coppa del Mondo 2026 e fino all'agosto 2026.",
-    "potDrawAlt": "Coppa del Mondo FIFA 2026: i sorteggi",
+    "potDrawAlt": "Coppa del Mondo 2026: i sorteggi",
     "viewSchedule": "Visualizza il calendario delle partite",
     "latestNews": "Ultime notizie",
     "news": {
@@ -192,7 +192,7 @@
     "rank": "Classifica #{{rank}}",
     "description": "Informazioni complete sulla rosa, bilanci della stagione corrente e momenti salienti delle partite per tutte le nazioni in competizione. Aggiornato regolarmente a dicembre 2025, marzo 2026 e maggio 2026.",
     "qualifiedCount": "42 squadre su 48 qualificate",
-    "playoffInfo": "Le ultime 6 squadre saranno determinate attraverso il Torneo di Spareggi FIFA a marzo 2026 con: Bolivia, Congo DR, Iraq, Giamaica, Nuova Caledonia e Suriname in competizione per i posti rimanenti.",
+    "playoffInfo": "Le ultime 6 squadre saranno determinate attraverso il Torneo di Spareggi a marzo 2026 con: Bolivia, Congo DR, Iraq, Giamaica, Nuova Caledonia e Suriname in competizione per i posti rimanenti.",
     "viewKnockoutBrackets": "Visualizza Tabellone Eliminatorio"
   },
   "matches": {
@@ -1228,7 +1228,7 @@
   },
   "profile": {
     "title": "Profilo",
-    "attendeeTitle": "Partecipante FIFA 2026",
+    "attendeeTitle": "Partecipante Coppa del Mondo 2026",
     "personalInfo": "Informazioni Personali",
     "displayName": "Nome Visualizzato",
     "displayNamePlaceholder": "Il tuo nome",
@@ -1287,7 +1287,7 @@
       "confirmClearMessage": "In questo modo si cancellano tutti i dati salvati.",
       "clearData": "Cancella dati"
     },
-    "appInfo": "Guida alla Coppa del Mondo FIFA 2026",
+    "appInfo": "Championship Concierge",
     "version": "Versione 1.0.0"
   },
   "planner": {
@@ -2295,7 +2295,7 @@
   },
   "criticalInfo": {
     "title": "Informazioni Critiche",
-    "subtitle": "Informazioni essenziali su sicurezza e viaggio per i visitatori della Coppa del Mondo FIFA 2026.",
+    "subtitle": "Informazioni essenziali su sicurezza e viaggio per i visitatori della Coppa del Mondo 2026.",
     "solution": "Soluzione",
     "preventionTips": "Consigli di Prevenzione",
     "viewModes": {
@@ -3042,7 +3042,7 @@
     },
     "tvGuideSection": {
       "title": "Guida TV",
-      "subtitle": "Come vedere la Coppa del Mondo FIFA 2026 - Tutte le 104 partite, 11 giugno - 19 luglio",
+      "subtitle": "Come vedere la Coppa del Mondo 2026 - Tutte le 104 partite, 11 giugno - 19 luglio",
       "tabs": {
         "english": "Inglese",
         "spanish": "Spagnolo",
@@ -3299,7 +3299,7 @@
   },
   "players": {
     "title": "Profili dei Giocatori",
-    "subtitle": "Esplora le stelle della Coppa del Mondo FIFA 2026",
+    "subtitle": "Esplora le stelle della Coppa del Mondo 2026",
     "loading": "Caricamento giocatori...",
     "searchPlaceholder": "Cerca per nome, ruolo o club...",
     "allTeams": "Tutte le Squadre",
@@ -3378,11 +3378,11 @@
   },
   "odds": {
     "title": "Quote del Torneo",
-    "subtitle": "Quote di scommesse attuali per la Coppa del Mondo FIFA 2026",
+    "subtitle": "Quote di scommesse attuali per la Coppa del Mondo 2026",
     "disclaimer": "Solo a Scopo Informativo",
     "disclaimerDetail": "Le quote mostrate sono solo a scopo di intrattenimento e informazione. Le quote reali variano per bookmaker e cambiano frequentemente. Scommetti responsabilmente.",
     "championshipOdds": "Quote per Vincere il Campionato",
-    "championshipDescription": "Quote attuali di Las Vegas per le squadre che vincono la Coppa del Mondo FIFA 2026. I numeri positivi mostrano il profitto potenziale su una scommessa di $100.",
+    "championshipDescription": "Quote attuali di Las Vegas per le squadre che vincono la Coppa del Mondo 2026. I numeri positivi mostrano il profitto potenziale su una scommessa di $100.",
     "groupWinners": "Quote dei Vincitori della Fase a Gironi",
     "groupDescription": "Quote per finire primo in ogni girone. I numeri negativi indicano i favoriti.",
     "group": "Girone",

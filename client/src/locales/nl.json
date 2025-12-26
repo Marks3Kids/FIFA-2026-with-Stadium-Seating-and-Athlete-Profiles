@@ -103,7 +103,7 @@
   },
   "bracket": {
     "title": "Knock-out Schema",
-    "subtitle": "Toernooistructuur van het FIFA WK 2026",
+    "subtitle": "Toernooistructuur van het WK 2026",
     "roundOf32": "32ste finales",
     "roundOf16": "Achtste finales",
     "quarterfinals": "Kwartfinales",
@@ -148,7 +148,7 @@
     "year": "2026",
     "tagline": "De wereld komt naar Noord-Amerika",
     "updateInfo": "Deze app wordt regelmatig bijgewerkt met de laatste informatie tot het einde van het WK 2026 en tot in augustus 2026.",
-    "potDrawAlt": "FIFA Wereldkampioenschap 2026 Loting",
+    "potDrawAlt": "Wereldkampioenschap 2026 Loting",
     "viewSchedule": "Wedstrijdschema bekijken",
     "latestNews": "Laatste nieuws",
     "news": {
@@ -192,7 +192,7 @@
     "rank": "Ranking #{{rank}}",
     "description": "Volledige selectie-informatie, huidige seizoensrecords en wedstrijdhoogtepunten voor alle deelnemende landen. Regelmatig bijgewerkt in december 2025, maart 2026 en mei 2026.",
     "qualifiedCount": "42 van 48 teams gekwalificeerd",
-    "playoffInfo": "De laatste 6 teams worden bepaald via het FIFA Play-Off Toernooi in maart 2026 met: Bolivia, Congo DR, Irak, Jamaica, Nieuw-Caledonië en Suriname strijdend om de resterende plaatsen.",
+    "playoffInfo": "De laatste 6 teams worden bepaald via het Play-Off Toernooi in maart 2026 met: Bolivia, Congo DR, Irak, Jamaica, Nieuw-Caledonië en Suriname strijdend om de resterende plaatsen.",
     "viewKnockoutBrackets": "Bekijk Knock-out Schema"
   },
   "matches": {
@@ -1228,7 +1228,7 @@
   },
   "profile": {
     "title": "Profiel",
-    "attendeeTitle": "FIFA 2026 Deelnemer",
+    "attendeeTitle": "WK 2026 Deelnemer",
     "personalInfo": "Persoonlijke informatie",
     "displayName": "Naam weergeven",
     "displayNamePlaceholder": "Uw naam",
@@ -1287,7 +1287,7 @@
       "confirmClearMessage": "Hierdoor worden al je opgeslagen gegevens gewist.",
       "clearData": "Gegevens wissen"
     },
-    "appInfo": "FIFA 2026 Wereldkampioenschap Metgezel",
+    "appInfo": "Championship Concierge",
     "version": "Versie 1.0.0"
   },
   "planner": {
@@ -2295,7 +2295,7 @@
   },
   "criticalInfo": {
     "title": "Kritieke Informatie",
-    "subtitle": "Essentiële veiligheids- en reisinformatie voor bezoekers van de FIFA World Cup 2026.",
+    "subtitle": "Essentiële veiligheids- en reisinformatie voor bezoekers van het WK 2026.",
     "solution": "Oplossing",
     "preventionTips": "Preventietips",
     "viewModes": {
@@ -3042,7 +3042,7 @@
     },
     "tvGuideSection": {
       "title": "TV Gids",
-      "subtitle": "Hoe de FIFA WK 2026 te bekijken - Alle 104 wedstrijden, 11 juni - 19 juli",
+      "subtitle": "Hoe het WK 2026 te bekijken - Alle 104 wedstrijden, 11 juni - 19 juli",
       "tabs": {
         "english": "Engels",
         "spanish": "Spaans",
@@ -3299,7 +3299,7 @@
   },
   "players": {
     "title": "Spelerprofielen",
-    "subtitle": "Ontdek de sterren van het FIFA WK 2026",
+    "subtitle": "Ontdek de sterren van het WK 2026",
     "loading": "Spelers laden...",
     "searchPlaceholder": "Zoeken op naam, positie of club...",
     "allTeams": "Alle Teams",
@@ -3378,11 +3378,11 @@
   },
   "odds": {
     "title": "Toernooi Odds",
-    "subtitle": "Huidige weddenschapskansen voor het FIFA WK 2026",
+    "subtitle": "Huidige weddenschapskansen voor het WK 2026",
     "disclaimer": "Alleen voor Informatieve Doeleinden",
     "disclaimerDetail": "De getoonde odds zijn alleen voor entertainment en informatie. Werkelijke odds variëren per bookmaker en veranderen regelmatig. Gok verantwoord.",
     "championshipOdds": "Odds om het Kampioenschap te Winnen",
-    "championshipDescription": "Huidige Vegas odds voor teams die het FIFA WK 2026 winnen. Positieve getallen tonen potentiële winst op een inzet van $100.",
+    "championshipDescription": "Huidige Vegas odds voor teams die het WK 2026 winnen. Positieve getallen tonen potentiële winst op een inzet van $100.",
     "groupWinners": "Odds voor Groepsfase Winnaars",
     "groupDescription": "Odds om eerste te eindigen in elke groep. Negatieve getallen geven favorieten aan.",
     "group": "Groep",

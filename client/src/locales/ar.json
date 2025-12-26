@@ -103,7 +103,7 @@
   },
   "bracket": {
     "title": "جدول الأدوار الإقصائية",
-    "subtitle": "هيكل بطولة كأس العالم FIFA 2026",
+    "subtitle": "هيكل بطولة كأس العالم 2026",
     "roundOf32": "دور الـ32",
     "roundOf16": "دور الـ16",
     "quarterfinals": "ربع النهائي",
@@ -148,7 +148,7 @@
     "year": "2026",
     "tagline": "The World is Coming to North America",
     "updateInfo": "This app is updated routinely with the latest information through the end of the 2026 World Cup and into August 2026.",
-    "potDrawAlt": "FIFA World Cup 2026 Draw Pots",
+    "potDrawAlt": "مجموعات قرعة كأس العالم 2026",
     "viewSchedule": "View Match Schedule",
     "latestNews": "آخر الأخبار",
     "news": {
@@ -1228,7 +1228,7 @@
   },
   "profile": {
     "title": "الملف الشخصي",
-    "attendeeTitle": "حاضر FIFA 2026",
+    "attendeeTitle": "حاضر كأس العالم 2026",
     "personalInfo": "المعلومات الشخصية",
     "displayName": "الاسم المعروض",
     "displayNamePlaceholder": "اسمك",
@@ -1287,7 +1287,7 @@
       "confirmClearMessage": "This will delete all your saved data.",
       "clearData": "Clear Data"
     },
-    "appInfo": "FIFA 2026 World Cup Companion",
+    "appInfo": "Championship Concierge",
     "version": "Version 1.0.0"
   },
   "planner": {
@@ -2295,7 +2295,7 @@
   },
   "criticalInfo": {
     "title": "معلومات هامة",
-    "subtitle": "معلومات السلامة والسفر الأساسية لزوار كأس العالم FIFA 2026.",
+    "subtitle": "معلومات السلامة والسفر الأساسية لزوار كأس العالم 2026.",
     "solution": "الحل",
     "preventionTips": "نصائح الوقاية",
     "viewModes": {
@@ -3378,11 +3378,11 @@
   },
   "odds": {
     "title": "احتمالات البطولة",
-    "subtitle": "احتمالات المراهنات الحالية لكأس العالم فيفا 2026",
+    "subtitle": "احتمالات المراهنات الحالية لكأس العالم 2026",
     "disclaimer": "لأغراض إعلامية فقط",
     "disclaimerDetail": "الاحتمالات المعروضة هي للترفيه والمعلومات فقط. تختلف الاحتمالات الفعلية حسب مكتب المراهنات وتتغير بشكل متكرر. راهن بمسؤولية.",
     "championshipOdds": "احتمالات الفوز بالبطولة",
-    "championshipDescription": "احتمالات فيغاس الحالية للفرق للفوز بكأس العالم فيفا 2026. الأرقام الموجبة تظهر الربح المحتمل على رهان بقيمة 100 دولار.",
+    "championshipDescription": "احتمالات فيغاس الحالية للفرق للفوز بكأس العالم 2026. الأرقام الموجبة تظهر الربح المحتمل على رهان بقيمة 100 دولار.",
     "groupWinners": "احتمالات فائزي مرحلة المجموعات",
     "groupDescription": "احتمالات الحصول على المركز الأول في كل مجموعة. الأرقام السالبة تشير إلى المرشحين.",
     "group": "المجموعة",

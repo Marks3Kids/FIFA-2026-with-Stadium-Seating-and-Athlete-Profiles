@@ -103,7 +103,7 @@
   },
   "bracket": {
     "title": "K.o.-Runde",
-    "subtitle": "Turnierstruktur der FIFA Weltmeisterschaft 2026",
+    "subtitle": "Turnierstruktur der Weltmeisterschaft 2026",
     "roundOf32": "Runde der 32",
     "roundOf16": "Achtelfinale",
     "quarterfinals": "Viertelfinale",
@@ -148,7 +148,7 @@
     "year": "2026",
     "tagline": "Die Welt kommt nach Nordamerika",
     "updateInfo": "Diese App wird routinemäßig mit den neuesten Informationen bis zum Ende der Weltmeisterschaft 2026 und bis August 2026 aktualisiert.",
-    "potDrawAlt": "FIFA World Cup 2026 Auslosungstöpfe",
+    "potDrawAlt": "Weltmeisterschaft 2026 Auslosungstöpfe",
     "viewSchedule": "Spielplan ansehen",
     "latestNews": "Neueste Nachrichten",
     "news": {
@@ -192,7 +192,7 @@
     "rank": "Rang #{{rank}}",
     "description": "Vollständige Kaderinformationen, aktuelle Saisonbilanzen und Spielhöhepunkte für alle teilnehmenden Nationen. Regelmäßig aktualisiert im Dezember 2025, März 2026 und Mai 2026.",
     "qualifiedCount": "42 von 48 Teams qualifiziert",
-    "playoffInfo": "Die letzten 6 Teams werden durch das FIFA-Playoff-Turnier im März 2026 ermittelt mit: Bolivien, DR Kongo, Irak, Jamaika, Neukaledonien und Suriname im Wettbewerb um die verbleibenden Plätze.",
+    "playoffInfo": "Die letzten 6 Teams werden durch das Playoff-Turnier im März 2026 ermittelt mit: Bolivien, DR Kongo, Irak, Jamaika, Neukaledonien und Suriname im Wettbewerb um die verbleibenden Plätze.",
     "viewKnockoutBrackets": "K.O.-Tableau ansehen"
   },
   "matches": {
@@ -1228,7 +1228,7 @@
   },
   "profile": {
     "title": "Profil",
-    "attendeeTitle": "FIFA 2026-Teilnehmer",
+    "attendeeTitle": "WM 2026-Teilnehmer",
     "personalInfo": "Persönliche Informationen",
     "displayName": "Name anzeigen",
     "displayNamePlaceholder": "Ihr Name",
@@ -1287,7 +1287,7 @@
       "confirmClearMessage": "Dadurch werden alle Ihre gespeicherten Daten gelöscht.",
       "clearData": "Daten löschen"
     },
-    "appInfo": "FIFA 2026 World Cup Companion",
+    "appInfo": "Championship Concierge",
     "version": "Version 1.0.0"
   },
   "planner": {
@@ -2295,7 +2295,7 @@
   },
   "criticalInfo": {
     "title": "Kritische Informationen",
-    "subtitle": "Wichtige Sicherheits- und Reiseinformationen für Besucher der FIFA Weltmeisterschaft 2026.",
+    "subtitle": "Wichtige Sicherheits- und Reiseinformationen für Besucher der Weltmeisterschaft 2026.",
     "solution": "Lösung",
     "preventionTips": "Präventionstipps",
     "viewModes": {
@@ -3042,7 +3042,7 @@
     },
     "tvGuideSection": {
       "title": "TV-Guide",
-      "subtitle": "So sehen Sie die FIFA WM 2026 - Alle 104 Spiele, 11. Juni - 19. Juli",
+      "subtitle": "So sehen Sie die WM 2026 - Alle 104 Spiele, 11. Juni - 19. Juli",
       "tabs": {
         "english": "Englisch",
         "spanish": "Spanisch",
@@ -3299,7 +3299,7 @@
   },
   "players": {
     "title": "Spielerprofile",
-    "subtitle": "Entdecken Sie die Stars der FIFA Weltmeisterschaft 2026",
+    "subtitle": "Entdecken Sie die Stars der Weltmeisterschaft 2026",
     "loading": "Spieler werden geladen...",
     "searchPlaceholder": "Nach Name, Position oder Verein suchen...",
     "allTeams": "Alle Teams",
@@ -3378,11 +3378,11 @@
   },
   "odds": {
     "title": "Turnier-Quoten",
-    "subtitle": "Aktuelle Wettquoten für die FIFA WM 2026",
+    "subtitle": "Aktuelle Wettquoten für die WM 2026",
     "disclaimer": "Nur zu Informationszwecken",
     "disclaimerDetail": "Die angezeigten Quoten dienen nur zur Unterhaltung und Information. Tatsächliche Quoten variieren je nach Buchmacher und ändern sich häufig. Spielen Sie verantwortungsvoll.",
     "championshipOdds": "Quoten für den Meisterschaftsgewinn",
-    "championshipDescription": "Aktuelle Vegas-Quoten für Teams, die die FIFA WM 2026 gewinnen. Positive Zahlen zeigen potenziellen Gewinn bei einer 100$-Wette.",
+    "championshipDescription": "Aktuelle Vegas-Quoten für Teams, die die WM 2026 gewinnen. Positive Zahlen zeigen potenziellen Gewinn bei einer 100$-Wette.",
     "groupWinners": "Quoten für Gruppensieger",
     "groupDescription": "Quoten für den ersten Platz in jeder Gruppe. Negative Zahlen zeigen Favoriten an.",
     "group": "Gruppe",

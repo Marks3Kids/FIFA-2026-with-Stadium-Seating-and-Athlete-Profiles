@@ -103,7 +103,7 @@
   },
   "bracket": {
     "title": "Tableau à Élimination Directe",
-    "subtitle": "Structure du Tournoi de la Coupe du Monde FIFA 2026",
+    "subtitle": "Structure du Tournoi de la Coupe du Monde 2026",
     "roundOf32": "32èmes de finale",
     "roundOf16": "Huitièmes de finale",
     "quarterfinals": "Quarts de finale",
@@ -148,7 +148,7 @@
     "year": "2026",
     "tagline": "Le monde arrive en Amérique du Nord",
     "updateInfo": "Cette application est mise à jour régulièrement avec les dernières informations jusqu'à la fin de la Coupe du monde 2026 et jusqu'en août 2026.",
-    "potDrawAlt": "Tirage au sort de la Coupe du Monde de la FIFA 2026",
+    "potDrawAlt": "Tirage au sort de la Coupe du Monde 2026",
     "viewSchedule": "Voir le programme des matches",
     "latestNews": "Dernières nouvelles",
     "news": {
@@ -192,7 +192,7 @@
     "rank": "Classement #{{rank}}",
     "description": "Informations complètes sur l'effectif, bilans de la saison en cours et moments forts des matchs pour toutes les nations en compétition. Mis à jour régulièrement en décembre 2025, mars 2026 et mai 2026.",
     "qualifiedCount": "42 équipes sur 48 qualifiées",
-    "playoffInfo": "Les 6 dernières équipes seront déterminées lors du Tournoi de Barrages de la FIFA en mars 2026 avec: Bolivie, Congo RD, Irak, Jamaïque, Nouvelle-Calédonie et Suriname en lice pour les places restantes.",
+    "playoffInfo": "Les 6 dernières équipes seront déterminées lors du Tournoi de Barrages en mars 2026 avec: Bolivie, Congo RD, Irak, Jamaïque, Nouvelle-Calédonie et Suriname en lice pour les places restantes.",
     "viewKnockoutBrackets": "Voir le Tableau Éliminatoire"
   },
   "matches": {
@@ -1468,7 +1468,7 @@
   },
   "profile": {
     "title": "Profil",
-    "attendeeTitle": "Participant à FIFA 2026",
+    "attendeeTitle": "Participant à la Coupe du Monde 2026",
     "personalInfo": "Informations personnelles",
     "displayName": "Nom d'affichage",
     "displayNamePlaceholder": "Votre nom",
@@ -1527,7 +1527,7 @@
       "confirmClearMessage": "Cette opération supprime toutes les données enregistrées.",
       "clearData": "Effacer les données"
     },
-    "appInfo": "Compagnon de la Coupe du Monde de la FIFA 2026",
+    "appInfo": "Championship Concierge",
     "version": "Version 1.0.0"
   },
   "planner": {
@@ -2535,7 +2535,7 @@
   },
   "criticalInfo": {
     "title": "Informations Critiques",
-    "subtitle": "Informations essentielles de sécurité et de voyage pour les visiteurs de la Coupe du Monde FIFA 2026.",
+    "subtitle": "Informations essentielles de sécurité et de voyage pour les visiteurs de la Coupe du Monde 2026.",
     "solution": "Solution",
     "preventionTips": "Conseils de Prévention",
     "viewModes": {
@@ -3282,7 +3282,7 @@
     },
     "tvGuideSection": {
       "title": "Guide TV",
-      "subtitle": "Comment regarder la Coupe du Monde FIFA 2026 - Les 104 matchs, 11 juin - 19 juillet",
+      "subtitle": "Comment regarder la Coupe du Monde 2026 - Les 104 matchs, 11 juin - 19 juillet",
       "tabs": {
         "english": "Anglais",
         "spanish": "Espagnol",
@@ -3539,7 +3539,7 @@
   },
   "players": {
     "title": "Profils des Joueurs",
-    "subtitle": "Explorez les stars de la Coupe du Monde FIFA 2026",
+    "subtitle": "Explorez les stars de la Coupe du Monde 2026",
     "loading": "Chargement des joueurs...",
     "searchPlaceholder": "Rechercher par nom, poste ou club...",
     "allTeams": "Toutes les Équipes",
@@ -3618,11 +3618,11 @@
   },
   "odds": {
     "title": "Cotes du Tournoi",
-    "subtitle": "Cotes de paris actuelles pour la Coupe du Monde FIFA 2026",
+    "subtitle": "Cotes de paris actuelles pour la Coupe du Monde 2026",
     "disclaimer": "À Titre Informatif Uniquement",
     "disclaimerDetail": "Les cotes affichées sont uniquement à des fins de divertissement et d'information. Les cotes réelles varient selon les bookmakers et changent fréquemment. Jouez responsablement.",
     "championshipOdds": "Cotes pour Gagner le Championnat",
-    "championshipDescription": "Cotes actuelles de Las Vegas pour les équipes gagnant la Coupe du Monde FIFA 2026. Les nombres positifs montrent le profit potentiel sur un pari de 100$.",
+    "championshipDescription": "Cotes actuelles de Las Vegas pour les équipes gagnant la Coupe du Monde 2026. Les nombres positifs montrent le profit potentiel sur un pari de 100$.",
     "groupWinners": "Cotes des Vainqueurs de Phase de Groupes",
     "groupDescription": "Cotes pour finir premier dans chaque groupe. Les nombres négatifs indiquent les favoris.",
     "group": "Groupe",

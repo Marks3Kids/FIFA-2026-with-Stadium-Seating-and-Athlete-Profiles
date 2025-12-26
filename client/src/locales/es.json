@@ -103,7 +103,7 @@
   },
   "bracket": {
     "title": "Cuadro de Eliminatorias",
-    "subtitle": "Estructura del Torneo de la Copa Mundial FIFA 2026",
+    "subtitle": "Estructura del Torneo de la Copa Mundial 2026",
     "roundOf32": "Dieciseisavos",
     "roundOf16": "Octavos de Final",
     "quarterfinals": "Cuartos de Final",
@@ -148,7 +148,7 @@
     "year": "2026",
     "tagline": "El mundo llega a Norteamérica",
     "updateInfo": "Esta aplicación se actualiza periódicamente con la información más reciente hasta el final de la Copa del Mundo de 2026 y hasta agosto de 2026.",
-    "potDrawAlt": "Bombos del sorteo de la Copa Mundial de la FIFA 2026",
+    "potDrawAlt": "Bombos del sorteo de la Copa Mundial 2026",
     "viewSchedule": "Ver el calendario de partidos",
     "latestNews": "Últimas noticias",
     "news": {
@@ -192,7 +192,7 @@
     "rank": "Ranking #{{rank}}",
     "description": "Información completa del plantel, récords de la temporada actual y momentos destacados de los partidos para todas las naciones competidoras. Actualizado regularmente en diciembre 2025, marzo 2026 y mayo 2026.",
     "qualifiedCount": "42 de 48 equipos clasificados",
-    "playoffInfo": "Los 6 equipos finales se determinarán a través del Torneo de Repesca de la FIFA en marzo 2026 con: Bolivia, Congo DR, Irak, Jamaica, Nueva Caledonia y Surinam compitiendo por los lugares restantes.",
+    "playoffInfo": "Los 6 equipos finales se determinarán a través del Torneo de Repesca en marzo 2026 con: Bolivia, Congo DR, Irak, Jamaica, Nueva Caledonia y Surinam compitiendo por los lugares restantes.",
     "viewKnockoutBrackets": "Ver Cuadro de Eliminatorias"
   },
   "matches": {
@@ -1772,7 +1772,7 @@
   },
   "profile": {
     "title": "Perfil",
-    "attendeeTitle": "Asistente a FIFA 2026",
+    "attendeeTitle": "Asistente a la Copa Mundial 2026",
     "personalInfo": "Información personal",
     "displayName": "Mostrar nombre",
     "displayNamePlaceholder": "Su nombre",
@@ -1831,7 +1831,7 @@
       "confirmClearMessage": "Esto borrará todos los datos guardados.",
       "clearData": "Borrar datos"
     },
-    "appInfo": "Acompañante de la Copa Mundial de la FIFA 2026",
+    "appInfo": "Championship Concierge",
     "version": "Versión 1.0.0"
   },
   "planner": {
@@ -2839,7 +2839,7 @@
   },
   "criticalInfo": {
     "title": "Información Crítica",
-    "subtitle": "Información esencial de seguridad y viaje para visitantes de la Copa del Mundo FIFA 2026.",
+    "subtitle": "Información esencial de seguridad y viaje para visitantes de la Copa Mundial 2026.",
     "solution": "Solución",
     "preventionTips": "Consejos de Prevención",
     "viewModes": {
@@ -3586,7 +3586,7 @@
     },
     "tvGuideSection": {
       "title": "Guía de TV",
-      "subtitle": "Cómo ver la Copa del Mundo FIFA 2026 - Los 104 partidos, 11 de junio - 19 de julio",
+      "subtitle": "Cómo ver la Copa Mundial 2026 - Los 104 partidos, 11 de junio - 19 de julio",
       "tabs": {
         "english": "Inglés",
         "spanish": "Español",
@@ -3843,7 +3843,7 @@
   },
   "players": {
     "title": "Perfiles de Jugadores",
-    "subtitle": "Explora las estrellas de la Copa Mundial FIFA 2026",
+    "subtitle": "Explora las estrellas de la Copa Mundial 2026",
     "loading": "Cargando jugadores...",
     "searchPlaceholder": "Buscar por nombre, posición o club...",
     "allTeams": "Todos los Equipos",
@@ -3922,11 +3922,11 @@
   },
   "odds": {
     "title": "Cuotas del Torneo",
-    "subtitle": "Cuotas de apuestas actuales para la Copa Mundial FIFA 2026",
+    "subtitle": "Cuotas de apuestas actuales para la Copa Mundial 2026",
     "disclaimer": "Solo con Fines Informativos",
     "disclaimerDetail": "Las cuotas mostradas son solo para entretenimiento e información. Las cuotas reales varían según la casa de apuestas y cambian frecuentemente. Apuesta responsablemente.",
     "championshipOdds": "Cuotas para Ganar el Campeonato",
-    "championshipDescription": "Cuotas actuales de Las Vegas para equipos que ganen la Copa Mundial FIFA 2026. Los números positivos muestran ganancia potencial en una apuesta de $100.",
+    "championshipDescription": "Cuotas actuales de Las Vegas para equipos que ganen la Copa Mundial 2026. Los números positivos muestran ganancia potencial en una apuesta de $100.",
     "groupWinners": "Cuotas de Ganadores de Fase de Grupos",
     "groupDescription": "Cuotas para terminar primero en cada grupo. Los números negativos indican favoritos.",
     "group": "Grupo",

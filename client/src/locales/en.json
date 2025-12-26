@@ -103,7 +103,7 @@
   },
   "bracket": {
     "title": "Knockout Brackets",
-    "subtitle": "2026 FIFA World Cup Tournament Structure",
+    "subtitle": "2026 World Cup Tournament Structure",
     "roundOf32": "Round of 32",
     "roundOf16": "Round of 16",
     "quarterfinals": "Quarterfinals",
@@ -120,7 +120,7 @@
     "finalMatch": "The Final",
     "finalInfo": "The championship match will be held at MetLife Stadium in New York/New Jersey",
     "aboutTitle": "About the Knockout Stage",
-    "aboutDescription": "The 2026 FIFA World Cup knockout stage begins after the group stage, featuring 32 teams competing in single-elimination matches across 16 host cities in the USA, Canada, and Mexico. Team positions will be determined by the official FIFA draw."
+    "aboutDescription": "The 2026 World Cup knockout stage begins after the group stage, featuring 32 teams competing in single-elimination matches across 16 host cities in the USA, Canada, and Mexico. Team positions will be determined by the official draw."
   },
   "nav": {
     "home": "Home",
@@ -150,7 +150,7 @@
     "year": "Concierge",
     "tagline": "Your Essential 2026 World Cup Travel Companion",
     "updateInfo": "Your complete travel utility for the 2026 World Cup. Updated routinely with the latest information through August 2026.",
-    "potDrawAlt": "FIFA World Cup 2026 Draw Pots",
+    "potDrawAlt": "World Cup 2026 Draw Pots",
     "viewSchedule": "View Match Schedule",
     "latestNews": "Latest News",
     "news": {
@@ -194,7 +194,7 @@
     "rank": "Rank #{{rank}}",
     "description": "Complete roster information, current season records, and match highlights for all competing nations. Updated regularly in December 2025, March 2026, and May 2026.",
     "qualifiedCount": "42 of 48 teams qualified",
-    "playoffInfo": "The final 6 teams will be determined through the FIFA Play-Off Tournament in March 2026 featuring: Bolivia, Congo DR, Iraq, Jamaica, New Caledonia, and Suriname competing for the remaining spots.",
+    "playoffInfo": "The final 6 teams will be determined through the Play-Off Tournament in March 2026 featuring: Bolivia, Congo DR, Iraq, Jamaica, New Caledonia, and Suriname competing for the remaining spots.",
     "viewKnockoutBrackets": "View Knockout Brackets"
   },
   "matches": {
@@ -1253,7 +1253,7 @@
   },
   "profile": {
     "title": "Profile",
-    "attendeeTitle": "FIFA 2026 Attendee",
+    "attendeeTitle": "2026 World Cup Attendee",
     "personalInfo": "Personal Information",
     "displayName": "Display Name",
     "displayNamePlaceholder": "Your name",
@@ -1312,7 +1312,7 @@
       "confirmClearMessage": "This will delete all your saved data.",
       "clearData": "Clear Data"
     },
-    "appInfo": "FIFA 2026 World Cup Companion",
+    "appInfo": "Championship Concierge",
     "version": "Version 1.0.0"
   },
   "planner": {
@@ -3330,7 +3330,7 @@
   },
   "players": {
     "title": "Player Profiles",
-    "subtitle": "Explore the stars of FIFA World Cup 2026",
+    "subtitle": "Explore the stars of World Cup 2026",
     "loading": "Loading players...",
     "searchPlaceholder": "Search by name, position, or club...",
     "allTeams": "All Teams",
@@ -3409,11 +3409,11 @@
   },
   "odds": {
     "title": "Tournament Odds",
-    "subtitle": "Current betting odds for FIFA World Cup 2026",
+    "subtitle": "Current betting odds for World Cup 2026",
     "disclaimer": "For Informational Purposes Only",
     "disclaimerDetail": "Odds shown are for entertainment and informational purposes only. Actual odds vary by sportsbook and change frequently. Always gamble responsibly.",
     "championshipOdds": "Championship Winner Odds",
-    "championshipDescription": "Current Vegas odds for teams to win the 2026 FIFA World Cup. Positive numbers show potential profit on a $100 bet.",
+    "championshipDescription": "Current Vegas odds for teams to win the 2026 World Cup. Positive numbers show potential profit on a $100 bet.",
     "groupWinners": "Group Stage Winner Odds",
     "groupDescription": "Odds to finish first in each group. Negative numbers indicate favorites.",
     "group": "Group",

@@ -103,7 +103,7 @@
   },
   "bracket": {
     "title": "ノックアウトステージ",
-    "subtitle": "FIFA ワールドカップ 2026 トーナメント構造",
+    "subtitle": "ワールドカップ 2026 トーナメント構造",
     "roundOf32": "ラウンド32",
     "roundOf16": "ベスト16",
     "quarterfinals": "準々決勝",
@@ -148,7 +148,7 @@
     "year": "2026",
     "tagline": "The World is Coming to North America",
     "updateInfo": "This app is updated routinely with the latest information through the end of the 2026 World Cup and into August 2026.",
-    "potDrawAlt": "FIFA World Cup 2026 Draw Pots",
+    "potDrawAlt": "ワールドカップ2026 抽選ポット",
     "viewSchedule": "View Match Schedule",
     "latestNews": "最新ニュース",
     "news": {
@@ -192,7 +192,7 @@
     "rank": "ランキング #{{rank}}",
     "description": "全出場国の完全な選手リスト、今シーズンの成績、試合ハイライト。2025年12月、2026年3月、2026年5月に定期更新。",
     "qualifiedCount": "48チーム中42チームが出場決定",
-    "playoffInfo": "残り6チームは2026年3月のFIFAプレーオフトーナメントで決定：ボリビア、コンゴ民主共和国、イラク、ジャマイカ、ニューカレドニア、スリナムが残りの枠を争います。",
+    "playoffInfo": "残り6チームは2026年3月のプレーオフトーナメントで決定：ボリビア、コンゴ民主共和国、イラク、ジャマイカ、ニューカレドニア、スリナムが残りの枠を争います。",
     "viewKnockoutBrackets": "ノックアウトトーナメント表を見る"
   },
   "matches": {
@@ -1228,7 +1228,7 @@
   },
   "profile": {
     "title": "プロフィール",
-    "attendeeTitle": "FIFA 2026 参加者",
+    "attendeeTitle": "ワールドカップ 2026 参加者",
     "personalInfo": "個人情報",
     "displayName": "表示名",
     "displayNamePlaceholder": "お名前",
@@ -1287,7 +1287,7 @@
       "confirmClearMessage": "This will delete all your saved data.",
       "clearData": "Clear Data"
     },
-    "appInfo": "FIFA 2026 World Cup Companion",
+    "appInfo": "Championship Concierge",
     "version": "Version 1.0.0"
   },
   "planner": {
@@ -2295,7 +2295,7 @@
   },
   "criticalInfo": {
     "title": "重要情報",
-    "subtitle": "FIFA 2026ワールドカップ訪問者向けの重要な安全・旅行情報。",
+    "subtitle": "ワールドカップ2026訪問者向けの重要な安全・旅行情報。",
     "solution": "解決策",
     "preventionTips": "予防のヒント",
     "viewModes": {
@@ -3042,7 +3042,7 @@
     },
     "tvGuideSection": {
       "title": "TVガイド",
-      "subtitle": "FIFA ワールドカップ2026の視聴方法 - 全104試合、6月11日〜7月19日",
+      "subtitle": "ワールドカップ2026の視聴方法 - 全104試合、6月11日〜7月19日",
       "tabs": {
         "english": "英語",
         "spanish": "スペイン語",
@@ -3299,7 +3299,7 @@
   },
   "players": {
     "title": "選手プロフィール",
-    "subtitle": "FIFAワールドカップ2026のスター選手を探索",
+    "subtitle": "ワールドカップ2026のスター選手を探索",
     "loading": "選手を読み込み中...",
     "searchPlaceholder": "名前、ポジション、クラブで検索...",
     "allTeams": "全チーム",
@@ -3378,11 +3378,11 @@
   },
   "odds": {
     "title": "大会オッズ",
-    "subtitle": "FIFAワールドカップ2026の現在のベッティングオッズ",
+    "subtitle": "ワールドカップ2026の現在のベッティングオッズ",
     "disclaimer": "情報提供のみを目的としています",
     "disclaimerDetail": "表示されているオッズはエンターテインメントおよび情報提供のみを目的としています。実際のオッズはブックメーカーによって異なり、頻繁に変動します。責任あるギャンブルを心がけてください。",
     "championshipOdds": "優勝オッズ",
-    "championshipDescription": "FIFAワールドカップ2026優勝の現在のベガスオッズ。正の数字は100ドルの賭けに対する潜在的な利益を示しています。",
+    "championshipDescription": "ワールドカップ2026優勝の現在のベガスオッズ。正の数字は100ドルの賭けに対する潜在的な利益を示しています。",
     "groupWinners": "グループステージ優勝オッズ",
     "groupDescription": "各グループで1位になるオッズ。負の数字は本命を示しています。",
     "group": "グループ",
