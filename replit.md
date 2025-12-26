@@ -6,6 +6,13 @@ Championship Concierge is a mobile-first travel utility app designed for attende
 ## User Preferences
 Preferred communication style: Simple, everyday language.
 
+### Mobile-First Design Standards
+- **Page headings**: Use responsive sizing `text-2xl sm:text-3xl md:text-4xl` (not fixed text-4xl)
+- **Header elements**: Scale down on mobile - logo 32px vs 40px desktop, smaller button padding
+- **Page title badges**: Position below header row, not inline (prevents overlap on small screens)
+- **Button/icon sizing**: Use responsive padding like `p-1.5 sm:p-2` and icons `w-4 h-4 sm:w-5 sm:h-5`
+- **Spacing**: Reduce margins on mobile with patterns like `mb-4 sm:mb-6`
+
 ## System Architecture
 
 ### Frontend Architecture
