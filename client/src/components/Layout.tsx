@@ -20,13 +20,13 @@ export function Layout({ children, hideNav = false, hideTitle = false, pageTitle
       {!hideTitle && (
         <div className="pt-3 sm:pt-4 px-3 sm:px-4">
           <div className="relative flex items-center justify-between bg-gradient-to-r from-emerald-900/30 via-emerald-800/20 to-emerald-900/30 border border-emerald-500/20 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 gap-2">
-            <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-shrink">
+            <div className="flex items-center gap-4 sm:gap-5 min-w-0 flex-shrink">
               <img 
                 src="/header-icon.jpg" 
                 alt="Championship Concierge" 
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover flex-shrink-0 border-2 border-emerald-500/50 shadow-lg"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover flex-shrink-0 border-2 border-emerald-500/50 shadow-lg"
               />
-              <div className="min-w-0 overflow-hidden isolate">
+              <div className="min-w-0 overflow-hidden">
                 <h1 className="text-sm sm:text-lg font-display font-bold leading-tight truncate whitespace-nowrap">
                   <span className="text-emerald-400">{t("header.worldCup")}</span>{" "}
                   <span className="text-white">{t("header.companion")}</span>
