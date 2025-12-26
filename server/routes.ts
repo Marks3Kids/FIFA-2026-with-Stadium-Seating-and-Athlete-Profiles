@@ -222,7 +222,57 @@ export async function registerRoutes(
     }
   });
 
-  // Seed players endpoint (separate from main seed)
+  // Seed players endpoint - GET shows page with button
+  app.get("/api/admin/seed-players", (req, res) => {
+    res.send(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Seed Players Database</title>
+        <style>
+          body { font-family: system-ui; background: #0f172a; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+          .container { text-align: center; padding: 40px; background: #1e293b; border-radius: 12px; max-width: 500px; }
+          h1 { color: #10b981; margin-bottom: 20px; }
+          button { background: #10b981; color: white; border: none; padding: 16px 32px; font-size: 18px; border-radius: 8px; cursor: pointer; }
+          button:hover { background: #059669; }
+          button:disabled { background: #4b5563; cursor: not-allowed; }
+          #result { margin-top: 20px; padding: 16px; border-radius: 8px; white-space: pre-wrap; }
+          .success { background: #065f46; }
+          .error { background: #991b1b; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <h1>Seed Players Database</h1>
+          <p>Click the button below to add 43 star players from major teams (Messi, Mbappé, Kane, Ronaldo, etc.)</p>
+          <button id="seedBtn" onclick="seedPlayers()">Seed Players Now</button>
+          <div id="result"></div>
+        </div>
+        <script>
+          async function seedPlayers() {
+            const btn = document.getElementById('seedBtn');
+            const result = document.getElementById('result');
+            btn.disabled = true;
+            btn.textContent = 'Seeding...';
+            try {
+              const res = await fetch('/api/admin/seed-players', { method: 'POST' });
+              const data = await res.json();
+              result.className = 'success';
+              result.innerHTML = '<strong>Success!</strong>\\n' + JSON.stringify(data, null, 2);
+            } catch (err) {
+              result.className = 'error';
+              result.innerHTML = '<strong>Error:</strong> ' + err.message;
+            }
+            btn.disabled = false;
+            btn.textContent = 'Seed Players Now';
+          }
+        </script>
+      </body>
+      </html>
+    `);
+  });
+
+  // Seed players endpoint - POST actually seeds
   app.post("/api/admin/seed-players", async (req, res) => {
     try {
       // Check if players already exist
