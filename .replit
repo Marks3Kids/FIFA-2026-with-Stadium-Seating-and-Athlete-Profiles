@@ -17,10 +17,10 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "FIFA 2026 World Cup App"
+args = "Championship Concierge"
 
 [[workflows.workflow]]
-name = "FIFA 2026 World Cup App"
+name = "Championship Concierge"
 author = "agent"
 
 [[workflows.workflow.tasks]]
