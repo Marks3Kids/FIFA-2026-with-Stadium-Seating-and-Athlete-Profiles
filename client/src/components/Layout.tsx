@@ -21,19 +21,17 @@ export function Layout({ children, hideNav = false, hideTitle = false, pageTitle
         <div className="pt-3 sm:pt-4 px-3 sm:px-4">
           <div className="relative flex items-center justify-between bg-gradient-to-r from-emerald-900/30 via-emerald-800/20 to-emerald-900/30 border border-emerald-500/20 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 gap-2">
             <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-shrink">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden shadow-lg flex-shrink-0 border-2 border-emerald-500/50">
-                <img 
-                  src="/header-icon.jpg" 
-                  alt="Championship Concierge" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="min-w-0">
-                <h1 className="text-sm sm:text-lg font-display font-bold leading-tight truncate">
+              <img 
+                src="/header-icon.jpg" 
+                alt="Championship Concierge" 
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover flex-shrink-0 border-2 border-emerald-500/50 shadow-lg"
+              />
+              <div className="min-w-0 overflow-hidden isolate">
+                <h1 className="text-sm sm:text-lg font-display font-bold leading-tight truncate whitespace-nowrap">
                   <span className="text-emerald-400">{t("header.worldCup")}</span>{" "}
                   <span className="text-white">{t("header.companion")}</span>
                 </h1>
-                <p className="text-[9px] sm:text-[10px] text-muted-foreground uppercase tracking-widest">{t("header.year")}</p>
+                <p className="text-[9px] sm:text-[10px] text-muted-foreground uppercase tracking-widest whitespace-nowrap">{t("header.year")}</p>
               </div>
             </div>
             
