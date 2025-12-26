@@ -21,13 +21,12 @@ export function Layout({ children, hideNav = false, hideTitle = false, pageTitle
         <div className="pt-3 sm:pt-4 px-3 sm:px-4">
           <div className="relative flex items-center justify-between bg-gradient-to-r from-emerald-900/30 via-emerald-800/20 to-emerald-900/30 border border-emerald-500/20 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 gap-2">
             <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-shrink">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg flex-shrink-0">
-                <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor">
-                  <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5"/>
-                  <polygon points="12,2 14.5,8 21,8.5 16,13 17.5,20 12,16.5 6.5,20 8,13 3,8.5 9.5,8" fill="currentColor" opacity="0.3"/>
-                  <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1"/>
-                  <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="0.75" opacity="0.5"/>
-                </svg>
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden shadow-lg flex-shrink-0 border-2 border-emerald-500/50">
+                <img 
+                  src="/header-icon.jpg" 
+                  alt="Championship Concierge" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="min-w-0">
                 <h1 className="text-sm sm:text-lg font-display font-bold leading-tight truncate">
