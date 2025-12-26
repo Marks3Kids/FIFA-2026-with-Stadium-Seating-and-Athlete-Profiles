@@ -14,9 +14,9 @@ export function serveStatic(app: Express) {
 
   // fall through to index.html if the file doesn't exist (but not for API routes)
   app.use("*", (req, res, next) => {
-    // Don't intercept API routes - let them 404 properly
+    // Skip API routes - they should already be handled by registered routes
     if (req.originalUrl.startsWith("/api")) {
-      return res.status(404).json({ error: "API endpoint not found" });
+      return next();
     }
     res.sendFile(path.resolve(distPath, "index.html"));
   });
