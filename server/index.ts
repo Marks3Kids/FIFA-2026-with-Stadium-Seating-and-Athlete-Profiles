@@ -6,7 +6,13 @@ import { createServer } from "http";
 const app = express();
 const httpServer = createServer(app);
 
-// Health check endpoint - responds immediately without any processing
+// Health check endpoints - respond immediately without any processing
+// These must be registered FIRST before any middleware
+app.get("/", (_req, res) => {
+  // Return minimal HTML that quickly loads the SPA
+  // This is faster than serving the full index.html from disk
+  res.status(200).type('html').send(`<!DOCTYPE html><html><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0;url=/home"></head><body></body></html>`);
+});
 app.get("/_health", (_req, res) => {
   res.status(200).send("ok");
 });
