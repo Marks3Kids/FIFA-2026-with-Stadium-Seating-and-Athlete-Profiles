@@ -24,20 +24,22 @@ httpServer.listen({ port, host: "0.0.0.0", reusePort: true }, () => {
 
 async function initializeApp() {
   try {
-    // In production, serve static files
-    if (process.env.NODE_ENV === "production") {
-      const { serveStatic } = await import("./static");
-      serveStatic(app);
-    } else {
-      // In development, set up Vite
+    // In development, set up Vite first (it handles HMR)
+    if (process.env.NODE_ENV !== "production") {
       const { setupVite } = await import("./vite");
       await setupVite(httpServer, app);
     }
     
-    // Register API routes
+    // Register API routes BEFORE static files so they take priority
     const { registerRoutes } = await import("./routes");
     await registerRoutes(httpServer, app);
     console.log("Routes registered successfully");
+    
+    // In production, serve static files AFTER routes are registered
+    if (process.env.NODE_ENV === "production") {
+      const { serveStatic } = await import("./static");
+      serveStatic(app);
+    }
   } catch (error) {
     console.error("Error during initialization:", error);
   }
