@@ -221,6 +221,119 @@ export async function registerRoutes(
       res.status(500).json({ error: "Failed to seed database" });
     }
   });
+
+  // Seed players endpoint (separate from main seed)
+  app.post("/api/admin/seed-players", async (req, res) => {
+    try {
+      // Check if players already exist
+      const existingPlayers = await storage.getPlayersByTeam(1);
+      if (existingPlayers && existingPlayers.length > 0) {
+        const allPlayers = await storage.getAllPlayers?.() || [];
+        return res.json({ 
+          message: "Players already seeded", 
+          existing: { players: allPlayers.length || existingPlayers.length }
+        });
+      }
+
+      // Get existing teams to get their IDs
+      const existingTeams = await storage.getAllTeams();
+      const teamIdMap: Record<string, number> = {};
+      for (const team of existingTeams) {
+        teamIdMap[team.name] = team.id;
+      }
+
+      // Players data - Key players from major teams
+      const playersData = [
+        // Argentina
+        { teamId: teamIdMap["Argentina"], name: "Lionel Messi", position: "Forward", number: 10, dateOfBirth: "1987-06-24", height: "170cm", currentClub: "Inter Miami", isCaptain: 1, internationalCaps: 187, internationalGoals: 109, clubCareerGoals: 723, clubCareerAssists: 340, highlightVideoUrl: "https://www.youtube.com/results?search_query=lionel+messi+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Lionel_Messi" },
+        { teamId: teamIdMap["Argentina"], name: "Julián Álvarez", position: "Forward", number: 9, dateOfBirth: "2000-01-31", height: "170cm", currentClub: "Atlético Madrid", isCaptain: 0, internationalCaps: 42, internationalGoals: 11, clubCareerGoals: 85, clubCareerAssists: 35, highlightVideoUrl: "https://www.youtube.com/results?search_query=julian+alvarez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Juli%C3%A1n_%C3%81lvarez" },
+        { teamId: teamIdMap["Argentina"], name: "Emiliano Martínez", position: "Goalkeeper", number: 23, dateOfBirth: "1992-09-02", height: "195cm", currentClub: "Aston Villa", isCaptain: 0, internationalCaps: 48, internationalGoals: 0, clubCareerGoals: 0, clubCareerAssists: 2, highlightVideoUrl: "https://www.youtube.com/results?search_query=emiliano+martinez+saves", wikiUrl: "https://en.wikipedia.org/wiki/Emiliano_Mart%C3%ADnez" },
+        { teamId: teamIdMap["Argentina"], name: "Rodrigo De Paul", position: "Midfielder", number: 7, dateOfBirth: "1994-05-24", height: "180cm", currentClub: "Atlético Madrid", isCaptain: 0, internationalCaps: 62, internationalGoals: 3, clubCareerGoals: 45, clubCareerAssists: 60, highlightVideoUrl: "https://www.youtube.com/results?search_query=rodrigo+de+paul+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Rodrigo_De_Paul" },
+        
+        // France
+        { teamId: teamIdMap["France"], name: "Kylian Mbappé", position: "Forward", number: 10, dateOfBirth: "1998-12-20", height: "178cm", currentClub: "Real Madrid", isCaptain: 1, internationalCaps: 86, internationalGoals: 48, clubCareerGoals: 285, clubCareerAssists: 125, highlightVideoUrl: "https://www.youtube.com/results?search_query=kylian+mbappe+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9" },
+        { teamId: teamIdMap["France"], name: "Antoine Griezmann", position: "Forward", number: 7, dateOfBirth: "1991-03-21", height: "176cm", currentClub: "Atlético Madrid", isCaptain: 0, internationalCaps: 137, internationalGoals: 46, clubCareerGoals: 220, clubCareerAssists: 95, highlightVideoUrl: "https://www.youtube.com/results?search_query=antoine+griezmann+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Antoine_Griezmann" },
+        { teamId: teamIdMap["France"], name: "Aurélien Tchouaméni", position: "Midfielder", number: 8, dateOfBirth: "2000-01-27", height: "187cm", currentClub: "Real Madrid", isCaptain: 0, internationalCaps: 40, internationalGoals: 2, clubCareerGoals: 12, clubCareerAssists: 8, highlightVideoUrl: "https://www.youtube.com/results?search_query=aurelien+tchouameni+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Aur%C3%A9lien_Tchouam%C3%A9ni" },
+        { teamId: teamIdMap["France"], name: "Mike Maignan", position: "Goalkeeper", number: 16, dateOfBirth: "1995-07-03", height: "191cm", currentClub: "AC Milan", isCaptain: 0, internationalCaps: 18, internationalGoals: 0, clubCareerGoals: 0, clubCareerAssists: 1, highlightVideoUrl: "https://www.youtube.com/results?search_query=mike+maignan+saves", wikiUrl: "https://en.wikipedia.org/wiki/Mike_Maignan" },
+        
+        // England
+        { teamId: teamIdMap["England"], name: "Harry Kane", position: "Forward", number: 9, dateOfBirth: "1993-07-28", height: "188cm", currentClub: "Bayern Munich", isCaptain: 1, internationalCaps: 98, internationalGoals: 66, clubCareerGoals: 355, clubCareerAssists: 85, highlightVideoUrl: "https://www.youtube.com/results?search_query=harry+kane+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Harry_Kane" },
+        { teamId: teamIdMap["England"], name: "Jude Bellingham", position: "Midfielder", number: 10, dateOfBirth: "2003-06-29", height: "186cm", currentClub: "Real Madrid", isCaptain: 0, internationalCaps: 42, internationalGoals: 6, clubCareerGoals: 55, clubCareerAssists: 30, highlightVideoUrl: "https://www.youtube.com/results?search_query=jude+bellingham+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Jude_Bellingham" },
+        { teamId: teamIdMap["England"], name: "Bukayo Saka", position: "Winger", number: 7, dateOfBirth: "2001-09-05", height: "178cm", currentClub: "Arsenal", isCaptain: 0, internationalCaps: 40, internationalGoals: 12, clubCareerGoals: 55, clubCareerAssists: 50, highlightVideoUrl: "https://www.youtube.com/results?search_query=bukayo+saka+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Bukayo_Saka" },
+        { teamId: teamIdMap["England"], name: "Phil Foden", position: "Midfielder", number: 11, dateOfBirth: "2000-05-28", height: "171cm", currentClub: "Manchester City", isCaptain: 0, internationalCaps: 42, internationalGoals: 4, clubCareerGoals: 75, clubCareerAssists: 45, highlightVideoUrl: "https://www.youtube.com/results?search_query=phil+foden+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Phil_Foden" },
+        
+        // Spain
+        { teamId: teamIdMap["Spain"], name: "Rodri", position: "Midfielder", number: 16, dateOfBirth: "1996-06-22", height: "191cm", currentClub: "Manchester City", isCaptain: 0, internationalCaps: 65, internationalGoals: 4, clubCareerGoals: 30, clubCareerAssists: 25, highlightVideoUrl: "https://www.youtube.com/results?search_query=rodri+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Rodri_(footballer,_born_1996)" },
+        { teamId: teamIdMap["Spain"], name: "Lamine Yamal", position: "Winger", number: 19, dateOfBirth: "2007-07-13", height: "180cm", currentClub: "Barcelona", isCaptain: 0, internationalCaps: 18, internationalGoals: 3, clubCareerGoals: 12, clubCareerAssists: 18, highlightVideoUrl: "https://www.youtube.com/results?search_query=lamine+yamal+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Lamine_Yamal" },
+        { teamId: teamIdMap["Spain"], name: "Pedri", position: "Midfielder", number: 8, dateOfBirth: "2002-11-25", height: "174cm", currentClub: "Barcelona", isCaptain: 0, internationalCaps: 32, internationalGoals: 1, clubCareerGoals: 15, clubCareerAssists: 20, highlightVideoUrl: "https://www.youtube.com/results?search_query=pedri+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Pedri" },
+        { teamId: teamIdMap["Spain"], name: "Nico Williams", position: "Winger", number: 17, dateOfBirth: "2002-07-12", height: "181cm", currentClub: "Athletic Bilbao", isCaptain: 0, internationalCaps: 22, internationalGoals: 3, clubCareerGoals: 20, clubCareerAssists: 25, highlightVideoUrl: "https://www.youtube.com/results?search_query=nico+williams+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Nico_Williams" },
+        
+        // Brazil
+        { teamId: teamIdMap["Brazil"], name: "Vinícius Júnior", position: "Winger", number: 7, dateOfBirth: "2000-07-12", height: "176cm", currentClub: "Real Madrid", isCaptain: 0, internationalCaps: 38, internationalGoals: 6, clubCareerGoals: 85, clubCareerAssists: 70, highlightVideoUrl: "https://www.youtube.com/results?search_query=vinicius+junior+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Vin%C3%ADcius_J%C3%BAnior" },
+        { teamId: teamIdMap["Brazil"], name: "Rodrygo", position: "Forward", number: 11, dateOfBirth: "2001-01-09", height: "174cm", currentClub: "Real Madrid", isCaptain: 0, internationalCaps: 28, internationalGoals: 7, clubCareerGoals: 50, clubCareerAssists: 35, highlightVideoUrl: "https://www.youtube.com/results?search_query=rodrygo+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Rodrygo" },
+        { teamId: teamIdMap["Brazil"], name: "Raphinha", position: "Winger", number: 19, dateOfBirth: "1996-12-14", height: "176cm", currentClub: "Barcelona", isCaptain: 0, internationalCaps: 30, internationalGoals: 8, clubCareerGoals: 60, clubCareerAssists: 45, highlightVideoUrl: "https://www.youtube.com/results?search_query=raphinha+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Raphinha" },
+        { teamId: teamIdMap["Brazil"], name: "Alisson Becker", position: "Goalkeeper", number: 1, dateOfBirth: "1992-10-02", height: "193cm", currentClub: "Liverpool", isCaptain: 0, internationalCaps: 70, internationalGoals: 0, clubCareerGoals: 1, clubCareerAssists: 3, highlightVideoUrl: "https://www.youtube.com/results?search_query=alisson+becker+saves", wikiUrl: "https://en.wikipedia.org/wiki/Alisson_Becker" },
+        
+        // Germany
+        { teamId: teamIdMap["Germany"], name: "Florian Wirtz", position: "Midfielder", number: 17, dateOfBirth: "2003-05-03", height: "176cm", currentClub: "Bayer Leverkusen", isCaptain: 0, internationalCaps: 28, internationalGoals: 5, clubCareerGoals: 50, clubCareerAssists: 45, highlightVideoUrl: "https://www.youtube.com/results?search_query=florian+wirtz+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Florian_Wirtz" },
+        { teamId: teamIdMap["Germany"], name: "Jamal Musiala", position: "Midfielder", number: 10, dateOfBirth: "2003-02-26", height: "183cm", currentClub: "Bayern Munich", isCaptain: 0, internationalCaps: 38, internationalGoals: 6, clubCareerGoals: 45, clubCareerAssists: 30, highlightVideoUrl: "https://www.youtube.com/results?search_query=jamal+musiala+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Jamal_Musiala" },
+        { teamId: teamIdMap["Germany"], name: "Kai Havertz", position: "Forward", number: 29, dateOfBirth: "1999-06-11", height: "193cm", currentClub: "Arsenal", isCaptain: 0, internationalCaps: 48, internationalGoals: 17, clubCareerGoals: 85, clubCareerAssists: 40, highlightVideoUrl: "https://www.youtube.com/results?search_query=kai+havertz+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Kai_Havertz" },
+        { teamId: teamIdMap["Germany"], name: "Antonio Rüdiger", position: "Defender", number: 2, dateOfBirth: "1993-03-03", height: "190cm", currentClub: "Real Madrid", isCaptain: 0, internationalCaps: 70, internationalGoals: 3, clubCareerGoals: 15, clubCareerAssists: 5, highlightVideoUrl: "https://www.youtube.com/results?search_query=antonio+rudiger+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Antonio_R%C3%BCdiger" },
+        
+        // Portugal
+        { teamId: teamIdMap["Portugal"], name: "Cristiano Ronaldo", position: "Forward", number: 7, dateOfBirth: "1985-02-05", height: "187cm", currentClub: "Al-Nassr", isCaptain: 1, internationalCaps: 214, internationalGoals: 135, clubCareerGoals: 735, clubCareerAssists: 240, highlightVideoUrl: "https://www.youtube.com/results?search_query=cristiano+ronaldo+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Cristiano_Ronaldo" },
+        { teamId: teamIdMap["Portugal"], name: "Bruno Fernandes", position: "Midfielder", number: 8, dateOfBirth: "1994-09-08", height: "179cm", currentClub: "Manchester United", isCaptain: 0, internationalCaps: 72, internationalGoals: 14, clubCareerGoals: 120, clubCareerAssists: 110, highlightVideoUrl: "https://www.youtube.com/results?search_query=bruno+fernandes+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Bruno_Fernandes" },
+        { teamId: teamIdMap["Portugal"], name: "Rafael Leão", position: "Winger", number: 17, dateOfBirth: "1999-06-10", height: "188cm", currentClub: "AC Milan", isCaptain: 0, internationalCaps: 35, internationalGoals: 7, clubCareerGoals: 55, clubCareerAssists: 40, highlightVideoUrl: "https://www.youtube.com/results?search_query=rafael+leao+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Rafael_Le%C3%A3o" },
+        { teamId: teamIdMap["Portugal"], name: "Rúben Dias", position: "Defender", number: 4, dateOfBirth: "1997-05-14", height: "186cm", currentClub: "Manchester City", isCaptain: 0, internationalCaps: 56, internationalGoals: 1, clubCareerGoals: 8, clubCareerAssists: 5, highlightVideoUrl: "https://www.youtube.com/results?search_query=ruben+dias+highlights", wikiUrl: "https://en.wikipedia.org/wiki/R%C3%BAben_Dias" },
+        
+        // USA
+        { teamId: teamIdMap["USA"], name: "Christian Pulisic", position: "Winger", number: 10, dateOfBirth: "1998-09-18", height: "177cm", currentClub: "AC Milan", isCaptain: 1, internationalCaps: 72, internationalGoals: 30, clubCareerGoals: 75, clubCareerAssists: 50, highlightVideoUrl: "https://www.youtube.com/results?search_query=christian+pulisic+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Christian_Pulisic" },
+        { teamId: teamIdMap["USA"], name: "Weston McKennie", position: "Midfielder", number: 8, dateOfBirth: "1998-08-28", height: "185cm", currentClub: "Juventus", isCaptain: 0, internationalCaps: 58, internationalGoals: 11, clubCareerGoals: 20, clubCareerAssists: 15, highlightVideoUrl: "https://www.youtube.com/results?search_query=weston+mckennie+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Weston_McKennie" },
+        { teamId: teamIdMap["USA"], name: "Tyler Adams", position: "Midfielder", number: 4, dateOfBirth: "1999-02-14", height: "175cm", currentClub: "Bournemouth", isCaptain: 0, internationalCaps: 40, internationalGoals: 1, clubCareerGoals: 5, clubCareerAssists: 15, highlightVideoUrl: "https://www.youtube.com/results?search_query=tyler+adams+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Tyler_Adams" },
+        { teamId: teamIdMap["USA"], name: "Gio Reyna", position: "Winger", number: 7, dateOfBirth: "2002-11-13", height: "185cm", currentClub: "Borussia Dortmund", isCaptain: 0, internationalCaps: 30, internationalGoals: 5, clubCareerGoals: 15, clubCareerAssists: 20, highlightVideoUrl: "https://www.youtube.com/results?search_query=gio+reyna+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Gio_Reyna" },
+        
+        // Mexico
+        { teamId: teamIdMap["Mexico"], name: "Hirving Lozano", position: "Winger", number: 22, dateOfBirth: "1995-07-30", height: "175cm", currentClub: "San Diego FC", isCaptain: 0, internationalCaps: 72, internationalGoals: 18, clubCareerGoals: 75, clubCareerAssists: 45, highlightVideoUrl: "https://www.youtube.com/results?search_query=hirving+lozano+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Hirving_Lozano" },
+        { teamId: teamIdMap["Mexico"], name: "Edson Álvarez", position: "Midfielder", number: 4, dateOfBirth: "1997-10-24", height: "187cm", currentClub: "West Ham", isCaptain: 1, internationalCaps: 68, internationalGoals: 2, clubCareerGoals: 12, clubCareerAssists: 8, highlightVideoUrl: "https://www.youtube.com/results?search_query=edson+alvarez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Edson_%C3%81lvarez" },
+        { teamId: teamIdMap["Mexico"], name: "Santiago Giménez", position: "Forward", number: 9, dateOfBirth: "2001-04-18", height: "183cm", currentClub: "Feyenoord", isCaptain: 0, internationalCaps: 28, internationalGoals: 8, clubCareerGoals: 50, clubCareerAssists: 15, highlightVideoUrl: "https://www.youtube.com/results?search_query=santiago+gimenez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Santiago_Gim%C3%A9nez" },
+        { teamId: teamIdMap["Mexico"], name: "Guillermo Ochoa", position: "Goalkeeper", number: 13, dateOfBirth: "1985-07-13", height: "183cm", currentClub: "AVS Futebol", isCaptain: 0, internationalCaps: 145, internationalGoals: 0, clubCareerGoals: 0, clubCareerAssists: 0, highlightVideoUrl: "https://www.youtube.com/results?search_query=guillermo+ochoa+saves", wikiUrl: "https://en.wikipedia.org/wiki/Guillermo_Ochoa" },
+        
+        // Netherlands
+        { teamId: teamIdMap["Netherlands"], name: "Virgil van Dijk", position: "Defender", number: 4, dateOfBirth: "1991-07-08", height: "193cm", currentClub: "Liverpool", isCaptain: 1, internationalCaps: 68, internationalGoals: 7, clubCareerGoals: 25, clubCareerAssists: 10, highlightVideoUrl: "https://www.youtube.com/results?search_query=virgil+van+dijk+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Virgil_van_Dijk" },
+        { teamId: teamIdMap["Netherlands"], name: "Frenkie de Jong", position: "Midfielder", number: 21, dateOfBirth: "1997-05-12", height: "181cm", currentClub: "Barcelona", isCaptain: 0, internationalCaps: 58, internationalGoals: 2, clubCareerGoals: 20, clubCareerAssists: 30, highlightVideoUrl: "https://www.youtube.com/results?search_query=frenkie+de+jong+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Frenkie_de_Jong" },
+        { teamId: teamIdMap["Netherlands"], name: "Cody Gakpo", position: "Forward", number: 11, dateOfBirth: "1999-05-07", height: "189cm", currentClub: "Liverpool", isCaptain: 0, internationalCaps: 38, internationalGoals: 12, clubCareerGoals: 75, clubCareerAssists: 45, highlightVideoUrl: "https://www.youtube.com/results?search_query=cody+gakpo+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Cody_Gakpo" },
+        { teamId: teamIdMap["Netherlands"], name: "Memphis Depay", position: "Forward", number: 10, dateOfBirth: "1994-02-13", height: "178cm", currentClub: "Corinthians", isCaptain: 0, internationalCaps: 98, internationalGoals: 46, clubCareerGoals: 175, clubCareerAssists: 95, highlightVideoUrl: "https://www.youtube.com/results?search_query=memphis+depay+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Memphis_Depay" },
+        
+        // Japan
+        { teamId: teamIdMap["Japan"], name: "Takefusa Kubo", position: "Winger", number: 11, dateOfBirth: "2001-06-04", height: "173cm", currentClub: "Real Sociedad", isCaptain: 0, internationalCaps: 42, internationalGoals: 6, clubCareerGoals: 35, clubCareerAssists: 25, highlightVideoUrl: "https://www.youtube.com/results?search_query=takefusa+kubo+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Takefusa_Kubo" },
+        { teamId: teamIdMap["Japan"], name: "Kaoru Mitoma", position: "Winger", number: 9, dateOfBirth: "1997-05-20", height: "178cm", currentClub: "Brighton", isCaptain: 0, internationalCaps: 32, internationalGoals: 7, clubCareerGoals: 30, clubCareerAssists: 20, highlightVideoUrl: "https://www.youtube.com/results?search_query=kaoru+mitoma+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Kaoru_Mitoma" },
+        { teamId: teamIdMap["Japan"], name: "Wataru Endo", position: "Midfielder", number: 6, dateOfBirth: "1993-02-09", height: "178cm", currentClub: "Liverpool", isCaptain: 1, internationalCaps: 58, internationalGoals: 3, clubCareerGoals: 25, clubCareerAssists: 20, highlightVideoUrl: "https://www.youtube.com/results?search_query=wataru+endo+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Wataru_End%C5%8D" },
+      ];
+
+      // Filter out players with undefined teamId (team not found)
+      const validPlayers = playersData.filter(p => p.teamId !== undefined);
+      let seededCount = 0;
+      
+      for (const player of validPlayers) {
+        try {
+          await storage.createPlayer(player as any);
+          seededCount++;
+        } catch (e) {
+          console.log(`Player ${player.name} may already exist`);
+        }
+      }
+
+      console.log(`Seeded ${seededCount} players`);
+      res.json({ 
+        success: true, 
+        message: `Players seeded successfully!`,
+        results: { players: seededCount }
+      });
+    } catch (error) {
+      console.error("Seed players error:", error);
+      res.status(500).json({ error: "Failed to seed players" });
+    }
+  });
   
   // Teams API
   app.get("/api/teams", async (req, res) => {
