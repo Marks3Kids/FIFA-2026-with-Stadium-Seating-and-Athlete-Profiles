@@ -6,6 +6,12 @@ import { createServer } from "http";
 const app = express();
 const httpServer = createServer(app);
 
+// Health check endpoint - responds immediately without any processing
+// Must be registered FIRST before any other middleware
+app.get("/_health", (_req, res) => {
+  res.status(200).send("ok");
+});
+
 declare module "http" {
   interface IncomingMessage {
     rawBody: unknown;
@@ -157,42 +163,50 @@ app.use((req, res, next) => {
   next();
 });
 
-(async () => {
-  await registerRoutes(httpServer, app);
+// Error handler
+app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+  const status = err.status || err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
+  res.status(status).json({ message });
+  throw err;
+});
 
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
+// In production, serve static files immediately (before routes are fully registered)
+// This allows the "/" health check to pass while routes initialize in background
+if (process.env.NODE_ENV === "production") {
+  serveStatic(app);
+}
 
-    res.status(status).json({ message });
-    throw err;
-  });
-
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
-  if (process.env.NODE_ENV === "production") {
-    serveStatic(app);
-  } else {
-    const { setupVite } = await import("./vite");
-    await setupVite(httpServer, app);
-  }
-
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || "5000", 10);
-  httpServer.listen(
-    {
-      port,
-      host: "0.0.0.0",
-      reusePort: true,
-    },
-    () => {
-      log(`serving on port ${port}`);
-      // Start Stripe initialization in background after server is ready
-      initStripeBackground();
-    },
-  );
-})();
+// ALWAYS serve the app on the port specified in the environment variable PORT
+// Start listening FIRST so health checks pass immediately
+const port = parseInt(process.env.PORT || "5000", 10);
+httpServer.listen(
+  {
+    port,
+    host: "0.0.0.0",
+    reusePort: true,
+  },
+  () => {
+    log(`serving on port ${port}`);
+    
+    // Now register routes and start background initialization
+    (async () => {
+      try {
+        // In development, set up Vite before routes
+        if (process.env.NODE_ENV !== "production") {
+          const { setupVite } = await import("./vite");
+          await setupVite(httpServer, app);
+        }
+        
+        // Register API routes (this may take a moment but server is already up)
+        await registerRoutes(httpServer, app);
+        log("Routes registered successfully");
+        
+        // Start Stripe initialization in background
+        initStripeBackground();
+      } catch (error) {
+        console.error("Error during initialization:", error);
+      }
+    })();
+  },
+);
