@@ -28,6 +28,11 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
   
+  // Simple health check - returns JSON
+  app.get("/api/health", (req, res) => {
+    res.json({ status: "ok", timestamp: new Date().toISOString() });
+  });
+  
   // One-time production database seed - GET shows a page with a button
   app.get("/api/admin/seed-production", (req, res) => {
     res.send(`
