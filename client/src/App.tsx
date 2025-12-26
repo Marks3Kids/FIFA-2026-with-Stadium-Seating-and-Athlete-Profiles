@@ -34,6 +34,7 @@ import BracketChallenge from "@/pages/BracketChallenge";
 import Pricing from "@/pages/Pricing";
 import WatchHubs from "@/pages/WatchHubs";
 import AdminVenues from "@/pages/AdminVenues";
+import AdminLeadsPage from "@/pages/AdminLeadsPage";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -67,6 +68,7 @@ function Router() {
       <Route path="/pricing" component={Pricing} />
       <Route path="/watch-hubs" component={WatchHubs} />
       <Route path="/admin/venues" component={AdminVenues} />
+      <Route path="/admin/leads" component={AdminLeadsPage} />
       <Route component={NotFound} />
     </Switch>
   );

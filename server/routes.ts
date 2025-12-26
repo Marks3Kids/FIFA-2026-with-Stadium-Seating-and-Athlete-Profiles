@@ -934,6 +934,36 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     }
   });
 
+  // Admin: Get all leads
+  app.get("/api/admin/leads", async (req, res) => {
+    try {
+      const leads = await storage.getAllLeads();
+      res.json(leads);
+    } catch (error) {
+      console.error("Failed to fetch leads:", error);
+      res.status(500).json({ error: "Failed to fetch leads" });
+    }
+  });
+
+  // Admin: Export leads as CSV
+  app.get("/api/admin/leads/export", async (req, res) => {
+    try {
+      const leads = await storage.getAllLeads();
+      const csvHeader = "ID,Name,Email,City,Source,Created At\n";
+      const csvRows = leads.map(lead => 
+        `${lead.id},"${lead.name || ''}","${lead.email}","${lead.city || ''}","${lead.source || ''}","${lead.createdAt}"`
+      ).join("\n");
+      const csv = csvHeader + csvRows;
+      
+      res.setHeader("Content-Type", "text/csv");
+      res.setHeader("Content-Disposition", `attachment; filename="leads-${new Date().toISOString().split('T')[0]}.csv"`);
+      res.send(csv);
+    } catch (error) {
+      console.error("Failed to export leads:", error);
+      res.status(500).json({ error: "Failed to export leads" });
+    }
+  });
+
   // Weather API (using OpenWeatherMap)
   const CITY_COORDINATES: Record<string, { lat: number; lon: number; name: string }> = {
     kansasCity: { lat: 39.0997, lon: -94.5786, name: 'Kansas City' },

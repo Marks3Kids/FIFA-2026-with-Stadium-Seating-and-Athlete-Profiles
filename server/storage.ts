@@ -64,7 +64,7 @@ import {
   watchHubSubmissions
 } from "@shared/schema";
 import { db } from "../db";
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -146,6 +146,7 @@ export interface IStorage {
   deleteAllKnockoutBrackets(): Promise<void>;
   
   createLead(lead: InsertLead): Promise<Lead>;
+  getAllLeads(): Promise<Lead[]>;
   
   getAllWatchHubVenues(): Promise<WatchHubVenue[]>;
   getWatchHubVenuesByCountry(countryCode: string): Promise<WatchHubVenue[]>;
@@ -449,6 +450,10 @@ export class DatabaseStorage implements IStorage {
   async createLead(lead: InsertLead): Promise<Lead> {
     const [newLead] = await db.insert(leads).values(lead).returning();
     return newLead;
+  }
+
+  async getAllLeads(): Promise<Lead[]> {
+    return await db.select().from(leads).orderBy(desc(leads.createdAt));
   }
 
   async getAllWatchHubVenues(): Promise<WatchHubVenue[]> {
