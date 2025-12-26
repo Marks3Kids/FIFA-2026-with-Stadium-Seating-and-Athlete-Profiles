@@ -14,53 +14,52 @@ declare module "http" {
 
 let stripeEnabled = false;
 
-async function initStripe() {
-  const databaseUrl = process.env.DATABASE_URL;
-  if (!databaseUrl) {
-    console.log('DATABASE_URL not set, skipping Stripe initialization');
-    return false;
-  }
+// Stripe initialization runs in background - doesn't block server startup
+function initStripeBackground() {
+  // Delay Stripe init by 5 seconds to let health checks pass first
+  setTimeout(async () => {
+    const databaseUrl = process.env.DATABASE_URL;
+    if (!databaseUrl) {
+      console.log('DATABASE_URL not set, skipping Stripe initialization');
+      return;
+    }
 
-  const hasStripeConnector = process.env.REPLIT_CONNECTORS_HOSTNAME && 
-    (process.env.REPL_IDENTITY || process.env.WEB_REPL_RENEWAL);
+    const hasStripeConnector = process.env.REPLIT_CONNECTORS_HOSTNAME && 
+      (process.env.REPL_IDENTITY || process.env.WEB_REPL_RENEWAL);
 
-  if (!hasStripeConnector) {
-    console.log('Stripe connector not configured, skipping Stripe initialization');
-    return false;
-  }
+    if (!hasStripeConnector) {
+      console.log('Stripe connector not configured, skipping Stripe initialization');
+      return;
+    }
 
-  try {
-    console.log('Initializing Stripe schema...');
-    const { runMigrations } = await import('stripe-replit-sync');
-    await runMigrations({ databaseUrl });
-    console.log('Stripe schema ready');
+    try {
+      console.log('Initializing Stripe schema...');
+      const { runMigrations } = await import('stripe-replit-sync');
+      await runMigrations({ databaseUrl });
+      console.log('Stripe schema ready');
 
-    const { getStripeSync } = await import("./stripeClient");
-    const stripeSync = await getStripeSync();
+      const { getStripeSync } = await import("./stripeClient");
+      const stripeSync = await getStripeSync();
 
-    console.log('Setting up managed webhook...');
-    const webhookBaseUrl = `https://${process.env.REPLIT_DOMAINS?.split(',')[0]}`;
-    const { webhook } = await stripeSync.findOrCreateManagedWebhook(
-      `${webhookBaseUrl}/api/stripe/webhook`,
-      { enabled_events: ['*'], description: 'Managed webhook for Stripe sync' }
-    );
-    console.log(`Webhook configured: ${webhook.url}`);
+      console.log('Setting up managed webhook...');
+      const webhookBaseUrl = `https://${process.env.REPLIT_DOMAINS?.split(',')[0]}`;
+      const { webhook } = await stripeSync.findOrCreateManagedWebhook(
+        `${webhookBaseUrl}/api/stripe/webhook`,
+        { enabled_events: ['*'], description: 'Managed webhook for Stripe sync' }
+      );
+      console.log(`Webhook configured: ${webhook.url}`);
 
-    console.log('Syncing Stripe data...');
-    stripeSync.syncBackfill()
-      .then(() => console.log('Stripe data synced'))
-      .catch((err: any) => console.error('Error syncing Stripe data:', err));
-    
-    return true;
-  } catch (error) {
-    console.error('Failed to initialize Stripe:', error);
-    return false;
-  }
+      stripeEnabled = true;
+
+      console.log('Syncing Stripe data...');
+      stripeSync.syncBackfill()
+        .then(() => console.log('Stripe data synced'))
+        .catch((err: any) => console.error('Error syncing Stripe data:', err));
+    } catch (error) {
+      console.error('Failed to initialize Stripe:', error);
+    }
+  }, 5000);
 }
-
-initStripe().then((enabled) => {
-  stripeEnabled = enabled;
-});
 
 app.post(
   '/api/stripe/webhook/:uuid',
@@ -192,6 +191,8 @@ app.use((req, res, next) => {
     },
     () => {
       log(`serving on port ${port}`);
+      // Start Stripe initialization in background after server is ready
+      initStripeBackground();
     },
   );
 })();
