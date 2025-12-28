@@ -13,6 +13,7 @@ interface PricingTier {
   features: string[];
   popular?: boolean;
   buttonText: string;
+  monthlyValue?: string;
 }
 
 export const PRICING_TIERS: PricingTier[] = [
@@ -47,6 +48,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Tournament odds",
     ],
     buttonText: "Get Team Info",
+    monthlyValue: "Less than $0.75/month during the 2026 games",
   },
   {
     id: "logistics",
@@ -67,6 +69,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Religious services",
     ],
     buttonText: "Get Logistics",
+    monthlyValue: "Less than $2.25/month during the 2026 games",
   },
   {
     id: "ai_concierge",
@@ -85,6 +88,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Trip planning tools",
     ],
     buttonText: "Get AI Concierge",
+    monthlyValue: "Less than $3.60/month during the 2026 games",
   },
 ];
 
@@ -272,8 +276,13 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
                 <span className="text-4xl font-bold text-primary">FREE</span>
               ) : (
                 <>
-                  <span className="text-4xl font-bold text-white">${tier.price}</span>
-                  <span className="text-sm text-muted-foreground ml-1">USD one-time</span>
+                  <div>
+                    <span className="text-4xl font-bold text-white">${tier.price}</span>
+                    <span className="text-sm text-muted-foreground ml-1">USD one-time</span>
+                  </div>
+                  {tier.monthlyValue && (
+                    <p className="text-xs text-primary mt-1">{tier.monthlyValue}</p>
+                  )}
                 </>
               )}
             </div>
