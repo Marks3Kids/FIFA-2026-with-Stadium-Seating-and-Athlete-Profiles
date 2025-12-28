@@ -183,15 +183,18 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     <>
       {showHeader && (
         <div className="text-center mb-4">
-          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full mb-6">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm text-primary font-medium">One-Time Purchase</span>
+          <div className="inline-flex items-center gap-2 bg-primary border border-primary px-5 py-2.5 rounded-full mb-6 shadow-[0_0_20px_rgba(34,197,94,0.4)]">
+            <Sparkles className="w-5 h-5 text-primary-foreground" />
+            <span className="text-base text-primary-foreground font-bold uppercase tracking-wide">One-Time Purchase</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4 uppercase tracking-wide">
             Choose Your Experience
           </h2>
           <p className="text-muted-foreground">
-            Access through August 2026 - No subscription required
+            Access through August 2026 - No monthly subscription required
+          </p>
+          <p className="text-sm text-primary mt-2">
+            Starting at just $4.99 - less than a cup of coffee!
           </p>
         </div>
       )}
