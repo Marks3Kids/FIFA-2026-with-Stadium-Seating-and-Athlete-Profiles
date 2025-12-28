@@ -347,7 +347,12 @@
         "emergencyTraumaCenter": "Notfall-Traumazentrum",
         "emergency": "Notfall",
         "tapToCall": "Tippen zum Anrufen",
-        "openInMaps": "In Karten öffnen"
+        "openInMaps": "In Karten öffnen",
+        "rideshareZones": "Rideshare-Zonen",
+        "adaAccessibleGates": "Barrierefreie Eingänge",
+        "pickupOnly": "Nur Abholung",
+        "dropoffOnly": "Nur Absetzen",
+        "pickupDropoff": "Abholen und Absetzen"
       },
       "mottos": {
         "kansasCity": "Die Fußballhauptstadt Amerikas und das Herz des Turniers",

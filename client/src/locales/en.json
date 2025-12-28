@@ -353,7 +353,12 @@
         "emergencyTraumaCenter": "Emergency Trauma Center",
         "emergency": "Emergency",
         "tapToCall": "Tap to call in emergency",
-        "openInMaps": "Open in Maps"
+        "openInMaps": "Open in Maps",
+        "rideshareZones": "Rideshare Zones",
+        "adaAccessibleGates": "ADA Accessible Gates",
+        "pickupOnly": "Pickup Only",
+        "dropoffOnly": "Drop-off Only",
+        "pickupDropoff": "Pickup & Drop-off"
       },
       "mottos": {
         "kansasCity": "The Soccer Capital of America & The Heart of the Tournament",

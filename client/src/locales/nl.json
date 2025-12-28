@@ -347,7 +347,12 @@
         "emergencyTraumaCenter": "Spoedeisende Hulp",
         "emergency": "Noodgeval",
         "tapToCall": "Tik om te bellen",
-        "openInMaps": "Open in Kaarten"
+        "openInMaps": "Open in Kaarten",
+        "rideshareZones": "Rideshare Zones",
+        "adaAccessibleGates": "Toegankelijke Ingangen",
+        "pickupOnly": "Alleen Ophalen",
+        "dropoffOnly": "Alleen Afzetten",
+        "pickupDropoff": "Ophalen en Afzetten"
       },
       "mottos": {
         "kansasCity": "De Voetbalhoofdstad van Amerika en het Hart van het Toernooi",

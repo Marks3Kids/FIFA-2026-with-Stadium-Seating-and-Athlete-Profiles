@@ -347,7 +347,12 @@
         "emergencyTraumaCenter": "مركز الطوارئ",
         "emergency": "طوارئ",
         "tapToCall": "اضغط للاتصال",
-        "openInMaps": "فتح في الخرائط"
+        "openInMaps": "فتح في الخرائط",
+        "rideshareZones": "مناطق الرايدشير",
+        "adaAccessibleGates": "بوابات ذوي الاحتياجات الخاصة",
+        "pickupOnly": "صعود فقط",
+        "dropoffOnly": "نزول فقط",
+        "pickupDropoff": "صعود ونزول"
       },
       "mottos": {
         "kansasCity": "عاصمة كرة القدم في أمريكا وقلب البطولة",

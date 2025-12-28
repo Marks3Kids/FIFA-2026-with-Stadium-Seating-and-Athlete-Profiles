@@ -347,7 +347,12 @@
         "emergencyTraumaCenter": "Centro de Trauma de Emergencia",
         "emergency": "Emergencia",
         "tapToCall": "Toca para llamar en emergencia",
-        "openInMaps": "Abrir en Mapas"
+        "openInMaps": "Abrir en Mapas",
+        "rideshareZones": "Zonas de Rideshare",
+        "adaAccessibleGates": "Puertas Accesibles ADA",
+        "pickupOnly": "Solo Recogida",
+        "dropoffOnly": "Solo Bajada",
+        "pickupDropoff": "Recogida y Bajada"
       },
       "mottos": {
         "kansasCity": "La Capital del Fútbol de América y El Corazón del Torneo",

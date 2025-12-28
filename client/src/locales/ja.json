@@ -347,7 +347,12 @@
         "emergencyTraumaCenter": "救急外傷センター",
         "emergency": "緊急",
         "tapToCall": "タップして通話",
-        "openInMaps": "マップで開く"
+        "openInMaps": "マップで開く",
+        "rideshareZones": "ライドシェア乗降場所",
+        "adaAccessibleGates": "バリアフリー入口",
+        "pickupOnly": "乗車のみ",
+        "dropoffOnly": "降車のみ",
+        "pickupDropoff": "乗降可能"
       },
       "mottos": {
         "kansasCity": "アメリカのサッカーの首都と大会の心臓部",

@@ -242,7 +242,7 @@ export default function Cities() {
                                     <div>
                                       <p className="text-sm font-bold text-white">{zone.name}</p>
                                       <p className="text-xs text-muted-foreground">
-                                        {zone.type === 'pickup' ? '🚗 Pickup Only' : zone.type === 'dropoff' ? '📍 Drop-off Only' : '🚗📍 Pickup & Drop-off'} • {zone.description}
+                                        {zone.type === 'pickup' ? `🚗 ${t("cities.vault.labels.pickupOnly")}` : zone.type === 'dropoff' ? `📍 ${t("cities.vault.labels.dropoffOnly")}` : `🚗📍 ${t("cities.vault.labels.pickupDropoff")}`} • {zone.description}
                                       </p>
                                     </div>
                                     <ExternalLink className="w-4 h-4 text-purple-400 flex-shrink-0" />
