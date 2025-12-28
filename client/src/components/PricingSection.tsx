@@ -273,7 +273,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
               ) : (
                 <>
                   <span className="text-4xl font-bold text-white">${tier.price}</span>
-                  <span className="text-sm text-muted-foreground ml-1">one-time</span>
+                  <span className="text-sm text-muted-foreground ml-1">USD one-time</span>
                 </>
               )}
             </div>
