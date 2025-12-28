@@ -42,6 +42,16 @@ export interface ComfortGuide {
   }[];
 }
 
+export interface StadiumAccess {
+  fifaStadiumName: string;
+  regularStadiumName: string;
+  mobilityMapUrl?: string;
+  lastMileWalkingGuideUrl?: string;
+  transportationPdfUrl?: string;
+  adaAccessPoints?: string[];
+  gateAssignments?: string;
+}
+
 export interface CityVault {
   cityKey: string;
   motto: string;
@@ -51,6 +61,7 @@ export interface CityVault {
   spiritual: SpiritualService[];
   watchParties: WatchPartyVenue[];
   comfort: ComfortGuide[];
+  stadiumAccess?: StadiumAccess;
 }
 
 export const cityVaults: CityVault[] = [
@@ -107,7 +118,13 @@ export const cityVaults: CityVault[] = [
           { name: "The Blue Room", description: "Late-night jazz decompression after matches", mapsUrl: "https://www.google.com/maps/search/blue+room+jazz+kansas+city" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Kansas City Stadium FIFA",
+      regularStadiumName: "GEHA Field at Arrowhead Stadium",
+      adaAccessPoints: ["Gate D (Main ADA entrance)", "Gate G (East ADA)", "Gate M (North ADA)"],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "newYork",
@@ -162,7 +179,13 @@ export const cityVaults: CityVault[] = [
           { name: "Village Vanguard", description: "Historic jazz club", mapsUrl: "https://www.google.com/maps/search/village+vanguard+new+york" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "New York/New Jersey Stadium",
+      regularStadiumName: "MetLife Stadium",
+      adaAccessPoints: ["Gate A (Main ADA entrance)", "Gate C (North ADA)", "Gate E (South ADA)"],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "losAngeles",
