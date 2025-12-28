@@ -18,6 +18,27 @@ interface Match {
 
 export default function Matches() {
   const { t } = useTranslation();
+  
+  const fifaStadiumNames: Record<string, string> = {
+    "MetLife Stadium": "New York/New Jersey Stadium",
+    "SoFi Stadium": "Los Angeles Stadium FIFA",
+    "AT&T Stadium": "Dallas Stadium FIFA",
+    "Hard Rock Stadium": "Miami Stadium FIFA",
+    "Mercedes-Benz Stadium": "Atlanta Stadium FIFA",
+    "Lumen Field": "Seattle Stadium FIFA",
+    "Levi's Stadium": "San Francisco Bay Area Stadium",
+    "NRG Stadium": "Houston Stadium",
+    "Lincoln Financial Field": "Philadelphia Stadium",
+    "Arrowhead Stadium": "Kansas City Stadium FIFA",
+    "GEHA Field at Arrowhead Stadium": "Kansas City Stadium FIFA",
+    "Gillette Stadium": "Boston Stadium FIFA",
+    "BMO Field": "Toronto Stadium",
+    "BC Place": "Vancouver Stadium",
+    "Estadio Akron": "Estadio Guadalajara",
+    "Estadio BBVA": "Estadio Monterrey",
+    "Estadio Azteca": "Estadio Ciudad de México",
+  };
+
   const stages = [
     { key: "Group Stage", label: t("matches.stages.groupStage") },
     { key: "Round of 32", label: t("matches.stages.roundOf32") },
@@ -82,7 +103,7 @@ export default function Matches() {
                 ) : (
                   matches.map((match) => (
                     <div key={match.id} className="bg-card border border-white/5 rounded-xl p-0 overflow-hidden group">
-                      <div className="bg-white/5 px-4 py-2 flex items-center justify-center border-b border-white/5">
+                      <div className="bg-white/5 px-4 py-2 flex flex-col items-center justify-center border-b border-white/5">
                         <div className="flex items-center space-x-4 text-muted-foreground">
                           <div className="flex items-center space-x-1.5">
                             <Calendar className="w-3 h-3" />
@@ -93,6 +114,9 @@ export default function Matches() {
                             <MapPin className="w-3 h-3" />
                             <span className="text-[10px] font-bold uppercase tracking-wider">{match.city}</span>
                           </div>
+                        </div>
+                        <div className="text-[9px] text-accent/80 mt-1">
+                          {fifaStadiumNames[match.stadium] || match.stadium}
                         </div>
                       </div>
                       
