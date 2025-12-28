@@ -31,6 +31,8 @@ PostgreSQL is used as the database, accessed via Neon serverless driver. Drizzle
 -   **Match Schedule:** Comprehensive schedule for 104 matches, covering group stages and knockout rounds, culminating in the final.
 -   **Watch Party Features:** Includes host city watch party locations with official fan fests and popular venues, and a "Global Watch Hubs" page listing watch party locations for all 48 qualifying nations with search functionality.
 -   **City-Specific Context:** The AI Concierge proactively provides city-specific warnings, safety resources, and recommendations based on the user's current location, aiming to remove the "stranger" feeling.
+-   **FIFA Tournament Names:** Due to FIFA's corporate naming restrictions, stadiums display both their regular names and official FIFA Tournament Names (e.g., "GEHA Field at Arrowhead Stadium" displays with "FIFA: Kansas City Stadium FIFA"). The `fifaStadiumName` field is stored in the cities database schema and displayed on both the Host Cities and Matches pages.
+-   **Stadium Access Structure:** The `cityVaults.ts` includes a `StadiumAccess` interface for future features: mobility maps, last-mile walking guides, transportation PDFs, ADA access points, and gate assignments (awaiting FIFA publication).
 
 ### AI Concierge - The Upsell Logic ("Digital Tiered Stadium")
 
