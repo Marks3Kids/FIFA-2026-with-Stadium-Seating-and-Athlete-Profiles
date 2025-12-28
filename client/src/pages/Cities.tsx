@@ -1,5 +1,5 @@
 import { Layout } from "@/components/Layout";
-import { MapPin, Calendar, Info, Users, ExternalLink, Globe, Train, Shield, Heart, Utensils, Church } from "lucide-react";
+import { MapPin, Calendar, Info, Users, ExternalLink, Globe, Train, Shield, Heart, Utensils, Church, Car, Accessibility } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -224,6 +224,56 @@ export default function Cities() {
                                 ))}
                               </ul>
                             </div>
+
+                            {vault.stadiumAccess?.rideshareZones && vault.stadiumAccess.rideshareZones.length > 0 && (
+                              <div className="bg-purple-500/10 rounded-xl p-4 border border-purple-500/20">
+                                <div className="flex items-center space-x-2 mb-3 text-purple-400">
+                                  <Car className="w-4 h-4" />
+                                  <span className="text-sm font-bold uppercase tracking-wide">{t("cities.vault.labels.rideshareZones", "Rideshare Zones")}</span>
+                                </div>
+                                {vault.stadiumAccess.rideshareZones.map((zone, idx) => (
+                                  <a
+                                    key={idx}
+                                    href={zone.mapsUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-between bg-background/50 rounded-lg p-3 mb-2 last:mb-0 hover:bg-purple-500/20 transition-colors"
+                                  >
+                                    <div>
+                                      <p className="text-sm font-bold text-white">{zone.name}</p>
+                                      <p className="text-xs text-muted-foreground">
+                                        {zone.type === 'pickup' ? '🚗 Pickup Only' : zone.type === 'dropoff' ? '📍 Drop-off Only' : '🚗📍 Pickup & Drop-off'} • {zone.description}
+                                      </p>
+                                    </div>
+                                    <ExternalLink className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                                  </a>
+                                ))}
+                              </div>
+                            )}
+
+                            {vault.stadiumAccess?.adaGates && vault.stadiumAccess.adaGates.length > 0 && (
+                              <div className="bg-blue-500/10 rounded-xl p-4 border border-blue-500/20">
+                                <div className="flex items-center space-x-2 mb-3 text-blue-400">
+                                  <Accessibility className="w-4 h-4" />
+                                  <span className="text-sm font-bold uppercase tracking-wide">{t("cities.vault.labels.adaAccessibleGates", "ADA Accessible Gates")}</span>
+                                </div>
+                                {vault.stadiumAccess.adaGates.map((gate, idx) => (
+                                  <a
+                                    key={idx}
+                                    href={gate.mapsUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-between bg-background/50 rounded-lg p-3 mb-2 last:mb-0 hover:bg-blue-500/20 transition-colors"
+                                  >
+                                    <div>
+                                      <p className="text-sm font-bold text-white">{gate.name}</p>
+                                      <p className="text-xs text-muted-foreground">♿ {gate.description}</p>
+                                    </div>
+                                    <ExternalLink className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                                  </a>
+                                ))}
+                              </div>
+                            )}
                           </>
                         )}
                       </TabsContent>
