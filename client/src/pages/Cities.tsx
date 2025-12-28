@@ -145,8 +145,8 @@ export default function Cities() {
                               <p className="text-sm font-medium text-white">{t(`cities.stadiums.${city.key}`)} • {city.capacity}</p>
                               <p className="text-xs text-accent">FIFA: {fifaStadiumNames[city.key]}</p>
                             </div>
-                            {vault?.stadiumAccess?.adaAccessPoints && (
-                              <span className="text-[10px] bg-accent/20 text-accent px-2 py-1 rounded">ADA: {vault.stadiumAccess.adaAccessPoints.length} gates</span>
+                            {vault?.stadiumAccess?.adaGates && (
+                              <span className="text-[10px] bg-accent/20 text-accent px-2 py-1 rounded">ADA: {vault.stadiumAccess.adaGates.length} gates</span>
                             )}
                           </div>
                         </div>

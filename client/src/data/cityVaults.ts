@@ -42,13 +42,27 @@ export interface ComfortGuide {
   }[];
 }
 
+export interface AdaGate {
+  name: string;
+  description: string;
+  mapsUrl: string;
+}
+
+export interface RideshareZone {
+  name: string;
+  type: 'pickup' | 'dropoff' | 'both';
+  description: string;
+  mapsUrl: string;
+}
+
 export interface StadiumAccess {
   fifaStadiumName: string;
   regularStadiumName: string;
   mobilityMapUrl?: string;
   lastMileWalkingGuideUrl?: string;
   transportationPdfUrl?: string;
-  adaAccessPoints?: string[];
+  adaGates?: AdaGate[];
+  rideshareZones?: RideshareZone[];
   gateAssignments?: string;
 }
 
@@ -122,7 +136,15 @@ export const cityVaults: CityVault[] = [
     stadiumAccess: {
       fifaStadiumName: "Kansas City Stadium FIFA",
       regularStadiumName: "GEHA Field at Arrowhead Stadium",
-      adaAccessPoints: ["Gate D (Main ADA entrance)", "Gate G (East ADA)", "Gate M (North ADA)"],
+      adaGates: [
+        { name: "Gate D", description: "Main ADA entrance - West side", mapsUrl: "https://www.google.com/maps/search/Arrowhead+Stadium+Gate+D+Kansas+City" },
+        { name: "Gate G", description: "East ADA entrance", mapsUrl: "https://www.google.com/maps/search/Arrowhead+Stadium+Gate+G+Kansas+City" },
+        { name: "Gate M", description: "North ADA entrance", mapsUrl: "https://www.google.com/maps/search/Arrowhead+Stadium+Gate+M+Kansas+City" }
+      ],
+      rideshareZones: [
+        { name: "Lot M Rideshare", type: "both", description: "Primary Uber/Lyft zone - North lot", mapsUrl: "https://www.google.com/maps/search/Arrowhead+Stadium+Lot+M+Kansas+City" },
+        { name: "Red Lot Drop-off", type: "dropoff", description: "Match day drop-off only", mapsUrl: "https://www.google.com/maps/search/Arrowhead+Stadium+Red+Lot+Kansas+City" }
+      ],
       gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
     }
   },
@@ -183,7 +205,15 @@ export const cityVaults: CityVault[] = [
     stadiumAccess: {
       fifaStadiumName: "New York/New Jersey Stadium",
       regularStadiumName: "MetLife Stadium",
-      adaAccessPoints: ["Gate A (Main ADA entrance)", "Gate C (North ADA)", "Gate E (South ADA)"],
+      adaGates: [
+        { name: "Gate A", description: "Main ADA entrance - West plaza", mapsUrl: "https://www.google.com/maps/search/MetLife+Stadium+Gate+A+East+Rutherford" },
+        { name: "Gate C", description: "North ADA entrance", mapsUrl: "https://www.google.com/maps/search/MetLife+Stadium+Gate+C+East+Rutherford" },
+        { name: "Gate E", description: "South ADA entrance", mapsUrl: "https://www.google.com/maps/search/MetLife+Stadium+Gate+E+East+Rutherford" }
+      ],
+      rideshareZones: [
+        { name: "Lot K Rideshare", type: "both", description: "Primary Uber/Lyft pickup and drop-off", mapsUrl: "https://www.google.com/maps/search/MetLife+Stadium+Lot+K+East+Rutherford" },
+        { name: "Meadowlands Station", type: "dropoff", description: "Train station drop-off area", mapsUrl: "https://www.google.com/maps/search/Meadowlands+Rail+Station+East+Rutherford" }
+      ],
       gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
     }
   },
@@ -240,7 +270,21 @@ export const cityVaults: CityVault[] = [
           { name: "Venice Beach Boardwalk", description: "Street performers and ocean views", mapsUrl: "https://www.google.com/maps/search/venice+beach+boardwalk" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Los Angeles Stadium FIFA",
+      regularStadiumName: "SoFi Stadium",
+      adaGates: [
+        { name: "Gate A", description: "Main ADA entrance - American Airlines Plaza", mapsUrl: "https://www.google.com/maps/search/SoFi+Stadium+Gate+A+Inglewood" },
+        { name: "Gate F", description: "East ADA entrance", mapsUrl: "https://www.google.com/maps/search/SoFi+Stadium+Gate+F+Inglewood" },
+        { name: "Gate H", description: "South ADA entrance", mapsUrl: "https://www.google.com/maps/search/SoFi+Stadium+Gate+H+Inglewood" }
+      ],
+      rideshareZones: [
+        { name: "Pink Lot", type: "both", description: "Primary Uber/Lyft zone", mapsUrl: "https://www.google.com/maps/search/SoFi+Stadium+Pink+Lot+Inglewood" },
+        { name: "Hollywood Park Casino", type: "dropoff", description: "Overflow rideshare area", mapsUrl: "https://www.google.com/maps/search/Hollywood+Park+Casino+Inglewood" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "miami",
@@ -295,7 +339,21 @@ export const cityVaults: CityVault[] = [
           { name: "Wynwood Walls", description: "Street art and galleries", mapsUrl: "https://www.google.com/maps/search/wynwood+walls+miami" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Miami Stadium FIFA",
+      regularStadiumName: "Hard Rock Stadium",
+      adaGates: [
+        { name: "Gate A", description: "Main ADA entrance - Northwest", mapsUrl: "https://www.google.com/maps/search/Hard+Rock+Stadium+Gate+A+Miami+Gardens" },
+        { name: "Gate D", description: "East ADA entrance", mapsUrl: "https://www.google.com/maps/search/Hard+Rock+Stadium+Gate+D+Miami+Gardens" },
+        { name: "Gate G", description: "South ADA entrance", mapsUrl: "https://www.google.com/maps/search/Hard+Rock+Stadium+Gate+G+Miami+Gardens" }
+      ],
+      rideshareZones: [
+        { name: "Lot 18", type: "both", description: "Primary Uber/Lyft pickup and drop-off", mapsUrl: "https://www.google.com/maps/search/Hard+Rock+Stadium+Lot+18+Miami+Gardens" },
+        { name: "NW 199th Street", type: "dropoff", description: "Overflow drop-off zone", mapsUrl: "https://www.google.com/maps/search/Hard+Rock+Stadium+NW+199th+Street" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "dallas",
@@ -350,7 +408,21 @@ export const cityVaults: CityVault[] = [
           { name: "Uptown Dallas", description: "Bars and restaurants on McKinney Ave", mapsUrl: "https://www.google.com/maps/search/uptown+dallas" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Dallas Stadium FIFA",
+      regularStadiumName: "AT&T Stadium",
+      adaGates: [
+        { name: "Gate A", description: "Main ADA entrance - East plaza", mapsUrl: "https://www.google.com/maps/search/AT%26T+Stadium+Gate+A+Arlington" },
+        { name: "Gate C", description: "North ADA entrance", mapsUrl: "https://www.google.com/maps/search/AT%26T+Stadium+Gate+C+Arlington" },
+        { name: "Gate F", description: "West ADA entrance", mapsUrl: "https://www.google.com/maps/search/AT%26T+Stadium+Gate+F+Arlington" }
+      ],
+      rideshareZones: [
+        { name: "Lot 4", type: "both", description: "Primary Uber/Lyft zone - East side", mapsUrl: "https://www.google.com/maps/search/AT%26T+Stadium+Lot+4+Arlington" },
+        { name: "Globe Life Field", type: "dropoff", description: "Overflow rideshare with walking bridge", mapsUrl: "https://www.google.com/maps/search/Globe+Life+Field+Arlington" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "houston",
@@ -405,7 +477,21 @@ export const cityVaults: CityVault[] = [
           { name: "Museum District", description: "19 museums in walkable area", mapsUrl: "https://www.google.com/maps/search/museum+district+houston" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Houston Stadium",
+      regularStadiumName: "NRG Stadium",
+      adaGates: [
+        { name: "Gate 1", description: "Main ADA entrance - North side", mapsUrl: "https://www.google.com/maps/search/NRG+Stadium+Gate+1+Houston" },
+        { name: "Gate 5", description: "East ADA entrance", mapsUrl: "https://www.google.com/maps/search/NRG+Stadium+Gate+5+Houston" },
+        { name: "Gate 8", description: "South ADA entrance near METRORail", mapsUrl: "https://www.google.com/maps/search/NRG+Stadium+Gate+8+Houston" }
+      ],
+      rideshareZones: [
+        { name: "Yellow Lot", type: "both", description: "Primary Uber/Lyft zone", mapsUrl: "https://www.google.com/maps/search/NRG+Stadium+Yellow+Lot+Houston" },
+        { name: "METRORail Station", type: "dropoff", description: "Drop-off near rail station", mapsUrl: "https://www.google.com/maps/search/NRG+Park+METRORail+Houston" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "atlanta",
@@ -460,7 +546,21 @@ export const cityVaults: CityVault[] = [
           { name: "Atlanta BeltLine", description: "Urban trail with art and restaurants", mapsUrl: "https://www.google.com/maps/search/atlanta+beltline" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Atlanta Stadium FIFA",
+      regularStadiumName: "Mercedes-Benz Stadium",
+      adaGates: [
+        { name: "Gate 1", description: "Main ADA entrance - North plaza", mapsUrl: "https://www.google.com/maps/search/Mercedes-Benz+Stadium+Gate+1+Atlanta" },
+        { name: "Gate 4", description: "East ADA entrance near MARTA", mapsUrl: "https://www.google.com/maps/search/Mercedes-Benz+Stadium+Gate+4+Atlanta" },
+        { name: "Gate 6", description: "South ADA entrance", mapsUrl: "https://www.google.com/maps/search/Mercedes-Benz+Stadium+Gate+6+Atlanta" }
+      ],
+      rideshareZones: [
+        { name: "Lot Red", type: "both", description: "Primary Uber/Lyft zone - West side", mapsUrl: "https://www.google.com/maps/search/Mercedes-Benz+Stadium+Red+Lot+Atlanta" },
+        { name: "GWCC Silver Deck", type: "dropoff", description: "Covered drop-off area", mapsUrl: "https://www.google.com/maps/search/Georgia+World+Congress+Center+Atlanta" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "philadelphia",
@@ -515,7 +615,21 @@ export const cityVaults: CityVault[] = [
           { name: "Philadelphia Museum of Art", description: "Rocky Steps and world-class art", mapsUrl: "https://www.google.com/maps/search/philadelphia+museum+art" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Philadelphia Stadium",
+      regularStadiumName: "Lincoln Financial Field",
+      adaGates: [
+        { name: "Gate A", description: "Main ADA entrance - West side", mapsUrl: "https://www.google.com/maps/search/Lincoln+Financial+Field+Gate+A+Philadelphia" },
+        { name: "Gate C", description: "North ADA entrance", mapsUrl: "https://www.google.com/maps/search/Lincoln+Financial+Field+Gate+C+Philadelphia" },
+        { name: "Gate F", description: "East ADA entrance near SEPTA", mapsUrl: "https://www.google.com/maps/search/Lincoln+Financial+Field+Gate+F+Philadelphia" }
+      ],
+      rideshareZones: [
+        { name: "Lot K", type: "both", description: "Primary Uber/Lyft zone", mapsUrl: "https://www.google.com/maps/search/Lincoln+Financial+Field+Lot+K+Philadelphia" },
+        { name: "Xfinity Live!", type: "dropoff", description: "Drop-off near entertainment complex", mapsUrl: "https://www.google.com/maps/search/Xfinity+Live+Philadelphia" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "seattle",
@@ -570,7 +684,21 @@ export const cityVaults: CityVault[] = [
           { name: "Chihuly Garden and Glass", description: "Stunning glass art at Seattle Center", mapsUrl: "https://www.google.com/maps/search/chihuly+garden+glass+seattle" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Seattle Stadium FIFA",
+      regularStadiumName: "Lumen Field",
+      adaGates: [
+        { name: "Gate A", description: "Main ADA entrance - North end", mapsUrl: "https://www.google.com/maps/search/Lumen+Field+Gate+A+Seattle" },
+        { name: "Gate C", description: "West ADA entrance near Light Rail", mapsUrl: "https://www.google.com/maps/search/Lumen+Field+Gate+C+Seattle" },
+        { name: "Gate E", description: "South ADA entrance", mapsUrl: "https://www.google.com/maps/search/Lumen+Field+Gate+E+Seattle" }
+      ],
+      rideshareZones: [
+        { name: "Occidental Park", type: "both", description: "Primary Uber/Lyft zone in Pioneer Square", mapsUrl: "https://www.google.com/maps/search/Occidental+Park+Seattle" },
+        { name: "S King Street", type: "dropoff", description: "Drop-off near Light Rail station", mapsUrl: "https://www.google.com/maps/search/Stadium+Station+Seattle" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "boston",
@@ -625,7 +753,21 @@ export const cityVaults: CityVault[] = [
           { name: "Fenway Park", description: "America's oldest ballpark", mapsUrl: "https://www.google.com/maps/search/fenway+park+boston" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Boston Stadium FIFA",
+      regularStadiumName: "Gillette Stadium",
+      adaGates: [
+        { name: "Gate A", description: "Main ADA entrance - East side", mapsUrl: "https://www.google.com/maps/search/Gillette+Stadium+Gate+A+Foxborough" },
+        { name: "Gate C", description: "North ADA entrance", mapsUrl: "https://www.google.com/maps/search/Gillette+Stadium+Gate+C+Foxborough" },
+        { name: "Gate D", description: "West ADA entrance near Patriot Place", mapsUrl: "https://www.google.com/maps/search/Gillette+Stadium+Gate+D+Foxborough" }
+      ],
+      rideshareZones: [
+        { name: "Patriot Place", type: "both", description: "Primary Uber/Lyft zone at retail complex", mapsUrl: "https://www.google.com/maps/search/Patriot+Place+Foxborough" },
+        { name: "Lot 15", type: "dropoff", description: "Overflow drop-off area", mapsUrl: "https://www.google.com/maps/search/Gillette+Stadium+Lot+15+Foxborough" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "sanFrancisco",
@@ -680,7 +822,21 @@ export const cityVaults: CityVault[] = [
           { name: "Fisherman's Wharf", description: "Seafood and sea lions", mapsUrl: "https://www.google.com/maps/search/fishermans+wharf+san+francisco" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "San Francisco Bay Area Stadium",
+      regularStadiumName: "Levi's Stadium",
+      adaGates: [
+        { name: "Gate A", description: "Main ADA entrance - North side", mapsUrl: "https://www.google.com/maps/search/Levis+Stadium+Gate+A+Santa+Clara" },
+        { name: "Gate C", description: "East ADA entrance near VTA", mapsUrl: "https://www.google.com/maps/search/Levis+Stadium+Gate+C+Santa+Clara" },
+        { name: "Gate F", description: "South ADA entrance", mapsUrl: "https://www.google.com/maps/search/Levis+Stadium+Gate+F+Santa+Clara" }
+      ],
+      rideshareZones: [
+        { name: "Tasman Lot", type: "both", description: "Primary Uber/Lyft zone", mapsUrl: "https://www.google.com/maps/search/Levis+Stadium+Tasman+Lot+Santa+Clara" },
+        { name: "Great America", type: "dropoff", description: "Overflow rideshare area", mapsUrl: "https://www.google.com/maps/search/Great+America+Santa+Clara" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "toronto",
@@ -735,7 +891,21 @@ export const cityVaults: CityVault[] = [
           { name: "Distillery District", description: "Victorian industrial charm", mapsUrl: "https://www.google.com/maps/search/distillery+district+toronto" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Toronto Stadium",
+      regularStadiumName: "BMO Field",
+      adaGates: [
+        { name: "Gate 1", description: "Main ADA entrance - East side", mapsUrl: "https://www.google.com/maps/search/BMO+Field+Gate+1+Toronto" },
+        { name: "Gate 3", description: "North ADA entrance", mapsUrl: "https://www.google.com/maps/search/BMO+Field+Gate+3+Toronto" },
+        { name: "Gate 5", description: "West ADA entrance near GO station", mapsUrl: "https://www.google.com/maps/search/BMO+Field+Gate+5+Toronto" }
+      ],
+      rideshareZones: [
+        { name: "Exhibition GO", type: "both", description: "Primary Uber/Lyft zone near transit", mapsUrl: "https://www.google.com/maps/search/Exhibition+GO+Station+Toronto" },
+        { name: "Liberty Village", type: "dropoff", description: "Nearby neighborhood drop-off", mapsUrl: "https://www.google.com/maps/search/Liberty+Village+Toronto" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "vancouver",
@@ -790,7 +960,21 @@ export const cityVaults: CityVault[] = [
           { name: "Grouse Mountain", description: "Skyride with city views", mapsUrl: "https://www.google.com/maps/search/grouse+mountain+vancouver" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Vancouver Stadium",
+      regularStadiumName: "BC Place",
+      adaGates: [
+        { name: "Gate A", description: "Main ADA entrance - North side", mapsUrl: "https://www.google.com/maps/search/BC+Place+Gate+A+Vancouver" },
+        { name: "Gate C", description: "East ADA entrance near SkyTrain", mapsUrl: "https://www.google.com/maps/search/BC+Place+Gate+C+Vancouver" },
+        { name: "Gate E", description: "South ADA entrance", mapsUrl: "https://www.google.com/maps/search/BC+Place+Gate+E+Vancouver" }
+      ],
+      rideshareZones: [
+        { name: "Rogers Arena", type: "both", description: "Primary Uber/Lyft zone nearby", mapsUrl: "https://www.google.com/maps/search/Rogers+Arena+Vancouver" },
+        { name: "Stadium-Chinatown Station", type: "dropoff", description: "Drop-off near SkyTrain", mapsUrl: "https://www.google.com/maps/search/Stadium+Chinatown+Station+Vancouver" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "mexicoCity",
@@ -845,7 +1029,21 @@ export const cityVaults: CityVault[] = [
           { name: "Frida Kahlo Museum", description: "Casa Azul in Coyoacán", mapsUrl: "https://www.google.com/maps/search/frida+kahlo+museum+mexico+city" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Estadio Ciudad de México",
+      regularStadiumName: "Estadio Azteca",
+      adaGates: [
+        { name: "Puerta 1", description: "Entrada principal ADA - Norte", mapsUrl: "https://www.google.com/maps/search/Estadio+Azteca+Puerta+1+Mexico+City" },
+        { name: "Puerta 7", description: "Entrada ADA - Este", mapsUrl: "https://www.google.com/maps/search/Estadio+Azteca+Puerta+7+Mexico+City" },
+        { name: "Puerta 15", description: "Entrada ADA - Oeste", mapsUrl: "https://www.google.com/maps/search/Estadio+Azteca+Puerta+15+Mexico+City" }
+      ],
+      rideshareZones: [
+        { name: "Estacionamiento Norte", type: "both", description: "Zona principal Uber/DiDi", mapsUrl: "https://www.google.com/maps/search/Estadio+Azteca+Estacionamiento+Norte" },
+        { name: "Tren Ligero Station", type: "dropoff", description: "Bajada cerca del tren ligero", mapsUrl: "https://www.google.com/maps/search/Estadio+Azteca+Tren+Ligero" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "guadalajara",
@@ -900,7 +1098,21 @@ export const cityVaults: CityVault[] = [
           { name: "Instituto Cultural Cabañas", description: "UNESCO World Heritage murals", mapsUrl: "https://www.google.com/maps/search/instituto+cabanas+guadalajara" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Guadalajara Stadium",
+      regularStadiumName: "Estadio Akron",
+      adaGates: [
+        { name: "Puerta Principal", description: "Entrada principal ADA - Norte", mapsUrl: "https://www.google.com/maps/search/Estadio+Akron+Puerta+Principal+Guadalajara" },
+        { name: "Puerta Sur", description: "Entrada ADA - Sur", mapsUrl: "https://www.google.com/maps/search/Estadio+Akron+Puerta+Sur+Guadalajara" },
+        { name: "Puerta Este", description: "Entrada ADA - Este", mapsUrl: "https://www.google.com/maps/search/Estadio+Akron+Puerta+Este+Guadalajara" }
+      ],
+      rideshareZones: [
+        { name: "Estacionamiento Principal", type: "both", description: "Zona principal Uber/DiDi", mapsUrl: "https://www.google.com/maps/search/Estadio+Akron+Estacionamiento+Guadalajara" },
+        { name: "Centro Comercial Andares", type: "dropoff", description: "Zona alternativa cerca del estadio", mapsUrl: "https://www.google.com/maps/search/Centro+Comercial+Andares+Guadalajara" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   },
   {
     cityKey: "monterrey",
@@ -955,6 +1167,20 @@ export const cityVaults: CityVault[] = [
           { name: "Grutas de García", description: "Cave tours in the mountains", mapsUrl: "https://www.google.com/maps/search/grutas+garcia+monterrey" }
         ]
       }
-    ]
+    ],
+    stadiumAccess: {
+      fifaStadiumName: "Monterrey Stadium",
+      regularStadiumName: "Estadio BBVA",
+      adaGates: [
+        { name: "Puerta 1", description: "Entrada principal ADA - Oeste", mapsUrl: "https://www.google.com/maps/search/Estadio+BBVA+Puerta+1+Monterrey" },
+        { name: "Puerta 5", description: "Entrada ADA - Norte", mapsUrl: "https://www.google.com/maps/search/Estadio+BBVA+Puerta+5+Monterrey" },
+        { name: "Puerta 9", description: "Entrada ADA - Este", mapsUrl: "https://www.google.com/maps/search/Estadio+BBVA+Puerta+9+Monterrey" }
+      ],
+      rideshareZones: [
+        { name: "Estacionamiento VIP", type: "both", description: "Zona principal Uber/DiDi", mapsUrl: "https://www.google.com/maps/search/Estadio+BBVA+Estacionamiento+Monterrey" },
+        { name: "Metrorrey General Anaya", type: "dropoff", description: "Bajada cerca del metro", mapsUrl: "https://www.google.com/maps/search/Metrorrey+General+Anaya+Monterrey" }
+      ],
+      gateAssignments: "Gate assignments will be published by FIFA 30 days before tournament"
+    }
   }
 ];
