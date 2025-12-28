@@ -19,22 +19,22 @@ interface StadiumSection {
 }
 
 const stadiumData = [
-  { name: "MetLife Stadium", city: "New York/New Jersey", country: "USA", capacity: "82,500", image: "🏟️" },
-  { name: "SoFi Stadium", city: "Los Angeles", country: "USA", capacity: "70,240", image: "🏟️" },
-  { name: "AT&T Stadium", city: "Dallas", country: "USA", capacity: "80,000", image: "🏟️" },
-  { name: "Hard Rock Stadium", city: "Miami", country: "USA", capacity: "65,326", image: "🏟️" },
-  { name: "Levi's Stadium", city: "San Francisco Bay Area", country: "USA", capacity: "68,500", image: "🏟️" },
-  { name: "Mercedes-Benz Stadium", city: "Atlanta", country: "USA", capacity: "71,000", image: "🏟️" },
-  { name: "NRG Stadium", city: "Houston", country: "USA", capacity: "72,220", image: "🏟️" },
-  { name: "Lincoln Financial Field", city: "Philadelphia", country: "USA", capacity: "69,796", image: "🏟️" },
-  { name: "Arrowhead Stadium", city: "Kansas City", country: "USA", capacity: "76,416", image: "🏟️" },
-  { name: "Gillette Stadium", city: "Boston", country: "USA", capacity: "65,878", image: "🏟️" },
-  { name: "Lumen Field", city: "Seattle", country: "USA", capacity: "68,740", image: "🏟️" },
-  { name: "Estadio Azteca", city: "Mexico City", country: "Mexico", capacity: "87,523", image: "🏟️" },
-  { name: "Estadio BBVA", city: "Monterrey", country: "Mexico", capacity: "51,348", image: "🏟️" },
-  { name: "Estadio Akron", city: "Guadalajara", country: "Mexico", capacity: "45,370", image: "🏟️" },
-  { name: "BC Place", city: "Vancouver", country: "Canada", capacity: "54,500", image: "🏟️" },
-  { name: "BMO Field", city: "Toronto", country: "Canada", capacity: "45,736", image: "🏟️" },
+  { name: "MetLife Stadium", fifaName: "New York/New Jersey Stadium", city: "New York/New Jersey", country: "USA", capacity: "82,500", image: "🏟️" },
+  { name: "SoFi Stadium", fifaName: "Los Angeles Stadium FIFA", city: "Los Angeles", country: "USA", capacity: "70,240", image: "🏟️" },
+  { name: "AT&T Stadium", fifaName: "Dallas Stadium FIFA", city: "Dallas", country: "USA", capacity: "80,000", image: "🏟️" },
+  { name: "Hard Rock Stadium", fifaName: "Miami Stadium FIFA", city: "Miami", country: "USA", capacity: "65,326", image: "🏟️" },
+  { name: "Levi's Stadium", fifaName: "San Francisco Bay Area Stadium", city: "San Francisco Bay Area", country: "USA", capacity: "68,500", image: "🏟️" },
+  { name: "Mercedes-Benz Stadium", fifaName: "Atlanta Stadium FIFA", city: "Atlanta", country: "USA", capacity: "71,000", image: "🏟️" },
+  { name: "NRG Stadium", fifaName: "Houston Stadium", city: "Houston", country: "USA", capacity: "72,220", image: "🏟️" },
+  { name: "Lincoln Financial Field", fifaName: "Philadelphia Stadium", city: "Philadelphia", country: "USA", capacity: "69,796", image: "🏟️" },
+  { name: "Arrowhead Stadium", fifaName: "Kansas City Stadium FIFA", city: "Kansas City", country: "USA", capacity: "76,416", image: "🏟️" },
+  { name: "Gillette Stadium", fifaName: "Boston Stadium FIFA", city: "Boston", country: "USA", capacity: "65,878", image: "🏟️" },
+  { name: "Lumen Field", fifaName: "Seattle Stadium FIFA", city: "Seattle", country: "USA", capacity: "68,740", image: "🏟️" },
+  { name: "Estadio Azteca", fifaName: "Estadio Ciudad de México", city: "Mexico City", country: "Mexico", capacity: "87,523", image: "🏟️" },
+  { name: "Estadio BBVA", fifaName: "Estadio Monterrey", city: "Monterrey", country: "Mexico", capacity: "51,348", image: "🏟️" },
+  { name: "Estadio Akron", fifaName: "Estadio Guadalajara", city: "Guadalajara", country: "Mexico", capacity: "45,370", image: "🏟️" },
+  { name: "BC Place", fifaName: "Vancouver Stadium", city: "Vancouver", country: "Canada", capacity: "54,500", image: "🏟️" },
+  { name: "BMO Field", fifaName: "Toronto Stadium", city: "Toronto", country: "Canada", capacity: "45,736", image: "🏟️" },
 ];
 
 const sectionColors: Record<string, { bg: string; border: string; text: string }> = {
@@ -133,6 +133,7 @@ export default function StadiumSeating() {
                     <span className="text-2xl">{stadium.image}</span>
                     <div className="text-left">
                       <p className="text-white font-medium">{stadium.name}</p>
+                      <p className="text-[10px] text-accent/80">FIFA: {stadium.fifaName}</p>
                       <p className="text-xs text-muted-foreground">{stadium.city}, {stadium.country}</p>
                     </div>
                   </div>
@@ -156,6 +157,7 @@ export default function StadiumSeating() {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <h2 className="text-2xl font-bold text-white">{currentStadium.name}</h2>
+                    <p className="text-sm text-accent/90">FIFA: {currentStadium.fifaName}</p>
                     <p className="text-muted-foreground">{currentStadium.city}, {currentStadium.country}</p>
                   </div>
                   <div className="text-right">
