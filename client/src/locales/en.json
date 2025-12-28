@@ -3484,7 +3484,8 @@
   "pricing": {
     "oneTimePurchase": "One-Time Purchase",
     "chooseExperience": "Choose Your Experience",
-    "accessInfo": "Access through August 2026 - No subscription required",
+    "accessInfo": "Access through August 2026",
+    "free": "FREE",
     "freeBracket": "Free Bracket",
     "freeBracketDesc": "Printable knockout bracket PDF",
     "downloadable": "Downloadable knockout bracket",
@@ -3524,7 +3525,13 @@
     "tripPlanning": "Trip planning tools",
     "getAiConcierge": "Get AI Concierge",
     "oneTime": "one-time",
+    "usdOneTime": "USD one-time",
     "processing": "Processing...",
+    "noMonthlySubscription": "No monthly subscription required",
+    "coffeeComparison": "Starting at just $4.99 - less than a cup of coffee!",
+    "teamInfoMonthly": "Less than $0.75/month during the 2026 games",
+    "logisticsMonthly": "Less than $2.25/month during the 2026 games",
+    "aiConciergeMonthly": "Less than $3.60/month during the 2026 games",
     "emailCapture": {
       "title": "Get Your Free Bracket",
       "subtitle": "Enter your details to download the printable knockout bracket.",

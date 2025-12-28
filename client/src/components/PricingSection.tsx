@@ -2,6 +2,7 @@ import { Check, Download, Users, MapPin, Sparkles } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { useSubscription, SubscriptionTier } from "@/contexts/SubscriptionContext";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 interface PricingTier {
   id: SubscriptionTier;
@@ -100,9 +101,88 @@ interface PricingSectionProps {
 export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: PricingSectionProps) {
   const { setFreeUser } = useSubscription();
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState<string | null>(null);
   const [showEmailCapture, setShowEmailCapture] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", city: "" });
+
+  const getTierName = (id: string) => {
+    const nameMap: Record<string, string> = {
+      free: t("pricing.freeBracket"),
+      team_info: t("pricing.teamInfo"),
+      logistics: t("pricing.logistics"),
+      ai_concierge: t("pricing.aiConcierge"),
+    };
+    return nameMap[id] || id;
+  };
+
+  const getTierDescription = (id: string) => {
+    const descMap: Record<string, string> = {
+      free: t("pricing.freeBracketDesc"),
+      team_info: t("pricing.teamInfoDesc"),
+      logistics: t("pricing.logisticsDesc"),
+      ai_concierge: t("pricing.aiConciergeDesc"),
+    };
+    return descMap[id] || "";
+  };
+
+  const getTierButton = (id: string) => {
+    const buttonMap: Record<string, string> = {
+      free: t("pricing.getFree"),
+      team_info: t("pricing.getTeamInfo"),
+      logistics: t("pricing.getLogistics"),
+      ai_concierge: t("pricing.getAiConcierge"),
+    };
+    return buttonMap[id] || "";
+  };
+
+  const getTierFeatures = (id: string) => {
+    const featureMap: Record<string, string[]> = {
+      free: [
+        t("pricing.downloadable"),
+        t("pricing.printFill"),
+        t("pricing.trackPredictions"),
+      ],
+      team_info: [
+        t("pricing.allTeams"),
+        t("pricing.playerRosters"),
+        t("pricing.knockoutBrackets"),
+        t("pricing.fullSchedules"),
+        t("pricing.tournamentNews"),
+        t("pricing.worldCupHistory"),
+        t("pricing.tournamentOdds"),
+      ],
+      logistics: [
+        t("pricing.everythingTeam"),
+        t("pricing.hostCityGuides"),
+        t("pricing.transportationOptions"),
+        t("pricing.lodgingRecs"),
+        t("pricing.restaurantGuides"),
+        t("pricing.essentialTravel"),
+        t("pricing.safetyMedical"),
+        t("pricing.religiousServices"),
+      ],
+      ai_concierge: [
+        t("pricing.everythingLogistics"),
+        t("pricing.aiMessages"),
+        t("pricing.buyMore"),
+        t("pricing.personalizedRecs"),
+        t("pricing.realTimeSupport"),
+        t("pricing.visaGuidance"),
+        t("pricing.tripPlanning"),
+      ],
+    };
+    return featureMap[id] || [];
+  };
+
+  const getMonthlyValue = (id: string) => {
+    const valueMap: Record<string, string> = {
+      team_info: t("pricing.teamInfoMonthly"),
+      logistics: t("pricing.logisticsMonthly"),
+      ai_concierge: t("pricing.aiConciergeMonthly"),
+    };
+    return valueMap[id] || "";
+  };
 
   const handleFreeTier = () => {
     setShowEmailCapture(true);
@@ -185,16 +265,16 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
         <div className="text-center mb-4">
           <div className="inline-flex items-center gap-2 bg-primary border border-primary px-5 py-2.5 rounded-full mb-6 shadow-[0_0_20px_rgba(34,197,94,0.4)]">
             <Sparkles className="w-5 h-5 text-primary-foreground" />
-            <span className="text-base text-primary-foreground font-bold uppercase tracking-wide">One-Time Purchase</span>
+            <span className="text-base text-primary-foreground font-bold uppercase tracking-wide">{t("pricing.oneTimePurchase")}</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4 uppercase tracking-wide">
-            Choose Your Experience
+            {t("pricing.chooseExperience")}
           </h2>
           <p className="text-muted-foreground">
-            Access through August 2026 - No monthly subscription required
+            {t("pricing.accessInfo")} - {t("pricing.noMonthlySubscription")}
           </p>
           <p className="text-sm text-primary mt-2">
-            Starting at just $4.99 - less than a cup of coffee!
+            {t("pricing.coffeeComparison")}
           </p>
         </div>
       )}
@@ -202,28 +282,28 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
       {showEmailCapture && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-card border border-white/10 rounded-2xl p-8 max-w-md w-full">
-            <h3 className="text-2xl font-bold text-white mb-2">Get Your Free Bracket</h3>
+            <h3 className="text-2xl font-bold text-white mb-2">{t("pricing.emailCapture.title")}</h3>
             <p className="text-muted-foreground mb-6">
-              Enter your details to download the printable knockout bracket.
+              {t("pricing.emailCapture.subtitle")}
             </p>
             <form onSubmit={handleEmailSubmit} className="space-y-4">
               <input
                 type="text"
-                placeholder="Your Name"
+                placeholder={t("pricing.emailCapture.namePlaceholder")}
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-muted-foreground focus:outline-none focus:border-primary"
               />
               <input
                 type="email"
-                placeholder="Email Address"
+                placeholder={t("pricing.emailCapture.emailPlaceholder")}
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-muted-foreground focus:outline-none focus:border-primary"
               />
               <input
                 type="text"
-                placeholder="City / Country"
+                placeholder={t("pricing.emailCapture.cityPlaceholder")}
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                 className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-muted-foreground focus:outline-none focus:border-primary"
@@ -234,14 +314,14 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
                   onClick={() => setShowEmailCapture(false)}
                   className="flex-1 border border-white/20 text-white py-3 rounded-lg font-medium hover:bg-white/5 transition-colors"
                 >
-                  Cancel
+                  {t("pricing.emailCapture.cancel")}
                 </button>
                 <button
                   type="submit"
                   disabled={isLoading === "free"}
                   className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold transition-colors disabled:opacity-50"
                 >
-                  {isLoading === "free" ? "..." : "Download"}
+                  {isLoading === "free" ? "..." : t("pricing.emailCapture.download")}
                 </button>
               </div>
             </form>
@@ -261,7 +341,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
           >
             {tier.popular && (
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
-                MOST POPULAR
+                {t("pricing.mostPopular")}
               </div>
             )}
             <div className="flex items-center gap-3 mb-4">
@@ -269,29 +349,29 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
                 {tier.icon}
               </div>
               <div>
-                <h3 className="font-bold text-white uppercase text-sm">{tier.name}</h3>
-                <p className="text-xs text-muted-foreground">{tier.description}</p>
+                <h3 className="font-bold text-white uppercase text-sm">{getTierName(tier.id)}</h3>
+                <p className="text-xs text-muted-foreground">{getTierDescription(tier.id)}</p>
               </div>
             </div>
 
             <div className="mb-6">
               {tier.price === 0 ? (
-                <span className="text-4xl font-bold text-primary">FREE</span>
+                <span className="text-4xl font-bold text-primary">{t("pricing.free", "FREE")}</span>
               ) : (
                 <>
                   <div>
                     <span className="text-4xl font-bold text-white">${tier.price}</span>
-                    <span className="text-sm text-muted-foreground ml-1">USD one-time</span>
+                    <span className="text-sm text-muted-foreground ml-1">{t("pricing.usdOneTime")}</span>
                   </div>
-                  {tier.monthlyValue && (
-                    <p className="text-xs text-primary mt-1">{tier.monthlyValue}</p>
+                  {getMonthlyValue(tier.id) && (
+                    <p className="text-xs text-primary mt-1">{getMonthlyValue(tier.id)}</p>
                   )}
                 </>
               )}
             </div>
 
             <ul className="space-y-3 mb-6">
-              {tier.features.map((feature, index) => (
+              {getTierFeatures(tier.id).map((feature, index) => (
                 <li key={index} className="flex items-start gap-2 text-sm">
                   <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                   <span className="text-muted-foreground">{feature}</span>
@@ -308,7 +388,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
                   : "border border-white/20 text-white hover:bg-white/5"
               } disabled:opacity-50`}
             >
-              {isLoading === tier.id ? "Processing..." : tier.buttonText}
+              {isLoading === tier.id ? t("pricing.processing") : getTierButton(tier.id)}
             </button>
           </div>
         ))}
