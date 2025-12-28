@@ -80,6 +80,7 @@ export interface IStorage {
   getAllCities(): Promise<City[]>;
   getCity(id: number): Promise<City | undefined>;
   createCity(city: InsertCity): Promise<City>;
+  updateCityFifaName(cityName: string, fifaStadiumName: string): Promise<City | undefined>;
   
   getAllMatches(): Promise<Match[]>;
   getMatchesByStage(stage: string): Promise<Match[]>;
@@ -212,6 +213,14 @@ export class DatabaseStorage implements IStorage {
   async createCity(city: InsertCity): Promise<City> {
     const [newCity] = await db.insert(cities).values(city).returning();
     return newCity;
+  }
+
+  async updateCityFifaName(cityName: string, fifaStadiumName: string): Promise<City | undefined> {
+    const [updated] = await db.update(cities)
+      .set({ fifaStadiumName })
+      .where(eq(cities.name, cityName))
+      .returning();
+    return updated;
   }
 
   async getAllMatches(): Promise<Match[]> {

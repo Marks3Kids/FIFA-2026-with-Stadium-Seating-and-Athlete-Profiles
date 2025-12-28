@@ -47,6 +47,7 @@ export const cities = pgTable("cities", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   stadium: text("stadium").notNull(),
+  fifaStadiumName: text("fifa_stadium_name"),
   capacity: text("capacity").notNull(),
   country: text("country").notNull(),
   matches: text("matches").array().notNull(),

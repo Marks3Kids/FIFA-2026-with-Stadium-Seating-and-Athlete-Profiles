@@ -158,24 +158,24 @@ export async function registerRoutes(
         }
       }
       
-      // Seed Cities - All 16 host cities
+      // Seed Cities - All 16 host cities with FIFA Tournament Names
       const citiesData = [
-        { name: "New York/New Jersey", stadium: "MetLife Stadium", capacity: "82500", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16", "Quarterfinal", "Semifinal", "Final"], description: "The largest stadium hosting the tournament, located in East Rutherford. Will host the Final." },
-        { name: "Los Angeles", stadium: "SoFi Stadium", capacity: "70000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16", "Quarterfinal"], description: "State-of-the-art stadium in Inglewood with a translucent roof." },
-        { name: "Dallas", stadium: "AT&T Stadium", capacity: "80000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Home of the Dallas Cowboys with its iconic retractable roof." },
-        { name: "Miami", stadium: "Hard Rock Stadium", capacity: "65000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16", "Quarterfinal"], description: "Features innovative canopy and Florida's tropical climate." },
-        { name: "Atlanta", stadium: "Mercedes-Benz Stadium", capacity: "71000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Known for its unique retractable roof and fan-friendly pricing." },
-        { name: "Seattle", stadium: "Lumen Field", capacity: "69000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Home of the Sounders with stunning Pacific Northwest views." },
-        { name: "San Francisco Bay Area", stadium: "Levi's Stadium", capacity: "68500", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Silicon Valley's high-tech stadium in Santa Clara." },
-        { name: "Houston", stadium: "NRG Stadium", capacity: "72000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Climate-controlled venue with retractable roof." },
-        { name: "Philadelphia", stadium: "Lincoln Financial Field", capacity: "69000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Known for passionate fans and historic surroundings." },
-        { name: "Kansas City", stadium: "Arrowhead Stadium", capacity: "76000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "The Soccer Capital of America & The Heart of the Tournament." },
-        { name: "Boston", stadium: "Gillette Stadium", capacity: "65000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Located in Foxborough with the Patriot Place entertainment complex." },
-        { name: "Toronto", stadium: "BMO Field", capacity: "45000", country: "Canada", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Intimate soccer-specific stadium with expansion for World Cup." },
-        { name: "Vancouver", stadium: "BC Place", capacity: "54500", country: "Canada", matches: ["Group Stage", "Round of 32"], description: "Features a cable-supported retractable roof with waterfront views." },
-        { name: "Guadalajara", stadium: "Estadio Akron", capacity: "49850", country: "Mexico", matches: ["Group Stage", "Round of 32"], description: "Modern stadium known for its volcanic rock design." },
-        { name: "Monterrey", stadium: "Estadio BBVA", capacity: "53500", country: "Mexico", matches: ["Group Stage", "Round of 32"], description: "Stunning mountain backdrop with modern facilities." },
-        { name: "Mexico City", stadium: "Estadio Azteca", capacity: "87000", country: "Mexico", matches: ["Group Stage", "Round of 32", "Round of 16", "Quarterfinal"], description: "Legendary venue that hosted two World Cup Finals (1970, 1986)." },
+        { name: "New York/New Jersey", stadium: "MetLife Stadium", fifaStadiumName: "New York/New Jersey Stadium", capacity: "82500", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16", "Quarterfinal", "Semifinal", "Final"], description: "The largest stadium hosting the tournament, located in East Rutherford. Will host the Final." },
+        { name: "Los Angeles", stadium: "SoFi Stadium", fifaStadiumName: "Los Angeles Stadium FIFA", capacity: "70000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16", "Quarterfinal"], description: "State-of-the-art stadium in Inglewood with a translucent roof." },
+        { name: "Dallas", stadium: "AT&T Stadium", fifaStadiumName: "Dallas Stadium FIFA", capacity: "80000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Home of the Dallas Cowboys with its iconic retractable roof." },
+        { name: "Miami", stadium: "Hard Rock Stadium", fifaStadiumName: "Miami Stadium FIFA", capacity: "65000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16", "Quarterfinal"], description: "Features innovative canopy and Florida's tropical climate." },
+        { name: "Atlanta", stadium: "Mercedes-Benz Stadium", fifaStadiumName: "Atlanta Stadium FIFA", capacity: "71000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Known for its unique retractable roof and fan-friendly pricing." },
+        { name: "Seattle", stadium: "Lumen Field", fifaStadiumName: "Seattle Stadium FIFA", capacity: "69000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Home of the Sounders with stunning Pacific Northwest views." },
+        { name: "San Francisco Bay Area", stadium: "Levi's Stadium", fifaStadiumName: "San Francisco Bay Area Stadium", capacity: "68500", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Silicon Valley's high-tech stadium in Santa Clara." },
+        { name: "Houston", stadium: "NRG Stadium", fifaStadiumName: "Houston Stadium", capacity: "72000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Climate-controlled venue with retractable roof." },
+        { name: "Philadelphia", stadium: "Lincoln Financial Field", fifaStadiumName: "Philadelphia Stadium", capacity: "69000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Known for passionate fans and historic surroundings." },
+        { name: "Kansas City", stadium: "GEHA Field at Arrowhead Stadium", fifaStadiumName: "Kansas City Stadium FIFA", capacity: "76000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "The Soccer Capital of America & The Heart of the Tournament." },
+        { name: "Boston", stadium: "Gillette Stadium", fifaStadiumName: "Boston Stadium FIFA", capacity: "65000", country: "USA", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Located in Foxborough with the Patriot Place entertainment complex." },
+        { name: "Toronto", stadium: "BMO Field", fifaStadiumName: "Toronto Stadium", capacity: "45000", country: "Canada", matches: ["Group Stage", "Round of 32", "Round of 16"], description: "Intimate soccer-specific stadium with expansion for World Cup." },
+        { name: "Vancouver", stadium: "BC Place", fifaStadiumName: "Vancouver Stadium", capacity: "54500", country: "Canada", matches: ["Group Stage", "Round of 32"], description: "Features a cable-supported retractable roof with waterfront views." },
+        { name: "Guadalajara", stadium: "Estadio Akron", fifaStadiumName: "Estadio Guadalajara", capacity: "49850", country: "Mexico", matches: ["Group Stage", "Round of 32"], description: "Modern stadium known for its volcanic rock design." },
+        { name: "Monterrey", stadium: "Estadio BBVA", fifaStadiumName: "Estadio Monterrey", capacity: "53500", country: "Mexico", matches: ["Group Stage", "Round of 32"], description: "Stunning mountain backdrop with modern facilities." },
+        { name: "Mexico City", stadium: "Estadio Azteca", fifaStadiumName: "Estadio Ciudad de México", capacity: "87000", country: "Mexico", matches: ["Group Stage", "Round of 32", "Round of 16", "Quarterfinal"], description: "Legendary venue that hosted two World Cup Finals (1970, 1986)." },
       ];
       
       for (const city of citiesData) {
@@ -382,6 +382,45 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Seed players error:", error);
       res.status(500).json({ error: "Failed to seed players" });
+    }
+  });
+
+  // Update existing cities with FIFA stadium names
+  app.post("/api/admin/update-fifa-names", async (req, res) => {
+    try {
+      const fifaNameMappings = [
+        { cityName: "New York/New Jersey", fifaStadiumName: "New York/New Jersey Stadium" },
+        { cityName: "Los Angeles", fifaStadiumName: "Los Angeles Stadium FIFA" },
+        { cityName: "Dallas", fifaStadiumName: "Dallas Stadium FIFA" },
+        { cityName: "Miami", fifaStadiumName: "Miami Stadium FIFA" },
+        { cityName: "Atlanta", fifaStadiumName: "Atlanta Stadium FIFA" },
+        { cityName: "Seattle", fifaStadiumName: "Seattle Stadium FIFA" },
+        { cityName: "San Francisco Bay Area", fifaStadiumName: "San Francisco Bay Area Stadium" },
+        { cityName: "Houston", fifaStadiumName: "Houston Stadium" },
+        { cityName: "Philadelphia", fifaStadiumName: "Philadelphia Stadium" },
+        { cityName: "Kansas City", fifaStadiumName: "Kansas City Stadium FIFA" },
+        { cityName: "Boston", fifaStadiumName: "Boston Stadium FIFA" },
+        { cityName: "Toronto", fifaStadiumName: "Toronto Stadium" },
+        { cityName: "Vancouver", fifaStadiumName: "Vancouver Stadium" },
+        { cityName: "Guadalajara", fifaStadiumName: "Estadio Guadalajara" },
+        { cityName: "Monterrey", fifaStadiumName: "Estadio Monterrey" },
+        { cityName: "Mexico City", fifaStadiumName: "Estadio Ciudad de México" },
+      ];
+
+      let updated = 0;
+      for (const mapping of fifaNameMappings) {
+        const result = await storage.updateCityFifaName(mapping.cityName, mapping.fifaStadiumName);
+        if (result) updated++;
+      }
+
+      res.json({ 
+        success: true, 
+        message: `Updated ${updated} cities with FIFA stadium names`,
+        updated 
+      });
+    } catch (error) {
+      console.error("Update FIFA names error:", error);
+      res.status(500).json({ error: "Failed to update FIFA names" });
     }
   });
   
