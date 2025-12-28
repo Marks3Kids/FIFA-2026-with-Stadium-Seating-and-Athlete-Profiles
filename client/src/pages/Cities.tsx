@@ -139,6 +139,39 @@ export default function Cities() {
 
                     <ScrollArea className="flex-1 p-4">
                       <TabsContent value="overview" className="mt-0 space-y-4">
+                        <div className="bg-accent/10 rounded-xl p-4 border border-accent/20">
+                          <div className="flex items-center space-x-2 mb-3 text-accent">
+                            <MapPin className="w-4 h-4" />
+                            <span className="text-sm font-bold uppercase tracking-wide">{t("cities.vault.labels.stadiumInfo", "Stadium Info")}</span>
+                          </div>
+                          <div className="space-y-2">
+                            <div>
+                              <p className="text-xs text-muted-foreground uppercase tracking-wide">{t("cities.vault.labels.regularName", "Stadium Name")}</p>
+                              <p className="text-sm font-medium text-white">{t(`cities.stadiums.${city.key}`)} • {city.capacity}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-muted-foreground uppercase tracking-wide">{t("cities.vault.labels.fifaName", "FIFA Tournament Name")}</p>
+                              <p className="text-sm font-medium text-accent">{fifaStadiumNames[city.key]}</p>
+                            </div>
+                            {vault?.stadiumAccess?.adaAccessPoints && vault.stadiumAccess.adaAccessPoints.length > 0 && (
+                              <div>
+                                <p className="text-xs text-muted-foreground uppercase tracking-wide mt-2">{t("cities.vault.labels.adaAccess", "ADA Access Points")}</p>
+                                <ul className="space-y-1 mt-1">
+                                  {vault.stadiumAccess.adaAccessPoints.map((point, idx) => (
+                                    <li key={idx} className="text-xs text-gray-300 flex items-center">
+                                      <span className="w-1 h-1 rounded-full bg-accent/50 mr-2"></span>
+                                      {point}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                            {vault?.stadiumAccess?.gateAssignments && (
+                              <p className="text-xs text-muted-foreground italic mt-2">{vault.stadiumAccess.gateAssignments}</p>
+                            )}
+                          </div>
+                        </div>
+
                         <div className="bg-white/5 rounded-xl p-4 border border-white/5">
                           <div className="flex items-center space-x-2 mb-3 text-accent">
                             <Calendar className="w-4 h-4" />
