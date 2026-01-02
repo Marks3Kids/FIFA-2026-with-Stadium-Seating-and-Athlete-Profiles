@@ -868,6 +868,21 @@ export const teamSeasonData: Record<string, {
       { name: "Amjad Attwan", goals: 2 },
     ]
   },
+  "Jordan": {
+    wins: 8, ties: 2, losses: 1,
+    highlights: "Al-Nashama made history by qualifying for their first-ever FIFA World Cup. Under coach Jamal Sellami, Jordan reached the 2025 FIFA Arab Cup final and dominated Asian qualification with clinical performances.",
+    recentMatches: [
+      { opponent: "Oman", result: "W", score: "3-0" },
+      { opponent: "Saudi Arabia", result: "W", score: "1-0" },
+      { opponent: "Iraq", result: "W", score: "1-0" },
+      { opponent: "Morocco", result: "L", score: "2-3" },
+    ],
+    topScorers: [
+      { name: "Yazan Al-Naimat", goals: 5 },
+      { name: "Mousa Al-Taamari", goals: 4 },
+      { name: "Ahmad Ersan", goals: 3 },
+    ]
+  },
 };
 
 export function TeamDetailModal({ team, isOpen, onClose }: TeamDetailModalProps) {
