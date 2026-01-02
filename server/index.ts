@@ -8,10 +8,47 @@ const httpServer = createServer(app);
 let appInitialized = false;
 
 // Health check endpoints - respond immediately without any processing
-// The "/" route only returns "ok" during startup, before static files are ready
+// The "/" route shows a loading page during startup, before static files are ready
 app.get("/", (req, res, next) => {
   if (!appInitialized) {
-    res.status(200).send("ok");
+    res.status(200).send(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Championship Concierge</title>
+          <meta http-equiv="refresh" content="1">
+          <style>
+            body { 
+              background: #0f172a; 
+              color: #10b981; 
+              font-family: system-ui, sans-serif;
+              display: flex; 
+              align-items: center; 
+              justify-content: center; 
+              height: 100vh; 
+              margin: 0;
+            }
+            .loader { text-align: center; }
+            .spinner { 
+              width: 40px; 
+              height: 40px; 
+              border: 3px solid #1e293b; 
+              border-top: 3px solid #10b981; 
+              border-radius: 50%; 
+              animation: spin 1s linear infinite; 
+              margin: 0 auto 16px;
+            }
+            @keyframes spin { to { transform: rotate(360deg); } }
+          </style>
+        </head>
+        <body>
+          <div class="loader">
+            <div class="spinner"></div>
+            <div>Loading Championship Concierge...</div>
+          </div>
+        </body>
+      </html>
+    `);
   } else {
     next(); // Pass to static file serving after initialization
   }

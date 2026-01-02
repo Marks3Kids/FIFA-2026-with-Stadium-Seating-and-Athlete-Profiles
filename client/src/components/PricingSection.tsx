@@ -184,7 +184,35 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     return valueMap[id] || "";
   };
 
+  const MAX_FREE_DOWNLOADS = 2;
+  
+  const getDownloadCount = (): number => {
+    try {
+      return parseInt(localStorage.getItem("bracketDownloads") || "0", 10);
+    } catch {
+      return 0;
+    }
+  };
+
+  const incrementDownloadCount = () => {
+    try {
+      const current = getDownloadCount();
+      localStorage.setItem("bracketDownloads", String(current + 1));
+    } catch {
+      // localStorage not available
+    }
+  };
+
   const handleFreeTier = () => {
+    const downloads = getDownloadCount();
+    if (downloads >= MAX_FREE_DOWNLOADS) {
+      toast({
+        title: t("pricing.downloadLimitTitle", "Download Limit Reached"),
+        description: t("pricing.downloadLimitDesc", "You've reached the maximum of 2 free bracket downloads. Upgrade to Team Info for unlimited access to brackets and more!"),
+        variant: "destructive",
+      });
+      return;
+    }
     setShowEmailCapture(true);
   };
 
@@ -192,10 +220,21 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.city) {
       toast({
-        title: "Missing Information",
-        description: "Please fill in all fields to download the bracket.",
+        title: t("pricing.missingInfo", "Missing Information"),
+        description: t("pricing.fillAllFields", "Please fill in all fields to download the bracket."),
         variant: "destructive",
       });
+      return;
+    }
+
+    const downloads = getDownloadCount();
+    if (downloads >= MAX_FREE_DOWNLOADS) {
+      toast({
+        title: t("pricing.downloadLimitTitle", "Download Limit Reached"),
+        description: t("pricing.downloadLimitDesc", "You've reached the maximum of 2 free bracket downloads. Upgrade to Team Info for unlimited access to brackets and more!"),
+        variant: "destructive",
+      });
+      setShowEmailCapture(false);
       return;
     }
 
@@ -208,15 +247,20 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
       });
       
       setFreeUser(formData.email, formData.name, formData.city);
+      incrementDownloadCount();
       window.open("/world-cup-2026-bracket.html", "_blank");
       
+      const remaining = MAX_FREE_DOWNLOADS - getDownloadCount();
       toast({
-        title: "Bracket Opened!",
-        description: "Your printable bracket opened in a new tab. Use Ctrl+P (or Cmd+P on Mac) to print or save as PDF.",
+        title: t("pricing.bracketOpened", "Bracket Opened!"),
+        description: remaining > 0 
+          ? t("pricing.bracketOpenedDesc", "Your printable bracket opened in a new tab. Use Ctrl+P (or Cmd+P on Mac) to print or save as PDF.") + ` (${remaining} ${t("pricing.downloadsRemaining", "download(s) remaining")})`
+          : t("pricing.bracketOpenedDescFinal", "Your printable bracket opened in a new tab. This was your last free download."),
       });
       setShowEmailCapture(false);
     } catch (error) {
       console.error("Failed to save lead:", error);
+      incrementDownloadCount();
       window.open("/world-cup-2026-bracket.html", "_blank");
     } finally {
       setIsLoading(null);
