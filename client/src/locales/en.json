@@ -358,7 +358,9 @@
         "adaAccessibleGates": "ADA Accessible Gates",
         "pickupOnly": "Pickup Only",
         "dropoffOnly": "Drop-off Only",
-        "pickupDropoff": "Pickup & Drop-off"
+        "pickupDropoff": "Pickup & Drop-off",
+        "departmentOfTransportation": "Dept. of Transportation",
+        "website": "Website"
       },
       "mottos": {
         "kansasCity": "The Soccer Capital of America & The Heart of the Tournament",

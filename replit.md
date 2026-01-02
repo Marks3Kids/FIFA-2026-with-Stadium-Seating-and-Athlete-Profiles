@@ -54,6 +54,7 @@ Each of the 16 host cities has a "Vault" - a comprehensive Command Center with c
 - The Trap: Identify the city's main logistics challenge (e.g., KC: 22,000 parking spots but only 4,000 public)
 - The Solution: Provide vetted alternatives (e.g., ConnectKC26, 215+ motorcoaches from regional hubs)
 - Local Transit: Free/affordable options (e.g., KC Streetcar between Power & Light and Fan Festival)
+- Department of Transportation: Official state/provincial DOT contacts with website links and phone numbers. Multi-jurisdictional cities have multiple DOT entries (e.g., Kansas City has both MoDOT and KDOT, New York/New Jersey has both NYSDOT and NJDOT)
 
 **2. The Safety Net (Medical & Emergency)**
 - English-Speaking/International Expert: Hospitals with international travel medicine (e.g., Children's Mercy)

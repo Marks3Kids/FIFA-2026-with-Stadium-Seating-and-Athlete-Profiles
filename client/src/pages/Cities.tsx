@@ -1,5 +1,5 @@
 import { Layout } from "@/components/Layout";
-import { MapPin, Calendar, Info, Users, ExternalLink, Globe, Train, Shield, Heart, Utensils, Church, Car, Accessibility } from "lucide-react";
+import { MapPin, Calendar, Info, Users, ExternalLink, Globe, Train, Shield, Heart, Utensils, Church, Car, Accessibility, Building, Phone } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -271,6 +271,47 @@ export default function Cities() {
                                     </div>
                                     <ExternalLink className="w-4 h-4 text-blue-400 flex-shrink-0" />
                                   </a>
+                                ))}
+                              </div>
+                            )}
+
+                            {vault.logistics.departmentOfTransportation && vault.logistics.departmentOfTransportation.length > 0 && (
+                              <div className="bg-amber-500/10 rounded-xl p-4 border border-amber-500/20">
+                                <div className="flex items-center space-x-2 mb-3 text-amber-400">
+                                  <Building className="w-4 h-4" />
+                                  <span className="text-sm font-bold uppercase tracking-wide">{t("cities.vault.labels.departmentOfTransportation", "Dept. of Transportation")}</span>
+                                </div>
+                                {vault.logistics.departmentOfTransportation.map((dot, idx) => (
+                                  <div
+                                    key={idx}
+                                    className="bg-background/50 rounded-lg p-3 mb-2 last:mb-0"
+                                  >
+                                    <div className="flex items-center justify-between mb-2">
+                                      <div>
+                                        <p className="text-sm font-bold text-white">{dot.abbreviation}</p>
+                                        <p className="text-xs text-muted-foreground">{dot.name}</p>
+                                        {dot.state && <p className="text-xs text-amber-400/70">{dot.state}</p>}
+                                      </div>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2">
+                                      <a
+                                        href={dot.website}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1 text-xs bg-amber-500/20 text-amber-400 px-2 py-1 rounded hover:bg-amber-500/30 transition-colors"
+                                      >
+                                        <Globe className="w-3 h-3" />
+                                        {t("cities.vault.labels.website", "Website")}
+                                      </a>
+                                      <a
+                                        href={`tel:${dot.phone}`}
+                                        className="inline-flex items-center gap-1 text-xs bg-amber-500/20 text-amber-400 px-2 py-1 rounded hover:bg-amber-500/30 transition-colors"
+                                      >
+                                        <Phone className="w-3 h-3" />
+                                        {dot.phone}
+                                      </a>
+                                    </div>
+                                  </div>
                                 ))}
                               </div>
                             )}

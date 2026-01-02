@@ -1,7 +1,16 @@
+export interface DepartmentOfTransportation {
+  name: string;
+  abbreviation: string;
+  website: string;
+  phone: string;
+  state?: string;
+}
+
 export interface LogisticsInfo {
   trap: string;
   solution: string;
   localTransit: string[];
+  departmentOfTransportation?: DepartmentOfTransportation[];
 }
 
 export interface SafetyInfo {
@@ -90,6 +99,10 @@ export const cityVaults: CityVault[] = [
         "KC Streetcar (free) - Power & Light District to Fan Festival at Liberty Memorial",
         "RideKC Bus - Multiple routes to stadium on match days",
         "Stadium Direct Shuttles from Union Station"
+      ],
+      departmentOfTransportation: [
+        { name: "Missouri Department of Transportation", abbreviation: "MoDOT", website: "https://www.modot.org", phone: "1-888-275-6636", state: "Missouri" },
+        { name: "Kansas Department of Transportation", abbreviation: "KDOT", website: "https://www.ksdot.gov", phone: "785-296-3566", state: "Kansas" }
       ]
     },
     safety: {
@@ -159,6 +172,10 @@ export const cityVaults: CityVault[] = [
         "NJ Transit - Direct trains from Penn Station to Meadowlands",
         "NY Waterway Ferry + Shuttle combo from Manhattan",
         "PATH train to Hoboken + NJ Transit connection"
+      ],
+      departmentOfTransportation: [
+        { name: "New York State Department of Transportation", abbreviation: "NYSDOT", website: "https://www.dot.ny.gov", phone: "518-457-6195", state: "New York" },
+        { name: "New Jersey Department of Transportation", abbreviation: "NJDOT", website: "https://dot.nj.gov", phone: "609-292-6500", state: "New Jersey" }
       ]
     },
     safety: {
@@ -228,6 +245,9 @@ export const cityVaults: CityVault[] = [
         "Metro E Line - Direct to Downtown Inglewood",
         "LAX FlyAway shuttles extended for match days",
         "Free stadium shuttles from designated parking lots"
+      ],
+      departmentOfTransportation: [
+        { name: "California Department of Transportation", abbreviation: "Caltrans", website: "https://dot.ca.gov", phone: "916-322-1297", state: "California" }
       ]
     },
     safety: {
@@ -297,6 +317,9 @@ export const cityVaults: CityVault[] = [
         "Brightline train to Aventura + FIFA shuttle",
         "Miami-Dade Transit express buses on match days",
         "Official park-and-ride from Dolphin Mall"
+      ],
+      departmentOfTransportation: [
+        { name: "Florida Department of Transportation", abbreviation: "FDOT", website: "https://www.fdot.gov", phone: "850-414-4100", state: "Florida" }
       ]
     },
     safety: {
@@ -366,6 +389,9 @@ export const cityVaults: CityVault[] = [
         "TRE train to CentrePort + stadium shuttle",
         "DART Rail to TRE connection",
         "Official park-and-ride from Globe Life Field lot"
+      ],
+      departmentOfTransportation: [
+        { name: "Texas Department of Transportation", abbreviation: "TxDOT", website: "https://www.txdot.gov", phone: "1-800-558-9368", state: "Texas" }
       ]
     },
     safety: {
@@ -435,6 +461,9 @@ export const cityVaults: CityVault[] = [
         "METRORail Red Line direct to NRG Park",
         "Park & Ride from multiple suburban locations",
         "Downtown Tunnel System - 95+ blocks of A/C walkways"
+      ],
+      departmentOfTransportation: [
+        { name: "Texas Department of Transportation", abbreviation: "TxDOT", website: "https://www.txdot.gov", phone: "1-800-558-9368", state: "Texas" }
       ]
     },
     safety: {
@@ -504,6 +533,9 @@ export const cityVaults: CityVault[] = [
         "MARTA Rail - Blue/Green lines to Dome/GWCC station",
         "Atlanta Streetcar through downtown",
         "Free MARTA service on match days with ticket"
+      ],
+      departmentOfTransportation: [
+        { name: "Georgia Department of Transportation", abbreviation: "GDOT", website: "https://www.dot.ga.gov", phone: "404-631-1990", state: "Georgia" }
       ]
     },
     safety: {
@@ -573,6 +605,9 @@ export const cityVaults: CityVault[] = [
         "SEPTA Broad Street Line to AT&T Station",
         "SEPTA Regional Rail to 30th Street Station + subway",
         "NJ Transit from Trenton (Amtrak corridor connection)"
+      ],
+      departmentOfTransportation: [
+        { name: "Pennsylvania Department of Transportation", abbreviation: "PennDOT", website: "https://www.pa.gov/agencies/penndot", phone: "1-800-932-4600", state: "Pennsylvania" }
       ]
     },
     safety: {
@@ -642,6 +677,9 @@ export const cityVaults: CityVault[] = [
         "Link Light Rail to Stadium Station",
         "Seattle Streetcar through downtown",
         "Washington State Ferries for scenic arrival from Bainbridge"
+      ],
+      departmentOfTransportation: [
+        { name: "Washington State Department of Transportation", abbreviation: "WSDOT", website: "https://wsdot.wa.gov", phone: "360-705-7000", state: "Washington" }
       ]
     },
     safety: {
@@ -711,6 +749,9 @@ export const cityVaults: CityVault[] = [
         "MBTA Commuter Rail - Special Foxborough service on match days",
         "MBTA Red Line + bus connections",
         "Official park-and-ride from Patriot Place"
+      ],
+      departmentOfTransportation: [
+        { name: "Massachusetts Department of Transportation", abbreviation: "MassDOT", website: "https://www.mass.gov/orgs/massachusetts-department-of-transportation", phone: "857-368-4636", state: "Massachusetts" }
       ]
     },
     safety: {
@@ -780,6 +821,9 @@ export const cityVaults: CityVault[] = [
         "Caltrain to Santa Clara + VTA Light Rail",
         "BART to Milpitas + VTA connection",
         "Official shuttle from downtown SF (match days)"
+      ],
+      departmentOfTransportation: [
+        { name: "California Department of Transportation", abbreviation: "Caltrans", website: "https://dot.ca.gov", phone: "916-322-1297", state: "California" }
       ]
     },
     safety: {
@@ -849,6 +893,9 @@ export const cityVaults: CityVault[] = [
         "TTC Subway Line 1 to Exhibition GO Station",
         "GO Transit from suburbs",
         "PATH underground walkway system (30km of connected buildings)"
+      ],
+      departmentOfTransportation: [
+        { name: "Ontario Ministry of Transportation", abbreviation: "MTO", website: "https://www.ontario.ca/page/ministry-transportation", phone: "1-800-268-4686", state: "Ontario" }
       ]
     },
     safety: {
@@ -918,6 +965,9 @@ export const cityVaults: CityVault[] = [
         "SkyTrain Expo Line to Stadium-Chinatown",
         "SeaBus from North Vancouver for scenic arrival",
         "West Coast Express from suburbs"
+      ],
+      departmentOfTransportation: [
+        { name: "BC Ministry of Transportation and Transit", abbreviation: "MoTI", website: "https://www2.gov.bc.ca/gov/content/governments/organizational-structure/ministries-organizations/ministries/transportation", phone: "250-565-6185", state: "British Columbia" }
       ]
     },
     safety: {
@@ -987,6 +1037,9 @@ export const cityVaults: CityVault[] = [
         "Metro + Tren Ligero to Estadio Azteca",
         "Metrobús rapid transit",
         "Ecobici bike share for short trips"
+      ],
+      departmentOfTransportation: [
+        { name: "Secretaría de Movilidad de la Ciudad de México", abbreviation: "SEMOVI", website: "https://www.semovi.cdmx.gob.mx", phone: "55-5209-9913", state: "Ciudad de México" }
       ]
     },
     safety: {
@@ -1056,6 +1109,9 @@ export const cityVaults: CityVault[] = [
         "Macrobús Line 1 to stadium area",
         "Mi Macro Periférico light rail",
         "Uber/DiDi reliable throughout city"
+      ],
+      departmentOfTransportation: [
+        { name: "Secretaría de Transporte de Jalisco", abbreviation: "SETRAN", website: "https://setran.jalisco.gob.mx", phone: "33-3819-2400", state: "Jalisco" }
       ]
     },
     safety: {
@@ -1125,6 +1181,9 @@ export const cityVaults: CityVault[] = [
         "Metrorrey Line 2 + stadium shuttle",
         "Ecovía bus rapid transit",
         "Uber/DiDi widely available"
+      ],
+      departmentOfTransportation: [
+        { name: "Secretaría de Movilidad y Planeación Urbana de Nuevo León", abbreviation: "SMPU", website: "https://www.nl.gob.mx/es/movilidad", phone: "812-020-6730", state: "Nuevo León" }
       ]
     },
     safety: {
