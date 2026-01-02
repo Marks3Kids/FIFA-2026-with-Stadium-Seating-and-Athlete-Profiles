@@ -32,18 +32,18 @@ httpServer.listen({ port, host: "0.0.0.0", reusePort: true }, () => {
 async function initializeApp() {
   console.log(`Initializing app in ${process.env.NODE_ENV} mode...`);
   try {
-    // In development, set up Vite first (it handles HMR)
+    // Register API routes FIRST so they take priority over Vite/static files
+    console.log("Registering API routes...");
+    const { registerRoutes } = await import("./routes");
+    await registerRoutes(httpServer, app);
+    console.log("Routes registered successfully");
+    
+    // In development, set up Vite AFTER API routes (it handles HMR for frontend)
     if (process.env.NODE_ENV !== "production") {
       console.log("Setting up Vite...");
       const { setupVite } = await import("./vite");
       await setupVite(httpServer, app);
     }
-    
-    // Register API routes BEFORE static files so they take priority
-    console.log("Registering API routes...");
-    const { registerRoutes } = await import("./routes");
-    await registerRoutes(httpServer, app);
-    console.log("Routes registered successfully");
     
     // In production, serve static files AFTER routes are registered
     if (process.env.NODE_ENV === "production") {
