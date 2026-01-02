@@ -95,7 +95,7 @@ export default function Cities() {
                     </div>
                   </div>
                 </DialogTrigger>
-                <DialogContent className="bg-card/95 backdrop-blur-xl border-white/10 text-white max-h-[90vh] max-w-lg p-0 overflow-hidden flex flex-col">
+                <DialogContent className="bg-card/95 backdrop-blur-xl border-white/10 text-white max-h-[85vh] max-w-lg p-0 flex flex-col">
                   <div className="p-4 pb-2 border-b border-white/10">
                     <DialogHeader>
                       <div className="flex items-center space-x-2 text-primary mb-1">
@@ -118,7 +118,8 @@ export default function Cities() {
                       <TabsTrigger value="comfort" className="text-xs">{t("cities.vault.tabs.culture")}</TabsTrigger>
                     </TabsList>
 
-                    <ScrollArea className="flex-1 p-4">
+                    <ScrollArea className="flex-1 min-h-0 overflow-y-auto">
+                      <div className="p-4">
                       <TabsContent value="overview" className="mt-0 space-y-3">
                         <div className="bg-accent/10 rounded-lg p-3 border border-accent/20">
                           <div className="flex items-center justify-between">
@@ -399,6 +400,7 @@ export default function Cities() {
                           </div>
                         ))}
                       </TabsContent>
+                      </div>
                     </ScrollArea>
                   </Tabs>
                 </DialogContent>
