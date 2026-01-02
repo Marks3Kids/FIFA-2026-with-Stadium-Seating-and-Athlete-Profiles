@@ -529,6 +529,154 @@
         "mexicoCity": { "0": { "category": "Mexikanische Gastronomie", "items": { "0": { "name": "Mercado de San Juan", "description": "Gourmet-Markt mit exotischen Zutaten" }, "1": { "name": "Pujol", "description": "Eines der besten Restaurants der Welt" }, "2": { "name": "Tacos El Califa de León", "description": "Legendäre Tacos aus der Innenstadt" } } }, "1": { "category": "Kultur & Nachtleben", "items": { "0": { "name": "Colonia Roma", "description": "Trendiges Viertel mit Cantinas und Galerien" }, "1": { "name": "Coyoacán", "description": "Bohème-Viertel mit Kultur und Gastronomie" } } } },
         "guadalajara": { "0": { "category": "Tapatío-Aromen", "items": { "0": { "name": "Mercado San Juan de Dios", "description": "Größter überdachter Markt Lateinamerikas" }, "1": { "name": "Birria El Chololo", "description": "Traditionelle Birria aus Jalisco" }, "2": { "name": "Tortas Ahogadas El Rika", "description": "Ikonische Spezialität aus Guadalajara" } } }, "1": { "category": "Tequila & Mariachi", "items": { "0": { "name": "Tlaquepaque", "description": "Magisches Dorf mit Kunsthandwerk und Cantinas" }, "1": { "name": "Tequila-Route", "description": "Historische Destillerien 1 Stunde von der Stadt" } } } },
         "monterrey": { "0": { "category": "Regio-Küche", "items": { "0": { "name": "El Gran Pastor", "description": "Traditionelles Cabrito al Pastor" }, "1": { "name": "Mercado Juárez", "description": "Traditioneller Markt mit Antojitos" }, "2": { "name": "Pangea", "description": "Gehobene Küche aus Monterrey" } } }, "1": { "category": "Bier & Berge", "items": { "0": { "name": "Barrio Antiguo", "description": "Bar- und Nachtlebenviertel" }, "1": { "name": "Parque Fundidora", "description": "Stadtpark mit Craft-Brauereien" } } } }
+      },
+      "rideshare": {
+        "kansasCity": {
+          "0": { "name": "Lot M Rideshare", "description": "Hauptzone Uber/Lyft - Nordparkplatz" },
+          "1": { "name": "Red Lot Drop-off", "description": "Nur Absetzen an Spieltagen" }
+        },
+        "newYork": {
+          "0": { "name": "Lot K Rideshare", "description": "Hauptzone Uber/Lyft für Abholen und Absetzen" },
+          "1": { "name": "Meadowlands Station", "description": "Absetzbereich am Bahnhof" }
+        },
+        "losAngeles": {
+          "0": { "name": "Pink Lot", "description": "Hauptzone Uber/Lyft" },
+          "1": { "name": "Hollywood Park Casino", "description": "Sekundärer Rideshare-Bereich" }
+        },
+        "miami": {
+          "0": { "name": "Lot 18", "description": "Hauptzone Uber/Lyft für Abholen und Absetzen" },
+          "1": { "name": "NW 199th Street", "description": "Sekundäre Absetzzone" }
+        },
+        "dallas": {
+          "0": { "name": "Lot 4", "description": "Hauptzone Uber/Lyft - Ostseite" },
+          "1": { "name": "Globe Life Field", "description": "Sekundärer Rideshare mit Fußgängerbrücke" }
+        },
+        "houston": {
+          "0": { "name": "Yellow Lot", "description": "Hauptzone Uber/Lyft" },
+          "1": { "name": "METRORail Station", "description": "Absetzen nahe der U-Bahn-Station" }
+        },
+        "atlanta": {
+          "0": { "name": "Lot Red", "description": "Hauptzone Uber/Lyft - Westseite" },
+          "1": { "name": "GWCC Silver Deck", "description": "Überdachter Absetzbereich" }
+        },
+        "philadelphia": {
+          "0": { "name": "Lot K", "description": "Hauptzone Uber/Lyft" },
+          "1": { "name": "Xfinity Live!", "description": "Absetzen nahe dem Unterhaltungskomplex" }
+        },
+        "seattle": {
+          "0": { "name": "Occidental Park", "description": "Hauptzone Uber/Lyft in Pioneer Square" },
+          "1": { "name": "S King Street", "description": "Absetzen nahe der Light Rail Station" }
+        },
+        "boston": {
+          "0": { "name": "Patriot Place", "description": "Hauptzone Uber/Lyft am Einkaufszentrum" },
+          "1": { "name": "Lot 15", "description": "Sekundärer Absetzbereich" }
+        },
+        "sanFrancisco": {
+          "0": { "name": "Tasman Lot", "description": "Hauptzone Uber/Lyft" },
+          "1": { "name": "Great America", "description": "Sekundärer Rideshare-Bereich" }
+        },
+        "toronto": {
+          "0": { "name": "Exhibition GO", "description": "Hauptzone Uber/Lyft nahe ÖPNV" },
+          "1": { "name": "Liberty Village", "description": "Absetzen im nahegelegenen Viertel" }
+        },
+        "vancouver": {
+          "0": { "name": "Rogers Arena", "description": "Hauptzone Uber/Lyft in der Nähe" },
+          "1": { "name": "Stadium-Chinatown Station", "description": "Absetzen nahe dem SkyTrain" }
+        },
+        "mexicoCity": {
+          "0": { "name": "Estacionamiento Norte", "description": "Hauptzone Uber/DiDi" },
+          "1": { "name": "Tren Ligero Station", "description": "Absetzen nahe der Stadtbahn" }
+        },
+        "guadalajara": {
+          "0": { "name": "Estacionamiento Principal", "description": "Hauptzone Uber/DiDi" },
+          "1": { "name": "Centro Comercial Andares", "description": "Alternative Zone nahe dem Stadion" }
+        },
+        "monterrey": {
+          "0": { "name": "Estacionamiento VIP", "description": "Hauptzone Uber/DiDi" },
+          "1": { "name": "Metrorrey General Anaya", "description": "Absetzen nahe der Metro" }
+        }
+      },
+      "adaGates": {
+        "kansasCity": {
+          "0": { "name": "Gate D", "description": "Haupteingang ADA - Westseite" },
+          "1": { "name": "Gate G", "description": "ADA-Eingang Ost" },
+          "2": { "name": "Gate M", "description": "ADA-Eingang Nord" }
+        },
+        "newYork": {
+          "0": { "name": "Gate A", "description": "Haupteingang ADA - Westplatz" },
+          "1": { "name": "Gate C", "description": "ADA-Eingang Nord" },
+          "2": { "name": "Gate E", "description": "ADA-Eingang Süd" }
+        },
+        "losAngeles": {
+          "0": { "name": "Gate A", "description": "Haupteingang ADA - American Airlines Plaza" },
+          "1": { "name": "Gate F", "description": "ADA-Eingang Ost" },
+          "2": { "name": "Gate H", "description": "ADA-Eingang Süd" }
+        },
+        "miami": {
+          "0": { "name": "Gate A", "description": "Haupteingang ADA - Nordwest" },
+          "1": { "name": "Gate D", "description": "ADA-Eingang Ost" },
+          "2": { "name": "Gate G", "description": "ADA-Eingang Süd" }
+        },
+        "dallas": {
+          "0": { "name": "Gate A", "description": "Haupteingang ADA - Ostplatz" },
+          "1": { "name": "Gate C", "description": "ADA-Eingang Nord" },
+          "2": { "name": "Gate F", "description": "ADA-Eingang West" }
+        },
+        "houston": {
+          "0": { "name": "Gate 1", "description": "Haupteingang ADA - Nordseite" },
+          "1": { "name": "Gate 5", "description": "ADA-Eingang Ost" },
+          "2": { "name": "Gate 8", "description": "ADA-Eingang Süd nahe METRORail" }
+        },
+        "atlanta": {
+          "0": { "name": "Gate 1", "description": "Haupteingang ADA - Nordplatz" },
+          "1": { "name": "Gate 4", "description": "ADA-Eingang Ost nahe MARTA" },
+          "2": { "name": "Gate 6", "description": "ADA-Eingang Süd" }
+        },
+        "philadelphia": {
+          "0": { "name": "Gate A", "description": "Haupteingang ADA - Westseite" },
+          "1": { "name": "Gate C", "description": "ADA-Eingang Nord" },
+          "2": { "name": "Gate F", "description": "ADA-Eingang Ost nahe SEPTA" }
+        },
+        "seattle": {
+          "0": { "name": "Gate A", "description": "Haupteingang ADA - Nordende" },
+          "1": { "name": "Gate C", "description": "ADA-Eingang West nahe Light Rail" },
+          "2": { "name": "Gate E", "description": "ADA-Eingang Süd" }
+        },
+        "boston": {
+          "0": { "name": "Gate A", "description": "Haupteingang ADA - Ostseite" },
+          "1": { "name": "Gate C", "description": "ADA-Eingang Nord" },
+          "2": { "name": "Gate D", "description": "ADA-Eingang West nahe Patriot Place" }
+        },
+        "sanFrancisco": {
+          "0": { "name": "Gate A", "description": "Haupteingang ADA - Nordseite" },
+          "1": { "name": "Gate C", "description": "ADA-Eingang Ost nahe VTA" },
+          "2": { "name": "Gate F", "description": "ADA-Eingang Süd" }
+        },
+        "toronto": {
+          "0": { "name": "Gate 1", "description": "Haupteingang ADA - Ostseite" },
+          "1": { "name": "Gate 3", "description": "ADA-Eingang Nord" },
+          "2": { "name": "Gate 5", "description": "ADA-Eingang West nahe GO-Bahnhof" }
+        },
+        "vancouver": {
+          "0": { "name": "Gate A", "description": "Haupteingang ADA - Nordseite" },
+          "1": { "name": "Gate C", "description": "ADA-Eingang Ost nahe SkyTrain" },
+          "2": { "name": "Gate E", "description": "ADA-Eingang Süd" }
+        },
+        "mexicoCity": {
+          "0": { "name": "Puerta 1", "description": "Haupteingang ADA - Nord" },
+          "1": { "name": "Puerta 7", "description": "ADA-Eingang Ost" },
+          "2": { "name": "Puerta 15", "description": "ADA-Eingang West" }
+        },
+        "guadalajara": {
+          "0": { "name": "Puerta Principal", "description": "Haupteingang ADA - Nord" },
+          "1": { "name": "Puerta Sur", "description": "ADA-Eingang Süd" },
+          "2": { "name": "Puerta Este", "description": "ADA-Eingang Ost" }
+        },
+        "monterrey": {
+          "0": { "name": "Puerta 1", "description": "Haupteingang ADA - West" },
+          "1": { "name": "Puerta 5", "description": "ADA-Eingang Nord" },
+          "2": { "name": "Puerta 9", "description": "ADA-Eingang Ost" }
+        }
       }
     }
   },

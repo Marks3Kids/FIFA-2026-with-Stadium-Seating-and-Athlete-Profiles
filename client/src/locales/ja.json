@@ -529,6 +529,154 @@
         "mexicoCity": { "0": { "category": "メキシコ美食", "items": { "0": { "name": "サン・フアン市場", "description": "エキゾチックな食材のあるグルメ市場" }, "1": { "name": "プホル", "description": "世界最高のレストランの一つ" }, "2": { "name": "タコス・エル・カリファ・デ・レオン", "description": "中心部の伝説のタコス" } } }, "1": { "category": "文化＆ナイトライフ", "items": { "0": { "name": "コロニア・ローマ", "description": "カンティーナとギャラリーのあるトレンディな地区" }, "1": { "name": "コヨアカン", "description": "文化とグルメのあるボヘミアン地区" } } } },
         "guadalajara": { "0": { "category": "タパティオの味", "items": { "0": { "name": "サン・フアン・デ・ディオス市場", "description": "ラテンアメリカ最大の屋内市場" }, "1": { "name": "ビリア・エル・チョロロ", "description": "ハリスコの伝統的なビリア" }, "2": { "name": "トルタス・アオガダス・エル・リカ", "description": "グアダラハラの象徴的な名物" } } }, "1": { "category": "テキーラ＆マリアッチ", "items": { "0": { "name": "トラケパケ", "description": "工芸品とカンティーナのある魔法の村" }, "1": { "name": "テキーラ・ルート", "description": "市から1時間の歴史的な蒸留所" } } } },
         "monterrey": { "0": { "category": "レヒオ料理", "items": { "0": { "name": "エル・グラン・パストール", "description": "伝統的なカブリート・アル・パストール" }, "1": { "name": "フアレス市場", "description": "アントヒートスのある伝統市場" }, "2": { "name": "パンゲア", "description": "モンテレイのオートキュイジーヌ" } } }, "1": { "category": "ビール＆山", "items": { "0": { "name": "バリオ・アンティグオ", "description": "バーとナイトライフの地区" }, "1": { "name": "フンディドーラ公園", "description": "クラフトビール醸造所のある都市公園" } } } }
+      },
+      "rideshare": {
+        "kansasCity": {
+          "0": { "name": "Lot M Rideshare", "description": "主要なUber/Lyftゾーン - 北側駐車場" },
+          "1": { "name": "Red Lot Drop-off", "description": "試合日のみ降車可能" }
+        },
+        "newYork": {
+          "0": { "name": "Lot K Rideshare", "description": "主要なUber/Lyft乗降ゾーン" },
+          "1": { "name": "Meadowlands Station", "description": "駅での降車エリア" }
+        },
+        "losAngeles": {
+          "0": { "name": "Pink Lot", "description": "主要なUber/Lyftゾーン" },
+          "1": { "name": "Hollywood Park Casino", "description": "予備のライドシェアエリア" }
+        },
+        "miami": {
+          "0": { "name": "Lot 18", "description": "主要なUber/Lyft乗降ゾーン" },
+          "1": { "name": "NW 199th Street", "description": "予備の降車ゾーン" }
+        },
+        "dallas": {
+          "0": { "name": "Lot 4", "description": "主要なUber/Lyftゾーン - 東側" },
+          "1": { "name": "Globe Life Field", "description": "歩行者用橋付きの予備ライドシェア" }
+        },
+        "houston": {
+          "0": { "name": "Yellow Lot", "description": "主要なUber/Lyftゾーン" },
+          "1": { "name": "METRORail Station", "description": "地下鉄駅付近での降車" }
+        },
+        "atlanta": {
+          "0": { "name": "Lot Red", "description": "主要なUber/Lyftゾーン - 西側" },
+          "1": { "name": "GWCC Silver Deck", "description": "屋根付き降車エリア" }
+        },
+        "philadelphia": {
+          "0": { "name": "Lot K", "description": "主要なUber/Lyftゾーン" },
+          "1": { "name": "Xfinity Live!", "description": "エンターテイメント施設付近での降車" }
+        },
+        "seattle": {
+          "0": { "name": "Occidental Park", "description": "パイオニア・スクエアの主要Uber/Lyftゾーン" },
+          "1": { "name": "S King Street", "description": "ライトレール駅付近での降車" }
+        },
+        "boston": {
+          "0": { "name": "Patriot Place", "description": "ショッピングモールでの主要Uber/Lyftゾーン" },
+          "1": { "name": "Lot 15", "description": "予備の降車エリア" }
+        },
+        "sanFrancisco": {
+          "0": { "name": "Tasman Lot", "description": "主要なUber/Lyftゾーン" },
+          "1": { "name": "Great America", "description": "予備のライドシェアエリア" }
+        },
+        "toronto": {
+          "0": { "name": "Exhibition GO", "description": "交通機関付近の主要Uber/Lyftゾーン" },
+          "1": { "name": "Liberty Village", "description": "近隣地区での降車" }
+        },
+        "vancouver": {
+          "0": { "name": "Rogers Arena", "description": "近くの主要Uber/Lyftゾーン" },
+          "1": { "name": "Stadium-Chinatown Station", "description": "スカイトレイン付近での降車" }
+        },
+        "mexicoCity": {
+          "0": { "name": "Estacionamiento Norte", "description": "主要なUber/DiDiゾーン" },
+          "1": { "name": "Tren Ligero Station", "description": "ライトレール付近での降車" }
+        },
+        "guadalajara": {
+          "0": { "name": "Estacionamiento Principal", "description": "主要なUber/DiDiゾーン" },
+          "1": { "name": "Centro Comercial Andares", "description": "スタジアム付近の代替ゾーン" }
+        },
+        "monterrey": {
+          "0": { "name": "Estacionamiento VIP", "description": "主要なUber/DiDiゾーン" },
+          "1": { "name": "Metrorrey General Anaya", "description": "地下鉄付近での降車" }
+        }
+      },
+      "adaGates": {
+        "kansasCity": {
+          "0": { "name": "Gate D", "description": "主要ADA入口 - 西側" },
+          "1": { "name": "Gate G", "description": "東側ADA入口" },
+          "2": { "name": "Gate M", "description": "北側ADA入口" }
+        },
+        "newYork": {
+          "0": { "name": "Gate A", "description": "主要ADA入口 - 西側広場" },
+          "1": { "name": "Gate C", "description": "北側ADA入口" },
+          "2": { "name": "Gate E", "description": "南側ADA入口" }
+        },
+        "losAngeles": {
+          "0": { "name": "Gate A", "description": "主要ADA入口 - アメリカン航空プラザ" },
+          "1": { "name": "Gate F", "description": "東側ADA入口" },
+          "2": { "name": "Gate H", "description": "南側ADA入口" }
+        },
+        "miami": {
+          "0": { "name": "Gate A", "description": "主要ADA入口 - 北西" },
+          "1": { "name": "Gate D", "description": "東側ADA入口" },
+          "2": { "name": "Gate G", "description": "南側ADA入口" }
+        },
+        "dallas": {
+          "0": { "name": "Gate A", "description": "主要ADA入口 - 東側広場" },
+          "1": { "name": "Gate C", "description": "北側ADA入口" },
+          "2": { "name": "Gate F", "description": "西側ADA入口" }
+        },
+        "houston": {
+          "0": { "name": "Gate 1", "description": "主要ADA入口 - 北側" },
+          "1": { "name": "Gate 5", "description": "東側ADA入口" },
+          "2": { "name": "Gate 8", "description": "METRORail付近の南側ADA入口" }
+        },
+        "atlanta": {
+          "0": { "name": "Gate 1", "description": "主要ADA入口 - 北側広場" },
+          "1": { "name": "Gate 4", "description": "MARTA付近の東側ADA入口" },
+          "2": { "name": "Gate 6", "description": "南側ADA入口" }
+        },
+        "philadelphia": {
+          "0": { "name": "Gate A", "description": "主要ADA入口 - 西側" },
+          "1": { "name": "Gate C", "description": "北側ADA入口" },
+          "2": { "name": "Gate F", "description": "SEPTA付近の東側ADA入口" }
+        },
+        "seattle": {
+          "0": { "name": "Gate A", "description": "主要ADA入口 - 北端" },
+          "1": { "name": "Gate C", "description": "ライトレール付近の西側ADA入口" },
+          "2": { "name": "Gate E", "description": "南側ADA入口" }
+        },
+        "boston": {
+          "0": { "name": "Gate A", "description": "主要ADA入口 - 東側" },
+          "1": { "name": "Gate C", "description": "北側ADA入口" },
+          "2": { "name": "Gate D", "description": "パトリオット・プレイス付近の西側ADA入口" }
+        },
+        "sanFrancisco": {
+          "0": { "name": "Gate A", "description": "主要ADA入口 - 北側" },
+          "1": { "name": "Gate C", "description": "VTA付近の東側ADA入口" },
+          "2": { "name": "Gate F", "description": "南側ADA入口" }
+        },
+        "toronto": {
+          "0": { "name": "Gate 1", "description": "主要ADA入口 - 東側" },
+          "1": { "name": "Gate 3", "description": "北側ADA入口" },
+          "2": { "name": "Gate 5", "description": "GO駅付近の西側ADA入口" }
+        },
+        "vancouver": {
+          "0": { "name": "Gate A", "description": "主要ADA入口 - 北側" },
+          "1": { "name": "Gate C", "description": "スカイトレイン付近の東側ADA入口" },
+          "2": { "name": "Gate E", "description": "南側ADA入口" }
+        },
+        "mexicoCity": {
+          "0": { "name": "Puerta 1", "description": "主要ADA入口 - 北" },
+          "1": { "name": "Puerta 7", "description": "東側ADA入口" },
+          "2": { "name": "Puerta 15", "description": "西側ADA入口" }
+        },
+        "guadalajara": {
+          "0": { "name": "Puerta Principal", "description": "主要ADA入口 - 北" },
+          "1": { "name": "Puerta Sur", "description": "南側ADA入口" },
+          "2": { "name": "Puerta Este", "description": "東側ADA入口" }
+        },
+        "monterrey": {
+          "0": { "name": "Puerta 1", "description": "主要ADA入口 - 西" },
+          "1": { "name": "Puerta 5", "description": "北側ADA入口" },
+          "2": { "name": "Puerta 9", "description": "東側ADA入口" }
+        }
       }
     }
   },

@@ -529,6 +529,154 @@
         "mexicoCity": { "0": { "category": "Mexicaanse Gastronomie", "items": { "0": { "name": "Mercado de San Juan", "description": "Gourmetmarkt met exotische ingrediënten" }, "1": { "name": "Pujol", "description": "Een van de beste restaurants ter wereld" }, "2": { "name": "Tacos El Califa de León", "description": "Legendarische taco's uit het centrum" } } }, "1": { "category": "Cultuur & Nachtleven", "items": { "0": { "name": "Colonia Roma", "description": "Trendy wijk met cantinas en galerijen" }, "1": { "name": "Coyoacán", "description": "Bohemien wijk met cultuur en gastronomie" } } } },
         "guadalajara": { "0": { "category": "Tapatío Smaken", "items": { "0": { "name": "Mercado San Juan de Dios", "description": "Grootste overdekte markt van Latijns-Amerika" }, "1": { "name": "Birria El Chololo", "description": "Traditionele birria uit Jalisco" }, "2": { "name": "Tortas Ahogadas El Rika", "description": "Iconische specialiteit uit Guadalajara" } } }, "1": { "category": "Tequila & Mariachi", "items": { "0": { "name": "Tlaquepaque", "description": "Magisch dorp met ambacht en cantinas" }, "1": { "name": "Tequila Route", "description": "Historische distilleerderijen 1 uur van de stad" } } } },
         "monterrey": { "0": { "category": "Regio Keuken", "items": { "0": { "name": "El Gran Pastor", "description": "Traditioneel cabrito al pastor" }, "1": { "name": "Mercado Juárez", "description": "Traditionele markt met antojitos" }, "2": { "name": "Pangea", "description": "Haute cuisine uit Monterrey" } } }, "1": { "category": "Bier & Bergen", "items": { "0": { "name": "Barrio Antiguo", "description": "Bar- en nachtlevenwijk" }, "1": { "name": "Parque Fundidora", "description": "Stadspark met craft brouwerijen" } } } }
+      },
+      "rideshare": {
+        "kansasCity": {
+          "0": { "name": "Lot M Rideshare", "description": "Primaire Uber/Lyft zone - Noord parkeerplaats" },
+          "1": { "name": "Red Lot Drop-off", "description": "Alleen afzetten op wedstrijddagen" }
+        },
+        "newYork": {
+          "0": { "name": "Lot K Rideshare", "description": "Primaire Uber/Lyft zone voor ophalen en afzetten" },
+          "1": { "name": "Meadowlands Station", "description": "Afzetzone bij treinstation" }
+        },
+        "losAngeles": {
+          "0": { "name": "Pink Lot", "description": "Primaire Uber/Lyft zone" },
+          "1": { "name": "Hollywood Park Casino", "description": "Secundaire rideshare zone" }
+        },
+        "miami": {
+          "0": { "name": "Lot 18", "description": "Primaire Uber/Lyft zone voor ophalen en afzetten" },
+          "1": { "name": "NW 199th Street", "description": "Secundaire afzetzone" }
+        },
+        "dallas": {
+          "0": { "name": "Lot 4", "description": "Primaire Uber/Lyft zone - Oostkant" },
+          "1": { "name": "Globe Life Field", "description": "Secundaire rideshare met loopbrug" }
+        },
+        "houston": {
+          "0": { "name": "Yellow Lot", "description": "Primaire Uber/Lyft zone" },
+          "1": { "name": "METRORail Station", "description": "Afzetten bij metrostation" }
+        },
+        "atlanta": {
+          "0": { "name": "Lot Red", "description": "Primaire Uber/Lyft zone - Westkant" },
+          "1": { "name": "GWCC Silver Deck", "description": "Overdekte afzetzone" }
+        },
+        "philadelphia": {
+          "0": { "name": "Lot K", "description": "Primaire Uber/Lyft zone" },
+          "1": { "name": "Xfinity Live!", "description": "Afzetten bij entertainmentcomplex" }
+        },
+        "seattle": {
+          "0": { "name": "Occidental Park", "description": "Primaire Uber/Lyft zone in Pioneer Square" },
+          "1": { "name": "S King Street", "description": "Afzetten bij Light Rail station" }
+        },
+        "boston": {
+          "0": { "name": "Patriot Place", "description": "Primaire Uber/Lyft zone bij winkelcentrum" },
+          "1": { "name": "Lot 15", "description": "Secundaire afzetzone" }
+        },
+        "sanFrancisco": {
+          "0": { "name": "Tasman Lot", "description": "Primaire Uber/Lyft zone" },
+          "1": { "name": "Great America", "description": "Secundaire rideshare zone" }
+        },
+        "toronto": {
+          "0": { "name": "Exhibition GO", "description": "Primaire Uber/Lyft zone bij openbaar vervoer" },
+          "1": { "name": "Liberty Village", "description": "Afzetten in nabijgelegen wijk" }
+        },
+        "vancouver": {
+          "0": { "name": "Rogers Arena", "description": "Primaire Uber/Lyft zone in de buurt" },
+          "1": { "name": "Stadium-Chinatown Station", "description": "Afzetten bij SkyTrain" }
+        },
+        "mexicoCity": {
+          "0": { "name": "Estacionamiento Norte", "description": "Primaire Uber/DiDi zone" },
+          "1": { "name": "Tren Ligero Station", "description": "Afzetten bij lightrail" }
+        },
+        "guadalajara": {
+          "0": { "name": "Estacionamiento Principal", "description": "Primaire Uber/DiDi zone" },
+          "1": { "name": "Centro Comercial Andares", "description": "Alternatieve zone bij stadion" }
+        },
+        "monterrey": {
+          "0": { "name": "Estacionamiento VIP", "description": "Primaire Uber/DiDi zone" },
+          "1": { "name": "Metrorrey General Anaya", "description": "Afzetten bij metro" }
+        }
+      },
+      "adaGates": {
+        "kansasCity": {
+          "0": { "name": "Gate D", "description": "Hoofd ADA-ingang - Westkant" },
+          "1": { "name": "Gate G", "description": "ADA-ingang oost" },
+          "2": { "name": "Gate M", "description": "ADA-ingang noord" }
+        },
+        "newYork": {
+          "0": { "name": "Gate A", "description": "Hoofd ADA-ingang - Westplein" },
+          "1": { "name": "Gate C", "description": "ADA-ingang noord" },
+          "2": { "name": "Gate E", "description": "ADA-ingang zuid" }
+        },
+        "losAngeles": {
+          "0": { "name": "Gate A", "description": "Hoofd ADA-ingang - American Airlines Plaza" },
+          "1": { "name": "Gate F", "description": "ADA-ingang oost" },
+          "2": { "name": "Gate H", "description": "ADA-ingang zuid" }
+        },
+        "miami": {
+          "0": { "name": "Gate A", "description": "Hoofd ADA-ingang - Noordwest" },
+          "1": { "name": "Gate D", "description": "ADA-ingang oost" },
+          "2": { "name": "Gate G", "description": "ADA-ingang zuid" }
+        },
+        "dallas": {
+          "0": { "name": "Gate A", "description": "Hoofd ADA-ingang - Oostplein" },
+          "1": { "name": "Gate C", "description": "ADA-ingang noord" },
+          "2": { "name": "Gate F", "description": "ADA-ingang west" }
+        },
+        "houston": {
+          "0": { "name": "Gate 1", "description": "Hoofd ADA-ingang - Noordkant" },
+          "1": { "name": "Gate 5", "description": "ADA-ingang oost" },
+          "2": { "name": "Gate 8", "description": "ADA-ingang zuid bij METRORail" }
+        },
+        "atlanta": {
+          "0": { "name": "Gate 1", "description": "Hoofd ADA-ingang - Noordplein" },
+          "1": { "name": "Gate 4", "description": "ADA-ingang oost bij MARTA" },
+          "2": { "name": "Gate 6", "description": "ADA-ingang zuid" }
+        },
+        "philadelphia": {
+          "0": { "name": "Gate A", "description": "Hoofd ADA-ingang - Westkant" },
+          "1": { "name": "Gate C", "description": "ADA-ingang noord" },
+          "2": { "name": "Gate F", "description": "ADA-ingang oost bij SEPTA" }
+        },
+        "seattle": {
+          "0": { "name": "Gate A", "description": "Hoofd ADA-ingang - Noordeinde" },
+          "1": { "name": "Gate C", "description": "ADA-ingang west bij Light Rail" },
+          "2": { "name": "Gate E", "description": "ADA-ingang zuid" }
+        },
+        "boston": {
+          "0": { "name": "Gate A", "description": "Hoofd ADA-ingang - Oostkant" },
+          "1": { "name": "Gate C", "description": "ADA-ingang noord" },
+          "2": { "name": "Gate D", "description": "ADA-ingang west bij Patriot Place" }
+        },
+        "sanFrancisco": {
+          "0": { "name": "Gate A", "description": "Hoofd ADA-ingang - Noordkant" },
+          "1": { "name": "Gate C", "description": "ADA-ingang oost bij VTA" },
+          "2": { "name": "Gate F", "description": "ADA-ingang zuid" }
+        },
+        "toronto": {
+          "0": { "name": "Gate 1", "description": "Hoofd ADA-ingang - Oostkant" },
+          "1": { "name": "Gate 3", "description": "ADA-ingang noord" },
+          "2": { "name": "Gate 5", "description": "ADA-ingang west bij GO station" }
+        },
+        "vancouver": {
+          "0": { "name": "Gate A", "description": "Hoofd ADA-ingang - Noordkant" },
+          "1": { "name": "Gate C", "description": "ADA-ingang oost bij SkyTrain" },
+          "2": { "name": "Gate E", "description": "ADA-ingang zuid" }
+        },
+        "mexicoCity": {
+          "0": { "name": "Puerta 1", "description": "Hoofd ADA-ingang - Noord" },
+          "1": { "name": "Puerta 7", "description": "ADA-ingang oost" },
+          "2": { "name": "Puerta 15", "description": "ADA-ingang west" }
+        },
+        "guadalajara": {
+          "0": { "name": "Puerta Principal", "description": "Hoofd ADA-ingang - Noord" },
+          "1": { "name": "Puerta Sur", "description": "ADA-ingang zuid" },
+          "2": { "name": "Puerta Este", "description": "ADA-ingang oost" }
+        },
+        "monterrey": {
+          "0": { "name": "Puerta 1", "description": "Hoofd ADA-ingang - West" },
+          "1": { "name": "Puerta 5", "description": "ADA-ingang noord" },
+          "2": { "name": "Puerta 9", "description": "ADA-ingang oost" }
+        }
       }
     }
   },

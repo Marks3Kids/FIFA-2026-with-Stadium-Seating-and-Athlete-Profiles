@@ -33,6 +33,7 @@ PostgreSQL is used as the database, accessed via Neon serverless driver. Drizzle
 -   **City-Specific Context:** The AI Concierge proactively provides city-specific warnings, safety resources, and recommendations based on the user's current location, aiming to remove the "stranger" feeling.
 -   **FIFA Tournament Names:** Due to FIFA's corporate naming restrictions, stadiums display both their regular names and official FIFA Tournament Names (e.g., "GEHA Field at Arrowhead Stadium" displays with "FIFA: Kansas City Stadium FIFA"). The `fifaStadiumName` field is stored in the cities database schema and displayed on both the Host Cities and Matches pages.
 -   **Stadium Access Structure:** The `cityVaults.ts` includes a `StadiumAccess` interface for future features: mobility maps, last-mile walking guides, transportation PDFs, ADA access points, and gate assignments (awaiting FIFA publication).
+-   **Internationalization Structure:** Vault content uses translation keys with fallbacks. Translation keys follow pattern `cities.vault.{section}.{cityKey}.{index}.{field}` (e.g., `cities.vault.rideshare.kansasCity.0.description`). Gate/lot names are preserved as identifiers across languages; descriptions are translated. Locale files: en, es, fr, de, pt, ar, ja, nl, it.
 
 ### AI Concierge - The Upsell Logic ("Digital Tiered Stadium")
 

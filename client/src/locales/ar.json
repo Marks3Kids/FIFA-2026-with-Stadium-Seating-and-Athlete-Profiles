@@ -529,6 +529,154 @@
         "mexicoCity": { "0": { "category": "فن الطهي المكسيكي", "items": { "0": { "name": "سوق سان خوان", "description": "سوق ذواقة بمكونات غريبة" }, "1": { "name": "بوخول", "description": "واحد من أفضل المطاعم في العالم" }, "2": { "name": "تاكوس إل كاليفا دي ليون", "description": "تاكوس أسطورية من الوسط" } } }, "1": { "category": "الثقافة والحياة الليلية", "items": { "0": { "name": "كولونيا روما", "description": "حي عصري بـ cantinas ومعارض" }, "1": { "name": "كويواكان", "description": "حي بوهيمي بالثقافة والطعام" } } } },
         "guadalajara": { "0": { "category": "نكهات تاباتيو", "items": { "0": { "name": "سوق سان خوان دي ديوس", "description": "أكبر سوق مغطى في أمريكا اللاتينية" }, "1": { "name": "Birria El Chololo", "description": "بيريا تقليدية من خاليسكو" }, "2": { "name": "تورتاس أوغاداس إل ريكا", "description": "تخصص أيقوني من غوادالاخارا" } } }, "1": { "category": "تيكيلا وماريتشي", "items": { "0": { "name": "تلاكيباكي", "description": "قرية سحرية بالحرف و cantinas" }, "1": { "name": "طريق التيكيلا", "description": "مصانع تقطير تاريخية على بعد ساعة من المدينة" } } } },
         "monterrey": { "0": { "category": "مطبخ ريخيو", "items": { "0": { "name": "El Gran Pastor", "description": "كابريتو آل باستور تقليدي" }, "1": { "name": "سوق خواريز", "description": "سوق تقليدي بالأنتوخيتوس" }, "2": { "name": "بانخيا", "description": "مطبخ راقٍ من مونتيري" } } }, "1": { "category": "البيرة والجبال", "items": { "0": { "name": "الحي القديم", "description": "منطقة بارات وحياة ليلية" }, "1": { "name": "حديقة فونديدورا", "description": "حديقة حضرية بمصانع جعة حرفية" } } } }
+      },
+      "rideshare": {
+        "kansasCity": {
+          "0": { "name": "Lot M Rideshare", "description": "منطقة Uber/Lyft الرئيسية - موقف الشمال" },
+          "1": { "name": "Red Lot Drop-off", "description": "إنزال أيام المباريات فقط" }
+        },
+        "newYork": {
+          "0": { "name": "Lot K Rideshare", "description": "منطقة Uber/Lyft الرئيسية للصعود والنزول" },
+          "1": { "name": "Meadowlands Station", "description": "منطقة إنزال محطة القطار" }
+        },
+        "losAngeles": {
+          "0": { "name": "Pink Lot", "description": "منطقة Uber/Lyft الرئيسية" },
+          "1": { "name": "Hollywood Park Casino", "description": "منطقة مشاركة ركوب بديلة" }
+        },
+        "miami": {
+          "0": { "name": "Lot 18", "description": "منطقة Uber/Lyft الرئيسية للصعود والنزول" },
+          "1": { "name": "NW 199th Street", "description": "منطقة إنزال ثانوية" }
+        },
+        "dallas": {
+          "0": { "name": "Lot 4", "description": "منطقة Uber/Lyft الرئيسية - الجانب الشرقي" },
+          "1": { "name": "Globe Life Field", "description": "مشاركة ركوب ثانوية مع جسر للمشاة" }
+        },
+        "houston": {
+          "0": { "name": "Yellow Lot", "description": "منطقة Uber/Lyft الرئيسية" },
+          "1": { "name": "METRORail Station", "description": "إنزال بالقرب من محطة المترو" }
+        },
+        "atlanta": {
+          "0": { "name": "Lot Red", "description": "منطقة Uber/Lyft الرئيسية - الجانب الغربي" },
+          "1": { "name": "GWCC Silver Deck", "description": "منطقة إنزال مغطاة" }
+        },
+        "philadelphia": {
+          "0": { "name": "Lot K", "description": "منطقة Uber/Lyft الرئيسية" },
+          "1": { "name": "Xfinity Live!", "description": "إنزال بالقرب من مجمع الترفيه" }
+        },
+        "seattle": {
+          "0": { "name": "Occidental Park", "description": "منطقة Uber/Lyft الرئيسية في Pioneer Square" },
+          "1": { "name": "S King Street", "description": "إنزال بالقرب من محطة القطار الخفيف" }
+        },
+        "boston": {
+          "0": { "name": "Patriot Place", "description": "منطقة Uber/Lyft الرئيسية في المركز التجاري" },
+          "1": { "name": "Lot 15", "description": "منطقة إنزال ثانوية" }
+        },
+        "sanFrancisco": {
+          "0": { "name": "Tasman Lot", "description": "منطقة Uber/Lyft الرئيسية" },
+          "1": { "name": "Great America", "description": "منطقة مشاركة ركوب بديلة" }
+        },
+        "toronto": {
+          "0": { "name": "Exhibition GO", "description": "منطقة Uber/Lyft الرئيسية بالقرب من وسائل النقل" },
+          "1": { "name": "Liberty Village", "description": "إنزال في الحي المجاور" }
+        },
+        "vancouver": {
+          "0": { "name": "Rogers Arena", "description": "منطقة Uber/Lyft الرئيسية القريبة" },
+          "1": { "name": "Stadium-Chinatown Station", "description": "إنزال بالقرب من SkyTrain" }
+        },
+        "mexicoCity": {
+          "0": { "name": "Estacionamiento Norte", "description": "منطقة Uber/DiDi الرئيسية" },
+          "1": { "name": "Tren Ligero Station", "description": "إنزال بالقرب من القطار الخفيف" }
+        },
+        "guadalajara": {
+          "0": { "name": "Estacionamiento Principal", "description": "منطقة Uber/DiDi الرئيسية" },
+          "1": { "name": "Centro Comercial Andares", "description": "منطقة بديلة بالقرب من الملعب" }
+        },
+        "monterrey": {
+          "0": { "name": "Estacionamiento VIP", "description": "منطقة Uber/DiDi الرئيسية" },
+          "1": { "name": "Metrorrey General Anaya", "description": "إنزال بالقرب من المترو" }
+        }
+      },
+      "adaGates": {
+        "kansasCity": {
+          "0": { "name": "Gate D", "description": "مدخل ADA الرئيسي - الجانب الغربي" },
+          "1": { "name": "Gate G", "description": "مدخل ADA الشرقي" },
+          "2": { "name": "Gate M", "description": "مدخل ADA الشمالي" }
+        },
+        "newYork": {
+          "0": { "name": "Gate A", "description": "مدخل ADA الرئيسي - الساحة الغربية" },
+          "1": { "name": "Gate C", "description": "مدخل ADA الشمالي" },
+          "2": { "name": "Gate E", "description": "مدخل ADA الجنوبي" }
+        },
+        "losAngeles": {
+          "0": { "name": "Gate A", "description": "مدخل ADA الرئيسي - ساحة American Airlines" },
+          "1": { "name": "Gate F", "description": "مدخل ADA الشرقي" },
+          "2": { "name": "Gate H", "description": "مدخل ADA الجنوبي" }
+        },
+        "miami": {
+          "0": { "name": "Gate A", "description": "مدخل ADA الرئيسي - الشمال الغربي" },
+          "1": { "name": "Gate D", "description": "مدخل ADA الشرقي" },
+          "2": { "name": "Gate G", "description": "مدخل ADA الجنوبي" }
+        },
+        "dallas": {
+          "0": { "name": "Gate A", "description": "مدخل ADA الرئيسي - الساحة الشرقية" },
+          "1": { "name": "Gate C", "description": "مدخل ADA الشمالي" },
+          "2": { "name": "Gate F", "description": "مدخل ADA الغربي" }
+        },
+        "houston": {
+          "0": { "name": "Gate 1", "description": "مدخل ADA الرئيسي - الجانب الشمالي" },
+          "1": { "name": "Gate 5", "description": "مدخل ADA الشرقي" },
+          "2": { "name": "Gate 8", "description": "مدخل ADA الجنوبي بالقرب من METRORail" }
+        },
+        "atlanta": {
+          "0": { "name": "Gate 1", "description": "مدخل ADA الرئيسي - الساحة الشمالية" },
+          "1": { "name": "Gate 4", "description": "مدخل ADA الشرقي بالقرب من MARTA" },
+          "2": { "name": "Gate 6", "description": "مدخل ADA الجنوبي" }
+        },
+        "philadelphia": {
+          "0": { "name": "Gate A", "description": "مدخل ADA الرئيسي - الجانب الغربي" },
+          "1": { "name": "Gate C", "description": "مدخل ADA الشمالي" },
+          "2": { "name": "Gate F", "description": "مدخل ADA الشرقي بالقرب من SEPTA" }
+        },
+        "seattle": {
+          "0": { "name": "Gate A", "description": "مدخل ADA الرئيسي - الطرف الشمالي" },
+          "1": { "name": "Gate C", "description": "مدخل ADA الغربي بالقرب من القطار الخفيف" },
+          "2": { "name": "Gate E", "description": "مدخل ADA الجنوبي" }
+        },
+        "boston": {
+          "0": { "name": "Gate A", "description": "مدخل ADA الرئيسي - الجانب الشرقي" },
+          "1": { "name": "Gate C", "description": "مدخل ADA الشمالي" },
+          "2": { "name": "Gate D", "description": "مدخل ADA الغربي بالقرب من Patriot Place" }
+        },
+        "sanFrancisco": {
+          "0": { "name": "Gate A", "description": "مدخل ADA الرئيسي - الجانب الشمالي" },
+          "1": { "name": "Gate C", "description": "مدخل ADA الشرقي بالقرب من VTA" },
+          "2": { "name": "Gate F", "description": "مدخل ADA الجنوبي" }
+        },
+        "toronto": {
+          "0": { "name": "Gate 1", "description": "مدخل ADA الرئيسي - الجانب الشرقي" },
+          "1": { "name": "Gate 3", "description": "مدخل ADA الشمالي" },
+          "2": { "name": "Gate 5", "description": "مدخل ADA الغربي بالقرب من محطة GO" }
+        },
+        "vancouver": {
+          "0": { "name": "Gate A", "description": "مدخل ADA الرئيسي - الجانب الشمالي" },
+          "1": { "name": "Gate C", "description": "مدخل ADA الشرقي بالقرب من SkyTrain" },
+          "2": { "name": "Gate E", "description": "مدخل ADA الجنوبي" }
+        },
+        "mexicoCity": {
+          "0": { "name": "Puerta 1", "description": "مدخل ADA الرئيسي - الشمال" },
+          "1": { "name": "Puerta 7", "description": "مدخل ADA الشرقي" },
+          "2": { "name": "Puerta 15", "description": "مدخل ADA الغربي" }
+        },
+        "guadalajara": {
+          "0": { "name": "Puerta Principal", "description": "مدخل ADA الرئيسي - الشمال" },
+          "1": { "name": "Puerta Sur", "description": "مدخل ADA الجنوبي" },
+          "2": { "name": "Puerta Este", "description": "مدخل ADA الشرقي" }
+        },
+        "monterrey": {
+          "0": { "name": "Puerta 1", "description": "مدخل ADA الرئيسي - الغرب" },
+          "1": { "name": "Puerta 5", "description": "مدخل ADA الشمالي" },
+          "2": { "name": "Puerta 9", "description": "مدخل ADA الشرقي" }
+        }
       }
     }
   },

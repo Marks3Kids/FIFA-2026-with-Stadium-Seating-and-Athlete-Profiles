@@ -554,6 +554,154 @@
           "mountainViews": "Mountain Views",
           "carneAsada": "Carne Asada Trail"
         }
+      },
+      "rideshare": {
+        "kansasCity": {
+          "0": { "name": "Lot M Rideshare", "description": "Primary Uber/Lyft zone - North lot" },
+          "1": { "name": "Red Lot Drop-off", "description": "Match day drop-off only" }
+        },
+        "newYork": {
+          "0": { "name": "Lot K Rideshare", "description": "Primary Uber/Lyft pickup and drop-off" },
+          "1": { "name": "Meadowlands Station", "description": "Train station drop-off area" }
+        },
+        "losAngeles": {
+          "0": { "name": "Pink Lot", "description": "Primary Uber/Lyft zone" },
+          "1": { "name": "Hollywood Park Casino", "description": "Overflow rideshare area" }
+        },
+        "miami": {
+          "0": { "name": "Lot 18", "description": "Primary Uber/Lyft pickup and drop-off" },
+          "1": { "name": "NW 199th Street", "description": "Overflow drop-off zone" }
+        },
+        "dallas": {
+          "0": { "name": "Lot 4", "description": "Primary Uber/Lyft zone - East side" },
+          "1": { "name": "Globe Life Field", "description": "Overflow rideshare with walking bridge" }
+        },
+        "houston": {
+          "0": { "name": "Yellow Lot", "description": "Primary Uber/Lyft zone" },
+          "1": { "name": "METRORail Station", "description": "Drop-off near rail station" }
+        },
+        "atlanta": {
+          "0": { "name": "Lot Red", "description": "Primary Uber/Lyft zone - West side" },
+          "1": { "name": "GWCC Silver Deck", "description": "Covered drop-off area" }
+        },
+        "philadelphia": {
+          "0": { "name": "Lot K", "description": "Primary Uber/Lyft zone" },
+          "1": { "name": "Xfinity Live!", "description": "Drop-off near entertainment complex" }
+        },
+        "seattle": {
+          "0": { "name": "Occidental Park", "description": "Primary Uber/Lyft zone in Pioneer Square" },
+          "1": { "name": "S King Street", "description": "Drop-off near Light Rail station" }
+        },
+        "boston": {
+          "0": { "name": "Patriot Place", "description": "Primary Uber/Lyft zone at retail complex" },
+          "1": { "name": "Lot 15", "description": "Overflow drop-off area" }
+        },
+        "sanFrancisco": {
+          "0": { "name": "Tasman Lot", "description": "Primary Uber/Lyft zone" },
+          "1": { "name": "Great America", "description": "Overflow rideshare area" }
+        },
+        "toronto": {
+          "0": { "name": "Exhibition GO", "description": "Primary Uber/Lyft zone near transit" },
+          "1": { "name": "Liberty Village", "description": "Nearby neighborhood drop-off" }
+        },
+        "vancouver": {
+          "0": { "name": "Rogers Arena", "description": "Primary Uber/Lyft zone nearby" },
+          "1": { "name": "Stadium-Chinatown Station", "description": "Drop-off near SkyTrain" }
+        },
+        "mexicoCity": {
+          "0": { "name": "Estacionamiento Norte", "description": "Primary Uber/DiDi zone" },
+          "1": { "name": "Tren Ligero Station", "description": "Drop-off near light rail" }
+        },
+        "guadalajara": {
+          "0": { "name": "Estacionamiento Principal", "description": "Primary Uber/DiDi zone" },
+          "1": { "name": "Centro Comercial Andares", "description": "Alternative zone near stadium" }
+        },
+        "monterrey": {
+          "0": { "name": "Estacionamiento VIP", "description": "Primary Uber/DiDi zone" },
+          "1": { "name": "Metrorrey General Anaya", "description": "Drop-off near metro" }
+        }
+      },
+      "adaGates": {
+        "kansasCity": {
+          "0": { "name": "Gate D", "description": "Main ADA entrance - West side" },
+          "1": { "name": "Gate G", "description": "East ADA entrance" },
+          "2": { "name": "Gate M", "description": "North ADA entrance" }
+        },
+        "newYork": {
+          "0": { "name": "Gate A", "description": "Main ADA entrance - West plaza" },
+          "1": { "name": "Gate C", "description": "North ADA entrance" },
+          "2": { "name": "Gate E", "description": "South ADA entrance" }
+        },
+        "losAngeles": {
+          "0": { "name": "Gate A", "description": "Main ADA entrance - American Airlines Plaza" },
+          "1": { "name": "Gate F", "description": "East ADA entrance" },
+          "2": { "name": "Gate H", "description": "South ADA entrance" }
+        },
+        "miami": {
+          "0": { "name": "Gate A", "description": "Main ADA entrance - Northwest" },
+          "1": { "name": "Gate D", "description": "East ADA entrance" },
+          "2": { "name": "Gate G", "description": "South ADA entrance" }
+        },
+        "dallas": {
+          "0": { "name": "Gate A", "description": "Main ADA entrance - East plaza" },
+          "1": { "name": "Gate C", "description": "North ADA entrance" },
+          "2": { "name": "Gate F", "description": "West ADA entrance" }
+        },
+        "houston": {
+          "0": { "name": "Gate 1", "description": "Main ADA entrance - North side" },
+          "1": { "name": "Gate 5", "description": "East ADA entrance" },
+          "2": { "name": "Gate 8", "description": "South ADA entrance near METRORail" }
+        },
+        "atlanta": {
+          "0": { "name": "Gate 1", "description": "Main ADA entrance - North plaza" },
+          "1": { "name": "Gate 4", "description": "East ADA entrance near MARTA" },
+          "2": { "name": "Gate 6", "description": "South ADA entrance" }
+        },
+        "philadelphia": {
+          "0": { "name": "Gate A", "description": "Main ADA entrance - West side" },
+          "1": { "name": "Gate C", "description": "North ADA entrance" },
+          "2": { "name": "Gate F", "description": "East ADA entrance near SEPTA" }
+        },
+        "seattle": {
+          "0": { "name": "Gate A", "description": "Main ADA entrance - North end" },
+          "1": { "name": "Gate C", "description": "West ADA entrance near Light Rail" },
+          "2": { "name": "Gate E", "description": "South ADA entrance" }
+        },
+        "boston": {
+          "0": { "name": "Gate A", "description": "Main ADA entrance - East side" },
+          "1": { "name": "Gate C", "description": "North ADA entrance" },
+          "2": { "name": "Gate D", "description": "West ADA entrance near Patriot Place" }
+        },
+        "sanFrancisco": {
+          "0": { "name": "Gate A", "description": "Main ADA entrance - North side" },
+          "1": { "name": "Gate C", "description": "East ADA entrance near VTA" },
+          "2": { "name": "Gate F", "description": "South ADA entrance" }
+        },
+        "toronto": {
+          "0": { "name": "Gate 1", "description": "Main ADA entrance - East side" },
+          "1": { "name": "Gate 3", "description": "North ADA entrance" },
+          "2": { "name": "Gate 5", "description": "West ADA entrance near GO station" }
+        },
+        "vancouver": {
+          "0": { "name": "Gate A", "description": "Main ADA entrance - North side" },
+          "1": { "name": "Gate C", "description": "East ADA entrance near SkyTrain" },
+          "2": { "name": "Gate E", "description": "South ADA entrance" }
+        },
+        "mexicoCity": {
+          "0": { "name": "Puerta 1", "description": "Main ADA entrance - North" },
+          "1": { "name": "Puerta 7", "description": "East ADA entrance" },
+          "2": { "name": "Puerta 15", "description": "West ADA entrance" }
+        },
+        "guadalajara": {
+          "0": { "name": "Puerta Principal", "description": "Main ADA entrance - North" },
+          "1": { "name": "Puerta Sur", "description": "South ADA entrance" },
+          "2": { "name": "Puerta Este", "description": "East ADA entrance" }
+        },
+        "monterrey": {
+          "0": { "name": "Puerta 1", "description": "Main ADA entrance - West" },
+          "1": { "name": "Puerta 5", "description": "North ADA entrance" },
+          "2": { "name": "Puerta 9", "description": "East ADA entrance" }
+        }
       }
     }
   },

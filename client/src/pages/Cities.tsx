@@ -222,9 +222,9 @@ export default function Cities() {
                                     className="flex items-center justify-between bg-background/50 rounded-lg p-3 mb-2 last:mb-0 hover:bg-purple-500/20 transition-colors"
                                   >
                                     <div>
-                                      <p className="text-sm font-bold text-white">{zone.name}</p>
+                                      <p className="text-sm font-bold text-white">{t(`cities.vault.rideshare.${city.key}.${idx}.name`, zone.name)}</p>
                                       <p className="text-xs text-muted-foreground">
-                                        {zone.type === 'pickup' ? `🚗 ${t("cities.vault.labels.pickupOnly")}` : zone.type === 'dropoff' ? `📍 ${t("cities.vault.labels.dropoffOnly")}` : `🚗📍 ${t("cities.vault.labels.pickupDropoff")}`} • {zone.description}
+                                        {zone.type === 'pickup' ? `🚗 ${t("cities.vault.labels.pickupOnly")}` : zone.type === 'dropoff' ? `📍 ${t("cities.vault.labels.dropoffOnly")}` : `🚗📍 ${t("cities.vault.labels.pickupDropoff")}`} • {t(`cities.vault.rideshare.${city.key}.${idx}.description`, zone.description)}
                                       </p>
                                     </div>
                                     <ExternalLink className="w-4 h-4 text-purple-400 flex-shrink-0" />
@@ -248,8 +248,8 @@ export default function Cities() {
                                     className="flex items-center justify-between bg-background/50 rounded-lg p-3 mb-2 last:mb-0 hover:bg-blue-500/20 transition-colors"
                                   >
                                     <div>
-                                      <p className="text-sm font-bold text-white">{gate.name}</p>
-                                      <p className="text-xs text-muted-foreground">♿ {gate.description}</p>
+                                      <p className="text-sm font-bold text-white">{t(`cities.vault.adaGates.${city.key}.${idx}.name`, gate.name)}</p>
+                                      <p className="text-xs text-muted-foreground">♿ {t(`cities.vault.adaGates.${city.key}.${idx}.description`, gate.description)}</p>
                                     </div>
                                     <ExternalLink className="w-4 h-4 text-blue-400 flex-shrink-0" />
                                   </a>
