@@ -208,16 +208,16 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
       });
       
       setFreeUser(formData.email, formData.name, formData.city);
-      window.open("/downloads/world-cup-2026-bracket.html", "_blank");
+      window.open("/world-cup-2026-bracket.html", "_blank");
       
       toast({
-        title: "Success!",
-        description: "Your bracket is ready to download.",
+        title: "Bracket Opened!",
+        description: "Your printable bracket opened in a new tab. Use Ctrl+P (or Cmd+P on Mac) to print or save as PDF.",
       });
       setShowEmailCapture(false);
     } catch (error) {
       console.error("Failed to save lead:", error);
-      window.open("/downloads/world-cup-2026-bracket.html", "_blank");
+      window.open("/world-cup-2026-bracket.html", "_blank");
     } finally {
       setIsLoading(null);
     }

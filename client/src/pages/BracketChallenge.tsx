@@ -513,7 +513,7 @@ export default function BracketChallenge() {
             {t("bracket.reset")}
           </button>
           <a
-            href="/downloads/world-cup-2026-bracket.html"
+            href="/world-cup-2026-bracket.html"
             target="_blank"
             className="flex items-center justify-center gap-2 bg-card border border-white/10 rounded-lg px-4 py-2 text-sm text-muted-foreground hover:bg-white/5 transition-colors"
           >

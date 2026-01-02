@@ -23,6 +23,45 @@
       padding: 20px;
     }
     
+    .print-banner {
+      background: linear-gradient(135deg, #22C55E 0%, #16a34a 100%);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .print-banner p {
+      margin: 0;
+      font-size: 14px;
+    }
+    
+    .print-banner button {
+      background: white;
+      color: #16a34a;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .print-banner button:hover {
+      background: #f0f0f0;
+    }
+    
+    @media print {
+      .print-banner {
+        display: none !important;
+      }
+    }
+    
     .header {
       text-align: center;
       margin-bottom: 20px;
@@ -203,9 +242,9 @@
       color: #666;
     }
     
-    .print-btn {
-      position: fixed;
-      top: 20px;
+    /* Old print button styles removed - using print-banner instead */
+    .print-btn-old {
+      display: none;
       right: 20px;
       background: #22C55E;
       color: white;
@@ -227,7 +266,10 @@
   </style>
 </head>
 <body>
-  <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+  <div class="print-banner">
+    <p><strong>Ready to print!</strong> Click the button or press Ctrl+P (Cmd+P on Mac) to print or save as PDF.</p>
+    <button onclick="window.print()">Print / Save as PDF</button>
+  </div>
   
   <div class="header">
     <h1>World Cup 2026 - Knockout Bracket</h1>
