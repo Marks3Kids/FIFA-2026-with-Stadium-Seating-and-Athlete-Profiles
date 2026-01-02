@@ -99,7 +99,8 @@
     "liveUpdates": "Mises à jour en direct",
     "tip": "Conseil",
     "previous": "Précédent",
-    "next": "Suivant"
+    "next": "Suivant",
+    "dataDisclaimer": "Données fournies par des sources tierces, notamment FIFA.com, ESPN, BBC Sport et Sky Sports."
   },
   "bracket": {
     "title": "Tableau à Élimination Directe",

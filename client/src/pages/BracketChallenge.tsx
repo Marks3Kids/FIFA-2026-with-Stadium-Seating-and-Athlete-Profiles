@@ -491,6 +491,7 @@ export default function BracketChallenge() {
           <div>
             <h1 className="text-xl font-display font-bold text-white">{t("bracket.title")}</h1>
             <p className="text-sm text-muted-foreground">{getCompletionPercentage()}% {t("bracket.complete")}</p>
+            <p className="text-xs text-muted-foreground/70 italic">{t("common.dataDisclaimer")}</p>
           </div>
           {champion && (
             <div className="flex items-center gap-2 bg-primary/20 border border-primary/30 rounded-lg px-3 py-2">

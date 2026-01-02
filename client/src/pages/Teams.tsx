@@ -64,6 +64,9 @@ export default function Teams() {
           <p className="text-sm text-muted-foreground max-w-lg mx-auto">
             {t("teams.description", "Complete roster information, current season records, and match highlights for all competing nations. Updated regularly in December 2025, March 2026, and May 2026.")}
           </p>
+          <p className="text-xs text-muted-foreground/70 mt-2 italic">
+            {t("common.dataDisclaimer")}
+          </p>
         </div>
 
         <div className="bg-gray-100 border border-gray-200 rounded-xl p-4 mb-6 text-center">

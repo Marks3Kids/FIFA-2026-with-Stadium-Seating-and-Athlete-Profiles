@@ -99,7 +99,8 @@
     "liveUpdates": "Live Updates",
     "tip": "Tip",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "dataDisclaimer": "Data provided by third-party sources including FIFA.com, ESPN, BBC Sport, and Sky Sports."
   },
   "bracket": {
     "title": "Knockout Brackets",

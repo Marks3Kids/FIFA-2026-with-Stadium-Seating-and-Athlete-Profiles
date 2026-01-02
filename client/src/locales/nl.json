@@ -99,7 +99,8 @@
     "liveUpdates": "Live updates",
     "tip": "Tip",
     "previous": "Vorige",
-    "next": "Volgende"
+    "next": "Volgende",
+    "dataDisclaimer": "Gegevens geleverd door externe bronnen, waaronder FIFA.com, ESPN, BBC Sport en Sky Sports."
   },
   "bracket": {
     "title": "Knock-out Schema",

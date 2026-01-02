@@ -99,7 +99,8 @@
     "liveUpdates": "ライブ更新",
     "tip": "ヒント",
     "previous": "前へ",
-    "next": "次へ"
+    "next": "次へ",
+    "dataDisclaimer": "FIFA.com、ESPN、BBC Sport、Sky Sportsなどの第三者情報源から提供されたデータ。"
   },
   "bracket": {
     "title": "ノックアウトステージ",

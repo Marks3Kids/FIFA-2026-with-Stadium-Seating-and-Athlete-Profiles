@@ -72,7 +72,10 @@ export default function Matches() {
   return (
     <Layout pageTitle="nav.matches">
       <div className="pt-12 px-6 pb-6">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-4 sm:mb-6">{t("matches.title")}</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-2">{t("matches.title")}</h1>
+        <p className="text-xs text-muted-foreground/70 mb-4 sm:mb-6 italic">
+          {t("common.dataDisclaimer")}
+        </p>
         
         <Tabs defaultValue="Group Stage" className="w-full">
           <TabsList className="w-full bg-transparent border-b border-white/10 rounded-none h-auto p-0 justify-start overflow-x-auto mb-6 space-x-6 no-scrollbar">

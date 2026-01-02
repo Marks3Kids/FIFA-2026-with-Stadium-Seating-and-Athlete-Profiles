@@ -99,7 +99,8 @@
     "liveUpdates": "Aggiornamenti in tempo reale",
     "tip": "Suggerimento",
     "previous": "Precedente",
-    "next": "Successivo"
+    "next": "Successivo",
+    "dataDisclaimer": "Dati forniti da fonti terze, tra cui FIFA.com, ESPN, BBC Sport e Sky Sports."
   },
   "bracket": {
     "title": "Tabellone ad Eliminazione",

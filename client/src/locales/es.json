@@ -99,7 +99,8 @@
     "liveUpdates": "Actualizaciones en directo",
     "tip": "Consejo",
     "previous": "Anterior",
-    "next": "Siguiente"
+    "next": "Siguiente",
+    "dataDisclaimer": "Datos proporcionados por fuentes de terceros, incluyendo FIFA.com, ESPN, BBC Sport y Sky Sports."
   },
   "bracket": {
     "title": "Cuadro de Eliminatorias",

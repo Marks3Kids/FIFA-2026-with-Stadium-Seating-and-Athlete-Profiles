@@ -99,7 +99,8 @@
     "liveUpdates": "تحديثات مباشرة",
     "tip": "نصيحة",
     "previous": "السابق",
-    "next": "التالي"
+    "next": "التالي",
+    "dataDisclaimer": "البيانات مقدمة من مصادر خارجية بما في ذلك FIFA.com وESPN وBBC Sport وSky Sports."
   },
   "bracket": {
     "title": "جدول الأدوار الإقصائية",

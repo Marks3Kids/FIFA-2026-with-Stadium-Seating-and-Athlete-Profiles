@@ -99,7 +99,8 @@
     "liveUpdates": "Live-Updates",
     "tip": "Tipp",
     "previous": "Zurück",
-    "next": "Weiter"
+    "next": "Weiter",
+    "dataDisclaimer": "Daten bereitgestellt von Drittquellen, darunter FIFA.com, ESPN, BBC Sport und Sky Sports."
   },
   "bracket": {
     "title": "K.o.-Runde",
