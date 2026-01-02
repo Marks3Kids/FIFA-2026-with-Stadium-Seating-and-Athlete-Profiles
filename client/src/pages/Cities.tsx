@@ -68,7 +68,8 @@ export default function Cities() {
     <Layout pageTitle="nav.hostCities">
       <div className="pt-12 px-6 pb-24">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-2">{t("cities.title")}</h1>
-        <p className="text-muted-foreground mb-8">{t("cities.subtitle")}</p>
+        <p className="text-muted-foreground mb-2">{t("cities.subtitle")}</p>
+        <p className="text-xs text-muted-foreground/70 mb-8 italic">{t("common.dataDisclaimer")}</p>
         
         <div className="space-y-4">
           {cities.map((city, i) => {
