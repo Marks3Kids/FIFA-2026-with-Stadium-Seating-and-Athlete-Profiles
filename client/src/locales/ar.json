@@ -297,6 +297,24 @@
       "toronto": "ملعب BMO",
       "vancouver": "بي سي بليس"
     },
+    "fifaStadiums": {
+      "newYork": "ملعب نيويورك/نيوجيرسي",
+      "losAngeles": "ملعب لوس أنجلوس فيفا",
+      "dallas": "ملعب دالاس فيفا",
+      "miami": "ملعب ميامي فيفا",
+      "atlanta": "ملعب أتلانتا فيفا",
+      "seattle": "ملعب سياتل فيفا",
+      "sanFrancisco": "ملعب منطقة خليج سان فرانسيسكو",
+      "houston": "ملعب هيوستن",
+      "philadelphia": "ملعب فيلادلفيا",
+      "kansasCity": "ملعب كانساس سيتي فيفا",
+      "boston": "ملعب بوسطن فيفا",
+      "toronto": "ملعب تورنتو",
+      "vancouver": "ملعب فانكوفر",
+      "guadalajara": "ملعب غوادالاخارا",
+      "monterrey": "ملعب مونتيري",
+      "mexicoCity": "ملعب مدينة مكسيكو"
+    },
     "stages": {
       "groupStageMatch": "مباراة دور المجموعات",
       "roundOf32": "دور الـ32",

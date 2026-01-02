@@ -297,6 +297,24 @@
       "toronto": "BMOフィールド",
       "vancouver": "BCプレイス"
     },
+    "fifaStadiums": {
+      "newYork": "ニューヨーク/ニュージャージー・スタジアム",
+      "losAngeles": "ロサンゼルス・スタジアムFIFA",
+      "dallas": "ダラス・スタジアムFIFA",
+      "miami": "マイアミ・スタジアムFIFA",
+      "atlanta": "アトランタ・スタジアムFIFA",
+      "seattle": "シアトル・スタジアムFIFA",
+      "sanFrancisco": "サンフランシスコ・ベイエリア・スタジアム",
+      "houston": "ヒューストン・スタジアム",
+      "philadelphia": "フィラデルフィア・スタジアム",
+      "kansasCity": "カンザスシティ・スタジアムFIFA",
+      "boston": "ボストン・スタジアムFIFA",
+      "toronto": "トロント・スタジアム",
+      "vancouver": "バンクーバー・スタジアム",
+      "guadalajara": "グアダラハラ・スタジアム",
+      "monterrey": "モンテレイ・スタジアム",
+      "mexicoCity": "メキシコシティ・スタジアム"
+    },
     "stages": {
       "groupStageMatch": "グループステージ",
       "roundOf32": "ラウンド32",

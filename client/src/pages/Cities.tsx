@@ -45,25 +45,6 @@ export default function Cities() {
     }
   };
 
-  const fifaStadiumNames: Record<string, string> = {
-    newYork: "New York/New Jersey Stadium",
-    losAngeles: "Los Angeles Stadium FIFA",
-    dallas: "Dallas Stadium FIFA",
-    miami: "Miami Stadium FIFA",
-    atlanta: "Atlanta Stadium FIFA",
-    seattle: "Seattle Stadium FIFA",
-    sanFrancisco: "San Francisco Bay Area Stadium",
-    houston: "Houston Stadium",
-    philadelphia: "Philadelphia Stadium",
-    kansasCity: "Kansas City Stadium FIFA",
-    boston: "Boston Stadium FIFA",
-    toronto: "Toronto Stadium",
-    vancouver: "Vancouver Stadium",
-    guadalajara: "Estadio Guadalajara",
-    monterrey: "Estadio Monterrey",
-    mexicoCity: "Estadio Ciudad de México",
-  };
-  
   const cities = [
     { key: "newYork", countryKey: "usa", capacity: "82,500", matches: ["Group Stage Match", "Group Stage Match", "Group Stage Match", "Group Stage Match", "Group Stage Match", "Round of 32", "Round of 16", "Final (July 19)"] },
     { key: "dallas", countryKey: "usa", capacity: "80,000", matches: ["Group Stage Match", "Group Stage Match", "Group Stage Match", "Group Stage Match", "Group Stage Match", "Round of 32", "Round of 16", "Round of 16", "Semi-Final (July 14)"] },
@@ -107,7 +88,7 @@ export default function Cities() {
                       </div>
                       <h3 className="text-xl font-bold text-white leading-none mb-1">{t(`cities.cityNames.${city.key}`)}</h3>
                       <p className="text-xs text-gray-300">{t(`cities.stadiums.${city.key}`)} • {city.capacity}</p>
-                      <p className="text-[10px] text-accent/90 mt-0.5">FIFA: {fifaStadiumNames[city.key]}</p>
+                      <p className="text-[10px] text-accent/90 mt-0.5">FIFA: {t(`cities.fifaStadiums.${city.key}`)}</p>
                       {vault && (
                         <p className="text-[10px] text-primary/80 mt-1 italic">"{t(`cities.vault.mottos.${city.key}`, vault.motto)}"</p>
                       )}
@@ -143,7 +124,7 @@ export default function Cities() {
                           <div className="flex items-center justify-between">
                             <div>
                               <p className="text-sm font-medium text-white">{t(`cities.stadiums.${city.key}`)} • {city.capacity}</p>
-                              <p className="text-xs text-accent">FIFA: {fifaStadiumNames[city.key]}</p>
+                              <p className="text-xs text-accent">FIFA: {t(`cities.fifaStadiums.${city.key}`)}</p>
                             </div>
                             {vault?.stadiumAccess?.adaGates && (
                               <span className="text-[10px] bg-accent/20 text-accent px-2 py-1 rounded">ADA: {vault.stadiumAccess.adaGates.length} gates</span>

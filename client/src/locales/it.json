@@ -297,6 +297,24 @@
       "toronto": "Campo BMO",
       "vancouver": "BC Place"
     },
+    "fifaStadiums": {
+      "newYork": "Stadio New York/New Jersey",
+      "losAngeles": "Stadio Los Angeles FIFA",
+      "dallas": "Stadio Dallas FIFA",
+      "miami": "Stadio Miami FIFA",
+      "atlanta": "Stadio Atlanta FIFA",
+      "seattle": "Stadio Seattle FIFA",
+      "sanFrancisco": "Stadio Area della Baia di San Francisco",
+      "houston": "Stadio Houston",
+      "philadelphia": "Stadio Philadelphia",
+      "kansasCity": "Stadio Kansas City FIFA",
+      "boston": "Stadio Boston FIFA",
+      "toronto": "Stadio Toronto",
+      "vancouver": "Stadio Vancouver",
+      "guadalajara": "Stadio Guadalajara",
+      "monterrey": "Stadio Monterrey",
+      "mexicoCity": "Stadio Città del Messico"
+    },
     "stages": {
       "groupStageMatch": "Partita della fase a gironi",
       "roundOf32": "Sedicesimi di finale",
