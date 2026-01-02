@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Cup 2026 - Knockout Bracket</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    @page {
+      size: landscape;
+      margin: 0.5in;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff;
+      color: #1a1a2e;
+      padding: 20px;
+    }
+    
+    .print-banner {
+      background: linear-gradient(135deg, #22C55E 0%, #16a34a 100%);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .print-banner p {
+      margin: 0;
+      font-size: 14px;
+    }
+    
+    .print-banner button {
+      background: white;
+      color: #16a34a;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .print-banner button:hover {
+      background: #f0f0f0;
+    }
+    
+    @media print {
+      .print-banner {
+        display: none !important;
+      }
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #22C55E;
+      padding-bottom: 15px;
+    }
+    
+    .header h1 {
+      font-size: 28px;
+      color: #1a1a2e;
+      margin-bottom: 5px;
+    }
+    
+    .header p {
+      color: #666;
+      font-size: 14px;
+    }
+    
+    .bracket-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      min-height: 600px;
+    }
+    
+    .bracket-side {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .bracket-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+    }
+    
+    .round {
+      margin-bottom: 15px;
+    }
+    
+    .round-title {
+      font-size: 11px;
+      font-weight: bold;
+      color: #22C55E;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+    
+    .match {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .team-slot {
+      display: flex;
+      align-items: center;
+      padding: 6px 10px;
+      background: #f8f9fa;
+      border-bottom: 1px solid #eee;
+      min-height: 32px;
+    }
+    
+    .team-slot:last-child {
+      border-bottom: none;
+    }
+    
+    .team-slot input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 11px;
+      color: #333;
+      outline: none;
+    }
+    
+    .team-slot input::placeholder {
+      color: #999;
+      font-style: italic;
+    }
+    
+    .score-box {
+      width: 24px;
+      height: 20px;
+      border: 1px solid #ccc;
+      text-align: center;
+      font-size: 11px;
+      border-radius: 2px;
+      margin-left: 5px;
+    }
+    
+    .match-info {
+      font-size: 9px;
+      color: #888;
+      padding: 3px 10px;
+      background: #f0f0f0;
+      border-top: 1px solid #ddd;
+    }
+    
+    .final-match {
+      border: 2px solid #22C55E;
+      background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%);
+    }
+    
+    .final-match .team-slot {
+      background: transparent;
+      min-height: 38px;
+    }
+    
+    .champion-box {
+      margin-top: 20px;
+      text-align: center;
+      padding: 15px;
+      border: 2px dashed #22C55E;
+      border-radius: 8px;
+      background: #f0fff4;
+    }
+    
+    .champion-box h3 {
+      font-size: 12px;
+      color: #22C55E;
+      margin-bottom: 8px;
+    }
+    
+    .champion-box input {
+      width: 150px;
+      padding: 8px;
+      border: 2px solid #22C55E;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    
+    .third-place {
+      margin-top: 15px;
+      border: 1px dashed #888;
+    }
+    
+    .matches-grid {
+      display: grid;
+      gap: 6px;
+    }
+    
+    .r32-grid { grid-template-columns: repeat(2, 1fr); }
+    .r16-grid { grid-template-columns: repeat(2, 1fr); }
+    .qf-grid { grid-template-columns: repeat(2, 1fr); }
+    .sf-grid { grid-template-columns: 1fr; }
+    
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 10px;
+      color: #888;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+    
+    .footer a {
+      color: #22C55E;
+      text-decoration: none;
+    }
+    
+    .instructions {
+      margin-top: 15px;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 4px;
+      font-size: 10px;
+      color: #666;
+    }
+    
+    /* Old print button styles removed - using print-banner instead */
+    .print-btn-old {
+      display: none;
+      right: 20px;
+      background: #22C55E;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .print-btn:hover {
+      background: #16a34a;
+    }
+    
+    @media print {
+      .print-btn { display: none; }
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="print-banner">
+    <p><strong>Ready to print!</strong> Click the button or press Ctrl+P (Cmd+P on Mac) to print or save as PDF.</p>
+    <button onclick="window.print()">Print / Save as PDF</button>
+  </div>
+  
+  <div class="header">
+    <h1>World Cup 2026 - Knockout Bracket</h1>
+    <p>June 11 - July 19, 2026 | United States, Canada & Mexico</p>
+  </div>
+  
+  <div class="bracket-container">
+    <!-- LEFT SIDE -->
+    <div class="bracket-side">
+      <div class="round">
+        <div class="round-title">Round of 32 (Left)</div>
+        <div class="matches-grid r32-grid">
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner Group A"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Runner-up Group H"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">MetLife Stadium, NY/NJ</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner Group B"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Runner-up Group G"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">AT&T Stadium, Dallas</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner Group C"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Runner-up Group F"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">SoFi Stadium, Los Angeles</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner Group D"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Runner-up Group E"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Hard Rock Stadium, Miami</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner Group E"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Runner-up Group D"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Estadio Azteca, Mexico City</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner Group F"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Runner-up Group C"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Estadio BBVA, Monterrey</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner Group G"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Runner-up Group B"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Estadio Akron, Guadalajara</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner Group H"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Runner-up Group A"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">BC Place, Vancouver</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="round">
+        <div class="round-title">Round of 16 (Left)</div>
+        <div class="matches-grid r16-grid">
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M1"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M2"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">MetLife Stadium, NY/NJ</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M3"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M4"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">AT&T Stadium, Dallas</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M5"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M6"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Estadio Azteca, Mexico City</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M7"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M8"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">SoFi Stadium, Los Angeles</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="round">
+        <div class="round-title">Quarterfinals (Left)</div>
+        <div class="matches-grid qf-grid">
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner R16 M1"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner R16 M2"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">MetLife Stadium, NY/NJ</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner R16 M3"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner R16 M4"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Estadio Azteca, Mexico City</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="round">
+        <div class="round-title">Semifinal (Left)</div>
+        <div class="matches-grid sf-grid">
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner QF M1"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner QF M2"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">AT&T Stadium, Dallas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- CENTER - Finals -->
+    <div class="bracket-center">
+      <div class="round">
+        <div class="round-title">Final</div>
+        <div class="match final-match">
+          <div class="team-slot"><input type="text" placeholder="Winner SF 1"><input type="text" class="score-box" placeholder="-"></div>
+          <div class="team-slot"><input type="text" placeholder="Winner SF 2"><input type="text" class="score-box" placeholder="-"></div>
+          <div class="match-info">MetLife Stadium, NY/NJ - July 19, 2026</div>
+        </div>
+      </div>
+      
+      <div class="champion-box">
+        <h3>WORLD CHAMPION 2026</h3>
+        <input type="text" placeholder="Your Pick">
+      </div>
+      
+      <div class="round" style="margin-top: 20px;">
+        <div class="round-title">Third Place</div>
+        <div class="match third-place">
+          <div class="team-slot"><input type="text" placeholder="Loser SF 1"><input type="text" class="score-box" placeholder="-"></div>
+          <div class="team-slot"><input type="text" placeholder="Loser SF 2"><input type="text" class="score-box" placeholder="-"></div>
+          <div class="match-info">Hard Rock Stadium, Miami - July 18, 2026</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- RIGHT SIDE -->
+    <div class="bracket-side">
+      <div class="round">
+        <div class="round-title">Round of 32 (Right)</div>
+        <div class="matches-grid r32-grid">
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner Group I"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Runner-up Group L"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">BMO Field, Toronto</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner Group J"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Runner-up Group K"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Lumen Field, Seattle</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner Group K"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Runner-up Group J"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Levi's Stadium, San Francisco</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner Group L"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Runner-up Group I"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">NRG Stadium, Houston</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="3rd Place Group A"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="3rd Place Group B"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Mercedes-Benz, Atlanta</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="3rd Place Group C"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="3rd Place Group D"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Lincoln Financial, Philadelphia</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="3rd Place Group E"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="3rd Place Group F"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Arrowhead Stadium, Kansas City</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="3rd Place Group G"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="3rd Place Group H"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Gillette Stadium, Boston</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="round">
+        <div class="round-title">Round of 16 (Right)</div>
+        <div class="matches-grid r16-grid">
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M9"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M10"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Hard Rock Stadium, Miami</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M11"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M12"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">BC Place, Vancouver</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M13"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M14"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">BMO Field, Toronto</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M15"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner R32 M16"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Lumen Field, Seattle</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="round">
+        <div class="round-title">Quarterfinals (Right)</div>
+        <div class="matches-grid qf-grid">
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner R16 M5"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner R16 M6"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">SoFi Stadium, Los Angeles</div>
+          </div>
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner R16 M7"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner R16 M8"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">AT&T Stadium, Dallas</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="round">
+        <div class="round-title">Semifinal (Right)</div>
+        <div class="matches-grid sf-grid">
+          <div class="match">
+            <div class="team-slot"><input type="text" placeholder="Winner QF M3"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="team-slot"><input type="text" placeholder="Winner QF M4"><input type="text" class="score-box" placeholder="-"></div>
+            <div class="match-info">Hard Rock Stadium, Miami</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="instructions">
+    <strong>Instructions:</strong> Fill in your predictions for each match. Write the team name in the input field and the predicted score in the small box. 
+    The winning team advances to the next round. Click "Print / Save as PDF" to save your bracket.
+  </div>
+  
+  <div class="footer">
+    <p>Get the full Championship Concierge App at <a href="https://championshipconcierge.com">ChampionshipConcierge.com</a></p>
+    <p style="margin-top: 5px;">Includes live scores, host city guides, transportation, dining, and more!</p>
+  </div>
+</body>
+</html>
