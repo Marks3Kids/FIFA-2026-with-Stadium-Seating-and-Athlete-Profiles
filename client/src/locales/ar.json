@@ -370,7 +370,9 @@
         "adaAccessibleGates": "بوابات ذوي الاحتياجات الخاصة",
         "pickupOnly": "صعود فقط",
         "dropoffOnly": "نزول فقط",
-        "pickupDropoff": "صعود ونزول"
+        "pickupDropoff": "صعود ونزول",
+        "departmentOfTransportation": "وزارة النقل",
+        "website": "الموقع"
       },
       "mottos": {
         "kansasCity": "عاصمة كرة القدم في أمريكا وقلب البطولة",

@@ -370,7 +370,9 @@
         "adaAccessibleGates": "Barrierefreie Eingänge",
         "pickupOnly": "Nur Abholung",
         "dropoffOnly": "Nur Absetzen",
-        "pickupDropoff": "Abholen und Absetzen"
+        "pickupDropoff": "Abholen und Absetzen",
+        "departmentOfTransportation": "Verkehrsministerium",
+        "website": "Webseite"
       },
       "mottos": {
         "kansasCity": "Die Fußballhauptstadt Amerikas und das Herz des Turniers",

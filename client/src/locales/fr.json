@@ -370,7 +370,9 @@
         "adaAccessibleGates": "Portes Accessibles PMR",
         "pickupOnly": "Prise en charge uniquement",
         "dropoffOnly": "Dépose uniquement",
-        "pickupDropoff": "Prise en charge et Dépose"
+        "pickupDropoff": "Prise en charge et Dépose",
+        "departmentOfTransportation": "Min. des Transports",
+        "website": "Site Web"
       },
       "mottos": {
         "kansasCity": "La Capitale du Football Américain et le Cœur du Tournoi",

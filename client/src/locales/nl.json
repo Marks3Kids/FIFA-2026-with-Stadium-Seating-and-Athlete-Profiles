@@ -370,7 +370,9 @@
         "adaAccessibleGates": "Toegankelijke Ingangen",
         "pickupOnly": "Alleen Ophalen",
         "dropoffOnly": "Alleen Afzetten",
-        "pickupDropoff": "Ophalen en Afzetten"
+        "pickupDropoff": "Ophalen en Afzetten",
+        "departmentOfTransportation": "Min. van Transport",
+        "website": "Website"
       },
       "mottos": {
         "kansasCity": "De Voetbalhoofdstad van Amerika en het Hart van het Toernooi",

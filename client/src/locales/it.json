@@ -370,7 +370,9 @@
         "adaAccessibleGates": "Ingressi Accessibili",
         "pickupOnly": "Solo Ritiro",
         "dropoffOnly": "Solo Discesa",
-        "pickupDropoff": "Ritiro e Discesa"
+        "pickupDropoff": "Ritiro e Discesa",
+        "departmentOfTransportation": "Min. dei Trasporti",
+        "website": "Sito Web"
       },
       "mottos": {
         "kansasCity": "La Capitale del Calcio d'America e il Cuore del Torneo",

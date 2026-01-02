@@ -370,7 +370,9 @@
         "adaAccessibleGates": "Portões Acessíveis",
         "pickupOnly": "Apenas Embarque",
         "dropoffOnly": "Apenas Desembarque",
-        "pickupDropoff": "Embarque e Desembarque"
+        "pickupDropoff": "Embarque e Desembarque",
+        "departmentOfTransportation": "Depto. de Transportes",
+        "website": "Site"
       },
       "mottos": {
         "kansasCity": "A Capital do Futebol da América e o Coração do Torneio",
