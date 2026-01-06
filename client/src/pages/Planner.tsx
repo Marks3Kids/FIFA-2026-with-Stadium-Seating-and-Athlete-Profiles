@@ -11,6 +11,7 @@ import {
 import { Link } from "wouter";
 import type { Trip, TripTransportation, TripStay, TripDining, TripMatch, TripAgenda, TripDocument, TripContact } from "@shared/schema";
 import { getCurrencyFlagUrl } from "@/lib/flags";
+import { CurrencyConverter } from "@/components/CurrencyConverter";
 
 type ViewMode = "list" | "create" | "detail" | "currency" | "timezone";
 type DetailTab = "overview" | "transport" | "stays" | "dining" | "matches" | "agenda" | "docs" | "contacts";
@@ -164,7 +165,11 @@ export default function Planner() {
   }
 
   if (view === "currency") {
-    return <CurrencyConverter onBack={() => setView("list")} />;
+    return (
+      <Layout>
+        <CurrencyConverter onBack={() => setView("list")} showBackButton={true} />
+      </Layout>
+    );
   }
 
   if (view === "timezone") {
@@ -908,214 +913,6 @@ function ContactsTab({ tripId }: { tripId: number }) {
         ))
       )}
     </div>
-  );
-}
-
-function CurrencyConverter({ onBack }: { onBack: () => void }) {
-  const { t } = useTranslation();
-  const [amount, setAmount] = useState("100");
-  const [fromCurrency, setFromCurrency] = useState("USD");
-  const [toCurrency, setToCurrency] = useState("MXN");
-  const [convertedAmount, setConvertedAmount] = useState<number | null>(null);
-
-  const { data: rates, isLoading, refetch, isFetching } = useQuery<ExchangeRates>({
-    queryKey: ["/api/currency/rates"],
-    staleTime: 4 * 60 * 60 * 1000,
-    refetchInterval: 4 * 60 * 60 * 1000,
-  });
-
-  useEffect(() => {
-    if (rates && amount) {
-      const numAmount = parseFloat(amount);
-      if (!isNaN(numAmount)) {
-        const fromRate = rates.rates[fromCurrency] || 1;
-        const toRate = rates.rates[toCurrency] || 1;
-        const result = (numAmount / fromRate) * toRate;
-        setConvertedAmount(result);
-      }
-    }
-  }, [amount, fromCurrency, toCurrency, rates]);
-
-  const swapCurrencies = () => {
-    setFromCurrency(toCurrency);
-    setToCurrency(fromCurrency);
-  };
-
-  const getCurrency = (code: string) => CURRENCIES.find(c => c.code === code);
-
-  const formatNumber = (num: number) => {
-    if (num >= 1000) {
-      return num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
-    return num.toFixed(4);
-  };
-
-  const getLastUpdated = () => {
-    if (!rates) return "";
-    const date = new Date(rates.lastFetched);
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  };
-
-  return (
-    <Layout>
-      <div className="pt-12 px-6 pb-8">
-        <button onClick={onBack} className="flex items-center text-muted-foreground mb-6" data-testid="back-from-currency">
-          <ArrowLeft className="w-5 h-5 mr-2 rtl-flip" />
-          {t("common.back")}
-        </button>
-
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-primary flex items-center justify-center">
-            <DollarSign className="w-6 h-6 text-white" />
-          </div>
-          <div>
-            <h1 className="text-2xl font-display font-bold text-white">{t("planner.currency.title")}</h1>
-            <p className="text-sm text-muted-foreground">{t("planner.currency.liveRates")}</p>
-          </div>
-        </div>
-
-        {isLoading ? (
-          <div className="text-center text-muted-foreground py-12">
-            <RefreshCw className="w-8 h-8 animate-spin mx-auto mb-2" />
-            {t("common.loading")}
-          </div>
-        ) : (
-          <div className="space-y-6">
-            <div>
-              <label className="text-sm text-muted-foreground mb-2 block">{t("planner.currency.enterAmount")}</label>
-              <input
-                type="number"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                placeholder={t("planner.currency.enterAmount")}
-                className="w-full bg-card border border-white/10 rounded-xl px-4 py-4 text-2xl font-bold text-white focus:outline-none focus:border-primary text-center"
-                data-testid="input-currency-amount"
-              />
-            </div>
-
-            <div>
-              <label className="text-sm text-muted-foreground mb-2 block">{t("planner.currency.from")}</label>
-              <select
-                value={fromCurrency}
-                onChange={(e) => setFromCurrency(e.target.value)}
-                className="w-full bg-card border border-white/10 rounded-xl px-4 py-4 text-white font-medium focus:outline-none focus:border-primary appearance-none"
-                data-testid="select-from-currency"
-              >
-                {CURRENCIES.map((currency) => (
-                  <option key={currency.code} value={currency.code} className="bg-card">
-                    {currency.code} - {currency.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="flex justify-center">
-              <button
-                onClick={swapCurrencies}
-                className="w-12 h-12 rounded-full bg-primary/20 text-primary flex items-center justify-center hover:bg-primary/30 transition-colors active:scale-95"
-                data-testid="button-swap-currencies"
-                title={t("planner.currency.swapCurrencies")}
-              >
-                <ArrowRightLeft className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div>
-              <label className="text-sm text-muted-foreground mb-2 block">{t("planner.currency.to")}</label>
-              <select
-                value={toCurrency}
-                onChange={(e) => setToCurrency(e.target.value)}
-                className="w-full bg-card border border-white/10 rounded-xl px-4 py-4 text-white font-medium focus:outline-none focus:border-primary appearance-none"
-                data-testid="select-to-currency"
-              >
-                {CURRENCIES.map((currency) => (
-                  <option key={currency.code} value={currency.code} className="bg-card">
-                    {currency.code} - {currency.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {convertedAmount !== null && (
-              <div className="bg-gradient-to-r from-primary/20 to-emerald-600/20 border border-primary/30 rounded-2xl p-6 text-center">
-                <div className="text-sm text-muted-foreground mb-2 flex items-center justify-center gap-2">
-                  <img src={getCurrencyFlagUrl(fromCurrency)} alt={fromCurrency} className="w-5 h-4 object-cover rounded" />
-                  {amount} {fromCurrency} =
-                </div>
-                <div className="text-3xl font-display font-bold text-white mb-1 flex items-center justify-center gap-2">
-                  <img src={getCurrencyFlagUrl(toCurrency)} alt={toCurrency} className="w-6 h-5 object-cover rounded" />
-                  {formatNumber(convertedAmount)} {toCurrency}
-                </div>
-                <div className="text-xs text-muted-foreground">
-                  1 {fromCurrency} = {formatNumber((rates?.rates[toCurrency] || 1) / (rates?.rates[fromCurrency] || 1))} {toCurrency}
-                </div>
-              </div>
-            )}
-
-            <div>
-              <p className="text-sm text-muted-foreground mb-3">{t("planner.currency.quickConvertTo")} {toCurrency}</p>
-              <div className="grid grid-cols-4 gap-2">
-                {[10, 50, 100, 500].map((val) => (
-                  <button
-                    key={val}
-                    onClick={() => setAmount(val.toString())}
-                    className={`py-2 rounded-lg text-sm font-medium transition-colors ${
-                      amount === val.toString()
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-card border border-white/10 text-white hover:bg-white/5"
-                    }`}
-                    data-testid={`quick-amount-${val}`}
-                  >
-                    ${val}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <p className="text-sm text-muted-foreground mb-3">{t("planner.currency.hostCountryCurrencies")}</p>
-              <div className="grid grid-cols-3 gap-2">
-                {["USD", "CAD", "MXN"].map((code) => (
-                    <button
-                      key={code}
-                      onClick={() => setToCurrency(code)}
-                      className={`py-3 rounded-xl text-center transition-colors flex flex-col items-center ${
-                        toCurrency === code
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-card border border-white/10 text-white hover:bg-white/5"
-                      }`}
-                      data-testid={`host-currency-${code}`}
-                    >
-                      <img src={getCurrencyFlagUrl(code)} alt={code} className="w-8 h-6 object-cover rounded mb-1" />
-                      <div className="text-xs font-medium">{code}</div>
-                    </button>
-                  ))}
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between text-xs text-muted-foreground bg-card/50 rounded-xl p-3">
-              <span>
-                {rates?.stale ? t("planner.currency.ratesMayBeStale") : `${t("planner.currency.ratesUpdated")}: ${getLastUpdated()}`}
-                {rates?.date && ` (${rates.date})`}
-              </span>
-              <button
-                onClick={() => refetch()}
-                disabled={isFetching}
-                className="flex items-center gap-1 text-primary hover:text-primary/80"
-                data-testid="button-refresh-rates"
-              >
-                <RefreshCw className={`w-3 h-3 ${isFetching ? "animate-spin" : ""}`} />
-                {t("planner.currency.refreshRates")}
-              </button>
-            </div>
-
-            <p className="text-xs text-muted-foreground text-center">
-              {t("planner.currency.liveRates")}
-            </p>
-          </div>
-        )}
-      </div>
-    </Layout>
   );
 }
 

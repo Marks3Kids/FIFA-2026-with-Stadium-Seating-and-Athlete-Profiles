@@ -9,6 +9,7 @@ import {
 import { getFlagUrlByCode, getFlagUrl } from "@/lib/flags";
 import { useTranslation } from "react-i18next";
 import { religiousServices } from "@/data/religiousServices";
+import { CurrencyConverter } from "@/components/CurrencyConverter";
 
 type InfoCategory = "safety" | "emergency" | "financial" | "legal" | "daily" | "religious";
 type TravelCategory = "travel-entry" | "travel-safety" | "prohibited" | "tvguide" | "transport";
@@ -2445,6 +2446,10 @@ export default function CriticalInfo() {
                       </div>
                     ))}
                   </div>
+                </div>
+
+                <div className="border-t border-white/10 pt-6">
+                  <CurrencyConverter showBackButton={false} compact={true} />
                 </div>
               </div>
             )}
