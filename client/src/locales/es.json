@@ -3860,15 +3860,15 @@
         ]
       },
       "clearance": {
-        "usaAircraft": {
+        "usa": {
           "title": "Aduanas de Aeronaves Privadas de EE.UU.",
-          "eAPIS": { "item": "Manifiesto eAPIS", "desc": "Enviar vía sistema CBP eAPIS antes de la salida. Incluir toda la información de pasajeros/tripulación." },
-          "userFee": { "item": "Calcomanía de Tarifa de Usuario", "desc": "Se requiere Calcomanía Anual de Aeronave Privada CBP. Comprar vía DTOPS ($29.96/año)." },
+          "eapis": { "item": "Manifiesto eAPIS", "desc": "Enviar vía sistema CBP eAPIS antes de la salida. Incluir toda la información de pasajeros/tripulación." },
+          "decal": { "item": "Calcomanía de Tarifa de Usuario", "desc": "Se requiere Calcomanía Anual de Aeronave Privada CBP. Comprar vía DTOPS ($29.96/año)." },
           "permission": { "item": "Permiso de Aterrizaje", "desc": "Contactar al puerto CBP de destino antes de partir de área extranjera." },
-          "designated": { "item": "Aeropuertos Designados", "desc": "381 aeropuertos aceptan llegadas internacionales privadas. Verifique su destino." },
+          "airports": { "item": "Aeropuertos Designados", "desc": "381 aeropuertos aceptan llegadas internacionales privadas. Verifique su destino." },
           "preclearance": { "item": "Opción de Predespacho", "desc": "Disponible en Shannon (Irlanda) y Aruba para entrada más rápida a EE.UU." }
         },
-        "usaYacht": {
+        "yacht": {
           "title": "Aduanas de Yates de EE.UU.",
           "report": { "item": "Reportar Dentro de 24 Horas", "desc": "Todos los yates que llegan de puertos extranjeros deben reportar vía app CBP ROAM o teléfono." },
           "qFlag": { "item": "Bandera Q Requerida", "desc": "Izar bandera amarilla de cuarentena al entrar a aguas territoriales de 12 millas hasta ser despachado." },

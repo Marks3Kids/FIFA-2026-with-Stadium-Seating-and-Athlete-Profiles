@@ -3556,15 +3556,15 @@
         ]
       },
       "clearance": {
-        "usaAircraft": {
+        "usa": {
           "title": "Douanes Aéronefs Privés USA",
-          "eAPIS": { "item": "Manifeste eAPIS", "desc": "Soumettre via système CBP eAPIS avant le départ. Inclure toutes les infos passagers/équipage." },
-          "userFee": { "item": "Vignette de Frais d'Utilisation", "desc": "Vignette annuelle CBP Aéronef Privé requise. Acheter via DTOPS ($29.96/an)." },
+          "eapis": { "item": "Manifeste eAPIS", "desc": "Soumettre via système CBP eAPIS avant le départ. Inclure toutes les infos passagers/équipage." },
+          "decal": { "item": "Vignette de Frais d'Utilisation", "desc": "Vignette annuelle CBP Aéronef Privé requise. Acheter via DTOPS ($29.96/an)." },
           "permission": { "item": "Permission d'Atterrir", "desc": "Contacter le port CBP de destination avant le départ d'une zone étrangère." },
-          "designated": { "item": "Aéroports Désignés", "desc": "381 aéroports acceptent les arrivées privées internationales. Vérifiez votre destination." },
+          "airports": { "item": "Aéroports Désignés", "desc": "381 aéroports acceptent les arrivées privées internationales. Vérifiez votre destination." },
           "preclearance": { "item": "Option de Précontrôle", "desc": "Disponible à Shannon (Irlande) et Aruba pour entrée plus rapide aux USA." }
         },
-        "usaYacht": {
+        "yacht": {
           "title": "Douanes Yachts USA",
           "report": { "item": "Signaler Sous 24 Heures", "desc": "Tous les yachts arrivant de ports étrangers doivent signaler via app CBP ROAM ou téléphone." },
           "qFlag": { "item": "Pavillon Q Requis", "desc": "Hisser le pavillon jaune de quarantaine en entrant dans les eaux territoriales de 12 miles jusqu'au dédouanement." },

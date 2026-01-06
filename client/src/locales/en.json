@@ -3342,15 +3342,15 @@
         ]
       },
       "clearance": {
-        "usaAircraft": {
+        "usa": {
           "title": "US Private Aircraft Customs",
-          "eAPIS": { "item": "eAPIS Manifest", "desc": "Submit via CBP eAPIS system before departure. Include all passenger/crew info." },
-          "userFee": { "item": "User Fee Decal", "desc": "Annual CBP Private Aircraft Decal required. Purchase via DTOPS ($29.96/year)." },
+          "eapis": { "item": "eAPIS Manifest", "desc": "Submit via CBP eAPIS system before departure. Include all passenger/crew info." },
+          "decal": { "item": "User Fee Decal", "desc": "Annual CBP Private Aircraft Decal required. Purchase via DTOPS ($29.96/year)." },
           "permission": { "item": "Permission to Land", "desc": "Contact destination CBP port before departure from foreign area." },
-          "designated": { "item": "Designated Airports", "desc": "381 airports accept private international arrivals. Verify your destination." },
+          "airports": { "item": "Designated Airports", "desc": "381 airports accept private international arrivals. Verify your destination." },
           "preclearance": { "item": "Preclearance Option", "desc": "Available in Shannon (Ireland) and Aruba for faster US entry." }
         },
-        "usaYacht": {
+        "yacht": {
           "title": "US Yacht Customs",
           "report": { "item": "Report Within 24 Hours", "desc": "All yachts arriving from foreign ports must report via CBP ROAM app or phone." },
           "qFlag": { "item": "Q Flag Required", "desc": "Fly yellow quarantine flag when entering 12-mile territorial waters until cleared." },

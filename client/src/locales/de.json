@@ -3316,15 +3316,15 @@
         ]
       },
       "clearance": {
-        "usaAircraft": {
+        "usa": {
           "title": "US Privatflugzeug-Zoll",
-          "eAPIS": { "item": "eAPIS Manifest", "desc": "Vor Abflug über CBP eAPIS System einreichen. Alle Passagier-/Crew-Infos angeben." },
-          "userFee": { "item": "Nutzungsgebühr-Aufkleber", "desc": "Jährlicher CBP Privatflugzeug-Aufkleber erforderlich. Kauf über DTOPS ($29.96/Jahr)." },
+          "eapis": { "item": "eAPIS Manifest", "desc": "Vor Abflug über CBP eAPIS System einreichen. Alle Passagier-/Crew-Infos angeben." },
+          "decal": { "item": "Nutzungsgebühr-Aufkleber", "desc": "Jährlicher CBP Privatflugzeug-Aufkleber erforderlich. Kauf über DTOPS ($29.96/Jahr)." },
           "permission": { "item": "Landeerlaubnis", "desc": "Vor Abflug aus ausländischem Gebiet den Zielflughafen CBP kontaktieren." },
-          "designated": { "item": "Designierte Flughäfen", "desc": "381 Flughäfen akzeptieren private internationale Ankünfte. Ziel verifizieren." },
+          "airports": { "item": "Designierte Flughäfen", "desc": "381 Flughäfen akzeptieren private internationale Ankünfte. Ziel verifizieren." },
           "preclearance": { "item": "Preclearance Option", "desc": "Verfügbar in Shannon (Irland) und Aruba für schnellere US-Einreise." }
         },
-        "usaYacht": {
+        "yacht": {
           "title": "US Yacht-Zoll",
           "report": { "item": "Innerhalb 24 Std. Melden", "desc": "Alle Yachten aus ausländischen Häfen müssen sich über CBP ROAM App oder Telefon melden." },
           "qFlag": { "item": "Q-Flagge Erforderlich", "desc": "Gelbe Quarantäneflagge beim Einfahren in 12-Meilen-Hoheitsgewässer hissen bis zur Abfertigung." },

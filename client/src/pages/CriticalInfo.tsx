@@ -1917,39 +1917,39 @@ const privateTransportData = {
     usa: {
       title: "US Private Aircraft Customs",
       requirements: [
-        { item: "eAPIS Manifest", desc: "Submit via CBP eAPIS system before departure. Include all passenger/crew info." },
-        { item: "User Fee Decal", desc: "Annual CBP Private Aircraft Decal required. Purchase via DTOPS ($29.96/year)." },
-        { item: "Permission to Land", desc: "Contact destination CBP port before departure from foreign area." },
-        { item: "Designated Airports", desc: "381 airports accept private international arrivals. Verify your destination." },
-        { item: "Preclearance Option", desc: "Available in Shannon (Ireland) and Aruba for faster US entry." }
+        { id: "eapis", item: "eAPIS Manifest", desc: "Submit via CBP eAPIS system before departure. Include all passenger/crew info." },
+        { id: "decal", item: "User Fee Decal", desc: "Annual CBP Private Aircraft Decal required. Purchase via DTOPS ($29.96/year)." },
+        { id: "permission", item: "Permission to Land", desc: "Contact destination CBP port before departure from foreign area." },
+        { id: "airports", item: "Designated Airports", desc: "381 airports accept private international arrivals. Verify your destination." },
+        { id: "preclearance", item: "Preclearance Option", desc: "Available in Shannon (Ireland) and Aruba for faster US entry." }
       ]
     },
     yacht: {
       title: "US Yacht Customs",
       requirements: [
-        { item: "Report Within 24 Hours", desc: "All yachts arriving from foreign ports must report via CBP ROAM app or phone." },
-        { item: "Q Flag Required", desc: "Fly yellow quarantine flag when entering 12-mile territorial waters until cleared." },
-        { item: "Stay Onboard", desc: "No one may leave or board until customs processing is complete." },
-        { item: "USCG Notification", desc: "Foreign yachts over 300 gross tons must notify USCG 96 hours before arrival." },
-        { item: "Cruising License", desc: "Foreign-flagged yachts from certain countries can get 1-year cruising license." },
-        { item: "DTOPS Decal", desc: "Required for boats 30+ feet. Purchase annually ($29.96)." }
+        { id: "report", item: "Report Within 24 Hours", desc: "All yachts arriving from foreign ports must report via CBP ROAM app or phone." },
+        { id: "qFlag", item: "Q Flag Required", desc: "Fly yellow quarantine flag when entering 12-mile territorial waters until cleared." },
+        { id: "stayOnboard", item: "Stay Onboard", desc: "No one may leave or board until customs processing is complete." },
+        { id: "uscg", item: "USCG Notification", desc: "Foreign yachts over 300 gross tons must notify USCG 96 hours before arrival." },
+        { id: "cruisingLicense", item: "Cruising License", desc: "Foreign-flagged yachts from certain countries can get 1-year cruising license." },
+        { id: "dtops", item: "DTOPS Decal", desc: "Required for boats 30+ feet. Purchase annually ($29.96)." }
       ]
     },
     mexico: {
       title: "Mexico Private Aircraft",
       requirements: [
-        { item: "Mexican APIS", desc: "Advance Passenger Information required for all private flights." },
-        { item: "Single-Entry Permits", desc: "Now required (no more annual authorization). Plan 10+ business days lead time." },
-        { item: "Insurance Match", desc: "Aircraft make/model/serial/tail must exactly match registration." },
-        { item: "Airport Restrictions", desc: "Private jets restricted to designated airports (MEX closed to private)." }
+        { id: "apis", item: "Mexican APIS", desc: "Advance Passenger Information required for all private flights." },
+        { id: "permits", item: "Single-Entry Permits", desc: "Now required (no more annual authorization). Plan 10+ business days lead time." },
+        { id: "insurance", item: "Insurance Match", desc: "Aircraft make/model/serial/tail must exactly match registration." },
+        { id: "restrictions", item: "Airport Restrictions", desc: "Private jets restricted to designated airports (MEX closed to private)." }
       ]
     },
     canada: {
       title: "Canada Private Aircraft",
       requirements: [
-        { item: "Canadian APIS", desc: "Required for international arrivals to Canada." },
-        { item: "CANPASS", desc: "CANPASS Private Aircraft program available for expedited clearance." },
-        { item: "CBSA Notification", desc: "Advance customs arrangements required through FBO/handler." }
+        { id: "apis", item: "Canadian APIS", desc: "Required for international arrivals to Canada." },
+        { id: "canpass", item: "CANPASS", desc: "CANPASS Private Aircraft program available for expedited clearance." },
+        { id: "cbsa", item: "CBSA Notification", desc: "Advance customs arrangements required through FBO/handler." }
       ]
     }
   },
@@ -3656,14 +3656,14 @@ export default function CriticalInfo() {
                       <div className="bg-gradient-to-r from-blue-500/20 to-transparent p-4 border-b border-white/5">
                         <h3 className="text-lg font-bold text-white flex items-center gap-2">
                           <Plane className="w-5 h-5" />
-                          {privateTransportData.customsRequirements.usa.title}
+                          {t("criticalInfo.transportSection.clearance.usa.title", { defaultValue: privateTransportData.customsRequirements.usa.title })}
                         </h3>
                       </div>
                       <div className="p-4 space-y-3">
-                        {privateTransportData.customsRequirements.usa.requirements.map((req, i) => (
-                          <div key={i} className="border border-white/10 rounded-lg p-3">
-                            <h4 className="font-bold text-white text-sm mb-1">{req.item}</h4>
-                            <p className="text-xs text-muted-foreground">{req.desc}</p>
+                        {privateTransportData.customsRequirements.usa.requirements.map((req) => (
+                          <div key={req.id} className="border border-white/10 rounded-lg p-3">
+                            <h4 className="font-bold text-white text-sm mb-1">{t(`criticalInfo.transportSection.clearance.usa.${req.id}.item`, { defaultValue: req.item })}</h4>
+                            <p className="text-xs text-muted-foreground">{t(`criticalInfo.transportSection.clearance.usa.${req.id}.desc`, { defaultValue: req.desc })}</p>
                           </div>
                         ))}
                       </div>
@@ -3673,14 +3673,14 @@ export default function CriticalInfo() {
                       <div className="bg-gradient-to-r from-cyan-500/20 to-transparent p-4 border-b border-white/5">
                         <h3 className="text-lg font-bold text-white flex items-center gap-2">
                           <Anchor className="w-5 h-5" />
-                          {privateTransportData.customsRequirements.yacht.title}
+                          {t("criticalInfo.transportSection.clearance.yacht.title", { defaultValue: privateTransportData.customsRequirements.yacht.title })}
                         </h3>
                       </div>
                       <div className="p-4 space-y-3">
-                        {privateTransportData.customsRequirements.yacht.requirements.map((req, i) => (
-                          <div key={i} className="border border-white/10 rounded-lg p-3">
-                            <h4 className="font-bold text-white text-sm mb-1">{req.item}</h4>
-                            <p className="text-xs text-muted-foreground">{req.desc}</p>
+                        {privateTransportData.customsRequirements.yacht.requirements.map((req) => (
+                          <div key={req.id} className="border border-white/10 rounded-lg p-3">
+                            <h4 className="font-bold text-white text-sm mb-1">{t(`criticalInfo.transportSection.clearance.yacht.${req.id}.item`, { defaultValue: req.item })}</h4>
+                            <p className="text-xs text-muted-foreground">{t(`criticalInfo.transportSection.clearance.yacht.${req.id}.desc`, { defaultValue: req.desc })}</p>
                           </div>
                         ))}
                       </div>
@@ -3690,14 +3690,14 @@ export default function CriticalInfo() {
                       <div className="bg-gradient-to-r from-orange-500/20 to-transparent p-4 border-b border-white/5">
                         <h3 className="text-lg font-bold text-white flex items-center gap-2">
                           <span className="text-lg">🇲🇽</span>
-                          {privateTransportData.customsRequirements.mexico.title}
+                          {t("criticalInfo.transportSection.clearance.mexico.title", { defaultValue: privateTransportData.customsRequirements.mexico.title })}
                         </h3>
                       </div>
                       <div className="p-4 space-y-3">
-                        {privateTransportData.customsRequirements.mexico.requirements.map((req, i) => (
-                          <div key={i} className="border border-white/10 rounded-lg p-3">
-                            <h4 className="font-bold text-white text-sm mb-1">{req.item}</h4>
-                            <p className="text-xs text-muted-foreground">{req.desc}</p>
+                        {privateTransportData.customsRequirements.mexico.requirements.map((req) => (
+                          <div key={req.id} className="border border-white/10 rounded-lg p-3">
+                            <h4 className="font-bold text-white text-sm mb-1">{t(`criticalInfo.transportSection.clearance.mexico.${req.id}.item`, { defaultValue: req.item })}</h4>
+                            <p className="text-xs text-muted-foreground">{t(`criticalInfo.transportSection.clearance.mexico.${req.id}.desc`, { defaultValue: req.desc })}</p>
                           </div>
                         ))}
                       </div>
@@ -3707,14 +3707,14 @@ export default function CriticalInfo() {
                       <div className="bg-gradient-to-r from-red-500/20 to-transparent p-4 border-b border-white/5">
                         <h3 className="text-lg font-bold text-white flex items-center gap-2">
                           <span className="text-lg">🇨🇦</span>
-                          {privateTransportData.customsRequirements.canada.title}
+                          {t("criticalInfo.transportSection.clearance.canada.title", { defaultValue: privateTransportData.customsRequirements.canada.title })}
                         </h3>
                       </div>
                       <div className="p-4 space-y-3">
-                        {privateTransportData.customsRequirements.canada.requirements.map((req, i) => (
-                          <div key={i} className="border border-white/10 rounded-lg p-3">
-                            <h4 className="font-bold text-white text-sm mb-1">{req.item}</h4>
-                            <p className="text-xs text-muted-foreground">{req.desc}</p>
+                        {privateTransportData.customsRequirements.canada.requirements.map((req) => (
+                          <div key={req.id} className="border border-white/10 rounded-lg p-3">
+                            <h4 className="font-bold text-white text-sm mb-1">{t(`criticalInfo.transportSection.clearance.canada.${req.id}.item`, { defaultValue: req.item })}</h4>
+                            <p className="text-xs text-muted-foreground">{t(`criticalInfo.transportSection.clearance.canada.${req.id}.desc`, { defaultValue: req.desc })}</p>
                           </div>
                         ))}
                       </div>
@@ -3728,7 +3728,7 @@ export default function CriticalInfo() {
                     <div>
                       <p className="text-primary font-medium text-sm mb-2">{t("criticalInfo.transportSection.transportTips")}</p>
                       <ul className="text-sm text-primary/80 space-y-1">
-                        {privateTransportData.tips.map((tip, i) => (
+                        {(t("criticalInfo.transportSection.tips", { returnObjects: true }) as string[]).map((tip, i) => (
                           <li key={i}>• {tip}</li>
                         ))}
                       </ul>

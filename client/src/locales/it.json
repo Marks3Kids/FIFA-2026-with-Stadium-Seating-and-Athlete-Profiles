@@ -3316,15 +3316,15 @@
         ]
       },
       "clearance": {
-        "usaAircraft": {
+        "usa": {
           "title": "Dogana Aerei Privati USA",
-          "eAPIS": { "item": "Manifesto eAPIS", "desc": "Inviare tramite sistema CBP eAPIS prima della partenza. Includere tutte le info passeggeri/equipaggio." },
-          "userFee": { "item": "Adesivo Tassa Utente", "desc": "Adesivo Annuale CBP Aereo Privato richiesto. Acquistare tramite DTOPS ($29.96/anno)." },
+          "eapis": { "item": "Manifesto eAPIS", "desc": "Inviare tramite sistema CBP eAPIS prima della partenza. Includere tutte le info passeggeri/equipaggio." },
+          "decal": { "item": "Adesivo Tassa Utente", "desc": "Adesivo Annuale CBP Aereo Privato richiesto. Acquistare tramite DTOPS ($29.96/anno)." },
           "permission": { "item": "Permesso di Atterraggio", "desc": "Contattare il porto CBP di destinazione prima di partire da area straniera." },
-          "designated": { "item": "Aeroporti Designati", "desc": "381 aeroporti accettano arrivi privati internazionali. Verificare la destinazione." },
+          "airports": { "item": "Aeroporti Designati", "desc": "381 aeroporti accettano arrivi privati internazionali. Verificare la destinazione." },
           "preclearance": { "item": "Opzione Preclearance", "desc": "Disponibile a Shannon (Irlanda) e Aruba per ingresso USA più rapido." }
         },
-        "usaYacht": {
+        "yacht": {
           "title": "Dogana Yacht USA",
           "report": { "item": "Segnalare Entro 24 Ore", "desc": "Tutti gli yacht da porti stranieri devono segnalare via app CBP ROAM o telefono." },
           "qFlag": { "item": "Bandiera Q Richiesta", "desc": "Issare bandiera gialla di quarantena entrando in acque territoriali 12 miglia fino allo sdoganamento." },

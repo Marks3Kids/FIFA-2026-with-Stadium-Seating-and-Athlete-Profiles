@@ -3315,15 +3315,15 @@
         ]
       },
       "clearance": {
-        "usaAircraft": {
+        "usa": {
           "title": "Alfândega de Aeronaves Privadas EUA",
-          "eAPIS": { "item": "Manifesto eAPIS", "desc": "Enviar via sistema CBP eAPIS antes da partida. Incluir todas as informações de passageiros/tripulação." },
-          "userFee": { "item": "Adesivo de Taxa de Usuário", "desc": "Adesivo Anual de Aeronave Privada CBP necessário. Comprar via DTOPS ($29.96/ano)." },
+          "eapis": { "item": "Manifesto eAPIS", "desc": "Enviar via sistema CBP eAPIS antes da partida. Incluir todas as informações de passageiros/tripulação." },
+          "decal": { "item": "Adesivo de Taxa de Usuário", "desc": "Adesivo Anual de Aeronave Privada CBP necessário. Comprar via DTOPS ($29.96/ano)." },
           "permission": { "item": "Permissão para Pousar", "desc": "Contatar porto CBP de destino antes de partir de área estrangeira." },
-          "designated": { "item": "Aeroportos Designados", "desc": "381 aeroportos aceitam chegadas internacionais privadas. Verifique seu destino." },
+          "airports": { "item": "Aeroportos Designados", "desc": "381 aeroportos aceitam chegadas internacionais privadas. Verifique seu destino." },
           "preclearance": { "item": "Opção de Pré-liberação", "desc": "Disponível em Shannon (Irlanda) e Aruba para entrada mais rápida nos EUA." }
         },
-        "usaYacht": {
+        "yacht": {
           "title": "Alfândega de Iates EUA",
           "report": { "item": "Reportar em 24 Horas", "desc": "Todos os iates chegando de portos estrangeiros devem reportar via app CBP ROAM ou telefone." },
           "qFlag": { "item": "Bandeira Q Necessária", "desc": "Hastear bandeira amarela de quarentena ao entrar em águas territoriais de 12 milhas até liberação." },

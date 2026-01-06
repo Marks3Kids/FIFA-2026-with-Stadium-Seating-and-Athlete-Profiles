@@ -3316,15 +3316,15 @@
         ]
       },
       "clearance": {
-        "usaAircraft": {
+        "usa": {
           "title": "VS Privévliegtuig Douane",
-          "eAPIS": { "item": "eAPIS Manifest", "desc": "Indienen via CBP eAPIS systeem voor vertrek. Alle passagiers-/bemanningsinformatie opnemen." },
-          "userFee": { "item": "Gebruikskosten Sticker", "desc": "Jaarlijkse CBP Privévliegtuig Sticker vereist. Kopen via DTOPS ($29.96/jaar)." },
+          "eapis": { "item": "eAPIS Manifest", "desc": "Indienen via CBP eAPIS systeem voor vertrek. Alle passagiers-/bemanningsinformatie opnemen." },
+          "decal": { "item": "Gebruikskosten Sticker", "desc": "Jaarlijkse CBP Privévliegtuig Sticker vereist. Kopen via DTOPS ($29.96/jaar)." },
           "permission": { "item": "Landingsvergunning", "desc": "Contact opnemen met bestemming CBP-haven voor vertrek uit buitenlands gebied." },
-          "designated": { "item": "Aangewezen Luchthavens", "desc": "381 luchthavens accepteren privé internationale aankomsten. Verifieer uw bestemming." },
+          "airports": { "item": "Aangewezen Luchthavens", "desc": "381 luchthavens accepteren privé internationale aankomsten. Verifieer uw bestemming." },
           "preclearance": { "item": "Preclearance Optie", "desc": "Beschikbaar in Shannon (Ierland) en Aruba voor snellere VS-toegang." }
         },
-        "usaYacht": {
+        "yacht": {
           "title": "VS Jacht Douane",
           "report": { "item": "Binnen 24 Uur Melden", "desc": "Alle jachten uit buitenlandse havens moeten melden via CBP ROAM app of telefoon." },
           "qFlag": { "item": "Q-Vlag Vereist", "desc": "Gele quarantainevlag hijsen bij binnenkomst 12-mijls territoriale wateren tot klaring." },
