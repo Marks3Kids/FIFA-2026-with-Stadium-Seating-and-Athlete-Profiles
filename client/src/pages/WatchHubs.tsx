@@ -156,7 +156,17 @@ export default function WatchHubs() {
           </div>
         </div>
 
-        <div className="relative mt-6 mb-6">
+        <div className="bg-card/50 border border-white/10 rounded-xl p-4 mt-6 mb-4">
+          <div className="flex items-center gap-2 mb-2">
+            <Users className="w-5 h-5 text-primary" />
+            <span className="font-bold text-white">{t("watchHubs.infoTitle")}</span>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            {t("watchHubs.infoDescription")}
+          </p>
+        </div>
+
+        <div className="relative mb-6">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           <input
             type="text"
@@ -165,16 +175,6 @@ export default function WatchHubs() {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-card border border-white/10 rounded-xl pl-10 pr-4 py-3 text-white placeholder:text-muted-foreground focus:outline-none focus:border-primary"
           />
-        </div>
-
-        <div className="bg-card/50 border border-white/10 rounded-xl p-4 mb-6">
-          <div className="flex items-center gap-2 mb-2">
-            <Users className="w-5 h-5 text-primary" />
-            <span className="font-bold text-white">{t("watchHubs.infoTitle")}</span>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            {t("watchHubs.infoDescription")}
-          </p>
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
