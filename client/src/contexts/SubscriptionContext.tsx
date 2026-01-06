@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
-const PAYWALL_ENABLED = false;
+const PAYWALL_ENABLED = true;
 
 export type SubscriptionTier = "none" | "free" | "team_info" | "logistics" | "ai_concierge";
 
