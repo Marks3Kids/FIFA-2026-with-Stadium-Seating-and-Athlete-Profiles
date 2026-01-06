@@ -219,57 +219,7 @@ export default function StadiumSeating() {
               </div>
             </div>
 
-            <div className="relative mb-8">
-              <div className="bg-gradient-to-b from-green-900/30 to-green-800/20 rounded-2xl p-6 border border-green-500/20">
-                <div className="text-center mb-4">
-                  <div className="inline-block bg-green-500/20 rounded-lg px-4 py-2 border border-green-500/30">
-                    <span className="text-green-400 font-bold text-sm">{t("stadiumSeating.pitchView")}</span>
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-32 h-32 border-2 border-green-500/30 rounded-full" />
-                  </div>
-
-                  <div className="grid gap-4">
-                    {["Lower", "Middle", "Upper"].map((level) => {
-                      const levelSections = getSectionsByLevel(level);
-                      if (levelSections.length === 0) return null;
-                      
-                      return (
-                        <div key={level} className="space-y-2">
-                          <p className="text-xs text-muted-foreground uppercase tracking-wider text-center">
-                            {t(`stadiumSeating.levels.${level.toLowerCase()}`)}
-                          </p>
-                          <div className="grid grid-cols-2 gap-2">
-                            {levelSections.map((section) => {
-                              const colors = sectionColors[section.sectionType] || sectionColors.standard;
-                              return (
-                                <button
-                                  key={section.id}
-                                  onClick={() => setSelectedSection(section)}
-                                  className={`${colors.bg} ${colors.border} border rounded-xl p-3 hover:scale-105 transition-all cursor-pointer`}
-                                  data-testid={`button-section-${section.id}`}
-                                >
-                                  <p className={`font-medium text-sm ${colors.text}`}>{section.sectionName}</p>
-                                  <p className="text-white font-bold">{formatPrice(section.basePriceUsd)}</p>
-                                  <p className="text-[10px] text-muted-foreground">
-                                    {section.premiumPriceUsd && `- ${formatPrice(section.premiumPriceUsd)}`}
-                                  </p>
-                                </button>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-4">
+            <div className="space-y-4 mt-6">
               <h3 className="text-lg font-semibold text-white">{t("stadiumSeating.allSections")}</h3>
               {sections.map((section) => {
                 const colors = sectionColors[section.sectionType] || sectionColors.standard;
