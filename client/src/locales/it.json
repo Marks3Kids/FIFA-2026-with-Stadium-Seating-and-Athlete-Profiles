@@ -2628,7 +2628,7 @@
       "safety": "Sicurezza",
       "prohibited": "Vietato",
       "tvguide": "Guida TV",
-      "transport": "Trasporto",
+      "transport": "Jet Privati & Yacht",
       "consulates": "Consolati"
     },
     "customsSection": {
@@ -3252,6 +3252,8 @@
       "ciqOnSite": "CIQ In Loco",
       "cbsaOnSite": "CBSA In Loco",
       "airportNotes": {
+        "opf": "Preferito per jet privati. Meno congestionato di MIA. CBP 24/7 disponibile.",
+        "mia-pvt": "CBP completo in loco. Più traffico ma posizione comoda.",
         "teb": "Opzione jet privato più vicina a Manhattan. Aeroporto di aviazione commerciale più trafficato al mondo. Prenota presto!",
         "hpn": "Seconda scelta per Manhattan. Meno traffico di Teterboro.",
         "vny": "Aeroporto jet privati più trafficato al mondo. Nessun traffico commerciale. CBP completo.",
@@ -3293,8 +3295,9 @@
         "emeraldLanding": "Lago Union, acqua dolce, accesso al centro",
         "elliottBay": "Recintato, sicuro, minuti dal centro",
         "bellHarbor": "Unica marina del centro di Seattle, sicurezza 24h",
-        "miamiBeachMarina": "Pronto per superyacht, infrastruttura megayacht",
-        "islandGardens": "Acque profonde, ormeggi megayacht fino a 550ft"
+        "miamiBeachMarina": "400 posti, vicino a South Beach, nessun ponte fisso",
+        "islandGardens": "Acque profonde, 50 posti superyacht, immigrazione 24h, gestito da IGY",
+        "oneIslandPark": "Solo yacht 100m+, concierge VIP, accesso più veloce all'oceano"
       },
       "yachtInfo": {
         "title": "Ormeggi Superyacht",

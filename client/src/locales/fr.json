@@ -2868,7 +2868,7 @@
       "safety": "Sécurité",
       "prohibited": "Interdit",
       "tvguide": "Guide TV",
-      "transport": "Transport",
+      "transport": "Jets Privés & Yachts",
       "consulates": "Consulats"
     },
     "customsSection": {
@@ -3492,6 +3492,8 @@
       "ciqOnSite": "CIQ Sur Place",
       "cbsaOnSite": "ASFC Sur Place",
       "airportNotes": {
+        "opf": "Préféré pour jets privés. Moins encombré que MIA. CBP 24/7 disponible.",
+        "mia-pvt": "CBP complet sur place. Plus de trafic mais emplacement pratique.",
         "teb": "Option jet privé la plus proche de Manhattan. Aéroport d'aviation d'affaires le plus fréquenté au monde. Réservez tôt!",
         "hpn": "Deuxième choix pour Manhattan. Moins de trafic que Teterboro.",
         "vny": "Aéroport de jets privés le plus fréquenté au monde. Pas de trafic commercial. CBP complet.",
@@ -3533,8 +3535,9 @@
         "emeraldLanding": "Lac Union, eau douce, accès au centre-ville",
         "elliottBay": "Sécurisé, fermé, à minutes du centre-ville",
         "bellHarbor": "Seule marina du centre de Seattle, sécurité 24h",
-        "miamiBeachMarina": "Prêt pour superyachts, infrastructure mégayachts",
-        "islandGardens": "Eaux profondes, places mégayachts jusqu'à 550ft"
+        "miamiBeachMarina": "400 places, près de South Beach, pas de ponts fixes",
+        "islandGardens": "Eaux profondes, 50 places superyachts, immigration 24h, géré par IGY",
+        "oneIslandPark": "Yachts de 100m+ uniquement, concierge VIP, accès océan le plus rapide"
       },
       "yachtInfo": {
         "title": "Postes d'Amarrage Superyachts",

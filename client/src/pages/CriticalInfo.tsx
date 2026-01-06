@@ -1465,6 +1465,7 @@ interface PrivateCityData {
   flag: string;
   airports: PrivateAirport[];
   marinas?: {
+    id: string;
     name: string;
     maxLength: string;
     features: string;
@@ -1499,9 +1500,9 @@ const privateTransportData = {
         }
       ],
       marinas: [
-        { name: "Yacht Haven Grande (Island Gardens)", maxLength: "550ft (167m)", features: "Deep water, 50 superyacht berths, 24hr immigration, IGY managed" },
-        { name: "One Island Park", maxLength: "800ft (244m)", features: "100m+ yachts only, VIP concierge, fastest ocean access" },
-        { name: "Miami Beach Marina", maxLength: "250ft (76m)", features: "400 slips, near South Beach, no fixed bridges" }
+        { id: "islandGardens", name: "Yacht Haven Grande (Island Gardens)", maxLength: "550ft (167m)", features: "Deep water, 50 superyacht berths, 24hr immigration, IGY managed" },
+        { id: "oneIslandPark", name: "One Island Park", maxLength: "800ft (244m)", features: "100m+ yachts only, VIP concierge, fastest ocean access" },
+        { id: "miamiBeachMarina", name: "Miami Beach Marina", maxLength: "250ft (76m)", features: "400 slips, near South Beach, no fixed bridges" }
       ]
     },
     {
@@ -1530,8 +1531,8 @@ const privateTransportData = {
         }
       ],
       marinas: [
-        { name: "Liberty Landing Marina", maxLength: "200ft", features: "Direct NYC skyline views, near MetLife Stadium" },
-        { name: "North Cove Marina", maxLength: "150ft", features: "Manhattan location, Financial District" }
+        { id: "libertyLanding", name: "Liberty Landing Marina", maxLength: "200ft", features: "Direct NYC skyline views, near MetLife Stadium" },
+        { id: "northCove", name: "North Cove Marina", maxLength: "150ft", features: "Manhattan location, Financial District" }
       ]
     },
     {
@@ -1569,8 +1570,8 @@ const privateTransportData = {
         }
       ],
       marinas: [
-        { name: "Marina del Rey", maxLength: "Variable", features: "Large recreational marina, some superyacht capacity" },
-        { name: "Long Beach Marina", maxLength: "100ft+", features: "Near convention center, protected harbor" }
+        { id: "marinaDelRey", name: "Marina del Rey", maxLength: "Variable", features: "Large recreational marina, some superyacht capacity" },
+        { id: "longBeachMarina", name: "Long Beach Marina", maxLength: "100ft+", features: "Near convention center, protected harbor" }
       ]
     },
     {
@@ -1712,9 +1713,9 @@ const privateTransportData = {
         }
       ],
       marinas: [
-        { name: "Emerald Landing", maxLength: "360ft (109m)", features: "Lake Union, freshwater, downtown access" },
-        { name: "Elliott Bay Marina", maxLength: "300ft", features: "Gated, secure, minutes from downtown" },
-        { name: "Bell Harbor Marina", maxLength: "100ft+", features: "Only downtown Seattle marina, 24hr security" }
+        { id: "emeraldLanding", name: "Emerald Landing", maxLength: "360ft (109m)", features: "Lake Union, freshwater, downtown access" },
+        { id: "elliottBay", name: "Elliott Bay Marina", maxLength: "300ft", features: "Gated, secure, minutes from downtown" },
+        { id: "bellHarbor", name: "Bell Harbor Marina", maxLength: "100ft+", features: "Only downtown Seattle marina, 24hr security" }
       ]
     },
     {
@@ -3472,7 +3473,7 @@ export default function CriticalInfo() {
                                       <span key={i} className="bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded text-xs">{fbo}</span>
                                     ))}
                                   </div>
-                                  <p className="text-xs text-muted-foreground">{airport.notes}</p>
+                                  <p className="text-xs text-muted-foreground">{t(`criticalInfo.transportSection.airportNotes.${airport.id}`, { defaultValue: airport.notes })}</p>
                                 </div>
                               ))}
                             </div>
@@ -3529,7 +3530,7 @@ export default function CriticalInfo() {
                                       <span key={i} className="bg-orange-500/10 text-orange-400 px-2 py-0.5 rounded text-xs">{fbo}</span>
                                     ))}
                                   </div>
-                                  <p className="text-xs text-muted-foreground">{airport.notes}</p>
+                                  <p className="text-xs text-muted-foreground">{t(`criticalInfo.transportSection.airportNotes.${airport.id}`, { defaultValue: airport.notes })}</p>
                                 </div>
                               ))}
                             </div>
@@ -3586,7 +3587,7 @@ export default function CriticalInfo() {
                                       <span key={i} className="bg-red-500/10 text-red-400 px-2 py-0.5 rounded text-xs">{fbo}</span>
                                     ))}
                                   </div>
-                                  <p className="text-xs text-muted-foreground">{airport.notes}</p>
+                                  <p className="text-xs text-muted-foreground">{t(`criticalInfo.transportSection.airportNotes.${airport.id}`, { defaultValue: airport.notes })}</p>
                                 </div>
                               ))}
                             </div>
@@ -3619,14 +3620,14 @@ export default function CriticalInfo() {
                         </div>
                         <div className="p-4 space-y-3">
                           {city.marinas?.map((marina, i) => (
-                            <div key={i} className="border border-white/10 rounded-lg p-3">
+                            <div key={marina.id} className="border border-white/10 rounded-lg p-3">
                               <div className="flex items-start justify-between mb-2">
                                 <h4 className="font-bold text-white text-sm">{marina.name}</h4>
                                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400">
                                   {t("criticalInfo.transportSection.maxLength")}: {marina.maxLength}
                                 </span>
                               </div>
-                              <p className="text-xs text-muted-foreground">{marina.features}</p>
+                              <p className="text-xs text-muted-foreground">{t(`criticalInfo.transportSection.marinaFeatures.${marina.id}`, { defaultValue: marina.features })}</p>
                             </div>
                           ))}
                         </div>

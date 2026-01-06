@@ -2628,7 +2628,7 @@
       "safety": "安全",
       "prohibited": "禁止",
       "tvguide": "TV ガイド",
-      "transport": "交通",
+      "transport": "プライベートジェット＆ヨット",
       "consulates": "領事館"
     },
     "customsSection": {
@@ -3252,6 +3252,8 @@
       "ciqOnSite": "CIQ常駐",
       "cbsaOnSite": "CBSA常駐",
       "airportNotes": {
+        "opf": "プライベートジェットに好まれる。MIAより混雑少ない。24時間CBP対応。",
+        "mia-pvt": "現地フルCBP。交通量は多いが便利な場所。",
         "teb": "マンハッタンに最も近いプライベートジェットオプション。世界で最も忙しいビジネス航空空港。早めに予約を！",
         "hpn": "マンハッタンの第二選択肢。テターボロより交通量が少ない。",
         "vny": "世界で最も忙しいプライベートジェット空港。商業交通なし。フルCBP。",
@@ -3293,8 +3295,9 @@
         "emeraldLanding": "ユニオン湖、淡水、ダウンタウンアクセス",
         "elliottBay": "ゲート付き、安全、ダウンタウンから数分",
         "bellHarbor": "シアトルダウンタウン唯一のマリーナ、24時間セキュリティ",
-        "miamiBeachMarina": "スーパーヨット対応、メガヨットインフラ",
-        "islandGardens": "深水、550ftまでのメガヨットスリップ"
+        "miamiBeachMarina": "400スリップ、サウスビーチ近く、固定橋なし",
+        "islandGardens": "深水、50スーパーヨットバース、24時間入国管理、IGY運営",
+        "oneIslandPark": "100m以上のヨットのみ、VIPコンシェルジュ、最速の海へのアクセス"
       },
       "yachtInfo": {
         "title": "スーパーヨット係留所",

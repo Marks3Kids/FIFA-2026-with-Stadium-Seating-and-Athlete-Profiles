@@ -2654,7 +2654,7 @@
       "safety": "Safety",
       "prohibited": "Prohibited",
       "tvguide": "TV Guide",
-      "transport": "Transport",
+      "transport": "Private Jets & Yachts",
       "consulates": "Consulates"
     },
     "customsSection": {
@@ -3278,6 +3278,8 @@
       "ciqOnSite": "CIQ On-Site",
       "cbsaOnSite": "CBSA On-Site",
       "airportNotes": {
+        "opf": "Preferred for private jets. Less congested than MIA. 24/7 CBP available.",
+        "mia-pvt": "Full CBP on-site. Higher traffic but convenient location.",
         "teb": "Manhattan's closest private jet option. World's busiest business aviation airport. Slots go fast - book early!",
         "hpn": "Second choice for Manhattan. Less traffic than Teterboro.",
         "vny": "World's busiest private jet airport. No commercial traffic. Full CBP.",
@@ -3319,8 +3321,9 @@
         "emeraldLanding": "Lake Union, freshwater, downtown access",
         "elliottBay": "Gated, secure, minutes from downtown",
         "bellHarbor": "Only downtown Seattle marina, 24hr security",
-        "miamiBeachMarina": "Superyacht-ready, megayacht infrastructure",
-        "islandGardens": "Deep water, megayacht slips to 550ft"
+        "miamiBeachMarina": "400 slips, near South Beach, no fixed bridges",
+        "islandGardens": "Deep water, 50 superyacht berths, 24hr immigration, IGY managed",
+        "oneIslandPark": "100m+ yachts only, VIP concierge, fastest ocean access"
       },
       "yachtInfo": {
         "title": "Superyacht Berths",

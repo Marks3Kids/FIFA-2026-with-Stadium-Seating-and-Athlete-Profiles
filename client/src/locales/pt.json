@@ -2627,7 +2627,7 @@
       "safety": "Segurança",
       "prohibited": "Proibido",
       "tvguide": "Guia de TV",
-      "transport": "Transporte",
+      "transport": "Jatos Privados & Iates",
       "consulates": "Consulados"
     },
     "customsSection": {
@@ -3251,6 +3251,8 @@
       "ciqOnSite": "CIQ no Local",
       "cbsaOnSite": "CBSA no Local",
       "airportNotes": {
+        "opf": "Preferido para jatos privados. Menos congestionado que MIA. CBP 24/7 disponível.",
+        "mia-pvt": "CBP completo no local. Mais tráfego mas localização conveniente.",
         "teb": "Opção de jato privado mais próxima de Manhattan. Aeroporto de aviação executiva mais movimentado do mundo. Reserve cedo!",
         "hpn": "Segunda opção para Manhattan. Menos tráfego que Teterboro.",
         "vny": "Aeroporto de jatos privados mais movimentado do mundo. Sem tráfego comercial. CBP completo.",
@@ -3292,8 +3294,9 @@
         "emeraldLanding": "Lago Union, água doce, acesso ao centro",
         "elliottBay": "Fechado, seguro, minutos do centro",
         "bellHarbor": "Única marina do centro de Seattle, segurança 24h",
-        "miamiBeachMarina": "Pronto para superiates, infraestrutura de megaiates",
-        "islandGardens": "Águas profundas, vagas de megaiates até 550ft"
+        "miamiBeachMarina": "400 vagas, perto de South Beach, sem pontes fixas",
+        "islandGardens": "Águas profundas, 50 vagas para superiates, imigração 24h, gerenciado pela IGY",
+        "oneIslandPark": "Somente iates de 100m+, concierge VIP, acesso mais rápido ao oceano"
       },
       "yachtInfo": {
         "title": "Atracadouros para Superiates",

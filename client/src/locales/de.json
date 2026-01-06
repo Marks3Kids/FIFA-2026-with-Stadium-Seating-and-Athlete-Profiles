@@ -2628,7 +2628,7 @@
       "safety": "Sicherheit",
       "prohibited": "Verboten",
       "tvguide": "TV-Guide",
-      "transport": "Transport",
+      "transport": "Privatjets & Yachten",
       "consulates": "Konsulate"
     },
     "customsSection": {
@@ -3252,6 +3252,8 @@
       "ciqOnSite": "CIQ vor Ort",
       "cbsaOnSite": "CBSA vor Ort",
       "airportNotes": {
+        "opf": "Bevorzugt für Privatjets. Weniger überlastet als MIA. 24/7 CBP verfügbar.",
+        "mia-pvt": "Voller CBP vor Ort. Mehr Verkehr aber bequeme Lage.",
         "teb": "Nächste Privatjet-Option zu Manhattan. Geschäftigster Business-Aviation-Flughafen der Welt. Früh buchen!",
         "hpn": "Zweite Wahl für Manhattan. Weniger Verkehr als Teterboro.",
         "vny": "Geschäftigster Privatjet-Flughafen der Welt. Kein kommerzieller Verkehr. Voller CBP.",
@@ -3293,8 +3295,9 @@
         "emeraldLanding": "Lake Union, Süßwasser, Innenstadtzugang",
         "elliottBay": "Geschlossen, sicher, Minuten von der Innenstadt",
         "bellHarbor": "Einzige Marina in der Innenstadt von Seattle, 24h Sicherheit",
-        "miamiBeachMarina": "Superyacht-ready, Megayacht-Infrastruktur",
-        "islandGardens": "Tiefes Wasser, Megayacht-Plätze bis 550ft"
+        "miamiBeachMarina": "400 Liegeplätze, nahe South Beach, keine festen Brücken",
+        "islandGardens": "Tiefes Wasser, 50 Superyacht-Liegeplätze, 24h Immigration, IGY-verwaltet",
+        "oneIslandPark": "Nur 100m+ Yachten, VIP-Concierge, schnellster Meerzugang"
       },
       "yachtInfo": {
         "title": "Superyacht-Liegeplätze",

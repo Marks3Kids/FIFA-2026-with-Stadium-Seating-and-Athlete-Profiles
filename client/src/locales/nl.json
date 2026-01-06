@@ -2628,7 +2628,7 @@
       "safety": "Veiligheid",
       "prohibited": "Verboden",
       "tvguide": "TV Gids",
-      "transport": "Vervoer",
+      "transport": "Privéjets & Jachten",
       "consulates": "Consulaten"
     },
     "customsSection": {
@@ -3252,6 +3252,8 @@
       "ciqOnSite": "CIQ Aanwezig",
       "cbsaOnSite": "CBSA Aanwezig",
       "airportNotes": {
+        "opf": "Voorkeur voor privéjets. Minder druk dan MIA. 24/7 CBP beschikbaar.",
+        "mia-pvt": "Volledige CBP ter plaatse. Meer verkeer maar handige locatie.",
         "teb": "Dichtstbijzijnde privéjet optie bij Manhattan. Drukste zakelijke luchthaven ter wereld. Vroeg boeken!",
         "hpn": "Tweede keuze voor Manhattan. Minder verkeer dan Teterboro.",
         "vny": "Drukste privéjet luchthaven ter wereld. Geen commercieel verkeer. Volledige CBP.",
@@ -3293,8 +3295,9 @@
         "emeraldLanding": "Lake Union, zoetwater, toegang tot centrum",
         "elliottBay": "Afgesloten, veilig, minuten van centrum",
         "bellHarbor": "Enige marina in centrum Seattle, 24u beveiliging",
-        "miamiBeachMarina": "Superjacht-ready, megajacht infrastructuur",
-        "islandGardens": "Diep water, megajacht ligplaatsen tot 550ft"
+        "miamiBeachMarina": "400 ligplaatsen, nabij South Beach, geen vaste bruggen",
+        "islandGardens": "Diep water, 50 superjacht ligplaatsen, 24u immigratie, IGY beheerd",
+        "oneIslandPark": "Alleen 100m+ jachten, VIP conciërge, snelste toegang tot oceaan"
       },
       "yachtInfo": {
         "title": "Superjacht Ligplaatsen",
