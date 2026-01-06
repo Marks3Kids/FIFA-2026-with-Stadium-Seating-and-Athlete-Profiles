@@ -2864,12 +2864,33 @@
       ]
     },
     "travelCategories": {
-      "customs": "Douanes",
+      "travelEntry": "Voyage et Entrée",
       "safety": "Sécurité",
       "prohibited": "Interdit",
       "tvguide": "Guide TV",
-      "transport": "Jets Privés & Yachts",
-      "consulates": "Consulats"
+      "transport": "Jets Privés & Yachts"
+    },
+    "travelEntrySection": {
+      "title": "Voyage et Entrée",
+      "subtitle": "Exigences d'entrée, visas et services consulaires",
+      "entryRequirements": {
+        "title": "Exigences d'Entrée",
+        "subtitle": "Visas, douanes et immigration"
+      },
+      "consulates": {
+        "title": "Trouvez Votre Consulat",
+        "subtitle": "Contacts des ambassades et consulats par ville"
+      },
+      "consulateTips": {
+        "title": "CONSEILS CONSULAIRES",
+        "items": [
+          "Enregistrez le numéro de votre consulat avant de voyager",
+          "Inscrivez-vous auprès de votre ambassade pour les alertes voyage",
+          "Les consulats NE peuvent PAS payer les cautions ou fournir une représentation juridique",
+          "Les passeports d'urgence prennent 1-2 jours ouvrables",
+          "La plupart des consulats ferment les jours fériés locaux ET du pays d'origine"
+        ]
+      }
     },
     "customsSection": {
       "title": "Douanes et Immigration",

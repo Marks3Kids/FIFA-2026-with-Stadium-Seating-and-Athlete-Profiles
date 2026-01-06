@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { religiousServices } from "@/data/religiousServices";
 
 type InfoCategory = "safety" | "emergency" | "financial" | "legal" | "daily" | "religious";
-type TravelCategory = "customs" | "travel-safety" | "prohibited" | "tvguide" | "transport" | "consulates";
+type TravelCategory = "travel-entry" | "travel-safety" | "prohibited" | "tvguide" | "transport";
 
 interface SafetyCard {
   id: string;
@@ -2224,7 +2224,7 @@ export default function CriticalInfo() {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language || 'en';
   const [activeCategory, setActiveCategory] = useState<InfoCategory>("safety");
-  const [activeTravelCategory, setActiveTravelCategory] = useState<TravelCategory>("customs");
+  const [activeTravelCategory, setActiveTravelCategory] = useState<TravelCategory>("travel-entry");
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
   const [viewMode, setViewMode] = useState<"info" | "travel" | "medical">("info");
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
@@ -2256,12 +2256,11 @@ export default function CriticalInfo() {
   ];
 
   const travelCategories: { id: TravelCategory; labelKey: string; icon: any; available: boolean }[] = [
-    { id: "customs", labelKey: "criticalInfo.travelCategories.customs", icon: Stamp, available: true },
+    { id: "travel-entry", labelKey: "criticalInfo.travelCategories.travelEntry", icon: Stamp, available: true },
     { id: "travel-safety", labelKey: "criticalInfo.travelCategories.safety", icon: ShieldCheck, available: true },
     { id: "prohibited", labelKey: "criticalInfo.travelCategories.prohibited", icon: Ban, available: true },
     { id: "tvguide", labelKey: "criticalInfo.travelCategories.tvguide", icon: Tv, available: true },
     { id: "transport", labelKey: "criticalInfo.travelCategories.transport", icon: Plane, available: true },
-    { id: "consulates", labelKey: "criticalInfo.travelCategories.consulates", icon: Building2, available: true },
   ];
 
   const toggleCard = (id: string) => {
@@ -2688,72 +2687,222 @@ export default function CriticalInfo() {
               ))}
             </div>
 
-            {activeTravelCategory === "customs" && (
-              <div className="space-y-6">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Stamp className="w-5 h-5 text-primary" />
-                    <h2 className="text-xl font-display font-bold text-white">{t("criticalInfo.customsSection.title")}</h2>
-                  </div>
-                  <p className="text-muted-foreground text-sm">{t("criticalInfo.customsSection.subtitle")}</p>
-                </div>
-
-                <div className="space-y-3">
-                  <h3 className="font-bold text-white">{t("criticalInfo.customsSection.visaRequirements")}</h3>
-                  {customsDataKeys.visaRequirements.map((id) => (
-                    <div key={id} className="bg-card border border-white/5 rounded-xl p-4" data-testid={`customs-${id}`}>
-                      <p className="text-sm text-muted-foreground">
-                        <span className="text-white font-medium">{t(`criticalInfo.customsSection.visaItems.${id}.title`)}</span>: {t(`criticalInfo.customsSection.visaItems.${id}.description`)}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="space-y-3">
-                  <h3 className="font-bold text-red-400">{t("criticalInfo.customsSection.firstPointOfEntry.title")}</h3>
-                  <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4">
-                    <p className="text-white font-medium mb-3">
-                      {t("criticalInfo.customsSection.firstPointOfEntry.description")}
-                    </p>
-                    <ol className="space-y-2 text-sm text-muted-foreground">
-                      {(t("criticalInfo.customsSection.firstPointOfEntry.steps", { returnObjects: true }) as string[]).map((step, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span className="text-primary font-medium">{i + 1}.</span>
-                          {step}
-                        </li>
-                      ))}
-                    </ol>
+            {activeTravelCategory === "travel-entry" && (
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Stamp className="w-6 h-6 text-primary" />
+                  <div>
+                    <h2 className="text-xl font-display font-bold text-white">{t("criticalInfo.travelEntrySection.title")}</h2>
+                    <p className="text-sm text-muted-foreground">{t("criticalInfo.travelEntrySection.subtitle")}</p>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-yellow-500/10 to-yellow-600/5 border border-yellow-500/20 rounded-xl p-4">
-                  <div className="flex items-start gap-2">
-                    <span className="text-yellow-400 text-lg">💡</span>
-                    <div>
-                      <p className="text-white font-medium text-sm">{t("criticalInfo.customsSection.mpcTip.title")}</p>
-                      <a 
-                        href="https://www.cbp.gov/travel/us-citizens/mobile-passport-control" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 mt-3 bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
-                        data-testid="link-mpc-app"
-                      >
-                        <Plane className="w-4 h-4" />
-                        {t("criticalInfo.customsSection.mpcTip.button")}
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
+                {/* Entry Requirements Section */}
+                <div className="bg-card border border-white/5 rounded-xl overflow-hidden">
+                  <button
+                    onClick={() => toggleCard("travel-entry-requirements")}
+                    className="w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors"
+                    data-testid="toggle-entry-requirements"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                        <Stamp className="w-5 h-5 text-primary" />
+                      </div>
+                      <div className="text-left">
+                        <h3 className="font-bold text-white">{t("criticalInfo.travelEntrySection.entryRequirements.title")}</h3>
+                        <p className="text-xs text-muted-foreground">{t("criticalInfo.travelEntrySection.entryRequirements.subtitle")}</p>
+                      </div>
                     </div>
-                  </div>
+                    {expandedCards.has("travel-entry-requirements") ? (
+                      <ChevronUp className="w-5 h-5 text-muted-foreground" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5 text-muted-foreground" />
+                    )}
+                  </button>
+
+                  {expandedCards.has("travel-entry-requirements") && (
+                    <div className="border-t border-white/5 p-4 space-y-4">
+                      <div className="space-y-3">
+                        <h4 className="font-bold text-white text-sm">{t("criticalInfo.customsSection.visaRequirements")}</h4>
+                        {customsDataKeys.visaRequirements.map((id) => (
+                          <div key={id} className="bg-background/50 border border-white/10 rounded-xl p-3" data-testid={`customs-${id}`}>
+                            <p className="text-sm text-muted-foreground">
+                              <span className="text-white font-medium">{t(`criticalInfo.customsSection.visaItems.${id}.title`)}</span>: {t(`criticalInfo.customsSection.visaItems.${id}.description`)}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="space-y-3">
+                        <h4 className="font-bold text-red-400 text-sm">{t("criticalInfo.customsSection.firstPointOfEntry.title")}</h4>
+                        <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-3">
+                          <p className="text-white font-medium text-sm mb-2">
+                            {t("criticalInfo.customsSection.firstPointOfEntry.description")}
+                          </p>
+                          <ol className="space-y-1 text-xs text-muted-foreground">
+                            {(t("criticalInfo.customsSection.firstPointOfEntry.steps", { returnObjects: true }) as string[]).map((step, i) => (
+                              <li key={i} className="flex items-start gap-2">
+                                <span className="text-primary font-medium">{i + 1}.</span>
+                                {step}
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
+                      </div>
+
+                      <div className="bg-gradient-to-r from-yellow-500/10 to-yellow-600/5 border border-yellow-500/20 rounded-xl p-3">
+                        <div className="flex items-start gap-2">
+                          <span className="text-yellow-400">💡</span>
+                          <div>
+                            <p className="text-white font-medium text-sm">{t("criticalInfo.customsSection.mpcTip.title")}</p>
+                            <a 
+                              href="https://www.cbp.gov/travel/us-citizens/mobile-passport-control" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 mt-2 bg-primary text-primary-foreground px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-primary/90 transition-colors"
+                              data-testid="link-mpc-app"
+                            >
+                              <Plane className="w-3 h-3" />
+                              {t("criticalInfo.customsSection.mpcTip.button")}
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="space-y-3">
+                        <h4 className="font-bold text-white text-sm">{t("criticalInfo.customsSection.additionalInfo")}</h4>
+                        {customsDataKeys.additionalInfo.map((id) => (
+                          <div key={id} className="bg-background/50 border border-white/10 rounded-xl p-3" data-testid={`customs-${id}`}>
+                            <h5 className="font-bold text-white text-sm mb-1">{t(`criticalInfo.customsSection.additionalItems.${id}.title`)}</h5>
+                            <p className="text-xs text-muted-foreground">{t(`criticalInfo.customsSection.additionalItems.${id}.description`)}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                <div className="space-y-3">
-                  <h3 className="font-bold text-white">{t("criticalInfo.customsSection.additionalInfo")}</h3>
-                  {customsDataKeys.additionalInfo.map((id) => (
-                    <div key={id} className="bg-card border border-white/5 rounded-xl p-4" data-testid={`customs-${id}`}>
-                      <h4 className="font-bold text-white mb-1">{t(`criticalInfo.customsSection.additionalItems.${id}.title`)}</h4>
-                      <p className="text-sm text-muted-foreground">{t(`criticalInfo.customsSection.additionalItems.${id}.description`)}</p>
+                {/* Consulates Section */}
+                <div className="bg-card border border-white/5 rounded-xl overflow-hidden">
+                  <button
+                    onClick={() => toggleCard("travel-entry-consulates")}
+                    className="w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors"
+                    data-testid="toggle-consulates"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+                        <Building2 className="w-5 h-5 text-blue-400" />
+                      </div>
+                      <div className="text-left">
+                        <h3 className="font-bold text-white">{t("criticalInfo.travelEntrySection.consulates.title")}</h3>
+                        <p className="text-xs text-muted-foreground">{t("criticalInfo.travelEntrySection.consulates.subtitle")}</p>
+                      </div>
                     </div>
-                  ))}
+                    {expandedCards.has("travel-entry-consulates") ? (
+                      <ChevronUp className="w-5 h-5 text-muted-foreground" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5 text-muted-foreground" />
+                    )}
+                  </button>
+
+                  {expandedCards.has("travel-entry-consulates") && (
+                    <div className="border-t border-white/5 p-4 space-y-4">
+                      <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3">
+                        <div className="flex items-start gap-2">
+                          <AlertCircle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-amber-200 font-medium text-sm mb-1">{t("criticalInfo.consulatesSection.whenToContact")}</p>
+                            <ul className="text-xs text-amber-200/80 space-y-0.5">
+                              {(t("criticalInfo.consulatesSection.reasons", { returnObjects: true }) as string[]).map((reason, i) => (
+                                <li key={i}>• {reason}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="space-y-3">
+                        {consulatesData.map((cityData) => (
+                          <div key={cityData.id} className="bg-background/50 border border-white/10 rounded-xl overflow-hidden">
+                            <button
+                              onClick={() => toggleCard(`consulate-${cityData.id}`)}
+                              className="w-full flex items-center justify-between p-3 hover:bg-white/5 transition-colors"
+                              data-testid={`consulate-city-${cityData.id}`}
+                            >
+                              <div className="flex items-center gap-2">
+                                <span className="text-xl">
+                                  {cityData.country === "USA" ? "🇺🇸" : cityData.country === "Mexico" ? "🇲🇽" : "🇨🇦"}
+                                </span>
+                                <div className="text-left">
+                                  <h4 className="font-bold text-white text-sm">{cityData.city}</h4>
+                                  <p className="text-[10px] text-muted-foreground">{cityData.consulates.length} {t("criticalInfo.consulatesSection.consulatesCount")}</p>
+                                </div>
+                              </div>
+                              {expandedCards.has(`consulate-${cityData.id}`) ? (
+                                <ChevronUp className="w-4 h-4 text-muted-foreground" />
+                              ) : (
+                                <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                              )}
+                            </button>
+
+                            {expandedCards.has(`consulate-${cityData.id}`) && (
+                              <div className="border-t border-white/10 p-3 space-y-2">
+                                {cityData.consulates.map((consulate, idx) => (
+                                  <div 
+                                    key={idx}
+                                    className="bg-card border border-white/10 rounded-lg p-3"
+                                    data-testid={`consulate-${cityData.id}-${consulate.country.toLowerCase().replace(/\s+/g, '-')}`}
+                                  >
+                                    <div className="flex items-center gap-2 mb-1">
+                                      <img src={getFlagUrlByCode(consulate.flag, 40)} alt={consulate.country} className="w-6 h-4 object-cover rounded" />
+                                      <h5 className="font-bold text-white text-sm">{consulate.country}</h5>
+                                    </div>
+                                    <p className="text-[10px] text-muted-foreground mb-2">{consulate.address}</p>
+                                    <a
+                                      href={`tel:${consulate.phone.replace(/\s+/g, '')}`}
+                                      className="w-full bg-primary text-primary-foreground py-1.5 rounded-lg text-xs font-medium flex items-center justify-center gap-1"
+                                      data-testid={`call-consulate-${cityData.id}-${idx}`}
+                                    >
+                                      <Phone className="w-3 h-3" />
+                                      {consulate.phone}
+                                    </a>
+                                    {consulate.emergency && (
+                                      <div className="mt-2 bg-red-500/10 border border-red-500/20 rounded-lg p-2">
+                                        <p className="text-[10px] text-red-300">
+                                          <strong>24/7:</strong> {consulate.emergency}
+                                        </p>
+                                      </div>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-3">
+                        <div className="flex items-start gap-2">
+                          <Lightbulb className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-blue-200 font-medium text-xs mb-1">{t("criticalInfo.travelEntrySection.consulateTips.title")}</p>
+                            <ul className="text-[10px] text-blue-200/80 space-y-0.5">
+                              {(t("criticalInfo.travelEntrySection.consulateTips.items", { returnObjects: true, defaultValue: [
+                                "Save your consulate's number before traveling",
+                                "Register with your embassy for travel alerts",
+                                "Consulates can NOT post bail or provide legal representation",
+                                "Emergency passports take 1-2 business days",
+                                "Most consulates close on local AND home country holidays"
+                              ] }) as string[]).map((tip, i) => (
+                                <li key={i}>• {tip}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -3731,112 +3880,6 @@ export default function CriticalInfo() {
                         {(t("criticalInfo.transportSection.tips", { returnObjects: true }) as string[]).map((tip, i) => (
                           <li key={i}>• {tip}</li>
                         ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {activeTravelCategory === "consulates" && (
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 mb-4">
-                  <Building2 className="w-6 h-6 text-blue-400" />
-                  <div>
-                    <h2 className="text-xl font-display font-bold text-white">{t("criticalInfo.consulatesSection.title")}</h2>
-                    <p className="text-sm text-muted-foreground">{t("criticalInfo.consulatesSection.subtitle")}</p>
-                  </div>
-                </div>
-
-                <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 mb-4">
-                  <div className="flex items-start gap-2">
-                    <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-amber-200 font-medium text-sm mb-1">{t("criticalInfo.consulatesSection.whenToContact")}</p>
-                      <ul className="text-xs text-amber-200/80 space-y-1">
-                        {(t("criticalInfo.consulatesSection.reasons", { returnObjects: true }) as string[]).map((reason, i) => (
-                          <li key={i}>• {reason}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  {consulatesData.map((cityData) => (
-                    <div key={cityData.id} className="bg-card border border-white/5 rounded-xl overflow-hidden">
-                      <button
-                        onClick={() => toggleCard(`consulate-${cityData.id}`)}
-                        className="w-full flex items-center justify-between p-4 hover:bg-white/5 transition-colors"
-                        data-testid={`consulate-city-${cityData.id}`}
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="text-2xl">
-                            {cityData.country === "USA" ? "🇺🇸" : cityData.country === "Mexico" ? "🇲🇽" : "🇨🇦"}
-                          </span>
-                          <div className="text-left">
-                            <h3 className="font-bold text-white">{cityData.city}</h3>
-                            <p className="text-xs text-muted-foreground">{cityData.consulates.length} {t("criticalInfo.consulatesSection.consulatesCount")}</p>
-                          </div>
-                        </div>
-                        {expandedCards.has(`consulate-${cityData.id}`) ? (
-                          <ChevronUp className="w-5 h-5 text-muted-foreground" />
-                        ) : (
-                          <ChevronDown className="w-5 h-5 text-muted-foreground" />
-                        )}
-                      </button>
-
-                      {expandedCards.has(`consulate-${cityData.id}`) && (
-                        <div className="border-t border-white/5 p-4 space-y-3">
-                          {cityData.consulates.map((consulate, idx) => (
-                            <div 
-                              key={idx}
-                              className="bg-background/50 border border-white/10 rounded-xl p-4"
-                              data-testid={`consulate-${cityData.id}-${consulate.country.toLowerCase().replace(/\s+/g, '-')}`}
-                            >
-                              <div className="flex items-start justify-between mb-2">
-                                <div className="flex items-center gap-2">
-                                  <img src={getFlagUrlByCode(consulate.flag, 40)} alt={consulate.country} className="w-7 h-5 object-cover rounded" />
-                                  <h4 className="font-bold text-white">{consulate.country}</h4>
-                                </div>
-                              </div>
-                              <p className="text-xs text-muted-foreground mb-3">{consulate.address}</p>
-                              <div className="flex gap-2">
-                                <a
-                                  href={`tel:${consulate.phone.replace(/\s+/g, '')}`}
-                                  className="flex-1 bg-primary text-primary-foreground py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1"
-                                  data-testid={`call-consulate-${cityData.id}-${idx}`}
-                                >
-                                  <Phone className="w-3 h-3" />
-                                  {consulate.phone}
-                                </a>
-                              </div>
-                              {consulate.emergency && (
-                                <div className="mt-2 bg-red-500/10 border border-red-500/20 rounded-lg p-2">
-                                  <p className="text-xs text-red-300">
-                                    <strong>24/7 Emergency:</strong> {consulate.emergency}
-                                  </p>
-                                </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
-                  <div className="flex items-start gap-2">
-                    <Lightbulb className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-blue-200 font-medium text-sm mb-2">CONSULATE TIPS</p>
-                      <ul className="text-xs text-blue-200/80 space-y-1">
-                        <li>• Save your consulate's number before traveling</li>
-                        <li>• Register with your embassy for travel alerts</li>
-                        <li>• Consulates can NOT post bail or provide legal representation</li>
-                        <li>• Emergency passports take 1-2 business days</li>
-                        <li>• Most consulates close on local AND home country holidays</li>
                       </ul>
                     </div>
                   </div>

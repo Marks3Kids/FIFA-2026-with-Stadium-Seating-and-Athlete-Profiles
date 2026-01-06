@@ -2624,12 +2624,33 @@
       ]
     },
     "travelCategories": {
-      "customs": "Douane",
+      "travelEntry": "Reizen & Inreizen",
       "safety": "Veiligheid",
       "prohibited": "Verboden",
       "tvguide": "TV Gids",
-      "transport": "Privéjets & Jachten",
-      "consulates": "Consulaten"
+      "transport": "Privéjets & Jachten"
+    },
+    "travelEntrySection": {
+      "title": "Reizen & Inreizen",
+      "subtitle": "Inreisvereisten, visa en consulaire diensten",
+      "entryRequirements": {
+        "title": "Inreisvereisten",
+        "subtitle": "Visa, douane en immigratie"
+      },
+      "consulates": {
+        "title": "Vind Uw Consulaat",
+        "subtitle": "Ambassade- en consulaatcontacten per stad"
+      },
+      "consulateTips": {
+        "title": "CONSULAAT TIPS",
+        "items": [
+          "Sla het nummer van uw consulaat op voor vertrek",
+          "Registreer bij uw ambassade voor reiswaarschuwingen",
+          "Consulaten kunnen GEEN borgtocht betalen of juridische vertegenwoordiging bieden",
+          "Noodpaspoorten duren 1-2 werkdagen",
+          "De meeste consulaten sluiten op lokale EN thuisland feestdagen"
+        ]
+      }
     },
     "customsSection": {
       "title": "Douane & Immigratie",

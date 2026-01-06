@@ -2624,12 +2624,33 @@
       ]
     },
     "travelCategories": {
-      "customs": "Zoll",
+      "travelEntry": "Reise & Einreise",
       "safety": "Sicherheit",
       "prohibited": "Verboten",
       "tvguide": "TV-Guide",
-      "transport": "Privatjets & Yachten",
-      "consulates": "Konsulate"
+      "transport": "Privatjets & Yachten"
+    },
+    "travelEntrySection": {
+      "title": "Reise & Einreise",
+      "subtitle": "Einreisebestimmungen, Visa und konsularische Dienste",
+      "entryRequirements": {
+        "title": "Einreisebestimmungen",
+        "subtitle": "Visa, Zoll und Einwanderung"
+      },
+      "consulates": {
+        "title": "Finden Sie Ihr Konsulat",
+        "subtitle": "Botschafts- und Konsulatskontakte nach Stadt"
+      },
+      "consulateTips": {
+        "title": "KONSULAT-TIPPS",
+        "items": [
+          "Speichern Sie die Nummer Ihres Konsulats vor der Reise",
+          "Registrieren Sie sich bei Ihrer Botschaft für Reisewarnungen",
+          "Konsulate können KEINE Kaution zahlen oder Rechtsbeistand leisten",
+          "Notfallpässe dauern 1-2 Werktage",
+          "Die meisten Konsulate schließen an lokalen UND Heimatland-Feiertagen"
+        ]
+      }
     },
     "customsSection": {
       "title": "Zoll & Einwanderung",

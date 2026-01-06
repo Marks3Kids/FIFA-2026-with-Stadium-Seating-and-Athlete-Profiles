@@ -2623,12 +2623,33 @@
       ]
     },
     "travelCategories": {
-      "customs": "Alfândega",
+      "travelEntry": "Viagem e Entrada",
       "safety": "Segurança",
       "prohibited": "Proibido",
       "tvguide": "Guia de TV",
-      "transport": "Jatos Privados & Iates",
-      "consulates": "Consulados"
+      "transport": "Jatos Privados & Iates"
+    },
+    "travelEntrySection": {
+      "title": "Viagem e Entrada",
+      "subtitle": "Requisitos de entrada, vistos e serviços consulares",
+      "entryRequirements": {
+        "title": "Requisitos de Entrada",
+        "subtitle": "Vistos, alfândega e imigração"
+      },
+      "consulates": {
+        "title": "Encontre Seu Consulado",
+        "subtitle": "Contatos de embaixadas e consulados por cidade"
+      },
+      "consulateTips": {
+        "title": "DICAS CONSULARES",
+        "items": [
+          "Salve o número do seu consulado antes de viajar",
+          "Registre-se na sua embaixada para alertas de viagem",
+          "Consulados NÃO podem pagar fiança ou fornecer representação legal",
+          "Passaportes de emergência levam 1-2 dias úteis",
+          "A maioria dos consulados fecha em feriados locais E do país de origem"
+        ]
+      }
     },
     "customsSection": {
       "title": "Alfândega e Imigração",

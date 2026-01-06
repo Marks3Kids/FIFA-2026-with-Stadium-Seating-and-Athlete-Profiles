@@ -2650,12 +2650,33 @@
       ]
     },
     "travelCategories": {
-      "customs": "Customs",
+      "travelEntry": "Travel & Entry",
       "safety": "Safety",
       "prohibited": "Prohibited",
       "tvguide": "TV Guide",
-      "transport": "Private Jets & Yachts",
-      "consulates": "Consulates"
+      "transport": "Private Jets & Yachts"
+    },
+    "travelEntrySection": {
+      "title": "Travel & Entry",
+      "subtitle": "Entry requirements, visas, and consular services",
+      "entryRequirements": {
+        "title": "Entry Requirements",
+        "subtitle": "Visas, customs, and immigration"
+      },
+      "consulates": {
+        "title": "Find Your Consulate",
+        "subtitle": "Embassy & consular contacts by city"
+      },
+      "consulateTips": {
+        "title": "CONSULATE TIPS",
+        "items": [
+          "Save your consulate's number before traveling",
+          "Register with your embassy for travel alerts",
+          "Consulates can NOT post bail or provide legal representation",
+          "Emergency passports take 1-2 business days",
+          "Most consulates close on local AND home country holidays"
+        ]
+      }
     },
     "customsSection": {
       "title": "Customs & Immigration",

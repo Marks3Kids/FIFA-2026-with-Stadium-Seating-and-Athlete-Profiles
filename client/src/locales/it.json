@@ -2624,12 +2624,33 @@
       ]
     },
     "travelCategories": {
-      "customs": "Dogana",
+      "travelEntry": "Viaggio e Ingresso",
       "safety": "Sicurezza",
       "prohibited": "Vietato",
       "tvguide": "Guida TV",
-      "transport": "Jet Privati & Yacht",
-      "consulates": "Consolati"
+      "transport": "Jet Privati & Yacht"
+    },
+    "travelEntrySection": {
+      "title": "Viaggio e Ingresso",
+      "subtitle": "Requisiti di ingresso, visti e servizi consolari",
+      "entryRequirements": {
+        "title": "Requisiti di Ingresso",
+        "subtitle": "Visti, dogana e immigrazione"
+      },
+      "consulates": {
+        "title": "Trova il Tuo Consolato",
+        "subtitle": "Contatti di ambasciate e consolati per città"
+      },
+      "consulateTips": {
+        "title": "CONSIGLI CONSOLARI",
+        "items": [
+          "Salva il numero del tuo consolato prima di partire",
+          "Registrati presso la tua ambasciata per gli avvisi di viaggio",
+          "I consolati NON possono pagare cauzioni o fornire rappresentanza legale",
+          "I passaporti di emergenza richiedono 1-2 giorni lavorativi",
+          "La maggior parte dei consolati chiude nei giorni festivi locali E del paese d'origine"
+        ]
+      }
     },
     "customsSection": {
       "title": "Dogana e Immigrazione",

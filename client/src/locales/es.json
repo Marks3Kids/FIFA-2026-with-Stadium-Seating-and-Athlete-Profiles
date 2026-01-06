@@ -3168,12 +3168,33 @@
       ]
     },
     "travelCategories": {
-      "customs": "Aduanas",
+      "travelEntry": "Viaje y Entrada",
       "safety": "Seguridad",
       "prohibited": "Prohibido",
       "tvguide": "Guía de TV",
-      "transport": "Jets Privados y Yates",
-      "consulates": "Consulados"
+      "transport": "Jets Privados y Yates"
+    },
+    "travelEntrySection": {
+      "title": "Viaje y Entrada",
+      "subtitle": "Requisitos de entrada, visas y servicios consulares",
+      "entryRequirements": {
+        "title": "Requisitos de Entrada",
+        "subtitle": "Visas, aduanas e inmigración"
+      },
+      "consulates": {
+        "title": "Encuentra Tu Consulado",
+        "subtitle": "Contactos de embajadas y consulados por ciudad"
+      },
+      "consulateTips": {
+        "title": "CONSEJOS CONSULARES",
+        "items": [
+          "Guarde el número de su consulado antes de viajar",
+          "Regístrese en su embajada para alertas de viaje",
+          "Los consulados NO pueden pagar fianzas ni proporcionar representación legal",
+          "Los pasaportes de emergencia tardan 1-2 días hábiles",
+          "La mayoría de consulados cierran en festivos locales Y de su país"
+        ]
+      }
     },
     "customsSection": {
       "title": "Aduanas e Inmigración",

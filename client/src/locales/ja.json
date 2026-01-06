@@ -2624,12 +2624,33 @@
       ]
     },
     "travelCategories": {
-      "customs": "税関",
+      "travelEntry": "渡航と入国",
       "safety": "安全",
       "prohibited": "禁止",
       "tvguide": "TV ガイド",
-      "transport": "プライベートジェット＆ヨット",
-      "consulates": "領事館"
+      "transport": "プライベートジェット＆ヨット"
+    },
+    "travelEntrySection": {
+      "title": "渡航と入国",
+      "subtitle": "入国要件、ビザ、領事サービス",
+      "entryRequirements": {
+        "title": "入国要件",
+        "subtitle": "ビザ、税関、入国管理"
+      },
+      "consulates": {
+        "title": "領事館を探す",
+        "subtitle": "都市別の大使館・領事館連絡先"
+      },
+      "consulateTips": {
+        "title": "領事館のヒント",
+        "items": [
+          "旅行前に領事館の電話番号を保存してください",
+          "渡航警報を受け取るため大使館に登録してください",
+          "領事館は保釈金の支払いや法的代理人の提供はできません",
+          "緊急パスポートは1-2営業日かかります",
+          "ほとんどの領事館は現地と本国両方の祝日に閉館します"
+        ]
+      }
     },
     "customsSection": {
       "title": "税関と入国管理",
