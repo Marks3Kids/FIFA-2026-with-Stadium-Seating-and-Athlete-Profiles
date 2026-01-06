@@ -29,7 +29,7 @@ export function Layout({ children, hideNav = false, hideTitle = false, pageTitle
               />
               <div className="min-w-0 overflow-hidden">
                 <h1 className="text-sm sm:text-lg font-display font-bold leading-tight truncate whitespace-nowrap">
-                  <span className="text-emerald-400">{t("header.worldCup")}</span>{" "}
+                  <span className="text-emerald-400">{t("header.worldCup")}</span>
                   <span className="text-white">{t("header.companion")}</span>
                 </h1>
                 <p className="text-[9px] sm:text-[10px] text-muted-foreground uppercase tracking-widest whitespace-nowrap">{t("header.year")}</p>
