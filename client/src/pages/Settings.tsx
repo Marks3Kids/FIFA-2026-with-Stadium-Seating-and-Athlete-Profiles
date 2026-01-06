@@ -107,7 +107,7 @@ export default function Settings() {
   return (
     <Layout pageTitle="nav.settings">
       <div className="pt-12 px-6 pb-8">
-        <Link href="/menu" className="flex items-center text-muted-foreground mb-6" data-testid="back-to-menu">
+        <Link href="/home" className="flex items-center text-muted-foreground mb-6" data-testid="back-to-menu">
           <ArrowLeft className="w-5 h-5 mr-2" />
           {t("common.back")}
         </Link>

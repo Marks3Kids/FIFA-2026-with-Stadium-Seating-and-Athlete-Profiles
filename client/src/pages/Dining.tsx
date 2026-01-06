@@ -1176,9 +1176,9 @@ export default function Dining() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-background" />
         
         <div className="relative pt-8 px-6 pb-24">
-          <Link href="/menu" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
+          <Link href="/home" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
             <ArrowLeft className="w-4 h-4 rtl-flip" />
-            <span className="text-sm font-medium">{t("dining.backToMenu")}</span>
+            <span className="text-sm font-medium">{t("common.back", "Back")}</span>
           </Link>
 
           <div className="flex items-center space-x-3 mb-2">
