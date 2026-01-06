@@ -1,9 +1,11 @@
 import { Layout } from "@/components/Layout";
-import { Hotel, ArrowLeft, MapPin, DollarSign, ChevronRight, ExternalLink, Star, Wifi, Car, Dumbbell } from "lucide-react";
+import { Hotel, ArrowLeft, MapPin, DollarSign, ChevronRight, ExternalLink, Star, Wifi, Car, Dumbbell, Home } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import hotelHeroImage from "@assets/generated_images/drone_view_luxury_hotel_pool.png";
+import vacationRentalImage from "@/assets/stock_images/luxury_vacation_rent_277343dc.jpg";
 
 interface Accommodation {
   name: string;
@@ -1012,10 +1014,40 @@ const lodgingData: CityLodging[] = [
   }
 ];
 
+interface VacationRentalCity {
+  cityKey: string;
+  city: string;
+  countryCode: string;
+  countryKey: string;
+  airbnbUrl: string;
+  vrboUrl: string;
+  description: string;
+}
+
+const vacationRentalData: VacationRentalCity[] = [
+  { cityKey: "newYork", city: "New York / New Jersey", countryCode: "us", countryKey: "usa", airbnbUrl: "https://www.airbnb.com/s/New-York--NY/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/usa/new-york/new-york", description: "Find apartments, lofts, and homes across Manhattan, Brooklyn, and Jersey City" },
+  { cityKey: "losAngeles", city: "Los Angeles", countryCode: "us", countryKey: "usa", airbnbUrl: "https://www.airbnb.com/s/Los-Angeles--CA/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/usa/california/los-angeles", description: "Beach houses, Hollywood Hills homes, and downtown lofts" },
+  { cityKey: "miami", city: "Miami", countryCode: "us", countryKey: "usa", airbnbUrl: "https://www.airbnb.com/s/Miami--FL/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/usa/florida/miami", description: "Oceanfront condos, South Beach apartments, and luxury villas" },
+  { cityKey: "houston", city: "Houston", countryCode: "us", countryKey: "usa", airbnbUrl: "https://www.airbnb.com/s/Houston--TX/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/usa/texas/houston", description: "Spacious homes, downtown apartments, and suburban retreats" },
+  { cityKey: "dallas", city: "Dallas", countryCode: "us", countryKey: "usa", airbnbUrl: "https://www.airbnb.com/s/Dallas--TX/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/usa/texas/dallas", description: "Modern lofts, family homes, and uptown condos" },
+  { cityKey: "atlanta", city: "Atlanta", countryCode: "us", countryKey: "usa", airbnbUrl: "https://www.airbnb.com/s/Atlanta--GA/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/usa/georgia/atlanta", description: "Buckhead mansions, Midtown apartments, and cozy bungalows" },
+  { cityKey: "philadelphia", city: "Philadelphia", countryCode: "us", countryKey: "usa", airbnbUrl: "https://www.airbnb.com/s/Philadelphia--PA/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/usa/pennsylvania/philadelphia", description: "Historic row homes, Center City apartments, and suburban houses" },
+  { cityKey: "seattle", city: "Seattle", countryCode: "us", countryKey: "usa", airbnbUrl: "https://www.airbnb.com/s/Seattle--WA/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/usa/washington/seattle", description: "Waterfront homes, Capitol Hill apartments, and mountain-view retreats" },
+  { cityKey: "sanFrancisco", city: "San Francisco Bay Area", countryCode: "us", countryKey: "usa", airbnbUrl: "https://www.airbnb.com/s/San-Francisco--CA/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/usa/california/san-francisco", description: "Victorian homes, Marina apartments, and Bay Area houses" },
+  { cityKey: "boston", city: "Boston", countryCode: "us", countryKey: "usa", airbnbUrl: "https://www.airbnb.com/s/Boston--MA/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/usa/massachusetts/boston", description: "Back Bay brownstones, waterfront condos, and Cambridge apartments" },
+  { cityKey: "kansasCity", city: "Kansas City", countryCode: "us", countryKey: "usa", airbnbUrl: "https://www.airbnb.com/s/Kansas-City--MO/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/usa/missouri/kansas-city", description: "Downtown lofts, Power & Light apartments, and suburban homes" },
+  { cityKey: "toronto", city: "Toronto", countryCode: "ca", countryKey: "canada", airbnbUrl: "https://www.airbnb.com/s/Toronto--ON--Canada/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/canada/ontario/toronto", description: "Downtown condos, Yorkville apartments, and waterfront suites" },
+  { cityKey: "vancouver", city: "Vancouver", countryCode: "ca", countryKey: "canada", airbnbUrl: "https://www.airbnb.com/s/Vancouver--BC--Canada/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/canada/british-columbia/vancouver", description: "Coal Harbour condos, Gastown lofts, and mountain-view homes" },
+  { cityKey: "mexicoCity", city: "Mexico City", countryCode: "mx", countryKey: "mexico", airbnbUrl: "https://www.airbnb.com/s/Mexico-City--Mexico/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/mexico/mexico-city", description: "Roma Norte apartments, Condesa homes, and Polanco penthouses" },
+  { cityKey: "guadalajara", city: "Guadalajara", countryCode: "mx", countryKey: "mexico", airbnbUrl: "https://www.airbnb.com/s/Guadalajara--Mexico/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/mexico/jalisco/guadalajara", description: "Historic centro homes, Providencia apartments, and modern condos" },
+  { cityKey: "monterrey", city: "Monterrey", countryCode: "mx", countryKey: "mexico", airbnbUrl: "https://www.airbnb.com/s/Monterrey--Mexico/homes", vrboUrl: "https://www.vrbo.com/vacation-rentals/mexico/nuevo-leon/monterrey", description: "San Pedro homes, Valle Oriente apartments, and mountain-view retreats" },
+];
+
 export default function Lodging() {
   const [selectedCity, setSelectedCity] = useState<CityLodging | null>(null);
   const [expandedCategory, setExpandedCategory] = useState<string | null>("Budget");
   const [priceFilter, setPriceFilter] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<string>("hotels");
   const { t } = useTranslation();
 
   const getCategoryTranslation = (category: string): string => {
@@ -1211,107 +1243,193 @@ export default function Lodging() {
       </div>
 
       <div className="px-6 pb-6">
-        <div className="grid grid-cols-4 gap-2 mb-6">
-          <button
-            onClick={() => setPriceFilter(priceFilter === "Budget" ? null : "Budget")}
-            className={`rounded-lg p-2 text-center transition-all ${
-              priceFilter === "Budget" 
-                ? "bg-green-500/30 border-2 border-green-400 ring-2 ring-green-400/30" 
-                : "bg-green-500/10 border border-green-500/20 hover:bg-green-500/20"
-            }`}
-            data-testid="button-filter-budget"
-          >
-            <span className="text-[10px] text-green-400 font-medium">{t("lodging.categories.budget")}</span>
-          </button>
-          <button
-            onClick={() => setPriceFilter(priceFilter === "Mid-Range" ? null : "Mid-Range")}
-            className={`rounded-lg p-2 text-center transition-all ${
-              priceFilter === "Mid-Range" 
-                ? "bg-blue-500/30 border-2 border-blue-400 ring-2 ring-blue-400/30" 
-                : "bg-blue-500/10 border border-blue-500/20 hover:bg-blue-500/20"
-            }`}
-            data-testid="button-filter-midrange"
-          >
-            <span className="text-[10px] text-blue-400 font-medium">{t("lodging.categories.midRange")}</span>
-          </button>
-          <button
-            onClick={() => setPriceFilter(priceFilter === "Upscale" ? null : "Upscale")}
-            className={`rounded-lg p-2 text-center transition-all ${
-              priceFilter === "Upscale" 
-                ? "bg-purple-500/30 border-2 border-purple-400 ring-2 ring-purple-400/30" 
-                : "bg-purple-500/10 border border-purple-500/20 hover:bg-purple-500/20"
-            }`}
-            data-testid="button-filter-upscale"
-          >
-            <span className="text-[10px] text-purple-400 font-medium">{t("lodging.categories.upscale")}</span>
-          </button>
-          <button
-            onClick={() => setPriceFilter(priceFilter === "Luxury" ? null : "Luxury")}
-            className={`rounded-lg p-2 text-center transition-all ${
-              priceFilter === "Luxury" 
-                ? "bg-amber-500/30 border-2 border-amber-400 ring-2 ring-amber-400/30" 
-                : "bg-amber-500/10 border border-amber-500/20 hover:bg-amber-500/20"
-            }`}
-            data-testid="button-filter-luxury"
-          >
-            <span className="text-[10px] text-amber-400 font-medium">{t("lodging.categories.luxury")}</span>
-          </button>
-        </div>
-      </div>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-2 mb-6">
+            <TabsTrigger value="hotels" className="flex items-center gap-2">
+              <Hotel className="w-4 h-4" />
+              {t("lodging.tabs.hotels", "Hotels")}
+            </TabsTrigger>
+            <TabsTrigger value="rentals" className="flex items-center gap-2">
+              <Home className="w-4 h-4" />
+              {t("lodging.tabs.vacationRentals", "Vacation Rentals")}
+            </TabsTrigger>
+          </TabsList>
 
-      <div className="px-6 pb-24">
-        {priceFilter && (
-          <div className="mb-4 p-3 bg-white/5 border border-white/10 rounded-lg flex items-center justify-between">
-            <div>
-              <span className="text-xs text-muted-foreground">{t("lodging.filterActive")}: </span>
-              <span className={`text-sm font-medium ${
-                priceFilter === "Budget" ? "text-green-400" :
-                priceFilter === "Mid-Range" ? "text-blue-400" :
-                priceFilter === "Upscale" ? "text-purple-400" : "text-amber-400"
-              }`}>{getCategoryTranslation(priceFilter)}</span>
+          <TabsContent value="hotels" className="mt-0">
+            <div className="grid grid-cols-4 gap-2 mb-6">
+              <button
+                onClick={() => setPriceFilter(priceFilter === "Budget" ? null : "Budget")}
+                className={`rounded-lg p-2 text-center transition-all ${
+                  priceFilter === "Budget" 
+                    ? "bg-green-500/30 border-2 border-green-400 ring-2 ring-green-400/30" 
+                    : "bg-green-500/10 border border-green-500/20 hover:bg-green-500/20"
+                }`}
+                data-testid="button-filter-budget"
+              >
+                <span className="text-[10px] text-green-400 font-medium">{t("lodging.categories.budget")}</span>
+              </button>
+              <button
+                onClick={() => setPriceFilter(priceFilter === "Mid-Range" ? null : "Mid-Range")}
+                className={`rounded-lg p-2 text-center transition-all ${
+                  priceFilter === "Mid-Range" 
+                    ? "bg-blue-500/30 border-2 border-blue-400 ring-2 ring-blue-400/30" 
+                    : "bg-blue-500/10 border border-blue-500/20 hover:bg-blue-500/20"
+                }`}
+                data-testid="button-filter-midrange"
+              >
+                <span className="text-[10px] text-blue-400 font-medium">{t("lodging.categories.midRange")}</span>
+              </button>
+              <button
+                onClick={() => setPriceFilter(priceFilter === "Upscale" ? null : "Upscale")}
+                className={`rounded-lg p-2 text-center transition-all ${
+                  priceFilter === "Upscale" 
+                    ? "bg-purple-500/30 border-2 border-purple-400 ring-2 ring-purple-400/30" 
+                    : "bg-purple-500/10 border border-purple-500/20 hover:bg-purple-500/20"
+                }`}
+                data-testid="button-filter-upscale"
+              >
+                <span className="text-[10px] text-purple-400 font-medium">{t("lodging.categories.upscale")}</span>
+              </button>
+              <button
+                onClick={() => setPriceFilter(priceFilter === "Luxury" ? null : "Luxury")}
+                className={`rounded-lg p-2 text-center transition-all ${
+                  priceFilter === "Luxury" 
+                    ? "bg-amber-500/30 border-2 border-amber-400 ring-2 ring-amber-400/30" 
+                    : "bg-amber-500/10 border border-amber-500/20 hover:bg-amber-500/20"
+                }`}
+                data-testid="button-filter-luxury"
+              >
+                <span className="text-[10px] text-amber-400 font-medium">{t("lodging.categories.luxury")}</span>
+              </button>
             </div>
-            <button 
-              onClick={() => setPriceFilter(null)}
-              className="text-xs text-primary hover:underline"
-              data-testid="button-clear-filter"
-            >
-              {t("lodging.showAll")}
-            </button>
-          </div>
-        )}
-        
-        <h2 className="text-lg font-display font-bold text-white mb-4">{t("lodging.selectCity")}</h2>
-        
-        <div className="space-y-3">
-          {lodgingData.map((city, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                setSelectedCity(city);
-                setExpandedCategory(priceFilter || "Budget");
-              }}
-              className="w-full bg-card border border-white/5 rounded-xl p-4 hover:border-purple-500/30 transition-all group text-left"
-              data-testid={`button-lodging-city-${city.countryCode}-${index}`}
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 rounded-lg overflow-hidden border border-white/10 flex-shrink-0">
-                    <img 
-                      src={`https://flagcdn.com/w80/${city.countryCode}.png`}
-                      alt={`${t(`cities.countries.${city.countryKey}`)} flag`}
-                      className="w-full h-full object-cover"
-                    />
+
+            {priceFilter && (
+              <div className="mb-4 p-3 bg-white/5 border border-white/10 rounded-lg flex items-center justify-between">
+                <div>
+                  <span className="text-xs text-muted-foreground">{t("lodging.filterActive")}: </span>
+                  <span className={`text-sm font-medium ${
+                    priceFilter === "Budget" ? "text-green-400" :
+                    priceFilter === "Mid-Range" ? "text-blue-400" :
+                    priceFilter === "Upscale" ? "text-purple-400" : "text-amber-400"
+                  }`}>{getCategoryTranslation(priceFilter)}</span>
+                </div>
+                <button 
+                  onClick={() => setPriceFilter(null)}
+                  className="text-xs text-primary hover:underline"
+                  data-testid="button-clear-filter"
+                >
+                  {t("lodging.showAll")}
+                </button>
+              </div>
+            )}
+            
+            <h2 className="text-lg font-display font-bold text-white mb-4">{t("lodging.selectCity")}</h2>
+            
+            <div className="space-y-3 pb-20">
+              {lodgingData.map((city, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setSelectedCity(city);
+                    setExpandedCategory(priceFilter || "Budget");
+                  }}
+                  className="w-full bg-card border border-white/5 rounded-xl p-4 hover:border-purple-500/30 transition-all group text-left"
+                  data-testid={`button-lodging-city-${city.countryCode}-${index}`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-12 h-12 rounded-lg overflow-hidden border border-white/10 flex-shrink-0">
+                        <img 
+                          src={`https://flagcdn.com/w80/${city.countryCode}.png`}
+                          alt={`${t(`cities.countries.${city.countryKey}`)} flag`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-white group-hover:text-purple-400 transition-colors">{t(`cities.cityNames.${city.cityKey}`)}</h3>
+                        <p className="text-sm text-muted-foreground">{t("lodging.hotelsCount")}</p>
+                      </div>
+                    </div>
+                    <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-purple-400 transition-colors rtl-flip" />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-white group-hover:text-purple-400 transition-colors">{t(`cities.cityNames.${city.cityKey}`)}</h3>
-                    <p className="text-sm text-muted-foreground">{t("lodging.hotelsCount")}</p>
+                </button>
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="rentals" className="mt-0">
+            <div className="relative rounded-xl overflow-hidden mb-6 h-40">
+              <img 
+                src={vacationRentalImage} 
+                alt="Vacation Rental" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <h3 className="text-lg font-display font-bold text-white mb-1">{t("lodging.vacationRentals.title", "Vacation Rentals")}</h3>
+                <p className="text-sm text-gray-300">{t("lodging.vacationRentals.subtitle", "Homes, apartments, and unique stays")}</p>
+              </div>
+            </div>
+
+            <div className="bg-primary/10 border border-primary/20 rounded-xl p-4 mb-6">
+              <p className="text-sm text-gray-300">
+                {t("lodging.vacationRentals.description", "Find entire homes, apartments, and unique accommodations through AirBnB and VRBO. Perfect for families, groups, or longer stays during the tournament.")}
+              </p>
+            </div>
+
+            <h2 className="text-lg font-display font-bold text-white mb-4">{t("lodging.selectCity")}</h2>
+
+            <div className="space-y-3 pb-20">
+              {vacationRentalData.map((city, index) => (
+                <div
+                  key={index}
+                  className="bg-card border border-white/5 rounded-xl p-4"
+                >
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="w-12 h-12 rounded-lg overflow-hidden border border-white/10 flex-shrink-0">
+                      <img 
+                        src={`https://flagcdn.com/w80/${city.countryCode}.png`}
+                        alt={`${t(`cities.countries.${city.countryKey}`)} flag`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-white">{t(`cities.cityNames.${city.cityKey}`)}</h3>
+                      <p className="text-xs text-muted-foreground">{city.description}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-3">
+                    <a
+                      href={city.airbnbUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 bg-[#FF5A5F]/20 hover:bg-[#FF5A5F]/30 border border-[#FF5A5F]/30 rounded-lg py-3 px-4 transition-colors group"
+                    >
+                      <span className="font-bold text-[#FF5A5F]">Airbnb</span>
+                      <ExternalLink className="w-3.5 h-3.5 text-[#FF5A5F] opacity-60 group-hover:opacity-100" />
+                    </a>
+                    <a
+                      href={city.vrboUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 bg-[#3B5998]/20 hover:bg-[#3B5998]/30 border border-[#3B5998]/30 rounded-lg py-3 px-4 transition-colors group"
+                    >
+                      <span className="font-bold text-[#3B82F6]">VRBO</span>
+                      <ExternalLink className="w-3.5 h-3.5 text-[#3B82F6] opacity-60 group-hover:opacity-100" />
+                    </a>
                   </div>
                 </div>
-                <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-purple-400 transition-colors rtl-flip" />
-              </div>
-            </button>
-          ))}
-        </div>
+              ))}
+            </div>
+
+            <div className="mt-6 bg-white/5 border border-white/10 rounded-xl p-4">
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                {t("lodging.vacationRentals.disclaimer", "Links open external booking platforms. Championship Concierge is not affiliated with Airbnb or VRBO. Always verify listings and read reviews before booking.")}
+              </p>
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     </Layout>
   );
