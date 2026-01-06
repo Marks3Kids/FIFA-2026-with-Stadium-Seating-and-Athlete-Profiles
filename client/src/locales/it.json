@@ -3251,6 +3251,51 @@
       "noCBP": "Senza CBP",
       "ciqOnSite": "CIQ In Loco",
       "cbsaOnSite": "CBSA In Loco",
+      "airportNotes": {
+        "teb": "Opzione jet privato più vicina a Manhattan. Aeroporto di aviazione commerciale più trafficato al mondo. Prenota presto!",
+        "hpn": "Seconda scelta per Manhattan. Meno traffico di Teterboro.",
+        "vny": "Aeroporto jet privati più trafficato al mondo. Nessun traffico commerciale. CBP completo.",
+        "lgb": "Evita il traffico di LAX. Alternativa popolare con servizi completi.",
+        "smo": "Intimo, discreto. Limitato a jet più piccoli. Nessun CBP in loco.",
+        "dal": "Uno degli aeroporti jet privati più trafficati degli USA. Servizi CBP completi.",
+        "ads": "Ideale per il nord di Dallas. FBO di alta gamma. Nessun CBP in loco.",
+        "dfw-pvt": "Hub principale con terminal privati. Sdoganamento internazionale completo.",
+        "hou": "Aeroporto jet privati più quotato. Più vicino all'NRG Stadium. CBP completo.",
+        "iah-pvt": "Hub internazionale principale. Terminal privati con servizio completo.",
+        "pdk": "Preferito per jet privati. 600+ operazioni giornaliere. Nessun CBP - sdoganare prima ad ATL.",
+        "atl-pvt": "Aeroporto più trafficato al mondo. CBP completo. Tempi di rullaggio più lunghi.",
+        "bed": "Aeroporto jet privati principale. Meno congestione di Logan.",
+        "bos-pvt": "CBP completo in loco. Unico FBO a Logan. Accesso comodo alla città.",
+        "bfi": "Aeroporto aviazione privata principale. CBP completo. Vicino al centro.",
+        "sea-pvt": "Hub internazionale principale. Servizi completi ma traffico commerciale intenso.",
+        "pne": "Aeroporto jet privati principale per Philadelphia. Nessun CBP in loco.",
+        "phl-pvt": "Servizi CBP completi. Il traffico commerciale può causare ritardi.",
+        "sql": "Aeroporto popolare della Silicon Valley. Nessun CBP in loco.",
+        "sjc-pvt": "Aeroporto principale più vicino allo stadio. CBP completo in loco.",
+        "oak-pvt": "Sdoganamento internazionale completo. Meno traffico di SFO.",
+        "mkc": "Più vicino all'Arrowhead Stadium. Focus su aviazione generale.",
+        "mci-pvt": "Servizi CBP completi. Punto di ingresso internazionale principale.",
+        "opa": "Hub aviazione privata principale. A soli 5 miglia dall'Hard Rock Stadium.",
+        "fll-pvt": "Hub internazionale con eccellenti terminal privati.",
+        "tlc": "OBBLIGATORIO per jet privati (MEX non accetta privati). 70%+ dei jet privati messicani lo usano. CIQ in loco.",
+        "gdl": "Grandi strutture FBO. Dogana in loco. Supporto aviazione privata 24/7.",
+        "ntr": "Preferito per aviazione privata. Terminal VIP. Servizio 24/7.",
+        "mty": "Connessioni internazionali. Terminal aviazione privata separati.",
+        "yyz-pvt": "Servizi CBSA completi. Aeroporto più trafficato del Canada. Terminal privati disponibili.",
+        "ykz": "Aviazione generale. Sdoganare prima a Pearson.",
+        "yvr-pvt": "Servizi CBSA completi. Terminal Sud per AG. Bellissimo avvicinamento."
+      },
+      "marinaFeatures": {
+        "libertyLanding": "Vista diretta sullo skyline di NYC, vicino al MetLife Stadium",
+        "northCove": "Posizione a Manhattan, Distretto Finanziario",
+        "marinaDelRey": "Grande marina ricreativa, capacità superyacht",
+        "longBeachMarina": "Vicino al centro congressi, porto protetto",
+        "emeraldLanding": "Lago Union, acqua dolce, accesso al centro",
+        "elliottBay": "Recintato, sicuro, minuti dal centro",
+        "bellHarbor": "Unica marina del centro di Seattle, sicurezza 24h",
+        "miamiBeachMarina": "Pronto per superyacht, infrastruttura megayacht",
+        "islandGardens": "Acque profonde, ormeggi megayacht fino a 550ft"
+      },
       "yachtInfo": {
         "title": "Ormeggi Superyacht",
         "description": "Prenota i posti marina 6+ mesi prima durante il Mondiale. Miami ha la migliore infrastruttura per superyacht negli USA."
@@ -3267,6 +3312,46 @@
           "Richiedere licenza di crociera al primo porto di ingresso"
         ]
       },
+      "clearance": {
+        "usaAircraft": {
+          "title": "Dogana Aerei Privati USA",
+          "eAPIS": { "item": "Manifesto eAPIS", "desc": "Inviare tramite sistema CBP eAPIS prima della partenza. Includere tutte le info passeggeri/equipaggio." },
+          "userFee": { "item": "Adesivo Tassa Utente", "desc": "Adesivo Annuale CBP Aereo Privato richiesto. Acquistare tramite DTOPS ($29.96/anno)." },
+          "permission": { "item": "Permesso di Atterraggio", "desc": "Contattare il porto CBP di destinazione prima di partire da area straniera." },
+          "designated": { "item": "Aeroporti Designati", "desc": "381 aeroporti accettano arrivi privati internazionali. Verificare la destinazione." },
+          "preclearance": { "item": "Opzione Preclearance", "desc": "Disponibile a Shannon (Irlanda) e Aruba per ingresso USA più rapido." }
+        },
+        "usaYacht": {
+          "title": "Dogana Yacht USA",
+          "report": { "item": "Segnalare Entro 24 Ore", "desc": "Tutti gli yacht da porti stranieri devono segnalare via app CBP ROAM o telefono." },
+          "qFlag": { "item": "Bandiera Q Richiesta", "desc": "Issare bandiera gialla di quarantena entrando in acque territoriali 12 miglia fino allo sdoganamento." },
+          "stayOnboard": { "item": "Restare a Bordo", "desc": "Nessuno può lasciare o imbarcare fino al completamento dell'elaborazione doganale." },
+          "uscg": { "item": "Notifica USCG", "desc": "Yacht stranieri oltre 300 tonnellate lorde devono notificare USCG 96 ore prima dell'arrivo." },
+          "cruisingLicense": { "item": "Licenza di Crociera", "desc": "Yacht con bandiera straniera da alcuni paesi possono ottenere licenza di crociera 1 anno." },
+          "dtops": { "item": "Adesivo DTOPS", "desc": "Richiesto per barche di 30+ piedi. Acquisto annuale ($29.96)." }
+        },
+        "mexico": {
+          "title": "Aerei Privati Messico",
+          "apis": { "item": "APIS Messicano", "desc": "Informazioni Anticipate Passeggeri richieste per tutti i voli privati." },
+          "permits": { "item": "Permessi Ingresso Singolo", "desc": "Ora richiesti (niente più autorizzazione annuale). Pianificare 10+ giorni lavorativi in anticipo." },
+          "insurance": { "item": "Corrispondenza Assicurazione", "desc": "Marca/modello/seriale/coda aereo devono corrispondere esattamente alla registrazione." },
+          "restrictions": { "item": "Restrizioni Aeroporto", "desc": "Jet privati limitati ad aeroporti designati (MEX chiuso ai privati)." }
+        },
+        "canada": {
+          "title": "Aerei Privati Canada",
+          "apis": { "item": "APIS Canadese", "desc": "Richiesto per arrivi internazionali in Canada." },
+          "canpass": { "item": "CANPASS", "desc": "Programma CANPASS Aerei Privati disponibile per sdoganamento accelerato." },
+          "cbsa": { "item": "Notifica CBSA", "desc": "Accordi doganali anticipati richiesti tramite FBO/handler." }
+        }
+      },
+      "tips": [
+        "Prenota slot FBO presto durante il Mondiale - la domanda sarà estremamente alta",
+        "Trasferimenti in elicottero disponibili dalla maggior parte degli aeroporti principali agli stadi",
+        "Jet privati per Città del Messico DEVONO usare Toluca (TLC), non aeroporto MEX",
+        "Gli ormeggi yacht a Miami saranno premium - prenota 6+ mesi in anticipo",
+        "Considera programmi jet frazionati se non sei proprietario - NetJets, Flexjet, VistaJet",
+        "Tutti e 3 i paesi ospitanti richiedono manifesti passeggeri anticipati (APIS/eAPIS)"
+      ],
       "transportTips": "CONSIGLI TRASPORTO PRIVATO"
     },
     "consulatesSection": {

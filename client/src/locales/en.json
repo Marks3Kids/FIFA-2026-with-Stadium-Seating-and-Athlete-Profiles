@@ -3277,6 +3277,51 @@
       "noCBP": "No CBP",
       "ciqOnSite": "CIQ On-Site",
       "cbsaOnSite": "CBSA On-Site",
+      "airportNotes": {
+        "teb": "Manhattan's closest private jet option. World's busiest business aviation airport. Slots go fast - book early!",
+        "hpn": "Second choice for Manhattan. Less traffic than Teterboro.",
+        "vny": "World's busiest private jet airport. No commercial traffic. Full CBP.",
+        "lgb": "Avoids LAX traffic. Popular alternative with full services.",
+        "smo": "Intimate, discreet. Limited to smaller jets. No on-site CBP.",
+        "dal": "One of busiest private jet airports in US. Full CBP services.",
+        "ads": "Ideal for North Dallas. High-end FBOs. No on-site CBP.",
+        "dfw-pvt": "Major hub with private terminals. Full international clearance.",
+        "hou": "Top-ranked private jet airport. Closest to NRG Stadium. Full CBP.",
+        "iah-pvt": "Major international hub. Full-service private terminals.",
+        "pdk": "Preferred for private jets. 600+ daily operations. No CBP - clear at ATL first.",
+        "atl-pvt": "World's busiest airport. Full CBP. Longer taxi times.",
+        "bed": "Premier private jet airport. Less congestion than Logan.",
+        "bos-pvt": "Full CBP on-site. Only FBO at Logan. Convenient city access.",
+        "bfi": "Primary private aviation airport. Full CBP. Close to downtown.",
+        "sea-pvt": "Major international hub. Full services but busy commercial traffic.",
+        "pne": "Primary private jet airport for Philly. No CBP on-site.",
+        "phl-pvt": "Full CBP services. Commercial traffic can cause delays.",
+        "sql": "Popular Silicon Valley airport. No on-site CBP.",
+        "sjc-pvt": "Closest major airport to stadium. Full CBP on-site.",
+        "oak-pvt": "Full international clearance. Less traffic than SFO.",
+        "mkc": "Closest to Arrowhead Stadium. General aviation focused.",
+        "mci-pvt": "Full CBP services. Primary international entry point.",
+        "opa": "Major private aviation hub. Just 5 miles from Hard Rock Stadium.",
+        "fll-pvt": "International hub with excellent private terminals.",
+        "tlc": "REQUIRED for private jets (MEX doesn't accept private). 70%+ of Mexico's private jets use this. On-site CIQ.",
+        "gdl": "Large FBO facilities. On-site customs. 24/7 private aviation support.",
+        "ntr": "Preferred for private aviation. VIP terminals. 24/7 service.",
+        "mty": "International connections. Separate private aviation terminals.",
+        "yyz-pvt": "Full CBSA services. Canada's busiest airport. Private terminals available.",
+        "ykz": "General aviation. Clear customs at Pearson first.",
+        "yvr-pvt": "Full CBSA services. South Terminal for GA. Beautiful approach."
+      },
+      "marinaFeatures": {
+        "libertyLanding": "Direct NYC skyline views, near MetLife Stadium",
+        "northCove": "Manhattan location, Financial District",
+        "marinaDelRey": "Large recreational marina, some superyacht capacity",
+        "longBeachMarina": "Near convention center, protected harbor",
+        "emeraldLanding": "Lake Union, freshwater, downtown access",
+        "elliottBay": "Gated, secure, minutes from downtown",
+        "bellHarbor": "Only downtown Seattle marina, 24hr security",
+        "miamiBeachMarina": "Superyacht-ready, megayacht infrastructure",
+        "islandGardens": "Deep water, megayacht slips to 550ft"
+      },
       "yachtInfo": {
         "title": "Superyacht Berths",
         "description": "Book marina berths 6+ months ahead during World Cup. Miami has the best superyacht infrastructure in the US."
@@ -3293,6 +3338,46 @@
           "Apply for cruising license at first port of entry"
         ]
       },
+      "clearance": {
+        "usaAircraft": {
+          "title": "US Private Aircraft Customs",
+          "eAPIS": { "item": "eAPIS Manifest", "desc": "Submit via CBP eAPIS system before departure. Include all passenger/crew info." },
+          "userFee": { "item": "User Fee Decal", "desc": "Annual CBP Private Aircraft Decal required. Purchase via DTOPS ($29.96/year)." },
+          "permission": { "item": "Permission to Land", "desc": "Contact destination CBP port before departure from foreign area." },
+          "designated": { "item": "Designated Airports", "desc": "381 airports accept private international arrivals. Verify your destination." },
+          "preclearance": { "item": "Preclearance Option", "desc": "Available in Shannon (Ireland) and Aruba for faster US entry." }
+        },
+        "usaYacht": {
+          "title": "US Yacht Customs",
+          "report": { "item": "Report Within 24 Hours", "desc": "All yachts arriving from foreign ports must report via CBP ROAM app or phone." },
+          "qFlag": { "item": "Q Flag Required", "desc": "Fly yellow quarantine flag when entering 12-mile territorial waters until cleared." },
+          "stayOnboard": { "item": "Stay Onboard", "desc": "No one may leave or board until customs processing is complete." },
+          "uscg": { "item": "USCG Notification", "desc": "Foreign yachts over 300 gross tons must notify USCG 96 hours before arrival." },
+          "cruisingLicense": { "item": "Cruising License", "desc": "Foreign-flagged yachts from certain countries can get 1-year cruising license." },
+          "dtops": { "item": "DTOPS Decal", "desc": "Required for boats 30+ feet. Purchase annually ($29.96)." }
+        },
+        "mexico": {
+          "title": "Mexico Private Aircraft",
+          "apis": { "item": "Mexican APIS", "desc": "Advance Passenger Information required for all private flights." },
+          "permits": { "item": "Single-Entry Permits", "desc": "Now required (no more annual authorization). Plan 10+ business days lead time." },
+          "insurance": { "item": "Insurance Match", "desc": "Aircraft make/model/serial/tail must exactly match registration." },
+          "restrictions": { "item": "Airport Restrictions", "desc": "Private jets restricted to designated airports (MEX closed to private)." }
+        },
+        "canada": {
+          "title": "Canada Private Aircraft",
+          "apis": { "item": "Canadian APIS", "desc": "Required for international arrivals to Canada." },
+          "canpass": { "item": "CANPASS", "desc": "CANPASS Private Aircraft program available for expedited clearance." },
+          "cbsa": { "item": "CBSA Notification", "desc": "Advance customs arrangements required through FBO/handler." }
+        }
+      },
+      "tips": [
+        "Book FBO slots early during World Cup - demand will be extremely high",
+        "Helicopter transfers available from most major airports to stadiums",
+        "Mexico City private jets MUST use Toluca (TLC), not MEX airport",
+        "Yacht berths in Miami will be premium - book 6+ months ahead",
+        "Consider fractional jet programs if you don't own - NetJets, Flexjet, VistaJet",
+        "All 3 host countries require advance passenger manifests (APIS/eAPIS)"
+      ],
       "transportTips": "PRIVATE TRANSPORT TIPS"
     },
     "consulatesSection": {

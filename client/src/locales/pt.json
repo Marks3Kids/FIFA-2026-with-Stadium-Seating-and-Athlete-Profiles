@@ -3250,6 +3250,51 @@
       "noCBP": "Sem CBP",
       "ciqOnSite": "CIQ no Local",
       "cbsaOnSite": "CBSA no Local",
+      "airportNotes": {
+        "teb": "Opção de jato privado mais próxima de Manhattan. Aeroporto de aviação executiva mais movimentado do mundo. Reserve cedo!",
+        "hpn": "Segunda opção para Manhattan. Menos tráfego que Teterboro.",
+        "vny": "Aeroporto de jatos privados mais movimentado do mundo. Sem tráfego comercial. CBP completo.",
+        "lgb": "Evita tráfego do LAX. Alternativa popular com serviços completos.",
+        "smo": "Íntimo, discreto. Limitado a jatos menores. Sem CBP no local.",
+        "dal": "Um dos aeroportos de jatos privados mais movimentados dos EUA. Serviços CBP completos.",
+        "ads": "Ideal para o norte de Dallas. FBOs de alto padrão. Sem CBP no local.",
+        "dfw-pvt": "Hub principal com terminais privados. Liberação internacional completa.",
+        "hou": "Aeroporto de jatos privados mais bem avaliado. Mais próximo do NRG Stadium. CBP completo.",
+        "iah-pvt": "Hub internacional principal. Terminais privados com serviço completo.",
+        "pdk": "Preferido para jatos privados. 600+ operações diárias. Sem CBP - liberar no ATL primeiro.",
+        "atl-pvt": "Aeroporto mais movimentado do mundo. CBP completo. Tempos de táxi mais longos.",
+        "bed": "Aeroporto de jatos privados principal. Menos congestionamento que Logan.",
+        "bos-pvt": "CBP completo no local. Único FBO no Logan. Acesso conveniente à cidade.",
+        "bfi": "Aeroporto de aviação privada principal. CBP completo. Perto do centro.",
+        "sea-pvt": "Hub internacional principal. Serviços completos mas tráfego comercial intenso.",
+        "pne": "Aeroporto de jatos privados principal para Filadélfia. Sem CBP no local.",
+        "phl-pvt": "Serviços CBP completos. Tráfego comercial pode causar atrasos.",
+        "sql": "Aeroporto popular do Vale do Silício. Sem CBP no local.",
+        "sjc-pvt": "Aeroporto principal mais próximo do estádio. CBP completo no local.",
+        "oak-pvt": "Liberação internacional completa. Menos tráfego que SFO.",
+        "mkc": "Mais próximo do Arrowhead Stadium. Foco em aviação geral.",
+        "mci-pvt": "Serviços CBP completos. Ponto de entrada internacional principal.",
+        "opa": "Hub de aviação privada principal. A apenas 5 milhas do Hard Rock Stadium.",
+        "fll-pvt": "Hub internacional com excelentes terminais privados.",
+        "tlc": "OBRIGATÓRIO para jatos privados (MEX não aceita privados). 70%+ dos jatos privados do México usam este. CIQ no local.",
+        "gdl": "Grandes instalações FBO. Alfândega no local. Suporte de aviação privada 24/7.",
+        "ntr": "Preferido para aviação privada. Terminais VIP. Serviço 24/7.",
+        "mty": "Conexões internacionais. Terminais de aviação privada separados.",
+        "yyz-pvt": "Serviços CBSA completos. Aeroporto mais movimentado do Canadá. Terminais privados disponíveis.",
+        "ykz": "Aviação geral. Liberar alfândega no Pearson primeiro.",
+        "yvr-pvt": "Serviços CBSA completos. Terminal Sul para AG. Aproximação bonita."
+      },
+      "marinaFeatures": {
+        "libertyLanding": "Vista direta do horizonte de NYC, perto do MetLife Stadium",
+        "northCove": "Localização em Manhattan, Distrito Financeiro",
+        "marinaDelRey": "Grande marina recreativa, capacidade para superiates",
+        "longBeachMarina": "Perto do centro de convenções, porto protegido",
+        "emeraldLanding": "Lago Union, água doce, acesso ao centro",
+        "elliottBay": "Fechado, seguro, minutos do centro",
+        "bellHarbor": "Única marina do centro de Seattle, segurança 24h",
+        "miamiBeachMarina": "Pronto para superiates, infraestrutura de megaiates",
+        "islandGardens": "Águas profundas, vagas de megaiates até 550ft"
+      },
       "yachtInfo": {
         "title": "Atracadouros para Superiates",
         "description": "Reserve vagas de marina com 6+ meses de antecedência durante a Copa. Miami tem a melhor infraestrutura para superiates nos EUA."
@@ -3266,6 +3311,46 @@
           "Solicitar licença de cruzeiro no primeiro porto de entrada"
         ]
       },
+      "clearance": {
+        "usaAircraft": {
+          "title": "Alfândega de Aeronaves Privadas EUA",
+          "eAPIS": { "item": "Manifesto eAPIS", "desc": "Enviar via sistema CBP eAPIS antes da partida. Incluir todas as informações de passageiros/tripulação." },
+          "userFee": { "item": "Adesivo de Taxa de Usuário", "desc": "Adesivo Anual de Aeronave Privada CBP necessário. Comprar via DTOPS ($29.96/ano)." },
+          "permission": { "item": "Permissão para Pousar", "desc": "Contatar porto CBP de destino antes de partir de área estrangeira." },
+          "designated": { "item": "Aeroportos Designados", "desc": "381 aeroportos aceitam chegadas internacionais privadas. Verifique seu destino." },
+          "preclearance": { "item": "Opção de Pré-liberação", "desc": "Disponível em Shannon (Irlanda) e Aruba para entrada mais rápida nos EUA." }
+        },
+        "usaYacht": {
+          "title": "Alfândega de Iates EUA",
+          "report": { "item": "Reportar em 24 Horas", "desc": "Todos os iates chegando de portos estrangeiros devem reportar via app CBP ROAM ou telefone." },
+          "qFlag": { "item": "Bandeira Q Necessária", "desc": "Hastear bandeira amarela de quarentena ao entrar em águas territoriais de 12 milhas até liberação." },
+          "stayOnboard": { "item": "Permanecer a Bordo", "desc": "Ninguém pode sair ou embarcar até que o processamento alfandegário esteja completo." },
+          "uscg": { "item": "Notificação USCG", "desc": "Iates estrangeiros acima de 300 toneladas brutas devem notificar USCG 96 horas antes da chegada." },
+          "cruisingLicense": { "item": "Licença de Cruzeiro", "desc": "Iates com bandeira estrangeira de certos países podem obter licença de cruzeiro de 1 ano." },
+          "dtops": { "item": "Adesivo DTOPS", "desc": "Necessário para barcos de 30+ pés. Compra anual ($29.96)." }
+        },
+        "mexico": {
+          "title": "Aeronaves Privadas do México",
+          "apis": { "item": "APIS Mexicano", "desc": "Informação Antecipada de Passageiros necessária para todos os voos privados." },
+          "permits": { "item": "Permissões de Entrada Única", "desc": "Agora necessárias (sem mais autorização anual). Planejar 10+ dias úteis de antecedência." },
+          "insurance": { "item": "Correspondência de Seguro", "desc": "Marca/modelo/série/prefixo da aeronave devem corresponder exatamente ao registro." },
+          "restrictions": { "item": "Restrições de Aeroporto", "desc": "Jatos privados restritos a aeroportos designados (MEX fechado para privados)." }
+        },
+        "canada": {
+          "title": "Aeronaves Privadas do Canadá",
+          "apis": { "item": "APIS Canadense", "desc": "Necessário para chegadas internacionais ao Canadá." },
+          "canpass": { "item": "CANPASS", "desc": "Programa CANPASS de Aeronaves Privadas disponível para liberação expedita." },
+          "cbsa": { "item": "Notificação CBSA", "desc": "Arranjos alfandegários antecipados necessários através de FBO/despachante." }
+        }
+      },
+      "tips": [
+        "Reserve vagas FBO cedo durante a Copa - demanda será extremamente alta",
+        "Transferências de helicóptero disponíveis da maioria dos aeroportos principais para estádios",
+        "Jatos privados para Cidade do México DEVEM usar Toluca (TLC), não aeroporto MEX",
+        "Vagas de iates em Miami serão premium - reserve com 6+ meses de antecedência",
+        "Considere programas de jatos fracionados se não for proprietário - NetJets, Flexjet, VistaJet",
+        "Os 3 países-sede exigem manifestos de passageiros antecipados (APIS/eAPIS)"
+      ],
       "transportTips": "DICAS DE TRANSPORTE PRIVADO"
     },
     "consulatesSection": {

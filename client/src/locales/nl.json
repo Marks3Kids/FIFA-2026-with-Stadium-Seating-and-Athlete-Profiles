@@ -3251,6 +3251,51 @@
       "noCBP": "Geen CBP",
       "ciqOnSite": "CIQ Aanwezig",
       "cbsaOnSite": "CBSA Aanwezig",
+      "airportNotes": {
+        "teb": "Dichtstbijzijnde privéjet optie bij Manhattan. Drukste zakelijke luchthaven ter wereld. Vroeg boeken!",
+        "hpn": "Tweede keuze voor Manhattan. Minder verkeer dan Teterboro.",
+        "vny": "Drukste privéjet luchthaven ter wereld. Geen commercieel verkeer. Volledige CBP.",
+        "lgb": "Vermijdt LAX-verkeer. Populair alternatief met volledige service.",
+        "smo": "Intiem, discreet. Beperkt tot kleinere jets. Geen CBP ter plaatse.",
+        "dal": "Een van de drukste privéjet luchthavens in de VS. Volledige CBP-diensten.",
+        "ads": "Ideaal voor Noord-Dallas. High-end FBO's. Geen CBP ter plaatse.",
+        "dfw-pvt": "Grote hub met privéterminals. Volledige internationale klaring.",
+        "hou": "Best beoordeelde privéjet luchthaven. Dichtst bij NRG Stadium. Volledige CBP.",
+        "iah-pvt": "Grote internationale hub. Full-service privéterminals.",
+        "pdk": "Voorkeur voor privéjets. 600+ dagelijkse operaties. Geen CBP - eerst klaren bij ATL.",
+        "atl-pvt": "Drukste luchthaven ter wereld. Volledige CBP. Langere taxitijden.",
+        "bed": "Premier privéjet luchthaven. Minder drukte dan Logan.",
+        "bos-pvt": "Volledige CBP ter plaatse. Enige FBO op Logan. Handige stadstoegang.",
+        "bfi": "Primaire privéluchthaven. Volledige CBP. Dicht bij centrum.",
+        "sea-pvt": "Grote internationale hub. Volledige diensten maar druk commercieel verkeer.",
+        "pne": "Primaire privéjet luchthaven voor Philadelphia. Geen CBP ter plaatse.",
+        "phl-pvt": "Volledige CBP-diensten. Commercieel verkeer kan vertragingen veroorzaken.",
+        "sql": "Populaire Silicon Valley luchthaven. Geen CBP ter plaatse.",
+        "sjc-pvt": "Dichtstbijzijnde grote luchthaven bij stadion. Volledige CBP ter plaatse.",
+        "oak-pvt": "Volledige internationale klaring. Minder verkeer dan SFO.",
+        "mkc": "Dichtst bij Arrowhead Stadium. Focus op algemene luchtvaart.",
+        "mci-pvt": "Volledige CBP-diensten. Primaire internationale inreispunt.",
+        "opa": "Grote privéluchtvaart hub. Slechts 5 mijl van Hard Rock Stadium.",
+        "fll-pvt": "Internationale hub met uitstekende privéterminals.",
+        "tlc": "VEREIST voor privéjets (MEX accepteert geen privé). 70%+ van Mexico's privéjets gebruiken deze. CIQ ter plaatse.",
+        "gdl": "Grote FBO-faciliteiten. Douane ter plaatse. 24/7 privéluchtvaart ondersteuning.",
+        "ntr": "Voorkeur voor privéluchtvaart. VIP-terminals. 24/7 service.",
+        "mty": "Internationale verbindingen. Aparte privéluchtvaart terminals.",
+        "yyz-pvt": "Volledige CBSA-diensten. Drukste luchthaven van Canada. Privéterminals beschikbaar.",
+        "ykz": "Algemene luchtvaart. Eerst klaren bij Pearson.",
+        "yvr-pvt": "Volledige CBSA-diensten. Zuid Terminal voor GA. Mooie nadering."
+      },
+      "marinaFeatures": {
+        "libertyLanding": "Direct uitzicht op NYC skyline, nabij MetLife Stadium",
+        "northCove": "Manhattan locatie, Financiële Wijk",
+        "marinaDelRey": "Grote recreatieve marina, superjacht capaciteit",
+        "longBeachMarina": "Nabij congrescentrum, beschutte haven",
+        "emeraldLanding": "Lake Union, zoetwater, toegang tot centrum",
+        "elliottBay": "Afgesloten, veilig, minuten van centrum",
+        "bellHarbor": "Enige marina in centrum Seattle, 24u beveiliging",
+        "miamiBeachMarina": "Superjacht-ready, megajacht infrastructuur",
+        "islandGardens": "Diep water, megajacht ligplaatsen tot 550ft"
+      },
       "yachtInfo": {
         "title": "Superjacht Ligplaatsen",
         "description": "Boek marinaplaatsen 6+ maanden van tevoren tijdens het WK. Miami heeft de beste superjachtinfrastructuur in de VS."
@@ -3267,6 +3312,46 @@
           "Aanvragen kruislicentie bij eerste haven van binnenkomst"
         ]
       },
+      "clearance": {
+        "usaAircraft": {
+          "title": "VS Privévliegtuig Douane",
+          "eAPIS": { "item": "eAPIS Manifest", "desc": "Indienen via CBP eAPIS systeem voor vertrek. Alle passagiers-/bemanningsinformatie opnemen." },
+          "userFee": { "item": "Gebruikskosten Sticker", "desc": "Jaarlijkse CBP Privévliegtuig Sticker vereist. Kopen via DTOPS ($29.96/jaar)." },
+          "permission": { "item": "Landingsvergunning", "desc": "Contact opnemen met bestemming CBP-haven voor vertrek uit buitenlands gebied." },
+          "designated": { "item": "Aangewezen Luchthavens", "desc": "381 luchthavens accepteren privé internationale aankomsten. Verifieer uw bestemming." },
+          "preclearance": { "item": "Preclearance Optie", "desc": "Beschikbaar in Shannon (Ierland) en Aruba voor snellere VS-toegang." }
+        },
+        "usaYacht": {
+          "title": "VS Jacht Douane",
+          "report": { "item": "Binnen 24 Uur Melden", "desc": "Alle jachten uit buitenlandse havens moeten melden via CBP ROAM app of telefoon." },
+          "qFlag": { "item": "Q-Vlag Vereist", "desc": "Gele quarantainevlag hijsen bij binnenkomst 12-mijls territoriale wateren tot klaring." },
+          "stayOnboard": { "item": "Aan Boord Blijven", "desc": "Niemand mag vertrekken of aan boord komen tot douaneverwerking voltooid." },
+          "uscg": { "item": "USCG Notificatie", "desc": "Buitenlandse jachten boven 300 bruto ton moeten USCG 96 uur voor aankomst informeren." },
+          "cruisingLicense": { "item": "Kruislicentie", "desc": "Jachten onder buitenlandse vlag uit bepaalde landen kunnen 1-jaars kruislicentie krijgen." },
+          "dtops": { "item": "DTOPS Sticker", "desc": "Vereist voor boten van 30+ voet. Jaarlijkse aankoop ($29.96)." }
+        },
+        "mexico": {
+          "title": "Mexico Privévliegtuigen",
+          "apis": { "item": "Mexicaanse APIS", "desc": "Vooraf passagiersinformatie vereist voor alle privévluchten." },
+          "permits": { "item": "Eenmalige Inreisvergunning", "desc": "Nu vereist (geen jaarlijkse autorisatie meer). Plan 10+ werkdagen vooruit." },
+          "insurance": { "item": "Verzekering Overeenkomst", "desc": "Vliegtuig merk/model/serienummer/staart moet exact overeenkomen met registratie." },
+          "restrictions": { "item": "Luchthavenbeperkingen", "desc": "Privéjets beperkt tot aangewezen luchthavens (MEX gesloten voor privé)." }
+        },
+        "canada": {
+          "title": "Canada Privévliegtuigen",
+          "apis": { "item": "Canadese APIS", "desc": "Vereist voor internationale aankomsten in Canada." },
+          "canpass": { "item": "CANPASS", "desc": "CANPASS Privévliegtuig programma beschikbaar voor versnelde klaring." },
+          "cbsa": { "item": "CBSA Notificatie", "desc": "Vooraf douaneregelingen vereist via FBO/afhandelaar." }
+        }
+      },
+      "tips": [
+        "Boek FBO-slots vroeg tijdens het WK - vraag zal extreem hoog zijn",
+        "Helikoptertransfers beschikbaar vanaf de meeste grote luchthavens naar stadions",
+        "Privéjets naar Mexico City MOETEN Toluca (TLC) gebruiken, niet MEX luchthaven",
+        "Jachtligplaatsen in Miami worden premium - 6+ maanden van tevoren boeken",
+        "Overweeg fractionele jet programma's als u geen eigenaar bent - NetJets, Flexjet, VistaJet",
+        "Alle 3 gastlanden vereisen vooraf passagiersmanifesten (APIS/eAPIS)"
+      ],
       "transportTips": "TIPS PRIVÉVERVOER"
     },
     "consulatesSection": {
