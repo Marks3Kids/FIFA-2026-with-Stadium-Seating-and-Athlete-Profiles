@@ -4,6 +4,7 @@ import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import { SubscriptionProvider } from "@/contexts/SubscriptionContext";
 import { LocationProvider } from "@/contexts/LocationContext";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
 import "@/lib/i18n";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -40,35 +41,47 @@ import NotFound from "@/pages/not-found";
 function Router() {
   return (
     <Switch>
+      {/* Public routes - no subscription required */}
       <Route path="/" component={LandingPage} />
-      <Route path="/home" component={Home} />
-      <Route path="/teams" component={Teams} />
-      <Route path="/cities" component={Cities} />
-      <Route path="/menu" component={Menu} />
-      <Route path="/profile" component={Profile} />
-      <Route path="/settings" component={Settings} />
-      <Route path="/matches" component={Matches} />
-      <Route path="/transportation" component={Transportation} />
-      <Route path="/transportation/international-flights" component={InternationalFlights} />
-      <Route path="/transportation/domestic-flights" component={DomesticFlights} />
-      <Route path="/transportation/rail-services" component={RailServices} />
-      <Route path="/transportation/bus-services" component={BusServices} />
-      <Route path="/transportation/car-rentals" component={CarRentals} />
-      <Route path="/dining" component={Dining} />
-      <Route path="/lodging" component={Lodging} />
-      <Route path="/planner" component={Planner} />
-      <Route path="/critical-info" component={CriticalInfo} />
-      <Route path="/critical" component={CriticalInfo} />
-      <Route path="/concierge" component={Concierge} />
-      <Route path="/history" component={History} />
-      <Route path="/players" component={Players} />
-      <Route path="/stadium-seating" component={StadiumSeating} />
-      <Route path="/odds" component={TournamentOdds} />
-      <Route path="/bracket" component={BracketChallenge} />
       <Route path="/pricing" component={Pricing} />
+      <Route path="/bracket" component={BracketChallenge} />
       <Route path="/watch-hubs" component={WatchHubs} />
+      
+      {/* Free tier - basic access after lead capture */}
+      <Route path="/home">{() => <ProtectedRoute requiredTier="free"><Home /></ProtectedRoute>}</Route>
+      <Route path="/menu">{() => <ProtectedRoute requiredTier="free"><Menu /></ProtectedRoute>}</Route>
+      <Route path="/profile">{() => <ProtectedRoute requiredTier="free"><Profile /></ProtectedRoute>}</Route>
+      <Route path="/settings">{() => <ProtectedRoute requiredTier="free"><Settings /></ProtectedRoute>}</Route>
+      
+      {/* Team Info tier - teams, matches, players */}
+      <Route path="/teams">{() => <ProtectedRoute requiredTier="team_info"><Teams /></ProtectedRoute>}</Route>
+      <Route path="/matches">{() => <ProtectedRoute requiredTier="team_info"><Matches /></ProtectedRoute>}</Route>
+      <Route path="/players">{() => <ProtectedRoute requiredTier="team_info"><Players /></ProtectedRoute>}</Route>
+      <Route path="/stadium-seating">{() => <ProtectedRoute requiredTier="team_info"><StadiumSeating /></ProtectedRoute>}</Route>
+      <Route path="/odds">{() => <ProtectedRoute requiredTier="team_info"><TournamentOdds /></ProtectedRoute>}</Route>
+      
+      {/* Logistics tier - travel, lodging, safety, host cities */}
+      <Route path="/cities">{() => <ProtectedRoute requiredTier="logistics"><Cities /></ProtectedRoute>}</Route>
+      <Route path="/transportation">{() => <ProtectedRoute requiredTier="logistics"><Transportation /></ProtectedRoute>}</Route>
+      <Route path="/transportation/international-flights">{() => <ProtectedRoute requiredTier="logistics"><InternationalFlights /></ProtectedRoute>}</Route>
+      <Route path="/transportation/domestic-flights">{() => <ProtectedRoute requiredTier="logistics"><DomesticFlights /></ProtectedRoute>}</Route>
+      <Route path="/transportation/rail-services">{() => <ProtectedRoute requiredTier="logistics"><RailServices /></ProtectedRoute>}</Route>
+      <Route path="/transportation/bus-services">{() => <ProtectedRoute requiredTier="logistics"><BusServices /></ProtectedRoute>}</Route>
+      <Route path="/transportation/car-rentals">{() => <ProtectedRoute requiredTier="logistics"><CarRentals /></ProtectedRoute>}</Route>
+      <Route path="/dining">{() => <ProtectedRoute requiredTier="logistics"><Dining /></ProtectedRoute>}</Route>
+      <Route path="/lodging">{() => <ProtectedRoute requiredTier="logistics"><Lodging /></ProtectedRoute>}</Route>
+      <Route path="/planner">{() => <ProtectedRoute requiredTier="logistics"><Planner /></ProtectedRoute>}</Route>
+      <Route path="/critical-info">{() => <ProtectedRoute requiredTier="logistics"><CriticalInfo /></ProtectedRoute>}</Route>
+      <Route path="/critical">{() => <ProtectedRoute requiredTier="logistics"><CriticalInfo /></ProtectedRoute>}</Route>
+      
+      {/* AI Concierge tier - full AI features */}
+      <Route path="/concierge">{() => <ProtectedRoute requiredTier="ai_concierge"><Concierge /></ProtectedRoute>}</Route>
+      <Route path="/history">{() => <ProtectedRoute requiredTier="ai_concierge"><History /></ProtectedRoute>}</Route>
+      
+      {/* Admin routes */}
       <Route path="/admin/venues" component={AdminVenues} />
       <Route path="/admin/leads" component={AdminLeadsPage} />
+      
       <Route component={NotFound} />
     </Switch>
   );

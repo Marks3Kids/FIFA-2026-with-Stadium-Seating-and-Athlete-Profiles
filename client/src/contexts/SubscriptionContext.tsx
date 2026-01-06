@@ -77,11 +77,18 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
           }
         } catch (error) {
           console.error("Failed to verify subscription:", error);
-          setEmail(storedEmail);
-          setSubscriptionTier(storedTier);
-          setName(storedName);
-          setCity(storedCity);
-          setIsSubscribed(true);
+          if (storedTier === "free") {
+            setEmail(storedEmail);
+            setSubscriptionTier("free");
+            setName(storedName);
+            setCity(storedCity);
+            setIsSubscribed(true);
+          } else {
+            localStorage.removeItem("subscription_email");
+            localStorage.removeItem("subscription_tier");
+            localStorage.removeItem("subscription_name");
+            localStorage.removeItem("subscription_city");
+          }
         }
       }
       setIsLoading(false);
