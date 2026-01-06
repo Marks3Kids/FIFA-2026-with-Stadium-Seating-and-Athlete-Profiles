@@ -1609,7 +1609,7 @@
     "backToCities": "Terug naar Alle Steden",
     "restaurantsCount": "20 restaurants",
     "priceCategories": {
-      "budget": "Budget",
+      "budget": "Economy",
       "midRange": "Middensegment",
       "upscale": "Luxueus",
       "luxury": "Premium"
@@ -2053,7 +2053,7 @@
     "filterActive": "Filter actief",
     "showAll": "Alles tonen",
     "categories": {
-      "budget": "Budget",
+      "budget": "Economy",
       "midRange": "Middenklasse",
       "upscale": "Upscale",
       "luxury": "Luxe"
