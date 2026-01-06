@@ -350,7 +350,7 @@
     "vault": {
       "tabs": {
         "overview": "Aperçu",
-        "transit": "Transport",
+        "transit": "Se Déplacer",
         "safety": "Sécurité",
         "faith": "Foi",
         "culture": "Gastronomie"
@@ -374,6 +374,7 @@
         "dropoffOnly": "Dépose uniquement",
         "pickupDropoff": "Prise en charge et Dépose",
         "departmentOfTransportation": "Min. des Transports",
+        "dotDescription": "Consultez les alertes de circulation, fermetures de routes et mises à jour des travaux.",
         "website": "Site Web"
       },
       "mottos": {

@@ -356,7 +356,7 @@
     "vault": {
       "tabs": {
         "overview": "Overview",
-        "transit": "Transit",
+        "transit": "Getting Around",
         "safety": "Safety",
         "faith": "Faith",
         "culture": "Cuisine"
@@ -380,6 +380,7 @@
         "dropoffOnly": "Drop-off Only",
         "pickupDropoff": "Pickup & Drop-off",
         "departmentOfTransportation": "Dept. of Transportation",
+        "dotDescription": "Check for traffic alerts, road closures, and construction updates.",
         "website": "Website"
       },
       "mottos": {

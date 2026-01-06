@@ -260,10 +260,11 @@ export default function Cities() {
 
                             {vault.logistics.departmentOfTransportation && vault.logistics.departmentOfTransportation.length > 0 && (
                               <div className="bg-amber-500/10 rounded-xl p-4 border border-amber-500/20">
-                                <div className="flex items-center space-x-2 mb-3 text-amber-400">
+                                <div className="flex items-center space-x-2 mb-2 text-amber-400">
                                   <Building className="w-4 h-4" />
                                   <span className="text-sm font-bold uppercase tracking-wide">{t("cities.vault.labels.departmentOfTransportation", "Dept. of Transportation")}</span>
                                 </div>
+                                <p className="text-xs text-muted-foreground mb-3">{t("cities.vault.labels.dotDescription", "Check for traffic alerts, road closures, and construction updates.")}</p>
                                 {vault.logistics.departmentOfTransportation.map((dot, idx) => (
                                   <div
                                     key={idx}

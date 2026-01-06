@@ -350,7 +350,7 @@
     "vault": {
       "tabs": {
         "overview": "Overzicht",
-        "transit": "Vervoer",
+        "transit": "Rondkomen",
         "safety": "Veiligheid",
         "faith": "Geloof",
         "culture": "Keuken"
@@ -374,6 +374,7 @@
         "dropoffOnly": "Alleen Afzetten",
         "pickupDropoff": "Ophalen en Afzetten",
         "departmentOfTransportation": "Min. van Transport",
+        "dotDescription": "Controleer op verkeerswaarschuwingen, wegafsluitingen en bouwinformatie.",
         "website": "Website"
       },
       "mottos": {

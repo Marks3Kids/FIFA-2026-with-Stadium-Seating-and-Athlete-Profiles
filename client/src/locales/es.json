@@ -350,7 +350,7 @@
     "vault": {
       "tabs": {
         "overview": "Resumen",
-        "transit": "Transporte",
+        "transit": "Cómo Moverse",
         "safety": "Seguridad",
         "faith": "Fe",
         "culture": "Gastronomía"
@@ -374,6 +374,7 @@
         "dropoffOnly": "Solo Bajada",
         "pickupDropoff": "Recogida y Bajada",
         "departmentOfTransportation": "Depto. de Transporte",
+        "dotDescription": "Consulta alertas de tráfico, cierres de carreteras y actualizaciones de construcción.",
         "website": "Sitio Web"
       },
       "mottos": {

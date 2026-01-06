@@ -350,7 +350,7 @@
     "vault": {
       "tabs": {
         "overview": "概要",
-        "transit": "交通",
+        "transit": "移動方法",
         "safety": "安全",
         "faith": "信仰",
         "culture": "グルメ"
@@ -374,6 +374,7 @@
         "dropoffOnly": "降車のみ",
         "pickupDropoff": "乗降可能",
         "departmentOfTransportation": "運輸省",
+        "dotDescription": "交通情報、道路閉鎖、工事の最新情報を確認できます。",
         "website": "ウェブサイト"
       },
       "mottos": {

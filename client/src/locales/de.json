@@ -350,7 +350,7 @@
     "vault": {
       "tabs": {
         "overview": "Überblick",
-        "transit": "Verkehr",
+        "transit": "Unterwegs",
         "safety": "Sicherheit",
         "faith": "Glaube",
         "culture": "Küche"
@@ -374,6 +374,7 @@
         "dropoffOnly": "Nur Absetzen",
         "pickupDropoff": "Abholen und Absetzen",
         "departmentOfTransportation": "Verkehrsministerium",
+        "dotDescription": "Verkehrsmeldungen, Straßensperrungen und Baustelleninformationen abrufen.",
         "website": "Website"
       },
       "mottos": {

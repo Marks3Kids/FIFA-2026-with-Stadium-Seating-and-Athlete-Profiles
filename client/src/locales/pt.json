@@ -350,7 +350,7 @@
     "vault": {
       "tabs": {
         "overview": "Visão Geral",
-        "transit": "Transporte",
+        "transit": "Como se Locomover",
         "safety": "Segurança",
         "faith": "Fé",
         "culture": "Gastronomia"
@@ -374,6 +374,7 @@
         "dropoffOnly": "Apenas Desembarque",
         "pickupDropoff": "Embarque e Desembarque",
         "departmentOfTransportation": "Depto. de Transportes",
+        "dotDescription": "Consulte alertas de trânsito, fechamentos de estradas e atualizações de obras.",
         "website": "Site"
       },
       "mottos": {

@@ -350,7 +350,7 @@
     "vault": {
       "tabs": {
         "overview": "Panoramica",
-        "transit": "Trasporto",
+        "transit": "Spostarsi",
         "safety": "Sicurezza",
         "faith": "Fede",
         "culture": "Cucina"
@@ -374,6 +374,7 @@
         "dropoffOnly": "Solo Discesa",
         "pickupDropoff": "Ritiro e Discesa",
         "departmentOfTransportation": "Min. dei Trasporti",
+        "dotDescription": "Verifica avvisi sul traffico, chiusure stradali e aggiornamenti sui lavori.",
         "website": "Sito Web"
       },
       "mottos": {

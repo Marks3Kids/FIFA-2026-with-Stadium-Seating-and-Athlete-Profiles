@@ -350,7 +350,7 @@
     "vault": {
       "tabs": {
         "overview": "نظرة عامة",
-        "transit": "المواصلات",
+        "transit": "التنقل",
         "safety": "السلامة",
         "faith": "الإيمان",
         "culture": "المطبخ"
@@ -374,6 +374,7 @@
         "dropoffOnly": "نزول فقط",
         "pickupDropoff": "صعود ونزول",
         "departmentOfTransportation": "وزارة النقل",
+        "dotDescription": "تحقق من تنبيهات المرور وإغلاق الطرق وتحديثات أعمال البناء.",
         "website": "الموقع"
       },
       "mottos": {
