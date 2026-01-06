@@ -4034,18 +4034,18 @@ export default function CriticalInfo() {
                     {t('criticalInfo.medicalSection.erVsUrgentCare.title')}
                   </h2>
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-3">
-                      <div className="text-xs font-bold text-red-400 uppercase mb-2">{t('criticalInfo.medicalSection.erVsUrgentCare.emergencyRoom.label')}</div>
-                      <ul className="text-xs text-white/80 space-y-1">
-                        {(t('criticalInfo.medicalSection.erVsUrgentCare.emergencyRoom.items', { returnObjects: true }) as string[]).map((item, idx) => (
-                          <li key={idx}>• {item}</li>
-                        ))}
-                      </ul>
-                    </div>
                     <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-3">
                       <div className="text-xs font-bold text-blue-400 uppercase mb-2">{t('criticalInfo.medicalSection.erVsUrgentCare.urgentCare.label')}</div>
                       <ul className="text-xs text-white/80 space-y-1">
                         {(t('criticalInfo.medicalSection.erVsUrgentCare.urgentCare.items', { returnObjects: true }) as string[]).map((item, idx) => (
+                          <li key={idx}>• {item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-3">
+                      <div className="text-xs font-bold text-red-400 uppercase mb-2">{t('criticalInfo.medicalSection.erVsUrgentCare.emergencyRoom.label')}</div>
+                      <ul className="text-xs text-white/80 space-y-1">
+                        {(t('criticalInfo.medicalSection.erVsUrgentCare.emergencyRoom.items', { returnObjects: true }) as string[]).map((item, idx) => (
                           <li key={idx}>• {item}</li>
                         ))}
                       </ul>
