@@ -182,7 +182,12 @@
     "termsAcceptance": "By using this application, you agree to these terms. This app is provided \"as is\" without any warranties, express or implied.",
     "intellectualProperty": "All content created for this app, excluding third-party materials, is protected by copyright. You may not reproduce, distribute, or create derivative works without permission.",
     "liabilityLimitation": "Under no circumstances shall the app developers be liable for any direct, indirect, incidental, consequential, or special damages arising from your use of this application.",
-    "privacyStatement": "We respect your privacy. Any personal data collected is used solely to improve your experience and is not shared with third parties without your consent.",
+    "refundTitle": "Refund Policy",
+    "refundPolicy": "You may request a refund within 7 days of purchase if you are unable to access the app's services due to circumstances beyond your control, such as lack of internet connectivity in your region, device incompatibility, or service outages on our end. To request a refund, please contact us at support@championship-concierge.com with your purchase confirmation and a description of the issue. Refund requests are reviewed on a case-by-case basis.",
+    "dataRetentionTitle": "Data Retention",
+    "dataRetention": "AI Concierge chat logs and conversation history are stored until August 30, 2026, after which they will be permanently deleted. You may delete your chat history at any time through the app's History page.",
+    "privacyTitle": "Privacy Policy",
+    "privacyStatement": "We respect your privacy. Any personal data collected is used solely to improve your experience and is not shared with third parties without your consent. This app uses local storage on your device to save preferences and subscription status. We do not use cookies. Voice features use your device's built-in speech capabilities and no audio data is transmitted to or stored on our servers.",
     "copyright": "© 2026 Championship Concierge. All rights reserved. This is an unofficial fan application."
   },
   "teams": {

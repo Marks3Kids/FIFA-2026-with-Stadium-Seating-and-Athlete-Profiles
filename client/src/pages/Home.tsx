@@ -227,6 +227,35 @@ export default function Home() {
               <p>{t("legal.termsAcceptance")}</p>
               <p>{t("legal.intellectualProperty")}</p>
               <p>{t("legal.liabilityLimitation")}</p>
+            </div>
+          </div>
+
+          <div className="border-t border-white/5 pt-4 mt-4">
+            <div className="flex items-center gap-2 mb-2">
+              <FileText className="w-4 h-4 text-muted-foreground" />
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("legal.refundTitle")}</h4>
+            </div>
+            <div className="space-y-2 text-xs text-muted-foreground leading-relaxed">
+              <p>{t("legal.refundPolicy")}</p>
+            </div>
+          </div>
+
+          <div className="border-t border-white/5 pt-4 mt-4">
+            <div className="flex items-center gap-2 mb-2">
+              <FileText className="w-4 h-4 text-muted-foreground" />
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("legal.dataRetentionTitle")}</h4>
+            </div>
+            <div className="space-y-2 text-xs text-muted-foreground leading-relaxed">
+              <p>{t("legal.dataRetention")}</p>
+            </div>
+          </div>
+
+          <div className="border-t border-white/5 pt-4 mt-4">
+            <div className="flex items-center gap-2 mb-2">
+              <FileText className="w-4 h-4 text-muted-foreground" />
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("legal.privacyTitle")}</h4>
+            </div>
+            <div className="space-y-2 text-xs text-muted-foreground leading-relaxed">
               <p>{t("legal.privacyStatement")}</p>
             </div>
           </div>
