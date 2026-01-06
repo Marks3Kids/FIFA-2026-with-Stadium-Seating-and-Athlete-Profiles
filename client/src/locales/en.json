@@ -1634,7 +1634,7 @@
     "backToCities": "Back to All Cities",
     "restaurantsCount": "20 restaurants",
     "priceCategories": {
-      "budget": "Budget",
+      "budget": "Economy",
       "midRange": "Mid-Range",
       "upscale": "Upscale",
       "luxury": "Luxury"
