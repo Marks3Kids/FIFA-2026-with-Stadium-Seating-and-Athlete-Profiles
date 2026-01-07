@@ -36,6 +36,7 @@ import Pricing from "@/pages/Pricing";
 import WatchHubs from "@/pages/WatchHubs";
 import AdminVenues from "@/pages/AdminVenues";
 import AdminLeadsPage from "@/pages/AdminLeadsPage";
+import { Legal } from "@/pages/Legal";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -46,6 +47,10 @@ function Router() {
       <Route path="/pricing" component={Pricing} />
       <Route path="/bracket" component={BracketChallenge} />
       <Route path="/watch-hubs" component={WatchHubs} />
+      <Route path="/legal" component={Legal} />
+      <Route path="/terms" component={Legal} />
+      <Route path="/privacy" component={Legal} />
+      <Route path="/refund" component={Legal} />
       
       {/* Free tier - basic access after lead capture */}
       <Route path="/home">{() => <ProtectedRoute requiredTier="free"><Home /></ProtectedRoute>}</Route>
