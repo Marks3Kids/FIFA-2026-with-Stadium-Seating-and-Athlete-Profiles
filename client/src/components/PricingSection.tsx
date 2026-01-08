@@ -273,6 +273,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
       return;
     }
 
+    console.log("Starting checkout for tier:", tier.id, "priceId:", tier.priceId);
     setIsLoading(tier.id);
     try {
       const response = await fetch("/api/checkout", {
@@ -280,16 +281,17 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           priceId: tier.priceId,
-          successUrl: `${window.location.origin}/success?tier=${tier.id}`,
-          cancelUrl: `${window.location.origin}${cancelUrl}`,
         }),
       });
 
+      console.log("Checkout response status:", response.status);
       const data = await response.json();
+      console.log("Checkout response data:", data);
+      
       if (data.url) {
         window.location.href = data.url;
       } else {
-        throw new Error("No checkout URL returned");
+        throw new Error(data.error || "No checkout URL returned");
       }
     } catch (error) {
       console.error("Checkout error:", error);
