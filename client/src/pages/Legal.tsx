@@ -165,7 +165,7 @@ export function Legal() {
           <h3 className="text-white font-semibold mb-2">9. DISPUTE RESOLUTION</h3>
           <p className="text-white font-medium mb-2">GOVERNING LAW:</p>
           <p className="mb-4">
-            These Terms are governed by the laws of the State of Kansas, United States, without regard to 
+            These Terms are governed by the laws of the State of Missouri, United States, without regard to 
             conflict of law principles.
           </p>
           <p className="text-white font-medium mb-2">INFORMAL RESOLUTION (REQUIRED FIRST STEP):</p>
@@ -178,14 +178,14 @@ export function Legal() {
           <ul className="list-disc list-inside space-y-1 mb-4">
             <li>Conducted under American Arbitration Association (AAA) Consumer Arbitration Rules</li>
             <li>Individual basis ONLY (no class actions, class arbitrations, or representative actions)</li>
-            <li>Arbitration held in Kansas City, Kansas or remotely (video conference)</li>
+            <li>Arbitration held in Missouri or remotely (video conference)</li>
             <li>Each party bears their own costs unless AAA rules or applicable law provides otherwise</li>
             <li>Arbitrator's decision is final and binding</li>
           </ul>
           <p className="text-white font-medium mb-2">OPT-OUT OF ARBITRATION:</p>
           <p>
             You may opt-out of arbitration within 30 days of accepting these Terms by emailing 
-            optout@championship-concierge.com with subject line: "Arbitration Opt-Out"
+            support@championship-concierge.com with subject line: "Arbitration Opt-Out"
           </p>
         </div>
 
@@ -306,8 +306,8 @@ export function Legal() {
           <h3 className="text-white font-semibold mb-2">8. CONTACT FOR PRIVACY MATTERS</h3>
           <p>
             For privacy questions or to exercise your rights, contact: 
-            <a href="mailto:privacy@championship-concierge.com" className="text-primary hover:underline ml-1">
-              privacy@championship-concierge.com
+            <a href="mailto:support@championship-concierge.com" className="text-primary hover:underline ml-1">
+              support@championship-concierge.com
             </a>
           </p>
         </div>
@@ -455,23 +455,9 @@ export function Legal() {
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <Mail className="w-4 h-4 text-primary" />
-            <span>General inquiries: </span>
+            <span>All inquiries: </span>
             <a href="mailto:support@championship-concierge.com" className="text-primary hover:underline">
               support@championship-concierge.com
-            </a>
-          </div>
-          <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4 text-primary" />
-            <span>Privacy matters: </span>
-            <a href="mailto:privacy@championship-concierge.com" className="text-primary hover:underline">
-              privacy@championship-concierge.com
-            </a>
-          </div>
-          <div className="flex items-center gap-2">
-            <Scale className="w-4 h-4 text-primary" />
-            <span>Legal matters: </span>
-            <a href="mailto:legal@championship-concierge.com" className="text-primary hover:underline">
-              legal@championship-concierge.com
             </a>
           </div>
         </div>
