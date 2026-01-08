@@ -268,9 +268,6 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
   };
 
   const handlePurchase = async (tier: PricingTier) => {
-    // v2 - Updated checkout handler
-    alert(`[v2] Button clicked! Tier: ${tier.id}, PriceId: ${tier.priceId || 'none'}`);
-    
     if (!tier.priceId) {
       handleFreeTier();
       return;
@@ -279,8 +276,6 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     setIsLoading(tier.id);
     
     try {
-      alert("[v2] About to make API call...");
-      
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -289,8 +284,6 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
         }),
       });
 
-      alert(`[v2] Got response with status: ${response.status}`);
-      
       const data = await response.json();
       
       if (data.url) {
@@ -300,11 +293,9 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
       }
     } catch (error: any) {
       console.error("Checkout error:", error);
-      const errorMessage = error?.message || String(error);
-      alert(`[v2] Checkout error: ${errorMessage}`);
       toast({
         title: "Checkout Error",
-        description: errorMessage,
+        description: "Unable to start checkout. Please try again.",
         variant: "destructive",
       });
     } finally {
