@@ -284,13 +284,23 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
         }),
       });
 
-      const data = await response.json();
+      const responseText = await response.text();
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch {
+        throw new Error(`Server returned invalid JSON: ${responseText.substring(0, 200)}`);
+      }
+      
+      if (!response.ok) {
+        const errorDetail = data.details || data.error || `HTTP ${response.status}`;
+        throw new Error(errorDetail);
+      }
       
       if (data.url) {
         window.location.href = data.url;
       } else {
-        const errorDetail = data.details || data.error || "No checkout URL returned";
-        throw new Error(errorDetail);
+        throw new Error("No checkout URL in response");
       }
     } catch (error: any) {
       console.error("Checkout error:", error);
