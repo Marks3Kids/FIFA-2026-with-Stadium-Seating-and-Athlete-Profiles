@@ -997,10 +997,34 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         return res.status(503).json({ error: "AI Concierge is not configured. Please set up OpenAI API key." });
       }
       
-      const { messages } = req.body;
+      const { messages, email } = req.body;
       
       if (!messages || !Array.isArray(messages)) {
         return res.status(400).json({ error: "Messages array is required" });
+      }
+
+      if (!email) {
+        return res.status(400).json({ error: "Email is required for message tracking" });
+      }
+
+      const { canSendMessage, incrementMessageCount, getMessageUsage } = await import("./aiMessageService");
+      
+      const canSend = await canSendMessage(email);
+      if (!canSend) {
+        const usage = await getMessageUsage(email);
+        return res.status(403).json({ 
+          error: "Message limit reached. Purchase additional messages to continue.",
+          limitReached: true,
+          usage
+        });
+      }
+
+      const incrementResult = await incrementMessageCount(email);
+      if (!incrementResult.success) {
+        return res.status(403).json({ 
+          error: incrementResult.error,
+          limitReached: true
+        });
       }
 
       const OpenAI = (await import("openai")).default;
@@ -1019,7 +1043,8 @@ Remember: You're helping fans have the best World Cup experience of their lives!
       });
 
       const reply = completion.choices[0]?.message?.content || "I'm sorry, I couldn't generate a response.";
-      res.json({ reply });
+      const usage = await getMessageUsage(email);
+      res.json({ reply, usage });
     } catch (error: any) {
       console.error("Concierge API error:", error);
       if (error?.status === 401) {
@@ -1595,6 +1620,117 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     } catch (error) {
       console.error("Failed to reject submission:", error);
       res.status(500).json({ error: "Failed to reject submission" });
+    }
+  });
+
+  // AI Message Usage endpoints
+  const { getMessageUsage, addBonusMessages, MESSAGE_PACK_PRODUCT_ID } = await import("./aiMessageService");
+
+  app.get("/api/ai-messages/usage", async (req, res) => {
+    try {
+      const email = req.query.email as string;
+      if (!email) {
+        return res.status(400).json({ error: "Email is required" });
+      }
+      const usage = await getMessageUsage(email);
+      res.json(usage);
+    } catch (error) {
+      console.error("Failed to get message usage:", error);
+      res.status(500).json({ error: "Failed to get message usage" });
+    }
+  });
+
+  app.post("/api/ai-messages/create-checkout", async (req, res) => {
+    try {
+      const { email } = req.body;
+      if (!email) {
+        return res.status(400).json({ error: "Email is required" });
+      }
+
+      const products = await stripeService.listProductsWithPrices(true);
+      const messagePackProduct = products.find((p: any) => p.product_id === MESSAGE_PACK_PRODUCT_ID);
+      
+      if (!messagePackProduct) {
+        return res.status(404).json({ error: "Message pack product not found" });
+      }
+
+      const priceId = messagePackProduct.price_id as string;
+      
+      let customer;
+      const existingPurchase = await storage.getPurchaseByEmail(email);
+      if (existingPurchase?.stripeCustomerId) {
+        customer = { id: existingPurchase.stripeCustomerId };
+      } else {
+        customer = await stripeService.createCustomer(email, 0);
+      }
+
+      const session = await stripeService.createCheckoutSession(
+        customer.id,
+        priceId,
+        `${req.protocol}://${req.get("host")}/concierge?purchase=success&session_id={CHECKOUT_SESSION_ID}`,
+        `${req.protocol}://${req.get("host")}/concierge?purchase=cancelled`
+      );
+
+      res.json({ url: session.url });
+    } catch (error) {
+      console.error("Failed to create message pack checkout:", error);
+      res.status(500).json({ error: "Failed to create checkout session" });
+    }
+  });
+
+  app.post("/api/ai-messages/add-bonus", async (req, res) => {
+    try {
+      const { email, sessionId } = req.body;
+      if (!email || !sessionId) {
+        return res.status(400).json({ error: "Email and session ID are required" });
+      }
+
+      const { isSessionAlreadyUsed } = await import("./aiMessageService");
+      const alreadyUsed = await isSessionAlreadyUsed(sessionId);
+      if (alreadyUsed) {
+        const usage = await getMessageUsage(email);
+        return res.json({ success: true, alreadyProcessed: true, usage });
+      }
+
+      const stripe = (await import("stripe")).default;
+      const stripeClient = new stripe(process.env.STRIPE_SECRET_KEY!);
+      
+      const session = await stripeClient.checkout.sessions.retrieve(sessionId, {
+        expand: ['line_items', 'line_items.data.price.product']
+      });
+      
+      if (!session || session.payment_status !== 'paid') {
+        return res.status(400).json({ error: "Invalid or unpaid session" });
+      }
+
+      const sessionEmail = session.customer_details?.email || '';
+      if (sessionEmail && sessionEmail.toLowerCase() !== email.toLowerCase()) {
+        return res.status(403).json({ error: "Session email mismatch" });
+      }
+
+      const lineItems = session.line_items?.data || [];
+      const isMessagePack = lineItems.some((item: any) => {
+        const productId = typeof item.price?.product === 'string' 
+          ? item.price.product 
+          : item.price?.product?.id;
+        return productId === MESSAGE_PACK_PRODUCT_ID;
+      });
+      
+      if (!isMessagePack) {
+        return res.status(400).json({ error: "Session is not for message pack" });
+      }
+
+      const result = await addBonusMessages(email, 50, sessionId);
+      if (result.alreadyProcessed) {
+        const usage = await getMessageUsage(email);
+        return res.json({ success: true, alreadyProcessed: true, usage });
+      }
+      
+      const usage = await getMessageUsage(email);
+      res.json({ success: true, usage });
+    } catch (error) {
+      console.error("Failed to add bonus messages:", error);
+      res.status(500).json({ error: "Failed to add bonus messages" });
     }
   });
 

@@ -489,3 +489,40 @@ export const insertWatchHubSubmissionSchema = createInsertSchema(watchHubSubmiss
 
 export type InsertWatchHubSubmission = z.infer<typeof insertWatchHubSubmissionSchema>;
 export type WatchHubSubmission = typeof watchHubSubmissions.$inferSelect;
+
+// AI Message Usage - tracks message counts per user per month
+export const aiMessageUsage = pgTable("ai_message_usage", {
+  id: serial("id").primaryKey(),
+  email: text("email").notNull(),
+  monthYear: text("month_year").notNull(), // Format: "2026-06" for June 2026
+  messagesUsed: integer("messages_used").notNull().default(0),
+  bonusMessages: integer("bonus_messages").notNull().default(0), // Purchased message packs
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const insertAiMessageUsageSchema = createInsertSchema(aiMessageUsage).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export type InsertAiMessageUsage = z.infer<typeof insertAiMessageUsageSchema>;
+export type AiMessageUsage = typeof aiMessageUsage.$inferSelect;
+
+// AI Message Pack Purchases - tracks individual pack purchases
+export const aiMessagePackPurchases = pgTable("ai_message_pack_purchases", {
+  id: serial("id").primaryKey(),
+  email: text("email").notNull(),
+  messagesAdded: integer("messages_added").notNull().default(50),
+  stripeSessionId: text("stripe_session_id"),
+  purchasedAt: timestamp("purchased_at").defaultNow().notNull(),
+});
+
+export const insertAiMessagePackPurchaseSchema = createInsertSchema(aiMessagePackPurchases).omit({
+  id: true,
+  purchasedAt: true,
+});
+
+export type InsertAiMessagePackPurchase = z.infer<typeof insertAiMessagePackPurchaseSchema>;
+export type AiMessagePackPurchase = typeof aiMessagePackPurchases.$inferSelect;

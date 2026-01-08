@@ -1,6 +1,7 @@
 import type { Express, Request, Response } from "express";
 import OpenAI from "openai";
 import { chatStorage } from "./storage";
+import { canSendMessage, incrementMessageCount, getMessageUsage } from "../../aiMessageService";
 
 const openai = new OpenAI({
   apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
@@ -63,7 +64,29 @@ export function registerChatRoutes(app: Express): void {
   app.post("/api/conversations/:id/messages", async (req: Request, res: Response) => {
     try {
       const conversationId = parseInt(req.params.id);
-      const { content } = req.body;
+      const { content, email } = req.body;
+
+      if (!email) {
+        return res.status(400).json({ error: "Email is required for message tracking" });
+      }
+
+      const canSend = await canSendMessage(email);
+      if (!canSend) {
+        const usage = await getMessageUsage(email);
+        return res.status(403).json({ 
+          error: "Message limit reached",
+          limitReached: true,
+          usage
+        });
+      }
+
+      const incrementResult = await incrementMessageCount(email);
+      if (!incrementResult.success) {
+        return res.status(403).json({ 
+          error: incrementResult.error,
+          limitReached: true
+        });
+      }
 
       // Save user message
       await chatStorage.createMessage(conversationId, "user", content);

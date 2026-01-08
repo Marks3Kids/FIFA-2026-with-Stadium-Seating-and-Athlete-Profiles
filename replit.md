@@ -152,7 +152,7 @@ The AI Concierge subscription includes proactive automation with both written an
 
 ## External Dependencies
 -   **Stripe:** For payment processing, subscription management, and webhook integration (`stripe-replit-sync` package).
-    -   Products: Championship Concierge - Team Info (prod_TfHo6dxkResAo8), Championship Concierge - Logistics (prod_TfHo6jtr8E71AB), Championship Concierge - AI Concierge (prod_TfHoStUqBCCA7O).
+    -   Products: Championship Concierge - Team Info (prod_TfHo6dxkResAo8), Championship Concierge - Logistics (prod_TfHo6jtr8E71AB), Championship Concierge - AI Concierge (prod_TfHoStUqBCCA7O), Championship Concierge - AI Message Pack (prod_TkdvusZSj18Mlv).
 -   **PostgreSQL (Neon):** Database for data storage.
 -   **OpenWeatherMap (Optional):** For real-time weather data. Set `OPENWEATHER_API_KEY` secret if available; otherwise uses simulated weather data.
 -   **OpenAI:** Used for translating news headlines into multiple languages.

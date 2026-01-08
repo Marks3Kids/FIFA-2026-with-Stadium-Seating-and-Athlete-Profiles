@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Layout } from "@/components/Layout";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { 
   Send, 
@@ -15,13 +15,25 @@ import {
   Droplets,
   Bell,
   MapPin,
-  Volume2
+  Volume2,
+  AlertTriangle,
+  MessageCircle,
+  ShoppingCart
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "wouter";
 import { VoiceConcierge, TalkToConciergeButton } from "@/components/VoiceConcierge";
 import { useLocation as useGeoLocation } from "@/contexts/LocationContext";
 import { generateWeatherAlert, getHydrationRecommendations, getCoolingStations } from "@/services/WeatherService";
+import { useSubscription } from "@/contexts/SubscriptionContext";
+
+interface MessageUsage {
+  messagesUsed: number;
+  bonusMessages: number;
+  totalAvailable: number;
+  remaining: number;
+  monthYear: string;
+}
 
 interface Message {
   role: "user" | "assistant";
@@ -35,10 +47,26 @@ export default function Concierge() {
   const [input, setInput] = useState("");
   const [lastSpokenMessage, setLastSpokenMessage] = useState("");
   const [showAlerts, setShowAlerts] = useState(false);
+  const [limitReached, setLimitReached] = useState(false);
+  const [isPurchasing, setIsPurchasing] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const queryClient = useQueryClient();
   
+  const { email } = useSubscription();
   const { currentCity, currentVault } = useGeoLocation();
+
+  const { data: usageData, refetch: refetchUsage } = useQuery<MessageUsage>({
+    queryKey: ['ai-message-usage', email],
+    queryFn: async () => {
+      if (!email) return null;
+      const res = await fetch(`/api/ai-messages/usage?email=${encodeURIComponent(email)}`);
+      if (!res.ok) throw new Error('Failed to fetch usage');
+      return res.json();
+    },
+    enabled: !!email,
+    staleTime: 30 * 1000,
+  });
 
   const { data: weatherData } = useQuery({
     queryKey: ['weather', currentCity?.cityKey],
@@ -104,6 +132,50 @@ export default function Concierge() {
     scrollToBottom();
   }, [messages]);
 
+  const handleBuyMoreMessages = async () => {
+    if (!email || isPurchasing) return;
+    setIsPurchasing(true);
+    try {
+      const res = await fetch('/api/ai-messages/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      }
+    } catch (error) {
+      console.error('Failed to create checkout:', error);
+    } finally {
+      setIsPurchasing(false);
+    }
+  };
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const purchaseStatus = urlParams.get('purchase');
+    const sessionId = urlParams.get('session_id');
+    
+    if (purchaseStatus === 'success' && email && sessionId) {
+      fetch('/api/ai-messages/add-bonus', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, sessionId }),
+      }).then(async (res) => {
+        if (res.ok) {
+          refetchUsage();
+          setLimitReached(false);
+        }
+        window.history.replaceState({}, '', '/concierge');
+      }).catch(() => {
+        window.history.replaceState({}, '', '/concierge');
+      });
+    } else if (purchaseStatus === 'cancelled') {
+      window.history.replaceState({}, '', '/concierge');
+    }
+  }, [email, refetchUsage]);
+
   const chatMutation = useMutation({
     mutationFn: async (userMessages: Message[]) => {
       const profileContext = getProfileContext();
@@ -118,13 +190,31 @@ export default function Concierge() {
         ? [contextMessage, ...userMessages]
         : userMessages;
       
-      const res = await apiRequest("POST", "/api/concierge/chat", { messages: messagesWithContext });
+      const res = await apiRequest("POST", "/api/concierge/chat", { 
+        messages: messagesWithContext,
+        email 
+      });
+      
+      if (res.status === 403) {
+        const data = await res.json();
+        if (data.limitReached) {
+          setLimitReached(true);
+          throw new Error('limit_reached');
+        }
+      }
+      
       return res.json();
     },
     onSuccess: (data) => {
       setMessages((prev) => [...prev, { role: "assistant", content: data.reply }]);
+      if (data.usage) {
+        queryClient.setQueryData(['ai-message-usage', email], data.usage);
+      }
     },
-    onError: () => {
+    onError: (error: Error) => {
+      if (error.message === 'limit_reached') {
+        return;
+      }
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: t("concierge.error") }
@@ -190,15 +280,25 @@ export default function Concierge() {
                 <p className="text-sm text-muted-foreground">{t("concierge.subtitle")}</p>
               </div>
             </div>
-            {messages.length > 0 && (
-              <button
-                onClick={handleNewConversation}
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 active:scale-95 transition-all"
-                data-testid="button-new-conversation"
-              >
-                <RefreshCw className="w-5 h-5 text-white" />
-              </button>
-            )}
+            <div className="flex items-center gap-2">
+              {usageData && (
+                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-full text-xs">
+                  <MessageCircle className="w-3.5 h-3.5 text-primary" />
+                  <span className={`font-medium ${usageData.remaining <= 5 ? 'text-orange-400' : 'text-white'}`}>
+                    {usageData.remaining}/{usageData.totalAvailable}
+                  </span>
+                </div>
+              )}
+              {messages.length > 0 && (
+                <button
+                  onClick={handleNewConversation}
+                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 active:scale-95 transition-all"
+                  data-testid="button-new-conversation"
+                >
+                  <RefreshCw className="w-5 h-5 text-white" />
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -374,14 +474,14 @@ export default function Concierge() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
-              placeholder={t("concierge.inputPlaceholder")}
-              className="flex-1 bg-background border border-white/10 rounded-full px-4 py-3 text-white text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary"
-              disabled={chatMutation.isPending}
+              placeholder={limitReached ? "Message limit reached" : t("concierge.inputPlaceholder")}
+              className="flex-1 bg-background border border-white/10 rounded-full px-4 py-3 text-white text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary disabled:opacity-50"
+              disabled={chatMutation.isPending || limitReached}
               data-testid="input-chat-message"
             />
             <button
               onClick={handleSend}
-              disabled={!input.trim() || chatMutation.isPending}
+              disabled={!input.trim() || chatMutation.isPending || limitReached}
               className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 transition-transform"
               data-testid="button-send-message"
             >
@@ -403,6 +503,67 @@ export default function Concierge() {
             </p>
           </div>
         </div>
+
+        {limitReached && (
+          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+            <div className="bg-card border border-white/10 rounded-2xl p-6 max-w-sm w-full space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-orange-500/20 flex items-center justify-center">
+                  <AlertTriangle className="w-6 h-6 text-orange-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white">Message Limit Reached</h3>
+                  <p className="text-sm text-muted-foreground">You've used all your AI messages this month</p>
+                </div>
+              </div>
+
+              <div className="bg-white/5 rounded-xl p-4 space-y-2">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">Messages used</span>
+                  <span className="text-white font-medium">{usageData?.messagesUsed || 0}</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">Monthly limit</span>
+                  <span className="text-white font-medium">{usageData?.totalAvailable || 50}</span>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-primary/20 to-emerald-600/20 rounded-xl p-4 border border-primary/30">
+                <div className="flex items-center gap-2 mb-2">
+                  <ShoppingCart className="w-5 h-5 text-primary" />
+                  <span className="font-bold text-white">Get 50 More Messages</span>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Continue chatting with your AI Concierge for just $4.99
+                </p>
+                <button
+                  onClick={handleBuyMoreMessages}
+                  disabled={isPurchasing}
+                  className="w-full py-3 bg-primary text-primary-foreground rounded-xl font-bold hover:bg-primary/90 disabled:opacity-50 flex items-center justify-center gap-2"
+                >
+                  {isPurchasing ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Processing...
+                    </>
+                  ) : (
+                    <>
+                      <CreditCard className="w-4 h-4" />
+                      Buy 50 Messages - $4.99
+                    </>
+                  )}
+                </button>
+              </div>
+
+              <button
+                onClick={() => setLimitReached(false)}
+                className="w-full py-2 text-sm text-muted-foreground hover:text-white transition-colors"
+              >
+                Maybe later
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </Layout>
   );
