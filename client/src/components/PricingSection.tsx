@@ -295,11 +295,13 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
       } else {
         throw new Error(data.error || "No checkout URL returned");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Checkout error:", error);
+      const errorMessage = error?.message || String(error);
+      alert(`Checkout failed: ${errorMessage}`);
       toast({
         title: "Error",
-        description: "Failed to start checkout. Please try again.",
+        description: `Failed to start checkout: ${errorMessage}`,
         variant: "destructive",
       });
     } finally {
