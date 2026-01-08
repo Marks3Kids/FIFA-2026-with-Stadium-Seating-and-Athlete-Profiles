@@ -1134,9 +1134,13 @@ Remember: You're helping fans have the best World Cup experience of their lives!
       );
 
       res.json({ url: session.url });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Checkout API error:", error);
-      res.status(500).json({ error: "Failed to create checkout session" });
+      const errorMessage = error?.message || String(error);
+      res.status(500).json({ 
+        error: "Failed to create checkout session", 
+        details: errorMessage 
+      });
     }
   });
 

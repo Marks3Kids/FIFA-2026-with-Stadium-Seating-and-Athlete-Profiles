@@ -289,13 +289,15 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
       if (data.url) {
         window.location.href = data.url;
       } else {
-        throw new Error(data.error || "No checkout URL returned");
+        const errorDetail = data.details || data.error || "No checkout URL returned";
+        throw new Error(errorDetail);
       }
     } catch (error: any) {
       console.error("Checkout error:", error);
+      const errorMessage = error?.message || "Unknown error";
       toast({
         title: "Checkout Error",
-        description: "Unable to start checkout. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
