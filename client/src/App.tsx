@@ -48,7 +48,6 @@ function Router() {
       <Route path="/" component={LandingPage} />
       <Route path="/pricing" component={Pricing} />
       <Route path="/bracket" component={BracketChallenge} />
-      <Route path="/watch-hubs" component={WatchHubs} />
       <Route path="/legal" component={Legal} />
       <Route path="/terms" component={Legal} />
       <Route path="/privacy" component={Legal} />
@@ -68,6 +67,8 @@ function Router() {
       <Route path="/players">{() => <ProtectedRoute requiredTier="team_info"><Players /></ProtectedRoute>}</Route>
       <Route path="/stadium-seating">{() => <ProtectedRoute requiredTier="team_info"><StadiumSeating /></ProtectedRoute>}</Route>
       <Route path="/odds">{() => <ProtectedRoute requiredTier="team_info"><TournamentOdds /></ProtectedRoute>}</Route>
+      <Route path="/history">{() => <ProtectedRoute requiredTier="team_info"><History /></ProtectedRoute>}</Route>
+      <Route path="/watch-hubs">{() => <ProtectedRoute requiredTier="team_info"><WatchHubs /></ProtectedRoute>}</Route>
       
       {/* Logistics tier - travel, lodging, safety, host cities */}
       <Route path="/cities">{() => <ProtectedRoute requiredTier="logistics"><Cities /></ProtectedRoute>}</Route>
@@ -85,7 +86,6 @@ function Router() {
       
       {/* AI Concierge tier - full AI features */}
       <Route path="/concierge">{() => <ProtectedRoute requiredTier="ai_concierge"><Concierge /></ProtectedRoute>}</Route>
-      <Route path="/history">{() => <ProtectedRoute requiredTier="ai_concierge"><History /></ProtectedRoute>}</Route>
       
       {/* Admin routes */}
       <Route path="/admin/venues" component={AdminVenues} />
