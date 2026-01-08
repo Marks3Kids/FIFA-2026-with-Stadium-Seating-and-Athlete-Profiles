@@ -1182,9 +1182,17 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         const priceId = (session as any).line_items?.data?.[0]?.price?.id;
         const customerId = typeof session.customer === 'string' ? session.customer : session.customer?.id;
         
+        // Map price IDs to subscription tiers
+        const priceToTierMap: Record<string, string> = {
+          "price_1Sn6eHEwO7dpbt1eB8PGVFhA": "team_info",
+          "price_1Sn6kREwO7dpbt1eKfbFJrIq": "logistics", 
+          "price_1Sn6ovEwO7dpbt1eXZ45C5pP": "ai_concierge",
+          "price_1Sn8dSEwO7dpbt1e9m1RS1cb": "ai_concierge", // Message pack upgrade
+        };
+        
+        const tier = priceToTierMap[priceId] || "team_info";
+        
         if (email && priceId) {
-          const tier = priceId === "price_1SYdnrLI0BitNJUz4cpm9MAw" ? "basic" : "premier";
-          
           const existingPurchase = await storage.getPurchaseByEmail(email);
           if (!existingPurchase) {
             await storage.createPurchase({
@@ -1194,12 +1202,16 @@ Remember: You're helping fans have the best World Cup experience of their lives!
               stripeCustomerId: customerId || null,
               stripeSessionId: sessionId,
             });
-          } else if (tier === "premier" && existingPurchase.tier === "basic") {
-            await storage.updatePurchaseTier(email, "premier");
+          } else {
+            // Upgrade tier if new tier is higher
+            const tierHierarchy = ["free", "team_info", "logistics", "ai_concierge"];
+            const currentTierIndex = tierHierarchy.indexOf(existingPurchase.tier);
+            const newTierIndex = tierHierarchy.indexOf(tier);
+            if (newTierIndex > currentTierIndex) {
+              await storage.updatePurchaseTier(email, tier);
+            }
           }
         }
-        
-        const tier = priceId === "price_1SYdnrLI0BitNJUz4cpm9MAw" ? "basic" : "premier";
         
         res.json({ 
           success: true, 
