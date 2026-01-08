@@ -37,6 +37,7 @@ import WatchHubs from "@/pages/WatchHubs";
 import AdminVenues from "@/pages/AdminVenues";
 import AdminLeadsPage from "@/pages/AdminLeadsPage";
 import { Legal } from "@/pages/Legal";
+import { Support } from "@/pages/Support";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -51,6 +52,7 @@ function Router() {
       <Route path="/terms" component={Legal} />
       <Route path="/privacy" component={Legal} />
       <Route path="/refund" component={Legal} />
+      <Route path="/support" component={Support} />
       
       {/* Free tier - basic access after lead capture */}
       <Route path="/home">{() => <ProtectedRoute requiredTier="free"><Home /></ProtectedRoute>}</Route>
