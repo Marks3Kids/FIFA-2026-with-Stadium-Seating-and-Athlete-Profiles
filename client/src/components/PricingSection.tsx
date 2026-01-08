@@ -268,16 +268,19 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
   };
 
   const handlePurchase = async (tier: PricingTier) => {
-    alert(`Button clicked! Tier: ${tier.id}, PriceId: ${tier.priceId || 'none'}`);
+    // v2 - Updated checkout handler
+    alert(`[v2] Button clicked! Tier: ${tier.id}, PriceId: ${tier.priceId || 'none'}`);
     
     if (!tier.priceId) {
       handleFreeTier();
       return;
     }
 
-    console.log("Starting checkout for tier:", tier.id, "priceId:", tier.priceId);
     setIsLoading(tier.id);
+    
     try {
+      alert("[v2] About to make API call...");
+      
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -286,9 +289,9 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
         }),
       });
 
-      console.log("Checkout response status:", response.status);
+      alert(`[v2] Got response with status: ${response.status}`);
+      
       const data = await response.json();
-      console.log("Checkout response data:", data);
       
       if (data.url) {
         window.location.href = data.url;
@@ -298,10 +301,10 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     } catch (error: any) {
       console.error("Checkout error:", error);
       const errorMessage = error?.message || String(error);
-      alert(`Checkout failed: ${errorMessage}`);
+      alert(`[v2] Checkout error: ${errorMessage}`);
       toast({
-        title: "Error",
-        description: `Failed to start checkout: ${errorMessage}`,
+        title: "Checkout Error",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
