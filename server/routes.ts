@@ -1108,33 +1108,29 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         return res.status(400).json({ error: "Price ID is required" });
       }
 
-      if (!email) {
-        return res.status(400).json({ error: "Email is required" });
-      }
+      const baseUrl = `${req.protocol}://${req.get('host')}`;
+      let customerId: string | undefined;
 
-      // Check if user exists with this email
-      let user = await storage.getUserByEmail(email);
-      let customerId: string;
-
-      if (user && user.stripeCustomerId) {
-        customerId = user.stripeCustomerId;
-      } else {
-        // Create new Stripe customer
-        const customer = await stripeService.createCustomer(email, user?.id ? parseInt(user.id) : 0);
-        customerId = customer.id;
-
-        if (user) {
-          // Update existing user with customer ID
-          await storage.updateUserStripeInfo(user.id, { stripeCustomerId: customerId });
+      // If email provided, try to find or create customer
+      if (email) {
+        const user = await storage.getUserByEmail(email);
+        if (user && user.stripeCustomerId) {
+          customerId = user.stripeCustomerId;
+        } else {
+          const customer = await stripeService.createCustomer(email, user?.id ? parseInt(user.id) : 0);
+          customerId = customer.id;
+          if (user) {
+            await storage.updateUserStripeInfo(user.id, { stripeCustomerId: customerId });
+          }
         }
       }
 
-      const baseUrl = `${req.protocol}://${req.get('host')}`;
-      const session = await stripeService.createCheckoutSession(
-        customerId,
+      // Create checkout session (customer optional - Stripe will collect email)
+      const session = await stripeService.createCheckoutSessionWithOptionalCustomer(
         priceId,
         `${baseUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-        `${baseUrl}/pricing`
+        `${baseUrl}/pricing`,
+        customerId
       );
 
       res.json({ url: session.url });

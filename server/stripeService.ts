@@ -27,6 +27,27 @@ export class StripeService {
     });
   }
 
+  async createCheckoutSessionWithOptionalCustomer(priceId: string, successUrl: string, cancelUrl: string, customerId?: string) {
+    const stripe = await getUncachableStripeClient();
+    
+    const price = await stripe.prices.retrieve(priceId);
+    const isRecurring = !!price.recurring;
+    
+    const sessionParams: any = {
+      payment_method_types: ['card'],
+      line_items: [{ price: priceId, quantity: 1 }],
+      mode: isRecurring ? 'subscription' : 'payment',
+      success_url: successUrl,
+      cancel_url: cancelUrl,
+    };
+
+    if (customerId) {
+      sessionParams.customer = customerId;
+    }
+    
+    return await stripe.checkout.sessions.create(sessionParams);
+  }
+
   async retrieveCheckoutSession(sessionId: string) {
     const stripe = await getUncachableStripeClient();
     return await stripe.checkout.sessions.retrieve(sessionId, {
