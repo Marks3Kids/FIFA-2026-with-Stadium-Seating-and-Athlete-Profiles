@@ -268,6 +268,8 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
   };
 
   const handlePurchase = async (tier: PricingTier) => {
+    alert(`Button clicked! Tier: ${tier.id}, PriceId: ${tier.priceId || 'none'}`);
+    
     if (!tier.priceId) {
       handleFreeTier();
       return;
