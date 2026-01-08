@@ -1688,23 +1688,20 @@ Remember: You're helping fans have the best World Cup experience of their lives!
       const { isSessionAlreadyUsed } = await import("./aiMessageService");
       const alreadyUsed = await isSessionAlreadyUsed(sessionId);
       if (alreadyUsed) {
-        const usage = await getMessageUsage(email);
-        return res.json({ success: true, alreadyProcessed: true, usage });
+        return res.status(409).json({ error: "Session already processed", alreadyProcessed: true });
       }
 
-      const stripe = (await import("stripe")).default;
-      const stripeClient = new stripe(process.env.STRIPE_SECRET_KEY!);
-      
-      const session = await stripeClient.checkout.sessions.retrieve(sessionId, {
-        expand: ['line_items', 'line_items.data.price.product']
-      });
+      const session = await stripeService.retrieveCheckoutSessionWithProduct(sessionId);
       
       if (!session || session.payment_status !== 'paid') {
         return res.status(400).json({ error: "Invalid or unpaid session" });
       }
 
-      const sessionEmail = session.customer_details?.email || '';
-      if (sessionEmail && sessionEmail.toLowerCase() !== email.toLowerCase()) {
+      const sessionEmail = session.customer_details?.email;
+      if (!sessionEmail) {
+        return res.status(400).json({ error: "Session has no associated email" });
+      }
+      if (sessionEmail.toLowerCase() !== email.toLowerCase()) {
         return res.status(403).json({ error: "Session email mismatch" });
       }
 
@@ -1722,8 +1719,7 @@ Remember: You're helping fans have the best World Cup experience of their lives!
 
       const result = await addBonusMessages(email, 50, sessionId);
       if (result.alreadyProcessed) {
-        const usage = await getMessageUsage(email);
-        return res.json({ success: true, alreadyProcessed: true, usage });
+        return res.status(409).json({ error: "Session already processed", alreadyProcessed: true });
       }
       
       const usage = await getMessageUsage(email);

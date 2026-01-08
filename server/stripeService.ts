@@ -34,6 +34,13 @@ export class StripeService {
     });
   }
 
+  async retrieveCheckoutSessionWithProduct(sessionId: string) {
+    const stripe = await getUncachableStripeClient();
+    return await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ['line_items', 'line_items.data.price.product'],
+    });
+  }
+
   async createCustomerPortalSession(customerId: string, returnUrl: string) {
     const stripe = await getUncachableStripeClient();
     return await stripe.billingPortal.sessions.create({

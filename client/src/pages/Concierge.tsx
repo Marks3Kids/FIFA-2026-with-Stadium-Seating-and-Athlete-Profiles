@@ -163,7 +163,7 @@ export default function Concierge() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, sessionId }),
       }).then(async (res) => {
-        if (res.ok) {
+        if (res.ok || res.status === 409) {
           refetchUsage();
           setLimitReached(false);
         }
