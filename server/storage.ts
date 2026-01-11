@@ -375,17 +375,23 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getPurchaseByEmail(email: string): Promise<Purchase | undefined> {
-    const [purchase] = await db.select().from(purchases).where(eq(purchases.email, email));
+    const normalizedEmail = email.toLowerCase().trim();
+    const [purchase] = await db.select().from(purchases).where(eq(purchases.email, normalizedEmail));
     return purchase;
   }
 
   async createPurchase(purchase: InsertPurchase): Promise<Purchase> {
-    const [newPurchase] = await db.insert(purchases).values(purchase).returning();
+    const normalizedPurchase = {
+      ...purchase,
+      email: purchase.email.toLowerCase().trim(),
+    };
+    const [newPurchase] = await db.insert(purchases).values(normalizedPurchase).returning();
     return newPurchase;
   }
 
   async updatePurchaseTier(email: string, tier: string): Promise<Purchase | undefined> {
-    const [purchase] = await db.update(purchases).set({ tier }).where(eq(purchases.email, email)).returning();
+    const normalizedEmail = email.toLowerCase().trim();
+    const [purchase] = await db.update(purchases).set({ tier }).where(eq(purchases.email, normalizedEmail)).returning();
     return purchase;
   }
 

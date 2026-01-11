@@ -98,11 +98,12 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const setSubscription = (userEmail: string, tier: SubscriptionTier, userName?: string, userCity?: string) => {
-    localStorage.setItem("subscription_email", userEmail);
+    const normalizedEmail = userEmail.toLowerCase().trim();
+    localStorage.setItem("subscription_email", normalizedEmail);
     localStorage.setItem("subscription_tier", tier);
     if (userName) localStorage.setItem("subscription_name", userName);
     if (userCity) localStorage.setItem("subscription_city", userCity);
-    setEmail(userEmail);
+    setEmail(normalizedEmail);
     setSubscriptionTier(tier);
     setName(userName || null);
     setCity(userCity || null);
@@ -111,11 +112,12 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
   };
 
   const setFreeUser = (userEmail: string, userName: string, userCity: string) => {
-    localStorage.setItem("subscription_email", userEmail);
+    const normalizedEmail = userEmail.toLowerCase().trim();
+    localStorage.setItem("subscription_email", normalizedEmail);
     localStorage.setItem("subscription_tier", "free");
     localStorage.setItem("subscription_name", userName);
     localStorage.setItem("subscription_city", userCity);
-    setEmail(userEmail);
+    setEmail(normalizedEmail);
     setName(userName);
     setCity(userCity);
     setSubscriptionTier("free");
