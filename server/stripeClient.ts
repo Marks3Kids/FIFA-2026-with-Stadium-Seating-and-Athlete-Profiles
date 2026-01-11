@@ -15,9 +15,8 @@ async function getCredentials() {
   }
 
   const connectorName = 'stripe';
-  // Force development/sandbox mode for testing checkout flow
-  // TODO: Change back to production when ready for live payments
-  const targetEnvironment = 'development';
+  const isProduction = process.env.REPLIT_DEPLOYMENT === '1';
+  const targetEnvironment = isProduction ? 'production' : 'development';
 
   const url = new URL(`https://${hostname}/api/v2/connection`);
   url.searchParams.set('include_secrets', 'true');
