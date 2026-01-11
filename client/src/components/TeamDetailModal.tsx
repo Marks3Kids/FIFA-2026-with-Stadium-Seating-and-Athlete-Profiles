@@ -883,6 +883,96 @@ export const teamSeasonData: Record<string, {
       { name: "Ahmad Ersan", goals: 3 },
     ]
   },
+  "Cape Verde": {
+    wins: 5, ties: 3, losses: 2,
+    highlights: "The Blue Sharks made history by qualifying for their first FIFA World Cup. The island nation showed remarkable organization and team spirit throughout African qualifying.",
+    recentMatches: [
+      { opponent: "Nigeria", result: "D", score: "1-1" },
+      { opponent: "Libya", result: "W", score: "2-0" },
+      { opponent: "Lesotho", result: "W", score: "3-0" },
+      { opponent: "Rwanda", result: "W", score: "2-1" },
+    ],
+    topScorers: [
+      { name: "Garry Rodrigues", goals: 4 },
+      { name: "Júlio Tavares", goals: 3 },
+      { name: "Ryan Mendes", goals: 2 },
+    ]
+  },
+  "Curaçao": {
+    wins: 4, ties: 4, losses: 3,
+    highlights: "The Caribbean nation qualified for their first World Cup through impressive performances in CONCACAF. A blend of Dutch-based players provided quality throughout the squad.",
+    recentMatches: [
+      { opponent: "Costa Rica", result: "D", score: "1-1" },
+      { opponent: "Honduras", result: "W", score: "2-1" },
+      { opponent: "El Salvador", result: "W", score: "3-1" },
+      { opponent: "Guatemala", result: "D", score: "0-0" },
+    ],
+    topScorers: [
+      { name: "Elson Hooi", goals: 4 },
+      { name: "Rangelo Janga", goals: 3 },
+      { name: "Leandro Bacuna", goals: 2 },
+    ]
+  },
+  "Ghana": {
+    wins: 5, ties: 3, losses: 3,
+    highlights: "The Black Stars qualified with a mix of experienced European-based players and emerging talents. Strong performances in key African qualifiers secured their spot.",
+    recentMatches: [
+      { opponent: "Nigeria", result: "D", score: "1-1" },
+      { opponent: "South Africa", result: "L", score: "1-2" },
+      { opponent: "Mali", result: "W", score: "2-1" },
+      { opponent: "Central African Republic", result: "W", score: "4-0" },
+    ],
+    topScorers: [
+      { name: "Mohammed Kudus", goals: 5 },
+      { name: "Jordan Ayew", goals: 3 },
+      { name: "Iñaki Williams", goals: 2 },
+    ]
+  },
+  "Haiti": {
+    wins: 4, ties: 4, losses: 3,
+    highlights: "Les Grenadiers qualified through determination in CONCACAF. Despite challenges, the team united to achieve a historic World Cup qualification.",
+    recentMatches: [
+      { opponent: "Canada", result: "L", score: "0-2" },
+      { opponent: "Panama", result: "D", score: "1-1" },
+      { opponent: "Trinidad", result: "W", score: "2-0" },
+      { opponent: "Bermuda", result: "W", score: "4-0" },
+    ],
+    topScorers: [
+      { name: "Duckens Nazon", goals: 4 },
+      { name: "Frantzdy Pierrot", goals: 3 },
+      { name: "Derrick Etienne Jr.", goals: 2 },
+    ]
+  },
+  "Ivory Coast": {
+    wins: 6, ties: 2, losses: 3,
+    highlights: "The Elephants qualified as 2024 Africa Cup of Nations champions. A golden generation continued to deliver with Sébastien Haller leading the attack.",
+    recentMatches: [
+      { opponent: "Cameroon", result: "L", score: "0-1" },
+      { opponent: "Morocco", result: "L", score: "0-3" },
+      { opponent: "Gabon", result: "W", score: "2-0" },
+      { opponent: "Kenya", result: "W", score: "3-1" },
+    ],
+    topScorers: [
+      { name: "Sébastien Haller", goals: 5 },
+      { name: "Nicolas Pépé", goals: 3 },
+      { name: "Simon Adingra", goals: 3 },
+    ]
+  },
+  "Norway": {
+    wins: 6, ties: 2, losses: 3,
+    highlights: "Norway qualified for their first World Cup since 1998. Erling Haaland's prolific goalscoring was instrumental in their European qualifying campaign.",
+    recentMatches: [
+      { opponent: "Scotland", result: "L", score: "1-2" },
+      { opponent: "Serbia", result: "W", score: "2-1" },
+      { opponent: "Georgia", result: "W", score: "3-1" },
+      { opponent: "Kazakhstan", result: "W", score: "4-0" },
+    ],
+    topScorers: [
+      { name: "Erling Haaland", goals: 8 },
+      { name: "Alexander Sørloth", goals: 4 },
+      { name: "Martin Ødegaard", goals: 3 },
+    ]
+  },
 };
 
 export function TeamDetailModal({ team, isOpen, onClose }: TeamDetailModalProps) {
