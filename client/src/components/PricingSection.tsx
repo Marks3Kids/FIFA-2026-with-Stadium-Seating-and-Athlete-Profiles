@@ -1,8 +1,9 @@
-import { Check, Download, Users, MapPin, Sparkles } from "lucide-react";
+import { Check, Download, Users, MapPin, Sparkles, RefreshCw, Loader2 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { useSubscription, SubscriptionTier } from "@/contexts/SubscriptionContext";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "wouter";
 
 interface PricingTier {
   id: SubscriptionTier;
@@ -99,12 +100,16 @@ interface PricingSectionProps {
 }
 
 export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: PricingSectionProps) {
-  const { setFreeUser } = useSubscription();
+  const { setFreeUser, setSubscription } = useSubscription();
   const { toast } = useToast();
   const { t } = useTranslation();
+  const [, navigate] = useLocation();
   const [isLoading, setIsLoading] = useState<string | null>(null);
   const [showEmailCapture, setShowEmailCapture] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", city: "" });
+  const [showRestore, setShowRestore] = useState(false);
+  const [restoreEmail, setRestoreEmail] = useState("");
+  const [isRestoring, setIsRestoring] = useState(false);
 
   const getTierName = (id: string) => {
     const nameMap: Record<string, string> = {
@@ -200,6 +205,42 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
       localStorage.setItem("bracketDownloads", String(current + 1));
     } catch {
       // localStorage not available
+    }
+  };
+
+  const handleRestorePurchase = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!restoreEmail.trim()) return;
+    
+    setIsRestoring(true);
+    try {
+      const res = await fetch(`/api/subscription/verify?email=${encodeURIComponent(restoreEmail.toLowerCase().trim())}`);
+      const data = await res.json();
+      
+      if (data.valid && data.tier) {
+        setSubscription(restoreEmail, data.tier as SubscriptionTier);
+        toast({
+          title: "Purchase Restored!",
+          description: `Welcome back! Your ${data.tier.replace('_', ' ')} access has been restored.`,
+        });
+        setShowRestore(false);
+        setRestoreEmail("");
+        navigate("/");
+      } else {
+        toast({
+          title: "No Purchase Found",
+          description: "We couldn't find a purchase with that email address. Please check your email and try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to verify purchase. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsRestoring(false);
     }
   };
 
@@ -449,6 +490,63 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
           </div>
         ))}
       </div>
+
+      <div className="text-center mt-8">
+        <button
+          onClick={() => setShowRestore(true)}
+          className="text-sm text-primary hover:underline flex items-center gap-2 mx-auto"
+        >
+          <RefreshCw className="w-4 h-4" />
+          Already purchased? Restore your access
+        </button>
+      </div>
+
+      {showRestore && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+          <div className="bg-card border border-white/10 rounded-2xl p-6 max-w-sm w-full">
+            <h3 className="text-xl font-bold text-white mb-2">Restore Purchase</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Enter the email address you used when purchasing to restore your access.
+            </p>
+            <form onSubmit={handleRestorePurchase}>
+              <input
+                type="email"
+                value={restoreEmail}
+                onChange={(e) => setRestoreEmail(e.target.value)}
+                placeholder="Your email address"
+                className="w-full bg-background border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary mb-4"
+                required
+              />
+              <div className="flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowRestore(false);
+                    setRestoreEmail("");
+                  }}
+                  className="flex-1 py-3 rounded-xl border border-white/20 text-white hover:bg-white/5"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isRestoring}
+                  className="flex-1 py-3 rounded-xl bg-primary text-primary-foreground font-bold hover:bg-primary/90 disabled:opacity-50 flex items-center justify-center gap-2"
+                >
+                  {isRestoring ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Checking...
+                    </>
+                  ) : (
+                    "Restore"
+                  )}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 }
