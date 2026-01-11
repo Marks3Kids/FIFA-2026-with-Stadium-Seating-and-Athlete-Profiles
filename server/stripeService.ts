@@ -24,6 +24,7 @@ export class StripeService {
       mode: isRecurring ? 'subscription' : 'payment',
       success_url: successUrl,
       cancel_url: cancelUrl,
+      allow_promotion_codes: true,
     });
   }
 
@@ -39,6 +40,7 @@ export class StripeService {
       mode: isRecurring ? 'subscription' : 'payment',
       success_url: successUrl,
       cancel_url: cancelUrl,
+      allow_promotion_codes: true,
     };
 
     if (customerId) {
