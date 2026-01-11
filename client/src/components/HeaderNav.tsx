@@ -4,6 +4,7 @@ import { Home, Calendar, Flag, MapPin, Menu, Globe, ChevronDown, Train, Hotel, U
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
 import { getLanguageFlagUrl } from "@/lib/flags";
+import { useSubscription } from "@/contexts/SubscriptionContext";
 
 const LANGUAGES = [
   { code: "en", name: "English" },
@@ -46,6 +47,7 @@ interface HeaderNavProps {
 export function HeaderNav({ inline = false }: HeaderNavProps) {
   const { t, i18n } = useTranslation();
   const [location] = useLocation();
+  const { isSubscribed } = useSubscription();
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(() => {
@@ -156,11 +158,12 @@ export function HeaderNav({ inline = false }: HeaderNavProps) {
           <div className={`absolute ${isRTL ? 'left-0' : 'right-0'} top-full mt-2 bg-card border border-white/10 rounded-xl shadow-xl overflow-hidden z-50 min-w-[200px] animate-in fade-in slide-in-from-top-2 duration-200`}>
             <div className="py-1">
               {NAV_ITEMS.map(({ icon: Icon, labelKey, path }) => {
-                const isActive = location === path;
+                const actualPath = path === "/" && isSubscribed ? "/teams" : path;
+                const isActive = location === actualPath || (path === "/" && location === "/teams" && isSubscribed);
                 return (
                   <Link
                     key={path}
-                    href={path}
+                    href={actualPath}
                     onClick={handleNavClick}
                     className={cn(
                       "w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-white/5 transition-colors",
