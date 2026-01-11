@@ -124,6 +124,7 @@ export interface IStorage {
   deleteTripContact(id: number): Promise<boolean>;
   
   getPurchaseByEmail(email: string): Promise<Purchase | undefined>;
+  getAllPurchases(): Promise<Purchase[]>;
   createPurchase(purchase: InsertPurchase): Promise<Purchase>;
   updatePurchaseTier(email: string, tier: string): Promise<Purchase | undefined>;
   
@@ -378,6 +379,10 @@ export class DatabaseStorage implements IStorage {
     const normalizedEmail = email.toLowerCase().trim();
     const [purchase] = await db.select().from(purchases).where(eq(purchases.email, normalizedEmail));
     return purchase;
+  }
+
+  async getAllPurchases(): Promise<Purchase[]> {
+    return await db.select().from(purchases).orderBy(desc(purchases.purchasedAt));
   }
 
   async createPurchase(purchase: InsertPurchase): Promise<Purchase> {

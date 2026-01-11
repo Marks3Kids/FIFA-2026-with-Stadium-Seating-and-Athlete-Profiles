@@ -1384,6 +1384,17 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     }
   });
 
+  // Admin: Get all purchases
+  app.get("/api/admin/purchases", async (req, res) => {
+    try {
+      const purchases = await storage.getAllPurchases();
+      res.json(purchases);
+    } catch (error) {
+      console.error("Failed to fetch purchases:", error);
+      res.status(500).json({ error: "Failed to fetch purchases" });
+    }
+  });
+
   // Admin: Export leads as CSV
   app.get("/api/admin/leads/export", async (req, res) => {
     try {

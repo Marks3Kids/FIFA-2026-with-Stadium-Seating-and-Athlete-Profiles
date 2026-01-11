@@ -36,8 +36,9 @@ import Pricing from "@/pages/Pricing";
 import WatchHubs from "@/pages/WatchHubs";
 import AdminVenues from "@/pages/AdminVenues";
 import AdminLeadsPage from "@/pages/AdminLeadsPage";
+import AdminDashboard from "@/pages/AdminDashboard";
 import { Legal } from "@/pages/Legal";
-import { Support } from "@/pages/Support";
+import SupportPage from "@/pages/SupportPage";
 import CheckoutSuccess from "@/pages/CheckoutSuccess";
 import NotFound from "@/pages/not-found";
 
@@ -52,7 +53,7 @@ function Router() {
       <Route path="/terms" component={Legal} />
       <Route path="/privacy" component={Legal} />
       <Route path="/refund" component={Legal} />
-      <Route path="/support" component={Support} />
+      <Route path="/support" component={SupportPage} />
       <Route path="/checkout/success" component={CheckoutSuccess} />
       
       {/* Free tier - basic access after lead capture */}
@@ -88,6 +89,7 @@ function Router() {
       <Route path="/concierge">{() => <ProtectedRoute requiredTier="ai_concierge"><Concierge /></ProtectedRoute>}</Route>
       
       {/* Admin routes */}
+      <Route path="/admin" component={AdminDashboard} />
       <Route path="/admin/venues" component={AdminVenues} />
       <Route path="/admin/leads" component={AdminLeadsPage} />
       
