@@ -1373,6 +1373,28 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     }
   });
 
+  // Admin: Login
+  app.post("/api/admin/login", async (req, res) => {
+    try {
+      const { password } = req.body;
+      const adminPassword = process.env.ADMIN_PASSWORD;
+      
+      if (!adminPassword) {
+        console.error("ADMIN_PASSWORD not set in environment");
+        return res.status(500).json({ error: "Admin not configured" });
+      }
+      
+      if (password === adminPassword) {
+        res.json({ success: true });
+      } else {
+        res.status(401).json({ success: false, error: "Invalid password" });
+      }
+    } catch (error) {
+      console.error("Admin login error:", error);
+      res.status(500).json({ error: "Login failed" });
+    }
+  });
+
   // Admin: Get all leads
   app.get("/api/admin/leads", async (req, res) => {
     try {

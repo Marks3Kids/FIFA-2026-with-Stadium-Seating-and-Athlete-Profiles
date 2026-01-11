@@ -1,9 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
+import { useState, useEffect } from "react";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 import { Link } from "wouter";
-import { Download, Users, CreditCard, Mail, Calendar, ArrowLeft } from "lucide-react";
+import { Download, Users, CreditCard, Mail, Calendar, ArrowLeft, Lock, LogOut } from "lucide-react";
+import { apiRequest } from "@/lib/queryClient";
 
 interface Lead {
   id: number;
@@ -19,7 +22,93 @@ interface Purchase {
   purchasedAt: string;
 }
 
+function AdminLogin({ onLogin }: { onLogin: () => void }) {
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const loginMutation = useMutation({
+    mutationFn: async (pwd: string) => {
+      const res = await apiRequest("POST", "/api/admin/login", { password: pwd });
+      return res.json();
+    },
+    onSuccess: (data) => {
+      if (data.success) {
+        sessionStorage.setItem("admin_authenticated", "true");
+        onLogin();
+      } else {
+        setError("Invalid password");
+      }
+    },
+    onError: () => {
+      setError("Invalid password");
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    loginMutation.mutate(password);
+  };
+
+  return (
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <Card className="w-full max-w-sm bg-card border-white/10">
+        <CardHeader className="text-center">
+          <Lock className="w-12 h-12 mx-auto text-primary mb-2" />
+          <CardTitle className="text-white">Admin Access</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input
+              type="password"
+              placeholder="Enter admin password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="bg-white/5 border-white/10 text-white"
+              autoFocus
+            />
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+            <Button type="submit" className="w-full" disabled={loginMutation.isPending}>
+              {loginMutation.isPending ? "Verifying..." : "Login"}
+            </Button>
+          </form>
+          <div className="mt-4 text-center">
+            <Link href="/">
+              <Button variant="ghost" size="sm" className="text-muted-foreground">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to site
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
 export default function AdminDashboard() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const auth = sessionStorage.getItem("admin_authenticated");
+    if (auth === "true") {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("admin_authenticated");
+    setIsAuthenticated(false);
+  };
+
+  if (!isAuthenticated) {
+    return <AdminLogin onLogin={() => setIsAuthenticated(true)} />;
+  }
+
+  return <AdminDashboardContent onLogout={handleLogout} />;
+}
+
+function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
   const { data: leads = [], isLoading: leadsLoading } = useQuery<Lead[]>({
     queryKey: ["/api/admin/leads"],
   });
@@ -50,14 +139,20 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-background p-4 sm:p-6">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center gap-4 mb-6">
-          <Link href="/">
-            <Button variant="ghost" size="sm">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back
-            </Button>
-          </Link>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white">Admin Dashboard</h1>
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            <Link href="/">
+              <Button variant="ghost" size="sm">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back
+              </Button>
+            </Link>
+            <h1 className="text-2xl sm:text-3xl font-bold text-white">Admin Dashboard</h1>
+          </div>
+          <Button variant="outline" size="sm" onClick={onLogout}>
+            <LogOut className="w-4 h-4 mr-2" />
+            Logout
+          </Button>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
