@@ -403,6 +403,21 @@ export const teamSeasonData: Record<string, {
       { name: "Alireza Jahanbakhsh", goals: 2 },
     ]
   },
+  "Indonesia": {
+    wins: 5, ties: 4, losses: 3,
+    highlights: "Garuda made history by qualifying for their first-ever World Cup. Naturalized players and emerging local talents combined to achieve the nation's greatest footballing moment.",
+    recentMatches: [
+      { opponent: "Australia", result: "D", score: "1-1" },
+      { opponent: "Japan", result: "L", score: "0-3" },
+      { opponent: "Saudi Arabia", result: "D", score: "1-1" },
+      { opponent: "Bahrain", result: "W", score: "2-0" },
+    ],
+    topScorers: [
+      { name: "Ragnar Oratmangoen", goals: 4 },
+      { name: "Marselino Ferdinan", goals: 3 },
+      { name: "Rafael Struick", goals: 2 },
+    ]
+  },
   "Saudi Arabia": {
     wins: 5, ties: 3, losses: 3,
     highlights: "The Green Falcons built on their shock 2022 World Cup win over Argentina. Investment in domestic talent development showed positive results.",
