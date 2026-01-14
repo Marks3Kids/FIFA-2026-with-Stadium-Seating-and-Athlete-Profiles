@@ -193,7 +193,7 @@ export const teamSeasonData: Record<string, {
       { name: "Raúl Jiménez", goals: 3 },
     ]
   },
-  "United States": {
+  "USA": {
     wins: 6, ties: 3, losses: 2,
     highlights: "The USMNT showcased their golden generation on home soil qualification. Christian Pulisic starred while the team built momentum heading into hosting the tournament.",
     recentMatches: [
