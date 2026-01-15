@@ -17,7 +17,7 @@ export default defineConfig({
       devOptions: {
         enabled: false
       },
-      includeAssets: ['favicon.png', 'apple-touch-icon.svg'],
+      includeAssets: ['favicon.png', 'apple-touch-icon.png'],
       manifest: {
         name: 'Championship Concierge - 2026 World Cup Travel Companion',
         short_name: 'Championship Concierge',
@@ -31,15 +31,45 @@ export default defineConfig({
         categories: ['sports', 'travel', 'lifestyle'],
         icons: [
           {
-            src: 'pwa-192x192.svg',
+            src: 'pwa-48x48.png',
+            sizes: '48x48',
+            type: 'image/png'
+          },
+          {
+            src: 'pwa-72x72.png',
+            sizes: '72x72',
+            type: 'image/png'
+          },
+          {
+            src: 'pwa-96x96.png',
+            sizes: '96x96',
+            type: 'image/png'
+          },
+          {
+            src: 'pwa-128x128.png',
+            sizes: '128x128',
+            type: 'image/png'
+          },
+          {
+            src: 'pwa-144x144.png',
+            sizes: '144x144',
+            type: 'image/png'
+          },
+          {
+            src: 'pwa-192x192.png',
             sizes: '192x192',
-            type: 'image/svg+xml',
+            type: 'image/png',
             purpose: 'any'
           },
           {
-            src: 'pwa-512x512.svg',
+            src: 'pwa-384x384.png',
+            sizes: '384x384',
+            type: 'image/png'
+          },
+          {
+            src: 'pwa-512x512.png',
             sizes: '512x512',
-            type: 'image/svg+xml',
+            type: 'image/png',
             purpose: 'maskable'
           }
         ]
