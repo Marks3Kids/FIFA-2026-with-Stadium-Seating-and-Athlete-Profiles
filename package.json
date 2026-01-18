@@ -7,11 +7,20 @@
     "dev:client": "vite dev --port 5000",
     "dev": "NODE_ENV=development tsx server/index.ts",
     "build": "tsx script/build.ts",
+    "build:web": "vite build",
     "start": "NODE_ENV=production node dist/index.cjs",
     "check": "tsc",
-    "db:push": "drizzle-kit push"
+    "db:push": "drizzle-kit push",
+    "cap:init": "npx cap init 'Championship Concierge' com.mingledtreasures.championshipconcierge --web-dir dist/public",
+    "cap:add:ios": "npx cap add ios",
+    "cap:sync": "npx cap sync",
+    "cap:build:ios": "npm run build:web && npx cap sync ios",
+    "cap:open:ios": "npx cap open ios"
   },
   "dependencies": {
+    "@capacitor/cli": "^7.4.5",
+    "@capacitor/core": "^8.0.1",
+    "@capacitor/ios": "^8.0.1",
     "@hookform/resolvers": "^3.10.0",
     "@jridgewell/trace-mapping": "^0.3.25",
     "@neondatabase/serverless": "^0.10.4",
