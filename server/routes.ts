@@ -993,7 +993,8 @@ Remember: You're helping fans have the best World Cup experience of their lives!
 
   app.post("/api/concierge/chat", async (req, res) => {
     try {
-      if (!process.env.OPENAI_API_KEY) {
+      const openaiApiKey = process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY;
+      if (!openaiApiKey) {
         return res.status(503).json({ error: "AI Concierge is not configured. Please set up OpenAI API key." });
       }
       
@@ -1029,7 +1030,8 @@ Remember: You're helping fans have the best World Cup experience of their lives!
 
       const OpenAI = (await import("openai")).default;
       const openai = new OpenAI({
-        apiKey: process.env.OPENAI_API_KEY,
+        apiKey: openaiApiKey,
+        baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
       });
 
       const completion = await openai.chat.completions.create({
