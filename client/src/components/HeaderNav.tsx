@@ -158,12 +158,11 @@ export function HeaderNav({ inline = false }: HeaderNavProps) {
           <div className={`absolute ${isRTL ? 'left-0' : 'right-0'} top-full mt-2 bg-card border border-white/10 rounded-xl shadow-xl overflow-hidden z-50 min-w-[200px] animate-in fade-in slide-in-from-top-2 duration-200`}>
             <div className="py-1">
               {NAV_ITEMS.map(({ icon: Icon, labelKey, path }) => {
-                const actualPath = path === "/" && isSubscribed ? "/teams" : path;
-                const isActive = location === actualPath || (path === "/" && location === "/teams" && isSubscribed);
+                const isActive = location === path;
                 return (
                   <Link
                     key={path}
-                    href={actualPath}
+                    href={path}
                     onClick={handleNavClick}
                     className={cn(
                       "w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-white/5 transition-colors",
