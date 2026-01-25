@@ -4,10 +4,11 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     environment:
-      node: 18
+      node: 20
       xcode: latest
       vars:
         BUNDLE_ID: "com.mingledtreasures.championshipconcierge"
+        NODE_ENV: "production"
     scripts:
       - name: Install dependencies
         script: |
@@ -21,9 +22,6 @@ workflows:
       - name: Sync Capacitor
         script: |
           npx cap sync ios
-      - name: Set up code signing (manual)
-        script: |
-          echo "Code signing will be configured after Apple Developer enrollment"
       - name: Build iOS app
         script: |
           cd ios/App
