@@ -14,7 +14,7 @@ workflows:
           npm install
       - name: Build web assets
         script: |
-          npm run build
+          npx vite build
       - name: Add iOS platform
         script: |
           npx cap add ios || true
