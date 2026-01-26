@@ -23,7 +23,7 @@ workflows:
         script: |
           cd ios/App
           cat Podfile
-          sed -i '' "s/platform :ios, '.*'/platform :ios, '14.0'/" Podfile
+          sed -i '' "s/platform :ios, '.*'/platform :ios, '15.0'/" Podfile
           cat Podfile
       - name: Sync Capacitor
         script: |
