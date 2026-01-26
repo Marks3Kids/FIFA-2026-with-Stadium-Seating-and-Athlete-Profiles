@@ -19,6 +19,10 @@ workflows:
       - name: Add iOS platform
         script: |
           npx cap add ios || true
+      - name: Set iOS deployment target
+        script: |
+          cd ios/App
+          sed -i '' 's/platform :ios,.*/platform :ios, '\''14.0'\''/' Podfile
       - name: Sync Capacitor
         script: |
           npx cap sync ios
