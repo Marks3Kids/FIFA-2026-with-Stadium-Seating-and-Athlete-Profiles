@@ -22,9 +22,8 @@ workflows:
       - name: Set iOS deployment target
         script: |
           cd ios/App
-          cat Podfile
           sed -i '' "s/platform :ios, '.*'/platform :ios, '15.0'/" Podfile
-          cat Podfile
+          sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = .*/IPHONEOS_DEPLOYMENT_TARGET = 15.0;/g' App.xcodeproj/project.pbxproj
       - name: Sync Capacitor
         script: |
           npx cap sync ios
