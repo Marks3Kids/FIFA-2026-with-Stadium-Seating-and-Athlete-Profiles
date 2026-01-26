@@ -13,6 +13,9 @@ export default defineConfig({
       devOptions: {
         enabled: false
       },
+      workbox: {
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024
+      },
       includeAssets: ['favicon.png', 'apple-touch-icon.png'],
       manifest: {
         name: 'Championship Concierge - 2026 World Cup Travel Companion',
