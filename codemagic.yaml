@@ -11,7 +11,7 @@ workflows:
       groups:
         - ios_signing
       vars:
-        BUNDLE_ID: "com.mingledtreasures.championshipconcierge"
+        BUNDLE_ID: "com.mingledtreasure.championshipconcierge"
         NODE_ENV: "production"
     scripts:
       - name: Install dependencies
