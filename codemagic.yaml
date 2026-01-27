@@ -56,9 +56,7 @@ workflows:
       - name: Upload to TestFlight
         script: |
           app-store-connect publish \
-            --path ios/App/build/ios/ipa/App.ipa \
-            --testflight \
-            --beta-group "External Testers"
+            --path ios/App/build/ios/ipa/App.ipa
     artifacts:
       - ios/App/build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
