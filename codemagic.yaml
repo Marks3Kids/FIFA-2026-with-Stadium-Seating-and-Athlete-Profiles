@@ -31,6 +31,10 @@ workflows:
       - name: Sync Capacitor
         script: |
           npx cap sync ios
+      - name: Increment build number
+        script: |
+          cd ios/App
+          agvtool new-version -all $(($(date +%s)/60))
       - name: Set up keychain
         script: |
           keychain initialize
