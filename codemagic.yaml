@@ -40,24 +40,15 @@ workflows:
       - name: Fix Podfile and reinstall CocoaPods
         script: |
           cd ios/App
-          # Add post_install hook to fix Embed Pods Frameworks issue
-          cat >> Podfile << 'EOF'
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
-    end
-  end
-  # Remove script phases that cause issues
-  installer.pods_project.build_configurations.each do |config|
-    config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
-    config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
-    config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
-  end
-end
-EOF
+          echo "" >> Podfile
+          echo "post_install do |installer|" >> Podfile
+          echo "  installer.pods_project.targets.each do |target|" >> Podfile
+          echo "    target.build_configurations.each do |config|" >> Podfile
+          echo "      config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'" >> Podfile
+          echo "      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'" >> Podfile
+          echo "    end" >> Podfile
+          echo "  end" >> Podfile
+          echo "end" >> Podfile
           pod deintegrate || true
           pod install --repo-update
       - name: Verify Bundle ID
