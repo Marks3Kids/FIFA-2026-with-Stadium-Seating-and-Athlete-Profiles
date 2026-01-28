@@ -99,8 +99,15 @@ workflows:
           xcode-project use-profiles
       - name: Unlock keychain for codesigning
         script: |
-          security unlock-keychain -p "" ~/Library/Keychains/login.keychain-db || true
-          security set-keychain-settings ~/Library/Keychains/login.keychain-db || true
+          # Find and unlock Codemagic keychain
+          KEYCHAIN=$(security list-keychains | grep -o '/[^"]*codemagic[^"]*' | head -1) || true
+          if [ -n "$KEYCHAIN" ]; then
+            security unlock-keychain -p "" "$KEYCHAIN" || true
+            security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "" "$KEYCHAIN" || true
+          fi
+          # Also try login keychain
+          security unlock-keychain -p "" ~/Library/Keychains/login.keychain-db 2>/dev/null || true
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "" ~/Library/Keychains/login.keychain-db 2>/dev/null || true
       - name: Clean build folder
         script: |
           cd ios/App
