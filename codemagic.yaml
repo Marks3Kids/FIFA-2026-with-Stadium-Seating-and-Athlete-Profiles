@@ -13,6 +13,7 @@ workflows:
       vars:
         BUNDLE_ID: "com.mingledtreasure.championshipconcierge"
         NODE_ENV: "production"
+        TEAM_ID: "CFFZ7YW46C"
     scripts:
       - name: Install dependencies
         script: |
@@ -58,10 +59,7 @@ workflows:
       - name: Build iOS app
         script: |
           cd ios/App
-          # Get team ID and profile from environment
-          TEAM_ID=$(security find-identity -v -p codesigning | grep "iPhone Distribution" | head -1 | sed 's/.*(\([A-Z0-9]*\)).*/\1/' || echo "")
           echo "Using Team ID: $TEAM_ID"
-          # Build with xcodebuild directly using automatic signing
           xcodebuild -workspace App.xcworkspace \
             -scheme App \
             -configuration Release \
