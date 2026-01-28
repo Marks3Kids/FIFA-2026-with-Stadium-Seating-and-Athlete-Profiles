@@ -3,7 +3,7 @@ import App from "./App";
 import "./index.css";
 
 // In development, unregister any existing service workers to prevent caching issues
-// In production, register the PWA service worker
+// In production, register the PWA service worker (only for web, not Capacitor/iOS builds)
 if (import.meta.env.DEV) {
   // Clear any stale service workers in development
   if ('serviceWorker' in navigator) {
@@ -14,20 +14,6 @@ if (import.meta.env.DEV) {
       });
     });
   }
-} else {
-  // Only register service worker in production
-  import('virtual:pwa-register').then(({ registerSW }) => {
-    const updateSW = registerSW({
-      onNeedRefresh() {
-        if (confirm('A new version of Championship Concierge is available. Refresh now?')) {
-          updateSW(true);
-        }
-      },
-      onOfflineReady() {
-        console.log('App ready to work offline');
-      },
-    });
-  });
 }
 
 createRoot(document.getElementById("root")!).render(<App />);
