@@ -37,20 +37,27 @@ workflows:
       - name: Sync Capacitor
         script: |
           npx cap sync ios
-      - name: Fix Podfile and reinstall CocoaPods
+      - name: Reinstall CocoaPods
         script: |
           cd ios/App
-          echo "" >> Podfile
-          echo "post_install do |installer|" >> Podfile
-          echo "  installer.pods_project.targets.each do |target|" >> Podfile
-          echo "    target.build_configurations.each do |config|" >> Podfile
-          echo "      config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'" >> Podfile
-          echo "      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'" >> Podfile
-          echo "    end" >> Podfile
-          echo "  end" >> Podfile
-          echo "end" >> Podfile
           pod deintegrate || true
           pod install --repo-update
+      - name: Remove problematic Embed Pods script
+        script: |
+          cd ios/App
+          # Remove the Embed Pods Frameworks script phase that causes issues
+          ruby -e "
+            require 'xcodeproj'
+            project = Xcodeproj::Project.open('App.xcodeproj')
+            project.targets.each do |target|
+              target.shell_script_build_phases.each do |phase|
+                if phase.name && phase.name.include?('Embed Pods Frameworks')
+                  phase.remove_from_project
+                end
+              end
+            end
+            project.save
+          " || echo "Ruby script failed, continuing anyway"
       - name: Verify Bundle ID
         script: |
           cd ios/App
