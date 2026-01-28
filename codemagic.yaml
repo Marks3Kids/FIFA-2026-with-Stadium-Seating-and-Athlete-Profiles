@@ -81,12 +81,18 @@ workflows:
         script: |
           cd ios/App
           xcode-project use-profiles
+      - name: Clean build folder
+        script: |
+          cd ios/App
+          xcodebuild clean -workspace App.xcworkspace -scheme App
+          rm -rf ~/Library/Developer/Xcode/DerivedData/*
       - name: Build iOS app
         script: |
           cd ios/App
           xcode-project build-ipa \
             --workspace App.xcworkspace \
-            --scheme App
+            --scheme App \
+            --clean
       - name: Upload to TestFlight
         script: |
           app-store-connect publish \
