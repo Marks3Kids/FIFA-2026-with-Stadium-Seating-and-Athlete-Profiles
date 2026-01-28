@@ -29,16 +29,19 @@ workflows:
           cd ios/App
           sed -i '' "s/platform :ios, '.*'/platform :ios, '15.0'/" Podfile
           sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = .*/IPHONEOS_DEPLOYMENT_TARGET = 15.0;/g' App.xcodeproj/project.pbxproj
+      - name: Fix Bundle ID before sync
+        script: |
+          cd ios/App
+          sed -i '' 's/com\.mingledtreasures\.championshipconcierge/com.mingledtreasure.championshipconcierge/g' App.xcodeproj/project.pbxproj
+          sed -i '' 's/com\.mingledtreasures\.championshipconcierge/com.mingledtreasure.championshipconcierge/g' App/Info.plist || true
       - name: Sync Capacitor
         script: |
           npx cap sync ios
-      - name: Fix Bundle ID
+      - name: Verify Bundle ID
         script: |
           cd ios/App
-          # Replace any incorrect bundle ID with the correct one
-          sed -i '' 's/com\.mingledtreasures\.championshipconcierge/com.mingledtreasure.championshipconcierge/g' App.xcodeproj/project.pbxproj
-          # Verify the change
-          grep -r "PRODUCT_BUNDLE_IDENTIFIER" App.xcodeproj/project.pbxproj | head -5
+          echo "Bundle IDs in project:"
+          grep -r "PRODUCT_BUNDLE_IDENTIFIER" App.xcodeproj/project.pbxproj
       - name: Increment build number
         script: |
           cd ios/App
@@ -51,61 +54,35 @@ workflows:
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
             --type IOS_APP_STORE \
             --create \
-            --certificate-key=@env:CM_CERTIFICATE_PRIVATE_KEY
+            --certificate-key=@env:CM_CERTIFICATE_PRIVATE_KEY \
+            --save
       - name: Add certificates to keychain
         script: |
           keychain add-certificates
-      - name: Install provisioning profiles
+      - name: Debug signing files
         script: |
-          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          for profile in $HOME/Library/MobileDevice/Provisioning\ Profiles/*.mobileprovision; do
-            echo "Found profile: $profile"
-          done
-          # List certificates in keychain
+          echo "=== Provisioning Profiles ==="
+          ls -la ~/Library/MobileDevice/Provisioning\ Profiles/ || echo "No profiles found"
+          echo ""
+          echo "=== Code Signing Identities ==="
           security find-identity -v -p codesigning
+          echo ""
+          echo "=== Profile Details ==="
+          for profile in ~/Library/MobileDevice/Provisioning\ Profiles/*.mobileprovision; do
+            echo "Profile: $profile"
+            /usr/bin/security cms -D -i "$profile" 2>/dev/null | grep -A1 "Name\|UUID\|application-identifier" | head -10
+            echo "---"
+          done
+      - name: Set up code signing
+        script: |
+          cd ios/App
+          xcode-project use-profiles
       - name: Build iOS app
         script: |
           cd ios/App
-          echo "Using Team ID: $TEAM_ID"
-          # Find the provisioning profile
-          PROFILE=$(ls ~/Library/MobileDevice/Provisioning\ Profiles/*.mobileprovision 2>/dev/null | head -1)
-          if [ -n "$PROFILE" ]; then
-            PROFILE_UUID=$(/usr/libexec/PlistBuddy -c "Print UUID" /dev/stdin <<< $(/usr/bin/security cms -D -i "$PROFILE"))
-            echo "Using Profile UUID: $PROFILE_UUID"
-          fi
-          xcodebuild -workspace App.xcworkspace \
-            -scheme App \
-            -configuration Release \
-            -archivePath build/App.xcarchive \
-            -destination 'generic/platform=iOS' \
-            CODE_SIGN_STYLE=Manual \
-            CODE_SIGN_IDENTITY="iPhone Distribution" \
-            DEVELOPMENT_TEAM="$TEAM_ID" \
-            PROVISIONING_PROFILE_SPECIFIER="" \
-            archive
-      - name: Export IPA
-        script: |
-          cd ios/App
-          # Create export options plist
-          cat > ExportOptions.plist << EOF
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-              <key>method</key>
-              <string>app-store</string>
-              <key>uploadSymbols</key>
-              <true/>
-              <key>destination</key>
-              <string>export</string>
-          </dict>
-          </plist>
-          EOF
-          xcodebuild -exportArchive \
-            -archivePath build/App.xcarchive \
-            -exportPath build/ios/ipa \
-            -exportOptionsPlist ExportOptions.plist \
-            -allowProvisioningUpdates
+          xcode-project build-ipa \
+            --workspace App.xcworkspace \
+            --scheme App
       - name: Upload to TestFlight
         script: |
           app-store-connect publish \
