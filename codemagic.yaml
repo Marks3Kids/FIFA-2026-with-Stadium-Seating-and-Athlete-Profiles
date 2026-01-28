@@ -97,6 +97,10 @@ workflows:
         script: |
           cd ios/App
           xcode-project use-profiles
+      - name: Unlock keychain for codesigning
+        script: |
+          security unlock-keychain -p "" ~/Library/Keychains/login.keychain-db || true
+          security set-keychain-settings ~/Library/Keychains/login.keychain-db || true
       - name: Clean build folder
         script: |
           cd ios/App

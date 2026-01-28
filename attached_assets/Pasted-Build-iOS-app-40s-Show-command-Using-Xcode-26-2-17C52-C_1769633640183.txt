@@ -1,0 +1,207 @@
+Build iOS app
+40s
+
+
+
+Show command
+Using Xcode 26.2 (17C52)
+Clean App.xcworkspace
+Execute "xcodebuild -workspace App.xcworkspace -scheme App clean"
+
+▸ Clean Succeeded
+Cleaned App.xcworkspace
+Check App.xcworkspace build settings
+Execute "xcodebuild -workspace App.xcworkspace -scheme App -showBuildSettings"
+
+Archive App.xcworkspace
+Execute "xcodebuild -workspace App.xcworkspace -scheme App -archivePath /Users/builder/clone/ios/App/build/ios/xcarchive/App__uuo332b.xcarchive archive COMPILER_INDEX_STORE_ENABLE=NO DEVELOPMENT_TEAM=CFFZ7YW46C 'CODE_SIGN_IDENTITY=Apple Distribution' CODE_SIGN_STYLE=Manual"
+
+▸ Copying Pods-App-umbrella.h
+▸ Copying CapacitorCordova.h
+▸ Copying NSDictionary+CordovaPreferences.h
+▸ Copying CDVWebViewProcessPoolFactory.h
+▸ Copying CDVViewController.h
+▸ Copying CDVURLProtocol.h
+▸ Copying CDVScreenOrientationDelegate.h
+▸ Copying CDVPluginResult.h
+▸ Copying CDVPluginManager.h
+▸ Copying CDVPlugin+Resources.h
+▸ Copying CDVPlugin.h
+▸ Copying CDVInvokedUrlCommand.h
+▸ Copying CDVConfigParser.h
+▸ Copying CDVCommandDelegateImpl.h
+▸ Copying CDVCommandDelegate.h
+▸ Copying CDVAvailabilityDeprecated.h
+▸ Copying CDVAvailability.h
+▸ Copying CDV.h
+▸ Copying AppDelegate.h
+▸ Copying Capacitor.h
+▸ Copying CAPPluginMethod.h
+▸ Copying CAPPluginCall.h
+▸ Copying CAPPlugin.h
+▸ Copying CAPInstanceDescriptor.h
+▸ Copying CAPInstanceConfiguration.h
+▸ Copying CAPBridgedPlugin.h
+▸ Copying CAPBridgedJSTypes.h
+▸ Copying CAPBridgeViewController+CDVScreenOrientationDelegate.h
+▸ Processing ResourceBundle-CapacitorCordova-CapacitorCordova-Info.plist
+▸ Copying /Users/builder/Library/Developer/Xcode/DerivedData/App-dfqlwfgrvlmjunbkfzimjqcghcbo/Build/Intermediates.noindex/ArchiveIntermediates/App/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/CapacitorCordova.bundle/PrivacyInfo.xcprivacy
+▸ Touching CapacitorCordova.bundle (in target 'CapacitorCordova-CapacitorCordova' from project 'Pods')
+▸ Copying /Users/builder/Library/Developer/Xcode/DerivedData/App-dfqlwfgrvlmjunbkfzimjqcghcbo/Build/Intermediates.noindex/ArchiveIntermediates/App/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/Cordova.framework/CapacitorCordova.bundle
+▸ Processing CapacitorCordova-Info.plist
+▸ Compiling Cordova_vers.c
+▸ Compiling NSDictionary+CordovaPreferences.m
+▸ Compiling CDVURLProtocol.m
+▸ Compiling CapacitorCordova-dummy.m
+▸ Compiling CDVPluginResult.m
+▸ Compiling CDVViewController.m
+▸ Compiling CDVConfigParser.m
+▸ Compiling CDVInvokedUrlCommand.m
+▸ Compiling AppDelegate.m
+▸ Compiling CDVCommandDelegateImpl.m
+▸ Compiling CDVPlugin+Resources.m
+▸ Compiling CDVWebViewProcessPoolFactory.m
+▸ Compiling CDVPlugin.m
+▸ Compiling CDVPluginManager.m
+▸ Linking Cordova
+▸ Generating 'Cordova.framework.dSYM'
+▸ Touching Cordova.framework (in target 'CapacitorCordova' from project 'Pods')
+▸ Processing ResourceBundle-Capacitor-Capacitor-Info.plist
+▸ Copying /Users/builder/Library/Developer/Xcode/DerivedData/App-dfqlwfgrvlmjunbkfzimjqcghcbo/Build/Intermediates.noindex/ArchiveIntermediates/App/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/Capacitor.bundle/PrivacyInfo.xcprivacy
+▸ Touching Capacitor.bundle (in target 'Capacitor-Capacitor' from project 'Pods')
+▸ Processing Capacitor-Info.plist
+▸ Copying /Users/builder/Library/Developer/Xcode/DerivedData/App-dfqlwfgrvlmjunbkfzimjqcghcbo/Build/Intermediates.noindex/ArchiveIntermediates/App/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/Capacitor.framework/native-bridge.js
+▸ Copying /Users/builder/Library/Developer/Xcode/DerivedData/App-dfqlwfgrvlmjunbkfzimjqcghcbo/Build/Intermediates.noindex/ArchiveIntermediates/App/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/Capacitor.framework/Capacitor.bundle
+▸ Compiling Capacitor_vers.c
+▸ Compiling Capacitor-dummy.m
+▸ Compiling CAPPluginCall.m
+▸ Compiling Pods_App_vers.c
+▸ Compiling UIStatusBarManager+CAPHandleTapAction.m
+▸ Compiling WKWebView+Capacitor.m
+▸ Compiling CAPPluginMethod.m
+▸ Compiling CAPInstanceConfiguration.m
+▸ Compiling CAPInstanceDescriptor.m
+▸ Compiling CAPPlugin.m
+▸ Compiling CAPBridgedJSTypes.m
+▸ Compiling CAPBridgeViewController+CDVScreenOrientationDelegate.m
+▸ Linking Capacitor
+▸ Compiling Pods-App-dummy.m
+▸ Generating 'Capacitor.framework.dSYM'
+▸ Touching Capacitor.framework (in target 'Capacitor' from project 'Pods')
+▸ Processing Pods-App-Info.plist
+▸ Touching Pods_App.framework (in target 'Pods-App' from project 'Pods')
+▸ Running script '[CP] Check Pods Manifest.lock'
+▸ Copying /Users/builder/Library/Developer/Xcode/DerivedData/App-dfqlwfgrvlmjunbkfzimjqcghcbo/Build/Intermediates.noindex/ArchiveIntermediates/App/InstallationBuildProductsLocation/Applications/App.app/public
+▸ Copying /Users/builder/Library/Developer/Xcode/DerivedData/App-dfqlwfgrvlmjunbkfzimjqcghcbo/Build/Intermediates.noindex/ArchiveIntermediates/App/InstallationBuildProductsLocation/Applications/App.app/config.xml
+▸ Copying /Users/builder/Library/Developer/Xcode/DerivedData/App-dfqlwfgrvlmjunbkfzimjqcghcbo/Build/Intermediates.noindex/ArchiveIntermediates/App/InstallationBuildProductsLocation/Applications/App.app/capacitor.config.json
+▸ Compiling Main.storyboard
+▸ Compiling LaunchScreen.storyboard
+▸ Linking App
+▸ Processing Info.plist
+▸ Generating 'App.app.dSYM'
+Failed to archive App.xcworkspace. The following build commands failed:
+
+CodeSign /Users/builder/Library/Developer/Xcode/DerivedData/App-dfqlwfgrvlmjunbkfzimjqcghcbo/Build/Intermediates.noindex/ArchiveIntermediates/App/InstallationBuildProductsLocation/Applications/App.app (in target 'App' from project 'App')
+	...
+	Signing Identity:     "Apple Distribution: Mark Heap (CFFZ7YW46C)"
+	Provisioning Profile: "Championship Concierge ios_app_store 1769628041"
+	(a8092b4c-0697-4726-be0f-180bae3f9c0b)
+	/usr/bin/codesign --force --sign 68E44496D4D33F151F4261E5B0D385A79C177D7A --entitlements /Users/builder/Library/Developer/Xcode/DerivedData/App-dfqlwfgrvlmjunbkfzimjqcghcbo/Build/Intermediates.noindex/ArchiveIntermediates/App/IntermediateBuildFilesPath/App.build/Release-iphoneos/App.build/App.app.xcent --generate-entitlement-der /Users/builder/Library/Developer/Xcode/DerivedData/App-dfqlwfgrvlmjunbkfzimjqcghcbo/Build/Intermediates.noindex/ArchiveIntermediates/App/InstallationBuildProductsLocation/Applications/App.app
+	/Users/builder/Library/Developer/Xcode/DerivedData/App-dfqlwfgrvlmjunbkfzimjqcghcbo/Build/Intermediates.noindex/ArchiveIntermediates/App/InstallationBuildProductsLocation/Applications/App.app: errSecInternalComponent
+	Command CodeSign failed with a nonzero exit code
+
+
+Build failed :|
+Step 17 script `Build iOS app` exited with status code 65
+
+Applications
+Builds
+OTA Updates
+NEW
+App Preview
+Teams
+Billing
+All systems operational
+
+User preferences
+mark@mingledtreasure.com
+
+Log out
+Championship-Concierge
+Championship-Concierge
+github.com/Marks3Kids/Championship-Concierge
+
+
+Start new build
+Build overview
+ID:
+697a753d9310a74dbabc9cdb
+
+Please provide this ID when you contact our support team
+Index:
+55
+Status:
+failed
+Workflow:
+iOS Build
+Started by:
+mark@mingledtreasure.com
+
+mark@mingledtreasure.com
+Started:
+9 minutes ago
+Jan 28th, 2026 at 14:44 CST
+Duration:
+1m 49s
+Machine:
+Mac mini M2
+Branch:
+main
+Commit:
+6de9953
+Artifacts
+Championship-Concierge_55_artifacts.zip
+[38.85 KB]
+Click on the build steps for details.
+Preparing build machine
+35s
+Fetching app sources
+3s
+Install dependencies
+9s
+Build web assets
+3s
+Add iOS platform
+2s
+Set iOS deployment target
+< 1s
+Fix Bundle ID before sync
+< 1s
+Sync Capacitor
+3s
+Reinstall CocoaPods
+1s
+Remove problematic Embed Pods script
+< 1s
+Verify Bundle ID
+< 1s
+Increment build number
+1s
+Set up keychain
+1s
+Add certificates to keychain
+< 1s
+Debug signing files
+< 1s
+Set up code signing
+1s
+Clean build folder
+1s
+Upload to TestFlight
+< 1s
+Publishing
+1s
+Cleaning up
+< 1s
+Step 17 script `Build iOS app` exited with status code 65
+
