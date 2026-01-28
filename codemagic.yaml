@@ -37,6 +37,11 @@ workflows:
       - name: Sync Capacitor
         script: |
           npx cap sync ios
+      - name: Reinstall CocoaPods
+        script: |
+          cd ios/App
+          pod deintegrate || true
+          pod install --repo-update
       - name: Verify Bundle ID
         script: |
           cd ios/App
