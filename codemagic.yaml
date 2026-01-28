@@ -32,6 +32,13 @@ workflows:
       - name: Sync Capacitor
         script: |
           npx cap sync ios
+      - name: Fix Bundle ID
+        script: |
+          cd ios/App
+          # Replace any incorrect bundle ID with the correct one
+          sed -i '' 's/com\.mingledtreasures\.championshipconcierge/com.mingledtreasure.championshipconcierge/g' App.xcodeproj/project.pbxproj
+          # Verify the change
+          grep -r "PRODUCT_BUNDLE_IDENTIFIER" App.xcodeproj/project.pbxproj | head -5
       - name: Increment build number
         script: |
           cd ios/App
@@ -60,14 +67,21 @@ workflows:
         script: |
           cd ios/App
           echo "Using Team ID: $TEAM_ID"
+          # Find the provisioning profile
+          PROFILE=$(ls ~/Library/MobileDevice/Provisioning\ Profiles/*.mobileprovision 2>/dev/null | head -1)
+          if [ -n "$PROFILE" ]; then
+            PROFILE_UUID=$(/usr/libexec/PlistBuddy -c "Print UUID" /dev/stdin <<< $(/usr/bin/security cms -D -i "$PROFILE"))
+            echo "Using Profile UUID: $PROFILE_UUID"
+          fi
           xcodebuild -workspace App.xcworkspace \
             -scheme App \
             -configuration Release \
             -archivePath build/App.xcarchive \
             -destination 'generic/platform=iOS' \
-            CODE_SIGN_STYLE=Automatic \
+            CODE_SIGN_STYLE=Manual \
+            CODE_SIGN_IDENTITY="iPhone Distribution" \
             DEVELOPMENT_TEAM="$TEAM_ID" \
-            -allowProvisioningUpdates \
+            PROVISIONING_PROFILE_SPECIFIER="" \
             archive
       - name: Export IPA
         script: |
