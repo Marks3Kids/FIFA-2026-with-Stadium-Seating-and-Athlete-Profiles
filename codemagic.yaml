@@ -50,14 +50,34 @@ workflows:
       - name: Set up code signing
         script: |
           cd ios/App
-          xcode-project use-profiles
+          xcode-project use-profiles --export-options-plist=~/export_options.plist
+      - name: Update project signing
+        script: |
+          cd ios/App
+          # Debug: show what profiles are available
+          ls -la ~/Library/MobileDevice/Provisioning\ Profiles/ || true
+          echo "CM_PROVISIONING_PROFILE_NAME: $CM_PROVISIONING_PROFILE_NAME"
+          echo "TEAM_ID: $CM_TEAM_ID"
+          # Force manual signing in project
+          ruby -e "
+            require 'xcodeproj'
+            project = Xcodeproj::Project.open('App.xcodeproj')
+            project.targets.each do |target|
+              target.build_configurations.each do |config|
+                config.build_settings['CODE_SIGN_STYLE'] = 'Manual'
+                config.build_settings['CODE_SIGN_IDENTITY'] = 'iPhone Distribution'
+                config.build_settings['PROVISIONING_PROFILE_SPECIFIER'] = ENV['CM_PROVISIONING_PROFILE_NAME'] || ''
+                config.build_settings['DEVELOPMENT_TEAM'] = ENV['CM_TEAM_ID'] || ''
+              end
+            end
+            project.save
+          " || echo "Ruby script failed, continuing..."
       - name: Build iOS app
         script: |
           cd ios/App
           xcode-project build-ipa \
             --workspace App.xcworkspace \
-            --scheme App \
-            --archive-flags="-destination 'generic/platform=iOS'"
+            --scheme App
       - name: Upload to TestFlight
         script: |
           app-store-connect publish \
