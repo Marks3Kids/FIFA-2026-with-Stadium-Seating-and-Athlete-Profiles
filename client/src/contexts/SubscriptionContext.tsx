@@ -2,6 +2,15 @@ import { createContext, useContext, useState, useEffect, ReactNode } from "react
 
 const PAYWALL_ENABLED = true;
 
+// Demo emails that get full AI Concierge access for testing
+// This is required for App Store review and TestFlight testing
+const DEMO_EMAILS = [
+  "demo@championshipconcierge.com",
+  "test@championshipconcierge.com",
+  "review@apple.com",
+  "appstorereview@apple.com",
+];
+
 export type SubscriptionTier = "none" | "free" | "team_info" | "logistics" | "ai_concierge";
 
 interface SubscriptionContextType {
@@ -50,6 +59,22 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
       const storedCity = localStorage.getItem("subscription_city");
       
       if (storedEmail && storedTier) {
+        // Check if this is a demo/test email - grant full access without verification
+        const normalizedStoredEmail = storedEmail.toLowerCase().trim();
+        const isDemoEmail = DEMO_EMAILS.includes(normalizedStoredEmail);
+        
+        if (isDemoEmail) {
+          setEmail(normalizedStoredEmail);
+          setSubscriptionTier("ai_concierge");
+          setName(storedName);
+          setCity(storedCity);
+          setIsSubscribed(true);
+          setIsVerified(true);
+          localStorage.setItem("subscription_tier", "ai_concierge");
+          setIsLoading(false);
+          return;
+        }
+        
         try {
           const response = await fetch(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}`);
           const data = await response.json();
@@ -113,14 +138,19 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
 
   const setFreeUser = (userEmail: string, userName: string, userCity: string) => {
     const normalizedEmail = userEmail.toLowerCase().trim();
+    
+    // Check if this is a demo/test email - grant full AI Concierge access
+    const isDemoEmail = DEMO_EMAILS.includes(normalizedEmail);
+    const tier = isDemoEmail ? "ai_concierge" : "free";
+    
     localStorage.setItem("subscription_email", normalizedEmail);
-    localStorage.setItem("subscription_tier", "free");
+    localStorage.setItem("subscription_tier", tier);
     localStorage.setItem("subscription_name", userName);
     localStorage.setItem("subscription_city", userCity);
     setEmail(normalizedEmail);
     setName(userName);
     setCity(userCity);
-    setSubscriptionTier("free");
+    setSubscriptionTier(tier);
     setIsSubscribed(true);
     setIsVerified(true);
   };
