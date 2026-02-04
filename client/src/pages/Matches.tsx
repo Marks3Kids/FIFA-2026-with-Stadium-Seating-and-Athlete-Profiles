@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Calendar, MapPin } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
+import { apiUrl } from "@/lib/apiConfig";
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";
 
@@ -53,7 +54,7 @@ export default function Matches() {
   const { data: allMatches = [], isLoading } = useQuery<Match[]>({
     queryKey: ["/api/matches", currentLocale],
     queryFn: async () => {
-      const response = await fetch(`/api/matches?locale=${currentLocale}`);
+      const response = await fetch(apiUrl(`/api/matches?locale=${currentLocale}`));
       if (!response.ok) throw new Error("Failed to fetch matches");
       return response.json();
     },

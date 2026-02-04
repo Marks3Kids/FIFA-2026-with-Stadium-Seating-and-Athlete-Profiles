@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
+import { apiUrl } from "@/lib/apiConfig";
 import { 
   Send, 
   Sparkles, 
@@ -60,7 +61,7 @@ export default function Concierge() {
     queryKey: ['ai-message-usage', email],
     queryFn: async () => {
       if (!email) return null;
-      const res = await fetch(`/api/ai-messages/usage?email=${encodeURIComponent(email)}`);
+      const res = await fetch(apiUrl(`/api/ai-messages/usage?email=${encodeURIComponent(email)}`));
       if (!res.ok) throw new Error('Failed to fetch usage');
       return res.json();
     },
@@ -72,7 +73,7 @@ export default function Concierge() {
     queryKey: ['weather', currentCity?.cityKey],
     queryFn: async () => {
       if (!currentCity?.cityKey) return null;
-      const res = await fetch(`/api/weather/${currentCity.cityKey}`);
+      const res = await fetch(apiUrl(`/api/weather/${currentCity.cityKey}`));
       if (!res.ok) return null;
       return res.json();
     },
@@ -136,7 +137,7 @@ export default function Concierge() {
     if (!email || isPurchasing) return;
     setIsPurchasing(true);
     try {
-      const res = await fetch('/api/ai-messages/create-checkout', {
+      const res = await fetch(apiUrl('/api/ai-messages/create-checkout'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
@@ -158,7 +159,7 @@ export default function Concierge() {
     const sessionId = urlParams.get('session_id');
     
     if (purchaseStatus === 'success' && email && sessionId) {
-      fetch('/api/ai-messages/add-bonus', {
+      fetch(apiUrl('/api/ai-messages/add-bonus'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, sessionId }),

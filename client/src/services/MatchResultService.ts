@@ -1,4 +1,5 @@
 import { NotificationService } from './NotificationService';
+import { apiUrl } from '@/lib/apiConfig';
 
 interface MatchResult {
   matchId: number;
@@ -61,7 +62,7 @@ export async function checkMatchResults(): Promise<void> {
   if (followedTeams.length === 0) return;
 
   try {
-    const response = await fetch('/api/matches/results');
+    const response = await fetch(apiUrl('/api/matches/results'));
     if (!response.ok) return;
     
     const results: MatchResult[] = await response.json();

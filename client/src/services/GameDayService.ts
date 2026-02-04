@@ -1,4 +1,5 @@
 import { createGameDayNotification } from './NotificationService';
+import { apiUrl } from '@/lib/apiConfig';
 
 interface UpcomingMatch {
   id: number;
@@ -51,7 +52,7 @@ const TRANSPORT_TIPS: Record<string, string> = {
 
 export async function checkUpcomingMatches(): Promise<UpcomingMatch[]> {
   try {
-    const response = await fetch('/api/gameday/upcoming?hours=6');
+    const response = await fetch(apiUrl('/api/gameday/upcoming?hours=6'));
     if (!response.ok) return [];
     return await response.json();
   } catch (error) {

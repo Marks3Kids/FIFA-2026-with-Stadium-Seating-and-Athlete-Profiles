@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { Download, Users, Mail, MapPin, Calendar } from "lucide-react";
+import { apiUrl } from "@/lib/apiConfig";
 import { Button } from "@/components/ui/button";
 
 interface Lead {
@@ -19,7 +20,7 @@ export default function AdminLeadsPage() {
 
   const handleExport = async () => {
     try {
-      const response = await fetch("/api/admin/leads/export");
+      const response = await fetch(apiUrl("/api/admin/leads/export"));
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");

@@ -1,6 +1,7 @@
 import { Layout } from "@/components/Layout";
 import { FileText, Scale, RefreshCw, ExternalLink, Clock, Newspaper, ChevronRight } from "lucide-react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { apiUrl } from "@/lib/apiConfig";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 
@@ -27,7 +28,7 @@ export default function Home() {
   const { data: news = [], isLoading, dataUpdatedAt } = useQuery<NewsItem[]>({
     queryKey: ["/api/news", currentLocale],
     queryFn: async () => {
-      const response = await fetch(`/api/news?limit=3&locale=${currentLocale}`);
+      const response = await fetch(apiUrl(`/api/news?limit=3&locale=${currentLocale}`));
       if (!response.ok) throw new Error("Failed to fetch news");
       return response.json();
     },
@@ -38,7 +39,7 @@ export default function Home() {
   const handleRefreshNews = async () => {
     setIsRefreshing(true);
     try {
-      await fetch("/api/news/refresh", { method: "POST" });
+      await fetch(apiUrl("/api/news/refresh"), { method: "POST" });
       await queryClient.invalidateQueries({ queryKey: ["/api/news", currentLocale] });
     } catch (error) {
       console.error("Failed to refresh news:", error);

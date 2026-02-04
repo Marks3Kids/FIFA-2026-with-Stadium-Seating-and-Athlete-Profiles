@@ -1,6 +1,7 @@
 import { Check, Download, Users, MapPin, Sparkles, RefreshCw, Loader2 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { useSubscription, SubscriptionTier } from "@/contexts/SubscriptionContext";
+import { apiUrl } from "@/lib/apiConfig";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "wouter";
@@ -214,7 +215,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     
     setIsRestoring(true);
     try {
-      const res = await fetch(`/api/subscription/verify?email=${encodeURIComponent(restoreEmail.toLowerCase().trim())}`);
+      const res = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(restoreEmail.toLowerCase().trim())}`));
       const data = await res.json();
       
       if (data.valid && data.tier) {
@@ -281,7 +282,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
 
     setIsLoading("free");
     try {
-      await fetch("/api/leads", {
+      await fetch(apiUrl("/api/leads"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -317,7 +318,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     setIsLoading(tier.id);
     
     try {
-      const response = await fetch("/api/checkout", {
+      const response = await fetch(apiUrl("/api/checkout"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

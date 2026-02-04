@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { apiUrl } from "@/lib/apiConfig";
 
 const PAYWALL_ENABLED = true;
 
@@ -76,7 +77,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
         }
         
         try {
-          const response = await fetch(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}`);
+          const response = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}`));
           const data = await response.json();
           
           if (data.valid && data.tier) {
@@ -172,7 +173,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
     if (!email) return false;
     
     try {
-      const response = await fetch(`/api/subscription/verify?email=${encodeURIComponent(email)}`);
+      const response = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(email)}`));
       const data = await response.json();
       
       if (data.valid && data.tier) {

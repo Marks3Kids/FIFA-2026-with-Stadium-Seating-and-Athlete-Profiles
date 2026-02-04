@@ -1,5 +1,6 @@
 import { cityVaults } from '@/data/cityVaults';
 import { createWeatherAlert } from './NotificationService';
+import { apiUrl } from '@/lib/apiConfig';
 
 interface WeatherData {
   city: string;
@@ -67,7 +68,7 @@ export async function getWeatherForCity(cityKey: string): Promise<WeatherData | 
   if (!coords) return null;
 
   try {
-    const response = await fetch(`/api/weather/${cityKey}`);
+    const response = await fetch(apiUrl(`/api/weather/${cityKey}`));
     if (!response.ok) return null;
     
     return await response.json();

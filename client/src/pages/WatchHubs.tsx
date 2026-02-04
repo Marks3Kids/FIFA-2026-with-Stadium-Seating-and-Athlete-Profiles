@@ -3,6 +3,7 @@ import { Globe, MapPin, Users, ExternalLink, Search, Plus, X, CheckCircle2 } fro
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { apiUrl } from "@/lib/apiConfig";
 import { getFlagUrlByCode } from "@/lib/flags";
 import { globalWatchHubs } from "@/data/globalWatchHubs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -60,7 +61,7 @@ export default function WatchHubs() {
   const { data: crowdsourcedVenues = [] } = useQuery({
     queryKey: ["/api/watch-hubs/venues"],
     queryFn: async () => {
-      const res = await fetch("/api/watch-hubs/venues");
+      const res = await fetch(apiUrl("/api/watch-hubs/venues"));
       if (!res.ok) throw new Error("Failed to fetch venues");
       return res.json();
     },
@@ -68,7 +69,7 @@ export default function WatchHubs() {
 
   const submitVenue = useMutation({
     mutationFn: async (data: typeof formData) => {
-      const res = await fetch("/api/watch-hubs/submissions", {
+      const res = await fetch(apiUrl("/api/watch-hubs/submissions"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

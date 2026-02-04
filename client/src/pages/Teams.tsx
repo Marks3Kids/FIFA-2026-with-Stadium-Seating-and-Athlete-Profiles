@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { TeamDetailModal, teamSeasonData } from "@/components/TeamDetailModal";
 import { Search, Users, Trophy } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
+import { apiUrl } from "@/lib/apiConfig";
 import { useTranslation } from "react-i18next";
 import { useState, useMemo } from "react";
 import { getFlagUrl } from "@/lib/flags";
@@ -25,7 +26,7 @@ export default function Teams() {
   const { data: teams = [], isLoading } = useQuery<Team[]>({
     queryKey: ["/api/teams"],
     queryFn: async () => {
-      const response = await fetch("/api/teams");
+      const response = await fetch(apiUrl("/api/teams"));
       if (!response.ok) throw new Error("Failed to fetch teams");
       return response.json();
     },

@@ -1,6 +1,7 @@
 import { Layout } from "@/components/Layout";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { CheckCircle, XCircle, Clock, MapPin, User, Mail, ExternalLink, Building2 } from "lucide-react";
+import { apiUrl } from "@/lib/apiConfig";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -47,7 +48,7 @@ export default function AdminVenues() {
 
   const approveMutation = useMutation({
     mutationFn: async (id: number) => {
-      const res = await fetch(`/api/watch-hubs/submissions/${id}/approve`, { method: "POST" });
+      const res = await fetch(apiUrl(`/api/watch-hubs/submissions/${id}/approve`), { method: "POST" });
       if (!res.ok) throw new Error("Failed to approve");
       return res.json();
     },
@@ -59,7 +60,7 @@ export default function AdminVenues() {
 
   const rejectMutation = useMutation({
     mutationFn: async ({ id, notes }: { id: number; notes: string }) => {
-      const res = await fetch(`/api/watch-hubs/submissions/${id}/reject`, {
+      const res = await fetch(apiUrl(`/api/watch-hubs/submissions/${id}/reject`), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ notes }),

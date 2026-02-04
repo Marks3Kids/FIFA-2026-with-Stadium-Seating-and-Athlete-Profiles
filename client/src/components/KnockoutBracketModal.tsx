@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { X, Trophy, MapPin, Calendar, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
+import { apiUrl } from "@/lib/apiConfig";
 import { getFlagUrl } from "@/lib/flags";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -57,7 +58,7 @@ export function KnockoutBracketModal({ isOpen, onClose }: KnockoutBracketModalPr
   const { data: brackets = [], isLoading } = useQuery<KnockoutBracket[]>({
     queryKey: ["/api/knockout-brackets", currentLocale],
     queryFn: async () => {
-      const response = await fetch(`/api/knockout-brackets?locale=${currentLocale}`);
+      const response = await fetch(apiUrl(`/api/knockout-brackets?locale=${currentLocale}`));
       if (!response.ok) throw new Error("Failed to fetch brackets");
       return response.json();
     },

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useSearch } from "wouter";
 import { CheckCircle, ArrowRight, Trophy, Loader2, Smartphone, Share } from "lucide-react";
 import { useSubscription } from "@/contexts/SubscriptionContext";
+import { apiUrl } from "@/lib/apiConfig";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -47,7 +48,7 @@ export default function CheckoutSuccess() {
 
       if (sessionId) {
         try {
-          const response = await fetch(`/api/checkout/verify?session_id=${sessionId}`);
+          const response = await fetch(apiUrl(`/api/checkout/verify?session_id=${sessionId}`));
           const data = await response.json();
 
           if (data.success && data.email && data.tier) {
