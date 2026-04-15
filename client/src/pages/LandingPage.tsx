@@ -50,24 +50,34 @@ export default function LandingPage() {
 
       <section className="pt-32 pb-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full mb-8">
+          {/* One-Time Purchase Badge */}
+          <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-full mb-6 shadow-[0_0_20px_rgba(34,197,94,0.5)]">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>
+            <span className="text-sm font-bold uppercase tracking-wide">ONE-TIME PURCHASE — Starting at just $1.99</span>
+          </div>
+
+          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full mb-8">
             <Clock className="w-4 h-4 text-primary" />
-            <span className="text-sm text-primary font-medium">June 11 - July 19, 2026</span>
+            <span className="text-sm text-primary font-medium">June 11 – July 19, 2026</span>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-display font-bold mb-6">
-            <span className="text-white">Your Essential</span>
+            <span className="text-white">YOUR ESSENTIAL</span>
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-              2026 World Cup
+              2026 CHAMPIONSHIP
             </span>
             <br />
-            <span className="text-white">Travel Companion</span>
+            <span className="text-white">TRAVEL COMPANION</span>
           </h1>
           
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-4">
             Navigate 16 host cities across USA, Canada & Mexico with confidence. 
             Everything you need for the biggest sporting event in history.
+          </p>
+
+          <p className="text-base font-semibold text-primary mb-10">
+            No subscription. No recurring charges. Pay once, use all tournament long.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
