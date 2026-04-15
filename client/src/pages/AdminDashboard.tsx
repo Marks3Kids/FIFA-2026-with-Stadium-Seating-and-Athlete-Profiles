@@ -230,7 +230,25 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
             <h1 className="text-2xl sm:text-3xl font-bold text-white">Admin Dashboard</h1>
             <p className="text-xs text-muted-foreground">Championship Concierge 2026</p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap justify-end">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-xs text-muted-foreground hover:text-white"
+              onClick={async () => {
+                if ('serviceWorker' in navigator) {
+                  const regs = await navigator.serviceWorker.getRegistrations();
+                  await Promise.all(regs.map(r => r.unregister()));
+                }
+                const keys = await caches.keys();
+                await Promise.all(keys.map(k => caches.delete(k)));
+                localStorage.removeItem("app_version");
+                window.location.reload();
+              }}
+            >
+              <RefreshCw className="w-3 h-3 mr-1" />
+              Clear Cache
+            </Button>
             <Link href="/home">
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold">
                 Enter App (Full Access)
