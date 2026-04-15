@@ -32,6 +32,19 @@ export async function registerRoutes(
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok", timestamp: new Date().toISOString() });
   });
+
+  // Google Play TWA verification - Digital Asset Links
+  app.get("/.well-known/assetlinks.json", (req, res) => {
+    const { readFileSync } = require("fs");
+    const { join } = require("path");
+    try {
+      const file = readFileSync(join(process.cwd(), "client/public/.well-known/assetlinks.json"), "utf8");
+      res.setHeader("Content-Type", "application/json");
+      res.send(file);
+    } catch {
+      res.status(404).json({ error: "Not found" });
+    }
+  });
   
   // One-time production database seed - GET shows a page with a button
   app.get("/api/admin/seed-production", (req, res) => {
