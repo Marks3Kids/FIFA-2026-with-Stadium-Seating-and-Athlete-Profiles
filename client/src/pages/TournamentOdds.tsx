@@ -21,23 +21,29 @@ export default function TournamentOdds() {
   const [expandedGroup, setExpandedGroup] = useState<string | null>(null);
   const [showHelpResources, setShowHelpResources] = useState(false);
 
+  const oddsLastUpdated = "April 14, 2026";
+
   const championshipOdds: TeamOdds[] = [
-    { team: "France", countryCode: "fr", odds: "+450", impliedProbability: "18.2%" },
-    { team: "England", countryCode: "gb-eng", odds: "+500", impliedProbability: "16.7%" },
+    { team: "England", countryCode: "gb-eng", odds: "+380", impliedProbability: "20.8%" },
+    { team: "France", countryCode: "fr", odds: "+420", impliedProbability: "19.2%" },
+    { team: "Spain", countryCode: "es", odds: "+480", impliedProbability: "17.2%" },
     { team: "Argentina", countryCode: "ar", odds: "+550", impliedProbability: "15.4%" },
-    { team: "Brazil", countryCode: "br", odds: "+700", impliedProbability: "12.5%" },
-    { team: "Spain", countryCode: "es", odds: "+750", impliedProbability: "11.8%" },
-    { team: "Germany", countryCode: "de", odds: "+900", impliedProbability: "10.0%" },
-    { team: "Portugal", countryCode: "pt", odds: "+1200", impliedProbability: "7.7%" },
+    { team: "Brazil", countryCode: "br", odds: "+650", impliedProbability: "13.3%" },
+    { team: "Germany", countryCode: "de", odds: "+850", impliedProbability: "10.5%" },
+    { team: "Portugal", countryCode: "pt", odds: "+1100", impliedProbability: "8.3%" },
     { team: "Netherlands", countryCode: "nl", odds: "+1400", impliedProbability: "6.7%" },
-    { team: "Belgium", countryCode: "be", odds: "+2000", impliedProbability: "4.8%" },
-    { team: "Italy", countryCode: "it", odds: "+2500", impliedProbability: "3.8%" },
-    { team: "United States", countryCode: "us", odds: "+3000", impliedProbability: "3.2%" },
+    { team: "Belgium", countryCode: "be", odds: "+2200", impliedProbability: "4.3%" },
+    { team: "Italy", countryCode: "it", odds: "+2800", impliedProbability: "3.4%" },
+    { team: "United States", countryCode: "us", odds: "+2800", impliedProbability: "3.4%" },
     { team: "Croatia", countryCode: "hr", odds: "+4000", impliedProbability: "2.4%" },
+    { team: "Norway", countryCode: "no", odds: "+4500", impliedProbability: "2.2%" },
     { team: "Denmark", countryCode: "dk", odds: "+5000", impliedProbability: "2.0%" },
     { team: "Uruguay", countryCode: "uy", odds: "+5000", impliedProbability: "2.0%" },
+    { team: "Colombia", countryCode: "co", odds: "+5500", impliedProbability: "1.8%" },
     { team: "Mexico", countryCode: "mx", odds: "+6000", impliedProbability: "1.6%" },
-    { team: "Japan", countryCode: "jp", odds: "+8000", impliedProbability: "1.2%" },
+    { team: "Japan", countryCode: "jp", odds: "+7000", impliedProbability: "1.4%" },
+    { team: "Morocco", countryCode: "ma", odds: "+8000", impliedProbability: "1.2%" },
+    { team: "Canada", countryCode: "ca", odds: "+10000", impliedProbability: "1.0%" },
   ];
 
   const groupOdds: GroupOdds[] = [
@@ -95,6 +101,11 @@ export default function TournamentOdds() {
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white">{t("odds.title")}</h1>
         </div>
         <p className="text-muted-foreground mb-6">{t("odds.subtitle")}</p>
+
+        <div className="flex items-center justify-between bg-white/5 border border-white/10 rounded-xl px-4 py-2 mb-4">
+          <span className="text-xs text-muted-foreground">Odds source: DraftKings / BetMGM consensus</span>
+          <span className="text-xs font-medium text-primary">Updated: {oddsLastUpdated}</span>
+        </div>
 
         <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 mb-6">
           <div className="flex items-start space-x-3">

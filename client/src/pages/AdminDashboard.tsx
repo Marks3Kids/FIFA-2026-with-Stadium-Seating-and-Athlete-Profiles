@@ -167,6 +167,13 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
     },
   });
 
+  const seedPlayersMutation = useMutation({
+    mutationFn: async () => {
+      const res = await apiRequest("POST", "/api/admin/seed-remaining-players", {});
+      return res.json();
+    },
+  });
+
   const tierLabels: Record<string, string> = {
     team_info: "Team Info ($1.99)",
     logistics: "Fan Travel Pack ($7.99)",
@@ -498,6 +505,38 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
                 )}
                 {updateTeamsMutation.isError && (
                   <p className="text-xs text-red-400 mt-2 text-center">Update failed. Try again.</p>
+                )}
+              </div>
+
+              <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                <div className="flex items-center gap-2 mb-2">
+                  <Users className="w-4 h-4 text-emerald-400" />
+                  <p className="text-sm font-medium text-white">Seed Player Profiles</p>
+                </div>
+                <p className="text-xs text-muted-foreground mb-3">
+                  Add key player data for all remaining 37 teams not yet in the database. Safe to run — skips any players already added.
+                </p>
+                <Button
+                  size="sm"
+                  className="w-full"
+                  onClick={() => seedPlayersMutation.mutate()}
+                  disabled={seedPlayersMutation.isPending || seedPlayersMutation.isSuccess}
+                >
+                  {seedPlayersMutation.isPending ? (
+                    <><RefreshCw className="w-3 h-3 mr-2 animate-spin" />Adding Players...</>
+                  ) : seedPlayersMutation.isSuccess ? (
+                    <><CheckCircle2 className="w-3 h-3 mr-2" />Done!</>
+                  ) : (
+                    "Add All Team Players"
+                  )}
+                </Button>
+                {seedPlayersMutation.isSuccess && (
+                  <p className="text-xs text-emerald-400 mt-2 text-center">
+                    {(seedPlayersMutation.data as any)?.message}
+                  </p>
+                )}
+                {seedPlayersMutation.isError && (
+                  <p className="text-xs text-red-400 mt-2 text-center">Failed. Try again.</p>
                 )}
               </div>
 
