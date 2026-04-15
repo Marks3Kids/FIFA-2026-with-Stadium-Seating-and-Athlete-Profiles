@@ -4,9 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Link } from "wouter";
-import { Download, Users, CreditCard, Mail, Calendar, ArrowLeft, Lock, LogOut } from "lucide-react";
+import { Link, useLocation } from "wouter";
+import { Download, Users, CreditCard, Mail, Calendar, ArrowLeft, Lock, LogOut, ShieldCheck } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
+import { useSubscription } from "@/contexts/SubscriptionContext";
 
 interface Lead {
   id: number;
@@ -22,19 +23,21 @@ interface Purchase {
   purchasedAt: string;
 }
 
-function AdminLogin({ onLogin }: { onLogin: () => void }) {
+function AdminLogin({ role, onLogin }: { role: string; onLogin: (email: string) => void }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const loginMutation = useMutation({
     mutationFn: async (pwd: string) => {
-      const res = await apiRequest("POST", "/api/admin/login", { password: pwd });
+      const res = await apiRequest("POST", "/api/admin/login", { password: pwd, role });
       return res.json();
     },
     onSuccess: (data) => {
       if (data.success) {
         sessionStorage.setItem("admin_authenticated", "true");
-        onLogin();
+        sessionStorage.setItem("admin_role", data.role);
+        sessionStorage.setItem("admin_email", data.email);
+        onLogin(data.email);
       } else {
         setError("Invalid password");
       }
@@ -54,8 +57,11 @@ function AdminLogin({ onLogin }: { onLogin: () => void }) {
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-sm bg-card border-white/10">
         <CardHeader className="text-center">
-          <Lock className="w-12 h-12 mx-auto text-primary mb-2" />
-          <CardTitle className="text-white">Admin Access</CardTitle>
+          <ShieldCheck className="w-12 h-12 mx-auto text-primary mb-2" />
+          <CardTitle className="text-white">
+            {role === "admin2" ? "Admin 2 Access" : "Admin Access"}
+          </CardTitle>
+          <p className="text-xs text-muted-foreground mt-1">Championship Concierge</p>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -87,22 +93,34 @@ function AdminLogin({ onLogin }: { onLogin: () => void }) {
 }
 
 export default function AdminDashboard() {
+  const [location] = useLocation();
+  const role = location === "/admin2" ? "admin2" : "admin";
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { setSubscription } = useSubscription();
 
   useEffect(() => {
     const auth = sessionStorage.getItem("admin_authenticated");
-    if (auth === "true") {
+    const savedEmail = sessionStorage.getItem("admin_email");
+    if (auth === "true" && savedEmail) {
+      setSubscription(savedEmail, "ai_concierge");
       setIsAuthenticated(true);
     }
   }, []);
 
+  const handleLogin = (email: string) => {
+    setSubscription(email, "ai_concierge");
+    setIsAuthenticated(true);
+  };
+
   const handleLogout = () => {
     sessionStorage.removeItem("admin_authenticated");
+    sessionStorage.removeItem("admin_role");
+    sessionStorage.removeItem("admin_email");
     setIsAuthenticated(false);
   };
 
   if (!isAuthenticated) {
-    return <AdminLogin onLogin={() => setIsAuthenticated(true)} />;
+    return <AdminLogin role={role} onLogin={handleLogin} />;
   }
 
   return <AdminDashboardContent onLogout={handleLogout} />;
@@ -118,21 +136,23 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
   });
 
   const tierLabels: Record<string, string> = {
-    team_info: "Team Info ($4.99)",
-    logistics: "Logistics ($14.99)",
-    ai_concierge: "AI Concierge ($24.99)",
+    team_info: "Team Info ($1.99)",
+    logistics: "Fan Travel Pack ($7.99)",
+    fan_travel_pack: "Fan Travel Pack ($7.99)",
+    ai_concierge: "AI Concierge ($14.99)",
   };
 
   const tierColors: Record<string, string> = {
     team_info: "bg-blue-500",
     logistics: "bg-purple-500",
+    fan_travel_pack: "bg-purple-500",
     ai_concierge: "bg-emerald-500",
   };
 
   const totalRevenue = purchases.reduce((sum, p) => {
-    if (p.tier === "team_info") return sum + 4.99;
-    if (p.tier === "logistics") return sum + 14.99;
-    if (p.tier === "ai_concierge") return sum + 24.99;
+    if (p.tier === "team_info") return sum + 1.99;
+    if (p.tier === "logistics" || p.tier === "fan_travel_pack") return sum + 7.99;
+    if (p.tier === "ai_concierge") return sum + 14.99;
     return sum;
   }, 0);
 
