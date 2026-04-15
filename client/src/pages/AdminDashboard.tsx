@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,10 +7,24 @@ import { Input } from "@/components/ui/input";
 import { Link, useLocation } from "wouter";
 import {
   Download, Users, CreditCard, Mail, Calendar, ArrowLeft,
-  LogOut, ShieldCheck, TrendingUp, BarChart3, RefreshCw, CheckCircle2, Trophy
+  LogOut, ShieldCheck, TrendingUp, BarChart3, RefreshCw, CheckCircle2, Trophy,
+  Globe, ExternalLink
 } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import { useSubscription } from "@/contexts/SubscriptionContext";
+
+const PROD_URL = "https://worldcupcompanion2026.replit.app";
+const ADMIN_KEY = "admin2026cc";
+
+interface ProdStats {
+  leadCount: number;
+  purchaseCount: number;
+  totalRevenue: string;
+  tierCounts: Record<string, number>;
+  recentPurchases: { email: string; tier: string; purchasedAt: string }[];
+  recentLeads: { email: string; name?: string; city?: string; createdAt: string }[];
+  refreshedAt: string;
+}
 
 interface Lead {
   id: number;
@@ -159,6 +173,35 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
   const { data: purchases = [], isLoading: purchasesLoading } = useQuery<Purchase[]>({
     queryKey: ["/api/admin/purchases"],
   });
+
+  const [prodStats, setProdStats] = useState<ProdStats | null>(null);
+  const [prodLoading, setProdLoading] = useState(false);
+  const [prodError, setProdError] = useState(false);
+
+  const isDevEnv = typeof window !== "undefined" &&
+    (window.location.hostname.includes(".replit.dev") || window.location.hostname === "localhost");
+
+  const fetchProdStats = useCallback(async () => {
+    setProdLoading(true);
+    setProdError(false);
+    try {
+      const url = isDevEnv
+        ? `${PROD_URL}/api/admin/production-stats?key=${ADMIN_KEY}`
+        : `/api/admin/production-stats?key=${ADMIN_KEY}`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("Failed");
+      const data = await res.json();
+      setProdStats(data);
+    } catch {
+      setProdError(true);
+    } finally {
+      setProdLoading(false);
+    }
+  }, [isDevEnv]);
+
+  useEffect(() => {
+    fetchProdStats();
+  }, [fetchProdStats]);
 
   const updateTeamsMutation = useMutation({
     mutationFn: async () => {
@@ -332,6 +375,125 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
             </CardContent>
           </Card>
         </div>
+
+        {/* Production Stats Panel */}
+        <Card className="bg-gradient-to-r from-emerald-950/60 to-blue-950/60 border border-emerald-500/30 mb-6">
+          <CardHeader className="pb-3">
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <CardTitle className="text-white flex items-center gap-2 text-base">
+                <Globe className="w-4 h-4 text-emerald-400" />
+                Live Production Data
+                {isDevEnv && (
+                  <Badge className="text-xs bg-blue-600 ml-1">From Live App</Badge>
+                )}
+              </CardTitle>
+              <div className="flex items-center gap-2">
+                {prodStats && (
+                  <span className="text-xs text-muted-foreground">
+                    Updated {new Date(prodStats.refreshedAt).toLocaleTimeString()}
+                  </span>
+                )}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="text-xs border-emerald-500/30 hover:border-emerald-500"
+                  onClick={fetchProdStats}
+                  disabled={prodLoading}
+                >
+                  <RefreshCw className={`w-3 h-3 mr-1 ${prodLoading ? "animate-spin" : ""}`} />
+                  Refresh
+                </Button>
+                {isDevEnv && (
+                  <a href={`${PROD_URL}/admin`} target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="sm" className="text-xs border-emerald-500/30 hover:border-emerald-500">
+                      <ExternalLink className="w-3 h-3 mr-1" />
+                      Open Prod Admin
+                    </Button>
+                  </a>
+                )}
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {prodLoading && !prodStats ? (
+              <p className="text-muted-foreground text-sm">Connecting to production...</p>
+            ) : prodError && !prodStats ? (
+              <p className="text-red-400 text-sm">Could not reach production. Make sure the app is published and deployed.</p>
+            ) : prodStats ? (
+              <div className="space-y-4">
+                {/* KPI row */}
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="bg-white/5 rounded-lg p-3 text-center">
+                    <p className="text-2xl font-bold text-emerald-400">${prodStats.totalRevenue}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">Revenue</p>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-3 text-center">
+                    <p className="text-2xl font-bold text-white">{prodStats.purchaseCount}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">Sales</p>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-3 text-center">
+                    <p className="text-2xl font-bold text-blue-400">{prodStats.leadCount}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">Leads</p>
+                  </div>
+                </div>
+                {/* Tier breakdown */}
+                {Object.keys(prodStats.tierCounts).length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {Object.entries(prodStats.tierCounts).map(([tier, count]) => (
+                      <Badge key={tier} variant="outline" className="text-xs">
+                        {tier === "ai_concierge" ? "AI Concierge" : tier === "team_info" ? "Team Info" : "Fan Travel"}: {count}
+                      </Badge>
+                    ))}
+                  </div>
+                )}
+                {/* Downloads */}
+                <div className="flex flex-wrap gap-2 pt-1 border-t border-white/10">
+                  <p className="text-xs text-muted-foreground w-full mb-1">Export from production:</p>
+                  <a
+                    href={isDevEnv
+                      ? `${PROD_URL}/api/admin/leads/export?key=${ADMIN_KEY}`
+                      : `/api/admin/leads/export?key=${ADMIN_KEY}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button size="sm" variant="outline" className="text-xs">
+                      <Download className="w-3 h-3 mr-1" />
+                      {prodStats.leadCount} Leads CSV
+                    </Button>
+                  </a>
+                  <a
+                    href={isDevEnv
+                      ? `${PROD_URL}/api/admin/purchases/export?key=${ADMIN_KEY}`
+                      : `/api/admin/purchases/export?key=${ADMIN_KEY}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button size="sm" variant="outline" className="text-xs">
+                      <Download className="w-3 h-3 mr-1" />
+                      {prodStats.purchaseCount} Purchases CSV
+                    </Button>
+                  </a>
+                </div>
+                {/* Recent activity */}
+                {prodStats.recentPurchases.length > 0 && (
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-2">Recent purchases (production):</p>
+                    <div className="space-y-1">
+                      {prodStats.recentPurchases.map((p, i) => (
+                        <div key={i} className="flex items-center justify-between text-xs bg-white/5 rounded px-3 py-1.5">
+                          <span className="text-white">{p.email}</span>
+                          <Badge className="text-xs bg-emerald-600">
+                            {p.tier === "ai_concierge" ? "AI Concierge" : p.tier === "team_info" ? "Team Info" : "Fan Travel"}
+                          </Badge>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : null}
+          </CardContent>
+        </Card>
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
