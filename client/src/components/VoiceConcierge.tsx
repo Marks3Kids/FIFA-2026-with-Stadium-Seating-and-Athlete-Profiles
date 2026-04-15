@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Volume2, VolumeX, Mic, MicOff, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,6 +8,77 @@ interface VoiceConciergeProps {
   autoSpeak?: boolean;
   onSpeakStart?: () => void;
   onSpeakEnd?: () => void;
+}
+
+interface MicButtonProps {
+  onTranscript: (text: string) => void;
+  disabled?: boolean;
+}
+
+const LANGUAGE_RECOGNITION_MAP: Record<string, string> = {
+  en: 'en-US', es: 'es-ES', fr: 'fr-FR', de: 'de-DE',
+  pt: 'pt-BR', ar: 'ar-SA', it: 'it-IT', nl: 'nl-NL', ja: 'ja-JP',
+};
+
+export function MicButton({ onTranscript, disabled }: MicButtonProps) {
+  const { i18n } = useTranslation();
+  const [isListening, setIsListening] = useState(false);
+  const [isSupported, setIsSupported] = useState(false);
+  const recognitionRef = useRef<any>(null);
+
+  useEffect(() => {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    setIsSupported(!!SpeechRecognition);
+  }, []);
+
+  const startListening = useCallback(() => {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) return;
+
+    const recognition = new SpeechRecognition();
+    recognitionRef.current = recognition;
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = LANGUAGE_RECOGNITION_MAP[i18n.language] || 'en-US';
+
+    recognition.onstart = () => setIsListening(true);
+
+    recognition.onresult = (event: any) => {
+      const transcript = event.results[0]?.[0]?.transcript?.trim();
+      if (transcript) {
+        onTranscript(transcript);
+      }
+      setIsListening(false);
+    };
+
+    recognition.onerror = () => setIsListening(false);
+    recognition.onend = () => setIsListening(false);
+
+    recognition.start();
+  }, [i18n.language, onTranscript]);
+
+  const stopListening = useCallback(() => {
+    recognitionRef.current?.stop();
+    setIsListening(false);
+  }, []);
+
+  if (!isSupported) return null;
+
+  return (
+    <button
+      type="button"
+      onClick={isListening ? stopListening : startListening}
+      disabled={disabled}
+      className={`w-12 h-12 rounded-full flex items-center justify-center transition-all flex-shrink-0 ${
+        isListening
+          ? 'bg-red-500 text-white animate-pulse shadow-lg shadow-red-500/40'
+          : 'bg-white/10 text-white hover:bg-white/20'
+      } disabled:opacity-40 disabled:cursor-not-allowed`}
+      title={isListening ? 'Stop listening' : 'Speak your message'}
+    >
+      {isListening ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
+    </button>
+  );
 }
 
 const LANGUAGE_VOICE_MAP: Record<string, string> = {

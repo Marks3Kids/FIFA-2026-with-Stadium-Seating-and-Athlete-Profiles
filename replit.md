@@ -119,11 +119,13 @@ The AI Concierge subscription includes proactive automation with both written an
 - Examples: "🌡️ Hydration Alert: Dallas is 102°F today. Find cooling stations here."
 - Managed via `NotificationService.ts` with persistent storage
 
-**2. Verbal (AI Voice)**
-- "Talk to Concierge" button activates voice greeting
-- Uses Web Speech API for browser-native TTS in 9 languages
-- Voice map: en-US, es-ES, fr-FR, de-DE, pt-BR, ar-SA, zh-CN, ja-JP, ko-KR
-- Component: `VoiceConcierge.tsx`
+**2. Verbal (AI Voice — Two-Way)**
+- "Talk to Concierge" button activates voice greeting (TTS output)
+- **Mic button (🎤)** in the chat input bar enables speech-to-text input — user speaks, transcript auto-sends to AI
+- Uses Web Speech API `SpeechRecognition` for voice input (works on Chrome/Edge/Safari)
+- Uses Web Speech API `SpeechSynthesis` for TTS output in 9 languages
+- Voice/recognition language maps: en-US, es-ES, fr-FR, de-DE, pt-BR, ar-SA, it-IT, nl-NL, ja-JP
+- Component: `VoiceConcierge.tsx` — exports `VoiceConcierge`, `TalkToConciergeButton`, `MicButton`
 
 **3. Automatic Triggers**
 

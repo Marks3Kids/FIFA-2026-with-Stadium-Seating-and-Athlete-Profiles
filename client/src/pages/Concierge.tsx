@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "wouter";
-import { VoiceConcierge, TalkToConciergeButton } from "@/components/VoiceConcierge";
+import { VoiceConcierge, TalkToConciergeButton, MicButton } from "@/components/VoiceConcierge";
 import { useLocation as useGeoLocation } from "@/contexts/LocationContext";
 import { generateWeatherAlert, getHydrationRecommendations, getCoolingStations } from "@/services/WeatherService";
 import { useSubscription } from "@/contexts/SubscriptionContext";
@@ -237,6 +237,14 @@ export default function Concierge() {
     if (chatMutation.isPending) return;
     
     const userMessage: Message = { role: "user", content: prompt };
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
+    chatMutation.mutate(newMessages);
+  };
+
+  const handleVoiceInput = (transcript: string) => {
+    if (!transcript.trim() || chatMutation.isPending || limitReached) return;
+    const userMessage: Message = { role: "user", content: transcript.trim() };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
     chatMutation.mutate(newMessages);
@@ -469,6 +477,10 @@ export default function Concierge() {
 
         <div className="flex-shrink-0 border-t border-white/5 bg-card px-4 py-4 pb-safe">
           <div className="flex items-center gap-2">
+            <MicButton
+              onTranscript={handleVoiceInput}
+              disabled={chatMutation.isPending || limitReached}
+            />
             <input
               ref={inputRef}
               type="text"
