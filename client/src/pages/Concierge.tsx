@@ -481,21 +481,33 @@ export default function Concierge() {
               onTranscript={handleVoiceInput}
               disabled={chatMutation.isPending || limitReached}
             />
-            <input
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSend()}
-              placeholder={limitReached ? "Message limit reached" : t("concierge.inputPlaceholder")}
-              className="flex-1 bg-background border border-white/10 rounded-full px-4 py-3 text-white text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary disabled:opacity-50"
-              disabled={chatMutation.isPending || limitReached}
-              data-testid="input-chat-message"
-            />
+            <div className="flex-1 relative">
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                maxLength={2000}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                placeholder={limitReached ? "Message limit reached" : t("concierge.inputPlaceholder")}
+                className={`w-full bg-background border rounded-full px-4 py-3 text-white text-sm placeholder:text-muted-foreground focus:outline-none disabled:opacity-50 ${
+                  input.length > 1800 ? "border-orange-500 focus:border-orange-400" : "border-white/10 focus:border-primary"
+                }`}
+                disabled={chatMutation.isPending || limitReached}
+                data-testid="input-chat-message"
+              />
+              {input.length > 1600 && (
+                <span className={`absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono ${
+                  input.length > 1900 ? "text-red-400" : input.length > 1800 ? "text-orange-400" : "text-muted-foreground"
+                }`}>
+                  {input.length}/2000
+                </span>
+              )}
+            </div>
             <button
               onClick={handleSend}
               disabled={!input.trim() || chatMutation.isPending || limitReached}
-              className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 transition-transform"
+              className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 transition-transform flex-shrink-0"
               data-testid="button-send-message"
             >
               <Send className="w-5 h-5" />

@@ -1238,6 +1238,15 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         });
       }
 
+      // Enforce 2,000 character limit per user message
+      const MAX_MESSAGE_CHARS = 2000;
+      const guardedMessages = messages.map((msg: { role: string; content: string }) => ({
+        ...msg,
+        content: typeof msg.content === "string" && msg.content.length > MAX_MESSAGE_CHARS
+          ? msg.content.slice(0, MAX_MESSAGE_CHARS)
+          : msg.content,
+      }));
+
       const OpenAI = (await import("openai")).default;
       const openai = new OpenAI({
         apiKey: openaiApiKey,
@@ -1248,7 +1257,7 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         model: "gpt-4o-mini",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
-          ...messages
+          ...guardedMessages
         ],
         max_tokens: 1024,
         temperature: 0.7,
