@@ -226,22 +226,21 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
 
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-4">
-            <Link href="/">
-              <Button variant="ghost" size="sm">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-bold text-white">Admin Dashboard</h1>
+            <p className="text-xs text-muted-foreground">Championship Concierge 2026</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <Link href="/home">
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold">
+                Enter App (Full Access)
               </Button>
             </Link>
-            <div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-white">Admin Dashboard</h1>
-              <p className="text-xs text-muted-foreground">Championship Concierge 2026</p>
-            </div>
+            <Button variant="outline" size="sm" onClick={onLogout}>
+              <LogOut className="w-4 h-4 mr-2" />
+              Logout
+            </Button>
           </div>
-          <Button variant="outline" size="sm" onClick={onLogout}>
-            <LogOut className="w-4 h-4 mr-2" />
-            Logout
-          </Button>
         </div>
 
         {/* Row 1: Primary KPIs */}
