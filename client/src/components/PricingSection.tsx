@@ -55,7 +55,7 @@ export const PRICING_TIERS: PricingTier[] = [
   },
   {
     id: "logistics",
-    name: "Logistics",
+    name: "Fan Travel Pack",
     price: 7.99,
     priceId: "price_1SoSSoKAEwbrdBYlphO1lVDx",
     icon: <MapPin className="w-6 h-6" />,
@@ -71,7 +71,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Safety & medical resources",
       "Religious services",
     ],
-    buttonText: "Get Logistics",
+    buttonText: "Get Fan Travel Pack",
     monthlyValue: "One-time purchase — use all tournament long",
   },
   {
