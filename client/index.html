@@ -2,7 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    
+
+    <!-- Cache-busting: clears stale PWA service worker caches on version change -->
+    <script>
+      (function() {
+        var APP_VERSION = "2.5.0";
+        var stored = localStorage.getItem("app_version");
+        if (stored !== APP_VERSION) {
+          localStorage.setItem("app_version", APP_VERSION);
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(regs) {
+              var ps = regs.map(function(r) { return r.unregister(); });
+              return Promise.all(ps);
+            }).then(function() {
+              return caches.keys();
+            }).then(function(keys) {
+              return Promise.all(keys.map(function(k) { return caches.delete(k); }));
+            }).then(function() {
+              if (stored !== null) { window.location.reload(true); }
+            });
+          }
+        }
+      })();
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17888742843"></script>
     <script>
