@@ -5,13 +5,19 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Link, useLocation } from "wouter";
-import { Download, Users, CreditCard, Mail, Calendar, ArrowLeft, Lock, LogOut, ShieldCheck } from "lucide-react";
+import {
+  Download, Users, CreditCard, Mail, Calendar, ArrowLeft,
+  LogOut, ShieldCheck, TrendingUp, BarChart3, RefreshCw, CheckCircle2, Trophy
+} from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import { useSubscription } from "@/contexts/SubscriptionContext";
 
 interface Lead {
   id: number;
   email: string;
+  name?: string;
+  city?: string;
+  source?: string;
   createdAt: string;
 }
 
@@ -126,6 +132,25 @@ export default function AdminDashboard() {
   return <AdminDashboardContent onLogout={handleLogout} />;
 }
 
+function StatCard({ icon, label, value, sub, color }: {
+  icon: React.ReactNode; label: string; value: string | number; sub?: string; color?: string;
+}) {
+  return (
+    <Card className="bg-card border-white/10">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-sm text-muted-foreground flex items-center gap-2">
+          {icon}
+          {label}
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className={`text-3xl font-bold ${color || "text-white"}`}>{value}</p>
+        {sub && <p className="text-xs text-muted-foreground mt-1">{sub}</p>}
+      </CardContent>
+    </Card>
+  );
+}
+
 function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
   const { data: leads = [], isLoading: leadsLoading } = useQuery<Lead[]>({
     queryKey: ["/api/admin/leads"],
@@ -133,6 +158,13 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
 
   const { data: purchases = [], isLoading: purchasesLoading } = useQuery<Purchase[]>({
     queryKey: ["/api/admin/purchases"],
+  });
+
+  const updateTeamsMutation = useMutation({
+    mutationFn: async () => {
+      const res = await apiRequest("POST", "/api/admin/update-teams", {});
+      return res.json();
+    },
   });
 
   const tierLabels: Record<string, string> = {
@@ -149,16 +181,43 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
     ai_concierge: "bg-emerald-500",
   };
 
-  const totalRevenue = purchases.reduce((sum, p) => {
-    if (p.tier === "team_info") return sum + 1.99;
-    if (p.tier === "logistics" || p.tier === "fan_travel_pack") return sum + 7.99;
-    if (p.tier === "ai_concierge") return sum + 14.99;
-    return sum;
-  }, 0);
+  const tierRevenue: Record<string, number> = {
+    team_info: 1.99,
+    logistics: 7.99,
+    fan_travel_pack: 7.99,
+    ai_concierge: 14.99,
+  };
+
+  const totalRevenue = purchases.reduce((sum, p) => sum + (tierRevenue[p.tier] || 0), 0);
+  const teamInfoCount = purchases.filter(p => p.tier === "team_info").length;
+  const fanTravelCount = purchases.filter(p => p.tier === "logistics" || p.tier === "fan_travel_pack").length;
+  const conciergeCount = purchases.filter(p => p.tier === "ai_concierge").length;
+  const uniqueCustomers = new Set([...purchases.map(p => p.email), ...leads.map(l => l.email)]).size;
+  const conversionRate = uniqueCustomers > 0
+    ? ((purchases.length / uniqueCustomers) * 100).toFixed(1)
+    : "0.0";
+
+  // Combine and sort all activity by date
+  const allActivity = [
+    ...purchases.map(p => ({
+      type: "purchase" as const,
+      email: p.email,
+      tier: p.tier,
+      date: p.purchasedAt,
+    })),
+    ...leads.map(l => ({
+      type: "download" as const,
+      email: l.email,
+      tier: null,
+      date: l.createdAt,
+    })),
+  ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 30);
 
   return (
     <div className="min-h-screen bg-background p-4 sm:p-6">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
+
+        {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
             <Link href="/">
@@ -167,7 +226,10 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
                 Back
               </Button>
             </Link>
-            <h1 className="text-2xl sm:text-3xl font-bold text-white">Admin Dashboard</h1>
+            <div>
+              <h1 className="text-2xl sm:text-3xl font-bold text-white">Admin Dashboard</h1>
+              <p className="text-xs text-muted-foreground">Championship Concierge 2026</p>
+            </div>
           </div>
           <Button variant="outline" size="sm" onClick={onLogout}>
             <LogOut className="w-4 h-4 mr-2" />
@@ -175,89 +237,123 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="bg-card border-white/10">
+        {/* Row 1: Primary KPIs */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+          <StatCard
+            icon={<TrendingUp className="w-4 h-4" />}
+            label="Total Revenue"
+            value={`$${totalRevenue.toFixed(2)}`}
+            sub="One-time purchases"
+            color="text-emerald-400"
+          />
+          <StatCard
+            icon={<CreditCard className="w-4 h-4" />}
+            label="Total Sales"
+            value={purchases.length}
+            sub={`${conversionRate}% conversion`}
+            color="text-white"
+          />
+          <StatCard
+            icon={<Download className="w-4 h-4" />}
+            label="Free Downloads"
+            value={leads.length}
+            sub="Bracket downloads"
+            color="text-blue-400"
+          />
+          <StatCard
+            icon={<Users className="w-4 h-4" />}
+            label="Unique Users"
+            value={uniqueCustomers}
+            sub="All emails captured"
+            color="text-purple-400"
+          />
+        </div>
+
+        {/* Row 2: Per-Tier Breakdown */}
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          <Card className="bg-card border-blue-500/20 border">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-muted-foreground flex items-center gap-2">
-                <Download className="w-4 h-4" />
-                Free Downloads
+              <CardTitle className="text-xs text-muted-foreground flex items-center gap-1.5">
+                <div className="w-2 h-2 rounded-full bg-blue-500" />
+                Team Info
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-3xl font-bold text-white">{leads.length}</p>
+              <p className="text-2xl font-bold text-white">{teamInfoCount}</p>
+              <p className="text-xs text-muted-foreground">× $1.99 = <span className="text-emerald-400">${(teamInfoCount * 1.99).toFixed(2)}</span></p>
             </CardContent>
           </Card>
-
-          <Card className="bg-card border-white/10">
+          <Card className="bg-card border-purple-500/20 border">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-muted-foreground flex items-center gap-2">
-                <CreditCard className="w-4 h-4" />
-                Total Purchases
+              <CardTitle className="text-xs text-muted-foreground flex items-center gap-1.5">
+                <div className="w-2 h-2 rounded-full bg-purple-500" />
+                Fan Travel Pack
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-3xl font-bold text-white">{purchases.length}</p>
+              <p className="text-2xl font-bold text-white">{fanTravelCount}</p>
+              <p className="text-xs text-muted-foreground">× $7.99 = <span className="text-emerald-400">${(fanTravelCount * 7.99).toFixed(2)}</span></p>
             </CardContent>
           </Card>
-
-          <Card className="bg-card border-white/10">
+          <Card className="bg-card border-emerald-500/20 border">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-muted-foreground flex items-center gap-2">
-                <Users className="w-4 h-4" />
-                AI Concierge Subs
+              <CardTitle className="text-xs text-muted-foreground flex items-center gap-1.5">
+                <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                AI Concierge
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-3xl font-bold text-emerald-500">
-                {purchases.filter(p => p.tier === "ai_concierge").length}
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-card border-white/10">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-muted-foreground flex items-center gap-2">
-                <CreditCard className="w-4 h-4" />
-                Total Revenue
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-3xl font-bold text-emerald-500">${totalRevenue.toFixed(2)}</p>
+              <p className="text-2xl font-bold text-white">{conciergeCount}</p>
+              <p className="text-xs text-muted-foreground">× $14.99 = <span className="text-emerald-400">${(conciergeCount * 14.99).toFixed(2)}</span></p>
             </CardContent>
           </Card>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+
+          {/* Purchases */}
           <Card className="bg-card border-white/10">
             <CardHeader>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between flex-wrap gap-2">
                 <CardTitle className="text-white flex items-center gap-2">
-                  <CreditCard className="w-5 h-5" />
-                  Recent Purchases
+                  <CreditCard className="w-5 h-5 text-emerald-400" />
+                  Purchases
                 </CardTitle>
-                <Badge variant="outline">{purchases.length} total</Badge>
+                <div className="flex items-center gap-2">
+                  <Badge variant="outline">{purchases.length} total</Badge>
+                  <a href="/api/admin/purchases/export" download>
+                    <Button variant="outline" size="sm" className="text-xs">
+                      <Download className="w-3 h-3 mr-1" />
+                      Export CSV
+                    </Button>
+                  </a>
+                </div>
               </div>
             </CardHeader>
             <CardContent>
               {purchasesLoading ? (
                 <p className="text-muted-foreground">Loading...</p>
               ) : purchases.length === 0 ? (
-                <p className="text-muted-foreground">No purchases yet</p>
+                <div className="text-center py-8 text-muted-foreground">
+                  <CreditCard className="w-10 h-10 mx-auto mb-2 opacity-30" />
+                  <p>No purchases yet — share the app!</p>
+                </div>
               ) : (
-                <div className="space-y-3 max-h-96 overflow-y-auto">
+                <div className="space-y-2 max-h-80 overflow-y-auto">
                   {purchases.slice().reverse().map((purchase) => (
                     <div key={purchase.id} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                       <div>
-                        <p className="text-white font-medium flex items-center gap-2">
-                          <Mail className="w-4 h-4 text-muted-foreground" />
+                        <p className="text-white text-sm font-medium flex items-center gap-2">
+                          <Mail className="w-3.5 h-3.5 text-muted-foreground" />
                           {purchase.email}
                         </p>
-                        <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
+                        <p className="text-xs text-muted-foreground flex items-center gap-1 mt-0.5">
                           <Calendar className="w-3 h-3" />
                           {new Date(purchase.purchasedAt).toLocaleDateString()} {new Date(purchase.purchasedAt).toLocaleTimeString()}
                         </p>
                       </div>
-                      <Badge className={tierColors[purchase.tier]}>
+                      <Badge className={`text-xs ${tierColors[purchase.tier] || "bg-gray-500"}`}>
                         {tierLabels[purchase.tier] || purchase.tier}
                       </Badge>
                     </div>
@@ -267,17 +363,19 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
             </CardContent>
           </Card>
 
+          {/* Free Bracket Downloads */}
           <Card className="bg-card border-white/10">
             <CardHeader>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between flex-wrap gap-2">
                 <CardTitle className="text-white flex items-center gap-2">
-                  <Download className="w-5 h-5" />
+                  <Download className="w-5 h-5 text-blue-400" />
                   Free Bracket Downloads
                 </CardTitle>
                 <div className="flex items-center gap-2">
                   <Badge variant="outline">{leads.length} total</Badge>
                   <a href="/api/admin/leads/export" download>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" className="text-xs">
+                      <Download className="w-3 h-3 mr-1" />
                       Export CSV
                     </Button>
                   </a>
@@ -288,25 +386,166 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
               {leadsLoading ? (
                 <p className="text-muted-foreground">Loading...</p>
               ) : leads.length === 0 ? (
-                <p className="text-muted-foreground">No leads yet</p>
+                <div className="text-center py-8 text-muted-foreground">
+                  <Download className="w-10 h-10 mx-auto mb-2 opacity-30" />
+                  <p>No downloads yet</p>
+                </div>
               ) : (
-                <div className="space-y-3 max-h-96 overflow-y-auto">
+                <div className="space-y-2 max-h-80 overflow-y-auto">
                   {leads.slice().reverse().map((lead) => (
                     <div key={lead.id} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
-                      <p className="text-white font-medium flex items-center gap-2">
-                        <Mail className="w-4 h-4 text-muted-foreground" />
-                        {lead.email}
-                      </p>
-                      <p className="text-xs text-muted-foreground flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {new Date(lead.createdAt).toLocaleDateString()}
-                      </p>
+                      <div>
+                        <p className="text-white text-sm font-medium flex items-center gap-2">
+                          <Mail className="w-3.5 h-3.5 text-muted-foreground" />
+                          {lead.email}
+                        </p>
+                        {lead.name && <p className="text-xs text-muted-foreground mt-0.5">{lead.name}{lead.city ? ` — ${lead.city}` : ""}</p>}
+                        <p className="text-xs text-muted-foreground flex items-center gap-1 mt-0.5">
+                          <Calendar className="w-3 h-3" />
+                          {new Date(lead.createdAt).toLocaleDateString()}
+                        </p>
+                      </div>
+                      <Badge variant="outline" className="text-xs">Free</Badge>
                     </div>
                   ))}
                 </div>
               )}
             </CardContent>
           </Card>
+        </div>
+
+        {/* Recent Activity Feed */}
+        <Card className="bg-card border-white/10 mb-6">
+          <CardHeader>
+            <CardTitle className="text-white flex items-center gap-2">
+              <BarChart3 className="w-5 h-5 text-purple-400" />
+              Recent Activity
+              <Badge variant="outline" className="ml-auto">{allActivity.length} events</Badge>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {allActivity.length === 0 ? (
+              <p className="text-muted-foreground text-center py-4">No activity yet</p>
+            ) : (
+              <div className="space-y-2 max-h-64 overflow-y-auto">
+                {allActivity.map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 p-2.5 bg-white/5 rounded-lg">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                      item.type === "purchase" ? "bg-emerald-500/20" : "bg-blue-500/20"
+                    }`}>
+                      {item.type === "purchase"
+                        ? <CreditCard className="w-4 h-4 text-emerald-400" />
+                        : <Download className="w-4 h-4 text-blue-400" />
+                      }
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white text-sm truncate">{item.email}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {item.type === "purchase"
+                          ? `Purchased: ${tierLabels[item.tier!] || item.tier}`
+                          : "Downloaded free bracket"
+                        }
+                      </p>
+                    </div>
+                    <p className="text-xs text-muted-foreground flex-shrink-0">
+                      {new Date(item.date).toLocaleDateString()}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Admin Tools */}
+        <Card className="bg-card border-white/10">
+          <CardHeader>
+            <CardTitle className="text-white flex items-center gap-2">
+              <RefreshCw className="w-5 h-5 text-yellow-400" />
+              Admin Tools
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+              <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                <div className="flex items-center gap-2 mb-2">
+                  <Trophy className="w-4 h-4 text-yellow-400" />
+                  <p className="text-sm font-medium text-white">Update Teams</p>
+                </div>
+                <p className="text-xs text-muted-foreground mb-3">
+                  Sync the database with the final 48 FIFA 2026 qualified teams.
+                  Removes unqualified teams and adds confirmed ones.
+                </p>
+                <Button
+                  size="sm"
+                  className="w-full"
+                  onClick={() => updateTeamsMutation.mutate()}
+                  disabled={updateTeamsMutation.isPending || updateTeamsMutation.isSuccess}
+                >
+                  {updateTeamsMutation.isPending ? (
+                    <><RefreshCw className="w-3 h-3 mr-2 animate-spin" />Updating...</>
+                  ) : updateTeamsMutation.isSuccess ? (
+                    <><CheckCircle2 className="w-3 h-3 mr-2" />Done!</>
+                  ) : (
+                    "Update Teams Now"
+                  )}
+                </Button>
+                {updateTeamsMutation.isSuccess && (
+                  <p className="text-xs text-emerald-400 mt-2 text-center">
+                    {(updateTeamsMutation.data as any)?.message}
+                  </p>
+                )}
+                {updateTeamsMutation.isError && (
+                  <p className="text-xs text-red-400 mt-2 text-center">Update failed. Try again.</p>
+                )}
+              </div>
+
+              <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                <div className="flex items-center gap-2 mb-2">
+                  <Download className="w-4 h-4 text-blue-400" />
+                  <p className="text-sm font-medium text-white">Export Purchases</p>
+                </div>
+                <p className="text-xs text-muted-foreground mb-3">
+                  Download a full CSV of all {purchases.length} purchase records including emails, tiers, and timestamps.
+                </p>
+                <a href="/api/admin/purchases/export" download>
+                  <Button size="sm" variant="outline" className="w-full">
+                    Download CSV
+                  </Button>
+                </a>
+              </div>
+
+              <div className="p-4 bg-white/5 rounded-xl border border-white/10">
+                <div className="flex items-center gap-2 mb-2">
+                  <Mail className="w-4 h-4 text-purple-400" />
+                  <p className="text-sm font-medium text-white">Export Downloads</p>
+                </div>
+                <p className="text-xs text-muted-foreground mb-3">
+                  Download a full CSV of all {leads.length} bracket download leads including names and emails.
+                </p>
+                <a href="/api/admin/leads/export" download>
+                  <Button size="sm" variant="outline" className="w-full">
+                    Download CSV
+                  </Button>
+                </a>
+              </div>
+
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Quick Links */}
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link href="/admin/leads">
+            <Button variant="outline" size="sm">View Leads Page</Button>
+          </Link>
+          <Link href="/admin/venues">
+            <Button variant="outline" size="sm">Manage Venues</Button>
+          </Link>
+          <Link href="/">
+            <Button variant="ghost" size="sm">View Live App</Button>
+          </Link>
         </div>
       </div>
     </div>

@@ -70,11 +70,11 @@ export default function Teams() {
           </p>
         </div>
 
-        <div className="bg-gray-100 border border-gray-200 rounded-xl p-4 mb-6 text-center">
-          <p className="text-sm text-gray-700">
-            <span className="font-bold text-gray-900">{t("teams.qualifiedCount", "42 of 48 teams qualified")}</span>
+        <div className="bg-emerald-950/60 border border-emerald-500/30 rounded-xl p-4 mb-6 text-center">
+          <p className="text-sm text-emerald-200">
+            <span className="font-bold text-emerald-400">All 48 Teams Officially Qualified</span>
             {" • "}
-            {t("teams.playoffInfo", "The final 6 teams will be determined through the FIFA Play-Off Tournament in March 2026 featuring: Bolivia, Congo DR, Iraq, Jamaica, New Caledonia, and Suriname competing for the remaining spots.")}
+            6 confederations · 16 host cities across USA, Canada & Mexico · June 11 – July 19, 2026
           </p>
         </div>
 
