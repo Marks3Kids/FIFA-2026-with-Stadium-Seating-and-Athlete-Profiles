@@ -163,32 +163,40 @@ async function ensureStripeInitialized() {
 
 app.post(
   '/api/stripe/webhook/:uuid',
-  express.raw({ type: 'application/json' }),
+  express.raw({ type: '*/*' }),
   async (req, res) => {
-    // Initialize Stripe lazily on first webhook
-    await ensureStripeInitialized();
-    if (!stripeEnabled) {
-      return res.status(503).json({ error: 'Stripe not configured' });
-    }
-    
-    const signature = req.headers['stripe-signature'];
-    if (!signature) {
-      return res.status(400).json({ error: 'Missing stripe-signature' });
-    }
-
     try {
+      // Initialize Stripe lazily on first webhook
+      await ensureStripeInitialized();
+      if (!stripeEnabled) {
+        console.log('Webhook received but Stripe not yet initialized — returning 200 to avoid retry storm');
+        return res.status(200).json({ received: true });
+      }
+      
+      const signature = req.headers['stripe-signature'];
+      if (!signature) {
+        return res.status(400).json({ error: 'Missing stripe-signature' });
+      }
+
       const sig = Array.isArray(signature) ? signature[0] : signature;
-      if (!Buffer.isBuffer(req.body)) {
-        console.error('Webhook body is not a Buffer');
-        return res.status(500).json({ error: 'Webhook processing error' });
+
+      // Ensure body is a Buffer — if not, convert it
+      let payload: Buffer;
+      if (Buffer.isBuffer(req.body)) {
+        payload = req.body;
+      } else if (typeof req.body === 'string') {
+        payload = Buffer.from(req.body);
+      } else {
+        payload = Buffer.from(JSON.stringify(req.body));
       }
 
       const { uuid } = req.params;
       const { WebhookHandlers } = await import("./webhookHandlers");
-      await WebhookHandlers.processWebhook(req.body as Buffer, sig, uuid);
+      await WebhookHandlers.processWebhook(payload, sig, uuid);
       res.status(200).json({ received: true });
     } catch (error: any) {
       console.error('Webhook error:', error.message);
+      // Return 400 only for genuine signature failures, not processing issues
       res.status(400).json({ error: 'Webhook processing error' });
     }
   }
