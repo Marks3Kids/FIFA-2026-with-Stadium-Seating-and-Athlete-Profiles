@@ -19,7 +19,7 @@ export class StripeService {
     
     return await stripe.checkout.sessions.create({
       customer: customerId,
-      payment_method_types: ['card'],
+      automatic_payment_methods: { enabled: true },
       line_items: [{ price: priceId, quantity: 1 }],
       mode: isRecurring ? 'subscription' : 'payment',
       success_url: successUrl,
@@ -35,19 +35,18 @@ export class StripeService {
     const isRecurring = !!price.recurring;
     
     const sessionParams: any = {
-      payment_method_types: ['card'],
+      automatic_payment_methods: { enabled: true },
       line_items: [{ price: priceId, quantity: 1 }],
       mode: isRecurring ? 'subscription' : 'payment',
       success_url: successUrl,
       cancel_url: cancelUrl,
       allow_promotion_codes: true,
       billing_address_collection: 'auto',
+      phone_number_collection: { enabled: false },
     };
 
     if (customerId) {
       sessionParams.customer = customerId;
-    } else {
-      sessionParams.customer_email = undefined; // Let Stripe collect it
     }
     
     return await stripe.checkout.sessions.create(sessionParams);
