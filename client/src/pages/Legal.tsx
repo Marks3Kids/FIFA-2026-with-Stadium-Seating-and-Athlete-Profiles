@@ -11,6 +11,7 @@ export function Legal() {
     if (location === "/terms") return "terms";
     if (location === "/privacy") return "privacy";
     if (location === "/refund") return "refund";
+    if (location === "/policy") return "refund";
     return "all";
   };
   

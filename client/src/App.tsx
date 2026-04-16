@@ -53,6 +53,7 @@ function Router() {
       <Route path="/terms" component={Legal} />
       <Route path="/privacy" component={Legal} />
       <Route path="/refund" component={Legal} />
+      <Route path="/policy" component={Legal} />
       <Route path="/support" component={SupportPage} />
       <Route path="/checkout/success" component={CheckoutSuccess} />
       
