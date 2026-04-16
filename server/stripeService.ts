@@ -41,10 +41,13 @@ export class StripeService {
       success_url: successUrl,
       cancel_url: cancelUrl,
       allow_promotion_codes: true,
+      billing_address_collection: 'auto',
     };
 
     if (customerId) {
       sessionParams.customer = customerId;
+    } else {
+      sessionParams.customer_email = undefined; // Let Stripe collect it
     }
     
     return await stripe.checkout.sessions.create(sessionParams);

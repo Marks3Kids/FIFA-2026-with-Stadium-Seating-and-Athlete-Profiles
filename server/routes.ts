@@ -1334,6 +1334,14 @@ Remember: You're helping fans have the best World Cup experience of their lives!
   });
 
   // Stripe Checkout Session
+  // Helper: always use HTTPS in production (Replit proxy receives HTTP internally)
+  function getBaseUrl(req: any): string {
+    const isDeployment = process.env.REPLIT_DEPLOYMENT === '1';
+    const proto = isDeployment ? 'https' : (req.headers['x-forwarded-proto'] as string || req.protocol);
+    const host = req.headers['x-forwarded-host'] as string || req.get('host');
+    return `${proto}://${host}`;
+  }
+
   app.post("/api/checkout", async (req, res) => {
     try {
       const { priceId, email } = req.body;
@@ -1342,7 +1350,7 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         return res.status(400).json({ error: "Price ID is required" });
       }
 
-      const baseUrl = `${req.protocol}://${req.get('host')}`;
+      const baseUrl = getBaseUrl(req);
       let customerId: string | undefined;
 
       // If email provided, try to find or create customer
@@ -2120,11 +2128,12 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         customer = await stripeService.createCustomer(email, 0);
       }
 
+      const baseUrlMsg = getBaseUrl(req);
       const session = await stripeService.createCheckoutSession(
         customer.id,
         priceId,
-        `${req.protocol}://${req.get("host")}/concierge?purchase=success&session_id={CHECKOUT_SESSION_ID}`,
-        `${req.protocol}://${req.get("host")}/concierge?purchase=cancelled`
+        `${baseUrlMsg}/concierge?purchase=success&session_id={CHECKOUT_SESSION_ID}`,
+        `${baseUrlMsg}/concierge?purchase=cancelled`
       );
 
       res.json({ url: session.url });
