@@ -19,13 +19,13 @@ export class StripeService {
     
     return await stripe.checkout.sessions.create({
       customer: customerId,
-      automatic_payment_methods: { enabled: true },
+      managed_payments: { enabled: true } as any,
       line_items: [{ price: priceId, quantity: 1 }],
       mode: isRecurring ? 'subscription' : 'payment',
       success_url: successUrl,
       cancel_url: cancelUrl,
       allow_promotion_codes: true,
-    });
+    } as any);
   }
 
   async createCheckoutSessionWithOptionalCustomer(priceId: string, successUrl: string, cancelUrl: string, customerId?: string) {
@@ -35,7 +35,7 @@ export class StripeService {
     const isRecurring = !!price.recurring;
     
     const sessionParams: any = {
-      automatic_payment_methods: { enabled: true },
+      managed_payments: { enabled: true },
       line_items: [{ price: priceId, quantity: 1 }],
       mode: isRecurring ? 'subscription' : 'payment',
       success_url: successUrl,
