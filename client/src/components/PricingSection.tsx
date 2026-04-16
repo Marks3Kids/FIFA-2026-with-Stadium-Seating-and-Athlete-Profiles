@@ -226,7 +226,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
         });
         setShowRestore(false);
         setRestoreEmail("");
-        navigate("/");
+        navigate("/home");
       } else {
         toast({
           title: "No Purchase Found",
