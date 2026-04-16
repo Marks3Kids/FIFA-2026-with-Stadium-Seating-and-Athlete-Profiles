@@ -9,11 +9,18 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
 }
 
+const TIER_DISPLAY: Record<string, string> = {
+  team_info: "Team Info",
+  logistics: "Fan Travel Pack",
+  ai_concierge: "AI Concierge",
+};
+
 export default function CheckoutSuccess() {
   const [, navigate] = useLocation();
   const searchString = useSearch();
   const { setSubscription } = useSubscription();
   const [isProcessing, setIsProcessing] = useState(true);
+  const [purchasedTier, setPurchasedTier] = useState<string | null>(null);
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [isInstalled, setIsInstalled] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
@@ -53,6 +60,7 @@ export default function CheckoutSuccess() {
 
           if (data.success && data.email && data.tier) {
             setSubscription(data.email, data.tier);
+            setPurchasedTier(data.tier);
           }
         } catch (error) {
           console.error("Failed to verify session:", error);
@@ -111,7 +119,9 @@ export default function CheckoutSuccess() {
           <div className="flex items-center gap-3 mb-3">
             <Trophy className="w-8 h-8 text-primary" />
             <div className="text-left">
-              <p className="font-bold text-white">Access Unlocked</p>
+              <p className="font-bold text-white">
+                {purchasedTier ? `${TIER_DISPLAY[purchasedTier] || purchasedTier} Unlocked` : "Access Unlocked"}
+              </p>
               <p className="text-xs text-muted-foreground">Your features are now available</p>
             </div>
           </div>
@@ -121,6 +131,12 @@ export default function CheckoutSuccess() {
             <li>✓ Match schedules</li>
             <li>✓ And more...</li>
           </ul>
+        </div>
+
+        <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-3 mb-4">
+          <p className="text-xs text-amber-300 text-left">
+            <span className="font-bold">On a new device or browser?</span> Go to the Pricing page and tap "Already purchased? Restore your access" — enter this same email to restore your access instantly.
+          </p>
         </div>
 
         {!isInstalled && (installPrompt || isIOS) && (
@@ -163,11 +179,11 @@ export default function CheckoutSuccess() {
         )}
 
         <button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/home")}
           className="w-full bg-primary text-primary-foreground py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors"
           data-testid="button-go-to-app"
         >
-          Start Exploring
+          Go to App
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>
