@@ -31,7 +31,15 @@ export class WebhookHandlers {
       await WebhookHandlers.handleCheckoutCompleted(event.data.object);
     }
     
-    await sync.processWebhook(payload, signature, uuid);
+    try {
+      await sync.processWebhook(payload, signature, uuid);
+    } catch (syncError: any) {
+      if (syncError?.message?.includes('Unhandled webhook event')) {
+        console.log(`Webhook: Ignoring unhandled event type "${event.type}" — not a failure`);
+      } else {
+        throw syncError;
+      }
+    }
   }
   
   static async handleCheckoutCompleted(session: any): Promise<void> {
