@@ -165,23 +165,62 @@ export default function LandingPage() {
 
       <footer className="py-12 px-4 border-t border-white/10">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
-                <Globe className="w-5 h-5 text-primary" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+            {/* Brand */}
+            <div className="col-span-2 md:col-span-1">
+              <div className="flex items-center gap-2 mb-3">
+                <img src={soccerBallIcon} alt="Championship Concierge" className="w-8 h-8" />
+                <span className="font-display font-bold text-sm">
+                  <span className="text-primary">Championship</span>{" "}
+                  <span className="text-white">Concierge</span>
+                </span>
               </div>
-              <span className="font-display font-bold">
-                <span className="text-primary">CHAMPIONSHIP</span>{" "}
-                <span className="text-white">CONCIERGE</span>
-              </span>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Your AI-powered travel companion for the 2026 international soccer championship.
+              </p>
             </div>
-            <p className="text-xs text-muted-foreground text-center max-w-md">
-              This is an independent fan-made companion app and is not affiliated with, 
-              endorsed by, or connected to FIFA or any official organizing bodies.
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-white font-semibold text-sm mb-3">Quick Links</h4>
+              <ul className="space-y-2 text-xs text-muted-foreground">
+                <li><Link href="/home" className="hover:text-white transition-colors">Explore App</Link></li>
+                <li><Link href="/cities" className="hover:text-white transition-colors">Cities</Link></li>
+                <li><Link href="/support" className="hover:text-white transition-colors">Support</Link></li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h4 className="text-white font-semibold text-sm mb-3">Legal</h4>
+              <ul className="space-y-2 text-xs text-muted-foreground">
+                <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
+                <li><Link href="/policy" className="hover:text-white transition-colors">Refund Policy</Link></li>
+              </ul>
+            </div>
+
+            {/* Download */}
+            <div>
+              <h4 className="text-white font-semibold text-sm mb-3">Download</h4>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.mingledtreasure.championshipconcierge"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-3 py-2 transition-colors"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3.18 23.76a2 2 0 001.07-.32l.1-.06 11.37-6.57-2.48-2.49-10.06 9.44zM.6 1.18A2 2 0 000 2.6v18.8a2 2 0 00.6 1.42l.08.07 10.53-10.53v-.25L.68 1.11l-.08.07zM20.6 10.37l-3.22-1.86-2.79 2.79 2.79 2.79 3.24-1.87a2 2 0 000-3.85zM4.25.56L15.62 7.12l-2.48 2.49L3.08.17A2 2 0 014.25.56z"/>
+                </svg>
+                <span className="text-xs font-medium">Google Play</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 pt-6 text-center">
+            <p className="text-xs text-muted-foreground">
+              © 2026 Championship Concierge · Independent fan-made app · Not affiliated with FIFA or any official organizing body.
             </p>
-            <div className="text-sm text-muted-foreground">
-              &copy; 2026 Championship Concierge
-            </div>
           </div>
         </div>
       </footer>
