@@ -1334,11 +1334,18 @@ Remember: You're helping fans have the best World Cup experience of their lives!
   });
 
   // Stripe Checkout Session
-  // Helper: always use HTTPS in production (Replit proxy receives HTTP internally)
+  // Helper: always use the canonical production domain for Stripe success/cancel URLs.
+  // Replit's reverse proxy sets x-forwarded-host to the replit.app subdomain, NOT the custom domain.
+  // Stripe must redirect back to championship-concierge.com so the subscription context is correct.
+  const PRODUCTION_DOMAIN = 'https://championship-concierge.com';
+  
   function getBaseUrl(req: any): string {
     const isDeployment = process.env.REPLIT_DEPLOYMENT === '1';
-    const proto = isDeployment ? 'https' : (req.headers['x-forwarded-proto'] as string || req.protocol);
-    const host = req.headers['x-forwarded-host'] as string || req.get('host');
+    if (isDeployment) {
+      return PRODUCTION_DOMAIN;
+    }
+    const proto = req.headers['x-forwarded-proto'] as string || req.protocol;
+    const host = req.get('host');
     return `${proto}://${host}`;
   }
 
@@ -1351,6 +1358,11 @@ Remember: You're helping fans have the best World Cup experience of their lives!
       }
 
       const baseUrl = getBaseUrl(req);
+      const userAgent = req.headers['user-agent'] || 'unknown';
+      const referer = req.headers['referer'] || 'direct';
+      const origin = req.headers['origin'] || 'unknown';
+      console.log(`[Checkout] priceId=${priceId} baseUrl=${baseUrl} origin=${origin} ua=${userAgent.substring(0, 80)}`);
+
       let customerId: string | undefined;
 
       // If email provided, try to find or create customer

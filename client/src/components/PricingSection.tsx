@@ -1,10 +1,19 @@
-import { Check, Download, Users, MapPin, Sparkles, RefreshCw, Loader2 } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { Check, Download, Users, MapPin, Sparkles, RefreshCw, Loader2, ExternalLink } from "lucide-react";
+import { useState, useEffect, type ReactNode } from "react";
 import { useSubscription, SubscriptionTier } from "@/contexts/SubscriptionContext";
 import { apiUrl } from "@/lib/apiConfig";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "wouter";
+
+function isInAppBrowser(): boolean {
+  const ua = navigator.userAgent || '';
+  return (
+    /FBAN|FBAV|Instagram|LinkedInApp|Snapchat|Twitter|TikTok|Musical\.ly|MicroMessenger|WhatsApp/i.test(ua) ||
+    (/iPhone|iPad|iPod/i.test(ua) && !/Safari/i.test(ua) && /AppleWebKit/i.test(ua)) ||
+    (ua.includes('Android') && ua.includes('wv'))
+  );
+}
 
 interface PricingTier {
   id: SubscriptionTier;
@@ -111,6 +120,11 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
   const [showRestore, setShowRestore] = useState(false);
   const [restoreEmail, setRestoreEmail] = useState("");
   const [isRestoring, setIsRestoring] = useState(false);
+  const [inAppBrowser, setInAppBrowser] = useState(false);
+
+  useEffect(() => {
+    setInAppBrowser(isInAppBrowser());
+  }, []);
 
   const getTierName = (id: string) => {
     const nameMap: Record<string, string> = {
@@ -374,6 +388,24 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
           <p className="text-sm text-primary mt-2">
             {t("pricing.coffeeComparison")}
           </p>
+        </div>
+      )}
+
+      {inAppBrowser && (
+        <div className="mb-6 bg-amber-500/15 border border-amber-500/40 rounded-2xl p-4 text-center">
+          <p className="text-amber-300 font-bold text-sm mb-1">⚠️ For best experience, open in your browser</p>
+          <p className="text-amber-200/80 text-xs mb-3">
+            Payments may not work in this in-app browser. Tap below to open in Safari or Chrome.
+          </p>
+          <a
+            href="https://championship-concierge.com/pricing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-amber-500 text-black px-4 py-2 rounded-lg text-sm font-bold"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Open in Browser to Purchase
+          </a>
         </div>
       )}
 
