@@ -117,30 +117,18 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {/* Hero Section with stadium atmosphere */}
+      {/* Hero Section with stadium photo */}
       <section
         className="relative pt-28 pb-20 px-4 overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, #050a05 0%, #0a1a0a 30%, #0d1f0d 50%, #071507 70%, #030903 100%)",
+          backgroundImage: "url('/stadium-hero.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+          backgroundRepeat: "no-repeat",
         }}
       >
-        {/* Stadium lighting glow effects */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/8 rounded-full blur-3xl" />
-          <div className="absolute top-10 right-1/4 w-80 h-80 bg-primary/6 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-48 bg-primary/5 rounded-full blur-3xl" />
-          {/* Pitch lines suggestion */}
-          <div className="absolute bottom-0 left-0 right-0 h-32"
-            style={{
-              background: "linear-gradient(to top, rgba(34,197,94,0.06) 0%, transparent 100%)"
-            }}
-          />
-          <div className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage: "repeating-linear-gradient(90deg, transparent, transparent 120px, rgba(34,197,94,0.03) 120px, rgba(34,197,94,0.03) 121px)",
-            }}
-          />
-        </div>
+        {/* Dark overlay so text stays readable */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.72) 100%)" }} />
 
         <div className="relative max-w-4xl mx-auto text-center">
           {/* One-Time Purchase Badge */}
