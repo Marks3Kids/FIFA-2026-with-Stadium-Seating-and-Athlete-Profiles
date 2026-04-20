@@ -1,10 +1,22 @@
 import { Globe, Shield, Clock, Plane, Hotel, Utensils, Heart, ChevronDown, Tag } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import { PricingSection } from "@/components/PricingSection";
 import { useSubscription } from "@/contexts/SubscriptionContext";
 import soccerBallIcon from "../assets/soccer-ball.svg";
 import { useTranslation } from "react-i18next";
+
+const LANGUAGES = [
+  { code: "en", flag: "🇺🇸", label: "EN" },
+  { code: "es", flag: "🇪🇸", label: "ES" },
+  { code: "fr", flag: "🇫🇷", label: "FR" },
+  { code: "de", flag: "🇩🇪", label: "DE" },
+  { code: "pt", flag: "🇧🇷", label: "PT" },
+  { code: "ar", flag: "🇸🇦", label: "AR" },
+  { code: "ja", flag: "🇯🇵", label: "JA" },
+  { code: "nl", flag: "🇳🇱", label: "NL" },
+  { code: "it", flag: "🇮🇹", label: "IT" },
+];
 
 const FEATURES = [
   { icon: <Globe className="w-8 h-8" />, title: "16 Host Cities", description: "Comprehensive guides for every venue across USA, Canada & Mexico" },
@@ -20,14 +32,25 @@ export default function LandingPage() {
   const { tier } = useSubscription();
   const { i18n } = useTranslation();
   const isSubscribed = tier !== "free" && tier !== null && tier !== undefined;
+  const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
+
+  const currentLang = LANGUAGES.find(l => l.code === i18n.language) || LANGUAGES[0];
 
   const scrollToPricing = () => {
     pricingRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
-  };
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -45,22 +68,31 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Language selector */}
-            <select
-              onChange={(e) => changeLanguage(e.target.value)}
-              defaultValue={i18n.language}
-              className="bg-white/10 border border-white/20 text-white text-xs rounded-lg px-1.5 sm:px-2 py-1 focus:outline-none focus:ring-1 focus:ring-primary"
-            >
-              <option value="en">🇺🇸 EN</option>
-              <option value="es">🇪🇸 ES</option>
-              <option value="fr">🇫🇷 FR</option>
-              <option value="de">🇩🇪 DE</option>
-              <option value="pt">🇧🇷 PT</option>
-              <option value="ar">🇸🇦 AR</option>
-              <option value="ja">🇯🇵 JA</option>
-              <option value="nl">🇳🇱 NL</option>
-              <option value="it">🇮🇹 IT</option>
-            </select>
+            {/* Custom language selector */}
+            <div ref={langRef} className="relative">
+              <button
+                onClick={() => setLangOpen(o => !o)}
+                className="flex items-center gap-1 bg-white/10 border border-white/20 text-white text-xs rounded-lg px-2 py-1.5 hover:bg-white/20 transition-colors"
+              >
+                <span>{currentLang.flag}</span>
+                <span className="font-medium">{currentLang.label}</span>
+                <ChevronDown className={`w-3 h-3 transition-transform ${langOpen ? "rotate-180" : ""}`} />
+              </button>
+              {langOpen && (
+                <div className="absolute right-0 top-full mt-1 bg-[#1a2a1a] border border-white/20 rounded-xl shadow-2xl overflow-hidden z-50 min-w-[90px]">
+                  {LANGUAGES.map(lang => (
+                    <button
+                      key={lang.code}
+                      onClick={() => { i18n.changeLanguage(lang.code); setLangOpen(false); }}
+                      className={`w-full flex items-center gap-2 px-3 py-2 text-xs hover:bg-primary/20 transition-colors text-left ${lang.code === i18n.language ? "text-primary font-bold bg-primary/10" : "text-white"}`}
+                    >
+                      <span>{lang.flag}</span>
+                      <span>{lang.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             {isSubscribed ? (
               <Link
                 href="/home"
