@@ -1407,7 +1407,7 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         return res.status(400).json({ error: "Customer ID is required" });
       }
 
-      const baseUrl = `${req.protocol}://${req.get('host')}`;
+      const baseUrl = getBaseUrl(req);
       const session = await stripeService.createCustomerPortalSession(
         customerId,
         `${baseUrl}/`
@@ -1436,16 +1436,19 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         const priceId = (session as any).line_items?.data?.[0]?.price?.id;
         const customerId = typeof session.customer === 'string' ? session.customer : session.customer?.id;
         
-        // Map price IDs to subscription tiers (includes both test and live IDs)
+        // Map price IDs to subscription tiers (includes both current and legacy IDs)
         const priceToTierMap: Record<string, string> = {
-          // Live price IDs
+          // Current confirmed live price IDs
+          "price_1THSBaKAEwbrdBYlG9ZcGihH": "team_info",
+          "price_1THSBbKAEwbrdBYlwHYKBEH3": "logistics",
+          "price_1THSBbKAEwbrdBYlNqa3K4Cs": "ai_concierge",
+          "price_1SoSVEKAEwbrdBYlYWUlAyJU": "ai_concierge", // AI Message Pack add-on
+          // Legacy price IDs (kept as fallback for existing purchases)
           "price_1SoSQYKAEwbrdBYlW0kPI4ww": "team_info",
-          "price_1SoSSoKAEwbrdBYlphO1lVDx": "logistics", 
+          "price_1SoSSoKAEwbrdBYlphO1lVDx": "logistics",
           "price_1SoSU6KAEwbrdBYloERNzAzQ": "ai_concierge",
-          "price_1SoSVEKAEwbrdBYlYWUlAyJU": "ai_concierge", // Message pack
-          // Test/Sandbox price IDs (for development)
           "price_1Sn6eHEwO7dpbt1eB8PGVFhA": "team_info",
-          "price_1Sn6kREwO7dpbt1eKfbFJrIq": "logistics", 
+          "price_1Sn6kREwO7dpbt1eKfbFJrIq": "logistics",
           "price_1Sn6ovEwO7dpbt1eXZ45C5pP": "ai_concierge",
           "price_1Sn8dSEwO7dpbt1e9m1RS1cb": "ai_concierge",
         };

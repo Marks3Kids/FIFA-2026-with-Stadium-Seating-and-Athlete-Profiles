@@ -47,7 +47,7 @@ export const PRICING_TIERS: PricingTier[] = [
     id: "team_info",
     name: "Team Info",
     price: 1.99,
-    priceId: "price_1SoSQYKAEwbrdBYlW0kPI4ww",
+    priceId: "price_1THSBaKAEwbrdBYlG9ZcGihH",
     icon: <Users className="w-6 h-6" />,
     description: "Complete team and match coverage",
     features: [
@@ -66,7 +66,7 @@ export const PRICING_TIERS: PricingTier[] = [
     id: "logistics",
     name: "Fan Travel Pack",
     price: 7.99,
-    priceId: "price_1SoSSoKAEwbrdBYlphO1lVDx",
+    priceId: "price_1THSBbKAEwbrdBYlwHYKBEH3",
     icon: <MapPin className="w-6 h-6" />,
     description: "Complete travel companion",
     popular: true,
@@ -87,7 +87,7 @@ export const PRICING_TIERS: PricingTier[] = [
     id: "ai_concierge",
     name: "AI Concierge",
     price: 14.99,
-    priceId: "price_1SoSU6KAEwbrdBYloERNzAzQ",
+    priceId: "price_1THSBbKAEwbrdBYlNqa3K4Cs",
     icon: <Sparkles className="w-6 h-6" />,
     description: "Your personal travel assistant",
     features: [
