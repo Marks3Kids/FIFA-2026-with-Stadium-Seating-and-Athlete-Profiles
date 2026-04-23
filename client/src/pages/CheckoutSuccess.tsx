@@ -43,6 +43,16 @@ export default function CheckoutSuccess() {
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstall);
 
+    // If running inside a Capacitor SFSafariViewController/Chrome Custom Tab,
+    // close the in-app browser automatically so the user returns to the native app
+    const cap = (window as any).Capacitor;
+    const isNativeCapacitor = cap && typeof cap.isNativePlatform === 'function' && cap.isNativePlatform();
+    if (isNativeCapacitor) {
+      import('@capacitor/browser').then(({ Browser }) => {
+        Browser.close().catch(() => {});
+      });
+    }
+
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstall);
     };

@@ -2,12 +2,17 @@ import { getStripeSync, getUncachableStripeClient } from './stripeClient';
 import { storage } from './storage';
 
 const PRICE_TO_TIER_MAP: Record<string, string> = {
+  // Current confirmed live price IDs
+  "price_1THSBaKAEwbrdBYlG9ZcGihH": "team_info",
+  "price_1THSBbKAEwbrdBYlwHYKBEH3": "logistics",
+  "price_1THSBbKAEwbrdBYlNqa3K4Cs": "ai_concierge",
+  "price_1SoSVEKAEwbrdBYlYWUlAyJU": "ai_concierge", // AI Message Pack add-on
+  // Legacy price IDs (kept for existing purchases)
   "price_1SoSQYKAEwbrdBYlW0kPI4ww": "team_info",
-  "price_1SoSSoKAEwbrdBYlphO1lVDx": "logistics", 
+  "price_1SoSSoKAEwbrdBYlphO1lVDx": "logistics",
   "price_1SoSU6KAEwbrdBYloERNzAzQ": "ai_concierge",
-  "price_1SoSVEKAEwbrdBYlYWUlAyJU": "ai_concierge",
   "price_1Sn6eHEwO7dpbt1eB8PGVFhA": "team_info",
-  "price_1Sn6kREwO7dpbt1eKfbFJrIq": "logistics", 
+  "price_1Sn6kREwO7dpbt1eKfbFJrIq": "logistics",
   "price_1Sn6ovEwO7dpbt1eXZ45C5pP": "ai_concierge",
   "price_1Sn8dSEwO7dpbt1e9m1RS1cb": "ai_concierge",
 };

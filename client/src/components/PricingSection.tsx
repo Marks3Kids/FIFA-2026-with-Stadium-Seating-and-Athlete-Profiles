@@ -354,7 +354,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
       }
       
       if (data.url) {
-        window.location.href = data.url;
+        await openStripeCheckout(data.url);
       } else {
         throw new Error("No checkout URL in response");
       }
@@ -369,6 +369,74 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     } finally {
       setIsLoading(null);
     }
+  };
+
+  const openStripeCheckout = async (url: string) => {
+    // Detect Capacitor native app (iOS/Android via App Store)
+    const cap = (window as any).Capacitor;
+    const isNativeCapacitor = cap && typeof cap.isNativePlatform === 'function' && cap.isNativePlatform();
+
+    if (isNativeCapacitor) {
+      // Native Capacitor: use SFSafariViewController (iOS) / Chrome Custom Tabs (Android)
+      // This is the ONLY safe way to run Stripe Checkout + 3DS in a native wrapper
+      try {
+        const { Browser } = await import('@capacitor/browser');
+        await Browser.open({ url, presentationStyle: 'popover' });
+
+        // When the user returns to the app after payment, refresh subscription state
+        const handleResume = async () => {
+          try {
+            const email = localStorage.getItem('subscription_email');
+            if (email) {
+              const res = await fetch(`/api/subscription/verify?email=${encodeURIComponent(email)}`);
+              const d = await res.json();
+              if (d.tier && d.tier !== 'free') {
+                window.location.href = '/checkout/success';
+              }
+            }
+          } catch { /* silent */ }
+          document.removeEventListener('resume', handleResume);
+        };
+        document.addEventListener('resume', handleResume);
+      } catch (capErr) {
+        console.error('Capacitor Browser open failed, falling back:', capErr);
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+      return;
+    }
+
+    // PWA (installed) or mobile browser: open Stripe in a new tab
+    // This prevents the Stripe redirect from destroying the PWA's localStorage/session context
+    const isPWA = window.matchMedia('(display-mode: standalone)').matches;
+    const isMobileBrowser = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isPWA || isMobileBrowser) {
+      const stripeTab = window.open(url, '_blank', 'noopener,noreferrer');
+
+      // When the user returns to this tab/PWA after payment, poll for completion
+      const handleVisibility = async () => {
+        if (document.visibilityState !== 'visible') return;
+        document.removeEventListener('visibilitychange', handleVisibility);
+
+        try {
+          const email = localStorage.getItem('subscription_email');
+          if (!email) return;
+          const res = await fetch(`/api/subscription/verify?email=${encodeURIComponent(email)}`);
+          const d = await res.json();
+          if (d.tier && d.tier !== 'free' && d.tier !== 'none') {
+            window.location.href = '/checkout/success?restored=1';
+          }
+        } catch { /* silent */ }
+      };
+      document.addEventListener('visibilitychange', handleVisibility);
+
+      // Safety: remove listener after 30 minutes
+      setTimeout(() => document.removeEventListener('visibilitychange', handleVisibility), 30 * 60 * 1000);
+      return;
+    }
+
+    // Desktop web: standard same-tab navigation (works perfectly in a regular browser)
+    window.location.href = url;
   };
 
   return (

@@ -1,0 +1,29 @@
+We just ran Prompt 1 and you gave a perfect audit. The root cause is confirmed: window.location.href = data.url (PricingSection.tsx line 357) opens Stripe Checkout inside the same mobile WebView/PWA context. This breaks card entry, 3D Secure, redirects, and localStorage persistence for the 250k+ users on the published mobile app. Desktop/web tests work, mobile fails every time.
+
+Fix this immediately for the published Replit mobile app (iOS/Android):
+
+1. Detect mobile context (user agent or Capacitor/Expo/Replit mobile wrapper) and open the Stripe session.url in the EXTERNAL SYSTEM BROWSER (Safari on iOS via SFSafariViewController, Chrome Custom Tabs on Android). Do NOT use window.location.href or internal WebView. Use @capacitor/browser Browser.open({ url: session.url, presentationStyle: 'popover' }) or the correct native equivalent available in our current mobile setup. Fall back gracefully for pure web/desktop users.
+
+2. Update success_url and cancel_url in the backend (server/routes.ts line 1352 and getBaseUrl) to use a deep-link / custom URL scheme that returns the user directly back into the app after payment. Example:
+   - success_url: "championshipconcierge://payment-success?session_id={CHECKOUT_SESSION_ID}"
+   - cancel_url: "championshipconcierge://payment-cancel"
+   Register the custom scheme (championshipconcierge://) and any associated universal links in the mobile app configuration files so the published app can handle these URLs.
+
+3. Make webhook the PRIMARY fulfillment method:
+   - Create/update a secure webhook endpoint (/api/stripe/webhook) that listens for checkout.session.completed.
+   - On success: Look up or create the user by email (from session.customer_details.email or metadata), grant the paid World Cup tier in the database (not localStorage), and mark the purchase as complete.
+   - Use the Stripe webhook signing secret from Replit secrets.
+   - Add logging for every webhook event.
+
+4. Update the frontend success handler (/checkout/success page) to:
+   - Verify the session_id with Stripe (optional but good).
+   - Show a clear "Payment successful – welcome to World Cup access!" screen.
+   - Work whether the user arrived via deep link or normal browser.
+
+5. Keep the existing flow 100% unchanged for desktop/web users (detect platform and branch the open logic).
+
+6. First, tell me: What mobile framework are we using in this project (Capacitor? plain WebView wrapper? Expo?)? What APIs are available for opening external browsers and registering deep links? Then show the exact code changes you will make (files, lines, before/after snippets) before applying them.
+
+After changes, confirm the three one-time price tiers still use mode: 'payment' with live keys.
+
+This must be production-ready — re-publish the mobile app after.
