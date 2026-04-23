@@ -28,7 +28,13 @@ export class StripeService {
     });
   }
 
-  async createCheckoutSessionWithOptionalCustomer(priceId: string, successUrl: string, cancelUrl: string, customerId?: string) {
+  async createCheckoutSessionWithOptionalCustomer(
+    priceId: string,
+    successUrl: string,
+    cancelUrl: string,
+    customerId?: string,
+    metadata?: Record<string, string>
+  ) {
     const stripe = await getUncachableStripeClient();
     
     const price = await stripe.prices.retrieve(priceId);
@@ -43,7 +49,13 @@ export class StripeService {
       allow_promotion_codes: true,
       billing_address_collection: 'auto',
       phone_number_collection: { enabled: false },
+      metadata: metadata || {},
     };
+
+    // payment_intent_data only valid for one-time payment mode
+    if (!isRecurring && metadata && Object.keys(metadata).length > 0) {
+      sessionParams.payment_intent_data = { metadata };
+    }
 
     if (customerId) {
       sessionParams.customer = customerId;

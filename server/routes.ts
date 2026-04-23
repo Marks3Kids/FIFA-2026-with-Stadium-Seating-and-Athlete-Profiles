@@ -1379,12 +1379,22 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         }
       }
 
+      // Determine tier from priceId so it's embedded in Stripe metadata
+      const checkoutTierMap: Record<string, string> = {
+        "price_1THSBaKAEwbrdBYlG9ZcGihH": "team_info",
+        "price_1THSBbKAEwbrdBYlwHYKBEH3": "logistics",
+        "price_1THSBbKAEwbrdBYlNqa3K4Cs": "ai_concierge",
+        "price_1SoSVEKAEwbrdBYlYWUlAyJU": "ai_concierge",
+      };
+      const checkoutTier = checkoutTierMap[priceId] || "team_info";
+
       // Create checkout session (customer optional - Stripe will collect email)
       const session = await stripeService.createCheckoutSessionWithOptionalCustomer(
         priceId,
         `${baseUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
         `${baseUrl}/pricing`,
-        customerId
+        customerId,
+        { tier: checkoutTier, priceId, email: email || '' }
       );
 
       res.json({ url: session.url });

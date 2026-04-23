@@ -385,17 +385,23 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
 
         // When the user returns to the app after payment, refresh subscription state
         const handleResume = async () => {
-          try {
-            const email = localStorage.getItem('subscription_email');
-            if (email) {
-              const res = await fetch(`/api/subscription/verify?email=${encodeURIComponent(email)}`);
-              const d = await res.json();
-              if (d.tier && d.tier !== 'free') {
-                window.location.href = '/checkout/success';
-              }
-            }
-          } catch { /* silent */ }
           document.removeEventListener('resume', handleResume);
+          // Try localStorage first (works if context is shared)
+          const storedEmail = localStorage.getItem('subscription_email');
+          if (storedEmail) {
+            try {
+              const res = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}`));
+              const d = await res.json();
+              if (d.valid && d.tier && d.tier !== 'free') {
+                setSubscription(storedEmail, d.tier as SubscriptionTier);
+                navigate('/home');
+                return;
+              }
+            } catch { /* fall through */ }
+          }
+          // iOS: localStorage is isolated — auto-open Restore modal
+          setShowRestore(true);
+          toast({ title: t('pricing.paymentComplete', 'Payment complete?'), description: t('pricing.enterEmailToActivate', 'Enter the email you used at checkout to activate your access.') });
         };
         document.addEventListener('resume', handleResume);
       } catch (capErr) {
@@ -413,20 +419,33 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     if (isPWA || isMobileBrowser) {
       const stripeTab = window.open(url, '_blank', 'noopener,noreferrer');
 
-      // When the user returns to this tab/PWA after payment, poll for completion
+      // When the user returns to this tab/PWA after payment, check for completion
       const handleVisibility = async () => {
         if (document.visibilityState !== 'visible') return;
         document.removeEventListener('visibilitychange', handleVisibility);
 
-        try {
-          const email = localStorage.getItem('subscription_email');
-          if (!email) return;
-          const res = await fetch(`/api/subscription/verify?email=${encodeURIComponent(email)}`);
-          const d = await res.json();
-          if (d.tier && d.tier !== 'free' && d.tier !== 'none') {
-            window.location.href = '/checkout/success?restored=1';
-          }
-        } catch { /* silent */ }
+        // Try localStorage first — works on desktop and Android (same browser context)
+        const storedEmail = localStorage.getItem('subscription_email');
+        if (storedEmail) {
+          try {
+            const res = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}`));
+            const d = await res.json();
+            if (d.valid && d.tier && d.tier !== 'free') {
+              setSubscription(storedEmail, d.tier as SubscriptionTier);
+              navigate('/home');
+              return;
+            }
+          } catch { /* fall through */ }
+        }
+
+        // iOS PWA: localStorage is isolated from Safari where payment happened.
+        // The purchase IS in the database (written by the success page or webhook).
+        // Auto-open the Restore modal so the user can enter their payment email.
+        setShowRestore(true);
+        toast({
+          title: t('pricing.paymentComplete', 'Payment complete?'),
+          description: t('pricing.enterEmailToActivate', 'Enter the email you used at checkout to activate your access.'),
+        });
       };
       document.addEventListener('visibilitychange', handleVisibility);
 
