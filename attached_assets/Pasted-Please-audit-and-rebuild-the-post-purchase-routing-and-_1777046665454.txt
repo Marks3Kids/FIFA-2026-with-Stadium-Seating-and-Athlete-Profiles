@@ -1,0 +1,59 @@
+Please audit and rebuild the post-purchase routing and entitlement logic for my World Cup mobile app.
+
+Current bug:
+- Stripe purchase succeeds for higher tiers (Fan Travel Pack and AI Concierge).
+- After purchase, the app opens in a weird stripped-down page that is NOT the actual mobile app experience.
+- If the user bought a higher tier, the app still blocks access to lower included tiers and sends the user back to the pricing page to buy them again.
+- This is wrong.
+
+Required behavior:
+1. Tier hierarchy must be cumulative:
+   - Team Info tier includes only Team Info.
+   - Fan Travel Pack tier includes Team Info + Fan Travel Pack.
+   - AI Concierge tier includes Team Info + Fan Travel Pack + AI Concierge.
+2. After any successful purchase, ALWAYS open the user inside the actual mobile app UI, never a boring fallback page or isolated standalone tier page.
+3. After purchase of any paid tier, the default landing view must ALWAYS be the low tier home experience (Team Info view), using the real app shell, styling, navigation, animations, and normal mobile app design.
+4. From that normal Team Info starting point, the user must be able to navigate upward into every feature included in the tier they purchased without seeing the pricing page again for included features.
+5. The pricing page should appear only for features above the user’s entitlement, never for lower tiers already included in a higher purchase.
+6. Remove any route logic that sends users to a special post-purchase page that bypasses the normal app shell.
+7. Inspect the current route guards, redirects, entitlement checks, success-page redirects, and post-checkout session handling to find where the wrong page is being loaded.
+8. Normalize entitlements in code so access is determined by one canonical access model, not scattered one-off checks.
+
+Implementation requirements:
+- Create one canonical entitlement model, for example:
+  - teams_info
+  - fan_travel_pack
+  - ai_concierge
+- Add inheritance logic, for example:
+  - teams_info grants: [teams_info]
+  - fan_travel_pack grants: [teams_info, fan_travel_pack]
+  - ai_concierge grants: [teams_info, fan_travel_pack, ai_concierge]
+- Update all route guards and UI gating to check INCLUDED entitlements, not exact purchased tier only.
+- After successful Stripe checkout, redirect to the normal app route, not a custom standalone purchase result page.
+- On app load, fetch the user’s purchased tier and expand it into the full included feature set before rendering navigation.
+- Ensure the mobile app shell, animations, navigation, and standard tiered experience always load first.
+- Add logging for:
+  - purchased Stripe price/product
+  - mapped app tier
+  - expanded entitlement set
+  - redirect target after checkout
+  - every route guard decision
+- Search the codebase for all places that reference pricing redirects, purchase success routing, tier checks, exact match checks, or feature gating and unify them.
+- Make sure a user who buys AI Concierge can access all lower-tier content without repurchase prompts.
+- Make sure a user who buys Fan Travel Pack can access Team Info without repurchase prompts.
+
+Please do all of the following:
+A. Trace the exact route the buyer currently experiences after checkout.
+B. Identify every file involved in post-purchase redirect, entitlement mapping, route guarding, and pricing-page fallback.
+C. Replace the current logic with a single source of truth for tier inheritance.
+D. Show me the files changed and explain in plain English why the bug happened.
+E. Add a small test matrix proving:
+   - Team Info buyer sees only Team Info
+   - Fan Travel buyer sees Team Info + Fan Travel
+   - AI Concierge buyer sees all three tiers
+   - Included lower tiers never redirect to pricing
+   - Non-included higher tiers do redirect to pricing
+F. Preserve the current polished mobile app UI and never route paid users into a stripped-down fallback page.
+
+Important:
+Do not just patch one screen. Please inspect the full route + entitlement + post-checkout flow and rebuild it so the behavior is consistent everywhere.

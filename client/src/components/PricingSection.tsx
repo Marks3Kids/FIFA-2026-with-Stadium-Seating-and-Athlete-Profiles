@@ -4,7 +4,7 @@ import { useSubscription, SubscriptionTier } from "@/contexts/SubscriptionContex
 import { apiUrl } from "@/lib/apiConfig";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "wouter";
+import { useLocation, useSearch } from "wouter";
 
 function isInAppBrowser(): boolean {
   const ua = navigator.userAgent || '';
@@ -114,6 +114,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
   const { toast } = useToast();
   const { t } = useTranslation();
   const [, navigate] = useLocation();
+  const searchString = useSearch();
   const [isLoading, setIsLoading] = useState<string | null>(null);
   const [showEmailCapture, setShowEmailCapture] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", city: "" });
@@ -125,6 +126,21 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
   useEffect(() => {
     setInAppBrowser(isInAppBrowser());
   }, []);
+
+  // Auto-open Restore modal when redirected here with ?restore=1 (e.g. after mobile payment)
+  useEffect(() => {
+    const params = new URLSearchParams(searchString);
+    if (params.get("restore") === "1") {
+      console.log('[PricingSection] ?restore=1 detected — auto-opening Restore modal');
+      setShowRestore(true);
+      toast({
+        title: t('pricing.paymentComplete', 'Payment complete?'),
+        description: t('pricing.enterEmailToActivate', 'Enter the email you used at checkout to activate your access.'),
+      });
+      // Clean the URL param
+      window.history.replaceState({}, '', '/pricing');
+    }
+  }, [searchString]);
 
   const getTierName = (id: string) => {
     const nameMap: Record<string, string> = {

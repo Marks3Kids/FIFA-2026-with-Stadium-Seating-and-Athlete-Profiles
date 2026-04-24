@@ -3,7 +3,15 @@ import { FileText, Scale, RefreshCw, ExternalLink, Clock, Newspaper, ChevronRigh
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiUrl } from "@/lib/apiConfig";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearch, useLocation } from "wouter";
+import { useToast } from "@/hooks/use-toast";
+
+const TIER_DISPLAY: Record<string, string> = {
+  team_info: "Team Info",
+  logistics: "Fan Travel Pack",
+  ai_concierge: "AI Concierge",
+};
 
 interface NewsItem {
   id: number;
@@ -24,6 +32,33 @@ export default function Home() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [expandedNews, setExpandedNews] = useState<number | null>(null);
   const currentLocale = i18n.language || "en";
+  const searchString = useSearch();
+  const [, navigate] = useLocation();
+  const { toast } = useToast();
+
+  // Handle post-purchase redirect: show welcome toast and clean the URL
+  useEffect(() => {
+    const params = new URLSearchParams(searchString);
+    const purchased = params.get("purchased");
+    const restore = params.get("restore");
+
+    if (purchased) {
+      const tierName = TIER_DISPLAY[purchased] || purchased;
+      console.log(`[Home] Post-purchase arrival — tier=${purchased}`);
+      toast({
+        title: `Welcome to ${tierName}!`,
+        description: "Your access is now active. Explore everything included in your plan.",
+        duration: 5000,
+      });
+      // Remove the URL param without a full navigation so the toast doesn't repeat
+      window.history.replaceState({}, '', '/home');
+    }
+
+    if (restore) {
+      console.log('[Home] Restore=1 param detected — navigating to pricing for restore flow');
+      navigate("/pricing?restore=1");
+    }
+  }, []);
 
   const { data: news = [], isLoading, dataUpdatedAt } = useQuery<NewsItem[]>({
     queryKey: ["/api/news", currentLocale],
