@@ -562,7 +562,18 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
         </div>
       )}
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+      {/* Returning customer restore banner — shown prominently above all tier cards */}
+      <div className="mt-8 mb-2">
+        <button
+          onClick={() => setShowRestore(true)}
+          className="w-full flex items-center justify-center gap-3 bg-primary/10 hover:bg-primary/20 border border-primary/40 hover:border-primary text-primary rounded-2xl px-5 py-4 transition-all"
+        >
+          <RefreshCw className="w-5 h-5 flex-shrink-0" />
+          <span className="font-semibold text-base">Already purchased? Tap to restore your access</span>
+        </button>
+      </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
         {PRICING_TIERS.map((tier) => (
           <div
             key={tier.id}
