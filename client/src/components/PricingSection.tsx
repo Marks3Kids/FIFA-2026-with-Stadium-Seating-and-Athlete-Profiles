@@ -393,70 +393,85 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     const isNativeCapacitor = cap && typeof cap.isNativePlatform === 'function' && cap.isNativePlatform();
 
     if (isNativeCapacitor) {
-      // Native Capacitor: use SFSafariViewController (iOS) / Chrome Custom Tabs (Android)
-      // This is the ONLY safe way to run Stripe Checkout + 3DS in a native wrapper
+      // Native Capacitor: full-screen SFSafariViewController (iOS) / Chrome Custom Tabs (Android).
+      // No presentationStyle override — full screen improves 3DS, autofill, and payment reliability.
+      console.log('[Checkout] Branch: Capacitor native — opening full-screen SFSafariViewController');
       try {
         const { Browser } = await import('@capacitor/browser');
-        await Browser.open({ url, presentationStyle: 'popover' });
+        await Browser.open({ url });
 
-        // When the user returns to the app after payment, refresh subscription state
+        // When the user returns to the app after payment, always verify against the backend.
+        // localStorage may be isolated (iOS), so the backend is the source of truth.
         const handleResume = async () => {
           document.removeEventListener('resume', handleResume);
-          // Try localStorage first (works if context is shared)
+          console.log('[Checkout] App resumed after Capacitor Browser — verifying subscription with backend');
+
           const storedEmail = localStorage.getItem('subscription_email');
           if (storedEmail) {
             try {
               const res = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}`));
               const d = await res.json();
+              console.log('[Checkout] Backend verify result:', d);
               if (d.valid && d.tier && d.tier !== 'free') {
                 setSubscription(storedEmail, d.tier as SubscriptionTier);
                 navigate('/home');
                 return;
               }
-            } catch { /* fall through */ }
+            } catch (err) {
+              console.error('[Checkout] Backend verify failed:', err);
+            }
           }
-          // iOS: localStorage is isolated — auto-open Restore modal
+
+          // localStorage empty or tier not upgraded — iOS context isolation.
+          // Purchase is recorded in the DB; open Restore modal so user can enter their email.
+          console.log('[Checkout] No valid stored email — opening Restore modal');
           setShowRestore(true);
-          toast({ title: t('pricing.paymentComplete', 'Payment complete?'), description: t('pricing.enterEmailToActivate', 'Enter the email you used at checkout to activate your access.') });
+          toast({
+            title: t('pricing.paymentComplete', 'Payment complete?'),
+            description: t('pricing.enterEmailToActivate', 'Enter the email you used at checkout to activate your access.'),
+          });
         };
         document.addEventListener('resume', handleResume);
       } catch (capErr) {
-        console.error('Capacitor Browser open failed, falling back:', capErr);
+        console.error('[Checkout] Capacitor Browser.open failed, falling back to window.open:', capErr);
         window.open(url, '_blank', 'noopener,noreferrer');
       }
       return;
     }
 
-    // PWA (installed) or mobile browser: open Stripe in a new tab
-    // This prevents the Stripe redirect from destroying the PWA's localStorage/session context
+    // PWA (installed) or mobile browser: open Stripe in a new tab.
+    // Keeps the PWA session alive while Stripe runs in a separate context.
     const isPWA = window.matchMedia('(display-mode: standalone)').matches;
     const isMobileBrowser = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isPWA || isMobileBrowser) {
-      const stripeTab = window.open(url, '_blank', 'noopener,noreferrer');
+      console.log(`[Checkout] Branch: ${isPWA ? 'PWA' : 'mobile browser'} — opening Stripe in new tab`);
+      window.open(url, '_blank', 'noopener,noreferrer');
 
-      // When the user returns to this tab/PWA after payment, check for completion
+      // When user tabs back, always verify against the backend — don't rely only on localStorage.
       const handleVisibility = async () => {
         if (document.visibilityState !== 'visible') return;
         document.removeEventListener('visibilitychange', handleVisibility);
+        console.log('[Checkout] Visibility restored after PWA/mobile Stripe tab — verifying with backend');
 
-        // Try localStorage first — works on desktop and Android (same browser context)
         const storedEmail = localStorage.getItem('subscription_email');
         if (storedEmail) {
           try {
             const res = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}`));
             const d = await res.json();
+            console.log('[Checkout] Backend verify result:', d);
             if (d.valid && d.tier && d.tier !== 'free') {
               setSubscription(storedEmail, d.tier as SubscriptionTier);
               navigate('/home');
               return;
             }
-          } catch { /* fall through */ }
+          } catch (err) {
+            console.error('[Checkout] Backend verify failed:', err);
+          }
         }
 
-        // iOS PWA: localStorage is isolated from Safari where payment happened.
-        // The purchase IS in the database (written by the success page or webhook).
-        // Auto-open the Restore modal so the user can enter their payment email.
+        // iOS PWA localStorage isolated from Safari — purchase is in the DB.
+        console.log('[Checkout] No valid stored email after return — opening Restore modal');
         setShowRestore(true);
         toast({
           title: t('pricing.paymentComplete', 'Payment complete?'),
@@ -470,7 +485,8 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
       return;
     }
 
-    // Desktop web: standard same-tab navigation (works perfectly in a regular browser)
+    // Desktop web: standard same-tab redirect — Stripe returns to /checkout/success automatically.
+    console.log('[Checkout] Branch: desktop browser — same-tab redirect');
     window.location.href = url;
   };
 
