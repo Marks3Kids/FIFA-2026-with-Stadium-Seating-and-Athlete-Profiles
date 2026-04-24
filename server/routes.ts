@@ -1440,20 +1440,33 @@ Remember: You're helping fans have the best World Cup experience of their lives!
       }
 
       const session = await stripeService.retrieveCheckoutSession(sessionId);
-      
+
+      console.log(`[CheckoutVerify] session_id=${sessionId} payment_status=${session.payment_status}`);
+
       if (session.payment_status === "paid") {
-        const email = session.customer_email || session.customer_details?.email;
-        const priceId = (session as any).line_items?.data?.[0]?.price?.id;
-        const customerId = typeof session.customer === 'string' ? session.customer : session.customer?.id;
-        
+        // Source 1: fields Stripe fills on the session object
+        const emailFromSession = session.customer_email || (session.customer_details as any)?.email;
+        const priceIdFromLineItems = (session as any).line_items?.data?.[0]?.price?.id;
+        const customerId = typeof session.customer === 'string' ? session.customer : (session.customer as any)?.id;
+
+        // Source 2: metadata we embedded at checkout creation — ALWAYS reliable
+        const meta = (session as any).metadata || {};
+        const emailFromMeta  = meta.email  || null;
+        const priceIdFromMeta = meta.priceId || null;
+        const tierFromMeta   = meta.tier   || null;
+
+        // Resolve best values, metadata is the guaranteed fallback
+        const email   = emailFromSession  || emailFromMeta  || null;
+        const priceId = priceIdFromLineItems || priceIdFromMeta || null;
+
+        console.log(`[CheckoutVerify] email=${email} priceId=${priceId} tierFromMeta=${tierFromMeta}`);
+
         // Map price IDs to subscription tiers (includes both current and legacy IDs)
         const priceToTierMap: Record<string, string> = {
-          // Current confirmed live price IDs
           "price_1THSBaKAEwbrdBYlG9ZcGihH": "team_info",
           "price_1THSBbKAEwbrdBYlwHYKBEH3": "logistics",
           "price_1THSBbKAEwbrdBYlNqa3K4Cs": "ai_concierge",
-          "price_1SoSVEKAEwbrdBYlYWUlAyJU": "ai_concierge", // AI Message Pack add-on
-          // Legacy price IDs (kept as fallback for existing purchases)
+          "price_1SoSVEKAEwbrdBYlYWUlAyJU": "ai_concierge",
           "price_1SoSQYKAEwbrdBYlW0kPI4ww": "team_info",
           "price_1SoSSoKAEwbrdBYlphO1lVDx": "logistics",
           "price_1SoSU6KAEwbrdBYloERNzAzQ": "ai_concierge",
@@ -1462,38 +1475,53 @@ Remember: You're helping fans have the best World Cup experience of their lives!
           "price_1Sn6ovEwO7dpbt1eXZ45C5pP": "ai_concierge",
           "price_1Sn8dSEwO7dpbt1e9m1RS1cb": "ai_concierge",
         };
-        
-        const tier = priceToTierMap[priceId] || "team_info";
-        
-        if (email && priceId) {
+
+        // Tier resolution order: line-items map → metadata tier → safe default
+        const tier = (priceId && priceToTierMap[priceId]) || tierFromMeta || "team_info";
+
+        console.log(`[CheckoutVerify] resolved tier=${tier}`);
+
+        // Write to DB — only require email; priceId/tier come from metadata if line_items missing
+        let finalTier = tier; // The tier the client will be granted
+        if (email) {
           const existingPurchase = await storage.getPurchaseByEmail(email);
+          const tierHierarchy = ["free", "team_info", "logistics", "ai_concierge"];
           if (!existingPurchase) {
             await storage.createPurchase({
               email,
               tier,
-              priceId,
+              priceId: priceId || priceIdFromMeta || '',
               stripeCustomerId: customerId || null,
               stripeSessionId: sessionId,
             });
+            console.log(`[CheckoutVerify] Created DB purchase email=${email} tier=${tier}`);
+            finalTier = tier;
           } else {
-            // Upgrade tier if new tier is higher
-            const tierHierarchy = ["free", "team_info", "logistics", "ai_concierge"];
             const currentTierIndex = tierHierarchy.indexOf(existingPurchase.tier);
             const newTierIndex = tierHierarchy.indexOf(tier);
             if (newTierIndex > currentTierIndex) {
               await storage.updatePurchaseTier(email, tier);
+              console.log(`[CheckoutVerify] Upgraded DB purchase email=${email} ${existingPurchase.tier}→${tier}`);
+              finalTier = tier;
+            } else {
+              // Existing tier is equal or higher — always grant the HIGHEST tier the user holds
+              finalTier = existingPurchase.tier;
+              console.log(`[CheckoutVerify] Existing tier=${existingPurchase.tier} >= new tier=${tier} — returning highest`);
             }
           }
+        } else {
+          console.warn(`[CheckoutVerify] No email found in session or metadata — skipping DB write`);
         }
         
         res.json({ 
           success: true, 
           email,
           priceId,
-          tier,
+          tier: finalTier,  // Always the highest tier the user holds in the DB
           customerId
         });
       } else {
+        console.log(`[CheckoutVerify] Payment not complete: payment_status=${session.payment_status}`);
         res.json({ success: false });
       }
     } catch (error) {

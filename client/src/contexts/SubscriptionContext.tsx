@@ -121,6 +121,35 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
     };
 
     initializeSubscription();
+
+    // Re-verify from backend whenever the user returns to this tab or PWA.
+    // This catches the case where payment happened in a separate Safari tab/window
+    // and the user switches back expecting their tier to be active.
+    const handleVisibilityChange = async () => {
+      if (document.visibilityState !== 'visible') return;
+      const storedEmail = localStorage.getItem("subscription_email");
+      if (!storedEmail) return; // No email = nothing to verify
+
+      // Skip demo emails — they always have ai_concierge, no backend call needed
+      const normalizedEmail = storedEmail.toLowerCase().trim();
+      if (DEMO_EMAILS.includes(normalizedEmail)) return;
+
+      console.log(`[SubscriptionContext] Tab became visible — re-verifying email=${storedEmail}`);
+      try {
+        const response = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}`));
+        const data = await response.json();
+        console.log(`[SubscriptionContext] Re-verify result:`, data);
+        if (data.valid && data.tier) {
+          setSubscriptionTier(data.tier as SubscriptionTier);
+          localStorage.setItem("subscription_tier", data.tier);
+        }
+      } catch (err) {
+        console.error(`[SubscriptionContext] Re-verify failed:`, err);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
   }, []);
 
   const setSubscription = (userEmail: string, tier: SubscriptionTier, userName?: string, userCity?: string) => {
