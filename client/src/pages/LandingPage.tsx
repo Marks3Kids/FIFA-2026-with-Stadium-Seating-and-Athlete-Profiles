@@ -1,6 +1,6 @@
-import { Globe, Shield, Clock, Plane, Hotel, Utensils, Heart, ChevronDown, Tag } from "lucide-react";
+import { Globe, Shield, Clock, Plane, Hotel, Utensils, Heart, ChevronDown, Tag, Menu, X, RefreshCw } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { PricingSection } from "@/components/PricingSection";
 import { useSubscription } from "@/contexts/SubscriptionContext";
 import soccerBallIcon from "../assets/soccer-ball.svg";
@@ -31,21 +31,28 @@ export default function LandingPage() {
   const pricingRef = useRef<HTMLDivElement>(null);
   const { tier } = useSubscription();
   const { i18n } = useTranslation();
+  const [, navigate] = useLocation();
   const isSubscribed = tier !== "free" && tier !== null && tier !== undefined;
   const [langOpen, setLangOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const currentLang = LANGUAGES.find(l => l.code === i18n.language) || LANGUAGES[0];
 
   const scrollToPricing = () => {
+    setMenuOpen(false);
     pricingRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Close dropdown when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (langRef.current && !langRef.current.contains(e.target as Node)) {
         setLangOpen(false);
+      }
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
       }
     };
     document.addEventListener("mousedown", handler);
@@ -67,11 +74,11 @@ export default function LandingPage() {
               <span className="text-xs text-muted-foreground block">2026</span>
             </div>
           </div>
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Custom language selector */}
+          <div className="flex items-center gap-2">
+            {/* Language selector — always visible */}
             <div ref={langRef} className="relative">
               <button
-                onClick={() => setLangOpen(o => !o)}
+                onClick={() => { setLangOpen(o => !o); setMenuOpen(false); }}
                 className="flex items-center gap-1 bg-white/10 border border-white/20 text-white text-xs rounded-lg px-2 py-1.5 hover:bg-white/20 transition-colors"
               >
                 <span>{currentLang.flag}</span>
@@ -93,10 +100,12 @@ export default function LandingPage() {
                 </div>
               )}
             </div>
+
+            {/* Desktop-only buttons */}
             {isSubscribed ? (
               <Link
                 href="/home"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-bold transition-colors"
+                className="hidden sm:block bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-lg text-sm font-bold transition-colors"
               >
                 My Content
               </Link>
@@ -107,12 +116,58 @@ export default function LandingPage() {
                 </Link>
                 <button
                   onClick={scrollToPricing}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-bold transition-colors"
+                  className="hidden sm:block bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-lg text-sm font-bold transition-colors"
                 >
                   Get Started
                 </button>
               </>
             )}
+
+            {/* Mobile-only hamburger menu */}
+            <div ref={menuRef} className="relative sm:hidden">
+              <button
+                onClick={() => { setMenuOpen(o => !o); setLangOpen(false); }}
+                className="flex items-center justify-center w-9 h-9 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 transition-colors"
+                aria-label="Menu"
+              >
+                {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+              {menuOpen && (
+                <div className="absolute right-0 top-full mt-2 bg-[#1a2a1a] border border-white/20 rounded-2xl shadow-2xl overflow-hidden z-50 min-w-[220px]">
+                  {isSubscribed ? (
+                    <Link
+                      href="/home"
+                      onClick={() => setMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 text-sm font-bold text-primary hover:bg-primary/10 transition-colors"
+                    >
+                      <span>⚽</span> My Content
+                    </Link>
+                  ) : (
+                    <>
+                      <button
+                        onClick={scrollToPricing}
+                        className="w-full flex items-center gap-3 px-4 py-3 text-sm font-bold text-primary hover:bg-primary/10 transition-colors text-left"
+                      >
+                        <Tag className="w-4 h-4" /> Get Started
+                      </button>
+                      <Link
+                        href="/home"
+                        onClick={() => setMenuOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 text-sm text-white hover:bg-white/5 transition-colors border-t border-white/10"
+                      >
+                        <Globe className="w-4 h-4" /> Explore App
+                      </Link>
+                    </>
+                  )}
+                  <button
+                    onClick={() => { setMenuOpen(false); navigate("/pricing?restore=1"); }}
+                    className="w-full flex items-center gap-3 px-4 py-3 text-sm text-emerald-400 hover:bg-white/5 transition-colors border-t border-white/10 text-left"
+                  >
+                    <RefreshCw className="w-4 h-4" /> Already purchased? Restore
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </header>
