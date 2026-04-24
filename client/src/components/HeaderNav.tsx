@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Home, Calendar, Flag, MapPin, Menu, Globe, ChevronDown, Train, Hotel, Utensils, Info, Sparkles, Settings, LogIn, Trophy, Users, TrendingUp, Target, CreditCard, Tv } from "lucide-react";
+import { Home, Calendar, Flag, MapPin, Menu, Globe, ChevronDown, Train, Hotel, Utensils, Info, Sparkles, Settings, LogIn, Trophy, Users, TrendingUp, Target, CreditCard, Tv, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
 import { getLanguageFlagUrl } from "@/lib/flags";
@@ -47,7 +47,8 @@ interface HeaderNavProps {
 export function HeaderNav({ inline = false }: HeaderNavProps) {
   const { t, i18n } = useTranslation();
   const [location] = useLocation();
-  const { isSubscribed } = useSubscription();
+  const { isSubscribed, subscriptionTier } = useSubscription();
+  const needsRestore = !subscriptionTier || subscriptionTier === 'free' || subscriptionTier === 'none';
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(() => {
@@ -157,6 +158,18 @@ export function HeaderNav({ inline = false }: HeaderNavProps) {
         {isNavOpen && (
           <div className={`absolute ${isRTL ? 'left-0' : 'right-0'} top-full mt-2 bg-card border border-white/10 rounded-xl shadow-xl overflow-hidden z-50 min-w-[200px] animate-in fade-in slide-in-from-top-2 duration-200`}>
             <div className="py-1">
+              {needsRestore && (
+                <>
+                  <Link
+                    href="/pricing?restore=1"
+                    onClick={handleNavClick}
+                    className="w-full flex items-center gap-3 px-4 py-3 text-left bg-emerald-500/10 hover:bg-emerald-500/20 transition-colors border-b border-emerald-500/20"
+                  >
+                    <RefreshCw className="w-5 h-5 text-emerald-400" />
+                    <span className="text-sm font-semibold text-emerald-400">Restore Purchase</span>
+                  </Link>
+                </>
+              )}
               {NAV_ITEMS.map(({ icon: Icon, labelKey, path }) => {
                 const isActive = location === path;
                 return (

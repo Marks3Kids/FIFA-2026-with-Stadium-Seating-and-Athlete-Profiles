@@ -40,6 +40,13 @@ export class WebhookHandlers {
       await WebhookHandlers.handleCheckoutCompleted(event.data.object);
     }
 
+    // charge.succeeded is a reliable fallback — it always fires on successful payment
+    // and carries our metadata from payment_intent_data.metadata
+    if (event.type === 'charge.succeeded') {
+      console.log(`[Webhook] Routing charge.succeeded to handleChargeSucceeded`);
+      await WebhookHandlers.handleChargeSucceeded(event.data.object);
+    }
+
     try {
       await sync.processWebhook(payload, signature, uuid);
     } catch (syncError: any) {
@@ -117,6 +124,41 @@ export class WebhookHandlers {
 
     } catch (error) {
       console.error('[Webhook] Error in handleCheckoutCompleted:', error);
+    }
+  }
+
+  // charge.succeeded fires on EVERY successful payment — reliable fallback for checkout.session.completed
+  static async handleChargeSucceeded(charge: any): Promise<void> {
+    console.log(`[Webhook] handleChargeSucceeded: charge_id=${charge.id}`);
+    try {
+      // Email: billing_details first, then metadata.email (we embed it in payment_intent_data.metadata)
+      const emailFromBilling = charge.billing_details?.email;
+      const meta = charge.metadata || {};
+      const emailFromMeta   = meta.email   || null;
+      const priceIdFromMeta = meta.priceId || null;
+      const tierFromMeta    = meta.tier    || null;
+
+      const email = emailFromBilling || emailFromMeta || null;
+      console.log(`[Webhook] charge email=${email} priceIdFromMeta=${priceIdFromMeta} tierFromMeta=${tierFromMeta}`);
+
+      if (!email) {
+        console.warn(`[Webhook] charge.succeeded: no email found — skipping`);
+        return;
+      }
+
+      if (!priceIdFromMeta && !tierFromMeta) {
+        // No metadata — this charge is not from our checkout (e.g. manual charge, refund reversal)
+        console.log(`[Webhook] charge.succeeded: no metadata — not a Championship Concierge purchase, skipping`);
+        return;
+      }
+
+      const tier = (priceIdFromMeta && PRICE_TO_TIER_MAP[priceIdFromMeta]) || tierFromMeta || 'team_info';
+      const customerId = typeof charge.customer === 'string' ? charge.customer : null;
+
+      console.log(`[Webhook] charge.succeeded: resolved tier=${tier} for email=${email}`);
+      await WebhookHandlers.upsertPurchase(email, tier, priceIdFromMeta || '', customerId, charge.payment_intent || charge.id);
+    } catch (error) {
+      console.error('[Webhook] Error in handleChargeSucceeded:', error);
     }
   }
 
