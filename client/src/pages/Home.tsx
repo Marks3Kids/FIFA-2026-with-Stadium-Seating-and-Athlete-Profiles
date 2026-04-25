@@ -4,8 +4,9 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiUrl } from "@/lib/apiConfig";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
-import { useSearch, useLocation } from "wouter";
+import { useSearch, useLocation, Link } from "wouter";
 import { useToast } from "@/hooks/use-toast";
+import { useSubscription } from "@/contexts/SubscriptionContext";
 
 const TIER_DISPLAY: Record<string, string> = {
   team_info: "Team Info",
@@ -29,6 +30,8 @@ interface NewsItem {
 export default function Home() {
   const { t, i18n } = useTranslation();
   const queryClient = useQueryClient();
+  const { subscriptionTier } = useSubscription();
+  const needsRestore = !subscriptionTier || subscriptionTier === 'free' || subscriptionTier === 'none';
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [expandedNews, setExpandedNews] = useState<number | null>(null);
   const currentLocale = i18n.language || "en";
@@ -99,6 +102,21 @@ export default function Home() {
 
   return (
     <Layout pageTitle="nav.home">
+      {/* Restore purchase banner — shown for free/none tier users */}
+      {needsRestore && (
+        <div className="px-4 pt-4">
+          <Link href="/pricing?restore=1">
+            <div className="flex items-center gap-3 bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/50 rounded-2xl px-4 py-3.5 transition-colors cursor-pointer">
+              <RefreshCw className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+              <div className="min-w-0">
+                <p className="text-sm font-bold text-emerald-400">Already purchased? Restore your access</p>
+                <p className="text-xs text-emerald-300/70 mt-0.5">Tap here to recover your paid features</p>
+              </div>
+            </div>
+          </Link>
+        </div>
+      )}
+
       {/* Hero Header */}
       <div className="pt-8 px-6 pb-4">
         <div className="flex items-center justify-between mb-4">

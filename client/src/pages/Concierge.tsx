@@ -54,7 +54,8 @@ export default function Concierge() {
   const inputRef = useRef<HTMLInputElement>(null);
   const queryClient = useQueryClient();
   
-  const { email } = useSubscription();
+  const { email, subscriptionTier } = useSubscription();
+  const needsRestore = !subscriptionTier || subscriptionTier === 'free' || subscriptionTier === 'none';
   const { currentCity, currentVault } = useGeoLocation();
 
   const { data: usageData, refetch: refetchUsage } = useQuery<MessageUsage>({

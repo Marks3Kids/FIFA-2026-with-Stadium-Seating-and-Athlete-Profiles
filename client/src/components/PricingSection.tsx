@@ -245,7 +245,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     
     setIsRestoring(true);
     try {
-      const res = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(restoreEmail.toLowerCase().trim())}`));
+      const res = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(restoreEmail.toLowerCase().trim())}&t=${Date.now()}`));
       const data = await res.json();
       
       if (data.valid && data.tier) {
@@ -409,7 +409,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
           const storedEmail = localStorage.getItem('subscription_email');
           if (storedEmail) {
             try {
-              const res = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}`));
+              const res = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}&t=${Date.now()}`));
               const d = await res.json();
               console.log('[Checkout] Backend verify result:', d);
               if (d.valid && d.tier && d.tier !== 'free') {
@@ -457,7 +457,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
         const storedEmail = localStorage.getItem('subscription_email');
         if (storedEmail) {
           try {
-            const res = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}`));
+            const res = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}&t=${Date.now()}`));
             const d = await res.json();
             console.log('[Checkout] Backend verify result:', d);
             if (d.valid && d.tier && d.tier !== 'free') {
@@ -492,6 +492,17 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
 
   return (
     <>
+      {/* TOP-OF-PAGE restore button — always first thing visible on mobile */}
+      <div className="mb-4">
+        <button
+          onClick={() => setShowRestore(true)}
+          className="w-full flex items-center justify-center gap-2.5 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/60 text-emerald-300 rounded-xl px-4 py-3 transition-all font-semibold text-sm"
+        >
+          <RefreshCw className="w-4 h-4 flex-shrink-0" />
+          Already purchased? Tap to restore access
+        </button>
+      </div>
+
       {showHeader && (
         <div className="text-center mb-4">
           <div className="inline-flex items-center gap-2 bg-primary border border-primary px-5 py-2.5 rounded-full mb-6 shadow-[0_0_20px_rgba(34,197,94,0.4)]">

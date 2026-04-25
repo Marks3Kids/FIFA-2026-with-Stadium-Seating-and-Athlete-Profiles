@@ -77,7 +77,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
         }
         
         try {
-          const response = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}`));
+          const response = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}&t=${Date.now()}`));
           const data = await response.json();
           
           if (data.valid && data.tier) {
@@ -136,7 +136,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
 
       console.log(`[SubscriptionContext] Tab became visible — re-verifying email=${storedEmail}`);
       try {
-        const response = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}`));
+        const response = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}&t=${Date.now()}`));
         const data = await response.json();
         console.log(`[SubscriptionContext] Re-verify result:`, data);
         if (data.valid && data.tier) {
@@ -202,7 +202,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
     if (!email) return false;
     
     try {
-      const response = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(email)}`));
+      const response = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(email)}&t=${Date.now()}`));
       const data = await response.json();
       
       if (data.valid && data.tier) {
