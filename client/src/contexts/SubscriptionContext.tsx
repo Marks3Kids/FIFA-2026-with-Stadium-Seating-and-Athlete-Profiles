@@ -58,8 +58,12 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
       const storedTier = localStorage.getItem("subscription_tier") as SubscriptionTier | null;
       const storedName = localStorage.getItem("subscription_name");
       const storedCity = localStorage.getItem("subscription_city");
+
+      console.log(`[SubscriptionContext] App load — email=${storedEmail || 'none'} localTier=${storedTier || 'none'}`);
       
-      if (storedEmail && storedTier) {
+      // Always verify against the backend if we have any email — even if no tier is stored.
+      // This handles iOS PWA context isolation where the email may survive but tier was lost.
+      if (storedEmail) {
         // Check if this is a demo/test email - grant full access without verification
         const normalizedStoredEmail = storedEmail.toLowerCase().trim();
         const isDemoEmail = DEMO_EMAILS.includes(normalizedStoredEmail);
@@ -79,6 +83,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
         try {
           const response = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(storedEmail)}&t=${Date.now()}`));
           const data = await response.json();
+          console.log(`[SubscriptionContext] DB verify result — email=${storedEmail} dbTier=${data.tier || 'none'} valid=${data.valid}`);
           
           if (data.valid && data.tier) {
             setEmail(storedEmail);
@@ -96,24 +101,21 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
             setIsSubscribed(true);
             setIsVerified(true);
           } else {
-            localStorage.removeItem("subscription_email");
+            // No paid record in DB — clear stale local state
+            console.log(`[SubscriptionContext] No DB record for email=${storedEmail} — keeping email, resetting tier`);
             localStorage.removeItem("subscription_tier");
-            localStorage.removeItem("subscription_name");
-            localStorage.removeItem("subscription_city");
+            setEmail(storedEmail); // Keep email so Restore modal can pre-fill
+            setSubscriptionTier("none");
           }
         } catch (error) {
           console.error("Failed to verify subscription:", error);
-          if (storedTier === "free") {
+          // On network error, fall back to whatever we had locally
+          if (storedTier && storedTier !== "none") {
             setEmail(storedEmail);
-            setSubscriptionTier("free");
+            setSubscriptionTier(storedTier);
             setName(storedName);
             setCity(storedCity);
-            setIsSubscribed(true);
-          } else {
-            localStorage.removeItem("subscription_email");
-            localStorage.removeItem("subscription_tier");
-            localStorage.removeItem("subscription_name");
-            localStorage.removeItem("subscription_city");
+            setIsSubscribed(storedTier !== "none");
           }
         }
       }

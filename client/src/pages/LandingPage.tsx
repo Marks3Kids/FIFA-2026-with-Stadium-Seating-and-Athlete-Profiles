@@ -29,10 +29,10 @@ const FEATURES = [
 
 export default function LandingPage() {
   const pricingRef = useRef<HTMLDivElement>(null);
-  const { tier } = useSubscription();
+  const { subscriptionTier, isLoading } = useSubscription();
   const { i18n } = useTranslation();
   const [, navigate] = useLocation();
-  const isSubscribed = tier !== "free" && tier !== null && tier !== undefined;
+  const isSubscribed = subscriptionTier === 'team_info' || subscriptionTier === 'logistics' || subscriptionTier === 'ai_concierge';
   const [langOpen, setLangOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);

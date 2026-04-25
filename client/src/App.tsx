@@ -1,8 +1,8 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
-import { SubscriptionProvider } from "@/contexts/SubscriptionContext";
+import { SubscriptionProvider, useSubscription } from "@/contexts/SubscriptionContext";
 import { LocationProvider } from "@/contexts/LocationContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import "@/lib/i18n";
@@ -112,12 +112,36 @@ function DirectionHandler() {
   return null;
 }
 
+// Runs on EVERY route. Once the subscription context finishes loading,
+// if the user has a paid tier and is on a public-only page, send them straight to /home.
+// This is the single authoritative redirect — it covers LandingPage, /pricing, and any
+// other public page a paid user might accidentally land on (e.g. from a bookmark).
+const PAID_TIERS = ['team_info', 'logistics', 'ai_concierge'];
+const PUBLIC_ONLY_PATHS = ['/', '/pricing'];
+
+function GlobalRedirect() {
+  const { subscriptionTier, isLoading, email } = useSubscription();
+  const [location, navigate] = useLocation();
+
+  useEffect(() => {
+    if (isLoading) return; // Wait for backend verify to complete
+    console.log(`[GlobalRedirect] isLoading=${isLoading} email=${email} tier=${subscriptionTier} path=${location}`);
+    if (PAID_TIERS.includes(subscriptionTier) && PUBLIC_ONLY_PATHS.includes(location)) {
+      console.log(`[GlobalRedirect] Paid user (${subscriptionTier}) on public page (${location}) → redirecting to /home`);
+      navigate('/home');
+    }
+  }, [isLoading, subscriptionTier, location]);
+
+  return null;
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <SubscriptionProvider>
         <LocationProvider>
           <DirectionHandler />
+          <GlobalRedirect />
           <Router />
           <Toaster />
         </LocationProvider>

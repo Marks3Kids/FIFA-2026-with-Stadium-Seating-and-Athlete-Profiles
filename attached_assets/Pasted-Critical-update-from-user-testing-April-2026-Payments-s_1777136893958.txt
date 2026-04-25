@@ -1,0 +1,35 @@
+Critical update from user testing (April 2026):
+
+- Payments succeed on Stripe (receipts sent, visible in dashboard, including with test card 4242 4242 4242 4242).
+- BUT the app (both desktop and PWA on phone/laptop) always lands on the pricing/purchase screen.
+- No hamburger menu or Restore Purchase button appears.
+- No "enter email to open full app" flow.
+- User has previous ai_concierge purchase in DB, but it never unlocks.
+
+This means fulfillment is still failing.
+
+Fix ALL of this immediately:
+
+1. **Make fulfillment robust**:
+   - In the success_url handler (/checkout/success) and CheckoutSuccess.tsx: Always call the verify endpoint with the session_id or email and force navigation to /home + setSubscription if paid tier is returned.
+   - Expand the Checkout Session in stripeService to always include line_items if needed.
+
+2. **Force paid access on every entry point**:
+   - On app load, landing page, pricing page, and SubscriptionContext mount: 
+     - If any email is in localStorage, immediately call /api/subscription/verify?email=... 
+     - If it returns a paid tier (team_info, logistics, or ai_concierge), call setSubscription and navigate to the main paid dashboard (/home or equivalent). Do NOT show pricing screen.
+   - Show a big prominent button on the pricing screen: "Already Purchased? Restore Access" that does the same.
+
+3. **Make Restore button bulletproof and always visible**:
+   - Show the green "↻ Restore Purchase" in the header/nav on EVERY screen for users whose verify returns free tier but email exists.
+   - When tapped, force the verify call and unlock if successful.
+
+4. **Add fallback for charge.succeeded**:
+   - Ensure handleChargeSucceeded correctly extracts email from billing_details and tier from metadata, then calls the shared upsertPurchase method.
+
+5. **Add logging**:
+   - Log on every app load: "User email: X, current tier from DB: Y"
+
+Apply all changes, restart the server, and confirm the landing page now redirects paid users away from pricing.
+
+I will hard-reset the PWA and test again after this.
