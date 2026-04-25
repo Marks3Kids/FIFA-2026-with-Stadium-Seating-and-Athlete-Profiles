@@ -7,60 +7,13 @@ const httpServer = createServer(app);
 // Track initialization state
 let appInitialized = false;
 
-// Health check endpoints - respond immediately without any processing
-// The "/" route shows a loading page during startup, before static files are ready
-app.get("/", (req, res, next) => {
-  if (!appInitialized) {
-    res.status(200).send(`
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <title>Championship Concierge</title>
-          <meta http-equiv="refresh" content="1">
-          <style>
-            body { 
-              background: #0f172a; 
-              color: #10b981; 
-              font-family: system-ui, sans-serif;
-              display: flex; 
-              align-items: center; 
-              justify-content: center; 
-              height: 100vh; 
-              margin: 0;
-            }
-            .loader { text-align: center; }
-            .spinner { 
-              width: 40px; 
-              height: 40px; 
-              border: 3px solid #1e293b; 
-              border-top: 3px solid #10b981; 
-              border-radius: 50%; 
-              animation: spin 1s linear infinite; 
-              margin: 0 auto 16px;
-            }
-            @keyframes spin { to { transform: rotate(360deg); } }
-          </style>
-        </head>
-        <body>
-          <div class="loader">
-            <div class="spinner"></div>
-            <div>Loading Championship Concierge...</div>
-          </div>
-        </body>
-      </html>
-    `);
-  } else {
-    next(); // Pass to static file serving after initialization
-  }
-});
-app.get("/_health", (_req, res) => {
-  res.status(200).send("ok");
-});
-
-// ── Server-side Restore Access page ──────────────────────────────────────────
-// Registered here (before initializeApp / Vite / static catch-all) so it is
-// ALWAYS reachable regardless of initialization state or service-worker caching.
-// Pure HTML + inline JS — zero dependency on the React bundle.
+// ── /restore-access — MUST be the very first route registered ────────────────
+// Reason: In production the static catch-all (and in dev the Vite catch-all)
+// both serve index.html for unknown paths.  By registering this GET handler
+// before ANY other middleware or catch-all we guarantee Express always handles
+// it directly, regardless of service-worker state.
+// localStorage keys match exactly what SubscriptionContext reads:
+//   "subscription_email" and "subscription_tier"
 app.get("/restore-access", (_req, res) => {
   res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
   res.setHeader("Pragma", "no-cache");
@@ -124,8 +77,9 @@ app.get("/restore-access", (_req, res) => {
         var res = await fetch('/api/subscription/verify?email=' + encodeURIComponent(email) + '&t=' + Date.now());
         var data = await res.json();
         if (data.valid && data.tier && data.tier !== 'free') {
-          localStorage.setItem('championship_email', email);
-          localStorage.setItem('championship_tier', data.tier);
+          // Keys must match exactly what SubscriptionContext reads on next load
+          localStorage.setItem('subscription_email', email);
+          localStorage.setItem('subscription_tier', data.tier);
           okEl.style.display = 'block';
           btn.style.display = 'none';
           if ('serviceWorker' in navigator) {
@@ -150,6 +104,56 @@ app.get("/restore-access", (_req, res) => {
   </script>
 </body>
 </html>`);
+});
+
+// Health check endpoints - respond immediately without any processing
+// The "/" route shows a loading page during startup, before static files are ready
+app.get("/", (req, res, next) => {
+  if (!appInitialized) {
+    res.status(200).send(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Championship Concierge</title>
+          <meta http-equiv="refresh" content="1">
+          <style>
+            body { 
+              background: #0f172a; 
+              color: #10b981; 
+              font-family: system-ui, sans-serif;
+              display: flex; 
+              align-items: center; 
+              justify-content: center; 
+              height: 100vh; 
+              margin: 0;
+            }
+            .loader { text-align: center; }
+            .spinner { 
+              width: 40px; 
+              height: 40px; 
+              border: 3px solid #1e293b; 
+              border-top: 3px solid #10b981; 
+              border-radius: 50%; 
+              animation: spin 1s linear infinite; 
+              margin: 0 auto 16px;
+            }
+            @keyframes spin { to { transform: rotate(360deg); } }
+          </style>
+        </head>
+        <body>
+          <div class="loader">
+            <div class="spinner"></div>
+            <div>Loading Championship Concierge...</div>
+          </div>
+        </body>
+      </html>
+    `);
+  } else {
+    next(); // Pass to static file serving after initialization
+  }
+});
+app.get("/_health", (_req, res) => {
+  res.status(200).send("ok");
 });
 
 // Start listening IMMEDIATELY - don't wait for any other setup

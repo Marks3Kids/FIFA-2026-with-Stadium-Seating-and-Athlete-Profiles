@@ -34,6 +34,13 @@ export async function setupVite(server: Server, app: Express) {
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
 
+    // /restore-access is handled by its own Express route registered before this
+    // middleware.  This guard is a safety net in case Vite's internal middleware
+    // somehow gets first crack at the request.
+    if (url.startsWith("/restore-access")) {
+      return next();
+    }
+
     try {
       const clientTemplate = path.resolve(
         import.meta.dirname,

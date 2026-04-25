@@ -18,6 +18,12 @@ export function serveStatic(app: Express) {
     if (req.originalUrl.startsWith("/api")) {
       return next();
     }
+    // /restore-access has its own Express handler registered before serveStatic.
+    // This guard is belt-and-suspenders: it should never be reached, but if it
+    // somehow is, pass through so the registered route can respond.
+    if (req.originalUrl.startsWith("/restore-access")) {
+      return next();
+    }
     // Never cache the HTML shell — always serve fresh so PWA updates propagate
     res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     res.setHeader("Pragma", "no-cache");
