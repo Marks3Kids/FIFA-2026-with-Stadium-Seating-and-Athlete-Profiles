@@ -128,7 +128,7 @@ function GlobalRedirect() {
     console.log(`[GlobalRedirect] isLoading=${isLoading} email=${email} tier=${subscriptionTier} path=${location}`);
     if (PAID_TIERS.includes(subscriptionTier) && PUBLIC_ONLY_PATHS.includes(location)) {
       console.log(`[GlobalRedirect] Paid user (${subscriptionTier}) on public page (${location}) → redirecting to /home`);
-      navigate('/home');
+      navigate('/home', { replace: true } as any);
     }
   }, [isLoading, subscriptionTier, location]);
 

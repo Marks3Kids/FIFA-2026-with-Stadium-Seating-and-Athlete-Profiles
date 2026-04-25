@@ -1,8 +1,9 @@
-import { Globe, Shield, Clock, Plane, Hotel, Utensils, Heart, ChevronDown, Tag, Menu, X, RefreshCw } from "lucide-react";
+import { Globe, Shield, Clock, Plane, Hotel, Utensils, Heart, ChevronDown, Tag, Menu, X, RefreshCw, Loader2, CheckCircle } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { PricingSection } from "@/components/PricingSection";
-import { useSubscription } from "@/contexts/SubscriptionContext";
+import { useSubscription, SubscriptionTier } from "@/contexts/SubscriptionContext";
+import { apiUrl } from "@/lib/apiConfig";
 import soccerBallIcon from "../assets/soccer-ball.svg";
 import { useTranslation } from "react-i18next";
 
@@ -29,7 +30,7 @@ const FEATURES = [
 
 export default function LandingPage() {
   const pricingRef = useRef<HTMLDivElement>(null);
-  const { subscriptionTier, isLoading } = useSubscription();
+  const { subscriptionTier, isLoading, setSubscription } = useSubscription();
   const { i18n } = useTranslation();
   const [, navigate] = useLocation();
   const isSubscribed = subscriptionTier === 'team_info' || subscriptionTier === 'logistics' || subscriptionTier === 'ai_concierge';
@@ -38,11 +39,48 @@ export default function LandingPage() {
   const langRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
+  // Inline Restore modal state
+  const [showRestore, setShowRestore] = useState(false);
+  const [restoreEmail, setRestoreEmail] = useState("");
+  const [isRestoring, setIsRestoring] = useState(false);
+  const [restoreError, setRestoreError] = useState("");
+
   const currentLang = LANGUAGES.find(l => l.code === i18n.language) || LANGUAGES[0];
+
+  // Auto-redirect when subscriptionTier becomes paid (after restore or initial load)
+  useEffect(() => {
+    if (!isLoading && isSubscribed) {
+      console.log(`[LandingPage] Paid tier detected (${subscriptionTier}) — navigating to /home`);
+      navigate('/home', { replace: true } as any);
+    }
+  }, [isLoading, isSubscribed, subscriptionTier]);
 
   const scrollToPricing = () => {
     setMenuOpen(false);
     pricingRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleRestore = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const email = restoreEmail.trim().toLowerCase();
+    if (!email) return;
+    setIsRestoring(true);
+    setRestoreError("");
+    try {
+      const res = await fetch(apiUrl(`/api/subscription/verify?email=${encodeURIComponent(email)}&t=${Date.now()}`));
+      const data = await res.json();
+      console.log(`[LandingPage] Restore verify — email=${email} valid=${data.valid} tier=${data.tier}`);
+      if (data.valid && data.tier && data.tier !== 'free') {
+        setSubscription(email, data.tier as SubscriptionTier);
+        // GlobalRedirect + useEffect above will fire immediately
+      } else {
+        setRestoreError("No paid purchase found for this email. Please check and try again, or contact support@championshipconcierge.com");
+      }
+    } catch {
+      setRestoreError("Connection error. Please check your internet and try again.");
+    } finally {
+      setIsRestoring(false);
+    }
   };
 
   // Close dropdowns when clicking outside
@@ -61,6 +99,47 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-background">
+
+      {/* ── Restore Purchase Modal ──────────────────────────────────── */}
+      {showRestore && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[200] flex items-center justify-center p-4">
+          <div className="bg-card border border-white/10 rounded-2xl p-7 max-w-sm w-full shadow-2xl">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-bold text-white">Restore Your Access</h3>
+              <button onClick={() => { setShowRestore(false); setRestoreError(""); }} className="text-muted-foreground hover:text-white">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <p className="text-sm text-muted-foreground mb-5">
+              Enter the email you used when you purchased. We'll look it up and unlock your content immediately.
+            </p>
+            <form onSubmit={handleRestore} className="space-y-3">
+              <input
+                type="email"
+                placeholder="your@email.com"
+                value={restoreEmail}
+                onChange={e => setRestoreEmail(e.target.value)}
+                autoFocus
+                className="w-full bg-background border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-muted-foreground focus:outline-none focus:border-primary text-sm"
+              />
+              {restoreError && (
+                <p className="text-red-400 text-xs leading-relaxed">{restoreError}</p>
+              )}
+              <button
+                type="submit"
+                disabled={isRestoring || !restoreEmail.trim()}
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold text-sm transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {isRestoring ? <><Loader2 className="w-4 h-4 animate-spin" /> Checking…</> : <><CheckCircle className="w-4 h-4" /> Restore Access</>}
+              </button>
+            </form>
+            <p className="text-xs text-muted-foreground mt-4 text-center">
+              Problems? Email <a href="mailto:support@championshipconcierge.com" className="text-primary">support@championshipconcierge.com</a>
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Fixed Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-white/10">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 flex items-center justify-between">
@@ -75,6 +154,18 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="flex items-center gap-2">
+            {/* Restore button — always visible in header on ALL screen sizes */}
+            {!isSubscribed && (
+              <button
+                onClick={() => setShowRestore(true)}
+                className="flex items-center gap-1.5 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/50 text-emerald-400 text-xs font-semibold rounded-lg px-2.5 py-1.5 transition-colors"
+              >
+                <RefreshCw className="w-3.5 h-3.5" />
+                <span className="hidden xs:inline">Restore</span>
+                <span className="xs:hidden">↻</span>
+              </button>
+            )}
+
             {/* Language selector — always visible */}
             <div ref={langRef} className="relative">
               <button
@@ -217,29 +308,39 @@ export default function LandingPage() {
             No subscription. No recurring charges. Pay once, use all tournament long.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-12">
+          <div className="flex flex-col items-center justify-center gap-3 mb-10 sm:mb-12 w-full max-w-md mx-auto">
             {isSubscribed ? (
               <Link
                 href="/home"
-                className="w-full sm:w-auto flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(34,197,94,0.4)]"
+                className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(34,197,94,0.4)]"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
-                Go to My Content
+                Open My Full App
               </Link>
             ) : (
               <>
+                <div className="flex flex-col sm:flex-row gap-3 w-full">
+                  <button
+                    onClick={scrollToPricing}
+                    className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-4 rounded-xl text-base font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(34,197,94,0.4)]"
+                  >
+                    Choose Your Plan
+                  </button>
+                  <Link
+                    href="/home"
+                    className="flex-1 border border-white/20 text-white px-6 py-4 rounded-xl text-base font-medium hover:bg-white/5 transition-colors text-center"
+                  >
+                    Explore Features
+                  </Link>
+                </div>
+                {/* Always-visible Restore button — critical for returning paid users */}
                 <button
-                  onClick={scrollToPricing}
-                  className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-xl text-lg font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(34,197,94,0.4)]"
+                  onClick={() => setShowRestore(true)}
+                  className="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-emerald-500/40 hover:border-emerald-500/80 text-emerald-400 px-6 py-3 rounded-xl text-sm font-semibold transition-all"
                 >
-                  Choose Your Plan
+                  <RefreshCw className="w-4 h-4" />
+                  Already Purchased? Restore Access
                 </button>
-                <Link
-                  href="/home"
-                  className="w-full sm:w-auto border border-white/20 text-white px-8 py-4 rounded-xl text-lg font-medium hover:bg-white/5 transition-colors text-center"
-                >
-                  Explore Features
-                </Link>
               </>
             )}
           </div>
