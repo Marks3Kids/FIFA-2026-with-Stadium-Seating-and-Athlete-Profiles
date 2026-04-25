@@ -263,9 +263,37 @@ export default function LandingPage() {
         </div>
       </header>
 
+      {/* ── Returning Customer Banner ───────────────────────────────────────── */}
+      {!isSubscribed && (
+        <div className="pt-16 bg-background">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 py-2.5 flex items-center justify-between gap-3 border-b border-emerald-500/20 bg-emerald-500/5">
+            <p className="text-xs sm:text-sm text-emerald-300 font-medium leading-tight">
+              <span className="font-bold text-emerald-400">Already purchased?</span>{" "}
+              <span className="hidden sm:inline">Your access is saved to your email — restore it in seconds.</span>
+              <span className="sm:hidden">Restore your access instantly.</span>
+            </p>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={() => setShowRestore(true)}
+                className="flex items-center gap-1.5 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/60 text-emerald-400 text-xs font-bold rounded-lg px-3 py-1.5 transition-colors whitespace-nowrap"
+              >
+                <RefreshCw className="w-3 h-3" />
+                Restore Access
+              </button>
+              <a
+                href="/restore-access"
+                className="text-xs text-emerald-500/70 hover:text-emerald-400 underline underline-offset-2 transition-colors whitespace-nowrap hidden sm:inline"
+              >
+                Can't load the app?
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section with stadium photo */}
       <section
-        className="relative pt-28 pb-20 px-4 overflow-hidden"
+        className={`relative ${!isSubscribed ? "pt-8" : "pt-28"} pb-20 px-4 overflow-hidden`}
         style={{
           backgroundImage: "url('/stadium-hero.png')",
           backgroundSize: "cover",
