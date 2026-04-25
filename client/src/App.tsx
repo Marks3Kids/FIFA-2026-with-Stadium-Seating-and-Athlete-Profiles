@@ -41,6 +41,7 @@ import { Legal } from "@/pages/Legal";
 import SupportPage from "@/pages/SupportPage";
 import CheckoutSuccess from "@/pages/CheckoutSuccess";
 import NotFound from "@/pages/not-found";
+import RestoreAccess from "@/pages/RestoreAccess";
 
 function Router() {
   return (
@@ -56,6 +57,7 @@ function Router() {
       <Route path="/policy" component={Legal} />
       <Route path="/support" component={SupportPage} />
       <Route path="/checkout/success" component={CheckoutSuccess} />
+      <Route path="/restore-access" component={RestoreAccess} />
       
       {/* Free tier - basic access after lead capture */}
       <Route path="/home">{() => <ProtectedRoute requiredTier="free"><Home /></ProtectedRoute>}</Route>

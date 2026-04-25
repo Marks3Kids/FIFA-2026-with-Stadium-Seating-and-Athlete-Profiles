@@ -14,7 +14,9 @@ export default defineConfig({
         enabled: false
       },
       workbox: {
-        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+        // Never intercept /restore-access — let it reach the Express server directly
+        navigateFallbackDenylist: [/^\/restore-access/],
       },
       includeAssets: ['favicon.png', 'apple-touch-icon.png'],
       manifest: {
