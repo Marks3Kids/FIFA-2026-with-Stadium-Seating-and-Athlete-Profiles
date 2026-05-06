@@ -2,9 +2,10 @@
   "relation": ["delegate_permission/common.handle_all_urls"],
   "target": {
     "namespace": "android_app",
-    "package_name": "com.mingledtreasure.championshipconcierge",
+    "package_name": "com.mingledtreasures.championshipconcierge",
     "sha256_cert_fingerprints": [
-      "REPLACE_WITH_SHA256_FROM_GOOGLE_PLAY_CONSOLE"
+      "85:73:AA:B2:EF:F7:91:E5:92:07:5F:76:2E:B7:DE:1F:12:28:A4:DC:4A:70:46:2C:AD:18:A5:54:19:64:59:FF",
+      "0D:39:11:EB:F2:21:7A:CB:91:93:CF:A8:52:DD:77:80:45:02:DC:D0:79:AE:1D:B0:47:1D:F6:D2:E5:6D:5E:66"
     ]
   }
 }]
