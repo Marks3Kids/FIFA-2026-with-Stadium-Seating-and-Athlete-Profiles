@@ -26,16 +26,16 @@
   },
   "teamHighlights": {
     "Argentina": "Defending World Cup champions continued their dominance in South American qualifiers. Lionel Messi led the team with exceptional performances, while emerging talents like Julian Alvarez proved crucial.",
-    "France": "Les Bleus showed strong form in European qualifiers. Kylian MbappÃ© continued his prolific scoring run while the defense remained solid under Didier Deschamps' tactical setup.",
-    "Brazil": "A SeleÃ§Ã£o experienced a rebuilding phase under new management. Young talents like Endrick and Rodrygo stepped up while veterans provided crucial experience in tight matches.",
+    "France": "Les Bleus showed strong form in European qualifiers. Kylian Mbappé continued his prolific scoring run while the defense remained solid under Didier Deschamps' tactical setup.",
+    "Brazil": "A Seleção experienced a rebuilding phase under new management. Young talents like Endrick and Rodrygo stepped up while veterans provided crucial experience in tight matches.",
     "England": "The Three Lions showed improved tactical flexibility. Harry Kane remained the team's talisman while Jude Bellingham emerged as a world-class midfielder orchestrating play.",
     "Germany": "Die Mannschaft focused on integrating young talent with experienced players. Florian Wirtz and Jamal Musiala formed an exciting creative partnership in midfield.",
     "Spain": "La Roja dominated European qualification with their trademark possession-based football. Young stars Pedri and Gavi controlled midfield while veteran leaders provided stability.",
     "Netherlands": "Oranje showed solid defensive organization while maintaining attacking flair. Cody Gakpo emerged as a key player with crucial goals in qualifying.",
-    "Portugal": "A SeleÃ§Ã£o balanced experienced stars with exciting young talent. Cristiano Ronaldo continued his incredible international goal-scoring record while Rafael LeÃ£o dazzled on the wing.",
+    "Portugal": "A Seleção balanced experienced stars with exciting young talent. Cristiano Ronaldo continued his incredible international goal-scoring record while Rafael Leão dazzled on the wing.",
     "Belgium": "The Red Devils underwent a generational transition. While golden generation stars remained important, new faces began establishing themselves in the squad.",
     "Italy": "Gli Azzurri continued their tactical excellence under Luciano Spalletti. Strong defensive foundations combined with creative midfield play characterized their campaign.",
-    "Mexico": "El Tri topped the CONCACAF qualifying round. A blend of Liga MX stars and European-based players provided depth, with Santiago GimÃ©nez leading the attack.",
+    "Mexico": "El Tri topped the CONCACAF qualifying round. A blend of Liga MX stars and European-based players provided depth, with Santiago Giménez leading the attack.",
     "USA": "The USMNT showcased their golden generation on home soil qualification. Christian Pulisic starred while the team built momentum heading into hosting the tournament.",
     "Canada": "Les Rouges continued their remarkable rise in world football. Alphonso Davies led from the back while Jonathan David provided consistent goal-scoring.",
     "Japan": "Samurai Blue impressed in Asian qualification with technical excellence. A wealth of European-based talent provided quality throughout the squad.",
@@ -43,7 +43,7 @@
     "Australia": "The Socceroos battled through a tough Asian qualifying campaign. A mix of experienced campaigners and rising stars kept World Cup dreams alive.",
     "Algeria": "Les Fennecs showed strong form in African qualifying. A balanced squad combined technical skill with physical presence to secure their spot in the tournament.",
     "Morocco": "The Atlas Lions built on their historic 2022 World Cup run. Achraf Hakimi and Hakim Ziyech continued to shine as Morocco established themselves among Africa's elite.",
-    "Senegal": "The Lions of Teranga continued their strong African presence. Despite losing Sadio ManÃ© to injury at times, depth in the squad proved vital.",
+    "Senegal": "The Lions of Teranga continued their strong African presence. Despite losing Sadio Mané to injury at times, depth in the squad proved vital.",
     "Nigeria": "The Super Eagles showed resilience in a competitive African qualifying group. Victor Osimhen led the attack with world-class finishing.",
     "Egypt": "The Pharaohs qualified with Mohamed Salah leading from the front. The Liverpool star remained the focal point of Egypt's attacking play.",
     "Cameroon": "The Indomitable Lions showed their fighting spirit in qualifying. A blend of experienced campaigners and emerging talents kept them competitive.",
@@ -59,16 +59,16 @@
     "Switzerland": "The Nati showed their typical consistency in European qualifying. Granit Xhaka's leadership from midfield proved invaluable.",
     "Austria": "Das Team impressed with attacking football under Ralf Rangnick. High pressing and quick transitions defined their style.",
     "Poland": "The White Eagles qualified with Robert Lewandowski still leading the line. The Barcelona striker remained Poland's most important player.",
-    "Serbia": "The Eagles showed attacking flair in qualifying. DuÅ¡an VlahoviÄ‡ and Aleksandar MitroviÄ‡ formed a dangerous strike partnership.",
+    "Serbia": "The Eagles showed attacking flair in qualifying. Dušan Vlahović and Aleksandar Mitrović formed a dangerous strike partnership.",
     "Ukraine": "Despite immense challenges off the pitch, Ukraine showed remarkable spirit. The team united a nation through their qualifying campaign.",
-    "Turkey": "The Crescent-Stars showed exciting attacking play. Young talents like Arda GÃ¼ler emerged as key players for the future.",
+    "Turkey": "The Crescent-Stars showed exciting attacking play. Young talents like Arda Güler emerged as key players for the future.",
     "Scotland": "The Tartan Army qualified for back-to-back major tournaments. John McGinn and Scott McTominay drove the team forward.",
     "Hungary": "The Magyars continued their impressive run under Marco Rossi. Dominik Szoboszlai emerged as one of Europe's brightest talents.",
     "Czech Republic": "The Czech Lions showed solid defensive organization. Patrik Schick remained the team's primary goal threat.",
     "Slovenia": "Slovenia qualified for their first World Cup since 2010. Jan Oblak's goalkeeping excellence anchored the team's defense.",
     "Wales": "The Dragons qualified through determination and team spirit. Despite Gareth Bale's retirement, new leaders emerged.",
-    "Uruguay": "La Celeste showed their traditional fighting spirit. Darwin NÃºÃ±ez led the line while veterans provided experience.",
-    "Colombia": "Los Cafeteros returned to form in South American qualifying. Luis DÃ­az dazzled on the wing with exceptional performances.",
+    "Uruguay": "La Celeste showed their traditional fighting spirit. Darwin Núñez led the line while veterans provided experience.",
+    "Colombia": "Los Cafeteros returned to form in South American qualifying. Luis Díaz dazzled on the wing with exceptional performances.",
     "Ecuador": "La Tri continued their South American emergence. Young talents combined with experienced players for consistent performances.",
     "Paraguay": "La Albirroja qualified through disciplined performances. The team showed improved organization under new management.",
     "Chile": "La Roja navigated a challenging transition period. A new generation began to establish themselves in the squad.",
@@ -93,7 +93,7 @@
     "loading": "Loading...",
     "add": "+ Add",
     "viewAll": "View All",
-    "viewDetails": "View details, options & pricing â†’",
+    "viewDetails": "View details, options & pricing →",
     "comingSoon": "Coming Soon",
     "teams": "Teams",
     "cities": "Cities",
@@ -189,7 +189,7 @@
     "dataRetention": "AI Concierge chat logs and conversation history are stored until August 30, 2026, after which they will be permanently deleted. You may delete your chat history at any time through the app's History page.",
     "privacyTitle": "Privacy Policy",
     "privacyStatement": "We respect your privacy. Any personal data collected is used solely to improve your experience and is not shared with third parties without your consent. This app uses local storage on your device to save preferences and subscription status. We do not use cookies. Voice features use your device's built-in speech capabilities and no audio data is transmitted to or stored on our servers.",
-    "copyright": "Â© 2026 Championship Concierge. All rights reserved. This is an unofficial fan application."
+    "copyright": "© 2026 Championship Concierge. All rights reserved. This is an unofficial fan application."
   },
   "teams": {
     "title": "Qualified Teams",
@@ -285,7 +285,7 @@
       "whistler": "Whistler",
       "victoriaFerry": "Victoria (via ferry)",
       "puebla": "Puebla",
-      "queretaro": "QuerÃ©taro",
+      "queretaro": "Querétaro",
       "puertoVallarta": "Puerto Vallarta",
       "saltillo": "Saltillo",
       "providence": "Providence",
@@ -410,7 +410,7 @@
       "welcomeMessages": {
         "kansasCity": "Welcome to the Heart of America! I see you've arrived in Kansas City. A quick heads-up: Parking at the stadium is extremely restricted today. I have secured your 'Stadium Direct' bus pass and mapped the shuttle pickup at Union Station. Since you have 3 hours before kickoff, would you like the walking route to the WWI Museum Fan Fest for a photo at the Heart Gateway?",
         "newYork": "Welcome to the Big Apple! I've noted your arrival in New York. The PATH trains and NJ Transit are running extended hours for match days. MetLife Stadium is in New Jersey - I've mapped the fastest route from your location. Would you like me to set a departure reminder accounting for stadium security lines?",
-        "losAngeles": "Welcome to LA! Traffic is always a factor here - I've calculated that leaving 3 hours before kickoff from your location will get you to SoFi Stadium comfortably. The Metro E Line has a direct station at the stadium. Would you like cooling station locations mapped? It's expected to be 85Â°F at kickoff.",
+        "losAngeles": "Welcome to LA! Traffic is always a factor here - I've calculated that leaving 3 hours before kickoff from your location will get you to SoFi Stadium comfortably. The Metro E Line has a direct station at the stadium. Would you like cooling station locations mapped? It's expected to be 85°F at kickoff.",
         "miami": "Welcome to Miami! The heat and humidity are real - I've mapped cooling stations inside Hard Rock Stadium. Pro tip: The Brightline train from Downtown Miami connects to stadium shuttles. Want me to calculate optimal departure time from your hotel?",
         "dallas": "Howdy and welcome to Dallas! AT&T Stadium is massive - I recommend arriving 2 hours early to explore. DART Rail connects downtown to Arlington Transit for stadium access. Would you like me to map the best BBQ spots for pre-game fuel?",
         "houston": "Welcome to Space City! Houston's diverse dining scene is perfect for pre-match meals. The METRORail has extended service on match days. Be prepared for Texas heat - I've located all cooling stations at NRG Stadium.",
@@ -421,9 +421,9 @@
         "sanFrancisco": "Welcome to the Bay Area! Levi's Stadium is in Santa Clara - Caltrain and VTA light rail connect directly. Wine country is just an hour away if you have rest days. Want recommendations for the best tech cafes?",
         "toronto": "Welcome to Toronto! BMO Field is right downtown - the TTC streetcar stops at the stadium. The diverse dining scene is perfect for international visitors. Would you like poutine recommendations?",
         "vancouver": "Welcome to Vancouver! BC Place is downtown with excellent SkyTrain access. The mountain and ocean views are stunning - I can map scenic routes to the stadium if you want to walk.",
-        "mexicoCity": "Â¡Bienvenido a la Ciudad de MÃ©xico! Estadio Azteca is a legendary venue - the Metro has direct access. Be mindful of the altitude (2,240m) - hydrate more than usual. Would you like me to map the best taco stands?",
-        "guadalajara": "Â¡Bienvenido a Guadalajara! The tequila capital welcomes you. Estadio Akron is accessible by macrobÃºs. Would you like mariachi dinner recommendations before the match?",
-        "monterrey": "Â¡Bienvenido a Monterrey! The mountain backdrop at Estadio BBVA is spectacular. Metrorrey provides stadium access. The city's cabrito (goat) cuisine is a must-try - want recommendations?"
+        "mexicoCity": "¡Bienvenido a la Ciudad de México! Estadio Azteca is a legendary venue - the Metro has direct access. Be mindful of the altitude (2,240m) - hydrate more than usual. Would you like me to map the best taco stands?",
+        "guadalajara": "¡Bienvenido a Guadalajara! The tequila capital welcomes you. Estadio Akron is accessible by macrobús. Would you like mariachi dinner recommendations before the match?",
+        "monterrey": "¡Bienvenido a Monterrey! The mountain backdrop at Estadio BBVA is spectacular. Metrorrey provides stadium access. The city's cabrito (goat) cuisine is a must-try - want recommendations?"
       },
       "logistics": {
         "kansasCity": {
@@ -452,7 +452,7 @@
           "transit": ["DART Rail + TEXRail to Arlington", "Official stadium shuttle from downtown Dallas", "Pre-paid parking at remote lots with shuttle"]
         },
         "houston": {
-          "trap": "NRG Stadium is surrounded by parking lots, but exits can take 90+ minutes. Heat can exceed 100Â°F.",
+          "trap": "NRG Stadium is surrounded by parking lots, but exits can take 90+ minutes. Heat can exceed 100°F.",
           "solution": "METRORail runs extended hours on match days. Park at remote lots with shuttle service.",
           "transit": ["METRORail Red Line to NRG Park station", "Park & Ride from downtown Houston", "Stadium Express from multiple hubs"]
         },
@@ -493,18 +493,18 @@
         },
         "mexicoCity": {
           "trap": "Estadio Azteca is in south Mexico City. Traffic in the world's 5th-largest metro is intense.",
-          "solution": "Metro Line 2 goes directly to TasqueÃ±a, then Tren Ligero to Estadio Azteca station.",
-          "transit": ["Metro Line 2 + Tren Ligero to Estadio Azteca", "MetrobÃºs Line 1 to Huipulco + walk", "Official stadium shuttles from Centro"]
+          "solution": "Metro Line 2 goes directly to Tasqueña, then Tren Ligero to Estadio Azteca station.",
+          "transit": ["Metro Line 2 + Tren Ligero to Estadio Azteca", "Metrobús Line 1 to Huipulco + walk", "Official stadium shuttles from Centro"]
         },
         "guadalajara": {
           "trap": "Estadio Akron is outside the city center. Taxis can surge 3-4x on match days.",
-          "solution": "MacrobÃºs Line 2 runs to Arcos de Zapopan - then shuttle or short taxi to stadium.",
-          "transit": ["MacrobÃºs Line 2 to Arcos de Zapopan", "Official shuttles from Centro HistÃ³rico", "Uber/DiDi with pre-scheduled pickup"]
+          "solution": "Macrobús Line 2 runs to Arcos de Zapopan - then shuttle or short taxi to stadium.",
+          "transit": ["Macrobús Line 2 to Arcos de Zapopan", "Official shuttles from Centro Histórico", "Uber/DiDi with pre-scheduled pickup"]
         },
         "monterrey": {
           "trap": "Estadio BBVA is in Guadalupe. City traffic can be heavy, especially on Sundays.",
           "solution": "Metrorrey Line 2 + stadium shuttle is the smart move. Pre-book taxis for return.",
-          "transit": ["Metrorrey Line 2 to General I. Zaragoza + shuttle", "EcovÃ­a bus rapid transit", "Pre-booked taxi with return trip"]
+          "transit": ["Metrorrey Line 2 to General I. Zaragoza + shuttle", "Ecovía bus rapid transit", "Pre-booked taxi with return trip"]
         }
       },
       "safety": {
@@ -797,15 +797,15 @@
       "SouthAfrica": "South Africa"
     },
     "highlights": {
-      "Brazil1958": "A 17-year-old PelÃ© announced himself to the world, scoring 6 goals including 2 in the final. Brazil's first World Cup triumph introduced 'jogo bonito' (the beautiful game) to global audiences.",
-      "Brazil1962": "Despite losing PelÃ© to injury in the group stage, Garrincha stepped up brilliantly. His dribbling wizardry and 4 goals carried Brazil to back-to-back titles.",
-      "Brazil1970": "Widely considered the greatest World Cup team ever. PelÃ©, Jairzinho, TostÃ£o, GÃ©rson, and Rivelino played breathtaking football. Brazil won all 6 matches and kept the Jules Rimet trophy permanently.",
-      "Brazil1994": "After 24 years, Brazil returned to glory. RomÃ¡rio was the star with 5 goals. The final against Italy was decided on penalties after a 0-0 draw, with Roberto Baggio's famous miss.",
+      "Brazil1958": "A 17-year-old Pelé announced himself to the world, scoring 6 goals including 2 in the final. Brazil's first World Cup triumph introduced 'jogo bonito' (the beautiful game) to global audiences.",
+      "Brazil1962": "Despite losing Pelé to injury in the group stage, Garrincha stepped up brilliantly. His dribbling wizardry and 4 goals carried Brazil to back-to-back titles.",
+      "Brazil1970": "Widely considered the greatest World Cup team ever. Pelé, Jairzinho, Tostão, Gérson, and Rivelino played breathtaking football. Brazil won all 6 matches and kept the Jules Rimet trophy permanently.",
+      "Brazil1994": "After 24 years, Brazil returned to glory. Romário was the star with 5 goals. The final against Italy was decided on penalties after a 0-0 draw, with Roberto Baggio's famous miss.",
       "Brazil2002": "The 'Three Rs' - Ronaldo, Rivaldo, and Ronaldinho - led Brazil to their 5th title. Ronaldo scored 8 goals including both in the final, completing his redemption after 1998.",
       "Germany1954": "The 'Miracle of Bern'. West Germany defeated the mighty Hungarians who had beaten them 8-3 in the group stage. Helmut Rahn scored the winning goal in a stunning 3-2 comeback victory.",
-      "Germany1974": "Franz Beckenbauer's 'Der Kaiser' era. Despite going behind to a Cruyff-inspired Dutch penalty, Gerd MÃ¼ller's winning goal secured the title on home soil.",
-      "Germany1990": "Redemption for 1986. Andreas Brehme's late penalty defeated Maradona's Argentina in a rematch of the previous final. Lothar MatthÃ¤us was the driving force.",
-      "Germany2014": "The historic 7-1 demolition of Brazil in Belo Horizonte stunned the world. Mario GÃ¶tze's extra-time winner in the final secured Germany's 4th title.",
+      "Germany1974": "Franz Beckenbauer's 'Der Kaiser' era. Despite going behind to a Cruyff-inspired Dutch penalty, Gerd Müller's winning goal secured the title on home soil.",
+      "Germany1990": "Redemption for 1986. Andreas Brehme's late penalty defeated Maradona's Argentina in a rematch of the previous final. Lothar Matthäus was the driving force.",
+      "Germany2014": "The historic 7-1 demolition of Brazil in Belo Horizonte stunned the world. Mario Götze's extra-time winner in the final secured Germany's 4th title.",
       "Italy1934": "Italy's first World Cup on home soil. Coach Vittorio Pozzo's team came from behind in the final, with Angelo Schiavio scoring the winner in extra time.",
       "Italy1938": "Back-to-back titles under Pozzo. Silvio Piola starred with 5 goals as Italy became the first nation to successfully defend the World Cup.",
       "Italy1982": "Paolo Rossi's redemption after a match-fixing ban. His hat-trick against Brazil and 6 tournament goals led Italy to glory. Marco Tardelli's iconic celebration in the final.",
@@ -814,11 +814,11 @@
       "Argentina1986": "Diego Maradona's tournament. His 'Hand of God' and 'Goal of the Century' against England defined the competition. He dragged Argentina to glory almost single-handedly.",
       "Argentina2022": "Lionel Messi's crowning glory. After a shock opening loss to Saudi Arabia, Argentina recovered brilliantly. The final against France is considered the greatest ever, with Messi finally lifting the trophy.",
       "France1998": "France's first World Cup on home soil. Zinedine Zidane's two headers in the final crushed Brazil. The multiethnic squad united the nation under 'Black-Blanc-Beur'.",
-      "France2018": "A young, talented squad led by 19-year-old Kylian MbappÃ©. Antoine Griezmann and Paul Pogba starred as France claimed their second title with dominant attacking play.",
+      "France2018": "A young, talented squad led by 19-year-old Kylian Mbappé. Antoine Griezmann and Paul Pogba starred as France claimed their second title with dominant attacking play.",
       "Uruguay1930": "The first ever World Cup, hosted to celebrate Uruguay's centenary. Despite trailing 2-1 at halftime, Uruguay stormed back to beat rivals Argentina in the inaugural final.",
-      "Uruguay1950": "The 'Maracanazo'. Uruguay silenced 200,000 fans in Rio's MaracanÃ£, coming from behind to beat Brazil 2-1 in the deciding match. One of football's greatest upsets.",
+      "Uruguay1950": "The 'Maracanazo'. Uruguay silenced 200,000 fans in Rio's Maracanã, coming from behind to beat Brazil 2-1 in the deciding match. One of football's greatest upsets.",
       "England1966": "England's only World Cup. Geoff Hurst's hat-trick in the final, including the controversial 'Wembley Goal', secured victory. Bobby Moore lifted the Jules Rimet trophy.",
-      "Spain2010": "Tiki-taka perfection. Despite losing the opener, Spain's possession-based football prevailed. AndrÃ©s Iniesta's extra-time winner against Netherlands completed their 2008-2012 dominance."
+      "Spain2010": "Tiki-taka perfection. Despite losing the opener, Spain's possession-based football prevailed. Andrés Iniesta's extra-time winner against Netherlands completed their 2008-2012 dominance."
     },
     "tabs": {
       "overview": "Overview",
@@ -877,7 +877,7 @@
       "miamiInternational": "Miami International Airport",
       "dallasFortWorth": "Dallas/Fort Worth International Airport",
       "hartsfieldJackson": "Hartsfield-Jackson Atlanta International",
-      "mexicoCityInternational": "Mexico City International (Benito JuÃ¡rez)",
+      "mexicoCityInternational": "Mexico City International (Benito Juárez)",
       "torontoPearson": "Toronto Pearson International",
       "vancouverInternational": "Vancouver International Airport",
       "guadalajaraInternational": "Guadalajara International (Miguel Hidalgo)",
@@ -893,7 +893,7 @@
       "londonLHR": "London (LHR)",
       "parisCDG": "Paris (CDG)",
       "frankfurtFRA": "Frankfurt (FRA)",
-      "saoPauloGRU": "SÃ£o Paulo (GRU)",
+      "saoPauloGRU": "São Paulo (GRU)",
       "buenosAiresEZE": "Buenos Aires (EZE)",
       "dubaiDXB": "Dubai (DXB)",
       "dohaDOH": "Doha (DOH)",
@@ -903,7 +903,7 @@
       "singaporeSIN": "Singapore (SIN)",
       "aucklandAKL": "Auckland (AKL)",
       "melbourneMEL": "Melbourne (MEL)",
-      "bogotaBOG": "BogotÃ¡ (BOG)",
+      "bogotaBOG": "Bogotá (BOG)",
       "madridMAD": "Madrid (MAD)",
       "sanJuanSJU": "San Juan (SJU)",
       "havanaHAV": "Havana (HAV)",
@@ -916,7 +916,7 @@
       "losAngelesLAX": "Los Angeles (LAX)",
       "dallasDFW": "Dallas (DFW)",
       "houstonIAH": "Houston (IAH)",
-      "sanJoseSJO": "San JosÃ© (SJO)",
+      "sanJoseSJO": "San José (SJO)",
       "panamaCityPTY": "Panama City (PTY)",
       "chicagoORD": "Chicago (ORD)",
       "denverDEN": "Denver (DEN)",
@@ -1056,7 +1056,7 @@
         "niagaraFalls": "Niagara Falls",
         "seattle": "Seattle",
         "jasper": "Jasper (Rocky Mountaineer)",
-        "cuautitlan": "CuautitlÃ¡n",
+        "cuautitlan": "Cuautitlán",
         "toluca": "Toluca (future)",
         "fortWorth": "Fort Worth",
         "austin": "Austin",
@@ -1154,14 +1154,14 @@
         "skytrainBcPlace": "SkyTrain to BC Place Stadium Station",
         "eventShuttlesParkRide": "Event shuttles from Park & Rides",
         "yvrExpress": "YVR airport express connection",
-        "metrobusAzteca": "MetrobÃºs to Estadio Azteca area",
+        "metrobusAzteca": "Metrobús to Estadio Azteca area",
         "eventBusesTerminals": "Special event buses from terminals",
         "hotelShuttlesMx": "Hotel shuttle services",
         "siteurAkron": "SITEUR buses to Estadio Akron",
-        "macrobusRapid": "MacrobÃºs rapid transit connection",
+        "macrobusRapid": "Macrobús rapid transit connection",
         "zonaRosaShuttle": "Shuttle from Zona Rosa hotels",
         "metroreyStadium": "Metrorrey connection to stadium",
-        "ecoviaBrt": "EcovÃ­a BRT service",
+        "ecoviaBrt": "Ecovía BRT service",
         "hotelDistrictMty": "Hotel district shuttles",
         "mbtaGillette": "MBTA buses to Gillette Stadium shuttle",
         "foxboroughExpress": "Foxborough express from South Station",
@@ -1284,7 +1284,7 @@
         "premiumVehicles": "Premium vehicles",
         "mtyAirport": "MTY Airport",
         "downtownAirport": "Downtown & airport",
-        "sanPedro": "San Pedro Garza GarcÃ­a",
+        "sanPedro": "San Pedro Garza García",
         "valleOriente": "Valle Oriente",
         "gdlAirport": "GDL Airport",
         "downtown": "Downtown",
@@ -1363,7 +1363,7 @@
         "parkingVancouver2": "SkyTrain Park & Ride lots",
         "parkingVancouver3": "Downtown parking expensive",
         "parkingMexicoCity1": "Estadio Azteca: MXN $100-200 per event",
-        "parkingMexicoCity2": "Use Metro or MetrobÃºs instead",
+        "parkingMexicoCity2": "Use Metro or Metrobús instead",
         "parkingMexicoCity3": "Street parking risky - use lots",
         "parkingMonterrey1": "Estadio BBVA: MXN $100-150 per event",
         "parkingMonterrey2": "Hotel valet parking available",
@@ -1420,7 +1420,7 @@
         "tipMonterrey3": "Toll roads faster but more expensive",
         "tipGuadalajara1": "Historic center has limited parking",
         "tipGuadalajara2": "Uber widely available and affordable",
-        "tipGuadalajara3": "PerifÃ©rico ring road for faster travel",
+        "tipGuadalajara3": "Periférico ring road for faster travel",
         "tipBoston1": "Old street layout can be confusing",
         "tipBoston2": "Commuter rail to Foxborough available",
         "tipBoston3": "Parking near stadiums fills quickly",
@@ -1974,7 +1974,7 @@
         "photienthanh": "Best pho in Toronto",
         "richmondstation": "Farm-to-table Canadian",
         "byblos": "Lebanese-inspired elegance",
-        "enotecasociale": "Roman trattorÃ­a",
+        "enotecasociale": "Roman trattoría",
         "momofukunoodlebar": "David Chang's Toronto spot",
         "canoe": "54th-floor views",
         "alo": "Canada's best restaurant",
@@ -2027,7 +2027,7 @@
         "dulcepatria": "Martha Ortiz's artful Mexican",
         "lorea": "Tasting menu destination",
         "sartoria": "Fine Italian dining",
-        "jbyjosandrs": "JosÃ© AndrÃ©s in CDMX",
+        "jbyjosandrs": "José Andrés in CDMX",
         "morimoto": "Iron Chef elegance"
       },
       "guadalajara": {
@@ -2165,7 +2165,7 @@
         "fourSeasonsNewYork": "Sophisticated elegance",
         "theStRegisNewYork": "Gilded Age grandeur",
         "mandarinOriental": "Asian elegance with park views",
-        "thePeninsulaNewYork": "Belle Ã‰poque landmark"
+        "thePeninsulaNewYork": "Belle Époque landmark"
       },
       "losAngeles": {
         "freehandLosAngeles": "Hostel-hotel with rooftop pool",
@@ -2611,7 +2611,7 @@
       },
       "metric": {
         "title": "Metric to Imperial Guide",
-        "description": "100Â°F = 38Â°C (Very Hot), 32Â°F = 0Â°C (Freezing). 1 Mile = 1.6 KM. Date format: MM/DD/YYYY (12/10/26 = December 10th)."
+        "description": "100°F = 38°C (Very Hot), 32°F = 0°C (Freezing). 1 Mile = 1.6 KM. Date format: MM/DD/YYYY (12/10/26 = December 10th)."
       },
       "restrooms": {
         "title": "Public Restrooms Rare",
@@ -2766,7 +2766,7 @@
       },
       "cities": {
         "miami": {
-          "heatWarning": "Heat index can reach 120Â°F (49Â°C) in June/July. High humidity makes cooling difficult. Heat exhaustion is a serious risk.",
+          "heatWarning": "Heat index can reach 120°F (49°C) in June/July. High humidity makes cooling difficult. Heat exhaustion is a serious risk.",
           "ticketScams": "Beware of fake tickets sold near Hard Rock Stadium. Only buy from FIFA.com or Ticketmaster. Counterfeit jerseys common on streets.",
           "localConcerns": [
             "Hurricane season runs June-November - monitor weather alerts",
@@ -2785,7 +2785,7 @@
           "tips": ["Stay hydrated - drink water constantly", "Seek air conditioning during 11am-4pm", "Use Uber/Lyft instead of walking long distances in heat"]
         },
         "houston": {
-          "heatWarning": "Temperatures regularly exceed 105Â°F (40Â°C). Subtropical humidity makes it feel even hotter. All 21 risky heat days in 2025 summer were climate-change-induced.",
+          "heatWarning": "Temperatures regularly exceed 105°F (40°C). Subtropical humidity makes it feel even hotter. All 21 risky heat days in 2025 summer were climate-change-induced.",
           "ticketScams": "NRG Stadium area sees scalpers with fake tickets. Parking lot scams common - only use official lots.",
           "localConcerns": [
             "Flash flooding during summer storms - avoid underpasses",
@@ -2804,7 +2804,7 @@
           "tips": ["Carry water bottle everywhere", "Know location of cooling centers", "Check flash flood warnings during storms"]
         },
         "dallas": {
-          "heatWarning": "Consecutive days above 105Â°F (40Â°C) throughout June. Can break 110Â°F. Dallas ranks 4th most uncomfortable U.S. city in summer.",
+          "heatWarning": "Consecutive days above 105°F (40°C) throughout June. Can break 110°F. Dallas ranks 4th most uncomfortable U.S. city in summer.",
           "ticketScams": "AT&T Stadium (Arlington) is massive - scammers operate in parking areas. Fake parking passes sold online.",
           "localConcerns": [
             "Severe thunderstorms and tornadoes possible in June",
@@ -2823,7 +2823,7 @@
           "tips": ["Pre-book stadium parking", "Use DART light rail where available", "Carry portable fan and cooling towel"]
         },
         "atlanta": {
-          "heatWarning": "45-50 days forecast to reach 90Â°F+ in summer. Urban heat island effect makes downtown several degrees hotter than suburbs.",
+          "heatWarning": "45-50 days forecast to reach 90°F+ in summer. Urban heat island effect makes downtown several degrees hotter than suburbs.",
           "ticketScams": "Mercedes-Benz Stadium is downtown - street vendors sell fake tickets and merchandise. Only use official channels.",
           "localConcerns": [
             "Traffic among worst in USA - MARTA train recommended",
@@ -2861,7 +2861,7 @@
           "tips": ["Pre-purchase NJ Transit tickets", "Keep belongings secure on subway", "Allow 2+ hours to reach stadium from Manhattan"]
         },
         "los-angeles": {
-          "heatWarning": "Inland areas can reach 100Â°F+. Coastal areas cooler. SoFi Stadium in Inglewood can be very hot.",
+          "heatWarning": "Inland areas can reach 100°F+. Coastal areas cooler. SoFi Stadium in Inglewood can be very hot.",
           "ticketScams": "SoFi Stadium area has organized scalping operations. Fake VIP experiences sold online. Verify all tickets on official apps.",
           "localConcerns": [
             "Car essential - worst traffic in USA",
@@ -2880,7 +2880,7 @@
           "tips": ["Leave 2+ hours for any drive", "Stay hydrated - dry heat is deceptive", "Download earthquake alert app"]
         },
         "seattle": {
-          "heatWarning": "Typically mild summer weather (70-80Â°F). Occasional heat waves but rare. Air conditioning not common - hotels may not have it.",
+          "heatWarning": "Typically mild summer weather (70-80°F). Occasional heat waves but rare. Air conditioning not common - hotels may not have it.",
           "ticketScams": "Lumen Field has less scam activity than other cities, but still buy only from official sources.",
           "localConcerns": [
             "Rain possible even in summer - bring layers",
@@ -2899,7 +2899,7 @@
           "tips": ["Light rail connects airport to downtown and stadium", "Bring rain jacket even in summer", "Check air quality if wildfires active"]
         },
         "san-francisco": {
-          "heatWarning": "SF itself is cool (60-70Â°F) but Levi's Stadium in Santa Clara can reach 95Â°F+. Dress in layers.",
+          "heatWarning": "SF itself is cool (60-70°F) but Levi's Stadium in Santa Clara can reach 95°F+. Dress in layers.",
           "ticketScams": "Tech-savvy scammers create sophisticated fake ticket sites. Only use FIFA.com or Ticketmaster.",
           "localConcerns": [
             "Stadium 45 miles from SF - plan transportation",
@@ -2918,7 +2918,7 @@
           "tips": ["Use Caltrain to stadium", "Never leave anything visible in parked car", "Bring layers - temperature varies dramatically"]
         },
         "boston": {
-          "heatWarning": "Summer humidity can make 85Â°F feel like 95Â°F. Gillette Stadium in Foxborough has no shade - be prepared.",
+          "heatWarning": "Summer humidity can make 85°F feel like 95°F. Gillette Stadium in Foxborough has no shade - be prepared.",
           "ticketScams": "Patriots fans control Gillette Stadium area - outsiders selling tickets are likely scammers.",
           "localConcerns": [
             "Stadium 30 miles south of Boston in Foxborough",
@@ -2956,7 +2956,7 @@
           "tips": ["Use SEPTA Broad Street Line to stadium", "Stay in well-lit areas after dark", "Be aware of surroundings"]
         },
         "kansas-city": {
-          "heatWarning": "Hot and humid summers, regularly 95Â°F+ with high humidity. Arrowhead Stadium offers little shade.",
+          "heatWarning": "Hot and humid summers, regularly 95°F+ with high humidity. Arrowhead Stadium offers little shade.",
           "ticketScams": "Chiefs fans are devoted - be wary of anyone not obviously a local selling tickets.",
           "localConcerns": [
             "Severe thunderstorms and tornadoes possible",
@@ -2975,7 +2975,7 @@
           "tips": ["Tailgating culture is huge - join in respectfully", "Monitor tornado warnings", "Bring sun protection for stadium"]
         },
         "mexico-city": {
-          "heatWarning": "High altitude (7,350 ft) means cooler temps than expected (70-80Â°F). But altitude sickness is a concern - acclimatize before exertion.",
+          "heatWarning": "High altitude (7,350 ft) means cooler temps than expected (70-80°F). But altitude sickness is a concern - acclimatize before exertion.",
           "ticketScams": "Azteca Stadium area has sophisticated scam operations. Counterfeit tickets look very real. Only buy from FIFA.com.",
           "localConcerns": [
             "Altitude sickness - take it easy first 2 days",
@@ -2987,15 +2987,15 @@
           "safeAreas": [
             { "name": "Polanco", "description": "Mexico City's most upscale neighborhood with designer boutiques, world-class restaurants, and excellent museums. Very safe." },
             { "name": "Roma Norte", "description": "Trendy bohemian neighborhood with Art Deco architecture, hip cafes, and vibrant food scene. Popular with expats." },
-            { "name": "Condesa", "description": "Leafy, walkable neighborhood with Art Nouveau buildings, outdoor cafes in Parque MÃ©xico, and excellent nightlife." },
-            { "name": "CoyoacÃ¡n", "description": "Historic colonial neighborhood with Frida Kahlo Museum, cobblestone streets, and charming central plaza. Family-friendly." },
+            { "name": "Condesa", "description": "Leafy, walkable neighborhood with Art Nouveau buildings, outdoor cafes in Parque México, and excellent nightlife." },
+            { "name": "Coyoacán", "description": "Historic colonial neighborhood with Frida Kahlo Museum, cobblestone streets, and charming central plaza. Family-friendly." },
             { "name": "Santa Fe", "description": "Modern business district with gleaming towers, upscale malls, and international hotels. Corporate and very secure." }
           ],
           "avoidAreas": ["Tepito", "Doctores", "Iztapalapa", "empty streets anywhere after dark"],
           "tips": ["Use Uber/DiDi exclusively - never street taxis", "Keep phone in pocket (motorcycle snatchers)", "Drink lots of water for altitude"]
         },
         "guadalajara": {
-          "heatWarning": "Warm but not extreme (80-90Â°F). Rainy season June-October means afternoon thunderstorms daily.",
+          "heatWarning": "Warm but not extreme (80-90°F). Rainy season June-October means afternoon thunderstorms daily.",
           "ticketScams": "Estadio Akron area sees fake ticket sales. Only use official FIFA channels.",
           "localConcerns": [
             "Jalisco state has cartel presence - stick to tourist areas",
@@ -3006,24 +3006,24 @@
           "safeAreas": [
             { "name": "Colonia Americana", "description": "Expat-friendly neighborhood with Art Deco mansions, trendy cafes, and Chapultepec Avenue nightlife. Hip and walkable." },
             { "name": "Providencia", "description": "Upscale residential area with excellent restaurants, shopping centers, and tree-lined streets. Very safe neighborhood." },
-            { "name": "Zapopan", "description": "Home to the famous BasÃ­lica with added security, modern shopping malls, and growing restaurant scene." },
+            { "name": "Zapopan", "description": "Home to the famous Basílica with added security, modern shopping malls, and growing restaurant scene." },
             { "name": "Chapalita", "description": "Family-oriented residential area with parks, local shops, and quiet streets. Excellent for families with children." },
             { "name": "Historic Center", "description": "Beautiful colonial architecture with the Cathedral and Teatro Degollado. Safe during daytime with police presence." }
           ],
-          "avoidAreas": ["Analco", "Las Juntas", "Lomas del ParaÃ­so", "Cerro del Cuatro"],
+          "avoidAreas": ["Analco", "Las Juntas", "Lomas del Paraíso", "Cerro del Cuatro"],
           "tips": ["Use Uber for any night travel", "Don't walk alone after dark", "Keep valuables hidden always"]
         },
         "monterrey": {
-          "heatWarning": "Desert climate with temps regularly exceeding 100Â°F (38Â°C) in June/July. Very dry heat.",
+          "heatWarning": "Desert climate with temps regularly exceeding 100°F (38°C) in June/July. Very dry heat.",
           "ticketScams": "Estadio BBVA area - same caution as other Mexican cities. Use only official ticket sources.",
           "localConcerns": [
-            "Nuevo LeÃ³n state has cartel activity history",
+            "Nuevo León state has cartel activity history",
             "Very hot and dry - stay hydrated",
             "Business city - less tourist infrastructure",
             "Some areas near US border are high-risk"
           ],
           "safeAreas": [
-            { "name": "San Pedro Garza GarcÃ­a", "description": "Mexico's wealthiest municipality with luxury malls, fine dining, and private security. Essentially a gated community feel." },
+            { "name": "San Pedro Garza García", "description": "Mexico's wealthiest municipality with luxury malls, fine dining, and private security. Essentially a gated community feel." },
             { "name": "Valle Oriente", "description": "Modern business district with corporate towers, upscale hotels, and excellent restaurants. Very well-patrolled." },
             { "name": "Cumbres", "description": "Upscale residential area popular with families, featuring shopping plazas and a suburban atmosphere." },
             { "name": "Centro", "description": "Historic downtown with the famous Macroplaza and Barrio Antiguo. Safe during daytime with tourist police presence." },
@@ -3033,7 +3033,7 @@
           "tips": ["Stay in business districts", "Use hotel-arranged transportation", "Carry water everywhere"]
         },
         "toronto": {
-          "heatWarning": "Generally comfortable (75-85Â°F) but humidity can spike. More temperate than US southern cities.",
+          "heatWarning": "Generally comfortable (75-85°F) but humidity can spike. More temperate than US southern cities.",
           "ticketScams": "BMO Field is smaller venue - less scam activity but still use only official ticket sources.",
           "localConcerns": [
             "High cost of living - everything expensive",
@@ -3052,7 +3052,7 @@
           "tips": ["Get PRESTO card for transit", "Tipping expected (15-20%)", "Download TTC app for real-time transit"]
         },
         "vancouver": {
-          "heatWarning": "Mild summer weather (70-75Â°F). BC Place is covered stadium. Rain possible even in summer.",
+          "heatWarning": "Mild summer weather (70-75°F). BC Place is covered stadium. Rain possible even in summer.",
           "ticketScams": "Less scam activity than US cities but exercise normal caution with unofficial sellers.",
           "localConcerns": [
             "Downtown Eastside has visible drug crisis - avoid Hastings Street",
@@ -3719,7 +3719,7 @@
       "gamblersAnonymous": "Gamblers Anonymous",
       "gamcare": "GamCare (UK)",
       "gamblingHelpAustralia": "Gambling Help Online (Australia)",
-      "adiccionesEspana": "Adicciones EspaÃ±a"
+      "adiccionesEspana": "Adicciones España"
     }
   },
   "religiousServices": {
@@ -3737,13 +3737,13 @@
     }
   },
   "landing": {
-    "tournamentDates": "June 11 â€“ July 19, 2026",
+    "tournamentDates": "June 11 – July 19, 2026",
     "heroTitle1": "YOUR ESSENTIAL",
     "heroTitle2": "2026 CHAMPIONSHIP",
     "heroTitle3": "TRAVEL COMPANION",
     "heroSubtitle": "Navigate 16 host cities across USA, Canada & Mexico with confidence. Everything you need for the biggest sporting event in history.",
     "noSubscription": "No subscription. No recurring charges. Pay once, use all tournament long.",
-    "oneTimeBadge": "ONE-TIME PURCHASE â€” Starting at just $1.99",
+    "oneTimeBadge": "ONE-TIME PURCHASE — Starting at just $1.99",
     "choosePlan": "Choose Your Plan",
     "exploreFeatures": "Explore Features",
     "exploreApp": "Explore App",
@@ -3757,7 +3757,7 @@
     "languages": "Languages",
     "banner": {
       "alreadyPurchased": "Already purchased?",
-      "accessSavedLong": "Your access is saved to your email â€” restore it in seconds.",
+      "accessSavedLong": "Your access is saved to your email — restore it in seconds.",
       "accessSavedShort": "Restore your access instantly.",
       "restoreAccess": "Restore Access",
       "cantLoad": "Can't load the app?",
@@ -3768,7 +3768,7 @@
       "title": "Restore Your Access",
       "description": "Enter the email you used when you purchased. We'll look it up and unlock your content immediately.",
       "emailPlaceholder": "your@email.com",
-      "checking": "Checkingâ€¦",
+      "checking": "Checking…",
       "cta": "Restore Access",
       "problemsEmail": "Problems? Email",
       "noPurchase": "No paid purchase found for this email. Please check and try again, or contact support@championshipconcierge.com",
@@ -3800,7 +3800,7 @@
       "refund": "Refund Policy",
       "download": "Download",
       "googlePlay": "Google Play",
-      "copyright": "Â© 2026 Championship Concierge Â· Independent fan-made app Â· Not affiliated with FIFA or any official organizing body."
+      "copyright": "© 2026 Championship Concierge · Independent fan-made app · Not affiliated with FIFA or any official organizing body."
     },
     "disclaimer": "This is an independent fan-made companion app and is not affiliated with, endorsed by, or connected to FIFA or any official organizing bodies.",
     "copyright": "2026 Championship Concierge"
@@ -3853,9 +3853,9 @@
     "processing": "Processing...",
     "noMonthlySubscription": "No monthly subscription required",
     "coffeeComparison": "Starting at just $1.99 - less than a cup of coffee!",
-    "teamInfoMonthly": "One-time purchase â€” use all tournament long",
-    "logisticsMonthly": "One-time purchase â€” use all tournament long",
-    "aiConciergeMonthly": "One-time purchase â€” use all tournament long",
+    "teamInfoMonthly": "One-time purchase — use all tournament long",
+    "logisticsMonthly": "One-time purchase — use all tournament long",
+    "aiConciergeMonthly": "One-time purchase — use all tournament long",
     "emailCapture": {
       "title": "Get Your Free Bracket",
       "subtitle": "Enter your details to download the printable knockout bracket.",
@@ -3971,7 +3971,7 @@
     "lastUpdated": "Last updated: January 6, 2026",
     "lastUpdatedShort": "Last Updated: January 6, 2026",
     "effectiveDate": "Effective Date: January 12, 2026",
-    "copyright": "Â© 2026 Mingled Treasures, LLC. All rights reserved.",
+    "copyright": "© 2026 Mingled Treasures, LLC. All rights reserved.",
     "title": {
       "terms": "TERMS OF SERVICE",
       "privacy": "PRIVACY POLICY",

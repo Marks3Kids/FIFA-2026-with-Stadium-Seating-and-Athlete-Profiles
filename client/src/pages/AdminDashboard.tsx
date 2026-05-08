@@ -13,7 +13,7 @@ import {
 import { apiRequest } from "@/lib/queryClient";
 import { useSubscription } from "@/contexts/SubscriptionContext";
 
-// Production URL â€” set via VITE_PROD_URL build-time env var
+// Production URL — set via VITE_PROD_URL build-time env var
 const PROD_URL = import.meta.env.VITE_PROD_URL || "https://championshipconcierge.com";
 const ADMIN_KEY = "admin2026cc";
 
@@ -349,7 +349,7 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
             </CardHeader>
             <CardContent>
               <p className="text-2xl font-bold text-white">{teamInfoCount}</p>
-              <p className="text-xs text-muted-foreground">Ã— $1.99 = <span className="text-emerald-400">${(teamInfoCount * 1.99).toFixed(2)}</span></p>
+              <p className="text-xs text-muted-foreground">× $1.99 = <span className="text-emerald-400">${(teamInfoCount * 1.99).toFixed(2)}</span></p>
             </CardContent>
           </Card>
           <Card className="bg-card border-purple-500/20 border">
@@ -361,7 +361,7 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
             </CardHeader>
             <CardContent>
               <p className="text-2xl font-bold text-white">{fanTravelCount}</p>
-              <p className="text-xs text-muted-foreground">Ã— $7.99 = <span className="text-emerald-400">${(fanTravelCount * 7.99).toFixed(2)}</span></p>
+              <p className="text-xs text-muted-foreground">× $7.99 = <span className="text-emerald-400">${(fanTravelCount * 7.99).toFixed(2)}</span></p>
             </CardContent>
           </Card>
           <Card className="bg-card border-emerald-500/20 border">
@@ -373,7 +373,7 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
             </CardHeader>
             <CardContent>
               <p className="text-2xl font-bold text-white">{conciergeCount}</p>
-              <p className="text-xs text-muted-foreground">Ã— $14.99 = <span className="text-emerald-400">${(conciergeCount * 14.99).toFixed(2)}</span></p>
+              <p className="text-xs text-muted-foreground">× $14.99 = <span className="text-emerald-400">${(conciergeCount * 14.99).toFixed(2)}</span></p>
             </CardContent>
           </Card>
         </div>
@@ -525,7 +525,7 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
               ) : purchases.length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground">
                   <CreditCard className="w-10 h-10 mx-auto mb-2 opacity-30" />
-                  <p>No purchases yet â€” share the app!</p>
+                  <p>No purchases yet — share the app!</p>
                 </div>
               ) : (
                 <div className="space-y-2 max-h-80 overflow-y-auto">
@@ -587,7 +587,7 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
                           <Mail className="w-3.5 h-3.5 text-muted-foreground" />
                           {lead.email}
                         </p>
-                        {lead.name && <p className="text-xs text-muted-foreground mt-0.5">{lead.name}{lead.city ? ` â€” ${lead.city}` : ""}</p>}
+                        {lead.name && <p className="text-xs text-muted-foreground mt-0.5">{lead.name}{lead.city ? ` — ${lead.city}` : ""}</p>}
                         <p className="text-xs text-muted-foreground flex items-center gap-1 mt-0.5">
                           <Calendar className="w-3 h-3" />
                           {new Date(lead.createdAt).toLocaleDateString()}
@@ -695,7 +695,7 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
                   <p className="text-sm font-medium text-white">Seed Player Profiles</p>
                 </div>
                 <p className="text-xs text-muted-foreground mb-3">
-                  Add key player data for all remaining 37 teams not yet in the database. Safe to run â€” skips any players already added.
+                  Add key player data for all remaining 37 teams not yet in the database. Safe to run — skips any players already added.
                 </p>
                 <Button
                   size="sm"

@@ -60,7 +60,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Tournament odds",
     ],
     buttonText: "Get Team Info",
-    monthlyValue: "One-time purchase â€” use all tournament long",
+    monthlyValue: "One-time purchase — use all tournament long",
   },
   {
     id: "logistics",
@@ -81,7 +81,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Religious services",
     ],
     buttonText: "Get Fan Travel Pack",
-    monthlyValue: "One-time purchase â€” use all tournament long",
+    monthlyValue: "One-time purchase — use all tournament long",
   },
   {
     id: "ai_concierge",
@@ -100,7 +100,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Trip planning tools",
     ],
     buttonText: "Get AI Concierge",
-    monthlyValue: "One-time purchase â€” use all tournament long",
+    monthlyValue: "One-time purchase — use all tournament long",
   },
 ];
 
@@ -131,7 +131,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
   useEffect(() => {
     const params = new URLSearchParams(searchString);
     if (params.get("restore") === "1") {
-      console.log('[PricingSection] ?restore=1 detected â€” auto-opening Restore modal');
+      console.log('[PricingSection] ?restore=1 detected — auto-opening Restore modal');
       setShowRestore(true);
       toast({
         title: t('pricing.paymentComplete', 'Payment complete?'),
@@ -394,8 +394,8 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
 
     if (isNativeCapacitor) {
       // Native Capacitor: full-screen SFSafariViewController (iOS) / Chrome Custom Tabs (Android).
-      // No presentationStyle override â€” full screen improves 3DS, autofill, and payment reliability.
-      console.log('[Checkout] Branch: Capacitor native â€” opening full-screen SFSafariViewController');
+      // No presentationStyle override — full screen improves 3DS, autofill, and payment reliability.
+      console.log('[Checkout] Branch: Capacitor native — opening full-screen SFSafariViewController');
       try {
         const { Browser } = await import('@capacitor/browser');
         await Browser.open({ url });
@@ -404,7 +404,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
         // localStorage may be isolated (iOS), so the backend is the source of truth.
         const handleResume = async () => {
           document.removeEventListener('resume', handleResume);
-          console.log('[Checkout] App resumed after Capacitor Browser â€” verifying subscription with backend');
+          console.log('[Checkout] App resumed after Capacitor Browser — verifying subscription with backend');
 
           const storedEmail = localStorage.getItem('subscription_email');
           if (storedEmail) {
@@ -422,9 +422,9 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
             }
           }
 
-          // localStorage empty or tier not upgraded â€” iOS context isolation.
+          // localStorage empty or tier not upgraded — iOS context isolation.
           // Purchase is recorded in the DB; open Restore modal so user can enter their email.
-          console.log('[Checkout] No valid stored email â€” opening Restore modal');
+          console.log('[Checkout] No valid stored email — opening Restore modal');
           setShowRestore(true);
           toast({
             title: t('pricing.paymentComplete', 'Payment complete?'),
@@ -445,14 +445,14 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     const isMobileBrowser = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isPWA || isMobileBrowser) {
-      console.log(`[Checkout] Branch: ${isPWA ? 'PWA' : 'mobile browser'} â€” opening Stripe in new tab`);
+      console.log(`[Checkout] Branch: ${isPWA ? 'PWA' : 'mobile browser'} — opening Stripe in new tab`);
       window.open(url, '_blank', 'noopener,noreferrer');
 
-      // When user tabs back, always verify against the backend â€” don't rely only on localStorage.
+      // When user tabs back, always verify against the backend — don't rely only on localStorage.
       const handleVisibility = async () => {
         if (document.visibilityState !== 'visible') return;
         document.removeEventListener('visibilitychange', handleVisibility);
-        console.log('[Checkout] Visibility restored after PWA/mobile Stripe tab â€” verifying with backend');
+        console.log('[Checkout] Visibility restored after PWA/mobile Stripe tab — verifying with backend');
 
         const storedEmail = localStorage.getItem('subscription_email');
         if (storedEmail) {
@@ -470,8 +470,8 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
           }
         }
 
-        // iOS PWA localStorage isolated from Safari â€” purchase is in the DB.
-        console.log('[Checkout] No valid stored email after return â€” opening Restore modal');
+        // iOS PWA localStorage isolated from Safari — purchase is in the DB.
+        console.log('[Checkout] No valid stored email after return — opening Restore modal');
         setShowRestore(true);
         toast({
           title: t('pricing.paymentComplete', 'Payment complete?'),
@@ -485,14 +485,14 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
       return;
     }
 
-    // Desktop web: standard same-tab redirect â€” Stripe returns to /checkout/success automatically.
-    console.log('[Checkout] Branch: desktop browser â€” same-tab redirect');
+    // Desktop web: standard same-tab redirect — Stripe returns to /checkout/success automatically.
+    console.log('[Checkout] Branch: desktop browser — same-tab redirect');
     window.location.href = url;
   };
 
   return (
     <>
-      {/* TOP-OF-PAGE restore button â€” always first thing visible on mobile */}
+      {/* TOP-OF-PAGE restore button — always first thing visible on mobile */}
       <div className="mb-4">
         <button
           onClick={() => setShowRestore(true)}
@@ -523,7 +523,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
 
       {inAppBrowser && (
         <div className="mb-6 bg-amber-500/15 border border-amber-500/40 rounded-2xl p-4 text-center">
-          <p className="text-amber-300 font-bold text-sm mb-1">âš ï¸ For best experience, open in your browser</p>
+          <p className="text-amber-300 font-bold text-sm mb-1">⚠️ For best experience, open in your browser</p>
           <p className="text-amber-200/80 text-xs mb-3">
             Payments may not work in this in-app browser. Tap below to open in Safari or Chrome.
           </p>
@@ -589,7 +589,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
         </div>
       )}
 
-      {/* Returning customer restore banner â€” shown prominently above all tier cards */}
+      {/* Returning customer restore banner — shown prominently above all tier cards */}
       <div className="mt-8 mb-2">
         <button
           onClick={() => setShowRestore(true)}
