@@ -15,6 +15,11 @@ const PRICE_TO_TIER_MAP: Record<string, string> = {
   "price_1Sn6kREwO7dpbt1eKfbFJrIq": "logistics",
   "price_1Sn6ovEwO7dpbt1eXZ45C5pP": "ai_concierge",
   "price_1Sn8dSEwO7dpbt1e9m1RS1cb": "ai_concierge",
+  // Test mode price IDs
+  "price_1TUoj9KAEwbrdBYljyPlLCDf": "team_info",
+  "price_1TUojcKAEwbrdBYllieFyeek": "logistics",
+  "price_1TUok6KAEwbrdBYlnyeKwlsg": "ai_concierge",
+  "price_1TUokVKAEwbrdBYl2FxZ5sH8": "ai_concierge",
 };
 
 const TIER_HIERARCHY = ["free", "team_info", "logistics", "ai_concierge"];

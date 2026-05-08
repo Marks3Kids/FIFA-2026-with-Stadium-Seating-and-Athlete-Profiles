@@ -1479,12 +1479,19 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         }
       }
 
-      // Determine tier from priceId so it's embedded in Stripe metadata
+      // Determine tier from priceId so it's embedded in Stripe metadata.
+      // Includes both live and test price IDs — Stripe rejects mismatched ones at the API call.
       const checkoutTierMap: Record<string, string> = {
+        // Live mode price IDs
         "price_1THSBaKAEwbrdBYlG9ZcGihH": "team_info",
         "price_1THSBbKAEwbrdBYlwHYKBEH3": "logistics",
         "price_1THSBbKAEwbrdBYlNqa3K4Cs": "ai_concierge",
         "price_1SoSVEKAEwbrdBYlYWUlAyJU": "ai_concierge",
+        // Test mode price IDs
+        "price_1TUoj9KAEwbrdBYljyPlLCDf": "team_info",
+        "price_1TUojcKAEwbrdBYllieFyeek": "logistics",
+        "price_1TUok6KAEwbrdBYlnyeKwlsg": "ai_concierge",
+        "price_1TUokVKAEwbrdBYl2FxZ5sH8": "ai_concierge",
       };
       const checkoutTier = checkoutTierMap[priceId] || "team_info";
 
@@ -1562,7 +1569,8 @@ Remember: You're helping fans have the best World Cup experience of their lives!
 
         console.log(`[CheckoutVerify] email=${email} priceId=${priceId} tierFromMeta=${tierFromMeta}`);
 
-        // Map price IDs to subscription tiers (includes both current and legacy IDs)
+        // Map price IDs to subscription tiers (includes both current and legacy IDs).
+        // Also includes test mode price IDs for development/testing.
         const priceToTierMap: Record<string, string> = {
           "price_1THSBaKAEwbrdBYlG9ZcGihH": "team_info",
           "price_1THSBbKAEwbrdBYlwHYKBEH3": "logistics",
@@ -1575,6 +1583,11 @@ Remember: You're helping fans have the best World Cup experience of their lives!
           "price_1Sn6kREwO7dpbt1eKfbFJrIq": "logistics",
           "price_1Sn6ovEwO7dpbt1eXZ45C5pP": "ai_concierge",
           "price_1Sn8dSEwO7dpbt1e9m1RS1cb": "ai_concierge",
+          // Test mode price IDs
+          "price_1TUoj9KAEwbrdBYljyPlLCDf": "team_info",
+          "price_1TUojcKAEwbrdBYllieFyeek": "logistics",
+          "price_1TUok6KAEwbrdBYlnyeKwlsg": "ai_concierge",
+          "price_1TUokVKAEwbrdBYl2FxZ5sH8": "ai_concierge",
         };
 
         // Tier resolution order: line-items map → metadata tier → safe default

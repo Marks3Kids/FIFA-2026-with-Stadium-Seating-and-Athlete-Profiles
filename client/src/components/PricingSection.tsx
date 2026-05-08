@@ -28,6 +28,24 @@ interface PricingTier {
   monthlyValue?: string;
 }
 
+// Stripe price IDs differ between test and live mode (separate environments).
+// Set VITE_STRIPE_MODE="test" on test deployments; defaults to live IDs.
+const IS_TEST_MODE = import.meta.env.VITE_STRIPE_MODE === "test";
+
+const PRICE_IDS = IS_TEST_MODE
+  ? {
+      team_info: "price_1TUoj9KAEwbrdBYljyPlLCDf",
+      logistics: "price_1TUojcKAEwbrdBYllieFyeek",
+      ai_concierge: "price_1TUok6KAEwbrdBYlnyeKwlsg",
+      message_pack: "price_1TUokVKAEwbrdBYl2FxZ5sH8",
+    }
+  : {
+      team_info: "price_1THSBaKAEwbrdBYlG9ZcGihH",
+      logistics: "price_1THSBbKAEwbrdBYlwHYKBEH3",
+      ai_concierge: "price_1THSBbKAEwbrdBYlNqa3K4Cs",
+      message_pack: "price_1SoSVEKAEwbrdBYlYWUlAyJU",
+    };
+
 export const PRICING_TIERS: PricingTier[] = [
   {
     id: "free",
@@ -47,7 +65,7 @@ export const PRICING_TIERS: PricingTier[] = [
     id: "team_info",
     name: "Team Info",
     price: 1.99,
-    priceId: "price_1THSBaKAEwbrdBYlG9ZcGihH",
+    priceId: PRICE_IDS.team_info,
     icon: <Users className="w-6 h-6" />,
     description: "Complete team and match coverage",
     features: [
@@ -66,7 +84,7 @@ export const PRICING_TIERS: PricingTier[] = [
     id: "logistics",
     name: "Fan Travel Pack",
     price: 7.99,
-    priceId: "price_1THSBbKAEwbrdBYlwHYKBEH3",
+    priceId: PRICE_IDS.logistics,
     icon: <MapPin className="w-6 h-6" />,
     description: "Complete travel companion",
     popular: true,
@@ -87,7 +105,7 @@ export const PRICING_TIERS: PricingTier[] = [
     id: "ai_concierge",
     name: "AI Concierge",
     price: 14.99,
-    priceId: "price_1THSBbKAEwbrdBYlNqa3K4Cs",
+    priceId: PRICE_IDS.ai_concierge,
     icon: <Sparkles className="w-6 h-6" />,
     description: "Your personal travel assistant",
     features: [
