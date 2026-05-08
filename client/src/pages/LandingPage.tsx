@@ -4,15 +4,16 @@ import { Link, useLocation } from "wouter";
 import { PricingSection } from "@/components/PricingSection";
 import { useSubscription, SubscriptionTier } from "@/contexts/SubscriptionContext";
 import { apiUrl } from "@/lib/apiConfig";
+import { getLanguageFlagUrl } from "@/lib/flags";
 import soccerBallIcon from "../assets/soccer-ball.svg";
 import { useTranslation } from "react-i18next";
 
 const LANGUAGES = [
-  { code: "en", flag: "🇺🇸", label: "EN" },
-  { code: "es", flag: "🇪🇸", label: "ES" },
-  { code: "fr", flag: "🇫🇷", label: "FR" },
-  { code: "pt", flag: "🇧🇷", label: "PT" },
-  { code: "ar", flag: "🇸🇦", label: "AR" },
+  { code: "en", label: "EN" },
+  { code: "es", label: "ES" },
+  { code: "fr", label: "FR" },
+  { code: "pt", label: "PT" },
+  { code: "ar", label: "AR" },
 ];
 
 const FEATURE_ICONS = [
@@ -168,7 +169,11 @@ export default function LandingPage() {
                 onClick={() => { setLangOpen(o => !o); setMenuOpen(false); }}
                 className="flex items-center gap-1 bg-white/10 border border-white/20 text-white text-xs rounded-lg px-2 py-1.5 hover:bg-white/20 transition-colors"
               >
-                <span>{currentLang.flag}</span>
+                <img
+                  src={getLanguageFlagUrl(currentLang.code, 40)}
+                  alt={currentLang.label}
+                  className="w-4 h-3 object-cover rounded-sm"
+                />
                 <span className="font-medium">{currentLang.label}</span>
                 <ChevronDown className={`w-3 h-3 transition-transform ${langOpen ? "rotate-180" : ""}`} />
               </button>
@@ -180,7 +185,11 @@ export default function LandingPage() {
                       onClick={() => { i18n.changeLanguage(lang.code); setLangOpen(false); }}
                       className={`w-full flex items-center gap-2 px-3 py-2 text-xs hover:bg-primary/20 transition-colors text-left ${lang.code === i18n.language ? "text-primary font-bold bg-primary/10" : "text-white"}`}
                     >
-                      <span>{lang.flag}</span>
+                      <img
+                        src={getLanguageFlagUrl(lang.code, 40)}
+                        alt={lang.label}
+                        className="w-5 h-4 object-cover rounded-sm"
+                      />
                       <span>{lang.label}</span>
                     </button>
                   ))}
