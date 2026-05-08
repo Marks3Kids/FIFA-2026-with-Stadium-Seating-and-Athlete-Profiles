@@ -1446,11 +1446,16 @@ Remember: You're helping fans have the best World Cup experience of their lives!
 
   app.post("/api/checkout", async (req, res) => {
     try {
-      const { priceId, email } = req.body;
-      
+      const { priceId, email, locale } = req.body;
+
       if (!priceId) {
         return res.status(400).json({ error: "Price ID is required" });
       }
+
+      // Whitelist supported Stripe Checkout locales matching the app's 5 languages.
+      // Anything else falls back to "auto" (Stripe browser-language detection).
+      const SUPPORTED_LOCALES = new Set(["en", "es", "fr", "pt", "ar"]);
+      const checkoutLocale = SUPPORTED_LOCALES.has(locale) ? locale : "auto";
 
       const baseUrl = getBaseUrl(req);
       const userAgent = req.headers['user-agent'] || 'unknown';
@@ -1489,7 +1494,8 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         `${baseUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
         `${baseUrl}/pricing`,
         customerId,
-        { tier: checkoutTier, priceId, email: email || '' }
+        { tier: checkoutTier, priceId, email: email || '' },
+        checkoutLocale
       );
 
       res.json({ url: session.url });
@@ -2254,20 +2260,23 @@ Remember: You're helping fans have the best World Cup experience of their lives!
 
   app.post("/api/ai-messages/create-checkout", async (req, res) => {
     try {
-      const { email } = req.body;
+      const { email, locale } = req.body;
       if (!email) {
         return res.status(400).json({ error: "Email is required" });
       }
 
+      const SUPPORTED_LOCALES = new Set(["en", "es", "fr", "pt", "ar"]);
+      const checkoutLocale = SUPPORTED_LOCALES.has(locale) ? locale : "auto";
+
       const products = await stripeService.listProductsWithPrices(true);
       const messagePackProduct = products.find((p: any) => p.product_id === MESSAGE_PACK_PRODUCT_ID);
-      
+
       if (!messagePackProduct) {
         return res.status(404).json({ error: "Message pack product not found" });
       }
 
       const priceId = messagePackProduct.price_id as string;
-      
+
       let customer;
       const existingPurchase = await storage.getPurchaseByEmail(email);
       if (existingPurchase?.stripeCustomerId) {
@@ -2281,7 +2290,8 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         customer.id,
         priceId,
         `${baseUrlMsg}/concierge?purchase=success&session_id={CHECKOUT_SESSION_ID}`,
-        `${baseUrlMsg}/concierge?purchase=cancelled`
+        `${baseUrlMsg}/concierge?purchase=cancelled`,
+        checkoutLocale
       );
 
       res.json({ url: session.url });

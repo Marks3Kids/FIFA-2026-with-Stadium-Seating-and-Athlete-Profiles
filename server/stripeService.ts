@@ -11,12 +11,18 @@ export class StripeService {
     });
   }
 
-  async createCheckoutSession(customerId: string, priceId: string, successUrl: string, cancelUrl: string) {
+  async createCheckoutSession(
+    customerId: string,
+    priceId: string,
+    successUrl: string,
+    cancelUrl: string,
+    locale?: string
+  ) {
     const stripe = await getUncachableStripeClient();
-    
+
     const price = await stripe.prices.retrieve(priceId);
     const isRecurring = !!price.recurring;
-    
+
     return await stripe.checkout.sessions.create({
       customer: customerId,
       automatic_payment_methods: { enabled: true },
@@ -25,7 +31,8 @@ export class StripeService {
       success_url: successUrl,
       cancel_url: cancelUrl,
       allow_promotion_codes: true,
-    });
+      locale: locale || 'auto',
+    } as any);
   }
 
   async createCheckoutSessionWithOptionalCustomer(
@@ -33,13 +40,14 @@ export class StripeService {
     successUrl: string,
     cancelUrl: string,
     customerId?: string,
-    metadata?: Record<string, string>
+    metadata?: Record<string, string>,
+    locale?: string
   ) {
     const stripe = await getUncachableStripeClient();
-    
+
     const price = await stripe.prices.retrieve(priceId);
     const isRecurring = !!price.recurring;
-    
+
     const sessionParams: any = {
       automatic_payment_methods: { enabled: true },
       line_items: [{ price: priceId, quantity: 1 }],
@@ -50,6 +58,7 @@ export class StripeService {
       billing_address_collection: 'auto',
       phone_number_collection: { enabled: false },
       metadata: metadata || {},
+      locale: locale || 'auto',
     };
 
     // payment_intent_data only valid for one-time payment mode
@@ -60,7 +69,7 @@ export class StripeService {
     if (customerId) {
       sessionParams.customer = customerId;
     }
-    
+
     return await stripe.checkout.sessions.create(sessionParams);
   }
 

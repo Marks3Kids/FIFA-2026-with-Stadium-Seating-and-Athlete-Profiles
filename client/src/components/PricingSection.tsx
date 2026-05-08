@@ -112,7 +112,7 @@ interface PricingSectionProps {
 export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: PricingSectionProps) {
   const { setFreeUser, setSubscription } = useSubscription();
   const { toast } = useToast();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [, navigate] = useLocation();
   const searchString = useSearch();
   const [isLoading, setIsLoading] = useState<string | null>(null);
@@ -353,6 +353,7 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           priceId: tier.priceId,
+          locale: i18n.language,
         }),
       });
 

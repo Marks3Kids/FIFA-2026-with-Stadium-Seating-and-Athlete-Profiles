@@ -141,7 +141,7 @@ export default function Concierge() {
       const res = await fetch(apiUrl('/api/ai-messages/create-checkout'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, locale: i18n.language }),
       });
       const data = await res.json();
       if (data.url) {
