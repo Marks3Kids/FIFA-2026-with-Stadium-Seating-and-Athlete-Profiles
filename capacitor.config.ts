@@ -7,7 +7,7 @@ const config: CapacitorConfig = {
   server: {
     androidScheme: 'https',
     iosScheme: 'https',
-    hostname: 'championship-concierge.com'
+    hostname: 'championshipconcierge.com'
   },
   ios: {
     contentInset: 'automatic',

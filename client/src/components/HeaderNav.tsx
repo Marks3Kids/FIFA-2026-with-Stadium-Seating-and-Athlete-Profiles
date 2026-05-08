@@ -10,12 +10,8 @@ const LANGUAGES = [
   { code: "en", name: "English" },
   { code: "es", name: "Español" },
   { code: "fr", name: "Français" },
-  { code: "nl", name: "Nederlands" },
-  { code: "de", name: "Deutsch" },
-  { code: "it", name: "Italiano" },
-  { code: "ar", name: "العربية" },
   { code: "pt", name: "Português" },
-  { code: "ja", name: "日本語" },
+  { code: "ar", name: "العربية" },
 ];
 
 const NAV_ITEMS = [

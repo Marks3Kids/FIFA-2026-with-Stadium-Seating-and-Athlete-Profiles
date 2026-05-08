@@ -33,10 +33,10 @@ export async function registerRoutes(
     res.json({ status: "ok", timestamp: new Date().toISOString() });
   });
 
-  // ── Server-side Restore Access page ─────────────────────────────────────────
+  // â”€â”€ Server-side Restore Access page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Served as raw HTML with no-cache headers so it BYPASSES the PWA service
   // worker entirely. The inline script calls the API, writes localStorage,
-  // then hard-redirects to the SPA — giving stuck paid users a guaranteed
+  // then hard-redirects to the SPA â€” giving stuck paid users a guaranteed
   // escape hatch even when the SW is serving a stale JS bundle.
   app.get("/restore-access", (req, res) => {
     res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -48,7 +48,7 @@ export async function registerRoutes(
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Restore Access — Championship Concierge</title>
+  <title>Restore Access â€” Championship Concierge</title>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{background:#0a0f0a;color:#fff;font-family:system-ui,-apple-system,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
@@ -72,15 +72,15 @@ export async function registerRoutes(
 </head>
 <body>
   <div class="card">
-    <div class="logo">⚽ CHAMPIONSHIP CONCIERGE 2026</div>
+    <div class="logo">âš½ CHAMPIONSHIP CONCIERGE 2026</div>
     <h1>Restore Your Access</h1>
     <p>Enter the email you used when you purchased. We'll look it up and unlock your content immediately.</p>
     <input type="email" id="email" placeholder="your@email.com" autocomplete="email" autofocus />
     <div id="err" class="err" style="display:none"></div>
     <button id="btn" onclick="restore()">Restore Access</button>
-    <div id="ok" class="ok" style="display:none">✓ Purchase found! Redirecting you now…</div>
+    <div id="ok" class="ok" style="display:none">âœ“ Purchase found! Redirecting you nowâ€¦</div>
     <p class="help">Problems? Email <a href="mailto:support@championshipconcierge.com">support@championshipconcierge.com</a></p>
-    <a class="back" href="/">← Back to home</a>
+    <a class="back" href="/">â† Back to home</a>
   </div>
   <script>
     async function restore() {
@@ -96,7 +96,7 @@ export async function registerRoutes(
         return;
       }
       btn.disabled = true;
-      btn.innerHTML = '<span class="spinner"></span>Checking…';
+      btn.innerHTML = '<span class="spinner"></span>Checkingâ€¦';
       try {
         const res = await fetch('/api/subscription/verify?email=' + encodeURIComponent(email) + '&t=' + Date.now());
         const data = await res.json();
@@ -213,48 +213,48 @@ export async function registerRoutes(
         { name: "Argentina", teamName: "La Albiceleste", flag: "ar", rank: 2, coach: "Lionel Scaloni", record: "11-3-1", points: "1873.33" },
         { name: "France", teamName: "Les Bleus", flag: "fr", rank: 3, coach: "Didier Deschamps", record: "10-4-2", points: "1870.00" },
         { name: "England", teamName: "Three Lions", flag: "gb-eng", rank: 4, coach: "Thomas Tuchel", record: "9-5-2", points: "1834.12" },
-        { name: "Brazil", teamName: "Seleção", flag: "br", rank: 5, coach: "Carlo Ancelotti", record: "8-6-3", points: "1760.46" },
-        { name: "Portugal", teamName: "Seleção das Quinas", flag: "pt", rank: 6, coach: "Roberto Martínez", record: "10-2-3", points: "1750.00" },
+        { name: "Brazil", teamName: "SeleÃ§Ã£o", flag: "br", rank: 5, coach: "Carlo Ancelotti", record: "8-6-3", points: "1760.46" },
+        { name: "Portugal", teamName: "SeleÃ§Ã£o das Quinas", flag: "pt", rank: 6, coach: "Roberto MartÃ­nez", record: "10-2-3", points: "1750.00" },
         { name: "Netherlands", teamName: "Oranje", flag: "nl", rank: 7, coach: "Ronald Koeman", record: "9-3-4", points: "1740.00" },
         { name: "Belgium", teamName: "Red Devils", flag: "be", rank: 8, coach: "Domenico Tedesco", record: "8-4-3", points: "1730.00" },
         { name: "Germany", teamName: "Die Mannschaft", flag: "de", rank: 9, coach: "Julian Nagelsmann", record: "7-5-3", points: "1710.00" },
-        { name: "Croatia", teamName: "Vatreni", flag: "hr", rank: 10, coach: "Zlatko Dalić", record: "8-3-4", points: "1700.00" },
+        { name: "Croatia", teamName: "Vatreni", flag: "hr", rank: 10, coach: "Zlatko DaliÄ‡", record: "8-3-4", points: "1700.00" },
         { name: "Morocco", teamName: "Atlas Lions", flag: "ma", rank: 12, coach: "Walid Regragui", record: "9-2-2", points: "1690.00" },
-        { name: "Colombia", teamName: "Los Cafeteros", flag: "co", rank: 13, coach: "Néstor Lorenzo", record: "7-4-4", points: "1680.00" },
+        { name: "Colombia", teamName: "Los Cafeteros", flag: "co", rank: 13, coach: "NÃ©stor Lorenzo", record: "7-4-4", points: "1680.00" },
         { name: "USA", teamName: "USMNT", flag: "us", rank: 14, coach: "Mauricio Pochettino", record: "8-3-4", points: "1670.00" },
         { name: "Mexico", teamName: "El Tri", flag: "mx", rank: 15, coach: "Javier Aguirre", record: "8-4-3", points: "1665.00" },
         { name: "Uruguay", teamName: "La Celeste", flag: "uy", rank: 16, coach: "Marcelo Bielsa", record: "7-5-3", points: "1660.00" },
         { name: "Switzerland", teamName: "Nati", flag: "ch", rank: 17, coach: "Murat Yakin", record: "7-4-4", points: "1655.00" },
         { name: "Japan", teamName: "Samurai Blue", flag: "jp", rank: 18, coach: "Hajime Moriyasu", record: "8-3-4", points: "1650.00" },
-        { name: "Senegal", teamName: "Lions of Teranga", flag: "sn", rank: 19, coach: "Aliou Cissé", record: "7-4-4", points: "1645.00" },
+        { name: "Senegal", teamName: "Lions of Teranga", flag: "sn", rank: 19, coach: "Aliou CissÃ©", record: "7-4-4", points: "1645.00" },
         { name: "Iran", teamName: "Team Melli", flag: "ir", rank: 20, coach: "Amir Ghalenoei", record: "7-3-5", points: "1640.00" },
         { name: "South Korea", teamName: "Taegeuk Warriors", flag: "kr", rank: 21, coach: "Hong Myung-bo", record: "7-4-4", points: "1635.00" },
-        { name: "Ecuador", teamName: "La Tri", flag: "ec", rank: 22, coach: "Sebastián Beccacece", record: "6-5-4", points: "1630.00" },
+        { name: "Ecuador", teamName: "La Tri", flag: "ec", rank: 22, coach: "SebastiÃ¡n Beccacece", record: "6-5-4", points: "1630.00" },
         { name: "Austria", teamName: "Das Team", flag: "at", rank: 23, coach: "Ralf Rangnick", record: "7-3-5", points: "1625.00" },
         { name: "Australia", teamName: "Socceroos", flag: "au", rank: 24, coach: "Tony Popovic", record: "6-4-5", points: "1620.00" },
-        { name: "Norway", teamName: "Løvene", flag: "no", rank: 25, coach: "Ståle Solbakken", record: "6-4-5", points: "1610.00" },
+        { name: "Norway", teamName: "LÃ¸vene", flag: "no", rank: 25, coach: "StÃ¥le Solbakken", record: "6-4-5", points: "1610.00" },
         { name: "Canada", teamName: "Les Rouges", flag: "ca", rank: 27, coach: "Jesse Marsch", record: "6-4-5", points: "1590.00" },
         { name: "Panama", teamName: "Los Canaleros", flag: "pa", rank: 30, coach: "Thomas Christiansen", record: "6-3-6", points: "1560.00" },
         { name: "Egypt", teamName: "Pharaohs", flag: "eg", rank: 32, coach: "Hossam Hassan", record: "6-4-5", points: "1540.00" },
-        { name: "Algeria", teamName: "Les Fennecs", flag: "dz", rank: 33, coach: "Vladimir Petković", record: "6-3-6", points: "1535.00" },
+        { name: "Algeria", teamName: "Les Fennecs", flag: "dz", rank: 33, coach: "Vladimir PetkoviÄ‡", record: "6-3-6", points: "1535.00" },
         { name: "Scotland", teamName: "Tartan Army", flag: "gb-sct", rank: 34, coach: "Steve Clarke", record: "5-4-6", points: "1530.00" },
         { name: "Paraguay", teamName: "La Albirroja", flag: "py", rank: 35, coach: "Gustavo Alfaro", record: "5-5-5", points: "1525.00" },
         { name: "Tunisia", teamName: "Eagles of Carthage", flag: "tn", rank: 36, coach: "Faouzi Benzarti", record: "5-4-6", points: "1520.00" },
-        { name: "Ivory Coast", teamName: "Les Éléphants", flag: "ci", rank: 37, coach: "Emerse Faé", record: "6-3-6", points: "1515.00" },
+        { name: "Ivory Coast", teamName: "Les Ã‰lÃ©phants", flag: "ci", rank: 37, coach: "Emerse FaÃ©", record: "6-3-6", points: "1515.00" },
         { name: "Uzbekistan", teamName: "White Wolves", flag: "uz", rank: 50, coach: "Srecko Katanec", record: "5-4-6", points: "1450.00" },
-        { name: "Qatar", teamName: "The Maroons", flag: "qa", rank: 38, coach: "Luís García", record: "5-3-7", points: "1510.00" },
-        { name: "Saudi Arabia", teamName: "The Green Falcons", flag: "sa", rank: 39, coach: "Hervé Renard", record: "5-4-6", points: "1505.00" },
+        { name: "Qatar", teamName: "The Maroons", flag: "qa", rank: 38, coach: "LuÃ­s GarcÃ­a", record: "5-3-7", points: "1510.00" },
+        { name: "Saudi Arabia", teamName: "The Green Falcons", flag: "sa", rank: 39, coach: "HervÃ© Renard", record: "5-4-6", points: "1505.00" },
         { name: "South Africa", teamName: "Bafana Bafana", flag: "za", rank: 40, coach: "Hugo Broos", record: "5-4-6", points: "1500.00" },
         { name: "Jordan", teamName: "Al-Nashama", flag: "jo", rank: 60, coach: "Jamal Sellami", record: "5-3-7", points: "1400.00" },
         { name: "Cape Verde", teamName: "Blue Sharks", flag: "cv", rank: 55, coach: "Bubista", record: "5-4-6", points: "1420.00" },
         { name: "Ghana", teamName: "Black Stars", flag: "gh", rank: 45, coach: "Otto Addo", record: "5-4-6", points: "1470.00" },
-        { name: "Curaçao", teamName: "Pais Kòrsou", flag: "cw", rank: 85, coach: "Dick Advocaat", record: "4-3-8", points: "1350.00" },
-        { name: "Haiti", teamName: "Les Grenadiers", flag: "ht", rank: 75, coach: "Sébastien Migné", record: "4-4-7", points: "1380.00" },
+        { name: "CuraÃ§ao", teamName: "Pais KÃ²rsou", flag: "cw", rank: 85, coach: "Dick Advocaat", record: "4-3-8", points: "1350.00" },
+        { name: "Haiti", teamName: "Les Grenadiers", flag: "ht", rank: 75, coach: "SÃ©bastien MignÃ©", record: "4-4-7", points: "1380.00" },
         { name: "New Zealand", teamName: "All Whites", flag: "nz", rank: 80, coach: "Darren Bazeley", record: "4-3-8", points: "1360.00" },
         { name: "Italy", teamName: "Gli Azzurri", flag: "it", rank: 11, coach: "Luciano Spalletti", record: "8-3-4", points: "1695.00" },
         { name: "Denmark", teamName: "Danish Dynamite", flag: "dk", rank: 26, coach: "Kasper Hjulmand", record: "6-4-5", points: "1600.00" },
-        { name: "Serbia", teamName: "Orlovi", flag: "rs", rank: 28, coach: "Dragan Stojković", record: "6-4-5", points: "1580.00" },
-        { name: "Poland", teamName: "Biało-czerwoni", flag: "pl", rank: 29, coach: "Michał Probierz", record: "6-3-6", points: "1570.00" },
+        { name: "Serbia", teamName: "Orlovi", flag: "rs", rank: 28, coach: "Dragan StojkoviÄ‡", record: "6-4-5", points: "1580.00" },
+        { name: "Poland", teamName: "BiaÅ‚o-czerwoni", flag: "pl", rank: 29, coach: "MichaÅ‚ Probierz", record: "6-3-6", points: "1570.00" },
         { name: "Venezuela", teamName: "La Vinotinto", flag: "ve", rank: 31, coach: "Fernando Batista", record: "6-4-5", points: "1550.00" },
         { name: "Indonesia", teamName: "Garuda", flag: "id", rank: 100, coach: "Shin Tae-yong", record: "4-2-9", points: "1300.00" },
       ];
@@ -285,7 +285,7 @@ export async function registerRoutes(
         { name: "Vancouver", stadium: "BC Place", fifaStadiumName: "Vancouver Stadium", capacity: "54500", country: "Canada", matches: ["Group Stage", "Round of 32"], description: "Features a cable-supported retractable roof with waterfront views." },
         { name: "Guadalajara", stadium: "Estadio Akron", fifaStadiumName: "Estadio Guadalajara", capacity: "49850", country: "Mexico", matches: ["Group Stage", "Round of 32"], description: "Modern stadium known for its volcanic rock design." },
         { name: "Monterrey", stadium: "Estadio BBVA", fifaStadiumName: "Estadio Monterrey", capacity: "53500", country: "Mexico", matches: ["Group Stage", "Round of 32"], description: "Stunning mountain backdrop with modern facilities." },
-        { name: "Mexico City", stadium: "Estadio Azteca", fifaStadiumName: "Estadio Ciudad de México", capacity: "87000", country: "Mexico", matches: ["Group Stage", "Round of 32", "Round of 16", "Quarterfinal"], description: "Legendary venue that hosted two World Cup Finals (1970, 1986)." },
+        { name: "Mexico City", stadium: "Estadio Azteca", fifaStadiumName: "Estadio Ciudad de MÃ©xico", capacity: "87000", country: "Mexico", matches: ["Group Stage", "Round of 32", "Round of 16", "Quarterfinal"], description: "Legendary venue that hosted two World Cup Finals (1970, 1986)." },
       ];
       
       for (const city of citiesData) {
@@ -354,7 +354,7 @@ export async function registerRoutes(
       <body>
         <div class="container">
           <h1>Seed Players Database</h1>
-          <p>Click the button below to add 43 star players from major teams (Messi, Mbappé, Kane, Ronaldo, etc.)</p>
+          <p>Click the button below to add 43 star players from major teams (Messi, MbappÃ©, Kane, Ronaldo, etc.)</p>
           <button id="seedBtn" onclick="seedPlayers()">Seed Players Now</button>
           <div id="result"></div>
         </div>
@@ -406,14 +406,14 @@ export async function registerRoutes(
       const playersData = [
         // Argentina
         { teamId: teamIdMap["Argentina"], name: "Lionel Messi", position: "Forward", number: 10, dateOfBirth: "1987-06-24", height: "170cm", currentClub: "Inter Miami", isCaptain: 1, internationalCaps: 187, internationalGoals: 109, clubCareerGoals: 723, clubCareerAssists: 340, highlightVideoUrl: "https://www.youtube.com/results?search_query=lionel+messi+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Lionel_Messi" },
-        { teamId: teamIdMap["Argentina"], name: "Julián Álvarez", position: "Forward", number: 9, dateOfBirth: "2000-01-31", height: "170cm", currentClub: "Atlético Madrid", isCaptain: 0, internationalCaps: 42, internationalGoals: 11, clubCareerGoals: 85, clubCareerAssists: 35, highlightVideoUrl: "https://www.youtube.com/results?search_query=julian+alvarez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Juli%C3%A1n_%C3%81lvarez" },
-        { teamId: teamIdMap["Argentina"], name: "Emiliano Martínez", position: "Goalkeeper", number: 23, dateOfBirth: "1992-09-02", height: "195cm", currentClub: "Aston Villa", isCaptain: 0, internationalCaps: 48, internationalGoals: 0, clubCareerGoals: 0, clubCareerAssists: 2, highlightVideoUrl: "https://www.youtube.com/results?search_query=emiliano+martinez+saves", wikiUrl: "https://en.wikipedia.org/wiki/Emiliano_Mart%C3%ADnez" },
-        { teamId: teamIdMap["Argentina"], name: "Rodrigo De Paul", position: "Midfielder", number: 7, dateOfBirth: "1994-05-24", height: "180cm", currentClub: "Atlético Madrid", isCaptain: 0, internationalCaps: 62, internationalGoals: 3, clubCareerGoals: 45, clubCareerAssists: 60, highlightVideoUrl: "https://www.youtube.com/results?search_query=rodrigo+de+paul+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Rodrigo_De_Paul" },
+        { teamId: teamIdMap["Argentina"], name: "JuliÃ¡n Ãlvarez", position: "Forward", number: 9, dateOfBirth: "2000-01-31", height: "170cm", currentClub: "AtlÃ©tico Madrid", isCaptain: 0, internationalCaps: 42, internationalGoals: 11, clubCareerGoals: 85, clubCareerAssists: 35, highlightVideoUrl: "https://www.youtube.com/results?search_query=julian+alvarez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Juli%C3%A1n_%C3%81lvarez" },
+        { teamId: teamIdMap["Argentina"], name: "Emiliano MartÃ­nez", position: "Goalkeeper", number: 23, dateOfBirth: "1992-09-02", height: "195cm", currentClub: "Aston Villa", isCaptain: 0, internationalCaps: 48, internationalGoals: 0, clubCareerGoals: 0, clubCareerAssists: 2, highlightVideoUrl: "https://www.youtube.com/results?search_query=emiliano+martinez+saves", wikiUrl: "https://en.wikipedia.org/wiki/Emiliano_Mart%C3%ADnez" },
+        { teamId: teamIdMap["Argentina"], name: "Rodrigo De Paul", position: "Midfielder", number: 7, dateOfBirth: "1994-05-24", height: "180cm", currentClub: "AtlÃ©tico Madrid", isCaptain: 0, internationalCaps: 62, internationalGoals: 3, clubCareerGoals: 45, clubCareerAssists: 60, highlightVideoUrl: "https://www.youtube.com/results?search_query=rodrigo+de+paul+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Rodrigo_De_Paul" },
         
         // France
-        { teamId: teamIdMap["France"], name: "Kylian Mbappé", position: "Forward", number: 10, dateOfBirth: "1998-12-20", height: "178cm", currentClub: "Real Madrid", isCaptain: 1, internationalCaps: 86, internationalGoals: 48, clubCareerGoals: 285, clubCareerAssists: 125, highlightVideoUrl: "https://www.youtube.com/results?search_query=kylian+mbappe+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9" },
-        { teamId: teamIdMap["France"], name: "Antoine Griezmann", position: "Forward", number: 7, dateOfBirth: "1991-03-21", height: "176cm", currentClub: "Atlético Madrid", isCaptain: 0, internationalCaps: 137, internationalGoals: 46, clubCareerGoals: 220, clubCareerAssists: 95, highlightVideoUrl: "https://www.youtube.com/results?search_query=antoine+griezmann+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Antoine_Griezmann" },
-        { teamId: teamIdMap["France"], name: "Aurélien Tchouaméni", position: "Midfielder", number: 8, dateOfBirth: "2000-01-27", height: "187cm", currentClub: "Real Madrid", isCaptain: 0, internationalCaps: 40, internationalGoals: 2, clubCareerGoals: 12, clubCareerAssists: 8, highlightVideoUrl: "https://www.youtube.com/results?search_query=aurelien+tchouameni+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Aur%C3%A9lien_Tchouam%C3%A9ni" },
+        { teamId: teamIdMap["France"], name: "Kylian MbappÃ©", position: "Forward", number: 10, dateOfBirth: "1998-12-20", height: "178cm", currentClub: "Real Madrid", isCaptain: 1, internationalCaps: 86, internationalGoals: 48, clubCareerGoals: 285, clubCareerAssists: 125, highlightVideoUrl: "https://www.youtube.com/results?search_query=kylian+mbappe+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9" },
+        { teamId: teamIdMap["France"], name: "Antoine Griezmann", position: "Forward", number: 7, dateOfBirth: "1991-03-21", height: "176cm", currentClub: "AtlÃ©tico Madrid", isCaptain: 0, internationalCaps: 137, internationalGoals: 46, clubCareerGoals: 220, clubCareerAssists: 95, highlightVideoUrl: "https://www.youtube.com/results?search_query=antoine+griezmann+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Antoine_Griezmann" },
+        { teamId: teamIdMap["France"], name: "AurÃ©lien TchouamÃ©ni", position: "Midfielder", number: 8, dateOfBirth: "2000-01-27", height: "187cm", currentClub: "Real Madrid", isCaptain: 0, internationalCaps: 40, internationalGoals: 2, clubCareerGoals: 12, clubCareerAssists: 8, highlightVideoUrl: "https://www.youtube.com/results?search_query=aurelien+tchouameni+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Aur%C3%A9lien_Tchouam%C3%A9ni" },
         { teamId: teamIdMap["France"], name: "Mike Maignan", position: "Goalkeeper", number: 16, dateOfBirth: "1995-07-03", height: "191cm", currentClub: "AC Milan", isCaptain: 0, internationalCaps: 18, internationalGoals: 0, clubCareerGoals: 0, clubCareerAssists: 1, highlightVideoUrl: "https://www.youtube.com/results?search_query=mike+maignan+saves", wikiUrl: "https://en.wikipedia.org/wiki/Mike_Maignan" },
         
         // England
@@ -429,7 +429,7 @@ export async function registerRoutes(
         { teamId: teamIdMap["Spain"], name: "Nico Williams", position: "Winger", number: 17, dateOfBirth: "2002-07-12", height: "181cm", currentClub: "Athletic Bilbao", isCaptain: 0, internationalCaps: 22, internationalGoals: 3, clubCareerGoals: 20, clubCareerAssists: 25, highlightVideoUrl: "https://www.youtube.com/results?search_query=nico+williams+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Nico_Williams" },
         
         // Brazil
-        { teamId: teamIdMap["Brazil"], name: "Vinícius Júnior", position: "Winger", number: 7, dateOfBirth: "2000-07-12", height: "176cm", currentClub: "Real Madrid", isCaptain: 0, internationalCaps: 38, internationalGoals: 6, clubCareerGoals: 85, clubCareerAssists: 70, highlightVideoUrl: "https://www.youtube.com/results?search_query=vinicius+junior+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Vin%C3%ADcius_J%C3%BAnior" },
+        { teamId: teamIdMap["Brazil"], name: "VinÃ­cius JÃºnior", position: "Winger", number: 7, dateOfBirth: "2000-07-12", height: "176cm", currentClub: "Real Madrid", isCaptain: 0, internationalCaps: 38, internationalGoals: 6, clubCareerGoals: 85, clubCareerAssists: 70, highlightVideoUrl: "https://www.youtube.com/results?search_query=vinicius+junior+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Vin%C3%ADcius_J%C3%BAnior" },
         { teamId: teamIdMap["Brazil"], name: "Rodrygo", position: "Forward", number: 11, dateOfBirth: "2001-01-09", height: "174cm", currentClub: "Real Madrid", isCaptain: 0, internationalCaps: 28, internationalGoals: 7, clubCareerGoals: 50, clubCareerAssists: 35, highlightVideoUrl: "https://www.youtube.com/results?search_query=rodrygo+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Rodrygo" },
         { teamId: teamIdMap["Brazil"], name: "Raphinha", position: "Winger", number: 19, dateOfBirth: "1996-12-14", height: "176cm", currentClub: "Barcelona", isCaptain: 0, internationalCaps: 30, internationalGoals: 8, clubCareerGoals: 60, clubCareerAssists: 45, highlightVideoUrl: "https://www.youtube.com/results?search_query=raphinha+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Raphinha" },
         { teamId: teamIdMap["Brazil"], name: "Alisson Becker", position: "Goalkeeper", number: 1, dateOfBirth: "1992-10-02", height: "193cm", currentClub: "Liverpool", isCaptain: 0, internationalCaps: 70, internationalGoals: 0, clubCareerGoals: 1, clubCareerAssists: 3, highlightVideoUrl: "https://www.youtube.com/results?search_query=alisson+becker+saves", wikiUrl: "https://en.wikipedia.org/wiki/Alisson_Becker" },
@@ -438,13 +438,13 @@ export async function registerRoutes(
         { teamId: teamIdMap["Germany"], name: "Florian Wirtz", position: "Midfielder", number: 17, dateOfBirth: "2003-05-03", height: "176cm", currentClub: "Bayer Leverkusen", isCaptain: 0, internationalCaps: 28, internationalGoals: 5, clubCareerGoals: 50, clubCareerAssists: 45, highlightVideoUrl: "https://www.youtube.com/results?search_query=florian+wirtz+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Florian_Wirtz" },
         { teamId: teamIdMap["Germany"], name: "Jamal Musiala", position: "Midfielder", number: 10, dateOfBirth: "2003-02-26", height: "183cm", currentClub: "Bayern Munich", isCaptain: 0, internationalCaps: 38, internationalGoals: 6, clubCareerGoals: 45, clubCareerAssists: 30, highlightVideoUrl: "https://www.youtube.com/results?search_query=jamal+musiala+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Jamal_Musiala" },
         { teamId: teamIdMap["Germany"], name: "Kai Havertz", position: "Forward", number: 29, dateOfBirth: "1999-06-11", height: "193cm", currentClub: "Arsenal", isCaptain: 0, internationalCaps: 48, internationalGoals: 17, clubCareerGoals: 85, clubCareerAssists: 40, highlightVideoUrl: "https://www.youtube.com/results?search_query=kai+havertz+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Kai_Havertz" },
-        { teamId: teamIdMap["Germany"], name: "Antonio Rüdiger", position: "Defender", number: 2, dateOfBirth: "1993-03-03", height: "190cm", currentClub: "Real Madrid", isCaptain: 0, internationalCaps: 70, internationalGoals: 3, clubCareerGoals: 15, clubCareerAssists: 5, highlightVideoUrl: "https://www.youtube.com/results?search_query=antonio+rudiger+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Antonio_R%C3%BCdiger" },
+        { teamId: teamIdMap["Germany"], name: "Antonio RÃ¼diger", position: "Defender", number: 2, dateOfBirth: "1993-03-03", height: "190cm", currentClub: "Real Madrid", isCaptain: 0, internationalCaps: 70, internationalGoals: 3, clubCareerGoals: 15, clubCareerAssists: 5, highlightVideoUrl: "https://www.youtube.com/results?search_query=antonio+rudiger+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Antonio_R%C3%BCdiger" },
         
         // Portugal
         { teamId: teamIdMap["Portugal"], name: "Cristiano Ronaldo", position: "Forward", number: 7, dateOfBirth: "1985-02-05", height: "187cm", currentClub: "Al-Nassr", isCaptain: 1, internationalCaps: 214, internationalGoals: 135, clubCareerGoals: 735, clubCareerAssists: 240, highlightVideoUrl: "https://www.youtube.com/results?search_query=cristiano+ronaldo+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Cristiano_Ronaldo" },
         { teamId: teamIdMap["Portugal"], name: "Bruno Fernandes", position: "Midfielder", number: 8, dateOfBirth: "1994-09-08", height: "179cm", currentClub: "Manchester United", isCaptain: 0, internationalCaps: 72, internationalGoals: 14, clubCareerGoals: 120, clubCareerAssists: 110, highlightVideoUrl: "https://www.youtube.com/results?search_query=bruno+fernandes+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Bruno_Fernandes" },
-        { teamId: teamIdMap["Portugal"], name: "Rafael Leão", position: "Winger", number: 17, dateOfBirth: "1999-06-10", height: "188cm", currentClub: "AC Milan", isCaptain: 0, internationalCaps: 35, internationalGoals: 7, clubCareerGoals: 55, clubCareerAssists: 40, highlightVideoUrl: "https://www.youtube.com/results?search_query=rafael+leao+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Rafael_Le%C3%A3o" },
-        { teamId: teamIdMap["Portugal"], name: "Rúben Dias", position: "Defender", number: 4, dateOfBirth: "1997-05-14", height: "186cm", currentClub: "Manchester City", isCaptain: 0, internationalCaps: 56, internationalGoals: 1, clubCareerGoals: 8, clubCareerAssists: 5, highlightVideoUrl: "https://www.youtube.com/results?search_query=ruben+dias+highlights", wikiUrl: "https://en.wikipedia.org/wiki/R%C3%BAben_Dias" },
+        { teamId: teamIdMap["Portugal"], name: "Rafael LeÃ£o", position: "Winger", number: 17, dateOfBirth: "1999-06-10", height: "188cm", currentClub: "AC Milan", isCaptain: 0, internationalCaps: 35, internationalGoals: 7, clubCareerGoals: 55, clubCareerAssists: 40, highlightVideoUrl: "https://www.youtube.com/results?search_query=rafael+leao+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Rafael_Le%C3%A3o" },
+        { teamId: teamIdMap["Portugal"], name: "RÃºben Dias", position: "Defender", number: 4, dateOfBirth: "1997-05-14", height: "186cm", currentClub: "Manchester City", isCaptain: 0, internationalCaps: 56, internationalGoals: 1, clubCareerGoals: 8, clubCareerAssists: 5, highlightVideoUrl: "https://www.youtube.com/results?search_query=ruben+dias+highlights", wikiUrl: "https://en.wikipedia.org/wiki/R%C3%BAben_Dias" },
         
         // USA
         { teamId: teamIdMap["USA"], name: "Christian Pulisic", position: "Winger", number: 10, dateOfBirth: "1998-09-18", height: "177cm", currentClub: "AC Milan", isCaptain: 1, internationalCaps: 72, internationalGoals: 30, clubCareerGoals: 75, clubCareerAssists: 50, highlightVideoUrl: "https://www.youtube.com/results?search_query=christian+pulisic+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Christian_Pulisic" },
@@ -454,8 +454,8 @@ export async function registerRoutes(
         
         // Mexico
         { teamId: teamIdMap["Mexico"], name: "Hirving Lozano", position: "Winger", number: 22, dateOfBirth: "1995-07-30", height: "175cm", currentClub: "San Diego FC", isCaptain: 0, internationalCaps: 72, internationalGoals: 18, clubCareerGoals: 75, clubCareerAssists: 45, highlightVideoUrl: "https://www.youtube.com/results?search_query=hirving+lozano+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Hirving_Lozano" },
-        { teamId: teamIdMap["Mexico"], name: "Edson Álvarez", position: "Midfielder", number: 4, dateOfBirth: "1997-10-24", height: "187cm", currentClub: "West Ham", isCaptain: 1, internationalCaps: 68, internationalGoals: 2, clubCareerGoals: 12, clubCareerAssists: 8, highlightVideoUrl: "https://www.youtube.com/results?search_query=edson+alvarez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Edson_%C3%81lvarez" },
-        { teamId: teamIdMap["Mexico"], name: "Santiago Giménez", position: "Forward", number: 9, dateOfBirth: "2001-04-18", height: "183cm", currentClub: "Feyenoord", isCaptain: 0, internationalCaps: 28, internationalGoals: 8, clubCareerGoals: 50, clubCareerAssists: 15, highlightVideoUrl: "https://www.youtube.com/results?search_query=santiago+gimenez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Santiago_Gim%C3%A9nez" },
+        { teamId: teamIdMap["Mexico"], name: "Edson Ãlvarez", position: "Midfielder", number: 4, dateOfBirth: "1997-10-24", height: "187cm", currentClub: "West Ham", isCaptain: 1, internationalCaps: 68, internationalGoals: 2, clubCareerGoals: 12, clubCareerAssists: 8, highlightVideoUrl: "https://www.youtube.com/results?search_query=edson+alvarez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Edson_%C3%81lvarez" },
+        { teamId: teamIdMap["Mexico"], name: "Santiago GimÃ©nez", position: "Forward", number: 9, dateOfBirth: "2001-04-18", height: "183cm", currentClub: "Feyenoord", isCaptain: 0, internationalCaps: 28, internationalGoals: 8, clubCareerGoals: 50, clubCareerAssists: 15, highlightVideoUrl: "https://www.youtube.com/results?search_query=santiago+gimenez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Santiago_Gim%C3%A9nez" },
         { teamId: teamIdMap["Mexico"], name: "Guillermo Ochoa", position: "Goalkeeper", number: 13, dateOfBirth: "1985-07-13", height: "183cm", currentClub: "AVS Futebol", isCaptain: 0, internationalCaps: 145, internationalGoals: 0, clubCareerGoals: 0, clubCareerAssists: 0, highlightVideoUrl: "https://www.youtube.com/results?search_query=guillermo+ochoa+saves", wikiUrl: "https://en.wikipedia.org/wiki/Guillermo_Ochoa" },
         
         // Netherlands
@@ -511,23 +511,23 @@ export async function registerRoutes(
         { teamId: T("Belgium"), name: "Kevin De Bruyne", position: "Midfielder", number: 7, dateOfBirth: "1991-06-28", height: "181cm", currentClub: "Al-Qadsiah", isCaptain: 1, internationalCaps: 108, internationalGoals: 26, clubCareerGoals: 110, clubCareerAssists: 175, highlightVideoUrl: "https://www.youtube.com/results?search_query=kevin+de+bruyne+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Kevin_De_Bruyne" },
         { teamId: T("Belgium"), name: "Romelu Lukaku", position: "Forward", number: 9, dateOfBirth: "1993-05-13", height: "190cm", currentClub: "AS Roma", isCaptain: 0, internationalCaps: 116, internationalGoals: 77, clubCareerGoals: 350, clubCareerAssists: 80, highlightVideoUrl: "https://www.youtube.com/results?search_query=romelu+lukaku+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Romelu_Lukaku" },
         { teamId: T("Belgium"), name: "Thibaut Courtois", position: "Goalkeeper", number: 1, dateOfBirth: "1992-05-11", height: "199cm", currentClub: "Real Madrid", isCaptain: 0, internationalCaps: 102, internationalGoals: 0, clubCareerGoals: 0, clubCareerAssists: 1, highlightVideoUrl: "https://www.youtube.com/results?search_query=thibaut+courtois+saves", wikiUrl: "https://en.wikipedia.org/wiki/Thibaut_Courtois" },
-        { teamId: T("Belgium"), name: "Jérémy Doku", position: "Winger", number: 11, dateOfBirth: "2002-05-27", height: "170cm", currentClub: "Manchester City", isCaptain: 0, internationalCaps: 30, internationalGoals: 5, clubCareerGoals: 25, clubCareerAssists: 30, highlightVideoUrl: "https://www.youtube.com/results?search_query=jeremy+doku+highlights", wikiUrl: "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku" },
+        { teamId: T("Belgium"), name: "JÃ©rÃ©my Doku", position: "Winger", number: 11, dateOfBirth: "2002-05-27", height: "170cm", currentClub: "Manchester City", isCaptain: 0, internationalCaps: 30, internationalGoals: 5, clubCareerGoals: 25, clubCareerAssists: 30, highlightVideoUrl: "https://www.youtube.com/results?search_query=jeremy+doku+highlights", wikiUrl: "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku" },
 
         // Italy
         { teamId: T("Italy"), name: "Gianluigi Donnarumma", position: "Goalkeeper", number: 1, dateOfBirth: "1999-02-25", height: "196cm", currentClub: "PSG", isCaptain: 0, internationalCaps: 72, internationalGoals: 0, clubCareerGoals: 0, clubCareerAssists: 0, highlightVideoUrl: "https://www.youtube.com/results?search_query=donnarumma+saves", wikiUrl: "https://en.wikipedia.org/wiki/Gianluigi_Donnarumma" },
         { teamId: T("Italy"), name: "Federico Chiesa", position: "Winger", number: 7, dateOfBirth: "1997-10-25", height: "175cm", currentClub: "Liverpool", isCaptain: 0, internationalCaps: 48, internationalGoals: 14, clubCareerGoals: 60, clubCareerAssists: 40, highlightVideoUrl: "https://www.youtube.com/results?search_query=federico+chiesa+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Federico_Chiesa" },
-        { teamId: T("Italy"), name: "Nicolò Barella", position: "Midfielder", number: 18, dateOfBirth: "1997-02-07", height: "172cm", currentClub: "Inter Milan", isCaptain: 0, internationalCaps: 65, internationalGoals: 8, clubCareerGoals: 30, clubCareerAssists: 50, highlightVideoUrl: "https://www.youtube.com/results?search_query=nicolo+barella+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Nicol%C3%B2_Barella" },
+        { teamId: T("Italy"), name: "NicolÃ² Barella", position: "Midfielder", number: 18, dateOfBirth: "1997-02-07", height: "172cm", currentClub: "Inter Milan", isCaptain: 0, internationalCaps: 65, internationalGoals: 8, clubCareerGoals: 30, clubCareerAssists: 50, highlightVideoUrl: "https://www.youtube.com/results?search_query=nicolo+barella+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Nicol%C3%B2_Barella" },
         { teamId: T("Italy"), name: "Matteo Retegui", position: "Forward", number: 9, dateOfBirth: "1999-04-29", height: "186cm", currentClub: "Atalanta", isCaptain: 0, internationalCaps: 20, internationalGoals: 12, clubCareerGoals: 55, clubCareerAssists: 15, highlightVideoUrl: "https://www.youtube.com/results?search_query=matteo+retegui+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Matteo_Retegui" },
 
         // Croatia
-        { teamId: T("Croatia"), name: "Luka Modrić", position: "Midfielder", number: 10, dateOfBirth: "1985-09-09", height: "172cm", currentClub: "Real Madrid", isCaptain: 1, internationalCaps: 175, internationalGoals: 24, clubCareerGoals: 115, clubCareerAssists: 185, highlightVideoUrl: "https://www.youtube.com/results?search_query=luka+modric+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Luka_Modri%C4%87" },
-        { teamId: T("Croatia"), name: "Mateo Kovačić", position: "Midfielder", number: 8, dateOfBirth: "1994-05-06", height: "177cm", currentClub: "Manchester City", isCaptain: 0, internationalCaps: 92, internationalGoals: 4, clubCareerGoals: 30, clubCareerAssists: 55, highlightVideoUrl: "https://www.youtube.com/results?search_query=mateo+kovacic+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Mateo_Kova%C4%8Di%C4%87" },
-        { teamId: T("Croatia"), name: "Andrej Kramarić", position: "Forward", number: 9, dateOfBirth: "1991-06-19", height: "177cm", currentClub: "TSG Hoffenheim", isCaptain: 0, internationalCaps: 90, internationalGoals: 36, clubCareerGoals: 170, clubCareerAssists: 65, highlightVideoUrl: "https://www.youtube.com/results?search_query=andrej+kramaric+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Andrej_Kramarić" },
+        { teamId: T("Croatia"), name: "Luka ModriÄ‡", position: "Midfielder", number: 10, dateOfBirth: "1985-09-09", height: "172cm", currentClub: "Real Madrid", isCaptain: 1, internationalCaps: 175, internationalGoals: 24, clubCareerGoals: 115, clubCareerAssists: 185, highlightVideoUrl: "https://www.youtube.com/results?search_query=luka+modric+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Luka_Modri%C4%87" },
+        { teamId: T("Croatia"), name: "Mateo KovaÄiÄ‡", position: "Midfielder", number: 8, dateOfBirth: "1994-05-06", height: "177cm", currentClub: "Manchester City", isCaptain: 0, internationalCaps: 92, internationalGoals: 4, clubCareerGoals: 30, clubCareerAssists: 55, highlightVideoUrl: "https://www.youtube.com/results?search_query=mateo+kovacic+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Mateo_Kova%C4%8Di%C4%87" },
+        { teamId: T("Croatia"), name: "Andrej KramariÄ‡", position: "Forward", number: 9, dateOfBirth: "1991-06-19", height: "177cm", currentClub: "TSG Hoffenheim", isCaptain: 0, internationalCaps: 90, internationalGoals: 36, clubCareerGoals: 170, clubCareerAssists: 65, highlightVideoUrl: "https://www.youtube.com/results?search_query=andrej+kramaric+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Andrej_KramariÄ‡" },
 
         // Denmark
         { teamId: T("Denmark"), name: "Christian Eriksen", position: "Midfielder", number: 10, dateOfBirth: "1992-02-14", height: "182cm", currentClub: "Manchester United", isCaptain: 0, internationalCaps: 125, internationalGoals: 40, clubCareerGoals: 120, clubCareerAssists: 175, highlightVideoUrl: "https://www.youtube.com/results?search_query=christian+eriksen+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Christian_Eriksen" },
-        { teamId: T("Denmark"), name: "Pierre-Emile Højbjerg", position: "Midfielder", number: 23, dateOfBirth: "1995-08-05", height: "187cm", currentClub: "Marseille", isCaptain: 1, internationalCaps: 80, internationalGoals: 9, clubCareerGoals: 35, clubCareerAssists: 40, highlightVideoUrl: "https://www.youtube.com/results?search_query=hojbjerg+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Pierre-Emile_H%C3%B8jbjerg" },
-        { teamId: T("Denmark"), name: "Rasmus Højlund", position: "Forward", number: 9, dateOfBirth: "2003-02-04", height: "191cm", currentClub: "Manchester United", isCaptain: 0, internationalCaps: 22, internationalGoals: 10, clubCareerGoals: 40, clubCareerAssists: 15, highlightVideoUrl: "https://www.youtube.com/results?search_query=rasmus+hojlund+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Rasmus_H%C3%B8jlund" },
+        { teamId: T("Denmark"), name: "Pierre-Emile HÃ¸jbjerg", position: "Midfielder", number: 23, dateOfBirth: "1995-08-05", height: "187cm", currentClub: "Marseille", isCaptain: 1, internationalCaps: 80, internationalGoals: 9, clubCareerGoals: 35, clubCareerAssists: 40, highlightVideoUrl: "https://www.youtube.com/results?search_query=hojbjerg+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Pierre-Emile_H%C3%B8jbjerg" },
+        { teamId: T("Denmark"), name: "Rasmus HÃ¸jlund", position: "Forward", number: 9, dateOfBirth: "2003-02-04", height: "191cm", currentClub: "Manchester United", isCaptain: 0, internationalCaps: 22, internationalGoals: 10, clubCareerGoals: 40, clubCareerAssists: 15, highlightVideoUrl: "https://www.youtube.com/results?search_query=rasmus+hojlund+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Rasmus_H%C3%B8jlund" },
 
         // Switzerland
         { teamId: T("Switzerland"), name: "Granit Xhaka", position: "Midfielder", number: 10, dateOfBirth: "1992-09-27", height: "186cm", currentClub: "Bayer Leverkusen", isCaptain: 1, internationalCaps: 120, internationalGoals: 16, clubCareerGoals: 40, clubCareerAssists: 55, highlightVideoUrl: "https://www.youtube.com/results?search_query=granit+xhaka+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Granit_Xhaka" },
@@ -537,22 +537,22 @@ export async function registerRoutes(
         // Austria
         { teamId: T("Austria"), name: "David Alaba", position: "Defender", number: 6, dateOfBirth: "1992-06-24", height: "180cm", currentClub: "Real Madrid", isCaptain: 1, internationalCaps: 108, internationalGoals: 16, clubCareerGoals: 35, clubCareerAssists: 55, highlightVideoUrl: "https://www.youtube.com/results?search_query=david+alaba+highlights", wikiUrl: "https://en.wikipedia.org/wiki/David_Alaba" },
         { teamId: T("Austria"), name: "Marcel Sabitzer", position: "Midfielder", number: 8, dateOfBirth: "1994-03-17", height: "177cm", currentClub: "Borussia Dortmund", isCaptain: 0, internationalCaps: 68, internationalGoals: 16, clubCareerGoals: 65, clubCareerAssists: 45, highlightVideoUrl: "https://www.youtube.com/results?search_query=marcel+sabitzer+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Marcel_Sabitzer" },
-        { teamId: T("Austria"), name: "Marko Arnautović", position: "Forward", number: 9, dateOfBirth: "1989-04-19", height: "192cm", currentClub: "Inter Milan", isCaptain: 0, internationalCaps: 110, internationalGoals: 37, clubCareerGoals: 165, clubCareerAssists: 70, highlightVideoUrl: "https://www.youtube.com/results?search_query=marko+arnautovic+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Marko_Arnautovi%C4%87" },
+        { teamId: T("Austria"), name: "Marko ArnautoviÄ‡", position: "Forward", number: 9, dateOfBirth: "1989-04-19", height: "192cm", currentClub: "Inter Milan", isCaptain: 0, internationalCaps: 110, internationalGoals: 37, clubCareerGoals: 165, clubCareerAssists: 70, highlightVideoUrl: "https://www.youtube.com/results?search_query=marko+arnautovic+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Marko_Arnautovi%C4%87" },
 
         // Serbia
-        { teamId: T("Serbia"), name: "Dušan Vlahović", position: "Forward", number: 9, dateOfBirth: "2000-01-28", height: "190cm", currentClub: "Juventus", isCaptain: 0, internationalCaps: 42, internationalGoals: 22, clubCareerGoals: 115, clubCareerAssists: 20, highlightVideoUrl: "https://www.youtube.com/results?search_query=dusan+vlahovic+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Du%C5%A1an_Vlahovi%C4%87" },
-        { teamId: T("Serbia"), name: "Dušan Tadić", position: "Midfielder", number: 10, dateOfBirth: "1988-11-20", height: "181cm", currentClub: "Fenerbahçe", isCaptain: 1, internationalCaps: 102, internationalGoals: 20, clubCareerGoals: 135, clubCareerAssists: 175, highlightVideoUrl: "https://www.youtube.com/results?search_query=dusan+tadic+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Du%C5%A1an_Tadi%C4%87" },
-        { teamId: T("Serbia"), name: "Aleksandar Mitrović", position: "Forward", number: 9, dateOfBirth: "1994-09-16", height: "189cm", currentClub: "Al-Hilal", isCaptain: 0, internationalCaps: 88, internationalGoals: 58, clubCareerGoals: 230, clubCareerAssists: 45, highlightVideoUrl: "https://www.youtube.com/results?search_query=aleksandar+mitrovic+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Aleksandar_Mitrovi%C4%87" },
+        { teamId: T("Serbia"), name: "DuÅ¡an VlahoviÄ‡", position: "Forward", number: 9, dateOfBirth: "2000-01-28", height: "190cm", currentClub: "Juventus", isCaptain: 0, internationalCaps: 42, internationalGoals: 22, clubCareerGoals: 115, clubCareerAssists: 20, highlightVideoUrl: "https://www.youtube.com/results?search_query=dusan+vlahovic+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Du%C5%A1an_Vlahovi%C4%87" },
+        { teamId: T("Serbia"), name: "DuÅ¡an TadiÄ‡", position: "Midfielder", number: 10, dateOfBirth: "1988-11-20", height: "181cm", currentClub: "FenerbahÃ§e", isCaptain: 1, internationalCaps: 102, internationalGoals: 20, clubCareerGoals: 135, clubCareerAssists: 175, highlightVideoUrl: "https://www.youtube.com/results?search_query=dusan+tadic+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Du%C5%A1an_Tadi%C4%87" },
+        { teamId: T("Serbia"), name: "Aleksandar MitroviÄ‡", position: "Forward", number: 9, dateOfBirth: "1994-09-16", height: "189cm", currentClub: "Al-Hilal", isCaptain: 0, internationalCaps: 88, internationalGoals: 58, clubCareerGoals: 230, clubCareerAssists: 45, highlightVideoUrl: "https://www.youtube.com/results?search_query=aleksandar+mitrovic+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Aleksandar_Mitrovi%C4%87" },
 
         // Poland
         { teamId: T("Poland"), name: "Robert Lewandowski", position: "Forward", number: 9, dateOfBirth: "1988-08-21", height: "185cm", currentClub: "Barcelona", isCaptain: 1, internationalCaps: 150, internationalGoals: 82, clubCareerGoals: 650, clubCareerAssists: 175, highlightVideoUrl: "https://www.youtube.com/results?search_query=robert+lewandowski+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Robert_Lewandowski" },
-        { teamId: T("Poland"), name: "Piotr Zieliński", position: "Midfielder", number: 20, dateOfBirth: "1994-05-20", height: "180cm", currentClub: "Inter Milan", isCaptain: 0, internationalCaps: 82, internationalGoals: 18, clubCareerGoals: 60, clubCareerAssists: 80, highlightVideoUrl: "https://www.youtube.com/results?search_query=piotr+zielinski+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Piotr_Zieli%C5%84ski" },
-        { teamId: T("Poland"), name: "Wojciech Szczęsny", position: "Goalkeeper", number: 1, dateOfBirth: "1990-04-18", height: "196cm", currentClub: "Barcelona", isCaptain: 0, internationalCaps: 84, internationalGoals: 0, clubCareerGoals: 0, clubCareerAssists: 0, highlightVideoUrl: "https://www.youtube.com/results?search_query=szczesny+saves", wikiUrl: "https://en.wikipedia.org/wiki/Wojciech_Szcz%C4%99sny" },
+        { teamId: T("Poland"), name: "Piotr ZieliÅ„ski", position: "Midfielder", number: 20, dateOfBirth: "1994-05-20", height: "180cm", currentClub: "Inter Milan", isCaptain: 0, internationalCaps: 82, internationalGoals: 18, clubCareerGoals: 60, clubCareerAssists: 80, highlightVideoUrl: "https://www.youtube.com/results?search_query=piotr+zielinski+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Piotr_Zieli%C5%84ski" },
+        { teamId: T("Poland"), name: "Wojciech SzczÄ™sny", position: "Goalkeeper", number: 1, dateOfBirth: "1990-04-18", height: "196cm", currentClub: "Barcelona", isCaptain: 0, internationalCaps: 84, internationalGoals: 0, clubCareerGoals: 0, clubCareerAssists: 0, highlightVideoUrl: "https://www.youtube.com/results?search_query=szczesny+saves", wikiUrl: "https://en.wikipedia.org/wiki/Wojciech_Szcz%C4%99sny" },
 
         // Norway
         { teamId: T("Norway"), name: "Erling Haaland", position: "Forward", number: 9, dateOfBirth: "2000-07-21", height: "194cm", currentClub: "Manchester City", isCaptain: 0, internationalCaps: 40, internationalGoals: 32, clubCareerGoals: 220, clubCareerAssists: 45, highlightVideoUrl: "https://www.youtube.com/results?search_query=erling+haaland+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Erling_Haaland" },
-        { teamId: T("Norway"), name: "Martin Ødegaard", position: "Midfielder", number: 8, dateOfBirth: "1998-12-17", height: "178cm", currentClub: "Arsenal", isCaptain: 1, internationalCaps: 68, internationalGoals: 14, clubCareerGoals: 55, clubCareerAssists: 65, highlightVideoUrl: "https://www.youtube.com/results?search_query=martin+odegaard+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Martin_%C3%98degaard" },
-        { teamId: T("Norway"), name: "Alexander Sørloth", position: "Forward", number: 14, dateOfBirth: "1995-12-05", height: "196cm", currentClub: "Atlético Madrid", isCaptain: 0, internationalCaps: 52, internationalGoals: 21, clubCareerGoals: 100, clubCareerAssists: 20, highlightVideoUrl: "https://www.youtube.com/results?search_query=alexander+sorloth+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Alexander_S%C3%B8rloth" },
+        { teamId: T("Norway"), name: "Martin Ã˜degaard", position: "Midfielder", number: 8, dateOfBirth: "1998-12-17", height: "178cm", currentClub: "Arsenal", isCaptain: 1, internationalCaps: 68, internationalGoals: 14, clubCareerGoals: 55, clubCareerAssists: 65, highlightVideoUrl: "https://www.youtube.com/results?search_query=martin+odegaard+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Martin_%C3%98degaard" },
+        { teamId: T("Norway"), name: "Alexander SÃ¸rloth", position: "Forward", number: 14, dateOfBirth: "1995-12-05", height: "196cm", currentClub: "AtlÃ©tico Madrid", isCaptain: 0, internationalCaps: 52, internationalGoals: 21, clubCareerGoals: 100, clubCareerAssists: 20, highlightVideoUrl: "https://www.youtube.com/results?search_query=alexander+sorloth+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Alexander_S%C3%B8rloth" },
 
         // Scotland
         { teamId: T("Scotland"), name: "Andrew Robertson", position: "Defender", number: 3, dateOfBirth: "1994-03-11", height: "178cm", currentClub: "Liverpool", isCaptain: 1, internationalCaps: 72, internationalGoals: 4, clubCareerGoals: 5, clubCareerAssists: 60, highlightVideoUrl: "https://www.youtube.com/results?search_query=andrew+robertson+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Andrew_Robertson" },
@@ -561,11 +561,11 @@ export async function registerRoutes(
 
         // Morocco
         { teamId: T("Morocco"), name: "Achraf Hakimi", position: "Defender", number: 2, dateOfBirth: "1998-11-04", height: "181cm", currentClub: "PSG", isCaptain: 1, internationalCaps: 78, internationalGoals: 12, clubCareerGoals: 30, clubCareerAssists: 75, highlightVideoUrl: "https://www.youtube.com/results?search_query=achraf+hakimi+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Achraf_Hakimi" },
-        { teamId: T("Morocco"), name: "Youssef En-Nesyri", position: "Forward", number: 9, dateOfBirth: "1997-06-01", height: "189cm", currentClub: "Fenerbahçe", isCaptain: 0, internationalCaps: 58, internationalGoals: 26, clubCareerGoals: 90, clubCareerAssists: 25, highlightVideoUrl: "https://www.youtube.com/results?search_query=youssef+en-nesyri+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Youssef_En-Nesyri" },
+        { teamId: T("Morocco"), name: "Youssef En-Nesyri", position: "Forward", number: 9, dateOfBirth: "1997-06-01", height: "189cm", currentClub: "FenerbahÃ§e", isCaptain: 0, internationalCaps: 58, internationalGoals: 26, clubCareerGoals: 90, clubCareerAssists: 25, highlightVideoUrl: "https://www.youtube.com/results?search_query=youssef+en-nesyri+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Youssef_En-Nesyri" },
         { teamId: T("Morocco"), name: "Hakim Ziyech", position: "Winger", number: 7, dateOfBirth: "1993-03-19", height: "181cm", currentClub: "Galatasaray", isCaptain: 0, internationalCaps: 62, internationalGoals: 24, clubCareerGoals: 95, clubCareerAssists: 85, highlightVideoUrl: "https://www.youtube.com/results?search_query=hakim+ziyech+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Hakim_Ziyech" },
 
         // Senegal
-        { teamId: T("Senegal"), name: "Sadio Mané", position: "Forward", number: 10, dateOfBirth: "1992-04-10", height: "175cm", currentClub: "Al-Nassr", isCaptain: 1, internationalCaps: 102, internationalGoals: 36, clubCareerGoals: 280, clubCareerAssists: 105, highlightVideoUrl: "https://www.youtube.com/results?search_query=sadio+mane+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Sadio_Man%C3%A9" },
+        { teamId: T("Senegal"), name: "Sadio ManÃ©", position: "Forward", number: 10, dateOfBirth: "1992-04-10", height: "175cm", currentClub: "Al-Nassr", isCaptain: 1, internationalCaps: 102, internationalGoals: 36, clubCareerGoals: 280, clubCareerAssists: 105, highlightVideoUrl: "https://www.youtube.com/results?search_query=sadio+mane+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Sadio_Man%C3%A9" },
         { teamId: T("Senegal"), name: "Kalidou Koulibaly", position: "Defender", number: 3, dateOfBirth: "1991-06-20", height: "187cm", currentClub: "Al-Hilal", isCaptain: 0, internationalCaps: 78, internationalGoals: 5, clubCareerGoals: 20, clubCareerAssists: 8, highlightVideoUrl: "https://www.youtube.com/results?search_query=kalidou+koulibaly+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Kalidou_Koulibaly" },
         { teamId: T("Senegal"), name: "Idrissa Gueye", position: "Midfielder", number: 14, dateOfBirth: "1989-09-26", height: "174cm", currentClub: "Everton", isCaptain: 0, internationalCaps: 90, internationalGoals: 5, clubCareerGoals: 25, clubCareerAssists: 30, highlightVideoUrl: "https://www.youtube.com/results?search_query=idrissa+gueye+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Idrissa_Gueye" },
 
@@ -575,14 +575,14 @@ export async function registerRoutes(
         { teamId: T("Nigeria"), name: "Ademola Lookman", position: "Winger", number: 11, dateOfBirth: "1997-10-20", height: "175cm", currentClub: "Atalanta", isCaptain: 0, internationalCaps: 30, internationalGoals: 12, clubCareerGoals: 55, clubCareerAssists: 30, highlightVideoUrl: "https://www.youtube.com/results?search_query=ademola+lookman+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Ademola_Lookman" },
 
         // Colombia
-        { teamId: T("Colombia"), name: "Luis Díaz", position: "Winger", number: 7, dateOfBirth: "1997-01-13", height: "178cm", currentClub: "Liverpool", isCaptain: 0, internationalCaps: 55, internationalGoals: 20, clubCareerGoals: 75, clubCareerAssists: 35, highlightVideoUrl: "https://www.youtube.com/results?search_query=luis+diaz+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Luis_D%C3%ADaz_(footballer)" },
-        { teamId: T("Colombia"), name: "James Rodríguez", position: "Midfielder", number: 10, dateOfBirth: "1991-07-12", height: "181cm", currentClub: "Rayo Vallecano", isCaptain: 0, internationalCaps: 105, internationalGoals: 34, clubCareerGoals: 90, clubCareerAssists: 115, highlightVideoUrl: "https://www.youtube.com/results?search_query=james+rodriguez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/James_Rodr%C3%ADguez" },
+        { teamId: T("Colombia"), name: "Luis DÃ­az", position: "Winger", number: 7, dateOfBirth: "1997-01-13", height: "178cm", currentClub: "Liverpool", isCaptain: 0, internationalCaps: 55, internationalGoals: 20, clubCareerGoals: 75, clubCareerAssists: 35, highlightVideoUrl: "https://www.youtube.com/results?search_query=luis+diaz+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Luis_D%C3%ADaz_(footballer)" },
+        { teamId: T("Colombia"), name: "James RodrÃ­guez", position: "Midfielder", number: 10, dateOfBirth: "1991-07-12", height: "181cm", currentClub: "Rayo Vallecano", isCaptain: 0, internationalCaps: 105, internationalGoals: 34, clubCareerGoals: 90, clubCareerAssists: 115, highlightVideoUrl: "https://www.youtube.com/results?search_query=james+rodriguez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/James_Rodr%C3%ADguez" },
         { teamId: T("Colombia"), name: "Falcao", position: "Forward", number: 9, dateOfBirth: "1986-02-10", height: "177cm", currentClub: "Rayo Vallecano", isCaptain: 1, internationalCaps: 109, internationalGoals: 42, clubCareerGoals: 380, clubCareerAssists: 75, highlightVideoUrl: "https://www.youtube.com/results?search_query=falcao+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Radamel_Falcao" },
 
         // Uruguay
-        { teamId: T("Uruguay"), name: "Darwin Núñez", position: "Forward", number: 9, dateOfBirth: "1999-06-24", height: "187cm", currentClub: "Liverpool", isCaptain: 0, internationalCaps: 42, internationalGoals: 20, clubCareerGoals: 85, clubCareerAssists: 25, highlightVideoUrl: "https://www.youtube.com/results?search_query=darwin+nunez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Darwin_N%C3%BA%C3%B1ez" },
+        { teamId: T("Uruguay"), name: "Darwin NÃºÃ±ez", position: "Forward", number: 9, dateOfBirth: "1999-06-24", height: "187cm", currentClub: "Liverpool", isCaptain: 0, internationalCaps: 42, internationalGoals: 20, clubCareerGoals: 85, clubCareerAssists: 25, highlightVideoUrl: "https://www.youtube.com/results?search_query=darwin+nunez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Darwin_N%C3%BA%C3%B1ez" },
         { teamId: T("Uruguay"), name: "Rodrigo Bentancur", position: "Midfielder", number: 8, dateOfBirth: "1997-06-25", height: "187cm", currentClub: "Tottenham", isCaptain: 0, internationalCaps: 52, internationalGoals: 3, clubCareerGoals: 15, clubCareerAssists: 20, highlightVideoUrl: "https://www.youtube.com/results?search_query=rodrigo+bentancur+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Rodrigo_Bentancur" },
-        { teamId: T("Uruguay"), name: "Luis Suárez", position: "Forward", number: 9, dateOfBirth: "1987-01-24", height: "182cm", currentClub: "River Plate", isCaptain: 1, internationalCaps: 138, internationalGoals: 68, clubCareerGoals: 490, clubCareerAssists: 185, highlightVideoUrl: "https://www.youtube.com/results?search_query=luis+suarez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez" },
+        { teamId: T("Uruguay"), name: "Luis SuÃ¡rez", position: "Forward", number: 9, dateOfBirth: "1987-01-24", height: "182cm", currentClub: "River Plate", isCaptain: 1, internationalCaps: 138, internationalGoals: 68, clubCareerGoals: 490, clubCareerAssists: 185, highlightVideoUrl: "https://www.youtube.com/results?search_query=luis+suarez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez" },
 
         // Canada
         { teamId: T("Canada"), name: "Alphonso Davies", position: "Defender", number: 3, dateOfBirth: "2000-11-02", height: "180cm", currentClub: "Bayern Munich", isCaptain: 0, internationalCaps: 58, internationalGoals: 14, clubCareerGoals: 25, clubCareerAssists: 65, highlightVideoUrl: "https://www.youtube.com/results?search_query=alphonso+davies+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Alphonso_Davies" },
@@ -596,7 +596,7 @@ export async function registerRoutes(
 
         // Ecuador
         { teamId: T("Ecuador"), name: "Enner Valencia", position: "Forward", number: 13, dateOfBirth: "1989-11-04", height: "176cm", currentClub: "Internacional", isCaptain: 1, internationalCaps: 78, internationalGoals: 42, clubCareerGoals: 145, clubCareerAssists: 35, highlightVideoUrl: "https://www.youtube.com/results?search_query=enner+valencia+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Enner_Valencia" },
-        { teamId: T("Ecuador"), name: "Moisés Caicedo", position: "Midfielder", number: 10, dateOfBirth: "2001-11-02", height: "178cm", currentClub: "Chelsea", isCaptain: 0, internationalCaps: 40, internationalGoals: 4, clubCareerGoals: 12, clubCareerAssists: 15, highlightVideoUrl: "https://www.youtube.com/results?search_query=moises+caicedo+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Mois%C3%A9s_Caicedo" },
+        { teamId: T("Ecuador"), name: "MoisÃ©s Caicedo", position: "Midfielder", number: 10, dateOfBirth: "2001-11-02", height: "178cm", currentClub: "Chelsea", isCaptain: 0, internationalCaps: 40, internationalGoals: 4, clubCareerGoals: 12, clubCareerAssists: 15, highlightVideoUrl: "https://www.youtube.com/results?search_query=moises+caicedo+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Mois%C3%A9s_Caicedo" },
         { teamId: T("Ecuador"), name: "Gonzalo Plata", position: "Winger", number: 11, dateOfBirth: "2000-11-01", height: "173cm", currentClub: "Al-Qadsiah", isCaptain: 0, internationalCaps: 32, internationalGoals: 8, clubCareerGoals: 35, clubCareerAssists: 20, highlightVideoUrl: "https://www.youtube.com/results?search_query=gonzalo+plata+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Gonzalo_Plata" },
 
         // Iran
@@ -615,13 +615,13 @@ export async function registerRoutes(
         { teamId: T("Australia"), name: "Mitchell Duke", position: "Forward", number: 9, dateOfBirth: "1991-01-18", height: "185cm", currentClub: "Fagiano Okayama", isCaptain: 0, internationalCaps: 38, internationalGoals: 8, clubCareerGoals: 70, clubCareerAssists: 20, highlightVideoUrl: "https://www.youtube.com/results?search_query=mitchell+duke+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Mitchell_Duke" },
 
         // Venezuela
-        { teamId: T("Venezuela"), name: "Jhonder Cádiz", position: "Forward", number: 9, dateOfBirth: "1995-12-18", height: "185cm", currentClub: "Club Brugge", isCaptain: 0, internationalCaps: 40, internationalGoals: 14, clubCareerGoals: 70, clubCareerAssists: 20, highlightVideoUrl: "https://www.youtube.com/results?search_query=jhonder+cadiz+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Jhonder_C%C3%A1diz" },
+        { teamId: T("Venezuela"), name: "Jhonder CÃ¡diz", position: "Forward", number: 9, dateOfBirth: "1995-12-18", height: "185cm", currentClub: "Club Brugge", isCaptain: 0, internationalCaps: 40, internationalGoals: 14, clubCareerGoals: 70, clubCareerAssists: 20, highlightVideoUrl: "https://www.youtube.com/results?search_query=jhonder+cadiz+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Jhonder_C%C3%A1diz" },
         { teamId: T("Venezuela"), name: "Yeferson Soteldo", position: "Winger", number: 10, dateOfBirth: "1997-05-02", height: "162cm", currentClub: "Al-Qadsiah", isCaptain: 0, internationalCaps: 45, internationalGoals: 10, clubCareerGoals: 45, clubCareerAssists: 40, highlightVideoUrl: "https://www.youtube.com/results?search_query=yeferson+soteldo+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Yeferson_Soteldo" },
         { teamId: T("Venezuela"), name: "Jefferson Savarino", position: "Winger", number: 11, dateOfBirth: "1996-02-17", height: "175cm", currentClub: "Botafogo", isCaptain: 0, internationalCaps: 52, internationalGoals: 8, clubCareerGoals: 55, clubCareerAssists: 35, highlightVideoUrl: "https://www.youtube.com/results?search_query=jefferson+savarino+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Jefferson_Savarino" },
 
         // Paraguay
-        { teamId: T("Paraguay"), name: "Miguel Almirón", position: "Midfielder", number: 10, dateOfBirth: "1994-02-10", height: "174cm", currentClub: "Atlanta United", isCaptain: 0, internationalCaps: 62, internationalGoals: 14, clubCareerGoals: 65, clubCareerAssists: 55, highlightVideoUrl: "https://www.youtube.com/results?search_query=miguel+almiron+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Miguel_Almir%C3%B3n" },
-        { teamId: T("Paraguay"), name: "Gustavo Gómez", position: "Defender", number: 4, dateOfBirth: "1993-05-06", height: "190cm", currentClub: "Palmeiras", isCaptain: 1, internationalCaps: 65, internationalGoals: 7, clubCareerGoals: 20, clubCareerAssists: 8, highlightVideoUrl: "https://www.youtube.com/results?search_query=gustavo+gomez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Gustavo_G%C3%B3mez" },
+        { teamId: T("Paraguay"), name: "Miguel AlmirÃ³n", position: "Midfielder", number: 10, dateOfBirth: "1994-02-10", height: "174cm", currentClub: "Atlanta United", isCaptain: 0, internationalCaps: 62, internationalGoals: 14, clubCareerGoals: 65, clubCareerAssists: 55, highlightVideoUrl: "https://www.youtube.com/results?search_query=miguel+almiron+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Miguel_Almir%C3%B3n" },
+        { teamId: T("Paraguay"), name: "Gustavo GÃ³mez", position: "Defender", number: 4, dateOfBirth: "1993-05-06", height: "190cm", currentClub: "Palmeiras", isCaptain: 1, internationalCaps: 65, internationalGoals: 7, clubCareerGoals: 20, clubCareerAssists: 8, highlightVideoUrl: "https://www.youtube.com/results?search_query=gustavo+gomez+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Gustavo_G%C3%B3mez" },
         { teamId: T("Paraguay"), name: "Julio Enciso", position: "Winger", number: 11, dateOfBirth: "2003-01-23", height: "176cm", currentClub: "Brighton", isCaptain: 0, internationalCaps: 25, internationalGoals: 6, clubCareerGoals: 20, clubCareerAssists: 12, highlightVideoUrl: "https://www.youtube.com/results?search_query=julio+enciso+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Julio_Enciso" },
 
         // Panama
@@ -642,9 +642,9 @@ export async function registerRoutes(
         { teamId: T("Iraq"), name: "Amjad Attwan", position: "Midfielder", number: 10, dateOfBirth: "1998-03-15", height: "178cm", currentClub: "Al-Shorta", isCaptain: 1, internationalCaps: 35, internationalGoals: 6, clubCareerGoals: 25, clubCareerAssists: 18, highlightVideoUrl: "https://www.youtube.com/results?search_query=iraq+national+football+team", wikiUrl: "https://en.wikipedia.org/wiki/Iraq_national_football_team" },
 
         // Ivory Coast
-        { teamId: T("Ivory Coast"), name: "Sébastien Haller", position: "Forward", number: 9, dateOfBirth: "1994-06-22", height: "190cm", currentClub: "Borussia Dortmund", isCaptain: 0, internationalCaps: 42, internationalGoals: 15, clubCareerGoals: 115, clubCareerAssists: 30, highlightVideoUrl: "https://www.youtube.com/results?search_query=sebastien+haller+highlights", wikiUrl: "https://en.wikipedia.org/wiki/S%C3%A9bastien_Haller" },
-        { teamId: T("Ivory Coast"), name: "Franck Kessié", position: "Midfielder", number: 5, dateOfBirth: "1996-12-19", height: "183cm", currentClub: "Al-Ahli", isCaptain: 0, internationalCaps: 68, internationalGoals: 18, clubCareerGoals: 55, clubCareerAssists: 30, highlightVideoUrl: "https://www.youtube.com/results?search_query=franck+kessie+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Franck_Kessi%C3%A9" },
-        { teamId: T("Ivory Coast"), name: "Nicolas Pépé", position: "Winger", number: 7, dateOfBirth: "1995-05-29", height: "183cm", currentClub: "Trabzonspor", isCaptain: 0, internationalCaps: 38, internationalGoals: 12, clubCareerGoals: 85, clubCareerAssists: 50, highlightVideoUrl: "https://www.youtube.com/results?search_query=nicolas+pepe+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Nicolas_P%C3%A9p%C3%A9" },
+        { teamId: T("Ivory Coast"), name: "SÃ©bastien Haller", position: "Forward", number: 9, dateOfBirth: "1994-06-22", height: "190cm", currentClub: "Borussia Dortmund", isCaptain: 0, internationalCaps: 42, internationalGoals: 15, clubCareerGoals: 115, clubCareerAssists: 30, highlightVideoUrl: "https://www.youtube.com/results?search_query=sebastien+haller+highlights", wikiUrl: "https://en.wikipedia.org/wiki/S%C3%A9bastien_Haller" },
+        { teamId: T("Ivory Coast"), name: "Franck KessiÃ©", position: "Midfielder", number: 5, dateOfBirth: "1996-12-19", height: "183cm", currentClub: "Al-Ahli", isCaptain: 0, internationalCaps: 68, internationalGoals: 18, clubCareerGoals: 55, clubCareerAssists: 30, highlightVideoUrl: "https://www.youtube.com/results?search_query=franck+kessie+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Franck_Kessi%C3%A9" },
+        { teamId: T("Ivory Coast"), name: "Nicolas PÃ©pÃ©", position: "Winger", number: 7, dateOfBirth: "1995-05-29", height: "183cm", currentClub: "Trabzonspor", isCaptain: 0, internationalCaps: 38, internationalGoals: 12, clubCareerGoals: 85, clubCareerAssists: 50, highlightVideoUrl: "https://www.youtube.com/results?search_query=nicolas+pepe+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Nicolas_P%C3%A9p%C3%A9" },
 
         // South Africa
         { teamId: T("South Africa"), name: "Percy Tau", position: "Winger", number: 10, dateOfBirth: "1994-05-13", height: "172cm", currentClub: "Al Ahly", isCaptain: 0, internationalCaps: 60, internationalGoals: 14, clubCareerGoals: 55, clubCareerAssists: 35, highlightVideoUrl: "https://www.youtube.com/results?search_query=percy+tau+highlights", wikiUrl: "https://en.wikipedia.org/wiki/Percy_Tau" },
@@ -724,7 +724,7 @@ export async function registerRoutes(
         { cityName: "Vancouver", fifaStadiumName: "Vancouver Stadium" },
         { cityName: "Guadalajara", fifaStadiumName: "Estadio Guadalajara" },
         { cityName: "Monterrey", fifaStadiumName: "Estadio Monterrey" },
-        { cityName: "Mexico City", fifaStadiumName: "Estadio Ciudad de México" },
+        { cityName: "Mexico City", fifaStadiumName: "Estadio Ciudad de MÃ©xico" },
       ];
 
       let updated = 0;
@@ -1313,7 +1313,7 @@ Remember: You're helping fans have the best World Cup experience of their lives!
 
   app.post("/api/concierge/chat", async (req, res) => {
     try {
-      const openaiApiKey = process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY;
+      const openaiApiKey = process.env.OPENAI_API_KEY;
       if (!openaiApiKey) {
         return res.status(503).json({ error: "AI Concierge is not configured. Please set up OpenAI API key." });
       }
@@ -1360,7 +1360,6 @@ Remember: You're helping fans have the best World Cup experience of their lives!
       const OpenAI = (await import("openai")).default;
       const openai = new OpenAI({
         apiKey: openaiApiKey,
-        baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
       });
 
       const completion = await openai.chat.completions.create({
@@ -1432,13 +1431,12 @@ Remember: You're helping fans have the best World Cup experience of their lives!
 
   // Stripe Checkout Session
   // Helper: always use the canonical production domain for Stripe success/cancel URLs.
-  // Replit's reverse proxy sets x-forwarded-host to the replit.app subdomain, NOT the custom domain.
-  // Stripe must redirect back to championship-concierge.com so the subscription context is correct.
-  const PRODUCTION_DOMAIN = 'https://championship-concierge.com';
-  
+  // The PUBLIC_URL env var (or BASE_URL) overrides per-request host detection so
+  // Stripe redirects back to the correct domain regardless of reverse-proxy hostnames.
+  const PRODUCTION_DOMAIN = process.env.PUBLIC_URL || process.env.BASE_URL || 'https://championshipconcierge.com';
+
   function getBaseUrl(req: any): string {
-    const isDeployment = process.env.REPLIT_DEPLOYMENT === '1';
-    if (isDeployment) {
+    if (process.env.NODE_ENV === 'production') {
       return PRODUCTION_DOMAIN;
     }
     const proto = req.headers['x-forwarded-proto'] as string || req.protocol;
@@ -1546,7 +1544,7 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         const priceIdFromLineItems = (session as any).line_items?.data?.[0]?.price?.id;
         const customerId = typeof session.customer === 'string' ? session.customer : (session.customer as any)?.id;
 
-        // Source 2: metadata we embedded at checkout creation — ALWAYS reliable
+        // Source 2: metadata we embedded at checkout creation â€” ALWAYS reliable
         const meta = (session as any).metadata || {};
         const emailFromMeta  = meta.email  || null;
         const priceIdFromMeta = meta.priceId || null;
@@ -1573,12 +1571,12 @@ Remember: You're helping fans have the best World Cup experience of their lives!
           "price_1Sn8dSEwO7dpbt1e9m1RS1cb": "ai_concierge",
         };
 
-        // Tier resolution order: line-items map → metadata tier → safe default
+        // Tier resolution order: line-items map â†’ metadata tier â†’ safe default
         const tier = (priceId && priceToTierMap[priceId]) || tierFromMeta || "team_info";
 
         console.log(`[CheckoutVerify] resolved tier=${tier}`);
 
-        // Write to DB — only require email; priceId/tier come from metadata if line_items missing
+        // Write to DB â€” only require email; priceId/tier come from metadata if line_items missing
         let finalTier = tier; // The tier the client will be granted
         if (email) {
           const existingPurchase = await storage.getPurchaseByEmail(email);
@@ -1598,16 +1596,16 @@ Remember: You're helping fans have the best World Cup experience of their lives!
             const newTierIndex = tierHierarchy.indexOf(tier);
             if (newTierIndex > currentTierIndex) {
               await storage.updatePurchaseTier(email, tier);
-              console.log(`[CheckoutVerify] Upgraded DB purchase email=${email} ${existingPurchase.tier}→${tier}`);
+              console.log(`[CheckoutVerify] Upgraded DB purchase email=${email} ${existingPurchase.tier}â†’${tier}`);
               finalTier = tier;
             } else {
-              // Existing tier is equal or higher — always grant the HIGHEST tier the user holds
+              // Existing tier is equal or higher â€” always grant the HIGHEST tier the user holds
               finalTier = existingPurchase.tier;
-              console.log(`[CheckoutVerify] Existing tier=${existingPurchase.tier} >= new tier=${tier} — returning highest`);
+              console.log(`[CheckoutVerify] Existing tier=${existingPurchase.tier} >= new tier=${tier} â€” returning highest`);
             }
           }
         } else {
-          console.warn(`[CheckoutVerify] No email found in session or metadata — skipping DB write`);
+          console.warn(`[CheckoutVerify] No email found in session or metadata â€” skipping DB write`);
         }
         
         res.json({ 
@@ -1841,16 +1839,16 @@ Remember: You're helping fans have the best World Cup experience of their lives!
       const { inArray } = await import("drizzle-orm");
 
       // Remove teams that did NOT qualify for FIFA 2026
-      const teamsToRemove = ["Algeria", "Qatar", "Curaçao", "Haiti"];
+      const teamsToRemove = ["Algeria", "Qatar", "CuraÃ§ao", "Haiti"];
       await db.delete(teamsTable).where(inArray(teamsTable.name, teamsToRemove));
 
       // The correct final 48 qualified teams
       const updatedTeams = [
         // CONMEBOL (6 direct + Paraguay via intercontinental)
         { name: "Argentina", teamName: "La Albiceleste", flag: "ar", rank: 2, coach: "Lionel Scaloni", record: "11-3-1", points: "1873.33" },
-        { name: "Brazil", teamName: "Seleção", flag: "br", rank: 5, coach: "Dorival Júnior", record: "8-6-3", points: "1760.46" },
-        { name: "Colombia", teamName: "Los Cafeteros", flag: "co", rank: 13, coach: "Néstor Lorenzo", record: "7-4-4", points: "1680.00" },
-        { name: "Ecuador", teamName: "La Tri", flag: "ec", rank: 22, coach: "Sebastián Beccacece", record: "6-5-4", points: "1630.00" },
+        { name: "Brazil", teamName: "SeleÃ§Ã£o", flag: "br", rank: 5, coach: "Dorival JÃºnior", record: "8-6-3", points: "1760.46" },
+        { name: "Colombia", teamName: "Los Cafeteros", flag: "co", rank: 13, coach: "NÃ©stor Lorenzo", record: "7-4-4", points: "1680.00" },
+        { name: "Ecuador", teamName: "La Tri", flag: "ec", rank: 22, coach: "SebastiÃ¡n Beccacece", record: "6-5-4", points: "1630.00" },
         { name: "Uruguay", teamName: "La Celeste", flag: "uy", rank: 16, coach: "Marcelo Bielsa", record: "7-5-3", points: "1660.00" },
         { name: "Venezuela", teamName: "La Vinotinto", flag: "ve", rank: 31, coach: "Fernando Batista", record: "6-4-5", points: "1550.00" },
         { name: "Paraguay", teamName: "La Albirroja", flag: "py", rank: 35, coach: "Gustavo Alfaro", record: "5-5-5", points: "1525.00" },
@@ -1865,34 +1863,34 @@ Remember: You're helping fans have the best World Cup experience of their lives!
         { name: "Spain", teamName: "La Roja", flag: "es", rank: 1, coach: "Luis de la Fuente", record: "12-2-1", points: "1877.18" },
         { name: "France", teamName: "Les Bleus", flag: "fr", rank: 3, coach: "Didier Deschamps", record: "10-4-2", points: "1870.00" },
         { name: "England", teamName: "Three Lions", flag: "gb-eng", rank: 4, coach: "Thomas Tuchel", record: "9-5-2", points: "1834.12" },
-        { name: "Portugal", teamName: "Seleção das Quinas", flag: "pt", rank: 6, coach: "Roberto Martínez", record: "10-2-3", points: "1750.00" },
+        { name: "Portugal", teamName: "SeleÃ§Ã£o das Quinas", flag: "pt", rank: 6, coach: "Roberto MartÃ­nez", record: "10-2-3", points: "1750.00" },
         { name: "Netherlands", teamName: "Oranje", flag: "nl", rank: 7, coach: "Ronald Koeman", record: "9-3-4", points: "1740.00" },
         { name: "Germany", teamName: "Die Mannschaft", flag: "de", rank: 9, coach: "Julian Nagelsmann", record: "7-5-3", points: "1710.00" },
         { name: "Belgium", teamName: "Red Devils", flag: "be", rank: 8, coach: "Domenico Tedesco", record: "8-4-3", points: "1730.00" },
         { name: "Italy", teamName: "Gli Azzurri", flag: "it", rank: 11, coach: "Luciano Spalletti", record: "8-3-4", points: "1695.00" },
-        { name: "Croatia", teamName: "Vatreni", flag: "hr", rank: 10, coach: "Zlatko Dalić", record: "8-3-4", points: "1700.00" },
+        { name: "Croatia", teamName: "Vatreni", flag: "hr", rank: 10, coach: "Zlatko DaliÄ‡", record: "8-3-4", points: "1700.00" },
         { name: "Denmark", teamName: "Danish Dynamite", flag: "dk", rank: 26, coach: "Kasper Hjulmand", record: "6-4-5", points: "1600.00" },
         { name: "Austria", teamName: "Das Team", flag: "at", rank: 23, coach: "Ralf Rangnick", record: "7-3-5", points: "1625.00" },
         { name: "Switzerland", teamName: "Nati", flag: "ch", rank: 17, coach: "Murat Yakin", record: "7-4-4", points: "1655.00" },
         { name: "Scotland", teamName: "Tartan Army", flag: "gb-sct", rank: 34, coach: "Steve Clarke", record: "5-4-6", points: "1530.00" },
-        { name: "Serbia", teamName: "Orlovi", flag: "rs", rank: 28, coach: "Dragan Stojković", record: "6-4-5", points: "1580.00" },
-        { name: "Norway", teamName: "Løvene", flag: "no", rank: 25, coach: "Ståle Solbakken", record: "6-4-5", points: "1610.00" },
-        { name: "Poland", teamName: "Biało-czerwoni", flag: "pl", rank: 29, coach: "Michał Probierz", record: "6-3-6", points: "1570.00" },
+        { name: "Serbia", teamName: "Orlovi", flag: "rs", rank: 28, coach: "Dragan StojkoviÄ‡", record: "6-4-5", points: "1580.00" },
+        { name: "Norway", teamName: "LÃ¸vene", flag: "no", rank: 25, coach: "StÃ¥le Solbakken", record: "6-4-5", points: "1610.00" },
+        { name: "Poland", teamName: "BiaÅ‚o-czerwoni", flag: "pl", rank: 29, coach: "MichaÅ‚ Probierz", record: "6-3-6", points: "1570.00" },
         // AFC (8)
         { name: "Japan", teamName: "Samurai Blue", flag: "jp", rank: 18, coach: "Hajime Moriyasu", record: "8-3-4", points: "1650.00" },
         { name: "South Korea", teamName: "Taegeuk Warriors", flag: "kr", rank: 21, coach: "Hong Myung-bo", record: "7-4-4", points: "1635.00" },
         { name: "Iran", teamName: "Team Melli", flag: "ir", rank: 20, coach: "Amir Ghalenoei", record: "7-3-5", points: "1640.00" },
         { name: "Australia", teamName: "Socceroos", flag: "au", rank: 24, coach: "Tony Popovic", record: "6-4-5", points: "1620.00" },
-        { name: "Saudi Arabia", teamName: "The Green Falcons", flag: "sa", rank: 39, coach: "Hervé Renard", record: "5-4-6", points: "1505.00" },
+        { name: "Saudi Arabia", teamName: "The Green Falcons", flag: "sa", rank: 39, coach: "HervÃ© Renard", record: "5-4-6", points: "1505.00" },
         { name: "Uzbekistan", teamName: "White Wolves", flag: "uz", rank: 50, coach: "Srecko Katanec", record: "5-4-6", points: "1450.00" },
         { name: "Jordan", teamName: "Al-Nashama", flag: "jo", rank: 60, coach: "Jamal Sellami", record: "5-3-7", points: "1400.00" },
-        { name: "Iraq", teamName: "The Lions of Two Rivers", flag: "iq", rank: 63, coach: "Jesús Casas", record: "5-3-7", points: "1390.00" },
+        { name: "Iraq", teamName: "The Lions of Two Rivers", flag: "iq", rank: 63, coach: "JesÃºs Casas", record: "5-3-7", points: "1390.00" },
         // CAF (9)
         { name: "Morocco", teamName: "Atlas Lions", flag: "ma", rank: 12, coach: "Walid Regragui", record: "9-2-2", points: "1690.00" },
-        { name: "Senegal", teamName: "Lions of Teranga", flag: "sn", rank: 19, coach: "Aliou Cissé", record: "7-4-4", points: "1645.00" },
+        { name: "Senegal", teamName: "Lions of Teranga", flag: "sn", rank: 19, coach: "Aliou CissÃ©", record: "7-4-4", points: "1645.00" },
         { name: "Egypt", teamName: "Pharaohs", flag: "eg", rank: 32, coach: "Hossam Hassan", record: "6-4-5", points: "1540.00" },
         { name: "Nigeria", teamName: "Super Eagles", flag: "ng", rank: 41, coach: "Eric Chelle", record: "6-3-6", points: "1490.00" },
-        { name: "Ivory Coast", teamName: "Les Éléphants", flag: "ci", rank: 37, coach: "Emerse Faé", record: "6-3-6", points: "1515.00" },
+        { name: "Ivory Coast", teamName: "Les Ã‰lÃ©phants", flag: "ci", rank: 37, coach: "Emerse FaÃ©", record: "6-3-6", points: "1515.00" },
         { name: "South Africa", teamName: "Bafana Bafana", flag: "za", rank: 40, coach: "Hugo Broos", record: "5-4-6", points: "1500.00" },
         { name: "Ghana", teamName: "Black Stars", flag: "gh", rank: 45, coach: "Otto Addo", record: "5-4-6", points: "1470.00" },
         { name: "Tunisia", teamName: "Eagles of Carthage", flag: "tn", rank: 36, coach: "Faouzi Benzarti", record: "5-4-6", points: "1520.00" },
@@ -2354,10 +2352,10 @@ function getSimulatedTemperature(cityKey: string): number {
   const mildCities = ['seattle', 'sanFrancisco', 'boston', 'vancouver', 'toronto'];
   
   if (hotCities.includes(cityKey)) {
-    return 85 + Math.floor(Math.random() * 15); // 85-100°F
+    return 85 + Math.floor(Math.random() * 15); // 85-100Â°F
   } else if (mildCities.includes(cityKey)) {
-    return 65 + Math.floor(Math.random() * 15); // 65-80°F
+    return 65 + Math.floor(Math.random() * 15); // 65-80Â°F
   } else {
-    return 75 + Math.floor(Math.random() * 15); // 75-90°F
+    return 75 + Math.floor(Math.random() * 15); // 75-90Â°F
   }
 }
