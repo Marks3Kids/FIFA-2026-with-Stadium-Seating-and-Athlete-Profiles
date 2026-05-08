@@ -5,6 +5,7 @@ import { apiUrl } from "@/lib/apiConfig";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
 import { useLocation, useSearch } from "wouter";
+import { canUseGooglePlayBilling } from "@/lib/twa";
 
 function isInAppBrowser(): boolean {
   const ua = navigator.userAgent || '';
@@ -357,6 +358,76 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     }
   };
 
+  // Internal tier id → Google Play product SKU. Mark must create matching
+  // products in Play Console. Update this map if his SKU naming differs.
+  const TIER_TO_PLAY_SKU: Record<string, string> = {
+    team_info: "team_info",
+    logistics: "fan_travel_pack",
+    ai_concierge: "ai_concierge",
+  };
+
+  const handlePurchaseViaGooglePlay = async (tier: PricingTier) => {
+    const sku = TIER_TO_PLAY_SKU[tier.id];
+    if (!sku) {
+      throw new Error(`No Google Play SKU mapped for tier ${tier.id}`);
+    }
+
+    const email =
+      window.prompt(t("pricing.enterEmailForReceipt", "Enter your email for the receipt:"));
+    if (!email) return;
+
+    const service = await (window as any).getDigitalGoodsService(
+      "https://play.google.com/billing"
+    );
+
+    const details = await service.getDetails([sku]);
+    if (!details || details.length === 0) {
+      throw new Error(`Product "${sku}" not found in Play Console`);
+    }
+
+    const request = new (window as any).PaymentRequest(
+      [
+        {
+          supportedMethods: "https://play.google.com/billing",
+          data: { sku },
+        },
+      ],
+      {
+        total: {
+          label: tier.name,
+          amount: { currency: "USD", value: String(tier.price) },
+        },
+      }
+    );
+
+    const paymentResponse = await request.show();
+    const purchaseToken = paymentResponse.details?.purchaseToken;
+    if (!purchaseToken) {
+      await paymentResponse.complete("fail");
+      throw new Error("No purchase token from Google Play");
+    }
+
+    const verifyRes = await fetch(apiUrl("/api/google-play/verify-purchase"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, productId: sku, purchaseToken }),
+    });
+    const verifyData = await verifyRes.json();
+
+    if (!verifyRes.ok || !verifyData.success) {
+      await paymentResponse.complete("fail");
+      throw new Error(verifyData.error || "Server could not verify the purchase");
+    }
+
+    await paymentResponse.complete("success");
+    setSubscription(email, verifyData.tier as SubscriptionTier);
+    toast({
+      title: t("pricing.purchaseSuccess", "Purchase successful"),
+      description: t("pricing.welcomeToTier", "Welcome to {{tier}}!", { tier: tier.name }),
+    });
+    navigate("/home");
+  };
+
   const handlePurchase = async (tier: PricingTier) => {
     if (!tier.priceId) {
       handleFreeTier();
@@ -364,8 +435,14 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
     }
 
     setIsLoading(tier.id);
-    
+
     try {
+      // Branch: TWA users go through Google Play Billing; web users go through Stripe.
+      if (canUseGooglePlayBilling()) {
+        await handlePurchaseViaGooglePlay(tier);
+        return;
+      }
+
       const response = await fetch(apiUrl("/api/checkout"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },

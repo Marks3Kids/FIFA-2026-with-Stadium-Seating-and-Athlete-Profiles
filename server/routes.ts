@@ -1516,6 +1516,73 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     }
   });
 
+  // ─── Google Play Billing receipt verification ────────────────────────
+  // Called by the TWA after a successful in-app purchase. Verifies the
+  // purchase token with the Android Publisher API, then activates the
+  // user's subscription tier in our DB.
+  app.post("/api/google-play/verify-purchase", async (req, res) => {
+    try {
+      const { email, productId, purchaseToken } = req.body;
+
+      if (!email || !productId || !purchaseToken) {
+        return res.status(400).json({
+          error: "email, productId, and purchaseToken are required",
+        });
+      }
+
+      const { verifyProductPurchase, acknowledgeProductPurchase } =
+        await import("./googlePlayService");
+
+      // Map Google Play product IDs to our internal tier names.
+      // Mark must create matching products in Play Console with these IDs.
+      const PLAY_PRODUCT_TO_TIER: Record<string, string> = {
+        team_info: "team_info",
+        fan_travel_pack: "logistics",
+        ai_concierge: "ai_concierge",
+        ai_message_pack: "ai_concierge",
+      };
+
+      const tier = PLAY_PRODUCT_TO_TIER[productId];
+      if (!tier) {
+        return res.status(400).json({ error: `Unknown product: ${productId}` });
+      }
+
+      const verification = await verifyProductPurchase(productId, purchaseToken);
+      if (!verification.valid) {
+        console.warn(
+          `[GooglePlay] Invalid purchase token. email=${email} productId=${productId}`
+        );
+        return res.status(400).json({ error: "Purchase token invalid" });
+      }
+
+      // Reuse the same upsert flow as Stripe webhooks so tier-upgrade rules apply.
+      const { WebhookHandlers } = await import("./webhookHandlers");
+      const sessionMarker = `gplay_${verification.orderId || purchaseToken.slice(0, 16)}`;
+      await WebhookHandlers.upsertPurchase(
+        email,
+        tier,
+        productId,
+        null,
+        sessionMarker
+      );
+
+      // Acknowledge to Google so the purchase isn't auto-refunded after 3 days.
+      await acknowledgeProductPurchase(productId, purchaseToken);
+
+      console.log(
+        `[GooglePlay] ✓ Verified & activated. email=${email} tier=${tier} orderId=${verification.orderId}`
+      );
+
+      res.json({ success: true, tier });
+    } catch (error: any) {
+      console.error("[GooglePlay] verify-purchase error:", error);
+      res.status(500).json({
+        error: "Failed to verify purchase",
+        details: error?.message || String(error),
+      });
+    }
+  });
+
   // Customer Portal
   app.post("/api/customer-portal", async (req, res) => {
     try {
