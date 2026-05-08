@@ -25,7 +25,6 @@ export class StripeService {
 
     return await stripe.checkout.sessions.create({
       customer: customerId,
-      automatic_payment_methods: { enabled: true },
       line_items: [{ price: priceId, quantity: 1 }],
       mode: isRecurring ? 'subscription' : 'payment',
       success_url: successUrl,
@@ -49,7 +48,6 @@ export class StripeService {
     const isRecurring = !!price.recurring;
 
     const sessionParams: any = {
-      automatic_payment_methods: { enabled: true },
       line_items: [{ price: priceId, quantity: 1 }],
       mode: isRecurring ? 'subscription' : 'payment',
       success_url: successUrl,
