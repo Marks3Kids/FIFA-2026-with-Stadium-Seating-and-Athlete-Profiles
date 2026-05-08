@@ -4,7 +4,10 @@ import path from 'path';
 
 /**
  * Vite plugin that updates og:image and twitter:image meta tags
- * to point to the app's opengraph image with the correct Replit domain.
+ * to point to the app's opengraph image at the configured deployment URL.
+ *
+ * Reads BASE_URL or PUBLIC_URL env var at build time. If neither is set,
+ * meta tags are left unchanged.
  */
 export function metaImagesPlugin(): Plugin {
   return {
@@ -12,7 +15,7 @@ export function metaImagesPlugin(): Plugin {
     transformIndexHtml(html) {
       const baseUrl = getDeploymentUrl();
       if (!baseUrl) {
-        log('[meta-images] no Replit deployment domain found, skipping meta tag updates');
+        log('[meta-images] no deployment URL configured (set BASE_URL or PUBLIC_URL), skipping meta tag updates');
         return html;
       }
 
@@ -56,16 +59,14 @@ export function metaImagesPlugin(): Plugin {
 }
 
 function getDeploymentUrl(): string | null {
-  if (process.env.REPLIT_INTERNAL_APP_DOMAIN) {
-    const url = `https://${process.env.REPLIT_INTERNAL_APP_DOMAIN}`;
-    log('[meta-images] using internal app domain:', url);
-    return url;
+  if (process.env.PUBLIC_URL) {
+    log('[meta-images] using PUBLIC_URL:', process.env.PUBLIC_URL);
+    return process.env.PUBLIC_URL;
   }
 
-  if (process.env.REPLIT_DEV_DOMAIN) {
-    const url = `https://${process.env.REPLIT_DEV_DOMAIN}`;
-    log('[meta-images] using dev domain:', url);
-    return url;
+  if (process.env.BASE_URL) {
+    log('[meta-images] using BASE_URL:', process.env.BASE_URL);
+    return process.env.BASE_URL;
   }
 
   return null;

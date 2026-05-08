@@ -12,6 +12,10 @@ eggs/
 .eggs/
 lib/
 lib64/
+
+# Allow application code lib/ directories (the lib/ rule above is a Python virtualenv exclusion)
+!client/src/lib/
+!client/src/lib/**
 parts/
 sdist/
 var/
@@ -52,3 +56,5 @@ Thumbs.db
 # Local env files
 .env.local
 .env.*.local
+
+.claude

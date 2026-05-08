@@ -158,7 +158,7 @@ app.get("/_health", (_req, res) => {
 
 // Start listening IMMEDIATELY - don't wait for any other setup
 const port = parseInt(process.env.PORT || "5000", 10);
-httpServer.listen({ port, host: "0.0.0.0", reusePort: true }, () => {
+httpServer.listen({ port, host: "0.0.0.0" }, () => {
   console.log(`Server listening on port ${port}`);
   
   // All other initialization happens AFTER listen
@@ -204,113 +204,51 @@ declare module "http" {
   }
 }
 
-let stripeEnabled = false;
-
-// Stripe initialization - runs lazily on first Stripe-related request
-let stripeInitPromise: Promise<void> | null = null;
-
-async function ensureStripeInitialized() {
-  if (stripeEnabled) return;
-  if (stripeInitPromise) return stripeInitPromise;
-  
-  stripeInitPromise = (async () => {
-    const databaseUrl = process.env.DATABASE_URL;
-    if (!databaseUrl) {
-      console.log('DATABASE_URL not set, skipping Stripe initialization');
-      return;
+// Stripe webhook handler — accepts both /api/stripe/webhook and the legacy
+// /api/stripe/webhook/:uuid path (uuid is ignored; signature alone validates).
+const stripeWebhookHandler = async (req: any, res: Response) => {
+  try {
+    if (!process.env.STRIPE_SECRET_KEY || !process.env.STRIPE_WEBHOOK_SECRET) {
+      console.log('Stripe webhook received but credentials not configured');
+      return res.status(503).json({ error: 'Stripe not configured' });
     }
 
-    const hasStripeConnector = process.env.REPLIT_CONNECTORS_HOSTNAME && 
-      (process.env.REPL_IDENTITY || process.env.WEB_REPL_RENEWAL);
-
-    if (!hasStripeConnector) {
-      console.log('Stripe connector not configured, skipping Stripe initialization');
-      return;
+    const signature = req.headers['stripe-signature'];
+    if (!signature) {
+      return res.status(400).json({ error: 'Missing stripe-signature' });
     }
 
-    try {
-      console.log('Initializing Stripe schema...');
-      const { runMigrations } = await import('stripe-replit-sync');
-      await runMigrations({ databaseUrl });
-      console.log('Stripe schema ready');
+    const sig = Array.isArray(signature) ? signature[0] : signature;
 
-      const { getStripeSync } = await import("./stripeClient");
-      const stripeSync = await getStripeSync();
-
-      console.log('Setting up managed webhook...');
-      const webhookBaseUrl = `https://${process.env.REPLIT_DOMAINS?.split(',')[0]}`;
-      const { webhook } = await stripeSync.findOrCreateManagedWebhook(
-        `${webhookBaseUrl}/api/stripe/webhook`,
-        { enabled_events: ['*'], description: 'Managed webhook for Stripe sync' }
-      );
-      console.log(`Webhook configured: ${webhook.url}`);
-
-      stripeEnabled = true;
-
-      // Sync in background - don't await
-      console.log('Starting Stripe data sync in background...');
-      stripeSync.syncBackfill()
-        .then(() => console.log('Stripe data synced'))
-        .catch((err: any) => console.error('Error syncing Stripe data:', err));
-    } catch (error) {
-      console.error('Failed to initialize Stripe:', error);
+    let payload: Buffer;
+    if (Buffer.isBuffer(req.body)) {
+      payload = req.body;
+    } else if (typeof req.body === 'string') {
+      payload = Buffer.from(req.body);
+    } else {
+      payload = Buffer.from(JSON.stringify(req.body));
     }
-  })();
-  
-  return stripeInitPromise;
-}
 
-app.post(
-  '/api/stripe/webhook/:uuid',
-  express.raw({ type: '*/*' }),
-  async (req, res) => {
-    try {
-      // Initialize Stripe lazily on first webhook
-      await ensureStripeInitialized();
-      if (!stripeEnabled) {
-        console.log('Webhook received but Stripe not yet initialized — returning 200 to avoid retry storm');
-        return res.status(200).json({ received: true });
-      }
-      
-      const signature = req.headers['stripe-signature'];
-      if (!signature) {
-        return res.status(400).json({ error: 'Missing stripe-signature' });
-      }
-
-      const sig = Array.isArray(signature) ? signature[0] : signature;
-
-      // Ensure body is a Buffer — if not, convert it
-      let payload: Buffer;
-      if (Buffer.isBuffer(req.body)) {
-        payload = req.body;
-      } else if (typeof req.body === 'string') {
-        payload = Buffer.from(req.body);
-      } else {
-        payload = Buffer.from(JSON.stringify(req.body));
-      }
-
-      const { uuid } = req.params;
-      const { WebhookHandlers } = await import("./webhookHandlers");
-      await WebhookHandlers.processWebhook(payload, sig, uuid);
-      res.status(200).json({ received: true });
-    } catch (error: any) {
-      console.error('Webhook error:', error.message);
-      // Return 400 only for genuine signature failures, not processing issues
-      res.status(400).json({ error: 'Webhook processing error' });
-    }
+    const { WebhookHandlers } = await import("./webhookHandlers");
+    await WebhookHandlers.processWebhook(payload, sig);
+    res.status(200).json({ received: true });
+  } catch (error: any) {
+    console.error('Webhook error:', error.message);
+    res.status(400).json({ error: 'Webhook processing error' });
   }
-);
+};
+
+app.post('/api/stripe/webhook', express.raw({ type: '*/*' }), stripeWebhookHandler);
+app.post('/api/stripe/webhook/:uuid', express.raw({ type: '*/*' }), stripeWebhookHandler);
 
 app.get('/api/stripe/publishable-key', async (_req, res) => {
-  // Initialize Stripe lazily on first key request
-  await ensureStripeInitialized();
-  if (!stripeEnabled) {
+  if (!process.env.STRIPE_PUBLISHABLE_KEY) {
     return res.status(503).json({ error: 'Stripe not configured', publishableKey: null });
   }
   
   try {
     const { getStripePublishableKey } = await import("./stripeClient");
-    const publishableKey = await getStripePublishableKey();
+    const publishableKey = getStripePublishableKey();
     res.json({ publishableKey });
   } catch (error) {
     res.status(500).json({ error: 'Failed to get publishable key' });

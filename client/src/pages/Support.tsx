@@ -32,11 +32,11 @@ export function Support() {
               For any questions, issues, or refund requests, please contact our support team:
             </p>
             <a 
-              href="mailto:support@championship-concierge.com" 
+              href="mailto:support@championshipconcierge.com" 
               className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
             >
               <Mail className="w-4 h-4" />
-              support@championship-concierge.com
+              support@championshipconcierge.com
             </a>
           </CardContent>
         </Card>

@@ -1,4 +1,4 @@
-import { getStripeSync, getUncachableStripeClient } from './stripeClient';
+import { getUncachableStripeClient } from './stripeClient';
 import { storage } from './storage';
 
 const PRICE_TO_TIER_MAP: Record<string, string> = {
@@ -20,7 +20,7 @@ const PRICE_TO_TIER_MAP: Record<string, string> = {
 const TIER_HIERARCHY = ["free", "team_info", "logistics", "ai_concierge"];
 
 export class WebhookHandlers {
-  static async processWebhook(payload: Buffer, signature: string, uuid: string): Promise<void> {
+  static async processWebhook(payload: Buffer, signature: string): Promise<void> {
     if (!Buffer.isBuffer(payload)) {
       throw new Error(
         'STRIPE WEBHOOK ERROR: Payload must be a Buffer. ' +
@@ -30,8 +30,13 @@ export class WebhookHandlers {
       );
     }
 
-    const sync = await getStripeSync();
-    const event = JSON.parse(payload.toString());
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+    if (!webhookSecret) {
+      throw new Error('STRIPE_WEBHOOK_SECRET not configured');
+    }
+
+    const stripe = getUncachableStripeClient();
+    const event = stripe.webhooks.constructEvent(payload, signature, webhookSecret);
 
     console.log(`[Webhook] Received event type="${event.type}" id="${event.id}"`);
 
@@ -45,16 +50,6 @@ export class WebhookHandlers {
     if (event.type === 'charge.succeeded') {
       console.log(`[Webhook] Routing charge.succeeded to handleChargeSucceeded`);
       await WebhookHandlers.handleChargeSucceeded(event.data.object);
-    }
-
-    try {
-      await sync.processWebhook(payload, signature, uuid);
-    } catch (syncError: any) {
-      if (syncError?.message?.includes('Unhandled webhook event')) {
-        console.log(`[Webhook] Ignoring unhandled event type "${event.type}" — not a failure`);
-      } else {
-        throw syncError;
-      }
     }
   }
 

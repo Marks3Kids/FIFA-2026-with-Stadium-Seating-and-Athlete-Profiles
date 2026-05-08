@@ -26,7 +26,7 @@ export default function SupportPage() {
     },
     {
       question: "What languages are supported?",
-      answer: "The app supports 9 languages: English, Spanish, French, German, Portuguese, Arabic, Japanese, Dutch, and Italian. Use the language selector in the menu to switch."
+      answer: "The app supports 5 languages: English, Spanish, French, Portuguese, and Arabic. Use the language selector in the menu to switch."
     }
   ];
 
@@ -58,10 +58,10 @@ export default function SupportPage() {
             <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
               <p className="text-white font-medium mb-2">Email Support</p>
               <a 
-                href="mailto:support@championship-concierge.com"
+                href="mailto:support@championshipconcierge.com"
                 className="text-primary hover:underline text-lg"
               >
-                support@championship-concierge.com
+                support@championshipconcierge.com
               </a>
               <div className="flex items-center gap-2 mt-3 text-sm text-muted-foreground">
                 <Clock className="w-4 h-4" />

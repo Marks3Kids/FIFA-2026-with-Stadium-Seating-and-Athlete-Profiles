@@ -181,7 +181,7 @@ export default function Concierge() {
   const chatMutation = useMutation({
     mutationFn: async (userMessages: Message[]) => {
       const profileContext = getProfileContext();
-      const languageContext = i18n.language !== 'en' ? `Please respond in ${i18n.language === 'es' ? 'Spanish' : i18n.language === 'fr' ? 'French' : i18n.language === 'de' ? 'German' : i18n.language === 'nl' ? 'Dutch' : i18n.language === 'it' ? 'Italian' : i18n.language === 'pt' ? 'Portuguese' : i18n.language === 'ar' ? 'Arabic' : i18n.language === 'ja' ? 'Japanese' : 'English'}.` : '';
+      const languageContext = i18n.language !== 'en' ? `Please respond in ${i18n.language === 'es' ? 'Spanish' : i18n.language === 'fr' ? 'French' : i18n.language === 'pt' ? 'Portuguese' : i18n.language === 'ar' ? 'Arabic' : 'English'}.` : '';
       
       const contextMessage = profileContext || languageContext ? {
         role: "user" as const,

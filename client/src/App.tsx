@@ -106,9 +106,10 @@ function DirectionHandler() {
   const { i18n } = useTranslation();
   
   useEffect(() => {
-    const isRTL = i18n.language === 'ar';
-    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+    document.documentElement.dir = 'ltr';
     document.documentElement.lang = i18n.language;
+    document.documentElement.setAttribute('translate', 'no');
+    document.documentElement.classList.add('notranslate');
   }, [i18n.language]);
   
   return null;
