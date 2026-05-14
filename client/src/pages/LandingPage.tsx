@@ -480,7 +480,7 @@ export default function LandingPage() {
             <div>
               <h4 className="text-white font-semibold text-sm mb-3">{t("landing.footer.download")}</h4>
               <a
-                href="https://play.google.com/store/apps/details?id=com.mingledtreasure.championshipconcierge"
+                href="https://play.google.com/store/apps/details?id=com.mingledtreasures.championshipconcierge"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-3 py-2 transition-colors"

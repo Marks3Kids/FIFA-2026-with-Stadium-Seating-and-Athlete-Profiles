@@ -58,3 +58,16 @@ Thumbs.db
 .env.*.local
 
 .claude
+
+# Android signing — never commit keystores or passwords to git
+android/keystore.properties
+*.jks
+*.keystore
+
+# Android build outputs
+android/.gradle/
+android/.idea/
+android/local.properties
+android/app/build/
+android/build/
+android/captures/

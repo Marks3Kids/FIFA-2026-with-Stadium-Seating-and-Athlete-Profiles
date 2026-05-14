@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Championship Concierge</string>
+    <string name="title_activity_main">Championship Concierge</string>
+    <string name="package_name">com.mingledtreasures.championshipconcierge</string>
+    <string name="custom_url_scheme">com.mingledtreasures.championshipconcierge</string>
+</resources>

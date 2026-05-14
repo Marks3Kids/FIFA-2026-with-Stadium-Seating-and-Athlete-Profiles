@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.mingledtreasure.championshipconcierge',
+  appId: 'com.mingledtreasures.championshipconcierge',
   appName: 'Championship Concierge',
   webDir: 'dist/public',
   server: {
