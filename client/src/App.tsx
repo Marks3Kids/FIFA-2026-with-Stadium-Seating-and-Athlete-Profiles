@@ -8,6 +8,7 @@ import { ProtectedRoute } from "@/components/ProtectedRoute";
 import "@/lib/i18n";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { initRevenueCat } from "@/lib/revenuecat";
 import LandingPage from "@/pages/LandingPage";
 import Home from "@/pages/Home";
 import Matches from "@/pages/Matches";
@@ -138,6 +139,16 @@ function GlobalRedirect() {
   return null;
 }
 
+function RevenueCatBootstrap() {
+  const { email } = useSubscription();
+  useEffect(() => {
+    initRevenueCat(email || undefined).catch((err) =>
+      console.error("[RevenueCat] init failed:", err)
+    );
+  }, [email]);
+  return null;
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
@@ -145,6 +156,7 @@ function App() {
         <LocationProvider>
           <DirectionHandler />
           <GlobalRedirect />
+          <RevenueCatBootstrap />
           <Router />
           <Toaster />
         </LocationProvider>

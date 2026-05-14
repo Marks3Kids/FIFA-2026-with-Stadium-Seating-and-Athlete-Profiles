@@ -1583,6 +1583,120 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     }
   });
 
+  // ─── RevenueCat ──────────────────────────────────────────────────────
+  // RevenueCat handles Google Play / App Store billing inside the Capacitor
+  // native app. Two endpoints work together:
+  //   1. /api/revenuecat/link-user  — fast path: the client tells us
+  //      "this email just purchased X" right after the native sheet closes.
+  //      Trusts the client; the webhook below verifies asynchronously.
+  //   2. /api/revenuecat/webhook    — authoritative path: RevenueCat POSTs
+  //      verified events (purchases, refunds, cancellations) directly to us.
+  // ────────────────────────────────────────────────────────────────────────
+
+  // Product IDs configured in RevenueCat / Play Console → our internal tier.
+  const RC_PRODUCT_TO_TIER: Record<string, string | null> = {
+    team_info: "team_info",
+    fan_travel_pack: "logistics",
+    ai_concierge: "ai_concierge",
+    // Consumable refill — doesn't upgrade tier, just tops up AI messages.
+    // Leaving as null so the webhook handler can skip the tier upsert.
+    ai_message_refill: null,
+  };
+
+  app.post("/api/revenuecat/link-user", async (req, res) => {
+    try {
+      const { email, appUserId, tier, productId } = req.body;
+      if (!email || !appUserId || !tier) {
+        return res.status(400).json({ error: "email, appUserId, and tier are required" });
+      }
+      if (tier === "free") {
+        return res.json({ success: true, tier: "free" });
+      }
+
+      const { WebhookHandlers } = await import("./webhookHandlers");
+      const sessionMarker = `rc_link_${appUserId}_${productId || tier}`;
+      await WebhookHandlers.upsertPurchase(
+        email.toLowerCase().trim(),
+        tier,
+        productId || tier,
+        null,
+        sessionMarker
+      );
+
+      console.log(
+        `[RevenueCat] link-user email=${email} tier=${tier} appUserId=${appUserId}`
+      );
+      res.json({ success: true, tier });
+    } catch (error: any) {
+      console.error("[RevenueCat] link-user error:", error);
+      res.status(500).json({ error: "Failed to link user", details: error?.message });
+    }
+  });
+
+  app.post("/api/revenuecat/webhook", async (req, res) => {
+    try {
+      const expectedAuth = process.env.REVENUECAT_WEBHOOK_AUTH;
+      if (expectedAuth) {
+        const received = req.header("authorization") || req.header("Authorization");
+        if (received !== expectedAuth) {
+          console.warn("[RevenueCat] Webhook auth header mismatch — rejecting");
+          return res.status(401).json({ error: "Unauthorized" });
+        }
+      }
+
+      const event = req.body?.event;
+      if (!event || !event.type) {
+        return res.status(400).json({ error: "Missing event payload" });
+      }
+
+      const type: string = event.type;
+      const productId: string | undefined = event.product_id;
+      const appUserId: string | undefined = event.app_user_id;
+      const transactionId: string | undefined = event.transaction_id || event.original_transaction_id;
+      const emailAttr = event.subscriber_attributes?.["$email"]?.value;
+      const email = (emailAttr || event.aliases?.[0] || appUserId || "").toLowerCase().trim();
+
+      console.log(
+        `[RevenueCat] webhook type=${type} product=${productId} email=${email} txn=${transactionId}`
+      );
+
+      // Only purchase events grant access. We treat NON_RENEWING_PURCHASE,
+      // INITIAL_PURCHASE, and RENEWAL the same — all confirm an active receipt.
+      const grantingEvents = ["INITIAL_PURCHASE", "NON_RENEWING_PURCHASE", "RENEWAL", "UNCANCELLATION", "PRODUCT_CHANGE"];
+      if (!grantingEvents.includes(type)) {
+        // Refunds/cancellations are logged but we don't auto-revoke here
+        // (the schema doesn't track per-purchase state to revoke against).
+        // If revocation becomes a requirement, extend WebhookHandlers.
+        return res.status(200).json({ ok: true, ignored: type });
+      }
+
+      if (!email || !productId) {
+        console.warn("[RevenueCat] Webhook missing email or productId — skipping upsert");
+        return res.status(200).json({ ok: true, skipped: true });
+      }
+
+      const tier = RC_PRODUCT_TO_TIER[productId];
+      if (tier === undefined) {
+        console.warn(`[RevenueCat] Unknown product_id "${productId}" — skipping`);
+        return res.status(200).json({ ok: true, unknownProduct: productId });
+      }
+      if (tier === null) {
+        // Consumable (message refill) — no tier change.
+        return res.status(200).json({ ok: true, consumable: productId });
+      }
+
+      const { WebhookHandlers } = await import("./webhookHandlers");
+      const sessionMarker = `rc_${transactionId || appUserId}_${productId}`;
+      await WebhookHandlers.upsertPurchase(email, tier, productId, null, sessionMarker);
+
+      console.log(`[RevenueCat] ✓ ${type} upserted email=${email} tier=${tier}`);
+      res.status(200).json({ ok: true, tier });
+    } catch (error: any) {
+      console.error("[RevenueCat] webhook error:", error);
+      res.status(500).json({ error: "Webhook handler failed", details: error?.message });
+    }
+  });
+
   // Customer Portal
   app.post("/api/customer-portal", async (req, res) => {
     try {
