@@ -137,6 +137,9 @@ export default defineConfig({
     },
   },
   root: path.resolve(import.meta.dirname, "client"),
+  // Read .env files from the project root, not from `root` (client/).
+  // Without this, VITE_* vars defined in the top-level .env never reach the build.
+  envDir: import.meta.dirname,
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
