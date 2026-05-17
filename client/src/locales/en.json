@@ -172,7 +172,7 @@
     "qualifiedTeams": "Qualified Teams",
     "seeWhoQualified": "See who made the cut"
   },
-  "legal": {
+  "homeLegal": {
     "title": "Legal Information",
     "disclaimer": "DISCLAIMER: This application is an independent fan-made companion app and is not affiliated with, endorsed by, or connected to FIFA, the FIFA World Cup, or any official organizing bodies.",
     "noAffiliation": "All trademarks, logos, and brand names are the property of their respective owners. Any use of these marks is for informational purposes only and does not imply endorsement.",
@@ -203,7 +203,11 @@
     "description": "Complete roster information, current season records, and match highlights for all competing nations. Updated regularly in December 2025, March 2026, and May 2026.",
     "qualifiedCount": "42 of 48 teams qualified",
     "playoffInfo": "The final 6 teams will be determined through the Play-Off Tournament in March 2026 featuring: Bolivia, Congo DR, Iraq, Jamaica, New Caledonia, and Suriname competing for the remaining spots.",
-    "viewKnockoutBrackets": "View Knockout Brackets"
+    "viewKnockoutBrackets": "View Knockout Brackets",
+    "qualifiedBanner": {
+      "title": "All 48 Teams Officially Qualified",
+      "subtitle": "6 confederations · 16 host cities across USA, Canada & Mexico · June 11 – July 19, 2026"
+    }
   },
   "matches": {
     "title": "Match Schedule",
@@ -2077,6 +2081,10 @@
     }
   },
   "lodging": {
+    "tabs": {
+      "hotels": "Hotels",
+      "vacationRentals": "Vacation Rentals"
+    },
     "title": "Lodging Guide",
     "subtitle": "20 accommodations per city across all price ranges",
     "selectCity": "Select a Host City",

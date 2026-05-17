@@ -72,9 +72,9 @@ export default function Teams() {
 
         <div className="bg-emerald-950/60 border border-emerald-500/30 rounded-xl p-4 mb-6 text-center">
           <p className="text-sm text-emerald-200">
-            <span className="font-bold text-emerald-400">All 48 Teams Officially Qualified</span>
+            <span className="font-bold text-emerald-400">{t("teams.qualifiedBanner.title")}</span>
             {" • "}
-            6 confederations · 16 host cities across USA, Canada & Mexico · June 11 – July 19, 2026
+            {t("teams.qualifiedBanner.subtitle")}
           </p>
         </div>
 

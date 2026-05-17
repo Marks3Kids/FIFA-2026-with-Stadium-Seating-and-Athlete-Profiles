@@ -170,7 +170,7 @@
     "qualifiedTeams": "Equipos clasificados",
     "seeWhoQualified": "Vea quién ha pasado el corte"
   },
-  "legal": {
+  "homeLegal": {
     "title": "Información Legal",
     "disclaimer": "AVISO: Esta aplicación es una app de acompañamiento independiente creada por fans y no está afiliada, respaldada ni conectada con la FIFA, la Copa Mundial de la FIFA ni ningún organismo organizador oficial.",
     "noAffiliation": "Todas las marcas comerciales, logotipos y nombres de marca son propiedad de sus respectivos dueños. Cualquier uso de estas marcas es solo con fines informativos y no implica respaldo.",
@@ -196,7 +196,11 @@
     "description": "Información completa del plantel, récords de la temporada actual y momentos destacados de los partidos para todas las naciones competidoras. Actualizado regularmente en diciembre 2025, marzo 2026 y mayo 2026.",
     "qualifiedCount": "42 de 48 equipos clasificados",
     "playoffInfo": "Los 6 equipos finales se determinarán a través del Torneo de Repesca en marzo 2026 con: Bolivia, Congo DR, Irak, Jamaica, Nueva Caledonia y Surinam compitiendo por los lugares restantes.",
-    "viewKnockoutBrackets": "Ver Cuadro de Eliminatorias"
+    "viewKnockoutBrackets": "Ver Cuadro de Eliminatorias",
+    "qualifiedBanner": {
+      "title": "Los 48 Equipos Oficialmente Clasificados",
+      "subtitle": "6 confederaciones · 16 ciudades sede en EE. UU., Canadá y México · 11 de junio – 19 de julio, 2026"
+    }
   },
   "matches": {
     "title": "Calendario de partidos",
@@ -2590,6 +2594,10 @@
     }
   },
   "lodging": {
+    "tabs": {
+      "hotels": "Hoteles",
+      "vacationRentals": "Alquileres Vacacionales"
+    },
     "title": "Guía de alojamientos",
     "subtitle": "20 alojamientos por ciudad de todos los precios",
     "selectCity": "Seleccione una ciudad anfitriona",

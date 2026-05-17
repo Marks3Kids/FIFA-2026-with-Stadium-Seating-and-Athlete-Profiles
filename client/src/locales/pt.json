@@ -170,7 +170,7 @@
     "qualifiedTeams": "Qualified Teams",
     "seeWhoQualified": "See who made the cut"
   },
-  "legal": {
+  "homeLegal": {
     "title": "Informações Legais",
     "disclaimer": "AVISO: Este aplicativo é um app de acompanhamento independente criado por fãs e não é afiliado, endossado ou conectado à FIFA, à Copa do Mundo da FIFA ou a quaisquer órgãos organizadores oficiais.",
     "noAffiliation": "Todas as marcas registradas, logotipos e nomes de marcas são propriedade de seus respectivos proprietários. Qualquer uso dessas marcas é apenas para fins informativos e não implica endosso.",
@@ -196,7 +196,11 @@
     "description": "Informação completa do plantel, registos da temporada atual e destaques dos jogos para todas as nações competidoras. Atualizado regularmente em dezembro 2025, março 2026 e maio 2026.",
     "qualifiedCount": "42 de 48 equipas qualificadas",
     "playoffInfo": "As 6 equipas finais serão determinadas através do Torneio de Play-Off em março 2026 com: Bolívia, Congo DR, Iraque, Jamaica, Nova Caledónia e Suriname a competir pelos lugares restantes.",
-    "viewKnockoutBrackets": "Ver Quadro Eliminatório"
+    "viewKnockoutBrackets": "Ver Quadro Eliminatório",
+    "qualifiedBanner": {
+      "title": "Todas as 48 Equipas Oficialmente Qualificadas",
+      "subtitle": "6 confederações · 16 cidades sede nos EUA, Canadá e México · 11 de junho – 19 de julho, 2026"
+    }
   },
   "matches": {
     "title": "Calendário de Jogos",
@@ -2045,6 +2049,10 @@
     }
   },
   "lodging": {
+    "tabs": {
+      "hotels": "Hotéis",
+      "vacationRentals": "Aluguéis de Férias"
+    },
     "title": "Guia de Hospedagem",
     "subtitle": "20 acomodações por cidade em todas as faixas de preço",
     "selectCity": "Selecione uma Cidade Sede",

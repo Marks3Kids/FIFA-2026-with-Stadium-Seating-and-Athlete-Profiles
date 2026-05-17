@@ -170,7 +170,7 @@
     "qualifiedTeams": "Équipes qualifiées",
     "seeWhoQualified": "Voir qui a été retenu"
   },
-  "legal": {
+  "homeLegal": {
     "title": "Informations Légales",
     "disclaimer": "AVERTISSEMENT: Cette application est une application compagnon indépendante créée par des fans et n'est pas affiliée, approuvée ou connectée à la FIFA, à la Coupe du Monde de la FIFA ou à tout organisme organisateur officiel.",
     "noAffiliation": "Toutes les marques, logos et noms de marque sont la propriété de leurs propriétaires respectifs. Toute utilisation de ces marques est uniquement à des fins informatives et n'implique pas d'approbation.",
@@ -196,7 +196,11 @@
     "description": "Informations complètes sur l'effectif, bilans de la saison en cours et moments forts des matchs pour toutes les nations en compétition. Mis à jour régulièrement en décembre 2025, mars 2026 et mai 2026.",
     "qualifiedCount": "42 équipes sur 48 qualifiées",
     "playoffInfo": "Les 6 dernières équipes seront déterminées lors du Tournoi de Barrages en mars 2026 avec: Bolivie, Congo RD, Irak, Jamaïque, Nouvelle-Calédonie et Suriname en lice pour les places restantes.",
-    "viewKnockoutBrackets": "Voir le Tableau Éliminatoire"
+    "viewKnockoutBrackets": "Voir le Tableau Éliminatoire",
+    "qualifiedBanner": {
+      "title": "Les 48 Équipes Officiellement Qualifiées",
+      "subtitle": "6 confédérations · 16 villes hôtes aux États-Unis, Canada et Mexique · 11 juin – 19 juillet 2026"
+    }
   },
   "matches": {
     "title": "Calendrier des matches",
@@ -2286,6 +2290,10 @@
     }
   },
   "lodging": {
+    "tabs": {
+      "hotels": "Hôtels",
+      "vacationRentals": "Locations de Vacances"
+    },
     "title": "Guide de l'hébergement",
     "subtitle": "20 hébergements par ville dans toutes les gammes de prix",
     "selectCity": "Sélectionnez une ville d'accueil",

@@ -261,61 +261,61 @@ export default function Home() {
         <div className="bg-card border border-white/5 rounded-xl p-5 space-y-4">
           <div className="flex items-center gap-2 mb-2">
             <Scale className="w-5 h-5 text-muted-foreground" />
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">{t("legal.title")}</h3>
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider">{t("homeLegal.title")}</h3>
           </div>
           
           <div className="space-y-3 text-xs text-muted-foreground leading-relaxed">
-            <p>{t("legal.disclaimer")}</p>
-            <p>{t("legal.noAffiliation")}</p>
-            <p>{t("legal.informationalPurposes")}</p>
-            <p>{t("legal.thirdPartyLinks")}</p>
-            <p>{t("legal.accuracyDisclaimer")}</p>
+            <p>{t("homeLegal.disclaimer")}</p>
+            <p>{t("homeLegal.noAffiliation")}</p>
+            <p>{t("homeLegal.informationalPurposes")}</p>
+            <p>{t("homeLegal.thirdPartyLinks")}</p>
+            <p>{t("homeLegal.accuracyDisclaimer")}</p>
           </div>
 
           <div className="border-t border-white/5 pt-4 mt-4">
             <div className="flex items-center gap-2 mb-2">
               <FileText className="w-4 h-4 text-muted-foreground" />
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("legal.termsTitle")}</h4>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("homeLegal.termsTitle")}</h4>
             </div>
             <div className="space-y-2 text-xs text-muted-foreground leading-relaxed">
-              <p>{t("legal.termsAcceptance")}</p>
-              <p>{t("legal.intellectualProperty")}</p>
-              <p>{t("legal.liabilityLimitation")}</p>
-            </div>
-          </div>
-
-          <div className="border-t border-white/5 pt-4 mt-4">
-            <div className="flex items-center gap-2 mb-2">
-              <FileText className="w-4 h-4 text-muted-foreground" />
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("legal.refundTitle")}</h4>
-            </div>
-            <div className="space-y-2 text-xs text-muted-foreground leading-relaxed">
-              <p>{t("legal.refundPolicy")}</p>
+              <p>{t("homeLegal.termsAcceptance")}</p>
+              <p>{t("homeLegal.intellectualProperty")}</p>
+              <p>{t("homeLegal.liabilityLimitation")}</p>
             </div>
           </div>
 
           <div className="border-t border-white/5 pt-4 mt-4">
             <div className="flex items-center gap-2 mb-2">
               <FileText className="w-4 h-4 text-muted-foreground" />
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("legal.dataRetentionTitle")}</h4>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("homeLegal.refundTitle")}</h4>
             </div>
             <div className="space-y-2 text-xs text-muted-foreground leading-relaxed">
-              <p>{t("legal.dataRetention")}</p>
+              <p>{t("homeLegal.refundPolicy")}</p>
             </div>
           </div>
 
           <div className="border-t border-white/5 pt-4 mt-4">
             <div className="flex items-center gap-2 mb-2">
               <FileText className="w-4 h-4 text-muted-foreground" />
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("legal.privacyTitle")}</h4>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("homeLegal.dataRetentionTitle")}</h4>
             </div>
             <div className="space-y-2 text-xs text-muted-foreground leading-relaxed">
-              <p>{t("legal.privacyStatement")}</p>
+              <p>{t("homeLegal.dataRetention")}</p>
+            </div>
+          </div>
+
+          <div className="border-t border-white/5 pt-4 mt-4">
+            <div className="flex items-center gap-2 mb-2">
+              <FileText className="w-4 h-4 text-muted-foreground" />
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("homeLegal.privacyTitle")}</h4>
+            </div>
+            <div className="space-y-2 text-xs text-muted-foreground leading-relaxed">
+              <p>{t("homeLegal.privacyStatement")}</p>
             </div>
           </div>
 
           <p className="text-[10px] text-muted-foreground/60 pt-2 border-t border-white/5">
-            {t("legal.copyright")}
+            {t("homeLegal.copyright")}
           </p>
         </div>
       </div>
