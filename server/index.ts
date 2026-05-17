@@ -168,6 +168,19 @@ httpServer.listen({ port, host: "0.0.0.0" }, () => {
 async function initializeApp() {
   console.log(`Initializing app in ${process.env.NODE_ENV} mode...`);
   try {
+    // Run idempotent schema migrations before anything else touches the DB.
+    // Safe to call repeatedly — each statement uses IF NOT EXISTS.
+    console.log("Running startup migrations...");
+    try {
+      const { db } = await import("../db");
+      const { sql } = await import("drizzle-orm");
+      await db.execute(sql`ALTER TABLE teams ADD COLUMN IF NOT EXISTS group_stage TEXT`);
+      await db.execute(sql`ALTER TABLE teams ADD COLUMN IF NOT EXISTS participations INTEGER`);
+      console.log("Startup migrations complete");
+    } catch (migErr) {
+      console.error("Startup migrations failed (continuing anyway):", migErr);
+    }
+
     // Register API routes FIRST so they take priority over Vite/static files
     console.log("Registering API routes...");
     const { registerRoutes } = await import("./routes");

@@ -193,6 +193,28 @@ export async function registerRoutes(
     `);
   });
 
+  // ─── Sync the canonical 48-team list from FIFA_2026_TEAMS ───────────────
+  // Idempotent: wipes the teams table and re-inserts the full official roster.
+  // Triggered from the AdminDashboard "Sync FIFA teams" button. Anyone with
+  // the admin password can call this — the secret is checked in-line.
+  app.post("/api/admin/sync-fifa-teams", async (req, res) => {
+    try {
+      const adminPassword = process.env.ADMIN_PASSWORD || "admin2026cc";
+      const provided = req.body?.password || req.header("x-admin-password");
+      if (provided !== adminPassword) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+
+      const { FIFA_2026_TEAMS } = await import("./data/fifa2026Teams");
+      const result = await storage.replaceAllTeams(FIFA_2026_TEAMS);
+      console.log(`[Sync] Replaced teams table with ${result.inserted} FIFA 2026 teams`);
+      res.json({ success: true, ...result, count: FIFA_2026_TEAMS.length });
+    } catch (error: any) {
+      console.error("[Sync] sync-fifa-teams failed:", error);
+      res.status(500).json({ error: "Sync failed", details: error?.message });
+    }
+  });
+
   // One-time production database seed endpoint
   app.post("/api/admin/seed-production", async (req, res) => {
     try {

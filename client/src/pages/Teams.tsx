@@ -16,6 +16,8 @@ interface Team {
   coach: string;
   record: string;
   points: string;
+  groupStage?: string | null;
+  participations?: number | null;
 }
 
 export default function Teams() {
@@ -110,7 +112,12 @@ export default function Teams() {
                     <p className="text-sm text-gray-500">{team.name}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap justify-end">
+                  {team.groupStage && (
+                    <span className="inline-flex items-center bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full">
+                      {t("teams.group", "Group")} {team.groupStage}
+                    </span>
+                  )}
                   <span className="inline-flex items-center gap-1 bg-amber-100 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-full">
                     <Trophy className="w-3 h-3" />
                     {team.rank === 99 ? t("status.tbd") : `${t("status.rank")} #${team.rank}`}
@@ -128,11 +135,17 @@ export default function Teams() {
                 <div>
                   <span className="font-medium">{t("teams.record2025")}:</span>{" "}
                   <span className="text-gray-700">
-                    {teamSeasonData[team.name] 
+                    {teamSeasonData[team.name]
                       ? `${teamSeasonData[team.name].wins}W-${teamSeasonData[team.name].ties}T-${teamSeasonData[team.name].losses}L`
                       : t("status.tbd")}
                   </span>
                 </div>
+                {typeof team.participations === "number" && (
+                  <div>
+                    <span className="font-medium">{t("teams.participations", "WC Appearances")}:</span>{" "}
+                    <span className="text-gray-700">{team.participations}</span>
+                  </div>
+                )}
               </div>
 
               <div className="border-t border-gray-100 pt-3 mt-3">

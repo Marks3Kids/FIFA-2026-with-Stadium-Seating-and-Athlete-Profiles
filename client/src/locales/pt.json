@@ -205,7 +205,9 @@
     "qualifiedBanner": {
       "title": "Todas as 48 Equipas Oficialmente Qualificadas",
       "subtitle": "6 confederações · 16 cidades sede nos EUA, Canadá e México · 11 de junho – 19 de julho, 2026"
-    }
+    },
+    "group": "Grupo",
+    "participations": "Participações"
   },
   "matches": {
     "title": "Calendário de Jogos",

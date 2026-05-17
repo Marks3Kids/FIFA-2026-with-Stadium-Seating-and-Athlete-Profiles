@@ -76,6 +76,9 @@ export interface IStorage {
   getAllTeams(): Promise<Team[]>;
   getTeam(id: number): Promise<Team | undefined>;
   createTeam(team: InsertTeam): Promise<Team>;
+  // Drop every row in `teams` and insert the given list as the new canonical set.
+  // Used by the admin "Sync FIFA teams" action when the qualified-team list changes.
+  replaceAllTeams(newTeams: InsertTeam[]): Promise<{ inserted: number }>;
   
   getAllCities(): Promise<City[]>;
   getCity(id: number): Promise<City | undefined>;
@@ -200,6 +203,17 @@ export class DatabaseStorage implements IStorage {
   async createTeam(team: InsertTeam): Promise<Team> {
     const [newTeam] = await db.insert(teams).values(team).returning();
     return newTeam;
+  }
+
+  async replaceAllTeams(newTeams: InsertTeam[]): Promise<{ inserted: number }> {
+    // Wipe + bulk-insert in a transaction so the table is never empty mid-sync.
+    return await db.transaction(async (tx) => {
+      await tx.delete(teams);
+      if (newTeams.length > 0) {
+        await tx.insert(teams).values(newTeams);
+      }
+      return { inserted: newTeams.length };
+    });
   }
 
   async getAllCities(): Promise<City[]> {

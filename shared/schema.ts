@@ -32,6 +32,11 @@ export const teams = pgTable("teams", {
   coach: text("coach").notNull(),
   record: text("record").notNull(),
   points: text("points").notNull(),
+  // Tournament group letter (A-L) from the FIFA draw. Added 2026-05 for the
+  // official 48-team draw — nullable for legacy rows that pre-date the draw.
+  groupStage: text("group_stage"),
+  // Number of FIFA World Cup appearances (including 2026 if qualified).
+  participations: integer("participations"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 

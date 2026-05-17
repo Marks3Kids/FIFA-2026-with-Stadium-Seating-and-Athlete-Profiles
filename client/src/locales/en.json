@@ -207,7 +207,9 @@
     "qualifiedBanner": {
       "title": "All 48 Teams Officially Qualified",
       "subtitle": "6 confederations · 16 host cities across USA, Canada & Mexico · June 11 – July 19, 2026"
-    }
+    },
+    "group": "Group",
+    "participations": "WC Appearances"
   },
   "matches": {
     "title": "Match Schedule",

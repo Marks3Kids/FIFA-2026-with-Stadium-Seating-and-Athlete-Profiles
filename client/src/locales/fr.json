@@ -205,7 +205,9 @@
     "qualifiedBanner": {
       "title": "Les 48 Équipes Officiellement Qualifiées",
       "subtitle": "6 confédérations · 16 villes hôtes aux États-Unis, Canada et Mexique · 11 juin – 19 juillet 2026"
-    }
+    },
+    "group": "Groupe",
+    "participations": "Participations"
   },
   "matches": {
     "title": "Calendrier des matches",

@@ -58,6 +58,9 @@ function AdminLogin({ role, onLogin }: { role: string; onLogin: (email: string) 
         sessionStorage.setItem("admin_authenticated", "true");
         sessionStorage.setItem("admin_role", data.role);
         sessionStorage.setItem("admin_email", data.email);
+        // Cache the password (in-memory tab session only) so admin actions that
+        // need to re-authenticate (e.g. sync-fifa-teams) don't prompt again.
+        sessionStorage.setItem("admin_password", password);
         onLogin(data.email);
       } else {
         setError("Invalid password");
@@ -207,7 +210,10 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
 
   const updateTeamsMutation = useMutation({
     mutationFn: async () => {
-      const res = await apiRequest("POST", "/api/admin/update-teams", {});
+      // /api/admin/sync-fifa-teams replaces the teams table with the
+      // canonical 48-team roster maintained in server/data/fifa2026Teams.ts.
+      const password = sessionStorage.getItem("admin_password") || ADMIN_KEY;
+      const res = await apiRequest("POST", "/api/admin/sync-fifa-teams", { password });
       return res.json();
     },
   });
