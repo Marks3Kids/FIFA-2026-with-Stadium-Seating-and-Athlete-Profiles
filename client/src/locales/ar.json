@@ -1,6 +1,6 @@
 {
   "header": {
-    "worldCup": "بطولة",
+    "worldCup": "بطولة ",
     "companion": "كونسيرج",
     "year": "2026"
   },
@@ -85,19 +85,19 @@
     "Jordan": "صنع النشامى التاريخ بالتأهل لأول كأس عالم FIFA على الإطلاق. تحت قيادة المدرب جمال سلامي، وصلت الأردن إلى نهائي كأس العرب FIFA 2025 وهيمنت على التصفيات الآسيوية بأداء متميز."
   },
   "common": {
-    "back": "Back",
-    "cancel": "Cancel",
-    "save": "Save",
-    "saved": "Saved!",
-    "delete": "Delete",
-    "loading": "Loading...",
-    "add": "+ Add",
-    "viewAll": "View All",
-    "viewDetails": "View details, options & pricing →",
-    "comingSoon": "Coming Soon",
-    "teams": "Teams",
-    "cities": "Cities",
-    "matches": "Matches",
+    "back": "رجوع",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "saved": "تم الحفظ!",
+    "delete": "حذف",
+    "loading": "جارٍ التحميل...",
+    "add": "+ إضافة",
+    "viewAll": "عرض الكل",
+    "viewDetails": "عرض التفاصيل والخيارات والأسعار →",
+    "comingSoon": "قريباً",
+    "teams": "الفرق",
+    "cities": "المدن",
+    "matches": "المباريات",
     "liveUpdates": "تحديثات مباشرة",
     "tip": "نصيحة",
     "previous": "السابق",
@@ -149,10 +149,10 @@
   "home": {
     "title": "FIFA",
     "year": "2026",
-    "tagline": "The World is Coming to North America",
-    "updateInfo": "This app is updated routinely with the latest information through the end of the 2026 World Cup and into August 2026.",
+    "tagline": "العالم قادم إلى أمريكا الشمالية",
+    "updateInfo": "يتم تحديث هذا التطبيق بانتظام بأحدث المعلومات حتى نهاية كأس العالم 2026 وحتى أغسطس 2026.",
     "potDrawAlt": "مجموعات قرعة كأس العالم 2026",
-    "viewSchedule": "View Match Schedule",
+    "viewSchedule": "عرض جدول المباريات",
     "latestNews": "آخر الأخبار",
     "news": {
       "refresh": "تحديث",
@@ -165,7 +165,7 @@
       "autoUpdateNotice": "يتم تحديث الأخبار تلقائياً كل 4 ساعات من ESPN و BBC Sport و Sky Sports"
     },
     "explore": "استكشف",
-    "hostCities": "Host Cities",
+    "hostCities": "المدن المستضيفة",
     "discoverVenues": "Discover all 16 venues",
     "qualifiedTeams": "Qualified Teams",
     "seeWhoQualified": "See who made the cut"
@@ -181,6 +181,11 @@
     "termsAcceptance": "باستخدام هذا التطبيق، فإنك توافق على هذه الشروط. يتم توفير هذا التطبيق \"كما هو\" دون أي ضمانات، صريحة أو ضمنية.",
     "intellectualProperty": "جميع المحتويات المُنشأة لهذا التطبيق، باستثناء مواد الطرف الثالث، محمية بموجب حقوق الطبع والنشر. لا يجوز لك إعادة الإنتاج أو التوزيع أو إنشاء أعمال مشتقة دون إذن.",
     "liabilityLimitation": "تحت أي ظرف من الظروف، لن يكون مطورو التطبيق مسؤولين عن أي أضرار مباشرة أو غير مباشرة أو عرضية أو تبعية أو خاصة ناشئة عن استخدامك لهذا التطبيق.",
+    "refundTitle": "سياسة الاسترداد",
+    "refundPolicy": "يمكنك طلب استرداد المبلغ خلال 7 أيام من الشراء إذا كنت غير قادر على الوصول إلى خدمات التطبيق بسبب ظروف خارجة عن إرادتك، مثل عدم وجود اتصال بالإنترنت في منطقتك، أو عدم توافق الجهاز، أو انقطاع الخدمة من جانبنا. لطلب الاسترداد، يرجى الاتصال بنا على support@championshipconcierge.com مع تأكيد الشراء ووصف المشكلة. تتم مراجعة طلبات الاسترداد على أساس كل حالة على حدة.",
+    "dataRetentionTitle": "الاحتفاظ بالبيانات",
+    "dataRetention": "يتم تخزين سجلات الدردشة وتاريخ المحادثات الخاصة بمساعد الذكاء الاصطناعي حتى 30 أغسطس 2026، وبعد ذلك سيتم حذفها بشكل دائم. يمكنك حذف سجل الدردشة في أي وقت من خلال صفحة السجل في التطبيق.",
+    "privacyTitle": "سياسة الخصوصية",
     "privacyStatement": "نحن نحترم خصوصيتك. أي بيانات شخصية يتم جمعها تُستخدم فقط لتحسين تجربتك ولا تتم مشاركتها مع أطراف ثالثة دون موافقتك.",
     "copyright": "© 2026 World Cup Companion. جميع الحقوق محفوظة. هذا تطبيق غير رسمي من المعجبين."
   },

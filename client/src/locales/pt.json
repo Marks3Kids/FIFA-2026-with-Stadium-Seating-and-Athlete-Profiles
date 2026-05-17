@@ -1,7 +1,7 @@
 {
   "header": {
-    "worldCup": "Concierge",
-    "companion": "Campeonato",
+    "worldCup": "Campeonato ",
+    "companion": "Concierge",
     "year": "2026"
   },
   "status": {
@@ -85,19 +85,19 @@
     "Jordan": "Al-Nashama fez história ao se classificar para sua primeira Copa do Mundo FIFA. Sob o comando do técnico Jamal Sellami, a Jordânia alcançou a final da Copa Árabe FIFA 2025 e dominou as eliminatórias asiáticas com atuações clínicas."
   },
   "common": {
-    "back": "Back",
-    "cancel": "Cancel",
-    "save": "Save",
-    "saved": "Saved!",
-    "delete": "Delete",
-    "loading": "Loading...",
-    "add": "+ Add",
-    "viewAll": "View All",
-    "viewDetails": "View details, options & pricing →",
-    "comingSoon": "Coming Soon",
-    "teams": "Teams",
-    "cities": "Cities",
-    "matches": "Matches",
+    "back": "Voltar",
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "saved": "Salvo!",
+    "delete": "Excluir",
+    "loading": "Carregando...",
+    "add": "+ Adicionar",
+    "viewAll": "Ver Todos",
+    "viewDetails": "Ver detalhes, opções e preços →",
+    "comingSoon": "Em Breve",
+    "teams": "Equipes",
+    "cities": "Cidades",
+    "matches": "Partidas",
     "liveUpdates": "Atualizações ao Vivo",
     "tip": "Dica",
     "previous": "Anterior",
@@ -149,10 +149,10 @@
   "home": {
     "title": "FIFA",
     "year": "2026",
-    "tagline": "The World is Coming to North America",
-    "updateInfo": "This app is updated routinely with the latest information through the end of the 2026 World Cup and into August 2026.",
+    "tagline": "O Mundo está Chegando à América do Norte",
+    "updateInfo": "Este aplicativo é atualizado regularmente com as informações mais recentes até o final da Copa do Mundo de 2026 e até agosto de 2026.",
     "potDrawAlt": "Potes do Sorteio da Copa do Mundo 2026",
-    "viewSchedule": "View Match Schedule",
+    "viewSchedule": "Ver Calendário de Jogos",
     "latestNews": "Últimas Notícias",
     "news": {
       "refresh": "Atualizar",
@@ -165,7 +165,7 @@
       "autoUpdateNotice": "As notícias são atualizadas automaticamente a cada 4 horas da ESPN, BBC Sport e Sky Sports"
     },
     "explore": "Explorar",
-    "hostCities": "Host Cities",
+    "hostCities": "Cidades-sede",
     "discoverVenues": "Discover all 16 venues",
     "qualifiedTeams": "Qualified Teams",
     "seeWhoQualified": "See who made the cut"
@@ -181,6 +181,11 @@
     "termsAcceptance": "Ao usar este aplicativo, você concorda com estes termos. Este app é fornecido \"como está\" sem quaisquer garantias, expressas ou implícitas.",
     "intellectualProperty": "Todo o conteúdo criado para este app, excluindo materiais de terceiros, é protegido por direitos autorais. Você não pode reproduzir, distribuir ou criar trabalhos derivados sem permissão.",
     "liabilityLimitation": "Em nenhuma circunstância os desenvolvedores do app serão responsáveis por quaisquer danos diretos, indiretos, incidentais, consequentes ou especiais decorrentes do uso deste aplicativo.",
+    "refundTitle": "Política de Reembolso",
+    "refundPolicy": "Você pode solicitar um reembolso dentro de 7 dias após a compra se não puder acessar os serviços do aplicativo devido a circunstâncias além do seu controle, como falta de conectividade à internet em sua região, incompatibilidade de dispositivo ou interrupções de serviço de nossa parte. Para solicitar um reembolso, entre em contato conosco em support@championshipconcierge.com com a confirmação de sua compra e uma descrição do problema. As solicitações de reembolso são analisadas caso a caso.",
+    "dataRetentionTitle": "Retenção de Dados",
+    "dataRetention": "Os registros de chat e o histórico de conversas do AI Concierge são armazenados até 30 de agosto de 2026, após o qual serão excluídos permanentemente. Você pode excluir seu histórico de chat a qualquer momento através da página Histórico do aplicativo.",
+    "privacyTitle": "Política de Privacidade",
     "privacyStatement": "Respeitamos sua privacidade. Quaisquer dados pessoais coletados são usados exclusivamente para melhorar sua experiência e não são compartilhados com terceiros sem seu consentimento.",
     "copyright": "© 2026 World Cup Companion. Todos os direitos reservados. Este é um aplicativo não oficial de fãs."
   },

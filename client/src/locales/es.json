@@ -1,7 +1,7 @@
 {
   "header": {
-    "worldCup": "Conserje",
-    "companion": "Campeonato",
+    "worldCup": "Campeonato ",
+    "companion": "Conserje",
     "year": "2026"
   },
   "status": {
@@ -181,6 +181,11 @@
     "termsAcceptance": "Al usar esta aplicación, acepta estos términos. Esta app se proporciona \"tal cual\" sin garantías de ningún tipo, expresas o implícitas.",
     "intellectualProperty": "Todo el contenido creado para esta app, excluyendo materiales de terceros, está protegido por derechos de autor. No puede reproducir, distribuir ni crear obras derivadas sin permiso.",
     "liabilityLimitation": "Bajo ninguna circunstancia los desarrolladores de la app serán responsables de daños directos, indirectos, incidentales, consecuentes o especiales derivados de su uso de esta aplicación.",
+    "refundTitle": "Política de Reembolso",
+    "refundPolicy": "Puede solicitar un reembolso dentro de los 7 días posteriores a la compra si no puede acceder a los servicios de la aplicación debido a circunstancias fuera de su control, como falta de conectividad a internet en su región, incompatibilidad del dispositivo o interrupciones del servicio por nuestra parte. Para solicitar un reembolso, contáctenos en support@championshipconcierge.com con la confirmación de su compra y una descripción del problema. Las solicitudes de reembolso se revisan caso por caso.",
+    "dataRetentionTitle": "Retención de Datos",
+    "dataRetention": "Los registros de chat y el historial de conversaciones del Concierge de IA se almacenan hasta el 30 de agosto de 2026, después de lo cual se eliminarán permanentemente. Puede eliminar su historial de chat en cualquier momento a través de la página de Historial de la aplicación.",
+    "privacyTitle": "Política de Privacidad",
     "privacyStatement": "Respetamos su privacidad. Cualquier dato personal recopilado se utiliza únicamente para mejorar su experiencia y no se comparte con terceros sin su consentimiento.",
     "copyright": "© 2026 World Cup Companion. Todos los derechos reservados. Esta es una aplicación no oficial de fans."
   },

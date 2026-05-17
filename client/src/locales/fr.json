@@ -1,7 +1,7 @@
 {
   "header": {
-    "worldCup": "Concierge",
-    "companion": "Championnat",
+    "worldCup": "Championnat ",
+    "companion": "Concierge",
     "year": "2026"
   },
   "status": {
@@ -181,6 +181,11 @@
     "termsAcceptance": "En utilisant cette application, vous acceptez ces conditions. Cette application est fournie \"telle quelle\" sans aucune garantie, expresse ou implicite.",
     "intellectualProperty": "Tout le contenu créé pour cette application, à l'exclusion des matériaux tiers, est protégé par le droit d'auteur. Vous ne pouvez pas reproduire, distribuer ou créer des œuvres dérivées sans autorisation.",
     "liabilityLimitation": "En aucun cas, les développeurs de l'application ne seront responsables de dommages directs, indirects, accessoires, consécutifs ou spéciaux découlant de votre utilisation de cette application.",
+    "refundTitle": "Politique de Remboursement",
+    "refundPolicy": "Vous pouvez demander un remboursement dans les 7 jours suivant l'achat si vous ne pouvez pas accéder aux services de l'application en raison de circonstances indépendantes de votre volonté, telles qu'un manque de connectivité Internet dans votre région, une incompatibilité d'appareil ou des pannes de service de notre côté. Pour demander un remboursement, veuillez nous contacter à support@championshipconcierge.com avec votre confirmation d'achat et une description du problème. Les demandes de remboursement sont examinées au cas par cas.",
+    "dataRetentionTitle": "Conservation des Données",
+    "dataRetention": "Les journaux de chat et l'historique des conversations du Concierge IA sont stockés jusqu'au 30 août 2026, après quoi ils seront définitivement supprimés. Vous pouvez supprimer votre historique de chat à tout moment via la page Historique de l'application.",
+    "privacyTitle": "Politique de Confidentialité",
     "privacyStatement": "Nous respectons votre vie privée. Toute donnée personnelle collectée est utilisée uniquement pour améliorer votre expérience et n'est pas partagée avec des tiers sans votre consentement.",
     "copyright": "© 2026 World Cup Companion. Tous droits réservés. Ceci est une application non officielle de fans."
   },
