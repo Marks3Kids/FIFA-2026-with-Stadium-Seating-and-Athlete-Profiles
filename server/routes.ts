@@ -2359,6 +2359,39 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     }
   });
 
+  // Admin: dump raw football-data.org response for debugging match-name issues.
+  // Returns a trimmed list (id/date/teams/stage) so we can diff against our DB.
+  app.post("/api/admin/debug-fifa-raw", async (req, res) => {
+    try {
+      const adminPassword = process.env.ADMIN_PASSWORD || "admin2026cc";
+      const provided = req.body?.password || req.header("x-admin-password");
+      if (provided !== adminPassword) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+      const token = process.env.FOOTBALL_DATA_API_TOKEN;
+      if (!token) return res.status(503).json({ error: "FOOTBALL_DATA_API_TOKEN not configured" });
+      const fdRes = await fetch("https://api.football-data.org/v4/competitions/WC/matches", {
+        headers: { "X-Auth-Token": token },
+      });
+      const data: any = await fdRes.json();
+      const matches = (data?.matches || []).map((m: any) => ({
+        id: m.id,
+        utcDate: m.utcDate,
+        status: m.status,
+        stage: m.stage,
+        group: m.group,
+        home: m.homeTeam?.name,
+        away: m.awayTeam?.name,
+        homeScore: m.score?.fullTime?.home,
+        awayScore: m.score?.fullTime?.away,
+      }));
+      res.json({ count: matches.length, matches });
+    } catch (error: any) {
+      console.error("[Debug] fifa-raw failed:", error);
+      res.status(500).json({ error: "Debug failed", details: error?.message });
+    }
+  });
+
   // Admin: manually trigger the FIFA match sync (football-data.org).
   // Used for testing and as a fallback if cron hasn't run yet.
   app.post("/api/admin/refresh-fifa-data", async (req, res) => {
