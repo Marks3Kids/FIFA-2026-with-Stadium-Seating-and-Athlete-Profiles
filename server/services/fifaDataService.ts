@@ -185,10 +185,16 @@ export async function syncMatchesFromFootballData(): Promise<{ updated: number; 
       });
     }
 
-    if (!target) {
-      // Try to match by date + one real team (other team is a placeholder in our DB).
+    // football-data.org group format: "GROUP_F" → normalize to "group f".
+    const fdGroupNorm = (fdMatch.group || "").toLowerCase().replace(/_/g, " ");
+
+    if (!target && fdGroupNorm) {
+      // Stronger fallback: match by group letter + one real team + other is a placeholder.
+      // This handles the case where our DB's date is stale (set before the real
+      // schedule was published) but the group + one team still uniquely identifies the row.
       target = existing.find((m) => {
-        if (!datesMatch(m.date, dateOnly)) return false;
+        const ourStage = (m.stage || "").toLowerCase().trim();
+        if (ourStage !== fdGroupNorm) return false;
         const t1 = normalizeTeamName(m.team1);
         const t2 = normalizeTeamName(m.team2);
         const oneSideMatches =
@@ -200,10 +206,16 @@ export async function syncMatchesFromFootballData(): Promise<{ updated: number; 
     }
 
     if (!target) {
-      // Last resort: same date + both sides in our DB are placeholders → fill them in.
-      target = existing.find(
-        (m) => datesMatch(m.date, dateOnly) && hasPlaceholder(m.team1) && hasPlaceholder(m.team2),
-      );
+      // Date-based fallback for matches that don't carry a group (older rows).
+      target = existing.find((m) => {
+        if (!datesMatch(m.date, dateOnly)) return false;
+        const t1 = normalizeTeamName(m.team1);
+        const t2 = normalizeTeamName(m.team2);
+        const oneSideMatches =
+          t1 === normHome || t2 === normHome || t1 === normAway || t2 === normAway;
+        const otherSideIsPlaceholder = hasPlaceholder(m.team1) || hasPlaceholder(m.team2);
+        return oneSideMatches && otherSideIsPlaceholder;
+      });
       if (target) resolvedPlaceholder = true;
     }
 
@@ -218,11 +230,19 @@ export async function syncMatchesFromFootballData(): Promise<{ updated: number; 
       status,
       fdMatchId: fdMatch.id,
     };
-    // When we matched via fallback (placeholder), also update the team names
-    // so the UI stops showing "UEFA Playoff B Winner" once the actual team is known.
+    // When we matched via fallback (placeholder), also rewrite team names + date.
+    // FIFA's published schedule is authoritative; our placeholder rows often have
+    // stale dates from the original draw-day seed.
     if (resolvedPlaceholder) {
       updateSet.team1 = homeName;
       updateSet.team2 = awayName;
+      // Convert FD's ISO date to the human-readable format the UI expects
+      // (matches the existing seed format, e.g. "June 14, 2026").
+      const d = new Date(fdMatch.utcDate);
+      if (!Number.isNaN(d.getTime())) {
+        const month = d.toLocaleString("en-US", { month: "long", timeZone: "UTC" });
+        updateSet.date = `${month} ${d.getUTCDate()}, ${d.getUTCFullYear()}`;
+      }
       placeholdersResolved++;
     }
 
