@@ -410,22 +410,9 @@ export default function RailServices() {
                       </div>
                     </div>
 
-                    <div className={`grid ${route.firstClass ? 'grid-cols-3' : 'grid-cols-2'} gap-2`}>
-                      <div className="bg-background/50 rounded-lg p-3 text-center">
-                        <span className="block text-[10px] uppercase tracking-wider text-muted-foreground mb-1">{t("transportation.internationalFlights.economy")}</span>
-                        <span className="block text-sm font-bold text-white">{route.economy}</span>
-                      </div>
-                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 text-center">
-                        <span className="block text-[10px] uppercase tracking-wider text-blue-400 mb-1">{t("transportation.internationalFlights.business")}</span>
-                        <span className="block text-sm font-bold text-blue-400">{route.business}</span>
-                      </div>
-                      {route.firstClass && (
-                        <div className="bg-accent/10 border border-accent/20 rounded-lg p-3 text-center">
-                          <span className="block text-[10px] uppercase tracking-wider text-accent mb-1">{t("transportation.internationalFlights.firstClass")}</span>
-                          <span className="block text-sm font-bold text-accent">{route.firstClass}</span>
-                        </div>
-                      )}
-                    </div>
+                    <p className="text-xs text-muted-foreground italic">
+                      Fares vary by date and class. Check the rail operator's site (linked in Local Transit below) for live pricing.
+                    </p>
                   </div>
                 ))}
               </div>

@@ -633,23 +633,16 @@ export default function InternationalFlights() {
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-3 gap-2">
-                        <div className="bg-background/50 rounded-lg p-3 text-center">
-                          <span className="block text-[10px] uppercase tracking-wider text-muted-foreground mb-1">{t("transportation.internationalFlights.economy")}</span>
-                          <span className="block text-sm font-bold text-white">{route.economy}</span>
-                        </div>
-                        <div className="bg-primary/10 border border-primary/20 rounded-lg p-3 text-center">
-                          <span className="block text-[10px] uppercase tracking-wider text-primary mb-1">{t("transportation.internationalFlights.business")}</span>
-                          <span className="block text-sm font-bold text-primary">{route.business}</span>
-                        </div>
-                        <div className="bg-accent/10 border border-accent/20 rounded-lg p-3 text-center">
-                          <div className="flex items-center justify-center space-x-1 mb-1">
-                            <Star className="w-2.5 h-2.5 text-accent" />
-                            <span className="text-[10px] uppercase tracking-wider text-accent">{t("transportation.internationalFlights.firstClass")}</span>
-                          </div>
-                          <span className="block text-sm font-bold text-accent">{route.firstClass}</span>
-                        </div>
-                      </div>
+                      <a
+                        href={`https://www.google.com/travel/flights?q=${encodeURIComponent(`Flights from ${route.from} to ${selectedAirport.code}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 hover:underline transition-colors"
+                        data-testid={`link-flight-search-${cIndex}-${rIndex}`}
+                      >
+                        Check live prices on Google Flights
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
                     </div>
                   ))}
                 </div>

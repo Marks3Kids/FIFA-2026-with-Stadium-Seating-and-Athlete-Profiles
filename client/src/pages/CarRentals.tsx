@@ -562,23 +562,20 @@ export default function CarRentals() {
               <DollarSign className="w-5 h-5 text-accent" />
               <h2 className="text-lg font-display font-bold text-white">{t("transportation.carRentals.dailyRates")}</h2>
             </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div className="bg-card border border-white/5 rounded-xl p-4 text-center">
-                <span className="block text-[10px] uppercase tracking-wider text-muted-foreground mb-1">{t("transportation.carRentals.economy")}</span>
-                <span className="block text-lg font-bold text-white">{selectedCity.dailyRates.economy}</span>
-              </div>
-              <div className="bg-card border border-white/5 rounded-xl p-4 text-center">
-                <span className="block text-[10px] uppercase tracking-wider text-muted-foreground mb-1">{t("transportation.carRentals.midsize")}</span>
-                <span className="block text-lg font-bold text-white">{selectedCity.dailyRates.midsize}</span>
-              </div>
-              <div className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-4 text-center">
-                <span className="block text-[10px] uppercase tracking-wider text-purple-400 mb-1">{t("transportation.carRentals.suv")}</span>
-                <span className="block text-lg font-bold text-purple-400">{selectedCity.dailyRates.suv}</span>
-              </div>
-              <div className="bg-accent/10 border border-accent/20 rounded-xl p-4 text-center">
-                <span className="block text-[10px] uppercase tracking-wider text-accent mb-1">{t("transportation.carRentals.luxury")}</span>
-                <span className="block text-lg font-bold text-accent">{selectedCity.dailyRates.luxury}</span>
-              </div>
+            <div className="bg-card border border-white/5 rounded-xl p-4">
+              <p className="text-xs text-muted-foreground italic mb-3">
+                Daily rates vary by date, demand, and vehicle class. For up-to-date pricing, use a comparison site:
+              </p>
+              <a
+                href="https://www.kayak.com/cars"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-primary hover:text-primary/80 hover:underline transition-colors"
+                data-testid="link-car-rental-search"
+              >
+                Check live rates on Kayak Cars
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
 

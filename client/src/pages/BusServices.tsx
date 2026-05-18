@@ -512,15 +512,14 @@ export default function BusServices() {
                       <Bus className="w-4 h-4 text-orange-400" />
                       <span className="font-bold text-white">{t(`cities.cityNames.${route.toKey}`)}</span>
                     </div>
-                    <span className="text-lg font-bold text-orange-400">{route.price}</span>
-                  </div>
-                  <div className="flex items-center space-x-4 text-xs text-muted-foreground">
-                    <div className="flex items-center space-x-1">
+                    <div className="flex items-center space-x-1.5 text-xs text-muted-foreground">
                       <Clock className="w-3.5 h-3.5" />
-                      <span>{t("transportation.busServices.duration")}: {route.duration}</span>
+                      <span>{route.duration}</span>
                     </div>
-                    <span className="text-orange-400/70">{t("transportation.busServices.price")}: {route.price}</span>
                   </div>
+                  <p className="text-xs text-muted-foreground italic">
+                    Fares change daily. Check the bus operator's site (linked above) for live pricing.
+                  </p>
                 </div>
               ))}
             </div>
