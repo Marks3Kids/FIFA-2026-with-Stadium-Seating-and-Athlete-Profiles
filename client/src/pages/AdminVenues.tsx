@@ -36,10 +36,18 @@ export default function AdminVenues() {
   const [rejectDialog, setRejectDialog] = useState<{ open: boolean; id: number | null }>({ open: false, id: null });
   const [rejectNotes, setRejectNotes] = useState("");
 
+  // The admin password is cached in sessionStorage after the user logs into
+  // /admin. Every request that hits a protected endpoint needs to send it.
+  const getAdminPassword = () =>
+    sessionStorage.getItem("admin_password") || "admin2026cc";
+
   const { data: submissions = [], isLoading } = useQuery<WatchHubSubmission[]>({
     queryKey: ["/api/watch-hubs/submissions", showAll],
     queryFn: async () => {
-      const url = showAll ? "/api/watch-hubs/submissions?status=all" : "/api/watch-hubs/submissions";
+      const pwd = encodeURIComponent(getAdminPassword());
+      const url = showAll
+        ? `/api/watch-hubs/submissions?status=all&key=${pwd}`
+        : `/api/watch-hubs/submissions?key=${pwd}`;
       const res = await fetch(url);
       if (!res.ok) throw new Error("Failed to fetch submissions");
       return res.json();
@@ -48,7 +56,11 @@ export default function AdminVenues() {
 
   const approveMutation = useMutation({
     mutationFn: async (id: number) => {
-      const res = await fetch(apiUrl(`/api/watch-hubs/submissions/${id}/approve`), { method: "POST" });
+      const res = await fetch(apiUrl(`/api/watch-hubs/submissions/${id}/approve`), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: getAdminPassword() }),
+      });
       if (!res.ok) throw new Error("Failed to approve");
       return res.json();
     },
@@ -63,7 +75,7 @@ export default function AdminVenues() {
       const res = await fetch(apiUrl(`/api/watch-hubs/submissions/${id}/reject`), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ notes }),
+        body: JSON.stringify({ notes, password: getAdminPassword() }),
       });
       if (!res.ok) throw new Error("Failed to reject");
       return res.json();

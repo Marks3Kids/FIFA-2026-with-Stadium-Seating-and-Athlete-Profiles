@@ -1991,7 +1991,11 @@ Remember: You're helping fans have the best World Cup experience of their lives!
       const { password, role } = req.body;
       const adminPassword = process.env.ADMIN_PASSWORD || "admin2026cc";
       
-      if (password === adminPassword || password === "admin2026cc") {
+      // Security: previously had `|| password === "admin2026cc"` as a hardcoded
+      // backdoor that worked even when ADMIN_PASSWORD was set. Removed — only
+      // the env-var value (or the dev fallback "admin2026cc" if no env var is
+      // configured) is accepted now.
+      if (password === adminPassword) {
         const email = role === "admin2"
           ? "admin2@championshipconcierge.com"
           : "admin@championshipconcierge.com";
@@ -2033,7 +2037,7 @@ Remember: You're helping fans have the best World Cup experience of their lives!
       const key = req.query.key as string;
       const validKey = process.env.ADMIN_PASSWORD || "admin2026cc";
       if (key) {
-        if (key !== validKey && key !== "admin2026cc") {
+        if (key !== validKey) {
           return res.status(401).json({ error: "Unauthorized" });
         }
         res.setHeader("Access-Control-Allow-Origin", "*");
@@ -2160,7 +2164,7 @@ Remember: You're helping fans have the best World Cup experience of their lives!
       const key = req.query.key as string;
       const validKey = process.env.ADMIN_PASSWORD || "admin2026cc";
       if (key) {
-        if (key !== validKey && key !== "admin2026cc") {
+        if (key !== validKey) {
           return res.status(401).json({ error: "Unauthorized" });
         }
         res.setHeader("Access-Control-Allow-Origin", "*");
@@ -2186,7 +2190,7 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     try {
       const key = req.query.key as string;
       const validKey = process.env.ADMIN_PASSWORD || "admin2026cc";
-      if (key !== validKey && key !== "admin2026cc") {
+      if (key !== validKey) {
         return res.status(401).json({ error: "Unauthorized" });
       }
       res.setHeader("Access-Control-Allow-Origin", "*");
@@ -2586,18 +2590,33 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     }
   });
 
+  // Helper for the watch-hub admin endpoints below.
+  // Password may arrive in body (POST), x-admin-password header, or `key`
+  // query string (GET-friendly). Returns true if authorized.
+  function isAdminAuthorized(req: any): boolean {
+    const adminPassword = process.env.ADMIN_PASSWORD || "admin2026cc";
+    const provided =
+      req.body?.password ||
+      req.header?.("x-admin-password") ||
+      (typeof req.query?.key === "string" ? req.query.key : undefined);
+    return provided === adminPassword;
+  }
+
   // Admin: Get all submissions (pending only by default)
   app.get("/api/watch-hubs/submissions", async (req, res) => {
     try {
+      if (!isAdminAuthorized(req)) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
       const { status } = req.query;
       let submissions;
-      
+
       if (status === "all") {
         submissions = await storage.getAllWatchHubSubmissions();
       } else {
         submissions = await storage.getPendingWatchHubSubmissions();
       }
-      
+
       res.json(submissions);
     } catch (error) {
       console.error("Failed to fetch submissions:", error);
@@ -2608,16 +2627,19 @@ Remember: You're helping fans have the best World Cup experience of their lives!
   // Admin: Approve a submission
   app.post("/api/watch-hubs/submissions/:id/approve", async (req, res) => {
     try {
+      if (!isAdminAuthorized(req)) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
       const id = parseInt(req.params.id);
       if (isNaN(id)) {
         return res.status(400).json({ error: "Invalid submission ID" });
       }
-      
+
       const venue = await storage.approveWatchHubSubmission(id);
       if (!venue) {
         return res.status(404).json({ error: "Submission not found or already processed" });
       }
-      
+
       res.json({ success: true, venue });
     } catch (error) {
       console.error("Failed to approve submission:", error);
@@ -2628,18 +2650,21 @@ Remember: You're helping fans have the best World Cup experience of their lives!
   // Admin: Reject a submission
   app.post("/api/watch-hubs/submissions/:id/reject", async (req, res) => {
     try {
+      if (!isAdminAuthorized(req)) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
       const id = parseInt(req.params.id);
       const { notes } = req.body;
-      
+
       if (isNaN(id)) {
         return res.status(400).json({ error: "Invalid submission ID" });
       }
-      
+
       const submission = await storage.rejectWatchHubSubmission(id, notes || "");
       if (!submission) {
         return res.status(404).json({ error: "Submission not found" });
       }
-      
+
       res.json({ success: true, submission });
     } catch (error) {
       console.error("Failed to reject submission:", error);
