@@ -1,4 +1,5 @@
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo, useRef, useLayoutEffect } from "react";
+import { createPortal } from "react-dom";
 import { Layout } from "@/components/Layout";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
@@ -319,23 +320,66 @@ export default function BracketChallenge() {
     </button>
   );
 
-  const TeamSelector = ({ 
-    matchNum, 
+  const TeamSelector = ({
+    matchNum,
     position,
     currentTeamId
-  }: { 
+  }: {
     matchNum: number;
     position: 'team1' | 'team2';
     currentTeamId: number | null;
   }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const triggerRef = useRef<HTMLButtonElement | null>(null);
+    const [coords, setCoords] = useState<{ top: number; left: number; width: number }>({ top: 0, left: 0, width: 0 });
     const currentTeam = getTeamById(currentTeamId);
     const usedIds = getUsedTeamIds();
-    const availableTeams = teams.filter(t => !usedIds.includes(t.id) || t.id === currentTeamId);
+    // Bracket Challenge UX: each team can only be picked once across the
+    // Round of 32. Filter teams used elsewhere; keep the current pick visible.
+    // Sort alphabetically so users can scan quickly.
+    const availableTeams = teams
+      .filter(t => !usedIds.includes(t.id) || t.id === currentTeamId)
+      .slice()
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    // Position the dropdown using the trigger's viewport coords so it can
+    // render in a portal and not be clipped by ancestor overflow rules.
+    useLayoutEffect(() => {
+      if (!isOpen || !triggerRef.current) return;
+      const updatePosition = () => {
+        const rect = triggerRef.current!.getBoundingClientRect();
+        setCoords({
+          top: rect.bottom + 4,
+          left: rect.left,
+          width: rect.width,
+        });
+      };
+      updatePosition();
+      window.addEventListener("scroll", updatePosition, true);
+      window.addEventListener("resize", updatePosition);
+      return () => {
+        window.removeEventListener("scroll", updatePosition, true);
+        window.removeEventListener("resize", updatePosition);
+      };
+    }, [isOpen]);
+
+    // Close the dropdown if the user clicks outside (or scrolls the page away).
+    useEffect(() => {
+      if (!isOpen) return;
+      const handler = (e: MouseEvent) => {
+        const target = e.target as Node;
+        if (triggerRef.current?.contains(target)) return;
+        // Clicks inside the portal'd menu are stopped via stopPropagation on the menu.
+        setIsOpen(false);
+      };
+      document.addEventListener("mousedown", handler);
+      return () => document.removeEventListener("mousedown", handler);
+    }, [isOpen]);
 
     return (
       <div className={`relative ${position === 'team1' ? 'rounded-t-lg border-b border-white/5' : 'rounded-b-lg'}`}>
         <button
+          ref={triggerRef}
           onClick={() => setIsOpen(!isOpen)}
           className={`
             w-full flex items-center gap-2 px-3 py-2 transition-all
@@ -346,8 +390,8 @@ export default function BracketChallenge() {
         >
           {currentTeam ? (
             <>
-              <img 
-                src={getFlagUrl(currentTeam.name)} 
+              <img
+                src={getFlagUrl(currentTeam.name)}
                 alt={currentTeam.name}
                 className="w-6 h-4 object-cover rounded shadow-sm"
               />
@@ -358,9 +402,21 @@ export default function BracketChallenge() {
           )}
           <ChevronRight className="w-4 h-4 text-muted-foreground" />
         </button>
-        
-        {isOpen && (
-          <div className="absolute z-[100] left-0 right-0 mt-1 max-h-60 overflow-y-auto bg-card border border-white/20 rounded-lg shadow-xl">
+
+        {isOpen && createPortal(
+          <div
+            onMouseDown={(e) => e.stopPropagation()}
+            style={{
+              position: "fixed",
+              top: coords.top,
+              left: coords.left,
+              width: coords.width,
+              maxHeight: 320,
+              overflowY: "auto",
+              zIndex: 10000,
+            }}
+            className="bg-card border border-white/20 rounded-lg shadow-2xl"
+          >
             {availableTeams.length === 0 ? (
               <div className="px-3 py-2 text-xs text-muted-foreground">No teams available</div>
             ) : null}
@@ -371,17 +427,18 @@ export default function BracketChallenge() {
                   handleSetR32Team(matchNum, position, team.id);
                   setIsOpen(false);
                 }}
-                className="flex items-center gap-2 px-3 py-2 w-full hover:bg-white/10 transition-colors"
+                className="flex items-center gap-2 px-3 py-2 w-full hover:bg-white/10 transition-colors text-left"
               >
-                <img 
-                  src={getFlagUrl(team.name)} 
+                <img
+                  src={getFlagUrl(team.name)}
                   alt={team.name}
-                  className="w-5 h-3 object-cover rounded"
+                  className="w-5 h-3 object-cover rounded flex-shrink-0"
                 />
                 <span className="text-sm text-white truncate">{team.name}</span>
               </button>
             ))}
-          </div>
+          </div>,
+          document.body
         )}
       </div>
     );
@@ -404,7 +461,9 @@ export default function BracketChallenge() {
         <div className="text-xs text-muted-foreground mb-1 text-center">
           {t("bracket.match")} {matchNum}
         </div>
-        <div className="w-44 bg-card/80 border border-white/10 rounded-lg overflow-hidden shadow-lg">
+        {/* overflow-visible (not overflow-hidden) so the absolute-positioned
+            TeamSelector dropdown can extend past the card boundary. */}
+        <div className="w-44 bg-card/80 border border-white/10 rounded-lg shadow-lg">
           {isR32 ? (
             <>
               <TeamSelector matchNum={matchNum} position="team1" currentTeamId={match?.team1 ?? null} />
