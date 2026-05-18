@@ -118,12 +118,13 @@ function DirectionHandler() {
   return null;
 }
 
-// Runs on EVERY route. Once the subscription context finishes loading,
-// if the user has a paid tier and is on a public-only page, send them straight to /home.
-// This is the single authoritative redirect — it covers LandingPage, /pricing, and any
-// other public page a paid user might accidentally land on (e.g. from a bookmark).
+// Runs on EVERY route. If a paid user lands on the public LANDING page,
+// send them straight to /home (they're already a customer, no need to
+// re-pitch). /pricing is INTENTIONALLY NOT in this list — when ProtectedRoute
+// redirects an under-tiered user to /pricing for an upgrade, they need to
+// actually see the upgrade page, not get bounced back to /home.
 const PAID_TIERS = ['team_info', 'logistics', 'ai_concierge'];
-const PUBLIC_ONLY_PATHS = ['/', '/pricing'];
+const PUBLIC_ONLY_PATHS = ['/'];
 
 function GlobalRedirect() {
   const { subscriptionTier, isLoading, email } = useSubscription();
@@ -133,7 +134,7 @@ function GlobalRedirect() {
     if (isLoading) return; // Wait for backend verify to complete
     console.log(`[GlobalRedirect] isLoading=${isLoading} email=${email} tier=${subscriptionTier} path=${location}`);
     if (PAID_TIERS.includes(subscriptionTier) && PUBLIC_ONLY_PATHS.includes(location)) {
-      console.log(`[GlobalRedirect] Paid user (${subscriptionTier}) on public page (${location}) → redirecting to /home`);
+      console.log(`[GlobalRedirect] Paid user (${subscriptionTier}) on landing page (${location}) → redirecting to /home`);
       navigate('/home', { replace: true } as any);
     }
   }, [isLoading, subscriptionTier, location]);
