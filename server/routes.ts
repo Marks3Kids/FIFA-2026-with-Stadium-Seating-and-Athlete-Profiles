@@ -2410,6 +2410,106 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     }
   });
 
+  // Admin: replace a single team's roster from a pasted text block.
+  // Format (one player per line, comma or pipe separated):
+  //   Name, Position, Number, Club
+  //   e.g. "Cristiano Ronaldo, Forward, 7, Al-Nassr"
+  // Number + Club are optional. Blank lines + leading "Goalkeepers:" labels
+  // (FIFA's roster page format) are skipped automatically.
+  app.post("/api/admin/players/replace-team-roster", async (req, res) => {
+    try {
+      const adminPassword = process.env.ADMIN_PASSWORD || "admin2026cc";
+      const provided = req.body?.password || req.header("x-admin-password");
+      if (provided !== adminPassword) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+      const teamId = parseInt(req.body?.teamId, 10);
+      const rosterText: string = req.body?.rosterText || "";
+      if (!Number.isFinite(teamId) || !rosterText.trim()) {
+        return res.status(400).json({ error: "teamId and rosterText are required" });
+      }
+
+      // Verify the team exists before we touch the DB.
+      const team = await storage.getTeam(teamId);
+      if (!team) return res.status(404).json({ error: `No team with id ${teamId}` });
+
+      // Parse the pasted text. We're lenient about separators and labels because
+      // Mark will be pasting from FIFA/Wikipedia which use varied formats.
+      const POSITION_HEADERS = ["goalkeepers", "defenders", "midfielders", "forwards", "coach", "manager"];
+      const lines = rosterText
+        .split(/\r?\n/)
+        .map((l) => l.trim())
+        .filter((l) => l.length > 0);
+
+      let currentPositionHint: string | null = null;
+      const players: Array<{ name: string; position: string; number: number | null; currentClub: string | null }> = [];
+
+      for (const raw of lines) {
+        const lower = raw.toLowerCase().replace(/[:\s]+$/, "");
+        // Lines that are just a position label (e.g. "Goalkeepers:") set the hint
+        // for subsequent lines that omit a position.
+        if (POSITION_HEADERS.some((h) => lower === h || lower.startsWith(h + " "))) {
+          currentPositionHint = lower.split(" ")[0].replace(/s$/, "");
+          continue;
+        }
+        // Split on comma OR pipe; both are common when pasting.
+        const parts = raw.split(/\s*[|,]\s*/).map((p) => p.trim()).filter(Boolean);
+        if (parts.length === 0) continue;
+        const name = parts[0];
+        const position = parts[1] || currentPositionHint || "Player";
+        const numberRaw = parts[2];
+        const number = numberRaw && /^\d+$/.test(numberRaw) ? parseInt(numberRaw, 10) : null;
+        const currentClub = parts[3] || null;
+        players.push({
+          name,
+          position: position.charAt(0).toUpperCase() + position.slice(1),
+          number,
+          currentClub,
+        });
+      }
+
+      if (players.length === 0) {
+        return res.status(400).json({ error: "No players parsed from rosterText" });
+      }
+
+      // Replace this team's roster in one transaction so the UI never sees
+      // a half-empty squad. Other teams' players are untouched.
+      const { db } = await import("../db");
+      const { players: playersTable } = await import("@shared/schema");
+      const { eq } = await import("drizzle-orm");
+
+      const result = await db.transaction(async (tx) => {
+        await tx.delete(playersTable).where(eq(playersTable.teamId, teamId));
+        await tx.insert(playersTable).values(
+          players.map((p) => ({
+            teamId,
+            name: p.name,
+            position: p.position,
+            number: p.number,
+            dateOfBirth: null,
+            height: null,
+            currentClub: p.currentClub,
+            imageUrl: null,
+            isCaptain: 0,
+            internationalCaps: 0,
+            internationalGoals: 0,
+            clubCareerGoals: 0,
+            clubCareerAssists: 0,
+            highlightVideoUrl: null,
+            wikiUrl: null,
+          })),
+        );
+        return { inserted: players.length };
+      });
+
+      console.log(`[Roster] Replaced ${team.name} roster with ${result.inserted} players`);
+      res.json({ success: true, teamId, teamName: team.name, inserted: result.inserted });
+    } catch (error: any) {
+      console.error("[Roster] replace-team-roster failed:", error);
+      res.status(500).json({ error: "Failed to replace roster", details: error?.message });
+    }
+  });
+
   // Admin: pull player squads for every team from football-data.org.
   // Wipes the players table and inserts fresh rosters (typically 23-26 per team).
   // Safe to run repeatedly — idempotent.

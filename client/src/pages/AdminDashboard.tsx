@@ -770,7 +770,10 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
             <Button variant="outline" size="sm">View Leads Page</Button>
           </Link>
           <Link href="/admin/venues">
-            <Button variant="outline" size="sm">Manage Venues</Button>
+            <Button variant="outline" size="sm">Manage Watch Hubs</Button>
+          </Link>
+          <Link href="/admin/rosters">
+            <Button variant="outline" size="sm">Paste Player Rosters</Button>
           </Link>
           <Link href="/">
             <Button variant="ghost" size="sm">View Live App</Button>

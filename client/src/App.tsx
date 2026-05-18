@@ -38,6 +38,7 @@ import WatchHubs from "@/pages/WatchHubs";
 import AdminVenues from "@/pages/AdminVenues";
 import AdminLeadsPage from "@/pages/AdminLeadsPage";
 import AdminDashboard from "@/pages/AdminDashboard";
+import AdminRosters from "@/pages/AdminRosters";
 import { Legal } from "@/pages/Legal";
 import SupportPage from "@/pages/SupportPage";
 import CheckoutSuccess from "@/pages/CheckoutSuccess";
@@ -97,6 +98,7 @@ function Router() {
       <Route path="/admin2" component={AdminDashboard} />
       <Route path="/admin/venues" component={AdminVenues} />
       <Route path="/admin/leads" component={AdminLeadsPage} />
+      <Route path="/admin/rosters" component={AdminRosters} />
       
       <Route component={NotFound} />
     </Switch>
