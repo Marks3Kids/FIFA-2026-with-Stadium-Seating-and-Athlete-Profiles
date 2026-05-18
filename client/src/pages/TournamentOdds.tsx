@@ -1,19 +1,59 @@
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { useTranslation } from "react-i18next";
-import { TrendingUp, Trophy, Users, Calendar, AlertTriangle, Phone, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+import { TrendingUp, Trophy, Users, Calendar, AlertTriangle, Phone, ExternalLink, ChevronDown, ChevronUp, RefreshCw } from "lucide-react";
 import { getFlagUrl } from "@/lib/flags";
+import { apiUrl } from "@/lib/apiConfig";
+
+// Server-side row shape returned by /api/tournament-odds.
+interface ApiOddsRow {
+  id: number;
+  teamName: string;
+  odds: string; // American format, e.g. "+485" or "-200"
+  source: string;
+  updatedAt: string;
+}
 
 interface TeamOdds {
   team: string;
-  countryCode: string;
   odds: string;
   impliedProbability: string;
 }
 
-interface GroupOdds {
-  group: string;
-  teams: { team: string; countryCode: string; odds: string }[];
+/**
+ * Convert American odds to implied probability (no-vig).
+ *   +500 → 100/(500+100) = 16.7%
+ *   -200 → 200/(200+100) = 66.7%
+ */
+function americanToImplied(odds: string): string {
+  const n = parseInt(odds.replace(/[^-\d]/g, ""), 10);
+  if (!Number.isFinite(n) || n === 0) return "—";
+  const prob = n > 0 ? 100 / (n + 100) : Math.abs(n) / (Math.abs(n) + 100);
+  return `${(prob * 100).toFixed(1)}%`;
+}
+
+/**
+ * Numeric value of American odds (lower number = bigger favorite), used for sorting.
+ */
+function oddsRank(odds: string): number {
+  const n = parseInt(odds.replace(/[^-\d]/g, ""), 10);
+  if (!Number.isFinite(n)) return Number.MAX_SAFE_INTEGER;
+  return n < 0 ? n : n; // negative numbers (favorites) come first naturally
+}
+
+function formatLastUpdated(rows: ApiOddsRow[]): string {
+  if (!rows.length) return "—";
+  const newest = rows
+    .map((r) => new Date(r.updatedAt))
+    .sort((a, b) => b.getTime() - a.getTime())[0];
+  return newest.toLocaleString(undefined, {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
 }
 
 export default function TournamentOdds() {
@@ -21,69 +61,30 @@ export default function TournamentOdds() {
   const [expandedGroup, setExpandedGroup] = useState<string | null>(null);
   const [showHelpResources, setShowHelpResources] = useState(false);
 
-  const oddsLastUpdated = "April 14, 2026";
+  // Live odds from server — refreshed daily by The Odds API cron job.
+  // refetchOnMount keeps the page snappy after navigation; staleTime caps API churn.
+  const { data: oddsRows = [], isLoading: oddsLoading } = useQuery<ApiOddsRow[]>({
+    queryKey: ["/api/tournament-odds"],
+    queryFn: async () => {
+      const res = await fetch(apiUrl("/api/tournament-odds"));
+      if (!res.ok) throw new Error("Failed to load odds");
+      return res.json();
+    },
+    refetchOnWindowFocus: false,
+    staleTime: 5 * 60 * 1000,
+  });
 
-  const championshipOdds: TeamOdds[] = [
-    { team: "England", countryCode: "gb-eng", odds: "+380", impliedProbability: "20.8%" },
-    { team: "France", countryCode: "fr", odds: "+420", impliedProbability: "19.2%" },
-    { team: "Spain", countryCode: "es", odds: "+480", impliedProbability: "17.2%" },
-    { team: "Argentina", countryCode: "ar", odds: "+550", impliedProbability: "15.4%" },
-    { team: "Brazil", countryCode: "br", odds: "+650", impliedProbability: "13.3%" },
-    { team: "Germany", countryCode: "de", odds: "+850", impliedProbability: "10.5%" },
-    { team: "Portugal", countryCode: "pt", odds: "+1100", impliedProbability: "8.3%" },
-    { team: "Netherlands", countryCode: "nl", odds: "+1400", impliedProbability: "6.7%" },
-    { team: "Belgium", countryCode: "be", odds: "+2200", impliedProbability: "4.3%" },
-    { team: "Italy", countryCode: "it", odds: "+2800", impliedProbability: "3.4%" },
-    { team: "United States", countryCode: "us", odds: "+2800", impliedProbability: "3.4%" },
-    { team: "Croatia", countryCode: "hr", odds: "+4000", impliedProbability: "2.4%" },
-    { team: "Norway", countryCode: "no", odds: "+4500", impliedProbability: "2.2%" },
-    { team: "Denmark", countryCode: "dk", odds: "+5000", impliedProbability: "2.0%" },
-    { team: "Uruguay", countryCode: "uy", odds: "+5000", impliedProbability: "2.0%" },
-    { team: "Colombia", countryCode: "co", odds: "+5500", impliedProbability: "1.8%" },
-    { team: "Mexico", countryCode: "mx", odds: "+6000", impliedProbability: "1.6%" },
-    { team: "Japan", countryCode: "jp", odds: "+7000", impliedProbability: "1.4%" },
-    { team: "Morocco", countryCode: "ma", odds: "+8000", impliedProbability: "1.2%" },
-    { team: "Canada", countryCode: "ca", odds: "+10000", impliedProbability: "1.0%" },
-  ];
+  const championshipOdds: TeamOdds[] = oddsRows
+    .filter((r) => r.odds && r.odds !== "N/A")
+    .map((r) => ({
+      team: r.teamName,
+      odds: r.odds,
+      impliedProbability: americanToImplied(r.odds),
+    }))
+    .sort((a, b) => oddsRank(a.odds) - oddsRank(b.odds));
 
-  const groupOdds: GroupOdds[] = [
-    { group: "A", teams: [
-      { team: "Argentina", countryCode: "ar", odds: "-250" },
-      { team: "Morocco", countryCode: "ma", odds: "+350" },
-      { team: "Ecuador", countryCode: "ec", odds: "+600" },
-      { team: "Saudi Arabia", countryCode: "sa", odds: "+1200" },
-    ]},
-    { group: "B", teams: [
-      { team: "Spain", countryCode: "es", odds: "-200" },
-      { team: "Netherlands", countryCode: "nl", odds: "+250" },
-      { team: "Uruguay", countryCode: "uy", odds: "+400" },
-      { team: "Ghana", countryCode: "gh", odds: "+1500" },
-    ]},
-    { group: "C", teams: [
-      { team: "England", countryCode: "gb-eng", odds: "-300" },
-      { team: "Denmark", countryCode: "dk", odds: "+400" },
-      { team: "Serbia", countryCode: "rs", odds: "+600" },
-      { team: "Slovenia", countryCode: "si", odds: "+2000" },
-    ]},
-    { group: "D", teams: [
-      { team: "France", countryCode: "fr", odds: "-350" },
-      { team: "Austria", countryCode: "at", odds: "+450" },
-      { team: "Poland", countryCode: "pl", odds: "+500" },
-      { team: "Tunisia", countryCode: "tn", odds: "+1800" },
-    ]},
-    { group: "E", teams: [
-      { team: "Germany", countryCode: "de", odds: "-280" },
-      { team: "Japan", countryCode: "jp", odds: "+350" },
-      { team: "Mexico", countryCode: "mx", odds: "+400" },
-      { team: "Costa Rica", countryCode: "cr", odds: "+2500" },
-    ]},
-    { group: "F", teams: [
-      { team: "Brazil", countryCode: "br", odds: "-400" },
-      { team: "Colombia", countryCode: "co", odds: "+400" },
-      { team: "Senegal", countryCode: "sn", odds: "+600" },
-      { team: "Cameroon", countryCode: "cm", odds: "+1500" },
-    ]},
-  ];
+  const oddsLastUpdated = formatLastUpdated(oddsRows);
+  const oddsSource = oddsRows[0]?.source || "Live odds";
 
   const helpResources = [
     { nameKey: "odds.helpResources.ncpg", phone: "1-800-522-4700", url: "https://www.ncpgambling.org" },
@@ -103,8 +104,11 @@ export default function TournamentOdds() {
         <p className="text-muted-foreground mb-6">{t("odds.subtitle")}</p>
 
         <div className="flex items-center justify-between bg-white/5 border border-white/10 rounded-xl px-4 py-2 mb-4">
-          <span className="text-xs text-muted-foreground">Odds source: DraftKings / BetMGM consensus</span>
-          <span className="text-xs font-medium text-primary">Updated: {oddsLastUpdated}</span>
+          <span className="text-xs text-muted-foreground">Odds source: {oddsSource}</span>
+          <span className="text-xs font-medium text-primary flex items-center gap-1.5">
+            {oddsLoading && <RefreshCw className="w-3 h-3 animate-spin" />}
+            Updated: {oddsLastUpdated}
+          </span>
         </div>
 
         <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 mb-6">
@@ -124,84 +128,38 @@ export default function TournamentOdds() {
           </div>
           <p className="text-sm text-muted-foreground mb-4">{t("odds.championshipDescription")}</p>
           
-          <div className="space-y-2">
-            {championshipOdds.map((team, index) => (
-              <div 
-                key={team.team}
-                className={`bg-card border border-white/5 rounded-xl p-4 flex items-center justify-between ${index < 3 ? 'border-l-4 border-l-primary' : ''}`}
-              >
-                <div className="flex items-center space-x-3">
-                  <span className="text-muted-foreground font-mono text-sm w-6">{index + 1}</span>
-                  <img
-                    src={getFlagUrl(team.team)}
-                    alt={team.team}
-                    className="w-8 h-6 object-cover rounded"
-                    onError={(e) => {
-                      e.currentTarget.src = `https://flagcdn.com/w40/${team.countryCode.split('-')[0]}.png`;
-                    }}
-                  />
-                  <span className="font-medium text-white">{team.team}</span>
-                </div>
-                <div className="text-right">
-                  <span className={`font-bold ${team.odds.startsWith('+') ? 'text-primary' : 'text-white'}`}>
-                    {team.odds}
-                  </span>
-                  <p className="text-xs text-muted-foreground">{team.impliedProbability}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mb-8">
-          <div className="flex items-center space-x-2 mb-4">
-            <Users className="w-5 h-5 text-blue-400" />
-            <h2 className="text-xl font-display font-bold text-white">{t("odds.groupWinners")}</h2>
-          </div>
-          <p className="text-sm text-muted-foreground mb-4">{t("odds.groupDescription")}</p>
-          
-          <div className="space-y-3">
-            {groupOdds.map((group) => (
-              <div key={group.group} className="bg-card border border-white/5 rounded-xl overflow-hidden">
-                <button
-                  onClick={() => setExpandedGroup(expandedGroup === group.group ? null : group.group)}
-                  className="w-full p-4 flex items-center justify-between hover:bg-white/5 transition-colors"
+          {oddsLoading && championshipOdds.length === 0 ? (
+            <div className="text-center text-muted-foreground py-8">Loading latest odds…</div>
+          ) : championshipOdds.length === 0 ? (
+            <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 text-center text-amber-200 text-sm">
+              Odds are refreshing. New data will appear automatically once the daily sync completes.
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {championshipOdds.map((team, index) => (
+                <div
+                  key={team.team}
+                  className={`bg-card border border-white/5 rounded-xl p-4 flex items-center justify-between ${index < 3 ? 'border-l-4 border-l-primary' : ''}`}
                 >
-                  <span className="font-bold text-white">{t("odds.group")} {group.group}</span>
-                  {expandedGroup === group.group ? (
-                    <ChevronUp className="w-5 h-5 text-muted-foreground" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-muted-foreground" />
-                  )}
-                </button>
-                {expandedGroup === group.group && (
-                  <div className="border-t border-white/5 p-4 space-y-2">
-                    {group.teams.map((team, idx) => (
-                      <div key={team.team} className="flex items-center justify-between py-2">
-                        <div className="flex items-center space-x-3">
-                          <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${idx === 0 ? 'bg-primary text-black' : 'bg-white/10 text-white'}`}>
-                            {idx + 1}
-                          </span>
-                          <img
-                            src={getFlagUrl(team.team)}
-                            alt={team.team}
-                            className="w-6 h-4 object-cover rounded"
-                            onError={(e) => {
-                              e.currentTarget.src = `https://flagcdn.com/w40/${team.countryCode.split('-')[0]}.png`;
-                            }}
-                          />
-                          <span className="text-white text-sm">{team.team}</span>
-                        </div>
-                        <span className={`font-mono font-bold ${team.odds.startsWith('-') ? 'text-yellow-400' : 'text-primary'}`}>
-                          {team.odds}
-                        </span>
-                      </div>
-                    ))}
+                  <div className="flex items-center space-x-3">
+                    <span className="text-muted-foreground font-mono text-sm w-6">{index + 1}</span>
+                    <img
+                      src={getFlagUrl(team.team)}
+                      alt={team.team}
+                      className="w-8 h-6 object-cover rounded"
+                    />
+                    <span className="font-medium text-white">{team.team}</span>
                   </div>
-                )}
-              </div>
-            ))}
-          </div>
+                  <div className="text-right">
+                    <span className={`font-bold ${team.odds.startsWith('+') ? 'text-primary' : 'text-white'}`}>
+                      {team.odds}
+                    </span>
+                    <p className="text-xs text-muted-foreground">{team.impliedProbability}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="mb-8">
