@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { LivePricingBanner } from "@/components/LivePricingBanner";
 import { Train, Clock, ArrowLeft, MapPin, DollarSign, ChevronRight, ExternalLink } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
@@ -44,9 +45,9 @@ const railHubs: RailHub[] = [
       { name: "Metro-North", url: "https://new.mta.info/agency/metro-north-railroad" },
     ],
     routes: [
-      { to: "Boston", toKey: "boston", duration: "3h 30m", frequency: "Hourly", frequencyKey: "hourly", economy: "$49-89", business: "$89-159", firstClass: "$159-299" },
-      { to: "Philadelphia", toKey: "philadelphia", duration: "1h 10m", frequency: "Every 30 min", frequencyKey: "every30Min", economy: "$29-59", business: "$59-99", firstClass: "$99-179" },
-      { to: "Washington DC", toKey: "washingtonDc", duration: "2h 50m", frequency: "Hourly", frequencyKey: "hourly", economy: "$49-99", business: "$99-179", firstClass: "$179-329" },
+      { to: "Boston", toKey: "boston", duration: "3h 30m", frequency: "Hourly", frequencyKey: "hourly", economy: "—", business: "—", firstClass: "—" },
+      { to: "Philadelphia", toKey: "philadelphia", duration: "1h 10m", frequency: "Every 30 min", frequencyKey: "every30Min", economy: "—", business: "—", firstClass: "—" },
+      { to: "Washington DC", toKey: "washingtonDc", duration: "2h 50m", frequency: "Hourly", frequencyKey: "hourly", economy: "—", business: "—", firstClass: "—" },
     ],
     localTransit: [
       { name: "NYC Subway", url: "https://new.mta.info", description: "24/7 subway service to MetLife Stadium area", descriptionKey: "nycSubwayDesc" },
@@ -67,9 +68,9 @@ const railHubs: RailHub[] = [
       { name: "MBTA", url: "https://www.mbta.com" },
     ],
     routes: [
-      { to: "New York", toKey: "newYork", duration: "3h 30m", frequency: "Hourly", frequencyKey: "hourly", economy: "$49-89", business: "$89-159", firstClass: "$159-299" },
-      { to: "Philadelphia", toKey: "philadelphia", duration: "5h 00m", frequency: "Every 2 hours", frequencyKey: "every2Hours", economy: "$69-119", business: "$119-199", firstClass: "$199-349" },
-      { to: "Providence", toKey: "providence", duration: "0h 40m", frequency: "Hourly", frequencyKey: "hourly", economy: "$15-29", business: "$29-49" },
+      { to: "New York", toKey: "newYork", duration: "3h 30m", frequency: "Hourly", frequencyKey: "hourly", economy: "—", business: "—", firstClass: "—" },
+      { to: "Philadelphia", toKey: "philadelphia", duration: "5h 00m", frequency: "Every 2 hours", frequencyKey: "every2Hours", economy: "—", business: "—", firstClass: "—" },
+      { to: "Providence", toKey: "providence", duration: "0h 40m", frequency: "Hourly", frequencyKey: "hourly", economy: "—", business: "—" },
     ],
     localTransit: [
       { name: "MBTA Subway (T)", url: "https://www.mbta.com", description: "Subway and commuter rail to Gillette Stadium", descriptionKey: "mbtaSubwayDesc" },
@@ -89,9 +90,9 @@ const railHubs: RailHub[] = [
       { name: "SEPTA", url: "https://www.septa.org" },
     ],
     routes: [
-      { to: "New York", toKey: "newYork", duration: "1h 10m", frequency: "Every 30 min", frequencyKey: "every30Min", economy: "$29-59", business: "$59-99", firstClass: "$99-179" },
-      { to: "Washington DC", toKey: "washingtonDc", duration: "1h 40m", frequency: "Hourly", frequencyKey: "hourly", economy: "$39-79", business: "$79-139", firstClass: "$139-249" },
-      { to: "Boston", toKey: "boston", duration: "5h 00m", frequency: "Every 2 hours", frequencyKey: "every2Hours", economy: "$69-119", business: "$119-199", firstClass: "$199-349" },
+      { to: "New York", toKey: "newYork", duration: "1h 10m", frequency: "Every 30 min", frequencyKey: "every30Min", economy: "—", business: "—", firstClass: "—" },
+      { to: "Washington DC", toKey: "washingtonDc", duration: "1h 40m", frequency: "Hourly", frequencyKey: "hourly", economy: "—", business: "—", firstClass: "—" },
+      { to: "Boston", toKey: "boston", duration: "5h 00m", frequency: "Every 2 hours", frequencyKey: "every2Hours", economy: "—", business: "—", firstClass: "—" },
     ],
     localTransit: [
       { name: "SEPTA Regional Rail", url: "https://www.septa.org", description: "Service to stadium area", descriptionKey: "septaRegionalDesc" },
@@ -112,9 +113,9 @@ const railHubs: RailHub[] = [
       { name: "Amtrak", url: "https://www.amtrak.com" },
     ],
     routes: [
-      { to: "Fort Lauderdale", toKey: "fortLauderdale", duration: "0h 30m", frequency: "Every 30 min", frequencyKey: "every30Min", economy: "$15-29", business: "$39-59" },
-      { to: "West Palm Beach", toKey: "westPalmBeach", duration: "1h 00m", frequency: "Hourly", frequencyKey: "hourly", economy: "$25-49", business: "$59-89" },
-      { to: "Orlando", toKey: "orlando", duration: "3h 15m", frequency: "Hourly", frequencyKey: "hourly", economy: "$79-129", business: "$149-199" },
+      { to: "Fort Lauderdale", toKey: "fortLauderdale", duration: "0h 30m", frequency: "Every 30 min", frequencyKey: "every30Min", economy: "—", business: "—" },
+      { to: "West Palm Beach", toKey: "westPalmBeach", duration: "1h 00m", frequency: "Hourly", frequencyKey: "hourly", economy: "—", business: "—" },
+      { to: "Orlando", toKey: "orlando", duration: "3h 15m", frequency: "Hourly", frequencyKey: "hourly", economy: "—", business: "—" },
     ],
     localTransit: [
       { name: "Metrorail", url: "https://www.miamidade.gov/transit", description: "Rapid transit to Hard Rock Stadium area", descriptionKey: "metrorailDesc" },
@@ -135,9 +136,9 @@ const railHubs: RailHub[] = [
       { name: "LA Metro", url: "https://www.metro.net" },
     ],
     routes: [
-      { to: "San Diego", toKey: "sanDiego", duration: "2h 45m", frequency: "12x daily", frequencyKey: "twelvexDaily", economy: "$37-59", business: "$59-99" },
-      { to: "Santa Barbara", toKey: "santaBarbara", duration: "2h 30m", frequency: "5x daily", frequencyKey: "fivexDaily", economy: "$31-49", business: "$49-79" },
-      { to: "San Francisco", toKey: "sanFrancisco", duration: "9h 30m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "$59-99", business: "$99-179" },
+      { to: "San Diego", toKey: "sanDiego", duration: "2h 45m", frequency: "12x daily", frequencyKey: "twelvexDaily", economy: "—", business: "—" },
+      { to: "Santa Barbara", toKey: "santaBarbara", duration: "2h 30m", frequency: "5x daily", frequencyKey: "fivexDaily", economy: "—", business: "—" },
+      { to: "San Francisco", toKey: "sanFrancisco", duration: "9h 30m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "—", business: "—" },
     ],
     localTransit: [
       { name: "LA Metro Rail", url: "https://www.metro.net", description: "Expo, Blue, and other lines", descriptionKey: "laMetroRailDesc" },
@@ -158,9 +159,9 @@ const railHubs: RailHub[] = [
       { name: "BART", url: "https://www.bart.gov" },
     ],
     routes: [
-      { to: "Sacramento", toKey: "sacramento", duration: "2h 00m", frequency: "6x daily", frequencyKey: "sixxDaily", economy: "$29-49", business: "$49-79" },
-      { to: "San Jose", toKey: "sanJose", duration: "1h 00m", frequency: "Hourly", frequencyKey: "hourly", economy: "$10-19", business: "$19-35" },
-      { to: "Los Angeles", toKey: "losAngeles", duration: "9h 30m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "$59-99", business: "$99-179" },
+      { to: "Sacramento", toKey: "sacramento", duration: "2h 00m", frequency: "6x daily", frequencyKey: "sixxDaily", economy: "—", business: "—" },
+      { to: "San Jose", toKey: "sanJose", duration: "1h 00m", frequency: "Hourly", frequencyKey: "hourly", economy: "—", business: "—" },
+      { to: "Los Angeles", toKey: "losAngeles", duration: "9h 30m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "—", business: "—" },
     ],
     localTransit: [
       { name: "BART", url: "https://www.bart.gov", description: "Bay Area rapid transit to Levi's Stadium", descriptionKey: "bartDesc" },
@@ -182,8 +183,8 @@ const railHubs: RailHub[] = [
       { name: "Sounder", url: "https://www.soundtransit.org/ride-with-us/sounder" },
     ],
     routes: [
-      { to: "Portland", toKey: "portland", duration: "3h 30m", frequency: "4x daily", frequencyKey: "fourxDaily", economy: "$35-59", business: "$59-99" },
-      { to: "Vancouver BC", toKey: "vancouverBc", duration: "4h 00m", frequency: "2x daily", frequencyKey: "twoxDaily", economy: "$45-79", business: "$79-129" },
+      { to: "Portland", toKey: "portland", duration: "3h 30m", frequency: "4x daily", frequencyKey: "fourxDaily", economy: "—", business: "—" },
+      { to: "Vancouver BC", toKey: "vancouverBc", duration: "4h 00m", frequency: "2x daily", frequencyKey: "twoxDaily", economy: "—", business: "—" },
     ],
     localTransit: [
       { name: "Link Light Rail", url: "https://www.soundtransit.org", description: "Stadium station available", descriptionKey: "linkLightRailDesc" },
@@ -204,9 +205,9 @@ const railHubs: RailHub[] = [
       { name: "UP Express", url: "https://www.upexpress.com" },
     ],
     routes: [
-      { to: "Montreal", toKey: "montreal", duration: "5h 00m", frequency: "5x daily", frequencyKey: "fivexDaily", economy: "CAD $59-129", business: "CAD $149-249" },
-      { to: "Ottawa", toKey: "ottawa", duration: "4h 30m", frequency: "6x daily", frequencyKey: "sixxDaily", economy: "CAD $49-99", business: "CAD $119-199" },
-      { to: "Niagara Falls", toKey: "niagaraFalls", duration: "2h 00m", frequency: "2x daily", frequencyKey: "twoxDaily", economy: "CAD $29-49", business: "CAD $59-89" },
+      { to: "Montreal", toKey: "montreal", duration: "5h 00m", frequency: "5x daily", frequencyKey: "fivexDaily", economy: "—", business: "—" },
+      { to: "Ottawa", toKey: "ottawa", duration: "4h 30m", frequency: "6x daily", frequencyKey: "sixxDaily", economy: "—", business: "—" },
+      { to: "Niagara Falls", toKey: "niagaraFalls", duration: "2h 00m", frequency: "2x daily", frequencyKey: "twoxDaily", economy: "—", business: "—" },
     ],
     localTransit: [
       { name: "TTC Subway", url: "https://www.ttc.ca", description: "Toronto Transit Commission", descriptionKey: "ttcSubwayDesc" },
@@ -227,8 +228,8 @@ const railHubs: RailHub[] = [
       { name: "Rocky Mountaineer", url: "https://www.rockymountaineer.com" },
     ],
     routes: [
-      { to: "Seattle", toKey: "seattle", duration: "4h 00m", frequency: "2x daily", frequencyKey: "twoxDaily", economy: "CAD $59-99", business: "CAD $99-159" },
-      { to: "Jasper (Rocky Mountaineer)", toKey: "jasper", duration: "2 days", frequency: "Seasonal", frequencyKey: "seasonal", economy: "CAD $1,500+", business: "CAD $2,500+" },
+      { to: "Seattle", toKey: "seattle", duration: "4h 00m", frequency: "2x daily", frequencyKey: "twoxDaily", economy: "—", business: "—" },
+      { to: "Jasper (Rocky Mountaineer)", toKey: "jasper", duration: "2 days", frequency: "Seasonal", frequencyKey: "seasonal", economy: "—", business: "—" },
     ],
     localTransit: [
       { name: "SkyTrain", url: "https://www.translink.ca", description: "Rapid transit to BC Place", descriptionKey: "skyTrainDesc" },
@@ -249,7 +250,7 @@ const railHubs: RailHub[] = [
       { name: "Mexico City Metro", url: "https://www.metro.cdmx.gob.mx" },
     ],
     routes: [
-      { to: "Cuautitlán", toKey: "cuautitlan", duration: "0h 25m", frequency: "Every 10 min", frequencyKey: "every10Min", economy: "MXN $17", business: "N/A" },
+      { to: "Cuautitlán", toKey: "cuautitlan", duration: "0h 25m", frequency: "Every 10 min", frequencyKey: "every10Min", economy: "—", business: "N/A" },
       { to: "Toluca (future)", toKey: "toluca", duration: "0h 40m", frequency: "TBD", frequencyKey: "tbd", economy: "TBD", business: "TBD" },
     ],
     localTransit: [
@@ -272,9 +273,9 @@ const railHubs: RailHub[] = [
       { name: "DART", url: "https://www.dart.org" },
     ],
     routes: [
-      { to: "Fort Worth", toKey: "fortWorth", duration: "0h 50m", frequency: "Every 30 min", frequencyKey: "every30Min", economy: "$5-10", business: "N/A" },
-      { to: "Austin", toKey: "austin", duration: "6h 00m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "$29-49", business: "$49-79" },
-      { to: "San Antonio", toKey: "sanAntonio", duration: "8h 00m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "$35-59", business: "$59-99" },
+      { to: "Fort Worth", toKey: "fortWorth", duration: "0h 50m", frequency: "Every 30 min", frequencyKey: "every30Min", economy: "—", business: "N/A" },
+      { to: "Austin", toKey: "austin", duration: "6h 00m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "—", business: "—" },
+      { to: "San Antonio", toKey: "sanAntonio", duration: "8h 00m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "—", business: "—" },
     ],
     localTransit: [
       { name: "DART Rail", url: "https://www.dart.org", description: "Light rail throughout DFW", descriptionKey: "dartRailDesc" },
@@ -294,8 +295,8 @@ const railHubs: RailHub[] = [
       { name: "MARTA", url: "https://www.itsmarta.com" },
     ],
     routes: [
-      { to: "Charlotte", toKey: "charlotte", duration: "4h 00m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "$29-49", business: "$49-79" },
-      { to: "New Orleans", toKey: "newOrleans", duration: "9h 00m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "$49-89", business: "$89-149" },
+      { to: "Charlotte", toKey: "charlotte", duration: "4h 00m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "—", business: "—" },
+      { to: "New Orleans", toKey: "newOrleans", duration: "9h 00m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "—", business: "—" },
     ],
     localTransit: [
       { name: "MARTA Rail", url: "https://www.itsmarta.com", description: "Dome/GWCC Station for Mercedes-Benz Stadium", descriptionKey: "martaRailDesc" },
@@ -314,8 +315,8 @@ const railHubs: RailHub[] = [
       { name: "METRORail", url: "https://www.ridemetro.org" },
     ],
     routes: [
-      { to: "New Orleans", toKey: "newOrleans", duration: "9h 00m", frequency: "3x weekly", frequencyKey: "threexWeekly", economy: "$35-59", business: "$59-99" },
-      { to: "San Antonio", toKey: "sanAntonio", duration: "4h 30m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "$25-45", business: "$45-75" },
+      { to: "New Orleans", toKey: "newOrleans", duration: "9h 00m", frequency: "3x weekly", frequencyKey: "threexWeekly", economy: "—", business: "—" },
+      { to: "San Antonio", toKey: "sanAntonio", duration: "4h 30m", frequency: "1x daily", frequencyKey: "onexDaily", economy: "—", business: "—" },
     ],
     localTransit: [
       { name: "METRORail", url: "https://www.ridemetro.org", description: "Red, Green, Purple lines to NRG Stadium", descriptionKey: "metroRailHoustonDesc" },
@@ -330,6 +331,7 @@ export default function RailServices() {
   if (selectedHub) {
     return (
       <Layout>
+        <div className="px-6 pt-4"><LivePricingBanner /></div>
         <div className="pt-6 px-6 pb-24">
           <button 
             onClick={() => setSelectedHub(null)}
@@ -469,7 +471,8 @@ export default function RailServices() {
 
   return (
     <Layout>
-      <div className="pt-8 px-6 pb-6">
+      <div className="px-6 pt-4"><LivePricingBanner /></div>
+        <div className="pt-8 px-6 pb-6">
         <Link href="/transportation" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
           <ArrowLeft className="w-4 h-4 rtl-flip" />
           <span className="text-sm font-medium">{t("transportation.backToTransportation")}</span>

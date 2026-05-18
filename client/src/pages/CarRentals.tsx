@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { LivePricingBanner } from "@/components/LivePricingBanner";
 import { Car, ArrowLeft, MapPin, DollarSign, ChevronRight, ExternalLink, Smartphone } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
@@ -54,7 +55,7 @@ const cities: CityInfo[] = [
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7AllAreas" },
       { name: "Via", url: "https://ridewithvia.com", availabilityKey: "sharedRidesLowerCost" },
     ],
-    dailyRates: { economy: "$45-75 USD", midsize: "$55-95 USD", suv: "$75-130 USD", luxury: "$120-250 USD" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingNewYork1",
       "parkingNewYork2",
@@ -83,7 +84,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7Everywhere" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7Everywhere" },
     ],
-    dailyRates: { economy: "$40-65 USD", midsize: "$50-85 USD", suv: "$70-120 USD", luxury: "$110-220 USD" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingLosAngeles1",
       "parkingLosAngeles2",
@@ -113,7 +114,7 @@ const cities: CityInfo[] = [
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7AllAreas" },
       { name: "Freebee", url: "https://ridefreebee.com", availabilityKey: "freeSelectZones" },
     ],
-    dailyRates: { economy: "$35-60 USD", midsize: "$45-80 USD", suv: "$65-110 USD", luxury: "$100-200 USD" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingMiami1",
       "parkingMiami2",
@@ -141,7 +142,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7DfwMetro" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7DfwMetro" },
     ],
-    dailyRates: { economy: "$35-55 USD", midsize: "$45-75 USD", suv: "$60-100 USD", luxury: "$90-180 USD" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingDallas1",
       "parkingDallas2",
@@ -169,7 +170,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7MetroArea" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7MetroArea" },
     ],
-    dailyRates: { economy: "$35-55 USD", midsize: "$45-70 USD", suv: "$60-100 USD", luxury: "$85-170 USD" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingAtlanta1",
       "parkingAtlanta2",
@@ -197,7 +198,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7GreaterHouston" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7GreaterHouston" },
     ],
-    dailyRates: { economy: "$35-55 USD", midsize: "$45-70 USD", suv: "$55-95 USD", luxury: "$80-160 USD" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingHouston1",
       "parkingHouston2",
@@ -225,7 +226,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7PugetSound" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7PugetSound" },
     ],
-    dailyRates: { economy: "$40-65 USD", midsize: "$50-85 USD", suv: "$70-115 USD", luxury: "$100-200 USD" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingSeattle1",
       "parkingSeattle2",
@@ -253,7 +254,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7BayArea" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7BayArea" },
     ],
-    dailyRates: { economy: "$45-75 USD", midsize: "$55-95 USD", suv: "$75-130 USD", luxury: "$120-250 USD" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingSanFrancisco1",
       "parkingSanFrancisco2",
@@ -281,7 +282,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com/ca", availabilityKey: "24_7Gta" },
       { name: "Lyft", url: "https://www.lyft.com/rider/cities/toronto-on", availabilityKey: "24_7Gta" },
     ],
-    dailyRates: { economy: "CAD $50-80", midsize: "CAD $60-100", suv: "CAD $80-140", luxury: "CAD $130-260" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingToronto1",
       "parkingToronto2",
@@ -309,7 +310,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com/ca", availabilityKey: "24_7MetroVancouver" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7MetroVancouver" },
     ],
-    dailyRates: { economy: "CAD $50-80", midsize: "CAD $60-95", suv: "CAD $80-130", luxury: "CAD $120-240" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingVancouver1",
       "parkingVancouver2",
@@ -338,7 +339,7 @@ const cities: CityInfo[] = [
       { name: "DiDi", url: "https://www.didiglobal.com/mx", availabilityKey: "24_7Cdmx" },
       { name: "Cabify", url: "https://cabify.com/mx", availabilityKey: "majorAreas" },
     ],
-    dailyRates: { economy: "MXN $600-1,000", midsize: "MXN $800-1,400", suv: "MXN $1,200-2,000", luxury: "MXN $2,000-4,000" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingMexicoCity1",
       "parkingMexicoCity2",
@@ -365,7 +366,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com/mx", availabilityKey: "24_7MetroArea" },
       { name: "DiDi", url: "https://www.didiglobal.com/mx", availabilityKey: "24_7MetroArea" },
     ],
-    dailyRates: { economy: "MXN $500-850", midsize: "MXN $700-1,200", suv: "MXN $1,000-1,700", luxury: "MXN $1,700-3,500" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingGuadalajara1",
       "parkingGuadalajara2",
@@ -392,7 +393,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com/mx", availabilityKey: "24_7MetroArea" },
       { name: "DiDi", url: "https://www.didiglobal.com/mx", availabilityKey: "24_7MetroArea" },
     ],
-    dailyRates: { economy: "MXN $500-800", midsize: "MXN $650-1,100", suv: "MXN $950-1,600", luxury: "MXN $1,600-3,200" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingMonterrey1",
       "parkingMonterrey2",
@@ -420,7 +421,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7GreaterBoston" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7GreaterBoston" },
     ],
-    dailyRates: { economy: "$45-70 USD", midsize: "$55-90 USD", suv: "$70-120 USD", luxury: "$110-220 USD" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingBoston1",
       "parkingBoston2",
@@ -448,7 +449,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7Philadelphia" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7Philadelphia" },
     ],
-    dailyRates: { economy: "$40-65 USD", midsize: "$50-80 USD", suv: "$65-110 USD", luxury: "$95-190 USD" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingPhiladelphia1",
       "parkingPhiladelphia2",
@@ -476,7 +477,7 @@ const cities: CityInfo[] = [
       { name: "Uber", url: "https://www.uber.com", availabilityKey: "24_7KcMetro" },
       { name: "Lyft", url: "https://www.lyft.com", availabilityKey: "24_7KcMetro" },
     ],
-    dailyRates: { economy: "$30-50 USD", midsize: "$40-65 USD", suv: "$55-90 USD", luxury: "$80-160 USD" },
+    dailyRates: { economy: "—", midsize: "—", suv: "—", luxury: "—" },
     parkingInfo: [
       "parkingKansasCity1",
       "parkingKansasCity2",
@@ -497,6 +498,7 @@ export default function CarRentals() {
   if (selectedCity) {
     return (
       <Layout>
+        <div className="px-6 pt-4"><LivePricingBanner /></div>
         <div className="pt-6 px-6 pb-24">
           <button 
             onClick={() => setSelectedCity(null)}
@@ -653,7 +655,8 @@ export default function CarRentals() {
 
   return (
     <Layout>
-      <div className="pt-8 px-6 pb-6">
+      <div className="px-6 pt-4"><LivePricingBanner /></div>
+        <div className="pt-8 px-6 pb-6">
         <Link href="/transportation" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
           <ArrowLeft className="w-4 h-4 rtl-flip" />
           <span className="text-sm font-medium">{t("transportation.backToTransportation")}</span>

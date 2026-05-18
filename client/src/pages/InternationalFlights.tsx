@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { LivePricingBanner } from "@/components/LivePricingBanner";
 import { Plane, Clock, ArrowLeft, Globe, Star, ChevronRight, ExternalLink } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
@@ -45,33 +46,33 @@ const airports: Airport[] = [
         continent: "Europe",
         continentKey: "europe",
         routes: [
-          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "7h 30m", economy: "$450-850 USD", business: "$3,500-6,000 USD", firstClass: "$8,000-15,000 USD" },
-          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "7h 45m", economy: "$500-900 USD", business: "$3,800-6,500 USD", firstClass: "$9,000-16,000 USD" },
-          { from: "Frankfurt (FRA)", fromKey: "frankfurtFRA", flightTime: "8h 15m", economy: "$480-870 USD", business: "$3,600-6,200 USD", firstClass: "$8,500-14,500 USD" },
+          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "7h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "7h 45m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Frankfurt (FRA)", fromKey: "frankfurtFRA", flightTime: "8h 15m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "South America",
         continentKey: "southAmerica",
         routes: [
-          { from: "São Paulo (GRU)", fromKey: "saoPauloGRU", flightTime: "9h 45m", economy: "$600-1,100 USD", business: "$3,200-5,500 USD", firstClass: "$7,500-12,000 USD" },
-          { from: "Buenos Aires (EZE)", fromKey: "buenosAiresEZE", flightTime: "10h 30m", economy: "$650-1,200 USD", business: "$3,400-5,800 USD", firstClass: "$8,000-13,000 USD" },
+          { from: "São Paulo (GRU)", fromKey: "saoPauloGRU", flightTime: "9h 45m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Buenos Aires (EZE)", fromKey: "buenosAiresEZE", flightTime: "10h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Middle East",
         continentKey: "middleEast",
         routes: [
-          { from: "Dubai (DXB)", fromKey: "dubaiDXB", flightTime: "13h 30m", economy: "$700-1,300 USD", business: "$4,500-8,000 USD", firstClass: "$12,000-22,000 USD" },
-          { from: "Doha (DOH)", fromKey: "dohaDOH", flightTime: "13h 00m", economy: "$680-1,250 USD", business: "$4,200-7,500 USD", firstClass: "$11,000-20,000 USD" },
+          { from: "Dubai (DXB)", fromKey: "dubaiDXB", flightTime: "13h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Doha (DOH)", fromKey: "dohaDOH", flightTime: "13h 00m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Asia",
         continentKey: "asia",
         routes: [
-          { from: "Tokyo (NRT)", fromKey: "tokyoNRT", flightTime: "14h 00m", economy: "$800-1,400 USD", business: "$5,000-9,000 USD", firstClass: "$14,000-25,000 USD" },
-          { from: "Seoul (ICN)", fromKey: "seoulICN", flightTime: "14h 30m", economy: "$750-1,350 USD", business: "$4,800-8,500 USD", firstClass: "$13,000-23,000 USD" },
+          { from: "Tokyo (NRT)", fromKey: "tokyoNRT", flightTime: "14h 00m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Seoul (ICN)", fromKey: "seoulICN", flightTime: "14h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -91,25 +92,25 @@ const airports: Airport[] = [
         continent: "Asia Pacific",
         continentKey: "asiaPacific",
         routes: [
-          { from: "Sydney (SYD)", fromKey: "sydneySYD", flightTime: "15h 00m", economy: "$900-1,600 USD", business: "$5,500-9,500 USD", firstClass: "$15,000-28,000 USD" },
-          { from: "Tokyo (NRT)", fromKey: "tokyoNRT", flightTime: "11h 30m", economy: "$700-1,200 USD", business: "$4,500-8,000 USD", firstClass: "$12,000-22,000 USD" },
-          { from: "Singapore (SIN)", fromKey: "singaporeSIN", flightTime: "17h 30m", economy: "$850-1,500 USD", business: "$5,200-9,000 USD", firstClass: "$14,000-26,000 USD" },
+          { from: "Sydney (SYD)", fromKey: "sydneySYD", flightTime: "15h 00m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Tokyo (NRT)", fromKey: "tokyoNRT", flightTime: "11h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Singapore (SIN)", fromKey: "singaporeSIN", flightTime: "17h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Oceania",
         continentKey: "oceania",
         routes: [
-          { from: "Auckland (AKL)", fromKey: "aucklandAKL", flightTime: "12h 45m", economy: "$800-1,400 USD", business: "$4,800-8,500 USD", firstClass: "$13,000-24,000 USD" },
-          { from: "Melbourne (MEL)", fromKey: "melbourneMEL", flightTime: "15h 30m", economy: "$880-1,550 USD", business: "$5,400-9,200 USD", firstClass: "$14,500-27,000 USD" },
+          { from: "Auckland (AKL)", fromKey: "aucklandAKL", flightTime: "12h 45m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Melbourne (MEL)", fromKey: "melbourneMEL", flightTime: "15h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Europe",
         continentKey: "europe",
         routes: [
-          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "10h 30m", economy: "$500-950 USD", business: "$4,000-7,000 USD", firstClass: "$10,000-18,000 USD" },
-          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "11h 00m", economy: "$550-1,000 USD", business: "$4,200-7,200 USD", firstClass: "$10,500-19,000 USD" },
+          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "10h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "11h 00m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -129,25 +130,25 @@ const airports: Airport[] = [
         continent: "South America",
         continentKey: "southAmerica",
         routes: [
-          { from: "São Paulo (GRU)", fromKey: "saoPauloGRU", flightTime: "8h 15m", economy: "$500-900 USD", business: "$2,800-4,800 USD", firstClass: "$6,500-11,000 USD" },
-          { from: "Buenos Aires (EZE)", fromKey: "buenosAiresEZE", flightTime: "9h 00m", economy: "$550-950 USD", business: "$3,000-5,200 USD", firstClass: "$7,000-12,000 USD" },
-          { from: "Bogotá (BOG)", fromKey: "bogotaBOG", flightTime: "3h 30m", economy: "$300-550 USD", business: "$1,800-3,200 USD", firstClass: "$4,500-7,500 USD" },
+          { from: "São Paulo (GRU)", fromKey: "saoPauloGRU", flightTime: "8h 15m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Buenos Aires (EZE)", fromKey: "buenosAiresEZE", flightTime: "9h 00m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Bogotá (BOG)", fromKey: "bogotaBOG", flightTime: "3h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Europe",
         continentKey: "europe",
         routes: [
-          { from: "Madrid (MAD)", fromKey: "madridMAD", flightTime: "8h 45m", economy: "$480-880 USD", business: "$3,500-6,000 USD", firstClass: "$8,500-15,000 USD" },
-          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "9h 00m", economy: "$500-900 USD", business: "$3,700-6,300 USD", firstClass: "$9,000-16,000 USD" },
+          { from: "Madrid (MAD)", fromKey: "madridMAD", flightTime: "8h 45m", economy: "—", business: "—", firstClass: "—" },
+          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "9h 00m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Caribbean",
         continentKey: "caribbean",
         routes: [
-          { from: "San Juan (SJU)", fromKey: "sanJuanSJU", flightTime: "2h 30m", economy: "$150-350 USD", business: "$800-1,500 USD", firstClass: "$2,000-3,500 USD" },
-          { from: "Havana (HAV)", fromKey: "havanaHAV", flightTime: "1h 15m", economy: "$200-400 USD", business: "$900-1,600 USD", firstClass: "$2,200-4,000 USD" },
+          { from: "San Juan (SJU)", fromKey: "sanJuanSJU", flightTime: "2h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Havana (HAV)", fromKey: "havanaHAV", flightTime: "1h 15m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -167,24 +168,24 @@ const airports: Airport[] = [
         continent: "Europe",
         continentKey: "europe",
         routes: [
-          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "9h 30m", economy: "$500-920 USD", business: "$3,800-6,500 USD", firstClass: "$9,500-17,000 USD" },
-          { from: "Frankfurt (FRA)", fromKey: "frankfurtFRA", flightTime: "10h 15m", economy: "$520-950 USD", business: "$4,000-6,800 USD", firstClass: "$10,000-18,000 USD" },
+          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "9h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Frankfurt (FRA)", fromKey: "frankfurtFRA", flightTime: "10h 15m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Middle East",
         continentKey: "middleEast",
         routes: [
-          { from: "Doha (DOH)", fromKey: "dohaDOH", flightTime: "15h 00m", economy: "$750-1,300 USD", business: "$5,500-9,500 USD", firstClass: "$14,000-25,000 USD" },
-          { from: "Dubai (DXB)", fromKey: "dubaiDXB", flightTime: "15h 30m", economy: "$780-1,350 USD", business: "$5,800-9,800 USD", firstClass: "$15,000-27,000 USD" },
+          { from: "Doha (DOH)", fromKey: "dohaDOH", flightTime: "15h 00m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Dubai (DXB)", fromKey: "dubaiDXB", flightTime: "15h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Asia",
         continentKey: "asia",
         routes: [
-          { from: "Tokyo (NRT)", fromKey: "tokyoNRT", flightTime: "13h 00m", economy: "$750-1,300 USD", business: "$4,800-8,500 USD", firstClass: "$13,000-24,000 USD" },
-          { from: "Seoul (ICN)", fromKey: "seoulICN", flightTime: "13h 30m", economy: "$720-1,250 USD", business: "$4,600-8,200 USD", firstClass: "$12,500-23,000 USD" },
+          { from: "Tokyo (NRT)", fromKey: "tokyoNRT", flightTime: "13h 00m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Seoul (ICN)", fromKey: "seoulICN", flightTime: "13h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -204,16 +205,16 @@ const airports: Airport[] = [
         continent: "Europe",
         continentKey: "europe",
         routes: [
-          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "9h 00m", economy: "$520-950 USD", business: "$3,900-6,700 USD", firstClass: "$9,800-17,500 USD" },
-          { from: "Amsterdam (AMS)", fromKey: "amsterdamAMS", flightTime: "9h 15m", economy: "$500-920 USD", business: "$3,800-6,500 USD", firstClass: "$9,500-17,000 USD" },
+          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "9h 00m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Amsterdam (AMS)", fromKey: "amsterdamAMS", flightTime: "9h 15m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Africa",
         continentKey: "africa",
         routes: [
-          { from: "Johannesburg (JNB)", fromKey: "johannesburgJNB", flightTime: "16h 30m", economy: "$900-1,600 USD", business: "$5,500-9,500 USD", firstClass: "$15,000-28,000 USD" },
-          { from: "Lagos (LOS)", fromKey: "lagosLOS", flightTime: "11h 00m", economy: "$800-1,400 USD", business: "$4,500-8,000 USD", firstClass: "$12,000-22,000 USD" },
+          { from: "Johannesburg (JNB)", fromKey: "johannesburgJNB", flightTime: "16h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Lagos (LOS)", fromKey: "lagosLOS", flightTime: "11h 00m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -233,18 +234,18 @@ const airports: Airport[] = [
         continent: "Europe",
         continentKey: "europe",
         routes: [
-          { from: "Madrid (MAD)", fromKey: "madridMAD", flightTime: "10h 30m", economy: "$550-1,000 USD", business: "$3,500-6,000 USD", firstClass: "$8,500-15,000 USD" },
-          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "11h 15m", economy: "$600-1,100 USD", business: "$3,800-6,500 USD", firstClass: "$9,500-17,000 USD" },
-          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "10h 45m", economy: "$580-1,050 USD", business: "$3,700-6,300 USD", firstClass: "$9,000-16,500 USD" },
+          { from: "Madrid (MAD)", fromKey: "madridMAD", flightTime: "10h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "11h 15m", economy: "—", business: "—", firstClass: "—" },
+          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "10h 45m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "South America",
         continentKey: "southAmerica",
         routes: [
-          { from: "São Paulo (GRU)", fromKey: "saoPauloGRU", flightTime: "9h 30m", economy: "$500-900 USD", business: "$2,800-4,800 USD", firstClass: "$6,500-11,000 USD" },
-          { from: "Buenos Aires (EZE)", fromKey: "buenosAiresEZE", flightTime: "10h 00m", economy: "$550-950 USD", business: "$3,000-5,000 USD", firstClass: "$7,000-12,000 USD" },
-          { from: "Lima (LIM)", fromKey: "limaLIM", flightTime: "5h 30m", economy: "$350-650 USD", business: "$2,000-3,500 USD", firstClass: "$5,000-8,500 USD" },
+          { from: "São Paulo (GRU)", fromKey: "saoPauloGRU", flightTime: "9h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Buenos Aires (EZE)", fromKey: "buenosAiresEZE", flightTime: "10h 00m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Lima (LIM)", fromKey: "limaLIM", flightTime: "5h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -264,17 +265,17 @@ const airports: Airport[] = [
         continent: "Europe",
         continentKey: "europe",
         routes: [
-          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "7h 15m", economy: "$500-920 USD", business: "$3,600-6,200 USD", firstClass: "$8,800-16,000 USD" },
-          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "7h 30m", economy: "$520-950 USD", business: "$3,800-6,500 USD", firstClass: "$9,200-17,000 USD" },
-          { from: "Frankfurt (FRA)", fromKey: "frankfurtFRA", flightTime: "8h 00m", economy: "$480-890 USD", business: "$3,500-6,000 USD", firstClass: "$8,500-15,500 USD" },
+          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "7h 15m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "7h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Frankfurt (FRA)", fromKey: "frankfurtFRA", flightTime: "8h 00m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Middle East",
         continentKey: "middleEast",
         routes: [
-          { from: "Dubai (DXB)", fromKey: "dubaiDXB", flightTime: "13h 00m", economy: "$700-1,250 USD", business: "$4,500-7,800 USD", firstClass: "$12,000-21,000 USD" },
-          { from: "Istanbul (IST)", fromKey: "istanbulIST", flightTime: "10h 00m", economy: "$600-1,100 USD", business: "$3,800-6,500 USD", firstClass: "$9,500-17,000 USD" },
+          { from: "Dubai (DXB)", fromKey: "dubaiDXB", flightTime: "13h 00m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Istanbul (IST)", fromKey: "istanbulIST", flightTime: "10h 00m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -294,17 +295,17 @@ const airports: Airport[] = [
         continent: "Asia Pacific",
         continentKey: "asiaPacific",
         routes: [
-          { from: "Tokyo (NRT)", fromKey: "tokyoNRT", flightTime: "9h 30m", economy: "$650-1,150 USD", business: "$4,200-7,500 USD", firstClass: "$11,000-20,000 USD" },
-          { from: "Hong Kong (HKG)", fromKey: "hongKongHKG", flightTime: "12h 00m", economy: "$700-1,250 USD", business: "$4,500-8,000 USD", firstClass: "$12,000-22,000 USD" },
-          { from: "Seoul (ICN)", fromKey: "seoulICN", flightTime: "10h 30m", economy: "$680-1,200 USD", business: "$4,300-7,700 USD", firstClass: "$11,500-21,000 USD" },
+          { from: "Tokyo (NRT)", fromKey: "tokyoNRT", flightTime: "9h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Hong Kong (HKG)", fromKey: "hongKongHKG", flightTime: "12h 00m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Seoul (ICN)", fromKey: "seoulICN", flightTime: "10h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Oceania",
         continentKey: "oceania",
         routes: [
-          { from: "Sydney (SYD)", fromKey: "sydneySYD", flightTime: "15h 30m", economy: "$850-1,500 USD", business: "$5,200-9,000 USD", firstClass: "$14,000-26,000 USD" },
-          { from: "Auckland (AKL)", fromKey: "aucklandAKL", flightTime: "13h 15m", economy: "$780-1,380 USD", business: "$4,800-8,400 USD", firstClass: "$13,000-24,000 USD" },
+          { from: "Sydney (SYD)", fromKey: "sydneySYD", flightTime: "15h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Auckland (AKL)", fromKey: "aucklandAKL", flightTime: "13h 15m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -324,17 +325,17 @@ const airports: Airport[] = [
         continent: "North America",
         continentKey: "northAmerica",
         routes: [
-          { from: "Los Angeles (LAX)", fromKey: "losAngelesLAX", flightTime: "3h 00m", economy: "$200-400 USD", business: "$800-1,500 USD", firstClass: "$2,000-3,800 USD" },
-          { from: "Dallas (DFW)", fromKey: "dallasDFW", flightTime: "2h 30m", economy: "$180-350 USD", business: "$750-1,400 USD", firstClass: "$1,800-3,500 USD" },
-          { from: "Houston (IAH)", fromKey: "houstonIAH", flightTime: "2h 15m", economy: "$170-330 USD", business: "$700-1,300 USD", firstClass: "$1,700-3,200 USD" },
+          { from: "Los Angeles (LAX)", fromKey: "losAngelesLAX", flightTime: "3h 00m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Dallas (DFW)", fromKey: "dallasDFW", flightTime: "2h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Houston (IAH)", fromKey: "houstonIAH", flightTime: "2h 15m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Central America",
         continentKey: "centralAmerica",
         routes: [
-          { from: "San José (SJO)", fromKey: "sanJoseSJO", flightTime: "3h 30m", economy: "$250-450 USD", business: "$1,000-1,800 USD", firstClass: "$2,500-4,500 USD" },
-          { from: "Panama City (PTY)", fromKey: "panamaCityPTY", flightTime: "4h 30m", economy: "$300-550 USD", business: "$1,200-2,200 USD", firstClass: "$3,000-5,500 USD" },
+          { from: "San José (SJO)", fromKey: "sanJoseSJO", flightTime: "3h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Panama City (PTY)", fromKey: "panamaCityPTY", flightTime: "4h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -354,9 +355,9 @@ const airports: Airport[] = [
         continent: "North America",
         continentKey: "northAmerica",
         routes: [
-          { from: "Houston (IAH)", fromKey: "houstonIAH", flightTime: "1h 30m", economy: "$150-300 USD", business: "$600-1,100 USD", firstClass: "$1,500-2,800 USD" },
-          { from: "Dallas (DFW)", fromKey: "dallasDFW", flightTime: "1h 45m", economy: "$160-320 USD", business: "$650-1,200 USD", firstClass: "$1,600-3,000 USD" },
-          { from: "Chicago (ORD)", fromKey: "chicagoORD", flightTime: "3h 00m", economy: "$220-420 USD", business: "$850-1,600 USD", firstClass: "$2,100-4,000 USD" },
+          { from: "Houston (IAH)", fromKey: "houstonIAH", flightTime: "1h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Dallas (DFW)", fromKey: "dallasDFW", flightTime: "1h 45m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Chicago (ORD)", fromKey: "chicagoORD", flightTime: "3h 00m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -376,24 +377,24 @@ const airports: Airport[] = [
         continent: "Europe",
         continentKey: "europe",
         routes: [
-          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "9h 45m", economy: "$520-960 USD", business: "$3,900-6,700 USD", firstClass: "$9,800-17,500 USD" },
-          { from: "Frankfurt (FRA)", fromKey: "frankfurtFRA", flightTime: "10h 30m", economy: "$540-1,000 USD", business: "$4,100-7,000 USD", firstClass: "$10,200-18,500 USD" },
+          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "9h 45m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Frankfurt (FRA)", fromKey: "frankfurtFRA", flightTime: "10h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Middle East",
         continentKey: "middleEast",
         routes: [
-          { from: "Doha (DOH)", fromKey: "dohaDOH", flightTime: "15h 30m", economy: "$780-1,350 USD", business: "$5,700-9,700 USD", firstClass: "$14,500-26,000 USD" },
-          { from: "Dubai (DXB)", fromKey: "dubaiDXB", flightTime: "16h 00m", economy: "$800-1,400 USD", business: "$5,900-10,000 USD", firstClass: "$15,000-27,000 USD" },
+          { from: "Doha (DOH)", fromKey: "dohaDOH", flightTime: "15h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Dubai (DXB)", fromKey: "dubaiDXB", flightTime: "16h 00m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "South America",
         continentKey: "southAmerica",
         routes: [
-          { from: "São Paulo (GRU)", fromKey: "saoPauloGRU", flightTime: "10h 00m", economy: "$580-1,050 USD", business: "$3,200-5,500 USD", firstClass: "$7,800-13,500 USD" },
-          { from: "Bogotá (BOG)", fromKey: "bogotaBOG", flightTime: "4h 30m", economy: "$320-600 USD", business: "$1,800-3,200 USD", firstClass: "$4,500-8,000 USD" },
+          { from: "São Paulo (GRU)", fromKey: "saoPauloGRU", flightTime: "10h 00m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Bogotá (BOG)", fromKey: "bogotaBOG", flightTime: "4h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -413,16 +414,16 @@ const airports: Airport[] = [
         continent: "Asia Pacific",
         continentKey: "asiaPacific",
         routes: [
-          { from: "Tokyo (NRT)", fromKey: "tokyoNRT", flightTime: "10h 00m", economy: "$700-1,200 USD", business: "$4,500-8,000 USD", firstClass: "$12,000-22,000 USD" },
-          { from: "Seoul (ICN)", fromKey: "seoulICN", flightTime: "10h 30m", economy: "$680-1,180 USD", business: "$4,400-7,800 USD", firstClass: "$11,500-21,000 USD" },
+          { from: "Tokyo (NRT)", fromKey: "tokyoNRT", flightTime: "10h 00m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Seoul (ICN)", fromKey: "seoulICN", flightTime: "10h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Europe",
         continentKey: "europe",
         routes: [
-          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "9h 30m", economy: "$520-950 USD", business: "$3,900-6,700 USD", firstClass: "$9,800-17,500 USD" },
-          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "10h 00m", economy: "$550-1,000 USD", business: "$4,100-7,000 USD", firstClass: "$10,200-18,500 USD" },
+          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "9h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "10h 00m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -442,17 +443,17 @@ const airports: Airport[] = [
         continent: "Asia Pacific",
         continentKey: "asiaPacific",
         routes: [
-          { from: "Singapore (SIN)", fromKey: "singaporeSIN", flightTime: "16h 30m", economy: "$850-1,500 USD", business: "$5,200-9,000 USD", firstClass: "$14,000-26,000 USD" },
-          { from: "Hong Kong (HKG)", fromKey: "hongKongHKG", flightTime: "13h 30m", economy: "$750-1,300 USD", business: "$4,700-8,300 USD", firstClass: "$12,500-23,000 USD" },
-          { from: "Tokyo (NRT)", fromKey: "tokyoNRT", flightTime: "11h 00m", economy: "$700-1,200 USD", business: "$4,500-8,000 USD", firstClass: "$12,000-22,000 USD" },
+          { from: "Singapore (SIN)", fromKey: "singaporeSIN", flightTime: "16h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Hong Kong (HKG)", fromKey: "hongKongHKG", flightTime: "13h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Tokyo (NRT)", fromKey: "tokyoNRT", flightTime: "11h 00m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Europe",
         continentKey: "europe",
         routes: [
-          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "10h 30m", economy: "$520-950 USD", business: "$4,000-7,000 USD", firstClass: "$10,000-18,000 USD" },
-          { from: "Frankfurt (FRA)", fromKey: "frankfurtFRA", flightTime: "11h 15m", economy: "$540-1,000 USD", business: "$4,200-7,300 USD", firstClass: "$10,500-19,000 USD" },
+          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "10h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Frankfurt (FRA)", fromKey: "frankfurtFRA", flightTime: "11h 15m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -472,9 +473,9 @@ const airports: Airport[] = [
         continent: "Europe",
         continentKey: "europe",
         routes: [
-          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "6h 45m", economy: "$450-850 USD", business: "$3,400-5,900 USD", firstClass: "$8,500-15,000 USD" },
-          { from: "Dublin (DUB)", fromKey: "dublinDUB", flightTime: "6h 00m", economy: "$400-780 USD", business: "$3,000-5,200 USD", firstClass: "$7,500-13,500 USD" },
-          { from: "Reykjavik (KEF)", fromKey: "reykjavikKEF", flightTime: "5h 00m", economy: "$350-680 USD", business: "$2,500-4,500 USD", firstClass: "$6,000-11,000 USD" },
+          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "6h 45m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Dublin (DUB)", fromKey: "dublinDUB", flightTime: "6h 00m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Reykjavik (KEF)", fromKey: "reykjavikKEF", flightTime: "5h 00m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -494,15 +495,15 @@ const airports: Airport[] = [
         continent: "Europe",
         continentKey: "europe",
         routes: [
-          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "7h 15m", economy: "$460-870 USD", business: "$3,500-6,000 USD", firstClass: "$8,700-15,500 USD" },
-          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "7h 45m", economy: "$500-920 USD", business: "$3,800-6,500 USD", firstClass: "$9,200-16,500 USD" },
+          { from: "London (LHR)", fromKey: "londonLHR", flightTime: "7h 15m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Paris (CDG)", fromKey: "parisCDG", flightTime: "7h 45m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
       {
         continent: "Middle East",
         continentKey: "middleEast",
         routes: [
-          { from: "Doha (DOH)", fromKey: "dohaDOH", flightTime: "12h 30m", economy: "$700-1,250 USD", business: "$4,500-7,800 USD", firstClass: "$11,500-20,500 USD" },
+          { from: "Doha (DOH)", fromKey: "dohaDOH", flightTime: "12h 30m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -522,9 +523,9 @@ const airports: Airport[] = [
         continent: "North America Hubs",
         continentKey: "northAmericaHubs",
         routes: [
-          { from: "Chicago (ORD)", fromKey: "chicagoORD", flightTime: "1h 30m", economy: "$120-280 USD", business: "$500-950 USD", firstClass: "$1,200-2,200 USD" },
-          { from: "Dallas (DFW)", fromKey: "dallasDFW", flightTime: "1h 45m", economy: "$140-300 USD", business: "$550-1,000 USD", firstClass: "$1,300-2,400 USD" },
-          { from: "Denver (DEN)", fromKey: "denverDEN", flightTime: "1h 40m", economy: "$130-290 USD", business: "$520-980 USD", firstClass: "$1,250-2,300 USD" },
+          { from: "Chicago (ORD)", fromKey: "chicagoORD", flightTime: "1h 30m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Dallas (DFW)", fromKey: "dallasDFW", flightTime: "1h 45m", economy: "—", business: "—", firstClass: "—" },
+          { from: "Denver (DEN)", fromKey: "denverDEN", flightTime: "1h 40m", economy: "—", business: "—", firstClass: "—" },
         ]
       },
     ]
@@ -538,6 +539,7 @@ export default function InternationalFlights() {
   if (selectedAirport) {
     return (
       <Layout>
+        <div className="px-6 pt-4"><LivePricingBanner /></div>
         {/* Airport Detail View */}
         <div className="pt-6 px-6 pb-24">
           <button 
@@ -668,7 +670,8 @@ export default function InternationalFlights() {
 
   return (
     <Layout>
-      {/* Header */}
+      <div className="px-6 pt-4"><LivePricingBanner /></div>
+        {/* Header */}
       <div className="pt-8 px-6 pb-6">
         <Link href="/transportation" className="flex items-center space-x-2 text-primary mb-4 hover:text-primary/80 transition-colors">
           <ArrowLeft className="w-4 h-4 rtl-flip" />

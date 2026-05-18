@@ -3,6 +3,7 @@ import { Plane, Train, Bus, Car, MapPin, Clock, DollarSign, Info, AlertTriangle,
 import { Link } from "wouter";
 import { useTranslation } from "react-i18next";
 import transportHero from "@assets/generated_images/multi-modal_transportation_travel_scene.png";
+import { LivePricingBanner } from "@/components/LivePricingBanner";
 
 interface TransportMode {
   icon: typeof Plane;
@@ -151,6 +152,12 @@ export default function Transportation() {
         <p className="text-gray-300 leading-relaxed" data-testid="text-intro">
           {t("transportation.intro")}
         </p>
+      </div>
+
+      {/* Live pricing notice — fares change daily, so we link out to operator
+          sites instead of publishing a snapshot that goes stale immediately. */}
+      <div className="px-6 pb-2">
+        <LivePricingBanner />
       </div>
 
       {/* Transportation Modes */}
