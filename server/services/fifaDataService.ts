@@ -90,6 +90,7 @@ function normalizeTeamName(raw: string | null | undefined): string {
     "united states": "usa",
     "united states of america": "usa",
     "cabo verde": "cape verde",
+    "cape verde islands": "cape verde",
     "türkiye": "turkey",
     "ir iran": "iran",
     "islamic republic of iran": "iran",
