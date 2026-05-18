@@ -2319,40 +2319,78 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     }
   });
 
-  // Match results - get finished matches with scores
-  // Since the tournament hasn't started yet, this returns simulated results for demo/testing
+  // Match results — returns real scores synced from football-data.org by the
+  // 30-min cron job. Only matches that have been played (status FINISHED) are
+  // returned. If the API key isn't configured the result set is empty until it is.
   app.get("/api/matches/results", async (req, res) => {
     try {
-      const matches = await storage.getAllMatches();
-      
-      // For demo purposes, simulate some finished matches from past dates
-      // In production, this would integrate with a live sports API
-      const now = new Date();
-      const results = matches
-        .filter(match => {
-          if (!match.date) return false;
-          const matchDate = new Date(match.date);
-          // Return matches from before today as "finished"
-          return matchDate < now;
-        })
-        .slice(0, 10) // Limit to 10 for demo
-        .map((match, index) => ({
-          matchId: match.id,
-          homeTeam: match.team1,
-          awayTeam: match.team2,
-          homeScore: Math.floor(Math.random() * 4),
-          awayScore: Math.floor(Math.random() * 4),
-          status: 'finished' as const,
-          venue: match.stadium,
-          city: match.city,
-          date: match.date,
-          time: match.time,
+      const all = await storage.getAllMatches();
+      const results = all
+        .filter((m) => m.status === "FINISHED" && m.homeScore != null && m.awayScore != null)
+        .map((m) => ({
+          matchId: m.id,
+          homeTeam: m.team1,
+          awayTeam: m.team2,
+          homeScore: m.homeScore,
+          awayScore: m.awayScore,
+          status: "finished" as const,
+          venue: m.stadium,
+          city: m.city,
+          date: m.date,
+          time: m.time,
         }));
-
       res.json(results);
     } catch (error) {
       console.error("Failed to fetch match results:", error);
       res.status(500).json({ error: "Failed to fetch match results" });
+    }
+  });
+
+  // Tournament outright winner odds — populated daily by The Odds API cron.
+  app.get("/api/tournament-odds", async (req, res) => {
+    try {
+      const { db } = await import("../db");
+      const { tournamentOdds } = await import("@shared/schema");
+      const rows = await db.select().from(tournamentOdds);
+      res.json(rows);
+    } catch (error) {
+      console.error("Failed to fetch tournament odds:", error);
+      res.status(500).json({ error: "Failed to fetch tournament odds" });
+    }
+  });
+
+  // Admin: manually trigger the FIFA match sync (football-data.org).
+  // Used for testing and as a fallback if cron hasn't run yet.
+  app.post("/api/admin/refresh-fifa-data", async (req, res) => {
+    try {
+      const adminPassword = process.env.ADMIN_PASSWORD || "admin2026cc";
+      const provided = req.body?.password || req.header("x-admin-password");
+      if (provided !== adminPassword) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+      const { refreshAndStoreFifaData } = await import("./services/fifaDataService");
+      const result = await refreshAndStoreFifaData();
+      res.json({ success: true, result });
+    } catch (error: any) {
+      console.error("[Refresh] refresh-fifa-data failed:", error);
+      res.status(500).json({ error: "Refresh failed", details: error?.message });
+    }
+  });
+
+  // Admin: manually trigger the tournament odds sync (The Odds API).
+  app.post("/api/admin/refresh-odds", async (req, res) => {
+    try {
+      const adminPassword = process.env.ADMIN_PASSWORD || "admin2026cc";
+      const provided = req.body?.password || req.header("x-admin-password");
+      if (provided !== adminPassword) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+      const { refreshAndStoreOdds } = await import("./services/oddsDataService");
+      const result = await refreshAndStoreOdds();
+      res.json({ success: true, result });
+    } catch (error: any) {
+      console.error("[Refresh] refresh-odds failed:", error);
+      res.status(500).json({ error: "Refresh failed", details: error?.message });
     }
   });
 

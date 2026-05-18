@@ -78,8 +78,35 @@ export const matches = pgTable("matches", {
   city: text("city").notNull(),
   stage: text("stage").notNull(),
   translations: jsonb("translations").$type<Record<string, { team1?: string; team2?: string; city?: string }>>(),
+  // Live data populated by the football-data.org sync job. Null until the
+  // match starts or until the API returns a result for it.
+  homeScore: integer("home_score"),
+  awayScore: integer("away_score"),
+  // SCHEDULED | LIVE | FINISHED | POSTPONED | CANCELLED
+  status: text("status"),
+  // football-data.org match id, used as the upsert key by the sync job.
+  fdMatchId: integer("fd_match_id"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+// Daily snapshot of casino consensus odds for the tournament outright winner.
+// One row per team, refreshed by The Odds API cron job.
+export const tournamentOdds = pgTable("tournament_odds", {
+  id: serial("id").primaryKey(),
+  teamName: text("team_name").notNull().unique(),
+  // American-style odds (e.g. "+1500", "-200"). Stored as text to preserve sign.
+  odds: text("odds").notNull(),
+  // Bookmaker(s) the odds were sourced from, e.g. "DraftKings/BetMGM consensus".
+  source: text("source").notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const insertTournamentOddsSchema = createInsertSchema(tournamentOdds).omit({
+  id: true,
+  updatedAt: true,
+});
+export type InsertTournamentOdds = z.infer<typeof insertTournamentOddsSchema>;
+export type TournamentOdds = typeof tournamentOdds.$inferSelect;
 
 export const insertMatchSchema = createInsertSchema(matches).omit({
   id: true,

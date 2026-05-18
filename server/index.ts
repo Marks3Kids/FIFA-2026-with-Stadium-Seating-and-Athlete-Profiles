@@ -174,8 +174,24 @@ async function initializeApp() {
     try {
       const { db } = await import("../db");
       const { sql } = await import("drizzle-orm");
+      // Teams: group draw + WC appearance count
       await db.execute(sql`ALTER TABLE teams ADD COLUMN IF NOT EXISTS group_stage TEXT`);
       await db.execute(sql`ALTER TABLE teams ADD COLUMN IF NOT EXISTS participations INTEGER`);
+      // Matches: live score + status + external sync id (populated by football-data.org cron)
+      await db.execute(sql`ALTER TABLE matches ADD COLUMN IF NOT EXISTS home_score INTEGER`);
+      await db.execute(sql`ALTER TABLE matches ADD COLUMN IF NOT EXISTS away_score INTEGER`);
+      await db.execute(sql`ALTER TABLE matches ADD COLUMN IF NOT EXISTS status TEXT`);
+      await db.execute(sql`ALTER TABLE matches ADD COLUMN IF NOT EXISTS fd_match_id INTEGER`);
+      // Tournament odds table (created if missing) — populated by The Odds API cron
+      await db.execute(sql`
+        CREATE TABLE IF NOT EXISTS tournament_odds (
+          id SERIAL PRIMARY KEY,
+          team_name TEXT NOT NULL UNIQUE,
+          odds TEXT NOT NULL,
+          source TEXT NOT NULL,
+          updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+        )
+      `);
       console.log("Startup migrations complete");
     } catch (migErr) {
       console.error("Startup migrations failed (continuing anyway):", migErr);
@@ -202,6 +218,41 @@ async function initializeApp() {
       console.log("Static files configured");
     }
     
+    // Schedule automatic data refreshes. These jobs are no-ops unless the
+    // corresponding API key env var is set — see services/fifaDataService.ts
+    // and services/oddsDataService.ts. Jobs run in the existing Node process;
+    // no separate Render Cron service is required.
+    try {
+      const cron = await import("node-cron");
+      const { refreshAndStoreFifaData } = await import("./services/fifaDataService");
+      const { refreshAndStoreOdds } = await import("./services/oddsDataService");
+
+      // Match schedule + live scores: every 30 minutes.
+      cron.schedule("*/30 * * * *", async () => {
+        console.log("[Cron] FIFA match sync starting…");
+        const result = await refreshAndStoreFifaData();
+        console.log("[Cron] FIFA match sync done:", result);
+      });
+
+      // Tournament odds: once a day at 06:15 UTC (~01:15 ET — well before
+      // morning betting traffic, and inside The Odds API free-tier window).
+      cron.schedule("15 6 * * *", async () => {
+        console.log("[Cron] Tournament odds sync starting…");
+        const result = await refreshAndStoreOdds();
+        console.log("[Cron] Tournament odds sync done:", result);
+      });
+
+      // Fire one sync on boot so the data populates immediately on first deploy
+      // (rather than waiting up to 30 minutes). Errors swallowed; the recurring
+      // cron will retry.
+      refreshAndStoreFifaData().catch((e) => console.warn("[Cron] initial FIFA sync failed:", e?.message));
+      refreshAndStoreOdds().catch((e) => console.warn("[Cron] initial odds sync failed:", e?.message));
+
+      console.log("Cron schedules registered (matches: */30m, odds: daily 06:15 UTC)");
+    } catch (cronErr) {
+      console.error("Failed to register cron jobs:", cronErr);
+    }
+
     appInitialized = true;
     console.log("App initialization complete");
   } catch (error) {
