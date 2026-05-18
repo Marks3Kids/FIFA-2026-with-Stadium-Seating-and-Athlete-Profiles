@@ -226,6 +226,7 @@ async function initializeApp() {
       const cron = await import("node-cron");
       const { refreshAndStoreFifaData } = await import("./services/fifaDataService");
       const { refreshAndStoreOdds } = await import("./services/oddsDataService");
+      const { refreshAndStoreSquads } = await import("./services/squadSyncService");
 
       // Match schedule + live scores: every 30 minutes.
       cron.schedule("*/30 * * * *", async () => {
@@ -242,13 +243,24 @@ async function initializeApp() {
         console.log("[Cron] Tournament odds sync done:", result);
       });
 
+      // Player squads: refresh weekly at Tuesday 04:00 UTC. Squads change
+      // rarely (injuries, late call-ups) so daily would burn API quota for
+      // little gain. The big refresh moment will be ~June 1 when FIFA's
+      // final 26-man rosters are due; Mark can also trigger manually from /admin.
+      cron.schedule("0 4 * * 2", async () => {
+        console.log("[Cron] Player squad sync starting…");
+        const result = await refreshAndStoreSquads();
+        console.log("[Cron] Player squad sync done:", result);
+      });
+
       // Fire one sync on boot so the data populates immediately on first deploy
-      // (rather than waiting up to 30 minutes). Errors swallowed; the recurring
-      // cron will retry.
+      // (rather than waiting up to 30 minutes / a week for squads). Errors
+      // swallowed; the recurring cron will retry.
       refreshAndStoreFifaData().catch((e) => console.warn("[Cron] initial FIFA sync failed:", e?.message));
       refreshAndStoreOdds().catch((e) => console.warn("[Cron] initial odds sync failed:", e?.message));
+      refreshAndStoreSquads().catch((e) => console.warn("[Cron] initial squad sync failed:", e?.message));
 
-      console.log("Cron schedules registered (matches: */30m, odds: daily 06:15 UTC)");
+      console.log("Cron schedules registered (matches: */30m, odds: daily 06:15 UTC, squads: weekly Tue 04:00 UTC)");
     } catch (cronErr) {
       console.error("Failed to register cron jobs:", cronErr);
     }

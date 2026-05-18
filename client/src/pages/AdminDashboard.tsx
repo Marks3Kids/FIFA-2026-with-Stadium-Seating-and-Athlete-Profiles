@@ -220,7 +220,10 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
 
   const seedPlayersMutation = useMutation({
     mutationFn: async () => {
-      const res = await apiRequest("POST", "/api/admin/seed-remaining-players", {});
+      // /api/admin/sync-player-squads pulls every team's squad from
+      // football-data.org and wipes/replaces the players table.
+      const password = sessionStorage.getItem("admin_password") || ADMIN_KEY;
+      const res = await apiRequest("POST", "/api/admin/sync-player-squads", { password });
       return res.json();
     },
   });
@@ -698,23 +701,23 @@ function AdminDashboardContent({ onLogout }: { onLogout: () => void }) {
               <div className="p-4 bg-white/5 rounded-xl border border-white/10">
                 <div className="flex items-center gap-2 mb-2">
                   <Users className="w-4 h-4 text-emerald-400" />
-                  <p className="text-sm font-medium text-white">Seed Player Profiles</p>
+                  <p className="text-sm font-medium text-white">Sync Player Squads</p>
                 </div>
                 <p className="text-xs text-muted-foreground mb-3">
-                  Add key player data for all remaining 37 teams not yet in the database. Safe to run — skips any players already added.
+                  Pull every team's squad from football-data.org (usually 23-26 players per team). Wipes and replaces the existing player roster. Auto-runs weekly; click for immediate refresh.
                 </p>
                 <Button
                   size="sm"
                   className="w-full"
                   onClick={() => seedPlayersMutation.mutate()}
-                  disabled={seedPlayersMutation.isPending || seedPlayersMutation.isSuccess}
+                  disabled={seedPlayersMutation.isPending}
                 >
                   {seedPlayersMutation.isPending ? (
-                    <><RefreshCw className="w-3 h-3 mr-2 animate-spin" />Adding Players...</>
+                    <><RefreshCw className="w-3 h-3 mr-2 animate-spin" />Syncing Squads...</>
                   ) : seedPlayersMutation.isSuccess ? (
-                    <><CheckCircle2 className="w-3 h-3 mr-2" />Done!</>
+                    <><CheckCircle2 className="w-3 h-3 mr-2" />Synced — click again to refresh</>
                   ) : (
-                    "Add All Team Players"
+                    "Sync Squads Now"
                   )}
                 </Button>
                 {seedPlayersMutation.isSuccess && (

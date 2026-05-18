@@ -79,6 +79,9 @@ export interface IStorage {
   // Drop every row in `teams` and insert the given list as the new canonical set.
   // Used by the admin "Sync FIFA teams" action when the qualified-team list changes.
   replaceAllTeams(newTeams: InsertTeam[]): Promise<{ inserted: number }>;
+  // Drop every row in `players` and insert the given roster set.
+  // Used by the squad-sync service when refreshing rosters from football-data.org.
+  replaceAllPlayers(newPlayers: InsertPlayer[]): Promise<{ inserted: number }>;
   
   getAllCities(): Promise<City[]>;
   getCity(id: number): Promise<City | undefined>;
@@ -205,9 +208,28 @@ export class DatabaseStorage implements IStorage {
     return newTeam;
   }
 
+  async replaceAllPlayers(newPlayers: InsertPlayer[]): Promise<{ inserted: number }> {
+    return await db.transaction(async (tx) => {
+      await tx.delete(players);
+      if (newPlayers.length > 0) {
+        // Drizzle has a per-statement parameter limit; chunk to stay well below
+        // Postgres' 65,535 placeholder cap (each player has ~14 columns).
+        const CHUNK = 1000;
+        for (let i = 0; i < newPlayers.length; i += CHUNK) {
+          await tx.insert(players).values(newPlayers.slice(i, i + CHUNK));
+        }
+      }
+      return { inserted: newPlayers.length };
+    });
+  }
+
   async replaceAllTeams(newTeams: InsertTeam[]): Promise<{ inserted: number }> {
     // Wipe + bulk-insert in a transaction so the table is never empty mid-sync.
+    // Also wipe players: replaceAllTeams generates fresh team IDs, leaving
+    // any existing player rows pointing at orphaned (deleted) team IDs.
+    // Players are re-populated by sync-player-squads after this runs.
     return await db.transaction(async (tx) => {
+      await tx.delete(players);
       await tx.delete(teams);
       if (newTeams.length > 0) {
         await tx.insert(teams).values(newTeams);

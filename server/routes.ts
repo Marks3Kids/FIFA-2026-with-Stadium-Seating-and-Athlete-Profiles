@@ -2410,6 +2410,25 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     }
   });
 
+  // Admin: pull player squads for every team from football-data.org.
+  // Wipes the players table and inserts fresh rosters (typically 23-26 per team).
+  // Safe to run repeatedly — idempotent.
+  app.post("/api/admin/sync-player-squads", async (req, res) => {
+    try {
+      const adminPassword = process.env.ADMIN_PASSWORD || "admin2026cc";
+      const provided = req.body?.password || req.header("x-admin-password");
+      if (provided !== adminPassword) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+      const { refreshAndStoreSquads } = await import("./services/squadSyncService");
+      const result = await refreshAndStoreSquads();
+      res.json({ success: true, ...result });
+    } catch (error: any) {
+      console.error("[Refresh] sync-player-squads failed:", error);
+      res.status(500).json({ error: "Squad sync failed", details: error?.message });
+    }
+  });
+
   // Admin: manually trigger the tournament odds sync (The Odds API).
   app.post("/api/admin/refresh-odds", async (req, res) => {
     try {
