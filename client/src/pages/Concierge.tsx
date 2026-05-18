@@ -217,9 +217,22 @@ export default function Concierge() {
       if (error.message === 'limit_reached') {
         return;
       }
+      // apiRequest throws "STATUS: BODY" — try to pull the server's friendly
+      // error message out of BODY (it'll be JSON like {"error":"…"}). If we
+      // can't parse it, fall back to the localised generic message.
+      let friendly = t("concierge.error");
+      const colon = error.message.indexOf(": ");
+      if (colon > 0) {
+        try {
+          const body = JSON.parse(error.message.slice(colon + 2));
+          if (typeof body?.error === "string") friendly = body.error;
+        } catch {
+          // Body wasn't JSON; stick with the generic message.
+        }
+      }
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: t("concierge.error") }
+        { role: "assistant", content: friendly }
       ]);
     },
   });

@@ -1398,11 +1398,34 @@ Remember: You're helping fans have the best World Cup experience of their lives!
       const usage = await getMessageUsage(email);
       res.json({ reply, usage });
     } catch (error: any) {
-      console.error("Concierge API error:", error);
-      if (error?.status === 401) {
-        return res.status(500).json({ error: "API key configuration error" });
+      // Log the full detail server-side for diagnostics; surface only a
+      // user-safe message to the client (never leak "API key", "OpenAI",
+      // or auth-failure specifics to a logged-in user).
+      console.error("Concierge API error:", {
+        status: error?.status,
+        code: error?.code,
+        type: error?.type,
+        message: error?.message,
+      });
+      // Map the most common OpenAI failure modes to friendlier messages.
+      if (error?.status === 401 || error?.status === 403) {
+        return res.status(503).json({
+          error: "The AI Concierge is temporarily unavailable. Please try again in a few minutes.",
+        });
       }
-      res.status(500).json({ error: "Failed to get response from AI" });
+      if (error?.status === 429 || error?.code === "insufficient_quota") {
+        return res.status(503).json({
+          error: "The AI Concierge is experiencing high demand. Please try again in a minute.",
+        });
+      }
+      if (error?.status === 500 || error?.status === 502 || error?.status === 503) {
+        return res.status(503).json({
+          error: "The AI Concierge service is temporarily down. Please try again shortly.",
+        });
+      }
+      res.status(500).json({
+        error: "Sorry, I couldn't process that request. Please try again.",
+      });
     }
   });
 
