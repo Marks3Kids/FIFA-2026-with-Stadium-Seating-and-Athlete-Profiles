@@ -76,6 +76,45 @@ async function callFd<T>(path: string): Promise<T | null> {
   }
 }
 
+/**
+ * Normalize team name to a canonical form for cross-source matching.
+ * football-data.org and our DB sometimes use different conventions
+ * (e.g. "Korea Republic" vs "South Korea", "United States" vs "USA").
+ */
+function normalizeTeamName(raw: string | null | undefined): string {
+  if (!raw) return "";
+  const aliases: Record<string, string> = {
+    "korea republic": "south korea",
+    "korea, republic of": "south korea",
+    "republic of korea": "south korea",
+    "united states": "usa",
+    "united states of america": "usa",
+    "cabo verde": "cape verde",
+    "türkiye": "turkey",
+    "ir iran": "iran",
+    "islamic republic of iran": "iran",
+    "côte d'ivoire": "ivory coast",
+    "cote d'ivoire": "ivory coast",
+    "congo dr": "dr congo",
+    "democratic republic of the congo": "dr congo",
+  };
+  const lower = raw.trim().toLowerCase();
+  return aliases[lower] ?? lower;
+}
+
+/** A team-1 / team-2 pair is a "placeholder" if either side is a draw placeholder
+ * (UEFA Playoff Winner, Group X Winner, etc.) instead of a real qualified team. */
+function hasPlaceholder(teamName: string | null | undefined): boolean {
+  const t = (teamName || "").toLowerCase();
+  return (
+    t.includes("playoff") ||
+    t.includes("winner") ||
+    t.includes("runner") ||
+    t.includes("tbd") ||
+    /^group [a-l]/.test(t)
+  );
+}
+
 function normalizeStatus(fdStatus: FdMatch["status"]): string {
   switch (fdStatus) {
     case "SCHEDULED":
@@ -103,13 +142,14 @@ function normalizeStatus(fdStatus: FdMatch["status"]): string {
  *
  * Returns counts so the caller can log/return them.
  */
-export async function syncMatchesFromFootballData(): Promise<{ updated: number; skipped: number; total: number }> {
+export async function syncMatchesFromFootballData(): Promise<{ updated: number; skipped: number; total: number; placeholdersResolved: number }> {
   const data = await callFd<FdMatchesResponse>(`/competitions/${WC_COMPETITION_CODE}/matches`);
-  if (!data) return { updated: 0, skipped: 0, total: 0 };
+  if (!data) return { updated: 0, skipped: 0, total: 0, placeholdersResolved: 0 };
 
   const existing = await db.select().from(matches);
   let updated = 0;
   let skipped = 0;
+  let placeholdersResolved = 0;
 
   for (const fdMatch of data.matches) {
     const homeName = fdMatch.homeTeam?.name;
@@ -122,44 +162,98 @@ export async function syncMatchesFromFootballData(): Promise<{ updated: number; 
     const homeScore = fdMatch.score.fullTime.home;
     const awayScore = fdMatch.score.fullTime.away;
     const status = normalizeStatus(fdMatch.status);
-
-    // Try to find an existing row: first by fd_match_id, then by team names + date.
     const dateOnly = fdMatch.utcDate.slice(0, 10); // "YYYY-MM-DD"
+    const normHome = normalizeTeamName(homeName);
+    const normAway = normalizeTeamName(awayName);
+
+    // Match priority:
+    //   1) Previously-synced row (fd_match_id)
+    //   2) Exact team-name match (any order), normalized for known aliases
+    //   3) Date matches + one team matches (other side is a placeholder)
+    //   4) Date matches AND both sides are placeholders for the same matchday
     let target = existing.find((m) => m.fdMatchId === fdMatch.id);
+    let resolvedPlaceholder = false;
+
     if (!target) {
-      target = existing.find(
-        (m) =>
-          (m.team1.toLowerCase() === homeName.toLowerCase() && m.team2.toLowerCase() === awayName.toLowerCase()) ||
-          (m.team1.toLowerCase() === awayName.toLowerCase() && m.team2.toLowerCase() === homeName.toLowerCase()),
-      );
+      target = existing.find((m) => {
+        const t1 = normalizeTeamName(m.team1);
+        const t2 = normalizeTeamName(m.team2);
+        return (
+          (t1 === normHome && t2 === normAway) ||
+          (t1 === normAway && t2 === normHome)
+        );
+      });
     }
+
     if (!target) {
-      // No matching row in our DB; skip silently. The manual schedule paste step
-      // (or a future auto-create flow) is responsible for seeding the row first.
+      // Try to match by date + one real team (other team is a placeholder in our DB).
+      target = existing.find((m) => {
+        if (!datesMatch(m.date, dateOnly)) return false;
+        const t1 = normalizeTeamName(m.team1);
+        const t2 = normalizeTeamName(m.team2);
+        const oneSideMatches =
+          t1 === normHome || t2 === normHome || t1 === normAway || t2 === normAway;
+        const otherSideIsPlaceholder = hasPlaceholder(m.team1) || hasPlaceholder(m.team2);
+        return oneSideMatches && otherSideIsPlaceholder;
+      });
+      if (target) resolvedPlaceholder = true;
+    }
+
+    if (!target) {
+      // Last resort: same date + both sides in our DB are placeholders → fill them in.
+      target = existing.find(
+        (m) => datesMatch(m.date, dateOnly) && hasPlaceholder(m.team1) && hasPlaceholder(m.team2),
+      );
+      if (target) resolvedPlaceholder = true;
+    }
+
+    if (!target) {
       skipped++;
       continue;
     }
 
-    await db
-      .update(matches)
-      .set({
-        homeScore,
-        awayScore,
-        status,
-        fdMatchId: fdMatch.id,
-      })
-      .where(eq(matches.id, target.id));
+    const updateSet: Record<string, any> = {
+      homeScore,
+      awayScore,
+      status,
+      fdMatchId: fdMatch.id,
+    };
+    // When we matched via fallback (placeholder), also update the team names
+    // so the UI stops showing "UEFA Playoff B Winner" once the actual team is known.
+    if (resolvedPlaceholder) {
+      updateSet.team1 = homeName;
+      updateSet.team2 = awayName;
+      placeholdersResolved++;
+    }
+
+    await db.update(matches).set(updateSet).where(eq(matches.id, target.id));
     updated++;
   }
 
-  return { updated, skipped, total: data.matches.length };
+  return { updated, skipped, total: data.matches.length, placeholdersResolved };
+}
+
+/**
+ * Loose date matcher: handles both "YYYY-MM-DD" (from API) and human-formatted
+ * strings like "June 14, 2026" (legacy DB rows).
+ */
+function datesMatch(dbDate: string, apiDateIso: string): boolean {
+  if (!dbDate || !apiDateIso) return false;
+  // Same ISO format: easy.
+  if (dbDate === apiDateIso) return true;
+  // Try parsing the DB date; if it parses, compare YYYY-MM-DD.
+  const parsed = new Date(dbDate);
+  if (!Number.isNaN(parsed.getTime())) {
+    return parsed.toISOString().slice(0, 10) === apiDateIso;
+  }
+  return false;
 }
 
 /**
  * Returns the most recent sync result for diagnostics.
  * (Kept as a small helper so the admin UI can display last-sync info.)
  */
-let lastSync: { at: Date; updated: number; skipped: number; total: number } | null = null;
+let lastSync: { at: Date; updated: number; skipped: number; total: number; placeholdersResolved: number } | null = null;
 export async function refreshAndStoreFifaData(): Promise<typeof lastSync> {
   const result = await syncMatchesFromFootballData();
   lastSync = { at: new Date(), ...result };
