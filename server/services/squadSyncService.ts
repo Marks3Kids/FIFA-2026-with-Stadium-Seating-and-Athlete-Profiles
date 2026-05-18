@@ -60,6 +60,8 @@ function normalizeTeamName(raw: string | null | undefined): string {
     "cote d'ivoire": "ivory coast",
     "congo dr": "dr congo",
     "democratic republic of the congo": "dr congo",
+    "bosnia-herzegovina": "bosnia and herzegovina",
+    "bosnia & herzegovina": "bosnia and herzegovina",
   };
   const lower = raw.trim().toLowerCase();
   return aliases[lower] ?? lower;
