@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useSearch, useLocation, Link } from "wouter";
 import { useToast } from "@/hooks/use-toast";
 import { useSubscription } from "@/contexts/SubscriptionContext";
+import { trackPurchase } from "@/lib/analytics";
 
 const TIER_DISPLAY: Record<string, string> = {
   team_info: "Team Info",
@@ -48,6 +49,20 @@ export default function Home() {
     if (purchased) {
       const tierName = TIER_DISPLAY[purchased] || purchased;
       console.log(`[Home] Post-purchase arrival — tier=${purchased}`);
+      // Fire GA4 + Google Ads conversion event so Mark can attribute paid
+      // traffic to the campaigns that drove it. Tier-priced values match
+      // the Stripe price IDs configured server-side.
+      const TIER_VALUE: Record<string, number> = {
+        team_info: 1.99,
+        logistics: 7.99,
+        fan_travel_pack: 7.99,
+        ai_concierge: 14.99,
+      };
+      trackPurchase({
+        tier: purchased,
+        value: TIER_VALUE[purchased] ?? 0,
+        transactionId: params.get("session_id") || undefined,
+      });
       toast({
         title: `Welcome to ${tierName}!`,
         description: "Your access is now active. Explore everything included in your plan.",

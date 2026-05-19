@@ -9,6 +9,7 @@ import "@/lib/i18n";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { initRevenueCat } from "@/lib/revenuecat";
+import { trackPageView } from "@/lib/analytics";
 import LandingPage from "@/pages/LandingPage";
 import Home from "@/pages/Home";
 import Matches from "@/pages/Matches";
@@ -152,6 +153,20 @@ function RevenueCatBootstrap() {
   return null;
 }
 
+/**
+ * Fires a GA4 page_view event whenever the SPA route changes.
+ * We disabled gtag's automatic page_view in index.html so we can fire
+ * them ourselves on each Wouter navigation (otherwise GA only sees the
+ * initial load and misses every subsequent route change).
+ */
+function AnalyticsPageViewTracker() {
+  const [location] = useLocation();
+  useEffect(() => {
+    trackPageView(location);
+  }, [location]);
+  return null;
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
@@ -160,6 +175,7 @@ function App() {
           <DirectionHandler />
           <GlobalRedirect />
           <RevenueCatBootstrap />
+          <AnalyticsPageViewTracker />
           <Router />
           <Toaster />
         </LocationProvider>
