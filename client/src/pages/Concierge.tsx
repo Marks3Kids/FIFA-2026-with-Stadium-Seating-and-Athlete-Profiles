@@ -27,6 +27,9 @@ import { VoiceConcierge, TalkToConciergeButton, MicButton } from "@/components/V
 import { useLocation as useGeoLocation } from "@/contexts/LocationContext";
 import { generateWeatherAlert, getHydrationRecommendations, getCoolingStations } from "@/services/WeatherService";
 import { useSubscription } from "@/contexts/SubscriptionContext";
+import { isCapacitorNative } from "@/lib/capacitor";
+import { purchaseTier } from "@/lib/revenuecat";
+import { useToast } from "@/hooks/use-toast";
 
 interface MessageUsage {
   messagesUsed: number;
@@ -56,6 +59,7 @@ export default function Concierge() {
   
   const { email, subscriptionTier } = useSubscription();
   const needsRestore = !subscriptionTier || subscriptionTier === 'free' || subscriptionTier === 'none';
+  const { toast } = useToast();
   const { currentCity, currentVault } = useGeoLocation();
 
   const { data: usageData, refetch: refetchUsage } = useQuery<MessageUsage>({
@@ -138,6 +142,18 @@ export default function Concierge() {
     if (!email || isPurchasing) return;
     setIsPurchasing(true);
     try {
+      // Native (iOS/Android store apps): must use RevenueCat → StoreKit / Play
+      // Billing. Stripe inside a store app is rejected by Apple guideline 3.1.1.
+      if (isCapacitorNative()) {
+        await purchaseTier('message_pack', email);
+        await refetchUsage();
+        setLimitReached(false);
+        toast({
+          title: t('concierge.packPurchased', 'Messages added'),
+          description: t('concierge.packPurchasedDesc', 'Your message pack has been added to your account.'),
+        });
+        return;
+      }
       const res = await fetch(apiUrl('/api/ai-messages/create-checkout'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -147,8 +163,16 @@ export default function Concierge() {
       if (data.url) {
         window.location.href = data.url;
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to create checkout:', error);
+      const isUserCancel = /cancel/i.test(error?.message || '') || error?.userCancelled;
+      if (!isUserCancel) {
+        toast({
+          title: t('concierge.purchaseFailed', 'Purchase failed'),
+          description: error?.message || t('concierge.tryAgain', 'Please try again.'),
+          variant: 'destructive',
+        });
+      }
     } finally {
       setIsPurchasing(false);
     }

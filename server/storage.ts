@@ -61,7 +61,9 @@ import {
   knockoutBrackets,
   leads,
   watchHubVenues,
-  watchHubSubmissions
+  watchHubSubmissions,
+  aiMessageUsage,
+  aiMessagePackPurchases
 } from "@shared/schema";
 import { db } from "../db";
 import { eq, desc } from "drizzle-orm";
@@ -133,6 +135,9 @@ export interface IStorage {
   getAllPurchases(): Promise<Purchase[]>;
   createPurchase(purchase: InsertPurchase): Promise<Purchase>;
   updatePurchaseTier(email: string, tier: string): Promise<Purchase | undefined>;
+  // Erase every record tied to an email — purchase, lead, AI usage, AI packs.
+  // Required by Apple App Store guideline 5.1.1(v) (in-app account deletion).
+  deleteUserData(email: string): Promise<{ purchases: number; leads: number; aiUsage: number; aiPacks: number }>;
   
   getAllPlayers(): Promise<Player[]>;
   getPlayersByTeam(teamId: number): Promise<Player[]>;
@@ -434,6 +439,22 @@ export class DatabaseStorage implements IStorage {
     const normalizedEmail = email.toLowerCase().trim();
     const [purchase] = await db.update(purchases).set({ tier }).where(eq(purchases.email, normalizedEmail)).returning();
     return purchase;
+  }
+
+  async deleteUserData(email: string): Promise<{ purchases: number; leads: number; aiUsage: number; aiPacks: number }> {
+    const normalizedEmail = email.toLowerCase().trim();
+    return await db.transaction(async (tx) => {
+      const purchaseRows = await tx.delete(purchases).where(eq(purchases.email, normalizedEmail)).returning({ id: purchases.id });
+      const leadRows = await tx.delete(leads).where(eq(leads.email, normalizedEmail)).returning({ id: leads.id });
+      const aiUsageRows = await tx.delete(aiMessageUsage).where(eq(aiMessageUsage.email, normalizedEmail)).returning({ id: aiMessageUsage.id });
+      const aiPackRows = await tx.delete(aiMessagePackPurchases).where(eq(aiMessagePackPurchases.email, normalizedEmail)).returning({ id: aiMessagePackPurchases.id });
+      return {
+        purchases: purchaseRows.length,
+        leads: leadRows.length,
+        aiUsage: aiUsageRows.length,
+        aiPacks: aiPackRows.length,
+      };
+    });
   }
 
   async getAllPlayers(): Promise<Player[]> {

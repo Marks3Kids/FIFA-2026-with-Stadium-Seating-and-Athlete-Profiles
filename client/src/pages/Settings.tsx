@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { Layout } from "@/components/Layout";
-import { 
-  ArrowLeft, Bell, Globe, Moon, Volume2, Vibrate, 
-  MapPin, Shield, Trash2, Check, ChevronRight, Navigation
+import {
+  ArrowLeft, Bell, Globe, Moon, Volume2, Vibrate,
+  MapPin, Shield, Trash2, Check, ChevronRight, Navigation, UserX, Loader2
 } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { useTranslation } from "react-i18next";
 import { LocationSettings } from "@/components/LocationSettings";
+import { useSubscription } from "@/contexts/SubscriptionContext";
+import { useToast } from "@/hooks/use-toast";
+import { apiUrl } from "@/lib/apiConfig";
 
 interface SettingsData {
   notifications: boolean;
@@ -42,9 +45,14 @@ const LANGUAGES = [
 
 export default function Settings() {
   const { t, i18n } = useTranslation();
+  const { email, clearSubscription } = useSubscription();
+  const { toast } = useToast();
+  const [, navigate] = useLocation();
   const [settings, setSettings] = useState<SettingsData>(DEFAULT_SETTINGS);
   const [saved, setSaved] = useState(false);
   const [showClearConfirm, setShowClearConfirm] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const savedSettings = localStorage.getItem("wc2026_settings");
@@ -82,6 +90,48 @@ export default function Settings() {
     setShowClearConfirm(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 1500);
+  };
+
+  const handleDeleteAccount = async () => {
+    if (!email) {
+      toast({
+        title: t("settings.account.noAccountTitle", "No account to delete"),
+        description: t("settings.account.noAccountDesc", "You're not signed in with an email."),
+        variant: "destructive",
+      });
+      setShowDeleteConfirm(false);
+      return;
+    }
+    setIsDeleting(true);
+    try {
+      const res = await fetch(apiUrl("/api/user/delete"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data?.error || `HTTP ${res.status}`);
+      }
+      localStorage.removeItem("wc2026_profile");
+      localStorage.removeItem("wc2026_settings");
+      localStorage.removeItem("bracketDownloads");
+      clearSubscription();
+      toast({
+        title: t("settings.account.deletedTitle", "Account deleted"),
+        description: t("settings.account.deletedDesc", "Your purchase, lead, and AI usage records have been permanently deleted."),
+      });
+      navigate("/");
+    } catch (err: any) {
+      toast({
+        title: t("settings.account.deleteFailedTitle", "Could not delete account"),
+        description: err?.message || t("settings.account.deleteFailedDesc", "Please try again or contact support."),
+        variant: "destructive",
+      });
+    } finally {
+      setIsDeleting(false);
+      setShowDeleteConfirm(false);
+    }
   };
 
   const ToggleSwitch = ({ enabled, onToggle }: { enabled: boolean; onToggle: () => void }) => (
@@ -288,6 +338,76 @@ export default function Settings() {
                       data-testid="button-confirm-clear"
                     >
                       {t("settings.dataManagement.clearData")}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-display font-bold text-white mb-4 flex items-center gap-2">
+              <UserX className="w-5 h-5 text-red-400" />
+              {t("settings.account.title", "Account")}
+            </h2>
+            <div className="bg-card border border-white/5 rounded-xl overflow-hidden">
+              {!showDeleteConfirm ? (
+                <button
+                  onClick={() => setShowDeleteConfirm(true)}
+                  className="w-full flex items-center justify-between p-4 text-left hover:bg-white/5 transition-colors"
+                  data-testid="button-delete-account"
+                >
+                  <div>
+                    <p className="text-red-400 font-medium">{t("settings.account.deleteAccount", "Delete my account")}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {email
+                        ? t("settings.account.deleteDesc", "Permanently removes your purchase, lead, and AI usage records linked to {{email}}.", { email })
+                        : t("settings.account.notSignedIn", "You're not signed in — nothing to delete.")}
+                    </p>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-muted-foreground" />
+                </button>
+              ) : (
+                <div className="p-4">
+                  <p className="text-white font-medium mb-2">
+                    {t("settings.account.confirmTitle", "Permanently delete your account?")}
+                  </p>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    {t(
+                      "settings.account.confirmDesc",
+                      "This will erase your purchase record, any leads, and your AI message history tied to {{email}}. You will lose access to any paid tier on this device and any other device using this email.",
+                      { email: email || "" }
+                    )}
+                  </p>
+                  <p className="text-xs text-muted-foreground mb-4">
+                    {t(
+                      "settings.account.confirmNote",
+                      "Note: in-app purchases on Google Play or App Store are managed by the store and can be cancelled in your store account."
+                    )}
+                  </p>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => setShowDeleteConfirm(false)}
+                      disabled={isDeleting}
+                      className="flex-1 py-2 px-4 rounded-lg bg-white/10 text-white font-medium disabled:opacity-50"
+                      data-testid="button-cancel-delete"
+                    >
+                      {t("common.cancel")}
+                    </button>
+                    <button
+                      onClick={handleDeleteAccount}
+                      disabled={isDeleting}
+                      className="flex-1 py-2 px-4 rounded-lg bg-red-500 text-white font-medium disabled:opacity-50 flex items-center justify-center gap-2"
+                      data-testid="button-confirm-delete"
+                    >
+                      {isDeleting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          {t("settings.account.deleting", "Deleting…")}
+                        </>
+                      ) : (
+                        t("settings.account.confirmDelete", "Delete forever")
+                      )}
                     </button>
                   </div>
                 </div>

@@ -1924,6 +1924,27 @@ Remember: You're helping fans have the best World Cup experience of their lives!
     }
   });
 
+  // Account deletion — required by Apple App Store guideline 5.1.1(v).
+  // We have no real auth: the client supplies the email it's currently signed in
+  // with via SubscriptionContext. To prove ownership, the email must match an
+  // existing record (purchase or lead). Anyone hitting this with a random email
+  // can only delete data tied to that email, which by definition was their data.
+  app.post("/api/user/delete", async (req, res) => {
+    try {
+      const email = String(req.body?.email || "").toLowerCase().trim();
+      if (!email || !email.includes("@")) {
+        return res.status(400).json({ error: "Valid email required" });
+      }
+      const result = await storage.deleteUserData(email);
+      const totalDeleted = result.purchases + result.leads + result.aiUsage + result.aiPacks;
+      console.log(`[Account Deletion] email=${email} deleted:`, result);
+      res.json({ success: true, deleted: result, totalDeleted });
+    } catch (error: any) {
+      console.error("Account deletion error:", error);
+      res.status(500).json({ error: "Failed to delete account", details: error?.message });
+    }
+  });
+
   // Players API
   app.get("/api/players", async (req, res) => {
     try {

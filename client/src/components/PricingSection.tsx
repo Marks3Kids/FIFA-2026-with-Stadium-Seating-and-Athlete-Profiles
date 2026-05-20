@@ -4,7 +4,7 @@ import { useSubscription, SubscriptionTier } from "@/contexts/SubscriptionContex
 import { apiUrl } from "@/lib/apiConfig";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
-import { useLocation, useSearch } from "wouter";
+import { Link, useLocation, useSearch } from "wouter";
 import { isCapacitorNative } from "@/lib/capacitor";
 import { purchaseTier, tierFromCustomerInfo } from "@/lib/revenuecat";
 
@@ -144,6 +144,13 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
   const [inAppBrowser, setInAppBrowser] = useState(false);
 
   useEffect(() => {
+    // The "Open in Browser to Purchase" banner steers users to the web Stripe
+    // checkout — which is forbidden inside iOS/Android store apps (Apple 3.1.1).
+    // Suppress on native: those users always go through RevenueCat anyway.
+    if (isCapacitorNative()) {
+      setInAppBrowser(false);
+      return;
+    }
     setInAppBrowser(isInAppBrowser());
   }, []);
 
@@ -744,6 +751,43 @@ export function PricingSection({ cancelUrl = "/pricing", showHeader = true }: Pr
           <RefreshCw className="w-4 h-4" />
           Already purchased? Restore your access
         </button>
+      </div>
+
+      {/* Legal disclosure required by Apple App Store guideline 3.1.2 and Google Play
+          subscription policy — must appear inside the purchase flow, not just buried
+          in a menu. Covers what the user is buying, that it's a one-time purchase
+          (no auto-renew), and links to Terms of Use (EULA) + Privacy Policy. */}
+      <div className="mt-10 border-t border-white/10 pt-6 px-2 text-xs text-muted-foreground leading-relaxed space-y-2">
+        <p>
+          {t(
+            "pricing.legal.oneTime",
+            "All paid tiers are one-time purchases (no auto-renewal) valid for the full 2026 World Cup tournament. Payment is charged to your account at confirmation of purchase via Stripe (web), Google Play Billing (Android), or Apple App Store (iOS)."
+          )}
+        </p>
+        <p>
+          {t(
+            "pricing.legal.aiMessages",
+            "The AI Concierge tier includes 50 AI messages; additional message packs may be purchased separately as needed."
+          )}
+        </p>
+        <p>
+          {t(
+            "pricing.legal.linksPrefix",
+            "By purchasing you agree to our"
+          )}{" "}
+          <Link href="/terms" className="text-primary hover:underline" data-testid="link-pricing-terms">
+            {t("pricing.legal.terms", "Terms of Use (EULA)")}
+          </Link>{" "}
+          {t("pricing.legal.and", "and")}{" "}
+          <Link href="/privacy" className="text-primary hover:underline" data-testid="link-pricing-privacy">
+            {t("pricing.legal.privacy", "Privacy Policy")}
+          </Link>
+          .{" "}
+          <Link href="/refund" className="text-primary hover:underline" data-testid="link-pricing-refund">
+            {t("pricing.legal.refund", "Refund Policy")}
+          </Link>
+          .
+        </p>
       </div>
 
       {showRestore && (
